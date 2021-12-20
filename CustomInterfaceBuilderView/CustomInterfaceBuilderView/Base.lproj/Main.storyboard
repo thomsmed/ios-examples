@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CustomInterfaceBuilderView" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tK0-Tb-fuP" customClass="RoundedView" customModule="CustomInterfaceBuilderView" customModuleProvider="target">
+                                <rect key="frame" x="157" y="60" width="100" height="100"/>
+                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="2ed-5E-Iif"/>
+                                    <constraint firstAttribute="width" secondItem="tK0-Tb-fuP" secondAttribute="height" multiplier="1:1" id="8AU-24-nhg"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" systemColor="systemIndigoColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="50"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="10" height="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gY1-Xw-U2d" customClass="CircularView" customModule="CustomInterfaceBuilderView" customModuleProvider="target">
+                                <rect key="frame" x="107" y="192" width="200" height="100"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="1Me-76-P93"/>
+                                    <constraint firstAttribute="width" constant="200" id="J1a-8O-KfH"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uY1-RM-oFE" customClass="RatingView" customModule="CustomInterfaceBuilderView" customModuleProvider="target">
+                                <rect key="frame" x="104" y="440" width="206" height="26"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="0F8-Fu-hes"/>
+                                    <constraint firstAttribute="width" constant="200" id="wYh-Rb-eDc"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rating">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="0F8-Fu-hes"/>
+                                        <exclude reference="wYh-Rb-eDc"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="MPG-IY-Klu">
+                                <rect key="frame" x="14" y="530" width="386" height="31"/>
+                                <connections>
+                                    <action selector="handleRatingChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="KVG-cH-PAh"/>
+                                </connections>
+                            </slider>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="SE4-4z-51R">
+                                <rect key="frame" x="134.5" y="818.5" width="145" height="27.5"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bfl-qz-Ryo" customClass="RoundedView" customModule="CustomInterfaceBuilderView" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="27" height="27.5"/>
+                                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="bfl-qz-Ryo" secondAttribute="height" multiplier="1:1" id="bAe-U2-790"/>
+                                            <constraint firstAttribute="width" constant="20" id="euL-yl-7aF"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xPV-BU-l5V" customClass="RoundedView" customModule="CustomInterfaceBuilderView" customModuleProvider="target">
+                                        <rect key="frame" x="31" y="0.0" width="27.5" height="27.5"/>
+                                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="Wc5-9Z-du4"/>
+                                            <constraint firstAttribute="width" secondItem="xPV-BU-l5V" secondAttribute="height" multiplier="1:1" id="Zhe-qX-dXd"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UtM-IV-4VC" customClass="CircularView" customModule="CustomInterfaceBuilderView" customModuleProvider="target">
+                                        <rect key="frame" x="62.5" y="0.0" width="27.5" height="27.5"/>
+                                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="9Oh-wi-Yol"/>
+                                            <constraint firstAttribute="width" secondItem="UtM-IV-4VC" secondAttribute="height" multiplier="1:1" id="Gnh-70-dq7"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="25"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Jj-VG-WGO" customClass="RoundedView" customModule="CustomInterfaceBuilderView" customModuleProvider="target">
+                                        <rect key="frame" x="94" y="0.0" width="27" height="27.5"/>
+                                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="6Jj-VG-WGO" secondAttribute="height" multiplier="1:1" id="TEw-aU-Dui"/>
+                                            <constraint firstAttribute="width" constant="20" id="V2d-gh-q6e"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RiC-jF-Mwh" customClass="RoundedView" customModule="CustomInterfaceBuilderView" customModuleProvider="target">
+                                        <rect key="frame" x="125" y="4" width="20" height="20"/>
+                                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="dqb-OR-q9I"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="RiC-jF-Mwh" firstAttribute="width" secondItem="RiC-jF-Mwh" secondAttribute="height" multiplier="1:1" id="d23-CE-I1Q"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MPG-IY-Klu" secondAttribute="trailing" constant="16" id="2Lf-mD-rdo"/>
+                            <constraint firstItem="tK0-Tb-fuP" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="64W-os-sHy"/>
+                            <constraint firstItem="gY1-Xw-U2d" firstAttribute="top" secondItem="tK0-Tb-fuP" secondAttribute="bottom" constant="32" id="6Vn-dN-J0C"/>
+                            <constraint firstItem="tK0-Tb-fuP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="E5k-5x-NK3"/>
+                            <constraint firstItem="SE4-4z-51R" firstAttribute="top" relation="greaterThanOrEqual" secondItem="MPG-IY-Klu" secondAttribute="bottom" constant="16" id="EBS-s7-O4k"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="tK0-Tb-fuP" secondAttribute="trailing" constant="16" id="FxB-Vb-JB6"/>
+                            <constraint firstItem="MPG-IY-Klu" firstAttribute="top" secondItem="uY1-RM-oFE" secondAttribute="bottom" constant="64" id="JmC-Jb-RdR"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="SE4-4z-51R" secondAttribute="trailing" constant="16" id="MB2-7m-Jbc"/>
+                            <constraint firstItem="MPG-IY-Klu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="OcC-Yj-l8r"/>
+                            <constraint firstItem="SE4-4z-51R" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="V9v-6b-bcN"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="SE4-4z-51R" secondAttribute="bottom" constant="16" id="c9T-NI-Ym3"/>
+                            <constraint firstItem="tK0-Tb-fuP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="gs0-y3-gXN"/>
+                            <constraint firstItem="SE4-4z-51R" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="hjo-UN-1Vc"/>
+                            <constraint firstItem="gY1-Xw-U2d" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="hmQ-I7-FZz"/>
+                            <constraint firstItem="uY1-RM-oFE" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="nh5-lR-NPZ"/>
+                            <constraint firstItem="uY1-RM-oFE" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="p7I-mC-yd3"/>
+                            <constraint firstItem="uY1-RM-oFE" firstAttribute="top" relation="greaterThanOrEqual" secondItem="gY1-Xw-U2d" secondAttribute="bottom" constant="16" id="zCo-wN-s20"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="circularViewWidthConstraint" destination="9Oh-wi-Yol" id="uOS-aK-DXI"/>
+                        <outlet property="ratingView" destination="uY1-RM-oFE" id="JFH-kV-WUC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139" y="118"/>
+        </scene>
+    </scenes>
+    <designables>
+        <designable name="uY1-RM-oFE">
+            <size key="intrinsicContentSize" width="214" height="26"/>
+        </designable>
+    </designables>
+    <resources>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
