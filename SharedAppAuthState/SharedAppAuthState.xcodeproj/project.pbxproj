@@ -7,6 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED890CC4277E3ABC001687DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED890CC3277E3ABC001687DD /* AppDelegate.swift */; };
+		ED890CC6277E3ABC001687DD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED890CC5277E3ABC001687DD /* SceneDelegate.swift */; };
+		ED890CC8277E3ABC001687DD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED890CC7277E3ABC001687DD /* ViewController.swift */; };
+		ED890CCD277E3ABD001687DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED890CCC277E3ABD001687DD /* Assets.xcassets */; };
+		ED890CD0277E3ABD001687DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED890CCE277E3ABD001687DD /* LaunchScreen.storyboard */; };
+		ED890CDB277E3ABD001687DD /* SharedAppAuthStateSecondAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED890CDA277E3ABD001687DD /* SharedAppAuthStateSecondAppTests.swift */; };
+		ED890CE5277E3ABD001687DD /* SharedAppAuthStateSecondAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED890CE4277E3ABD001687DD /* SharedAppAuthStateSecondAppUITests.swift */; };
+		ED890CE7277E3ABD001687DD /* SharedAppAuthStateSecondAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED890CE6277E3ABD001687DD /* SharedAppAuthStateSecondAppUITestsLaunchTests.swift */; };
+		ED890CFC277E3C07001687DD /* AuthTokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED890CF3277E3C07001687DD /* AuthTokenProvider.swift */; };
+		ED890CFD277E3C07001687DD /* AuthError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED890CF4277E3C07001687DD /* AuthError.swift */; };
+		ED890CFE277E3C07001687DD /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED890CF6277E3C07001687DD /* AuthService.swift */; };
+		ED890CFF277E3C07001687DD /* Auth0AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED890CF7277E3C07001687DD /* Auth0AuthService.swift */; };
+		ED890D00277E3C07001687DD /* AuthStateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED890CF9277E3C07001687DD /* AuthStateRepository.swift */; };
+		ED890D01277E3C07001687DD /* KeyChainAuthStateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED890CFA277E3C07001687DD /* KeyChainAuthStateRepository.swift */; };
+		ED890D02277E3C07001687DD /* SharedUserDefaultsAuthStateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED890CFB277E3C07001687DD /* SharedUserDefaultsAuthStateRepository.swift */; };
+		ED890D04277E3C27001687DD /* TinyConstraints in Frameworks */ = {isa = PBXBuildFile; productRef = ED890D03277E3C27001687DD /* TinyConstraints */; };
+		ED890D06277E3C28001687DD /* AppAuth in Frameworks */ = {isa = PBXBuildFile; productRef = ED890D05277E3C28001687DD /* AppAuth */; };
+		ED890D08277E3C28001687DD /* AppAuthCore in Frameworks */ = {isa = PBXBuildFile; productRef = ED890D07277E3C28001687DD /* AppAuthCore */; };
 		EDC1DB17277DF3FA005D1652 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC1DB16277DF3FA005D1652 /* AppDelegate.swift */; };
 		EDC1DB19277DF3FA005D1652 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC1DB18277DF3FA005D1652 /* SceneDelegate.swift */; };
 		EDC1DB1B277DF3FA005D1652 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC1DB1A277DF3FA005D1652 /* ViewController.swift */; };
@@ -58,6 +76,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		ED890CD7277E3ABD001687DD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EDC1DB0B277DF3FA005D1652 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ED890CC0277E3ABC001687DD;
+			remoteInfo = SharedAppAuthStateSecondApp;
+		};
+		ED890CE1277E3ABD001687DD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EDC1DB0B277DF3FA005D1652 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ED890CC0277E3ABC001687DD;
+			remoteInfo = SharedAppAuthStateSecondApp;
+		};
 		EDC1DB2A277DF3FC005D1652 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EDC1DB0B277DF3FA005D1652 /* Project object */;
@@ -128,6 +160,26 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		ED890CC1277E3ABC001687DD /* SharedAppAuthStateSecondApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SharedAppAuthStateSecondApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED890CC3277E3ABC001687DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		ED890CC5277E3ABC001687DD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		ED890CC7277E3ABC001687DD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		ED890CCC277E3ABD001687DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		ED890CCF277E3ABD001687DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		ED890CD1277E3ABD001687DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ED890CD6277E3ABD001687DD /* SharedAppAuthStateSecondAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SharedAppAuthStateSecondAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED890CDA277E3ABD001687DD /* SharedAppAuthStateSecondAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedAppAuthStateSecondAppTests.swift; sourceTree = "<group>"; };
+		ED890CE0277E3ABD001687DD /* SharedAppAuthStateSecondAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SharedAppAuthStateSecondAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED890CE4277E3ABD001687DD /* SharedAppAuthStateSecondAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedAppAuthStateSecondAppUITests.swift; sourceTree = "<group>"; };
+		ED890CE6277E3ABD001687DD /* SharedAppAuthStateSecondAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedAppAuthStateSecondAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		ED890CF1277E3AD4001687DD /* SharedAppAuthStateSecondApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SharedAppAuthStateSecondApp.entitlements; sourceTree = "<group>"; };
+		ED890CF3277E3C07001687DD /* AuthTokenProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthTokenProvider.swift; sourceTree = "<group>"; };
+		ED890CF4277E3C07001687DD /* AuthError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthError.swift; sourceTree = "<group>"; };
+		ED890CF6277E3C07001687DD /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		ED890CF7277E3C07001687DD /* Auth0AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Auth0AuthService.swift; sourceTree = "<group>"; };
+		ED890CF9277E3C07001687DD /* AuthStateRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthStateRepository.swift; sourceTree = "<group>"; };
+		ED890CFA277E3C07001687DD /* KeyChainAuthStateRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyChainAuthStateRepository.swift; sourceTree = "<group>"; };
+		ED890CFB277E3C07001687DD /* SharedUserDefaultsAuthStateRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedUserDefaultsAuthStateRepository.swift; sourceTree = "<group>"; };
 		EDC1DB13277DF3FA005D1652 /* SharedAppAuthState.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SharedAppAuthState.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDC1DB16277DF3FA005D1652 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDC1DB18277DF3FA005D1652 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -172,6 +224,30 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		ED890CBE277E3ABC001687DD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED890D06277E3C28001687DD /* AppAuth in Frameworks */,
+				ED890D04277E3C27001687DD /* TinyConstraints in Frameworks */,
+				ED890D08277E3C28001687DD /* AppAuthCore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED890CD3277E3ABD001687DD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED890CDD277E3ABD001687DD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EDC1DB10277DF3FA005D1652 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -233,6 +309,68 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ED890CC2277E3ABC001687DD /* SharedAppAuthStateSecondApp */ = {
+			isa = PBXGroup;
+			children = (
+				ED890CF1277E3AD4001687DD /* SharedAppAuthStateSecondApp.entitlements */,
+				ED890CC3277E3ABC001687DD /* AppDelegate.swift */,
+				ED890CC5277E3ABC001687DD /* SceneDelegate.swift */,
+				ED890CC7277E3ABC001687DD /* ViewController.swift */,
+				ED890CCC277E3ABD001687DD /* Assets.xcassets */,
+				ED890CCE277E3ABD001687DD /* LaunchScreen.storyboard */,
+				ED890CD1277E3ABD001687DD /* Info.plist */,
+				ED890CF2277E3C07001687DD /* Auth */,
+			);
+			path = SharedAppAuthStateSecondApp;
+			sourceTree = "<group>";
+		};
+		ED890CD9277E3ABD001687DD /* SharedAppAuthStateSecondAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				ED890CDA277E3ABD001687DD /* SharedAppAuthStateSecondAppTests.swift */,
+			);
+			path = SharedAppAuthStateSecondAppTests;
+			sourceTree = "<group>";
+		};
+		ED890CE3277E3ABD001687DD /* SharedAppAuthStateSecondAppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				ED890CE4277E3ABD001687DD /* SharedAppAuthStateSecondAppUITests.swift */,
+				ED890CE6277E3ABD001687DD /* SharedAppAuthStateSecondAppUITestsLaunchTests.swift */,
+			);
+			path = SharedAppAuthStateSecondAppUITests;
+			sourceTree = "<group>";
+		};
+		ED890CF2277E3C07001687DD /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				ED890CF3277E3C07001687DD /* AuthTokenProvider.swift */,
+				ED890CF4277E3C07001687DD /* AuthError.swift */,
+				ED890CF5277E3C07001687DD /* AuthService */,
+				ED890CF8277E3C07001687DD /* AuthStateRepository */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		ED890CF5277E3C07001687DD /* AuthService */ = {
+			isa = PBXGroup;
+			children = (
+				ED890CF6277E3C07001687DD /* AuthService.swift */,
+				ED890CF7277E3C07001687DD /* Auth0AuthService.swift */,
+			);
+			path = AuthService;
+			sourceTree = "<group>";
+		};
+		ED890CF8277E3C07001687DD /* AuthStateRepository */ = {
+			isa = PBXGroup;
+			children = (
+				ED890CF9277E3C07001687DD /* AuthStateRepository.swift */,
+				ED890CFA277E3C07001687DD /* KeyChainAuthStateRepository.swift */,
+				ED890CFB277E3C07001687DD /* SharedUserDefaultsAuthStateRepository.swift */,
+			);
+			path = AuthStateRepository;
+			sourceTree = "<group>";
+		};
 		EDC1DB0A277DF3FA005D1652 = {
 			isa = PBXGroup;
 			children = (
@@ -244,6 +382,9 @@
 				EDC1DB36277DF3FC005D1652 /* SharedAppAuthStateUITests */,
 				EDC1DB66277DF60F005D1652 /* SharedAppAuthStateAppClipTests */,
 				EDC1DB70277DF60F005D1652 /* SharedAppAuthStateAppClipUITests */,
+				ED890CC2277E3ABC001687DD /* SharedAppAuthStateSecondApp */,
+				ED890CD9277E3ABD001687DD /* SharedAppAuthStateSecondAppTests */,
+				ED890CE3277E3ABD001687DD /* SharedAppAuthStateSecondAppUITests */,
 				EDC1DB87277DF670005D1652 /* Frameworks */,
 				EDC1DB14277DF3FA005D1652 /* Products */,
 			);
@@ -259,6 +400,9 @@
 				EDC1DB63277DF60F005D1652 /* SharedAppAuthStateAppClipTests.xctest */,
 				EDC1DB6D277DF60F005D1652 /* SharedAppAuthStateAppClipUITests.xctest */,
 				EDC1DB86277DF670005D1652 /* SharedAppAuthStateWidgetExtension.appex */,
+				ED890CC1277E3ABC001687DD /* SharedAppAuthStateSecondApp.app */,
+				ED890CD6277E3ABD001687DD /* SharedAppAuthStateSecondAppTests.xctest */,
+				ED890CE0277E3ABD001687DD /* SharedAppAuthStateSecondAppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -395,6 +539,64 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		ED890CC0277E3ABC001687DD /* SharedAppAuthStateSecondApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ED890CE8277E3ABD001687DD /* Build configuration list for PBXNativeTarget "SharedAppAuthStateSecondApp" */;
+			buildPhases = (
+				ED890CBD277E3ABC001687DD /* Sources */,
+				ED890CBE277E3ABC001687DD /* Frameworks */,
+				ED890CBF277E3ABC001687DD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SharedAppAuthStateSecondApp;
+			packageProductDependencies = (
+				ED890D03277E3C27001687DD /* TinyConstraints */,
+				ED890D05277E3C28001687DD /* AppAuth */,
+				ED890D07277E3C28001687DD /* AppAuthCore */,
+			);
+			productName = SharedAppAuthStateSecondApp;
+			productReference = ED890CC1277E3ABC001687DD /* SharedAppAuthStateSecondApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		ED890CD5277E3ABD001687DD /* SharedAppAuthStateSecondAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ED890CEB277E3ABD001687DD /* Build configuration list for PBXNativeTarget "SharedAppAuthStateSecondAppTests" */;
+			buildPhases = (
+				ED890CD2277E3ABD001687DD /* Sources */,
+				ED890CD3277E3ABD001687DD /* Frameworks */,
+				ED890CD4277E3ABD001687DD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				ED890CD8277E3ABD001687DD /* PBXTargetDependency */,
+			);
+			name = SharedAppAuthStateSecondAppTests;
+			productName = SharedAppAuthStateSecondAppTests;
+			productReference = ED890CD6277E3ABD001687DD /* SharedAppAuthStateSecondAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		ED890CDF277E3ABD001687DD /* SharedAppAuthStateSecondAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ED890CEE277E3ABD001687DD /* Build configuration list for PBXNativeTarget "SharedAppAuthStateSecondAppUITests" */;
+			buildPhases = (
+				ED890CDC277E3ABD001687DD /* Sources */,
+				ED890CDD277E3ABD001687DD /* Frameworks */,
+				ED890CDE277E3ABD001687DD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				ED890CE2277E3ABD001687DD /* PBXTargetDependency */,
+			);
+			name = SharedAppAuthStateSecondAppUITests;
+			productName = SharedAppAuthStateSecondAppUITests;
+			productReference = ED890CE0277E3ABD001687DD /* SharedAppAuthStateSecondAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		EDC1DB12277DF3FA005D1652 /* SharedAppAuthState */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = EDC1DB3D277DF3FC005D1652 /* Build configuration list for PBXNativeTarget "SharedAppAuthState" */;
@@ -545,6 +747,17 @@
 				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
+					ED890CC0277E3ABC001687DD = {
+						CreatedOnToolsVersion = 13.2;
+					};
+					ED890CD5277E3ABD001687DD = {
+						CreatedOnToolsVersion = 13.2;
+						TestTargetID = ED890CC0277E3ABC001687DD;
+					};
+					ED890CDF277E3ABD001687DD = {
+						CreatedOnToolsVersion = 13.2;
+						TestTargetID = ED890CC0277E3ABC001687DD;
+					};
 					EDC1DB12277DF3FA005D1652 = {
 						CreatedOnToolsVersion = 13.2;
 					};
@@ -596,11 +809,37 @@
 				EDC1DB32277DF3FC005D1652 /* SharedAppAuthStateUITests */,
 				EDC1DB62277DF60F005D1652 /* SharedAppAuthStateAppClipTests */,
 				EDC1DB6C277DF60F005D1652 /* SharedAppAuthStateAppClipUITests */,
+				ED890CC0277E3ABC001687DD /* SharedAppAuthStateSecondApp */,
+				ED890CD5277E3ABD001687DD /* SharedAppAuthStateSecondAppTests */,
+				ED890CDF277E3ABD001687DD /* SharedAppAuthStateSecondAppUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		ED890CBF277E3ABC001687DD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED890CD0277E3ABD001687DD /* LaunchScreen.storyboard in Resources */,
+				ED890CCD277E3ABD001687DD /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED890CD4277E3ABD001687DD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED890CDE277E3ABD001687DD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EDC1DB11277DF3FA005D1652 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -658,6 +897,40 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		ED890CBD277E3ABC001687DD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED890CFC277E3C07001687DD /* AuthTokenProvider.swift in Sources */,
+				ED890CC8277E3ABC001687DD /* ViewController.swift in Sources */,
+				ED890CFF277E3C07001687DD /* Auth0AuthService.swift in Sources */,
+				ED890CC4277E3ABC001687DD /* AppDelegate.swift in Sources */,
+				ED890CFE277E3C07001687DD /* AuthService.swift in Sources */,
+				ED890CC6277E3ABC001687DD /* SceneDelegate.swift in Sources */,
+				ED890CFD277E3C07001687DD /* AuthError.swift in Sources */,
+				ED890D01277E3C07001687DD /* KeyChainAuthStateRepository.swift in Sources */,
+				ED890D00277E3C07001687DD /* AuthStateRepository.swift in Sources */,
+				ED890D02277E3C07001687DD /* SharedUserDefaultsAuthStateRepository.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED890CD2277E3ABD001687DD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED890CDB277E3ABD001687DD /* SharedAppAuthStateSecondAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED890CDC277E3ABD001687DD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED890CE5277E3ABD001687DD /* SharedAppAuthStateSecondAppUITests.swift in Sources */,
+				ED890CE7277E3ABD001687DD /* SharedAppAuthStateSecondAppUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EDC1DB0F277DF3FA005D1652 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -742,6 +1015,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		ED890CD8277E3ABD001687DD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ED890CC0277E3ABC001687DD /* SharedAppAuthStateSecondApp */;
+			targetProxy = ED890CD7277E3ABD001687DD /* PBXContainerItemProxy */;
+		};
+		ED890CE2277E3ABD001687DD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ED890CC0277E3ABC001687DD /* SharedAppAuthStateSecondApp */;
+			targetProxy = ED890CE1277E3ABD001687DD /* PBXContainerItemProxy */;
+		};
 		EDC1DB2B277DF3FC005D1652 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = EDC1DB12277DF3FA005D1652 /* SharedAppAuthState */;
@@ -775,6 +1058,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		ED890CCE277E3ABD001687DD /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ED890CCF277E3ABD001687DD /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
 		EDC1DB21277DF3FC005D1652 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -786,6 +1077,142 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		ED890CE9277E3ABD001687DD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SharedAppAuthStateSecondApp/SharedAppAuthStateSecondApp.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 55ATZ58U6M;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SharedAppAuthStateSecondApp/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thomsmed.SharedAppAuthStateSecondApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		ED890CEA277E3ABD001687DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SharedAppAuthStateSecondApp/SharedAppAuthStateSecondApp.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 55ATZ58U6M;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SharedAppAuthStateSecondApp/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thomsmed.SharedAppAuthStateSecondApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		ED890CEC277E3ABD001687DD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 55ATZ58U6M;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thomsmed.SharedAppAuthStateSecondAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SharedAppAuthStateSecondApp.app/SharedAppAuthStateSecondApp";
+			};
+			name = Debug;
+		};
+		ED890CED277E3ABD001687DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 55ATZ58U6M;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thomsmed.SharedAppAuthStateSecondAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SharedAppAuthStateSecondApp.app/SharedAppAuthStateSecondApp";
+			};
+			name = Release;
+		};
+		ED890CEF277E3ABD001687DD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 55ATZ58U6M;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thomsmed.SharedAppAuthStateSecondAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SharedAppAuthStateSecondApp;
+			};
+			name = Debug;
+		};
+		ED890CF0277E3ABD001687DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 55ATZ58U6M;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thomsmed.SharedAppAuthStateSecondAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SharedAppAuthStateSecondApp;
+			};
+			name = Release;
+		};
 		EDC1DB3B277DF3FC005D1652 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1195,7 +1622,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.thomsmed.SharedAppAuthState.SharedAppAuthStateWidget;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thomsmed.SharedAppAuthState.Widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1223,7 +1650,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.thomsmed.SharedAppAuthState.SharedAppAuthStateWidget;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thomsmed.SharedAppAuthState.Widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1235,6 +1662,33 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		ED890CE8277E3ABD001687DD /* Build configuration list for PBXNativeTarget "SharedAppAuthStateSecondApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED890CE9277E3ABD001687DD /* Debug */,
+				ED890CEA277E3ABD001687DD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ED890CEB277E3ABD001687DD /* Build configuration list for PBXNativeTarget "SharedAppAuthStateSecondAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED890CEC277E3ABD001687DD /* Debug */,
+				ED890CED277E3ABD001687DD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ED890CEE277E3ABD001687DD /* Build configuration list for PBXNativeTarget "SharedAppAuthStateSecondAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED890CEF277E3ABD001687DD /* Debug */,
+				ED890CF0277E3ABD001687DD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		EDC1DB0E277DF3FA005D1652 /* Build configuration list for PBXProject "SharedAppAuthState" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1329,6 +1783,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		ED890D03277E3C27001687DD /* TinyConstraints */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EDC1DB46277DF59C005D1652 /* XCRemoteSwiftPackageReference "TinyConstraints" */;
+			productName = TinyConstraints;
+		};
+		ED890D05277E3C28001687DD /* AppAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EDC1DB49277DF5B9005D1652 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */;
+			productName = AppAuth;
+		};
+		ED890D07277E3C28001687DD /* AppAuthCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EDC1DB49277DF5B9005D1652 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */;
+			productName = AppAuthCore;
+		};
 		EDC1DB47277DF59C005D1652 /* TinyConstraints */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = EDC1DB46277DF59C005D1652 /* XCRemoteSwiftPackageReference "TinyConstraints" */;
