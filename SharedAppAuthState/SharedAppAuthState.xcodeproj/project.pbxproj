@@ -1,0 +1,1242 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EDC1DB17277DF3FA005D1652 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC1DB16277DF3FA005D1652 /* AppDelegate.swift */; };
+		EDC1DB19277DF3FA005D1652 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC1DB18277DF3FA005D1652 /* SceneDelegate.swift */; };
+		EDC1DB1B277DF3FA005D1652 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC1DB1A277DF3FA005D1652 /* ViewController.swift */; };
+		EDC1DB20277DF3FC005D1652 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDC1DB1F277DF3FC005D1652 /* Assets.xcassets */; };
+		EDC1DB23277DF3FC005D1652 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDC1DB21277DF3FC005D1652 /* LaunchScreen.storyboard */; };
+		EDC1DB2E277DF3FC005D1652 /* SharedAppAuthStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC1DB2D277DF3FC005D1652 /* SharedAppAuthStateTests.swift */; };
+		EDC1DB38277DF3FC005D1652 /* SharedAppAuthStateUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC1DB37277DF3FC005D1652 /* SharedAppAuthStateUITests.swift */; };
+		EDC1DB3A277DF3FC005D1652 /* SharedAppAuthStateUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC1DB39277DF3FC005D1652 /* SharedAppAuthStateUITestsLaunchTests.swift */; };
+		EDC1DB48277DF59C005D1652 /* TinyConstraints in Frameworks */ = {isa = PBXBuildFile; productRef = EDC1DB47277DF59C005D1652 /* TinyConstraints */; };
+		EDC1DB4B277DF5B9005D1652 /* AppAuth in Frameworks */ = {isa = PBXBuildFile; productRef = EDC1DB4A277DF5B9005D1652 /* AppAuth */; };
+		EDC1DB4D277DF5B9005D1652 /* AppAuthCore in Frameworks */ = {isa = PBXBuildFile; productRef = EDC1DB4C277DF5B9005D1652 /* AppAuthCore */; };
+		EDC1DB55277DF60E005D1652 /* SharedAppAuthStateAppClipApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC1DB54277DF60E005D1652 /* SharedAppAuthStateAppClipApp.swift */; };
+		EDC1DB57277DF60E005D1652 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC1DB56277DF60E005D1652 /* ContentView.swift */; };
+		EDC1DB59277DF60F005D1652 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDC1DB58277DF60F005D1652 /* Assets.xcassets */; };
+		EDC1DB5C277DF60F005D1652 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDC1DB5B277DF60F005D1652 /* Preview Assets.xcassets */; };
+		EDC1DB68277DF60F005D1652 /* SharedAppAuthStateAppClipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC1DB67277DF60F005D1652 /* SharedAppAuthStateAppClipTests.swift */; };
+		EDC1DB72277DF60F005D1652 /* SharedAppAuthStateAppClipUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC1DB71277DF60F005D1652 /* SharedAppAuthStateAppClipUITests.swift */; };
+		EDC1DB74277DF60F005D1652 /* SharedAppAuthStateAppClipUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC1DB73277DF60F005D1652 /* SharedAppAuthStateAppClipUITestsLaunchTests.swift */; };
+		EDC1DB77277DF610005D1652 /* SharedAppAuthStateAppClip.app in Embed App Clips */ = {isa = PBXBuildFile; fileRef = EDC1DB52277DF60E005D1652 /* SharedAppAuthStateAppClip.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		EDC1DB89277DF670005D1652 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDC1DB88277DF670005D1652 /* WidgetKit.framework */; };
+		EDC1DB8B277DF670005D1652 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDC1DB8A277DF670005D1652 /* SwiftUI.framework */; };
+		EDC1DB8E277DF670005D1652 /* SharedAppAuthStateWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC1DB8D277DF670005D1652 /* SharedAppAuthStateWidget.swift */; };
+		EDC1DB91277DF671005D1652 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDC1DB90277DF671005D1652 /* Assets.xcassets */; };
+		EDC1DB93277DF671005D1652 /* SharedAppAuthStateWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = EDC1DB8F277DF670005D1652 /* SharedAppAuthStateWidget.intentdefinition */; };
+		EDC1DB94277DF671005D1652 /* SharedAppAuthStateWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = EDC1DB8F277DF670005D1652 /* SharedAppAuthStateWidget.intentdefinition */; };
+		EDC1DB97277DF671005D1652 /* SharedAppAuthStateWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EDC1DB86277DF670005D1652 /* SharedAppAuthStateWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EDC1DB2A277DF3FC005D1652 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EDC1DB0B277DF3FA005D1652 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EDC1DB12277DF3FA005D1652;
+			remoteInfo = SharedAppAuthState;
+		};
+		EDC1DB34277DF3FC005D1652 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EDC1DB0B277DF3FA005D1652 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EDC1DB12277DF3FA005D1652;
+			remoteInfo = SharedAppAuthState;
+		};
+		EDC1DB64277DF60F005D1652 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EDC1DB0B277DF3FA005D1652 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EDC1DB51277DF60E005D1652;
+			remoteInfo = SharedAppAuthStateAppClip;
+		};
+		EDC1DB6E277DF60F005D1652 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EDC1DB0B277DF3FA005D1652 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EDC1DB51277DF60E005D1652;
+			remoteInfo = SharedAppAuthStateAppClip;
+		};
+		EDC1DB75277DF610005D1652 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EDC1DB0B277DF3FA005D1652 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EDC1DB51277DF60E005D1652;
+			remoteInfo = SharedAppAuthStateAppClip;
+		};
+		EDC1DB95277DF671005D1652 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EDC1DB0B277DF3FA005D1652 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EDC1DB85277DF670005D1652;
+			remoteInfo = SharedAppAuthStateWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		EDC1DB7B277DF610005D1652 /* Embed App Clips */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/AppClips";
+			dstSubfolderSpec = 16;
+			files = (
+				EDC1DB77277DF610005D1652 /* SharedAppAuthStateAppClip.app in Embed App Clips */,
+			);
+			name = "Embed App Clips";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDC1DB9B277DF671005D1652 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				EDC1DB97277DF671005D1652 /* SharedAppAuthStateWidgetExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		EDC1DB13277DF3FA005D1652 /* SharedAppAuthState.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SharedAppAuthState.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDC1DB16277DF3FA005D1652 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EDC1DB18277DF3FA005D1652 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		EDC1DB1A277DF3FA005D1652 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EDC1DB1F277DF3FC005D1652 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EDC1DB22277DF3FC005D1652 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EDC1DB24277DF3FC005D1652 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EDC1DB29277DF3FC005D1652 /* SharedAppAuthStateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SharedAppAuthStateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDC1DB2D277DF3FC005D1652 /* SharedAppAuthStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedAppAuthStateTests.swift; sourceTree = "<group>"; };
+		EDC1DB33277DF3FC005D1652 /* SharedAppAuthStateUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SharedAppAuthStateUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDC1DB37277DF3FC005D1652 /* SharedAppAuthStateUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedAppAuthStateUITests.swift; sourceTree = "<group>"; };
+		EDC1DB39277DF3FC005D1652 /* SharedAppAuthStateUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedAppAuthStateUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		EDC1DB52277DF60E005D1652 /* SharedAppAuthStateAppClip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SharedAppAuthStateAppClip.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDC1DB54277DF60E005D1652 /* SharedAppAuthStateAppClipApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedAppAuthStateAppClipApp.swift; sourceTree = "<group>"; };
+		EDC1DB56277DF60E005D1652 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		EDC1DB58277DF60F005D1652 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EDC1DB5B277DF60F005D1652 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		EDC1DB5D277DF60F005D1652 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EDC1DB5E277DF60F005D1652 /* SharedAppAuthStateAppClip.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SharedAppAuthStateAppClip.entitlements; sourceTree = "<group>"; };
+		EDC1DB63277DF60F005D1652 /* SharedAppAuthStateAppClipTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SharedAppAuthStateAppClipTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDC1DB67277DF60F005D1652 /* SharedAppAuthStateAppClipTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedAppAuthStateAppClipTests.swift; sourceTree = "<group>"; };
+		EDC1DB6D277DF60F005D1652 /* SharedAppAuthStateAppClipUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SharedAppAuthStateAppClipUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDC1DB71277DF60F005D1652 /* SharedAppAuthStateAppClipUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedAppAuthStateAppClipUITests.swift; sourceTree = "<group>"; };
+		EDC1DB73277DF60F005D1652 /* SharedAppAuthStateAppClipUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedAppAuthStateAppClipUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		EDC1DB86277DF670005D1652 /* SharedAppAuthStateWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SharedAppAuthStateWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDC1DB88277DF670005D1652 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		EDC1DB8A277DF670005D1652 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		EDC1DB8D277DF670005D1652 /* SharedAppAuthStateWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedAppAuthStateWidget.swift; sourceTree = "<group>"; };
+		EDC1DB8F277DF670005D1652 /* SharedAppAuthStateWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = SharedAppAuthStateWidget.intentdefinition; sourceTree = "<group>"; };
+		EDC1DB90277DF671005D1652 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EDC1DB92277DF671005D1652 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EDC1DB10277DF3FA005D1652 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDC1DB4B277DF5B9005D1652 /* AppAuth in Frameworks */,
+				EDC1DB48277DF59C005D1652 /* TinyConstraints in Frameworks */,
+				EDC1DB4D277DF5B9005D1652 /* AppAuthCore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDC1DB26277DF3FC005D1652 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDC1DB30277DF3FC005D1652 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDC1DB4F277DF60E005D1652 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDC1DB60277DF60F005D1652 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDC1DB6A277DF60F005D1652 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDC1DB83277DF670005D1652 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDC1DB8B277DF670005D1652 /* SwiftUI.framework in Frameworks */,
+				EDC1DB89277DF670005D1652 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EDC1DB0A277DF3FA005D1652 = {
+			isa = PBXGroup;
+			children = (
+				EDC1DB15277DF3FA005D1652 /* SharedAppAuthState */,
+				EDC1DB2C277DF3FC005D1652 /* SharedAppAuthStateTests */,
+				EDC1DB36277DF3FC005D1652 /* SharedAppAuthStateUITests */,
+				EDC1DB53277DF60E005D1652 /* SharedAppAuthStateAppClip */,
+				EDC1DB66277DF60F005D1652 /* SharedAppAuthStateAppClipTests */,
+				EDC1DB70277DF60F005D1652 /* SharedAppAuthStateAppClipUITests */,
+				EDC1DB8C277DF670005D1652 /* SharedAppAuthStateWidget */,
+				EDC1DB87277DF670005D1652 /* Frameworks */,
+				EDC1DB14277DF3FA005D1652 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EDC1DB14277DF3FA005D1652 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EDC1DB13277DF3FA005D1652 /* SharedAppAuthState.app */,
+				EDC1DB29277DF3FC005D1652 /* SharedAppAuthStateTests.xctest */,
+				EDC1DB33277DF3FC005D1652 /* SharedAppAuthStateUITests.xctest */,
+				EDC1DB52277DF60E005D1652 /* SharedAppAuthStateAppClip.app */,
+				EDC1DB63277DF60F005D1652 /* SharedAppAuthStateAppClipTests.xctest */,
+				EDC1DB6D277DF60F005D1652 /* SharedAppAuthStateAppClipUITests.xctest */,
+				EDC1DB86277DF670005D1652 /* SharedAppAuthStateWidgetExtension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EDC1DB15277DF3FA005D1652 /* SharedAppAuthState */ = {
+			isa = PBXGroup;
+			children = (
+				EDC1DB16277DF3FA005D1652 /* AppDelegate.swift */,
+				EDC1DB18277DF3FA005D1652 /* SceneDelegate.swift */,
+				EDC1DB1A277DF3FA005D1652 /* ViewController.swift */,
+				EDC1DB1F277DF3FC005D1652 /* Assets.xcassets */,
+				EDC1DB21277DF3FC005D1652 /* LaunchScreen.storyboard */,
+				EDC1DB24277DF3FC005D1652 /* Info.plist */,
+			);
+			path = SharedAppAuthState;
+			sourceTree = "<group>";
+		};
+		EDC1DB2C277DF3FC005D1652 /* SharedAppAuthStateTests */ = {
+			isa = PBXGroup;
+			children = (
+				EDC1DB2D277DF3FC005D1652 /* SharedAppAuthStateTests.swift */,
+			);
+			path = SharedAppAuthStateTests;
+			sourceTree = "<group>";
+		};
+		EDC1DB36277DF3FC005D1652 /* SharedAppAuthStateUITests */ = {
+			isa = PBXGroup;
+			children = (
+				EDC1DB37277DF3FC005D1652 /* SharedAppAuthStateUITests.swift */,
+				EDC1DB39277DF3FC005D1652 /* SharedAppAuthStateUITestsLaunchTests.swift */,
+			);
+			path = SharedAppAuthStateUITests;
+			sourceTree = "<group>";
+		};
+		EDC1DB53277DF60E005D1652 /* SharedAppAuthStateAppClip */ = {
+			isa = PBXGroup;
+			children = (
+				EDC1DB54277DF60E005D1652 /* SharedAppAuthStateAppClipApp.swift */,
+				EDC1DB56277DF60E005D1652 /* ContentView.swift */,
+				EDC1DB58277DF60F005D1652 /* Assets.xcassets */,
+				EDC1DB5D277DF60F005D1652 /* Info.plist */,
+				EDC1DB5E277DF60F005D1652 /* SharedAppAuthStateAppClip.entitlements */,
+				EDC1DB5A277DF60F005D1652 /* Preview Content */,
+			);
+			path = SharedAppAuthStateAppClip;
+			sourceTree = "<group>";
+		};
+		EDC1DB5A277DF60F005D1652 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				EDC1DB5B277DF60F005D1652 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		EDC1DB66277DF60F005D1652 /* SharedAppAuthStateAppClipTests */ = {
+			isa = PBXGroup;
+			children = (
+				EDC1DB67277DF60F005D1652 /* SharedAppAuthStateAppClipTests.swift */,
+			);
+			path = SharedAppAuthStateAppClipTests;
+			sourceTree = "<group>";
+		};
+		EDC1DB70277DF60F005D1652 /* SharedAppAuthStateAppClipUITests */ = {
+			isa = PBXGroup;
+			children = (
+				EDC1DB71277DF60F005D1652 /* SharedAppAuthStateAppClipUITests.swift */,
+				EDC1DB73277DF60F005D1652 /* SharedAppAuthStateAppClipUITestsLaunchTests.swift */,
+			);
+			path = SharedAppAuthStateAppClipUITests;
+			sourceTree = "<group>";
+		};
+		EDC1DB87277DF670005D1652 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EDC1DB88277DF670005D1652 /* WidgetKit.framework */,
+				EDC1DB8A277DF670005D1652 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EDC1DB8C277DF670005D1652 /* SharedAppAuthStateWidget */ = {
+			isa = PBXGroup;
+			children = (
+				EDC1DB8D277DF670005D1652 /* SharedAppAuthStateWidget.swift */,
+				EDC1DB8F277DF670005D1652 /* SharedAppAuthStateWidget.intentdefinition */,
+				EDC1DB90277DF671005D1652 /* Assets.xcassets */,
+				EDC1DB92277DF671005D1652 /* Info.plist */,
+			);
+			path = SharedAppAuthStateWidget;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EDC1DB12277DF3FA005D1652 /* SharedAppAuthState */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EDC1DB3D277DF3FC005D1652 /* Build configuration list for PBXNativeTarget "SharedAppAuthState" */;
+			buildPhases = (
+				EDC1DB0F277DF3FA005D1652 /* Sources */,
+				EDC1DB10277DF3FA005D1652 /* Frameworks */,
+				EDC1DB11277DF3FA005D1652 /* Resources */,
+				EDC1DB7B277DF610005D1652 /* Embed App Clips */,
+				EDC1DB9B277DF671005D1652 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EDC1DB76277DF610005D1652 /* PBXTargetDependency */,
+				EDC1DB96277DF671005D1652 /* PBXTargetDependency */,
+			);
+			name = SharedAppAuthState;
+			packageProductDependencies = (
+				EDC1DB47277DF59C005D1652 /* TinyConstraints */,
+				EDC1DB4A277DF5B9005D1652 /* AppAuth */,
+				EDC1DB4C277DF5B9005D1652 /* AppAuthCore */,
+			);
+			productName = SharedAppAuthState;
+			productReference = EDC1DB13277DF3FA005D1652 /* SharedAppAuthState.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EDC1DB28277DF3FC005D1652 /* SharedAppAuthStateTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EDC1DB40277DF3FC005D1652 /* Build configuration list for PBXNativeTarget "SharedAppAuthStateTests" */;
+			buildPhases = (
+				EDC1DB25277DF3FC005D1652 /* Sources */,
+				EDC1DB26277DF3FC005D1652 /* Frameworks */,
+				EDC1DB27277DF3FC005D1652 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EDC1DB2B277DF3FC005D1652 /* PBXTargetDependency */,
+			);
+			name = SharedAppAuthStateTests;
+			productName = SharedAppAuthStateTests;
+			productReference = EDC1DB29277DF3FC005D1652 /* SharedAppAuthStateTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		EDC1DB32277DF3FC005D1652 /* SharedAppAuthStateUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EDC1DB43277DF3FC005D1652 /* Build configuration list for PBXNativeTarget "SharedAppAuthStateUITests" */;
+			buildPhases = (
+				EDC1DB2F277DF3FC005D1652 /* Sources */,
+				EDC1DB30277DF3FC005D1652 /* Frameworks */,
+				EDC1DB31277DF3FC005D1652 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EDC1DB35277DF3FC005D1652 /* PBXTargetDependency */,
+			);
+			name = SharedAppAuthStateUITests;
+			productName = SharedAppAuthStateUITests;
+			productReference = EDC1DB33277DF3FC005D1652 /* SharedAppAuthStateUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		EDC1DB51277DF60E005D1652 /* SharedAppAuthStateAppClip */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EDC1DB78277DF610005D1652 /* Build configuration list for PBXNativeTarget "SharedAppAuthStateAppClip" */;
+			buildPhases = (
+				EDC1DB4E277DF60E005D1652 /* Sources */,
+				EDC1DB4F277DF60E005D1652 /* Frameworks */,
+				EDC1DB50277DF60E005D1652 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SharedAppAuthStateAppClip;
+			productName = SharedAppAuthStateAppClip;
+			productReference = EDC1DB52277DF60E005D1652 /* SharedAppAuthStateAppClip.app */;
+			productType = "com.apple.product-type.application.on-demand-install-capable";
+		};
+		EDC1DB62277DF60F005D1652 /* SharedAppAuthStateAppClipTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EDC1DB7C277DF610005D1652 /* Build configuration list for PBXNativeTarget "SharedAppAuthStateAppClipTests" */;
+			buildPhases = (
+				EDC1DB5F277DF60F005D1652 /* Sources */,
+				EDC1DB60277DF60F005D1652 /* Frameworks */,
+				EDC1DB61277DF60F005D1652 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EDC1DB65277DF60F005D1652 /* PBXTargetDependency */,
+			);
+			name = SharedAppAuthStateAppClipTests;
+			productName = SharedAppAuthStateAppClipTests;
+			productReference = EDC1DB63277DF60F005D1652 /* SharedAppAuthStateAppClipTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		EDC1DB6C277DF60F005D1652 /* SharedAppAuthStateAppClipUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EDC1DB7F277DF610005D1652 /* Build configuration list for PBXNativeTarget "SharedAppAuthStateAppClipUITests" */;
+			buildPhases = (
+				EDC1DB69277DF60F005D1652 /* Sources */,
+				EDC1DB6A277DF60F005D1652 /* Frameworks */,
+				EDC1DB6B277DF60F005D1652 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EDC1DB6F277DF60F005D1652 /* PBXTargetDependency */,
+			);
+			name = SharedAppAuthStateAppClipUITests;
+			productName = SharedAppAuthStateAppClipUITests;
+			productReference = EDC1DB6D277DF60F005D1652 /* SharedAppAuthStateAppClipUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		EDC1DB85277DF670005D1652 /* SharedAppAuthStateWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EDC1DB98277DF671005D1652 /* Build configuration list for PBXNativeTarget "SharedAppAuthStateWidgetExtension" */;
+			buildPhases = (
+				EDC1DB82277DF670005D1652 /* Sources */,
+				EDC1DB83277DF670005D1652 /* Frameworks */,
+				EDC1DB84277DF670005D1652 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SharedAppAuthStateWidgetExtension;
+			productName = SharedAppAuthStateWidgetExtension;
+			productReference = EDC1DB86277DF670005D1652 /* SharedAppAuthStateWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EDC1DB0B277DF3FA005D1652 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1320;
+				LastUpgradeCheck = 1320;
+				TargetAttributes = {
+					EDC1DB12277DF3FA005D1652 = {
+						CreatedOnToolsVersion = 13.2;
+					};
+					EDC1DB28277DF3FC005D1652 = {
+						CreatedOnToolsVersion = 13.2;
+						TestTargetID = EDC1DB12277DF3FA005D1652;
+					};
+					EDC1DB32277DF3FC005D1652 = {
+						CreatedOnToolsVersion = 13.2;
+						TestTargetID = EDC1DB12277DF3FA005D1652;
+					};
+					EDC1DB51277DF60E005D1652 = {
+						CreatedOnToolsVersion = 13.2;
+					};
+					EDC1DB62277DF60F005D1652 = {
+						CreatedOnToolsVersion = 13.2;
+						TestTargetID = EDC1DB51277DF60E005D1652;
+					};
+					EDC1DB6C277DF60F005D1652 = {
+						CreatedOnToolsVersion = 13.2;
+						TestTargetID = EDC1DB51277DF60E005D1652;
+					};
+					EDC1DB85277DF670005D1652 = {
+						CreatedOnToolsVersion = 13.2;
+					};
+				};
+			};
+			buildConfigurationList = EDC1DB0E277DF3FA005D1652 /* Build configuration list for PBXProject "SharedAppAuthState" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EDC1DB0A277DF3FA005D1652;
+			packageReferences = (
+				EDC1DB46277DF59C005D1652 /* XCRemoteSwiftPackageReference "TinyConstraints" */,
+				EDC1DB49277DF5B9005D1652 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */,
+			);
+			productRefGroup = EDC1DB14277DF3FA005D1652 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EDC1DB12277DF3FA005D1652 /* SharedAppAuthState */,
+				EDC1DB51277DF60E005D1652 /* SharedAppAuthStateAppClip */,
+				EDC1DB85277DF670005D1652 /* SharedAppAuthStateWidgetExtension */,
+				EDC1DB28277DF3FC005D1652 /* SharedAppAuthStateTests */,
+				EDC1DB32277DF3FC005D1652 /* SharedAppAuthStateUITests */,
+				EDC1DB62277DF60F005D1652 /* SharedAppAuthStateAppClipTests */,
+				EDC1DB6C277DF60F005D1652 /* SharedAppAuthStateAppClipUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EDC1DB11277DF3FA005D1652 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDC1DB23277DF3FC005D1652 /* LaunchScreen.storyboard in Resources */,
+				EDC1DB20277DF3FC005D1652 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDC1DB27277DF3FC005D1652 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDC1DB31277DF3FC005D1652 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDC1DB50277DF60E005D1652 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDC1DB5C277DF60F005D1652 /* Preview Assets.xcassets in Resources */,
+				EDC1DB59277DF60F005D1652 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDC1DB61277DF60F005D1652 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDC1DB6B277DF60F005D1652 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDC1DB84277DF670005D1652 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDC1DB91277DF671005D1652 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EDC1DB0F277DF3FA005D1652 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDC1DB1B277DF3FA005D1652 /* ViewController.swift in Sources */,
+				EDC1DB94277DF671005D1652 /* SharedAppAuthStateWidget.intentdefinition in Sources */,
+				EDC1DB17277DF3FA005D1652 /* AppDelegate.swift in Sources */,
+				EDC1DB19277DF3FA005D1652 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDC1DB25277DF3FC005D1652 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDC1DB2E277DF3FC005D1652 /* SharedAppAuthStateTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDC1DB2F277DF3FC005D1652 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDC1DB38277DF3FC005D1652 /* SharedAppAuthStateUITests.swift in Sources */,
+				EDC1DB3A277DF3FC005D1652 /* SharedAppAuthStateUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDC1DB4E277DF60E005D1652 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDC1DB57277DF60E005D1652 /* ContentView.swift in Sources */,
+				EDC1DB55277DF60E005D1652 /* SharedAppAuthStateAppClipApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDC1DB5F277DF60F005D1652 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDC1DB68277DF60F005D1652 /* SharedAppAuthStateAppClipTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDC1DB69277DF60F005D1652 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDC1DB72277DF60F005D1652 /* SharedAppAuthStateAppClipUITests.swift in Sources */,
+				EDC1DB74277DF60F005D1652 /* SharedAppAuthStateAppClipUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDC1DB82277DF670005D1652 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDC1DB8E277DF670005D1652 /* SharedAppAuthStateWidget.swift in Sources */,
+				EDC1DB93277DF671005D1652 /* SharedAppAuthStateWidget.intentdefinition in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EDC1DB2B277DF3FC005D1652 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EDC1DB12277DF3FA005D1652 /* SharedAppAuthState */;
+			targetProxy = EDC1DB2A277DF3FC005D1652 /* PBXContainerItemProxy */;
+		};
+		EDC1DB35277DF3FC005D1652 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EDC1DB12277DF3FA005D1652 /* SharedAppAuthState */;
+			targetProxy = EDC1DB34277DF3FC005D1652 /* PBXContainerItemProxy */;
+		};
+		EDC1DB65277DF60F005D1652 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EDC1DB51277DF60E005D1652 /* SharedAppAuthStateAppClip */;
+			targetProxy = EDC1DB64277DF60F005D1652 /* PBXContainerItemProxy */;
+		};
+		EDC1DB6F277DF60F005D1652 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EDC1DB51277DF60E005D1652 /* SharedAppAuthStateAppClip */;
+			targetProxy = EDC1DB6E277DF60F005D1652 /* PBXContainerItemProxy */;
+		};
+		EDC1DB76277DF610005D1652 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EDC1DB51277DF60E005D1652 /* SharedAppAuthStateAppClip */;
+			targetProxy = EDC1DB75277DF610005D1652 /* PBXContainerItemProxy */;
+		};
+		EDC1DB96277DF671005D1652 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EDC1DB85277DF670005D1652 /* SharedAppAuthStateWidgetExtension */;
+			targetProxy = EDC1DB95277DF671005D1652 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EDC1DB21277DF3FC005D1652 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EDC1DB22277DF3FC005D1652 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EDC1DB3B277DF3FC005D1652 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EDC1DB3C277DF3FC005D1652 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EDC1DB3E277DF3FC005D1652 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 55ATZ58U6M;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SharedAppAuthState/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thomsmed.SharedAppAuthState;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EDC1DB3F277DF3FC005D1652 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 55ATZ58U6M;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SharedAppAuthState/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thomsmed.SharedAppAuthState;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		EDC1DB41277DF3FC005D1652 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 55ATZ58U6M;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thomsmed.SharedAppAuthStateTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SharedAppAuthState.app/SharedAppAuthState";
+			};
+			name = Debug;
+		};
+		EDC1DB42277DF3FC005D1652 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 55ATZ58U6M;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thomsmed.SharedAppAuthStateTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SharedAppAuthState.app/SharedAppAuthState";
+			};
+			name = Release;
+		};
+		EDC1DB44277DF3FC005D1652 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 55ATZ58U6M;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thomsmed.SharedAppAuthStateUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SharedAppAuthState;
+			};
+			name = Debug;
+		};
+		EDC1DB45277DF3FC005D1652 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 55ATZ58U6M;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thomsmed.SharedAppAuthStateUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SharedAppAuthState;
+			};
+			name = Release;
+		};
+		EDC1DB79277DF610005D1652 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SharedAppAuthStateAppClip/SharedAppAuthStateAppClip.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"SharedAppAuthStateAppClip/Preview Content\"";
+				DEVELOPMENT_TEAM = 55ATZ58U6M;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SharedAppAuthStateAppClip/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SharedAppAuthState;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thomsmed.SharedAppAuthState.Clip;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EDC1DB7A277DF610005D1652 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SharedAppAuthStateAppClip/SharedAppAuthStateAppClip.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"SharedAppAuthStateAppClip/Preview Content\"";
+				DEVELOPMENT_TEAM = 55ATZ58U6M;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SharedAppAuthStateAppClip/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SharedAppAuthState;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thomsmed.SharedAppAuthState.Clip;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		EDC1DB7D277DF610005D1652 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 55ATZ58U6M;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thomsmed.SharedAppAuthState.SharedAppAuthStateAppClipTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SharedAppAuthStateAppClip.app/SharedAppAuthStateAppClip";
+			};
+			name = Debug;
+		};
+		EDC1DB7E277DF610005D1652 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 55ATZ58U6M;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thomsmed.SharedAppAuthState.SharedAppAuthStateAppClipTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SharedAppAuthStateAppClip.app/SharedAppAuthStateAppClip";
+			};
+			name = Release;
+		};
+		EDC1DB80277DF610005D1652 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 55ATZ58U6M;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thomsmed.SharedAppAuthState.SharedAppAuthStateAppClipUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SharedAppAuthStateAppClip;
+			};
+			name = Debug;
+		};
+		EDC1DB81277DF610005D1652 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 55ATZ58U6M;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thomsmed.SharedAppAuthState.SharedAppAuthStateAppClipUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SharedAppAuthStateAppClip;
+			};
+			name = Release;
+		};
+		EDC1DB99277DF671005D1652 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 55ATZ58U6M;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SharedAppAuthStateWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SharedAppAuthStateWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thomsmed.SharedAppAuthState.SharedAppAuthStateWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EDC1DB9A277DF671005D1652 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 55ATZ58U6M;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SharedAppAuthStateWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SharedAppAuthStateWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thomsmed.SharedAppAuthState.SharedAppAuthStateWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EDC1DB0E277DF3FA005D1652 /* Build configuration list for PBXProject "SharedAppAuthState" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDC1DB3B277DF3FC005D1652 /* Debug */,
+				EDC1DB3C277DF3FC005D1652 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EDC1DB3D277DF3FC005D1652 /* Build configuration list for PBXNativeTarget "SharedAppAuthState" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDC1DB3E277DF3FC005D1652 /* Debug */,
+				EDC1DB3F277DF3FC005D1652 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EDC1DB40277DF3FC005D1652 /* Build configuration list for PBXNativeTarget "SharedAppAuthStateTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDC1DB41277DF3FC005D1652 /* Debug */,
+				EDC1DB42277DF3FC005D1652 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EDC1DB43277DF3FC005D1652 /* Build configuration list for PBXNativeTarget "SharedAppAuthStateUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDC1DB44277DF3FC005D1652 /* Debug */,
+				EDC1DB45277DF3FC005D1652 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EDC1DB78277DF610005D1652 /* Build configuration list for PBXNativeTarget "SharedAppAuthStateAppClip" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDC1DB79277DF610005D1652 /* Debug */,
+				EDC1DB7A277DF610005D1652 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EDC1DB7C277DF610005D1652 /* Build configuration list for PBXNativeTarget "SharedAppAuthStateAppClipTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDC1DB7D277DF610005D1652 /* Debug */,
+				EDC1DB7E277DF610005D1652 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EDC1DB7F277DF610005D1652 /* Build configuration list for PBXNativeTarget "SharedAppAuthStateAppClipUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDC1DB80277DF610005D1652 /* Debug */,
+				EDC1DB81277DF610005D1652 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EDC1DB98277DF671005D1652 /* Build configuration list for PBXNativeTarget "SharedAppAuthStateWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDC1DB99277DF671005D1652 /* Debug */,
+				EDC1DB9A277DF671005D1652 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EDC1DB46277DF59C005D1652 /* XCRemoteSwiftPackageReference "TinyConstraints" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:roberthein/TinyConstraints.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+		EDC1DB49277DF5B9005D1652 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:openid/AppAuth-iOS.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EDC1DB47277DF59C005D1652 /* TinyConstraints */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EDC1DB46277DF59C005D1652 /* XCRemoteSwiftPackageReference "TinyConstraints" */;
+			productName = TinyConstraints;
+		};
+		EDC1DB4A277DF5B9005D1652 /* AppAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EDC1DB49277DF5B9005D1652 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */;
+			productName = AppAuth;
+		};
+		EDC1DB4C277DF5B9005D1652 /* AppAuthCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EDC1DB49277DF5B9005D1652 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */;
+			productName = AppAuthCore;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = EDC1DB0B277DF3FA005D1652 /* Project object */;
+}
