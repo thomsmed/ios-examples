@@ -24,6 +24,7 @@ struct ContentView: View {
     
     var body: some View {
         VStack() {
+            Text("Hello from App Clip").padding()
             Button(isAuthenticated ? "Sign out" : "Sign in", action: {
                 if isAuthenticated {
                     Dependencies.authService.logout()

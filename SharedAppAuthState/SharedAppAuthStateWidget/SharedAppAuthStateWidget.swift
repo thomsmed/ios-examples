@@ -121,6 +121,6 @@ struct SharedAppAuthStateWidget_Previews: PreviewProvider {
         SharedAppAuthStateWidgetEntryView(entry: WidgetEntry(date: Date(),
                                                              state: AppAuthState(token: nil, error: nil),
                                                              configuration: ConfigurationIntent()))
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
+            .previewContext(WidgetPreviewContext(family: .systemLarge))
     }
 }

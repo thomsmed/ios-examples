@@ -38,6 +38,13 @@ enum TextType {
 }
 
 class ViewController: UIViewController {
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 24)
+        label.text = "Hello from Second App"
+        return label
+    }()
+    
     private let loginButton: UIButton = {
         let button = UIButton(type: .system)
         return button
@@ -45,7 +52,7 @@ class ViewController: UIViewController {
     
     private let statusLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 20)
+        label.font = .systemFont(ofSize: 17)
         return label
     }()
     
@@ -72,9 +79,13 @@ class ViewController: UIViewController {
     private func configureUI() {
         view.backgroundColor = .systemBackground
         
+        view.addSubview(titleLabel)
         view.addSubview(loginButton)
         view.addSubview(statusLabel)
         view.addSubview(callApiButton)
+        
+        titleLabel.topToSuperview(offset: 40, usingSafeArea: true)
+        titleLabel.leadingToSuperview(offset: 40, usingSafeArea: true)
         
         loginButton.centerXToSuperview()
         loginButton.centerYToSuperview(offset: -40)
