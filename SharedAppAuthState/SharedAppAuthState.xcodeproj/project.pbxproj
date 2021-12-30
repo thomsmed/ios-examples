@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED0983BF277E4E2D00029852 /* SharedUserDefaultsAuthStateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC1DBB2277E0117005D1652 /* SharedUserDefaultsAuthStateRepository.swift */; };
 		ED890CC4277E3ABC001687DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED890CC3277E3ABC001687DD /* AppDelegate.swift */; };
 		ED890CC6277E3ABC001687DD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED890CC5277E3ABC001687DD /* SceneDelegate.swift */; };
 		ED890CC8277E3ABC001687DD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED890CC7277E3ABC001687DD /* ViewController.swift */; };
@@ -1009,6 +1010,7 @@
 				EDC1DBB8277E01AF005D1652 /* AuthError.swift in Sources */,
 				EDC1DBAE277E00DB005D1652 /* AuthStateRepository.swift in Sources */,
 				EDC1DBC3277E152B005D1652 /* WidgetAuthTokenProvider.swift in Sources */,
+				ED0983BF277E4E2D00029852 /* SharedUserDefaultsAuthStateRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

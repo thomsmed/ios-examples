@@ -9,34 +9,79 @@ import WidgetKit
 import SwiftUI
 import Intents
 
+struct Dependencies {
+    private static let migrationRepository: AuthStateRepository = SharedUserDefaultsAuthStateRepository(appGroupIdentifier: "group.com.my.app")
+    private static let authStateRepository: AuthStateRepository = KeyChainAuthStateRepository(accessGroup: "<TeamId>.com.my.app",
+                                                                                            serviceName: "com.my.app",
+                                                                                            accountName: "My App",
+                                                                                            migrationRepository: migrationRepository)
+    static let authTokenProvider: AuthTokenProvider = WidgetAuthTokenProvider(authStateRepository: authStateRepository)
+}
+
 struct Provider: IntentTimelineProvider {
-    func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: ConfigurationIntent())
+    func placeholder(in context: Context) -> WidgetEntry {
+        WidgetEntry(date: Date(), state: AppAuthState(token: nil, error: nil), configuration: ConfigurationIntent())
     }
 
-    func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), configuration: configuration)
-        completion(entry)
-    }
-
-    func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        var entries: [SimpleEntry] = []
-
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, configuration: configuration)
-            entries.append(entry)
+    func getSnapshot(for configuration: ConfigurationIntent,
+                     in context: Context,
+                     completion: @escaping (WidgetEntry) -> ()) {
+        if context.isPreview {
+            // Note: Should be quick to return when preview
+            let entry = WidgetEntry(date: Date(), state: AppAuthState(token: nil, error: nil), configuration: configuration)
+            completion(entry)
+        } else {
+            Dependencies.authTokenProvider.performWithFreshToken({ result in
+                let currentDate = Date()
+                let entry: WidgetEntry
+                switch result {
+                case .failure(let error):
+                    if error is AuthError, case AuthError.notAuthenticated = error {
+                        entry = WidgetEntry(date: currentDate, state: AppAuthState(token: nil, error: nil), configuration: configuration)
+                    } else {
+                        entry = WidgetEntry(date: currentDate, state: AppAuthState(token: nil, error: error), configuration: configuration)
+                    }
+                case .success(let token):
+                    entry = WidgetEntry(date: currentDate, state: AppAuthState(token: token, error: nil), configuration: configuration)
+                }
+                completion(entry)
+            })
         }
+    }
 
-        let timeline = Timeline(entries: entries, policy: .atEnd)
-        completion(timeline)
+    func getTimeline(for configuration: ConfigurationIntent,
+                     in context: Context,
+                     completion: @escaping (Timeline<Entry>) -> ()) {
+        Dependencies.authTokenProvider.performWithFreshToken({ result in
+            let currentDate = Date()
+            var entries: [WidgetEntry] = []
+            let entry: WidgetEntry
+            switch result {
+            case .failure(let error):
+                if error is AuthError, case AuthError.notAuthenticated = error {
+                    entry = WidgetEntry(date: currentDate, state: AppAuthState(token: nil, error: nil), configuration: configuration)
+                } else {
+                    entry = WidgetEntry(date: currentDate, state: AppAuthState(token: nil, error: error), configuration: configuration)
+                }
+            case .success(let token):
+                entry = WidgetEntry(date: currentDate, state: AppAuthState(token: token, error: nil), configuration: configuration)
+            }
+            entries.append(entry)
+            let nextDate = Calendar.current.date(byAdding: .hour, value: 1, to: currentDate)!
+            let timeline = Timeline(entries: entries, policy: .after(nextDate))
+            completion(timeline)
+        })
     }
 }
 
-struct SimpleEntry: TimelineEntry {
+struct AppAuthState {
+    let token: String?
+    let error: Error?
+}
+
+struct WidgetEntry: TimelineEntry {
     let date: Date
+    let state: AppAuthState
     let configuration: ConfigurationIntent
 }
 
@@ -44,7 +89,17 @@ struct SharedAppAuthStateWidgetEntryView : View {
     var entry: Provider.Entry
 
     var body: some View {
-        Text(entry.date, style: .time)
+        VStack {
+            if entry.state.error != nil {
+                Text("Ups! Something went wrong...")
+            } else {
+                Text(entry.state.token?.isEmpty == false ? "You are signed in!" : "You are not signed in")
+            }
+            HStack {
+                Text("Last checked:")
+                Text(entry.date, style: .time)
+            }
+        }
     }
 }
 
@@ -63,7 +118,9 @@ struct SharedAppAuthStateWidget: Widget {
 
 struct SharedAppAuthStateWidget_Previews: PreviewProvider {
     static var previews: some View {
-        SharedAppAuthStateWidgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
+        SharedAppAuthStateWidgetEntryView(entry: WidgetEntry(date: Date(),
+                                                             state: AppAuthState(token: nil, error: nil),
+                                                             configuration: ConfigurationIntent()))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }
