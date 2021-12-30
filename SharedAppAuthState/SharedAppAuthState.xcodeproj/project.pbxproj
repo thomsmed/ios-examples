@@ -33,6 +33,28 @@
 		EDC1DB93277DF671005D1652 /* SharedAppAuthStateWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = EDC1DB8F277DF670005D1652 /* SharedAppAuthStateWidget.intentdefinition */; };
 		EDC1DB94277DF671005D1652 /* SharedAppAuthStateWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = EDC1DB8F277DF670005D1652 /* SharedAppAuthStateWidget.intentdefinition */; };
 		EDC1DB97277DF671005D1652 /* SharedAppAuthStateWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EDC1DB86277DF670005D1652 /* SharedAppAuthStateWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		EDC1DB9E277DFE88005D1652 /* AuthTokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC1DB9D277DFE88005D1652 /* AuthTokenProvider.swift */; };
+		EDC1DB9F277DFE88005D1652 /* AuthTokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC1DB9D277DFE88005D1652 /* AuthTokenProvider.swift */; };
+		EDC1DBA0277DFE88005D1652 /* AuthTokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC1DB9D277DFE88005D1652 /* AuthTokenProvider.swift */; };
+		EDC1DBA3277DFECE005D1652 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC1DBA2277DFECE005D1652 /* AuthService.swift */; };
+		EDC1DBA4277DFECE005D1652 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC1DBA2277DFECE005D1652 /* AuthService.swift */; };
+		EDC1DBA7277DFEDF005D1652 /* Auth0AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC1DBA6277DFEDF005D1652 /* Auth0AuthService.swift */; };
+		EDC1DBA8277DFEDF005D1652 /* Auth0AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC1DBA6277DFEDF005D1652 /* Auth0AuthService.swift */; };
+		EDC1DBAC277E00DB005D1652 /* AuthStateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC1DBAB277E00DB005D1652 /* AuthStateRepository.swift */; };
+		EDC1DBAD277E00DB005D1652 /* AuthStateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC1DBAB277E00DB005D1652 /* AuthStateRepository.swift */; };
+		EDC1DBAE277E00DB005D1652 /* AuthStateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC1DBAB277E00DB005D1652 /* AuthStateRepository.swift */; };
+		EDC1DBB0277E0100005D1652 /* KeyChainAuthStateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC1DBAF277E0100005D1652 /* KeyChainAuthStateRepository.swift */; };
+		EDC1DBB1277E0100005D1652 /* KeyChainAuthStateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC1DBAF277E0100005D1652 /* KeyChainAuthStateRepository.swift */; };
+		EDC1DBB3277E0117005D1652 /* SharedUserDefaultsAuthStateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC1DBB2277E0117005D1652 /* SharedUserDefaultsAuthStateRepository.swift */; };
+		EDC1DBB4277E0117005D1652 /* SharedUserDefaultsAuthStateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC1DBB2277E0117005D1652 /* SharedUserDefaultsAuthStateRepository.swift */; };
+		EDC1DBB6277E01AF005D1652 /* AuthError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC1DBB5277E01AF005D1652 /* AuthError.swift */; };
+		EDC1DBB7277E01AF005D1652 /* AuthError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC1DBB5277E01AF005D1652 /* AuthError.swift */; };
+		EDC1DBB8277E01AF005D1652 /* AuthError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC1DBB5277E01AF005D1652 /* AuthError.swift */; };
+		EDC1DBBA277E0753005D1652 /* AppAuth in Frameworks */ = {isa = PBXBuildFile; productRef = EDC1DBB9277E0753005D1652 /* AppAuth */; };
+		EDC1DBBC277E0753005D1652 /* AppAuthCore in Frameworks */ = {isa = PBXBuildFile; productRef = EDC1DBBB277E0753005D1652 /* AppAuthCore */; };
+		EDC1DBBE277E075C005D1652 /* AppAuth in Frameworks */ = {isa = PBXBuildFile; productRef = EDC1DBBD277E075C005D1652 /* AppAuth */; };
+		EDC1DBC0277E075C005D1652 /* AppAuthCore in Frameworks */ = {isa = PBXBuildFile; productRef = EDC1DBBF277E075C005D1652 /* AppAuthCore */; };
+		EDC1DBC3277E152B005D1652 /* WidgetAuthTokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC1DBC2277E152B005D1652 /* WidgetAuthTokenProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,6 +159,16 @@
 		EDC1DB8F277DF670005D1652 /* SharedAppAuthStateWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = SharedAppAuthStateWidget.intentdefinition; sourceTree = "<group>"; };
 		EDC1DB90277DF671005D1652 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EDC1DB92277DF671005D1652 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EDC1DB9D277DFE88005D1652 /* AuthTokenProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTokenProvider.swift; sourceTree = "<group>"; };
+		EDC1DBA2277DFECE005D1652 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		EDC1DBA6277DFEDF005D1652 /* Auth0AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth0AuthService.swift; sourceTree = "<group>"; };
+		EDC1DBAB277E00DB005D1652 /* AuthStateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthStateRepository.swift; sourceTree = "<group>"; };
+		EDC1DBAF277E0100005D1652 /* KeyChainAuthStateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainAuthStateRepository.swift; sourceTree = "<group>"; };
+		EDC1DBB2277E0117005D1652 /* SharedUserDefaultsAuthStateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedUserDefaultsAuthStateRepository.swift; sourceTree = "<group>"; };
+		EDC1DBB5277E01AF005D1652 /* AuthError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthError.swift; sourceTree = "<group>"; };
+		EDC1DBC2277E152B005D1652 /* WidgetAuthTokenProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetAuthTokenProvider.swift; sourceTree = "<group>"; };
+		EDC1DBC4277E2029005D1652 /* SharedAppAuthState.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SharedAppAuthState.entitlements; sourceTree = "<group>"; };
+		EDC1DBC5277E2145005D1652 /* SharedAppAuthStateWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SharedAppAuthStateWidgetExtension.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +200,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDC1DBBA277E0753005D1652 /* AppAuth in Frameworks */,
+				EDC1DBBC277E0753005D1652 /* AppAuthCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,8 +223,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDC1DBBE277E075C005D1652 /* AppAuth in Frameworks */,
 				EDC1DB8B277DF670005D1652 /* SwiftUI.framework in Frameworks */,
 				EDC1DB89277DF670005D1652 /* WidgetKit.framework in Frameworks */,
+				EDC1DBC0277E075C005D1652 /* AppAuthCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,13 +236,14 @@
 		EDC1DB0A277DF3FA005D1652 = {
 			isa = PBXGroup;
 			children = (
+				EDC1DBC5277E2145005D1652 /* SharedAppAuthStateWidgetExtension.entitlements */,
 				EDC1DB15277DF3FA005D1652 /* SharedAppAuthState */,
+				EDC1DB53277DF60E005D1652 /* SharedAppAuthStateAppClip */,
+				EDC1DB8C277DF670005D1652 /* SharedAppAuthStateWidget */,
 				EDC1DB2C277DF3FC005D1652 /* SharedAppAuthStateTests */,
 				EDC1DB36277DF3FC005D1652 /* SharedAppAuthStateUITests */,
-				EDC1DB53277DF60E005D1652 /* SharedAppAuthStateAppClip */,
 				EDC1DB66277DF60F005D1652 /* SharedAppAuthStateAppClipTests */,
 				EDC1DB70277DF60F005D1652 /* SharedAppAuthStateAppClipUITests */,
-				EDC1DB8C277DF670005D1652 /* SharedAppAuthStateWidget */,
 				EDC1DB87277DF670005D1652 /* Frameworks */,
 				EDC1DB14277DF3FA005D1652 /* Products */,
 			);
@@ -229,12 +266,14 @@
 		EDC1DB15277DF3FA005D1652 /* SharedAppAuthState */ = {
 			isa = PBXGroup;
 			children = (
+				EDC1DBC4277E2029005D1652 /* SharedAppAuthState.entitlements */,
 				EDC1DB16277DF3FA005D1652 /* AppDelegate.swift */,
 				EDC1DB18277DF3FA005D1652 /* SceneDelegate.swift */,
 				EDC1DB1A277DF3FA005D1652 /* ViewController.swift */,
 				EDC1DB1F277DF3FC005D1652 /* Assets.xcassets */,
 				EDC1DB21277DF3FC005D1652 /* LaunchScreen.storyboard */,
 				EDC1DB24277DF3FC005D1652 /* Info.plist */,
+				EDC1DB9C277DFE5E005D1652 /* Auth */,
 			);
 			path = SharedAppAuthState;
 			sourceTree = "<group>";
@@ -308,10 +347,49 @@
 			children = (
 				EDC1DB8D277DF670005D1652 /* SharedAppAuthStateWidget.swift */,
 				EDC1DB8F277DF670005D1652 /* SharedAppAuthStateWidget.intentdefinition */,
+				EDC1DBC1277E150D005D1652 /* Auth */,
 				EDC1DB90277DF671005D1652 /* Assets.xcassets */,
 				EDC1DB92277DF671005D1652 /* Info.plist */,
 			);
 			path = SharedAppAuthStateWidget;
+			sourceTree = "<group>";
+		};
+		EDC1DB9C277DFE5E005D1652 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				EDC1DBB5277E01AF005D1652 /* AuthError.swift */,
+				EDC1DB9D277DFE88005D1652 /* AuthTokenProvider.swift */,
+				EDC1DBA1277DFEB9005D1652 /* AuthService */,
+				EDC1DBAA277E00B0005D1652 /* AuthStateRepository */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		EDC1DBA1277DFEB9005D1652 /* AuthService */ = {
+			isa = PBXGroup;
+			children = (
+				EDC1DBA2277DFECE005D1652 /* AuthService.swift */,
+				EDC1DBA6277DFEDF005D1652 /* Auth0AuthService.swift */,
+			);
+			path = AuthService;
+			sourceTree = "<group>";
+		};
+		EDC1DBAA277E00B0005D1652 /* AuthStateRepository */ = {
+			isa = PBXGroup;
+			children = (
+				EDC1DBAB277E00DB005D1652 /* AuthStateRepository.swift */,
+				EDC1DBAF277E0100005D1652 /* KeyChainAuthStateRepository.swift */,
+				EDC1DBB2277E0117005D1652 /* SharedUserDefaultsAuthStateRepository.swift */,
+			);
+			path = AuthStateRepository;
+			sourceTree = "<group>";
+		};
+		EDC1DBC1277E150D005D1652 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				EDC1DBC2277E152B005D1652 /* WidgetAuthTokenProvider.swift */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -392,6 +470,10 @@
 			dependencies = (
 			);
 			name = SharedAppAuthStateAppClip;
+			packageProductDependencies = (
+				EDC1DBB9277E0753005D1652 /* AppAuth */,
+				EDC1DBBB277E0753005D1652 /* AppAuthCore */,
+			);
 			productName = SharedAppAuthStateAppClip;
 			productReference = EDC1DB52277DF60E005D1652 /* SharedAppAuthStateAppClip.app */;
 			productType = "com.apple.product-type.application.on-demand-install-capable";
@@ -445,6 +527,10 @@
 			dependencies = (
 			);
 			name = SharedAppAuthStateWidgetExtension;
+			packageProductDependencies = (
+				EDC1DBBD277E075C005D1652 /* AppAuth */,
+				EDC1DBBF277E075C005D1652 /* AppAuthCore */,
+			);
 			productName = SharedAppAuthStateWidgetExtension;
 			productReference = EDC1DB86277DF670005D1652 /* SharedAppAuthStateWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -576,10 +662,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDC1DB9E277DFE88005D1652 /* AuthTokenProvider.swift in Sources */,
 				EDC1DB1B277DF3FA005D1652 /* ViewController.swift in Sources */,
+				EDC1DBA7277DFEDF005D1652 /* Auth0AuthService.swift in Sources */,
 				EDC1DB94277DF671005D1652 /* SharedAppAuthStateWidget.intentdefinition in Sources */,
+				EDC1DBA3277DFECE005D1652 /* AuthService.swift in Sources */,
+				EDC1DBB6277E01AF005D1652 /* AuthError.swift in Sources */,
 				EDC1DB17277DF3FA005D1652 /* AppDelegate.swift in Sources */,
 				EDC1DB19277DF3FA005D1652 /* SceneDelegate.swift in Sources */,
+				EDC1DBB0277E0100005D1652 /* KeyChainAuthStateRepository.swift in Sources */,
+				EDC1DBAC277E00DB005D1652 /* AuthStateRepository.swift in Sources */,
+				EDC1DBB3277E0117005D1652 /* SharedUserDefaultsAuthStateRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -604,8 +697,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDC1DBA8277DFEDF005D1652 /* Auth0AuthService.swift in Sources */,
+				EDC1DBB4277E0117005D1652 /* SharedUserDefaultsAuthStateRepository.swift in Sources */,
 				EDC1DB57277DF60E005D1652 /* ContentView.swift in Sources */,
 				EDC1DB55277DF60E005D1652 /* SharedAppAuthStateAppClipApp.swift in Sources */,
+				EDC1DB9F277DFE88005D1652 /* AuthTokenProvider.swift in Sources */,
+				EDC1DBA4277DFECE005D1652 /* AuthService.swift in Sources */,
+				EDC1DBB7277E01AF005D1652 /* AuthError.swift in Sources */,
+				EDC1DBAD277E00DB005D1652 /* AuthStateRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -632,6 +731,11 @@
 			files = (
 				EDC1DB8E277DF670005D1652 /* SharedAppAuthStateWidget.swift in Sources */,
 				EDC1DB93277DF671005D1652 /* SharedAppAuthStateWidget.intentdefinition in Sources */,
+				EDC1DBA0277DFE88005D1652 /* AuthTokenProvider.swift in Sources */,
+				EDC1DBB1277E0100005D1652 /* KeyChainAuthStateRepository.swift in Sources */,
+				EDC1DBB8277E01AF005D1652 /* AuthError.swift in Sources */,
+				EDC1DBAE277E00DB005D1652 /* AuthStateRepository.swift in Sources */,
+				EDC1DBC3277E152B005D1652 /* WidgetAuthTokenProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -733,7 +837,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -788,7 +892,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -804,6 +908,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SharedAppAuthState/SharedAppAuthState.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 55ATZ58U6M;
@@ -832,6 +937,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SharedAppAuthState/SharedAppAuthState.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 55ATZ58U6M;
@@ -1075,6 +1181,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = SharedAppAuthStateWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 55ATZ58U6M;
@@ -1102,6 +1209,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = SharedAppAuthStateWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 55ATZ58U6M;
@@ -1232,6 +1340,26 @@
 			productName = AppAuth;
 		};
 		EDC1DB4C277DF5B9005D1652 /* AppAuthCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EDC1DB49277DF5B9005D1652 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */;
+			productName = AppAuthCore;
+		};
+		EDC1DBB9277E0753005D1652 /* AppAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EDC1DB49277DF5B9005D1652 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */;
+			productName = AppAuth;
+		};
+		EDC1DBBB277E0753005D1652 /* AppAuthCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EDC1DB49277DF5B9005D1652 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */;
+			productName = AppAuthCore;
+		};
+		EDC1DBBD277E075C005D1652 /* AppAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EDC1DB49277DF5B9005D1652 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */;
+			productName = AppAuth;
+		};
+		EDC1DBBF277E075C005D1652 /* AppAuthCore */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = EDC1DB49277DF5B9005D1652 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */;
 			productName = AppAuthCore;
