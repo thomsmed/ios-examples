@@ -13,9 +13,6 @@
 		ED890CC8277E3ABC001687DD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED890CC7277E3ABC001687DD /* ViewController.swift */; };
 		ED890CCD277E3ABD001687DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED890CCC277E3ABD001687DD /* Assets.xcassets */; };
 		ED890CD0277E3ABD001687DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED890CCE277E3ABD001687DD /* LaunchScreen.storyboard */; };
-		ED890CDB277E3ABD001687DD /* SharedAppAuthStateSecondAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED890CDA277E3ABD001687DD /* SharedAppAuthStateSecondAppTests.swift */; };
-		ED890CE5277E3ABD001687DD /* SharedAppAuthStateSecondAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED890CE4277E3ABD001687DD /* SharedAppAuthStateSecondAppUITests.swift */; };
-		ED890CE7277E3ABD001687DD /* SharedAppAuthStateSecondAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED890CE6277E3ABD001687DD /* SharedAppAuthStateSecondAppUITestsLaunchTests.swift */; };
 		ED890CFC277E3C07001687DD /* AuthTokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED890CF3277E3C07001687DD /* AuthTokenProvider.swift */; };
 		ED890CFD277E3C07001687DD /* AuthError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED890CF4277E3C07001687DD /* AuthError.swift */; };
 		ED890CFE277E3C07001687DD /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED890CF6277E3C07001687DD /* AuthService.swift */; };
@@ -31,9 +28,6 @@
 		EDC1DB1B277DF3FA005D1652 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC1DB1A277DF3FA005D1652 /* ViewController.swift */; };
 		EDC1DB20277DF3FC005D1652 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDC1DB1F277DF3FC005D1652 /* Assets.xcassets */; };
 		EDC1DB23277DF3FC005D1652 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDC1DB21277DF3FC005D1652 /* LaunchScreen.storyboard */; };
-		EDC1DB2E277DF3FC005D1652 /* SharedAppAuthStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC1DB2D277DF3FC005D1652 /* SharedAppAuthStateTests.swift */; };
-		EDC1DB38277DF3FC005D1652 /* SharedAppAuthStateUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC1DB37277DF3FC005D1652 /* SharedAppAuthStateUITests.swift */; };
-		EDC1DB3A277DF3FC005D1652 /* SharedAppAuthStateUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC1DB39277DF3FC005D1652 /* SharedAppAuthStateUITestsLaunchTests.swift */; };
 		EDC1DB48277DF59C005D1652 /* TinyConstraints in Frameworks */ = {isa = PBXBuildFile; productRef = EDC1DB47277DF59C005D1652 /* TinyConstraints */; };
 		EDC1DB4B277DF5B9005D1652 /* AppAuth in Frameworks */ = {isa = PBXBuildFile; productRef = EDC1DB4A277DF5B9005D1652 /* AppAuth */; };
 		EDC1DB4D277DF5B9005D1652 /* AppAuthCore in Frameworks */ = {isa = PBXBuildFile; productRef = EDC1DB4C277DF5B9005D1652 /* AppAuthCore */; };
@@ -41,9 +35,6 @@
 		EDC1DB57277DF60E005D1652 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC1DB56277DF60E005D1652 /* ContentView.swift */; };
 		EDC1DB59277DF60F005D1652 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDC1DB58277DF60F005D1652 /* Assets.xcassets */; };
 		EDC1DB5C277DF60F005D1652 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDC1DB5B277DF60F005D1652 /* Preview Assets.xcassets */; };
-		EDC1DB68277DF60F005D1652 /* SharedAppAuthStateAppClipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC1DB67277DF60F005D1652 /* SharedAppAuthStateAppClipTests.swift */; };
-		EDC1DB72277DF60F005D1652 /* SharedAppAuthStateAppClipUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC1DB71277DF60F005D1652 /* SharedAppAuthStateAppClipUITests.swift */; };
-		EDC1DB74277DF60F005D1652 /* SharedAppAuthStateAppClipUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC1DB73277DF60F005D1652 /* SharedAppAuthStateAppClipUITestsLaunchTests.swift */; };
 		EDC1DB77277DF610005D1652 /* SharedAppAuthStateAppClip.app in Embed App Clips */ = {isa = PBXBuildFile; fileRef = EDC1DB52277DF60E005D1652 /* SharedAppAuthStateAppClip.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EDC1DB89277DF670005D1652 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDC1DB88277DF670005D1652 /* WidgetKit.framework */; };
 		EDC1DB8B277DF670005D1652 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDC1DB8A277DF670005D1652 /* SwiftUI.framework */; };
@@ -77,48 +68,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		ED890CD7277E3ABD001687DD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EDC1DB0B277DF3FA005D1652 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = ED890CC0277E3ABC001687DD;
-			remoteInfo = SharedAppAuthStateSecondApp;
-		};
-		ED890CE1277E3ABD001687DD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EDC1DB0B277DF3FA005D1652 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = ED890CC0277E3ABC001687DD;
-			remoteInfo = SharedAppAuthStateSecondApp;
-		};
-		EDC1DB2A277DF3FC005D1652 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EDC1DB0B277DF3FA005D1652 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = EDC1DB12277DF3FA005D1652;
-			remoteInfo = SharedAppAuthState;
-		};
-		EDC1DB34277DF3FC005D1652 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EDC1DB0B277DF3FA005D1652 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = EDC1DB12277DF3FA005D1652;
-			remoteInfo = SharedAppAuthState;
-		};
-		EDC1DB64277DF60F005D1652 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EDC1DB0B277DF3FA005D1652 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = EDC1DB51277DF60E005D1652;
-			remoteInfo = SharedAppAuthStateAppClip;
-		};
-		EDC1DB6E277DF60F005D1652 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EDC1DB0B277DF3FA005D1652 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = EDC1DB51277DF60E005D1652;
-			remoteInfo = SharedAppAuthStateAppClip;
-		};
 		EDC1DB75277DF610005D1652 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EDC1DB0B277DF3FA005D1652 /* Project object */;
@@ -168,11 +117,6 @@
 		ED890CCC277E3ABD001687DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED890CCF277E3ABD001687DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED890CD1277E3ABD001687DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ED890CD6277E3ABD001687DD /* SharedAppAuthStateSecondAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SharedAppAuthStateSecondAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		ED890CDA277E3ABD001687DD /* SharedAppAuthStateSecondAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedAppAuthStateSecondAppTests.swift; sourceTree = "<group>"; };
-		ED890CE0277E3ABD001687DD /* SharedAppAuthStateSecondAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SharedAppAuthStateSecondAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		ED890CE4277E3ABD001687DD /* SharedAppAuthStateSecondAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedAppAuthStateSecondAppUITests.swift; sourceTree = "<group>"; };
-		ED890CE6277E3ABD001687DD /* SharedAppAuthStateSecondAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedAppAuthStateSecondAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		ED890CF1277E3AD4001687DD /* SharedAppAuthStateSecondApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SharedAppAuthStateSecondApp.entitlements; sourceTree = "<group>"; };
 		ED890CF3277E3C07001687DD /* AuthTokenProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthTokenProvider.swift; sourceTree = "<group>"; };
 		ED890CF4277E3C07001687DD /* AuthError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthError.swift; sourceTree = "<group>"; };
@@ -188,11 +132,6 @@
 		EDC1DB1F277DF3FC005D1652 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EDC1DB22277DF3FC005D1652 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EDC1DB24277DF3FC005D1652 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EDC1DB29277DF3FC005D1652 /* SharedAppAuthStateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SharedAppAuthStateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EDC1DB2D277DF3FC005D1652 /* SharedAppAuthStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedAppAuthStateTests.swift; sourceTree = "<group>"; };
-		EDC1DB33277DF3FC005D1652 /* SharedAppAuthStateUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SharedAppAuthStateUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EDC1DB37277DF3FC005D1652 /* SharedAppAuthStateUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedAppAuthStateUITests.swift; sourceTree = "<group>"; };
-		EDC1DB39277DF3FC005D1652 /* SharedAppAuthStateUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedAppAuthStateUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		EDC1DB52277DF60E005D1652 /* SharedAppAuthStateAppClip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SharedAppAuthStateAppClip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDC1DB54277DF60E005D1652 /* SharedAppAuthStateAppClipApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedAppAuthStateAppClipApp.swift; sourceTree = "<group>"; };
 		EDC1DB56277DF60E005D1652 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -200,11 +139,6 @@
 		EDC1DB5B277DF60F005D1652 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EDC1DB5D277DF60F005D1652 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EDC1DB5E277DF60F005D1652 /* SharedAppAuthStateAppClip.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SharedAppAuthStateAppClip.entitlements; sourceTree = "<group>"; };
-		EDC1DB63277DF60F005D1652 /* SharedAppAuthStateAppClipTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SharedAppAuthStateAppClipTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EDC1DB67277DF60F005D1652 /* SharedAppAuthStateAppClipTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedAppAuthStateAppClipTests.swift; sourceTree = "<group>"; };
-		EDC1DB6D277DF60F005D1652 /* SharedAppAuthStateAppClipUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SharedAppAuthStateAppClipUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EDC1DB71277DF60F005D1652 /* SharedAppAuthStateAppClipUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedAppAuthStateAppClipUITests.swift; sourceTree = "<group>"; };
-		EDC1DB73277DF60F005D1652 /* SharedAppAuthStateAppClipUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedAppAuthStateAppClipUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		EDC1DB86277DF670005D1652 /* SharedAppAuthStateWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SharedAppAuthStateWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDC1DB88277DF670005D1652 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		EDC1DB8A277DF670005D1652 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -235,20 +169,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		ED890CD3277E3ABD001687DD /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		ED890CDD277E3ABD001687DD /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		EDC1DB10277DF3FA005D1652 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -259,40 +179,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EDC1DB26277DF3FC005D1652 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EDC1DB30277DF3FC005D1652 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		EDC1DB4F277DF60E005D1652 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				EDC1DBBA277E0753005D1652 /* AppAuth in Frameworks */,
 				EDC1DBBC277E0753005D1652 /* AppAuthCore in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EDC1DB60277DF60F005D1652 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EDC1DB6A277DF60F005D1652 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,23 +215,6 @@
 				ED890CF2277E3C07001687DD /* Auth */,
 			);
 			path = SharedAppAuthStateSecondApp;
-			sourceTree = "<group>";
-		};
-		ED890CD9277E3ABD001687DD /* SharedAppAuthStateSecondAppTests */ = {
-			isa = PBXGroup;
-			children = (
-				ED890CDA277E3ABD001687DD /* SharedAppAuthStateSecondAppTests.swift */,
-			);
-			path = SharedAppAuthStateSecondAppTests;
-			sourceTree = "<group>";
-		};
-		ED890CE3277E3ABD001687DD /* SharedAppAuthStateSecondAppUITests */ = {
-			isa = PBXGroup;
-			children = (
-				ED890CE4277E3ABD001687DD /* SharedAppAuthStateSecondAppUITests.swift */,
-				ED890CE6277E3ABD001687DD /* SharedAppAuthStateSecondAppUITestsLaunchTests.swift */,
-			);
-			path = SharedAppAuthStateSecondAppUITests;
 			sourceTree = "<group>";
 		};
 		ED890CF2277E3C07001687DD /* Auth */ = {
@@ -379,13 +254,7 @@
 				EDC1DB15277DF3FA005D1652 /* SharedAppAuthState */,
 				EDC1DB53277DF60E005D1652 /* SharedAppAuthStateAppClip */,
 				EDC1DB8C277DF670005D1652 /* SharedAppAuthStateWidget */,
-				EDC1DB2C277DF3FC005D1652 /* SharedAppAuthStateTests */,
-				EDC1DB36277DF3FC005D1652 /* SharedAppAuthStateUITests */,
-				EDC1DB66277DF60F005D1652 /* SharedAppAuthStateAppClipTests */,
-				EDC1DB70277DF60F005D1652 /* SharedAppAuthStateAppClipUITests */,
 				ED890CC2277E3ABC001687DD /* SharedAppAuthStateSecondApp */,
-				ED890CD9277E3ABD001687DD /* SharedAppAuthStateSecondAppTests */,
-				ED890CE3277E3ABD001687DD /* SharedAppAuthStateSecondAppUITests */,
 				EDC1DB87277DF670005D1652 /* Frameworks */,
 				EDC1DB14277DF3FA005D1652 /* Products */,
 			);
@@ -395,15 +264,9 @@
 			isa = PBXGroup;
 			children = (
 				EDC1DB13277DF3FA005D1652 /* SharedAppAuthState.app */,
-				EDC1DB29277DF3FC005D1652 /* SharedAppAuthStateTests.xctest */,
-				EDC1DB33277DF3FC005D1652 /* SharedAppAuthStateUITests.xctest */,
 				EDC1DB52277DF60E005D1652 /* SharedAppAuthStateAppClip.app */,
-				EDC1DB63277DF60F005D1652 /* SharedAppAuthStateAppClipTests.xctest */,
-				EDC1DB6D277DF60F005D1652 /* SharedAppAuthStateAppClipUITests.xctest */,
 				EDC1DB86277DF670005D1652 /* SharedAppAuthStateWidgetExtension.appex */,
 				ED890CC1277E3ABC001687DD /* SharedAppAuthStateSecondApp.app */,
-				ED890CD6277E3ABD001687DD /* SharedAppAuthStateSecondAppTests.xctest */,
-				ED890CE0277E3ABD001687DD /* SharedAppAuthStateSecondAppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -421,23 +284,6 @@
 				EDC1DB9C277DFE5E005D1652 /* Auth */,
 			);
 			path = SharedAppAuthState;
-			sourceTree = "<group>";
-		};
-		EDC1DB2C277DF3FC005D1652 /* SharedAppAuthStateTests */ = {
-			isa = PBXGroup;
-			children = (
-				EDC1DB2D277DF3FC005D1652 /* SharedAppAuthStateTests.swift */,
-			);
-			path = SharedAppAuthStateTests;
-			sourceTree = "<group>";
-		};
-		EDC1DB36277DF3FC005D1652 /* SharedAppAuthStateUITests */ = {
-			isa = PBXGroup;
-			children = (
-				EDC1DB37277DF3FC005D1652 /* SharedAppAuthStateUITests.swift */,
-				EDC1DB39277DF3FC005D1652 /* SharedAppAuthStateUITestsLaunchTests.swift */,
-			);
-			path = SharedAppAuthStateUITests;
 			sourceTree = "<group>";
 		};
 		EDC1DB53277DF60E005D1652 /* SharedAppAuthStateAppClip */ = {
@@ -459,23 +305,6 @@
 				EDC1DB5B277DF60F005D1652 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		EDC1DB66277DF60F005D1652 /* SharedAppAuthStateAppClipTests */ = {
-			isa = PBXGroup;
-			children = (
-				EDC1DB67277DF60F005D1652 /* SharedAppAuthStateAppClipTests.swift */,
-			);
-			path = SharedAppAuthStateAppClipTests;
-			sourceTree = "<group>";
-		};
-		EDC1DB70277DF60F005D1652 /* SharedAppAuthStateAppClipUITests */ = {
-			isa = PBXGroup;
-			children = (
-				EDC1DB71277DF60F005D1652 /* SharedAppAuthStateAppClipUITests.swift */,
-				EDC1DB73277DF60F005D1652 /* SharedAppAuthStateAppClipUITestsLaunchTests.swift */,
-			);
-			path = SharedAppAuthStateAppClipUITests;
 			sourceTree = "<group>";
 		};
 		EDC1DB87277DF670005D1652 /* Frameworks */ = {
@@ -562,42 +391,6 @@
 			productReference = ED890CC1277E3ABC001687DD /* SharedAppAuthStateSecondApp.app */;
 			productType = "com.apple.product-type.application";
 		};
-		ED890CD5277E3ABD001687DD /* SharedAppAuthStateSecondAppTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = ED890CEB277E3ABD001687DD /* Build configuration list for PBXNativeTarget "SharedAppAuthStateSecondAppTests" */;
-			buildPhases = (
-				ED890CD2277E3ABD001687DD /* Sources */,
-				ED890CD3277E3ABD001687DD /* Frameworks */,
-				ED890CD4277E3ABD001687DD /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				ED890CD8277E3ABD001687DD /* PBXTargetDependency */,
-			);
-			name = SharedAppAuthStateSecondAppTests;
-			productName = SharedAppAuthStateSecondAppTests;
-			productReference = ED890CD6277E3ABD001687DD /* SharedAppAuthStateSecondAppTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		ED890CDF277E3ABD001687DD /* SharedAppAuthStateSecondAppUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = ED890CEE277E3ABD001687DD /* Build configuration list for PBXNativeTarget "SharedAppAuthStateSecondAppUITests" */;
-			buildPhases = (
-				ED890CDC277E3ABD001687DD /* Sources */,
-				ED890CDD277E3ABD001687DD /* Frameworks */,
-				ED890CDE277E3ABD001687DD /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				ED890CE2277E3ABD001687DD /* PBXTargetDependency */,
-			);
-			name = SharedAppAuthStateSecondAppUITests;
-			productName = SharedAppAuthStateSecondAppUITests;
-			productReference = ED890CE0277E3ABD001687DD /* SharedAppAuthStateSecondAppUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 		EDC1DB12277DF3FA005D1652 /* SharedAppAuthState */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = EDC1DB3D277DF3FC005D1652 /* Build configuration list for PBXNativeTarget "SharedAppAuthState" */;
@@ -624,42 +417,6 @@
 			productReference = EDC1DB13277DF3FA005D1652 /* SharedAppAuthState.app */;
 			productType = "com.apple.product-type.application";
 		};
-		EDC1DB28277DF3FC005D1652 /* SharedAppAuthStateTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = EDC1DB40277DF3FC005D1652 /* Build configuration list for PBXNativeTarget "SharedAppAuthStateTests" */;
-			buildPhases = (
-				EDC1DB25277DF3FC005D1652 /* Sources */,
-				EDC1DB26277DF3FC005D1652 /* Frameworks */,
-				EDC1DB27277DF3FC005D1652 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				EDC1DB2B277DF3FC005D1652 /* PBXTargetDependency */,
-			);
-			name = SharedAppAuthStateTests;
-			productName = SharedAppAuthStateTests;
-			productReference = EDC1DB29277DF3FC005D1652 /* SharedAppAuthStateTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		EDC1DB32277DF3FC005D1652 /* SharedAppAuthStateUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = EDC1DB43277DF3FC005D1652 /* Build configuration list for PBXNativeTarget "SharedAppAuthStateUITests" */;
-			buildPhases = (
-				EDC1DB2F277DF3FC005D1652 /* Sources */,
-				EDC1DB30277DF3FC005D1652 /* Frameworks */,
-				EDC1DB31277DF3FC005D1652 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				EDC1DB35277DF3FC005D1652 /* PBXTargetDependency */,
-			);
-			name = SharedAppAuthStateUITests;
-			productName = SharedAppAuthStateUITests;
-			productReference = EDC1DB33277DF3FC005D1652 /* SharedAppAuthStateUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 		EDC1DB51277DF60E005D1652 /* SharedAppAuthStateAppClip */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = EDC1DB78277DF610005D1652 /* Build configuration list for PBXNativeTarget "SharedAppAuthStateAppClip" */;
@@ -680,42 +437,6 @@
 			productName = SharedAppAuthStateAppClip;
 			productReference = EDC1DB52277DF60E005D1652 /* SharedAppAuthStateAppClip.app */;
 			productType = "com.apple.product-type.application.on-demand-install-capable";
-		};
-		EDC1DB62277DF60F005D1652 /* SharedAppAuthStateAppClipTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = EDC1DB7C277DF610005D1652 /* Build configuration list for PBXNativeTarget "SharedAppAuthStateAppClipTests" */;
-			buildPhases = (
-				EDC1DB5F277DF60F005D1652 /* Sources */,
-				EDC1DB60277DF60F005D1652 /* Frameworks */,
-				EDC1DB61277DF60F005D1652 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				EDC1DB65277DF60F005D1652 /* PBXTargetDependency */,
-			);
-			name = SharedAppAuthStateAppClipTests;
-			productName = SharedAppAuthStateAppClipTests;
-			productReference = EDC1DB63277DF60F005D1652 /* SharedAppAuthStateAppClipTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		EDC1DB6C277DF60F005D1652 /* SharedAppAuthStateAppClipUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = EDC1DB7F277DF610005D1652 /* Build configuration list for PBXNativeTarget "SharedAppAuthStateAppClipUITests" */;
-			buildPhases = (
-				EDC1DB69277DF60F005D1652 /* Sources */,
-				EDC1DB6A277DF60F005D1652 /* Frameworks */,
-				EDC1DB6B277DF60F005D1652 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				EDC1DB6F277DF60F005D1652 /* PBXTargetDependency */,
-			);
-			name = SharedAppAuthStateAppClipUITests;
-			productName = SharedAppAuthStateAppClipUITests;
-			productReference = EDC1DB6D277DF60F005D1652 /* SharedAppAuthStateAppClipUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 		EDC1DB85277DF670005D1652 /* SharedAppAuthStateWidgetExtension */ = {
 			isa = PBXNativeTarget;
@@ -751,35 +472,11 @@
 					ED890CC0277E3ABC001687DD = {
 						CreatedOnToolsVersion = 13.2;
 					};
-					ED890CD5277E3ABD001687DD = {
-						CreatedOnToolsVersion = 13.2;
-						TestTargetID = ED890CC0277E3ABC001687DD;
-					};
-					ED890CDF277E3ABD001687DD = {
-						CreatedOnToolsVersion = 13.2;
-						TestTargetID = ED890CC0277E3ABC001687DD;
-					};
 					EDC1DB12277DF3FA005D1652 = {
 						CreatedOnToolsVersion = 13.2;
 					};
-					EDC1DB28277DF3FC005D1652 = {
-						CreatedOnToolsVersion = 13.2;
-						TestTargetID = EDC1DB12277DF3FA005D1652;
-					};
-					EDC1DB32277DF3FC005D1652 = {
-						CreatedOnToolsVersion = 13.2;
-						TestTargetID = EDC1DB12277DF3FA005D1652;
-					};
 					EDC1DB51277DF60E005D1652 = {
 						CreatedOnToolsVersion = 13.2;
-					};
-					EDC1DB62277DF60F005D1652 = {
-						CreatedOnToolsVersion = 13.2;
-						TestTargetID = EDC1DB51277DF60E005D1652;
-					};
-					EDC1DB6C277DF60F005D1652 = {
-						CreatedOnToolsVersion = 13.2;
-						TestTargetID = EDC1DB51277DF60E005D1652;
 					};
 					EDC1DB85277DF670005D1652 = {
 						CreatedOnToolsVersion = 13.2;
@@ -806,13 +503,7 @@
 				EDC1DB12277DF3FA005D1652 /* SharedAppAuthState */,
 				EDC1DB51277DF60E005D1652 /* SharedAppAuthStateAppClip */,
 				EDC1DB85277DF670005D1652 /* SharedAppAuthStateWidgetExtension */,
-				EDC1DB28277DF3FC005D1652 /* SharedAppAuthStateTests */,
-				EDC1DB32277DF3FC005D1652 /* SharedAppAuthStateUITests */,
-				EDC1DB62277DF60F005D1652 /* SharedAppAuthStateAppClipTests */,
-				EDC1DB6C277DF60F005D1652 /* SharedAppAuthStateAppClipUITests */,
 				ED890CC0277E3ABC001687DD /* SharedAppAuthStateSecondApp */,
-				ED890CD5277E3ABD001687DD /* SharedAppAuthStateSecondAppTests */,
-				ED890CDF277E3ABD001687DD /* SharedAppAuthStateSecondAppUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -827,20 +518,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		ED890CD4277E3ABD001687DD /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		ED890CDE277E3ABD001687DD /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		EDC1DB11277DF3FA005D1652 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -850,40 +527,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EDC1DB27277DF3FC005D1652 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EDC1DB31277DF3FC005D1652 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		EDC1DB50277DF60E005D1652 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				EDC1DB5C277DF60F005D1652 /* Preview Assets.xcassets in Resources */,
 				EDC1DB59277DF60F005D1652 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EDC1DB61277DF60F005D1652 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EDC1DB6B277DF60F005D1652 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -915,23 +564,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		ED890CD2277E3ABD001687DD /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				ED890CDB277E3ABD001687DD /* SharedAppAuthStateSecondAppTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		ED890CDC277E3ABD001687DD /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				ED890CE5277E3ABD001687DD /* SharedAppAuthStateSecondAppUITests.swift in Sources */,
-				ED890CE7277E3ABD001687DD /* SharedAppAuthStateSecondAppUITestsLaunchTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		EDC1DB0F277DF3FA005D1652 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -950,23 +582,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EDC1DB25277DF3FC005D1652 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EDC1DB2E277DF3FC005D1652 /* SharedAppAuthStateTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EDC1DB2F277DF3FC005D1652 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EDC1DB38277DF3FC005D1652 /* SharedAppAuthStateUITests.swift in Sources */,
-				EDC1DB3A277DF3FC005D1652 /* SharedAppAuthStateUITestsLaunchTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		EDC1DB4E277DF60E005D1652 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -979,23 +594,6 @@
 				EDC1DBA4277DFECE005D1652 /* AuthService.swift in Sources */,
 				EDC1DBB7277E01AF005D1652 /* AuthError.swift in Sources */,
 				EDC1DBAD277E00DB005D1652 /* AuthStateRepository.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EDC1DB5F277DF60F005D1652 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EDC1DB68277DF60F005D1652 /* SharedAppAuthStateAppClipTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EDC1DB69277DF60F005D1652 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EDC1DB72277DF60F005D1652 /* SharedAppAuthStateAppClipUITests.swift in Sources */,
-				EDC1DB74277DF60F005D1652 /* SharedAppAuthStateAppClipUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1017,36 +615,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		ED890CD8277E3ABD001687DD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = ED890CC0277E3ABC001687DD /* SharedAppAuthStateSecondApp */;
-			targetProxy = ED890CD7277E3ABD001687DD /* PBXContainerItemProxy */;
-		};
-		ED890CE2277E3ABD001687DD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = ED890CC0277E3ABC001687DD /* SharedAppAuthStateSecondApp */;
-			targetProxy = ED890CE1277E3ABD001687DD /* PBXContainerItemProxy */;
-		};
-		EDC1DB2B277DF3FC005D1652 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = EDC1DB12277DF3FA005D1652 /* SharedAppAuthState */;
-			targetProxy = EDC1DB2A277DF3FC005D1652 /* PBXContainerItemProxy */;
-		};
-		EDC1DB35277DF3FC005D1652 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = EDC1DB12277DF3FA005D1652 /* SharedAppAuthState */;
-			targetProxy = EDC1DB34277DF3FC005D1652 /* PBXContainerItemProxy */;
-		};
-		EDC1DB65277DF60F005D1652 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = EDC1DB51277DF60E005D1652 /* SharedAppAuthStateAppClip */;
-			targetProxy = EDC1DB64277DF60F005D1652 /* PBXContainerItemProxy */;
-		};
-		EDC1DB6F277DF60F005D1652 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = EDC1DB51277DF60E005D1652 /* SharedAppAuthStateAppClip */;
-			targetProxy = EDC1DB6E277DF60F005D1652 /* PBXContainerItemProxy */;
-		};
 		EDC1DB76277DF610005D1652 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = EDC1DB51277DF60E005D1652 /* SharedAppAuthStateAppClip */;
@@ -1134,84 +702,6 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		ED890CEC277E3ABD001687DD /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 55ATZ58U6M;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.thomsmed.SharedAppAuthStateSecondAppTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SharedAppAuthStateSecondApp.app/SharedAppAuthStateSecondApp";
-			};
-			name = Debug;
-		};
-		ED890CED277E3ABD001687DD /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 55ATZ58U6M;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.thomsmed.SharedAppAuthStateSecondAppTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SharedAppAuthStateSecondApp.app/SharedAppAuthStateSecondApp";
-			};
-			name = Release;
-		};
-		ED890CEF277E3ABD001687DD /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 55ATZ58U6M;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.thomsmed.SharedAppAuthStateSecondAppUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = SharedAppAuthStateSecondApp;
-			};
-			name = Debug;
-		};
-		ED890CF0277E3ABD001687DD /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 55ATZ58U6M;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.thomsmed.SharedAppAuthStateSecondAppUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = SharedAppAuthStateSecondApp;
 			};
 			name = Release;
 		};
@@ -1389,82 +879,6 @@
 			};
 			name = Release;
 		};
-		EDC1DB41277DF3FC005D1652 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 55ATZ58U6M;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.thomsmed.SharedAppAuthStateTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SharedAppAuthState.app/SharedAppAuthState";
-			};
-			name = Debug;
-		};
-		EDC1DB42277DF3FC005D1652 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 55ATZ58U6M;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.thomsmed.SharedAppAuthStateTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SharedAppAuthState.app/SharedAppAuthState";
-			};
-			name = Release;
-		};
-		EDC1DB44277DF3FC005D1652 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 55ATZ58U6M;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.thomsmed.SharedAppAuthStateUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = SharedAppAuthState;
-			};
-			name = Debug;
-		};
-		EDC1DB45277DF3FC005D1652 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 55ATZ58U6M;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.thomsmed.SharedAppAuthStateUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = SharedAppAuthState;
-			};
-			name = Release;
-		};
 		EDC1DB79277DF610005D1652 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1526,82 +940,6 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		EDC1DB7D277DF610005D1652 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 55ATZ58U6M;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.thomsmed.SharedAppAuthState.SharedAppAuthStateAppClipTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SharedAppAuthStateAppClip.app/SharedAppAuthStateAppClip";
-			};
-			name = Debug;
-		};
-		EDC1DB7E277DF610005D1652 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 55ATZ58U6M;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.thomsmed.SharedAppAuthState.SharedAppAuthStateAppClipTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SharedAppAuthStateAppClip.app/SharedAppAuthStateAppClip";
-			};
-			name = Release;
-		};
-		EDC1DB80277DF610005D1652 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 55ATZ58U6M;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.thomsmed.SharedAppAuthState.SharedAppAuthStateAppClipUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = SharedAppAuthStateAppClip;
-			};
-			name = Debug;
-		};
-		EDC1DB81277DF610005D1652 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 55ATZ58U6M;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.thomsmed.SharedAppAuthState.SharedAppAuthStateAppClipUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = SharedAppAuthStateAppClip;
 			};
 			name = Release;
 		};
@@ -1673,24 +1011,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		ED890CEB277E3ABD001687DD /* Build configuration list for PBXNativeTarget "SharedAppAuthStateSecondAppTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				ED890CEC277E3ABD001687DD /* Debug */,
-				ED890CED277E3ABD001687DD /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		ED890CEE277E3ABD001687DD /* Build configuration list for PBXNativeTarget "SharedAppAuthStateSecondAppUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				ED890CEF277E3ABD001687DD /* Debug */,
-				ED890CF0277E3ABD001687DD /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		EDC1DB0E277DF3FA005D1652 /* Build configuration list for PBXProject "SharedAppAuthState" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1709,47 +1029,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EDC1DB40277DF3FC005D1652 /* Build configuration list for PBXNativeTarget "SharedAppAuthStateTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				EDC1DB41277DF3FC005D1652 /* Debug */,
-				EDC1DB42277DF3FC005D1652 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		EDC1DB43277DF3FC005D1652 /* Build configuration list for PBXNativeTarget "SharedAppAuthStateUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				EDC1DB44277DF3FC005D1652 /* Debug */,
-				EDC1DB45277DF3FC005D1652 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		EDC1DB78277DF610005D1652 /* Build configuration list for PBXNativeTarget "SharedAppAuthStateAppClip" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EDC1DB79277DF610005D1652 /* Debug */,
 				EDC1DB7A277DF610005D1652 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		EDC1DB7C277DF610005D1652 /* Build configuration list for PBXNativeTarget "SharedAppAuthStateAppClipTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				EDC1DB7D277DF610005D1652 /* Debug */,
-				EDC1DB7E277DF610005D1652 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		EDC1DB7F277DF610005D1652 /* Build configuration list for PBXNativeTarget "SharedAppAuthStateAppClipUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				EDC1DB80277DF610005D1652 /* Debug */,
-				EDC1DB81277DF610005D1652 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
