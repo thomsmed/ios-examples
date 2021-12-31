@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Combine
 import AppAuth
 
 struct Auth0Configuration {
@@ -20,7 +19,6 @@ final class Auth0AuthService: AuthService {
     private let configuration: Auth0Configuration
     private let authStateRepository: AuthStateRepository
     
-    private lazy var stateSubject = CurrentValueSubject<AuthServiceState, Never>(hasSignedInBefore ? .authenticated : .unauthenticated)
     private var currentAuthorizationFlow: OIDExternalUserAgentSession?
     
     init(configuration: Auth0Configuration, authStateRepository: AuthStateRepository) {
@@ -30,15 +28,6 @@ final class Auth0AuthService: AuthService {
     
     var hasSignedInBefore: Bool {
         authStateRepository.state != nil
-    }
-    
-    var state: AnyPublisher<AuthServiceState, Never> {
-        stateSubject.eraseToAnyPublisher()
-    }
-    
-    private func notifyNeedReauthentication() {
-        if stateSubject.value == .needReathentication { return }
-        stateSubject.send(.needReathentication)
     }
     
     private func discoverAndCreateRequest(then completion: @escaping (Result<OIDAuthorizationRequest, Error>) -> Void) {
@@ -95,7 +84,6 @@ final class Auth0AuthService: AuthService {
                 return completion(.failure(error))
             }
             
-            self.stateSubject.send(.authenticated)
             completion(.success(()))
         }
     }
@@ -122,7 +110,6 @@ final class Auth0AuthService: AuthService {
     
     func logout() {
         authStateRepository.clear()
-        stateSubject.send(.unauthenticated)
     }
 }
 
@@ -132,14 +119,12 @@ extension Auth0AuthService: AuthTokenProvider {
             return action(.failure(AuthError.notAuthenticated))
         }
 
-        authState.performAction { [unowned self] (accessToken, idToken, error) in
+        authState.performAction { (accessToken, idToken, error) in
             if let error = error {
-                self.notifyNeedReauthentication()
                 return action(.failure(error))
             }
 
             guard let accessToken = accessToken else {
-                self.notifyNeedReauthentication()
                 return action(.failure(AuthError.notAuthenticated))
             }
 
