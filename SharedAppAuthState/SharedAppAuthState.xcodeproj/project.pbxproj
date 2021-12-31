@@ -892,7 +892,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SharedAppAuthStateAppClip/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = SharedAppAuthState;
+				INFOPLIST_KEY_CFBundleDisplayName = "SharedAppAuthState Clip";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -924,7 +924,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SharedAppAuthStateAppClip/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = SharedAppAuthState;
+				INFOPLIST_KEY_CFBundleDisplayName = "SharedAppAuthState Clip";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -954,7 +954,7 @@
 				DEVELOPMENT_TEAM = 55ATZ58U6M;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SharedAppAuthStateWidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = SharedAppAuthStateWidget;
+				INFOPLIST_KEY_CFBundleDisplayName = "SharedAppAuthState Widget";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -982,7 +982,7 @@
 				DEVELOPMENT_TEAM = 55ATZ58U6M;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SharedAppAuthStateWidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = SharedAppAuthStateWidget;
+				INFOPLIST_KEY_CFBundleDisplayName = "SharedAppAuthState Widget";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

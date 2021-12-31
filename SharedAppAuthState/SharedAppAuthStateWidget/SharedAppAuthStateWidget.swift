@@ -12,9 +12,9 @@ import Intents
 struct Dependencies {
     private static let migrationRepository: AuthStateRepository = SharedUserDefaultsAuthStateRepository(appGroupIdentifier: "group.com.my.app")
     private static let authStateRepository: AuthStateRepository = KeyChainAuthStateRepository(accessGroup: "<TeamId>.com.my.app",
-                                                                                            serviceName: "com.my.app",
-                                                                                            accountName: "My App",
-                                                                                            migrationRepository: migrationRepository)
+                                                                                              serviceName: "com.my.app",
+                                                                                              accountName: "My App",
+                                                                                              migrationRepository: migrationRepository)
     static let authTokenProvider: AuthTokenProvider = WidgetAuthTokenProvider(authStateRepository: authStateRepository)
 }
 
@@ -22,7 +22,7 @@ struct Provider: IntentTimelineProvider {
     func placeholder(in context: Context) -> WidgetEntry {
         WidgetEntry(date: Date(), state: AppAuthState(token: nil, error: nil), configuration: ConfigurationIntent())
     }
-
+    
     func getSnapshot(for configuration: ConfigurationIntent,
                      in context: Context,
                      completion: @escaping (WidgetEntry) -> ()) {
@@ -48,7 +48,7 @@ struct Provider: IntentTimelineProvider {
             })
         }
     }
-
+    
     func getTimeline(for configuration: ConfigurationIntent,
                      in context: Context,
                      completion: @escaping (Timeline<Entry>) -> ()) {
@@ -87,7 +87,7 @@ struct WidgetEntry: TimelineEntry {
 
 struct SharedAppAuthStateWidgetEntryView : View {
     var entry: Provider.Entry
-
+    
     var body: some View {
         VStack {
             if entry.state.error != nil {
@@ -106,7 +106,7 @@ struct SharedAppAuthStateWidgetEntryView : View {
 @main
 struct SharedAppAuthStateWidget: Widget {
     let kind: String = "SharedAppAuthStateWidget"
-
+    
     var body: some WidgetConfiguration {
         IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
             SharedAppAuthStateWidgetEntryView(entry: entry)

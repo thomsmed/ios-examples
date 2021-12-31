@@ -14,5 +14,3 @@ protocol AuthService: AnyObject {
     func logout()
     var hasSignedInBefore: Bool { get }
 }
-
-

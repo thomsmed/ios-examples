@@ -118,16 +118,16 @@ extension Auth0AuthService: AuthTokenProvider {
         guard let authState = authStateRepository.state else {
             return action(.failure(AuthError.notAuthenticated))
         }
-
+        
         authState.performAction { (accessToken, idToken, error) in
             if let error = error {
                 return action(.failure(error))
             }
-
+            
             guard let accessToken = accessToken else {
                 return action(.failure(AuthError.notAuthenticated))
             }
-
+            
             action(.success(accessToken))
         }
     }
