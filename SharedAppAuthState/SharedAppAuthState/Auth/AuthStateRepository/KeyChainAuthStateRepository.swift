@@ -24,7 +24,7 @@ import AppAuth
  https://developer.apple.com/documentation/foundation/nskeyedunarchiver
  */
 final class KeyChainAuthStateRepository {
-    private let migrationRepository: AuthStateRepository
+    private let migrationRepository: AuthStateRepository?
     private let secureItemDescription = "Auth state"
     private let accessGroup: String
     private let accountName: String
@@ -49,7 +49,7 @@ final class KeyChainAuthStateRepository {
         kSecAttrAccount: accountName,
     ] as CFDictionary
     
-    init(accessGroup: String, serviceName: String, accountName: String, migrationRepository: AuthStateRepository) {
+    init(accessGroup: String, serviceName: String, accountName: String, migrationRepository: AuthStateRepository? = nil) {
         self.accessGroup = accessGroup
         self.serviceName = serviceName
         self.accountName = accountName
@@ -63,11 +63,11 @@ extension KeyChainAuthStateRepository: AuthStateRepository {
             return state
         }
         
-        if let migratedState = migrationRepository.state {
+        if let migratedState = migrationRepository?.state {
             do {
                 try persist(state: migratedState)
                 cachedState = migratedState
-                migrationRepository.clear()
+                migrationRepository?.clear()
                 return migratedState
             } catch {
                 print("Somehow failed to retrieve migrated AuthState")

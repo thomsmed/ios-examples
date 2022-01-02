@@ -10,11 +10,9 @@ import SwiftUI
 import Intents
 
 struct Dependencies {
-    private static let migrationRepository: AuthStateRepository = SharedUserDefaultsAuthStateRepository(appGroupIdentifier: "group.com.my.app")
     private static let authStateRepository: AuthStateRepository = KeyChainAuthStateRepository(accessGroup: "<TeamId>.com.my.app",
                                                                                               serviceName: "com.my.app",
-                                                                                              accountName: "My App",
-                                                                                              migrationRepository: migrationRepository)
+                                                                                              accountName: "My App")
     static let authTokenProvider: AuthTokenProvider = WidgetAuthTokenProvider(authStateRepository: authStateRepository)
 }
 
