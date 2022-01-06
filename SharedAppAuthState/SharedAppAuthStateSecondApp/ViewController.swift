@@ -9,11 +9,9 @@ import UIKit
 import TinyConstraints
 
 struct Dependencies {
-    private static let migrationRepository: AuthStateRepository = SharedUserDefaultsAuthStateRepository(appGroupIdentifier: "group.com.mydomain.shared")
     private static let authStateRepository: AuthStateRepository = KeychainAuthStateRepository(accessGroup: "<teamId>.com.mydomain.shared",
                                                                                               serviceName: "com.thomsmed.SharedAppAuthState",
-                                                                                              accountName: "SharedAppAuthState",
-                                                                                              migrationRepository: migrationRepository)
+                                                                                              accountName: "SharedAppAuthState")
     private static let auth0AuthService = Auth0AuthService(configuration: Auth0Configuration(openIdDomain: "<openIdDomain>",
                                                                                              openIdClientId: "<openIdClientId",
                                                                                              issuer: URL(string: "https://openid.issuer.com")!,

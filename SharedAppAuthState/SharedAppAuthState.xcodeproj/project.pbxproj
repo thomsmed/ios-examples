@@ -19,7 +19,6 @@
 		ED890CFF277E3C07001687DD /* Auth0AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED890CF7277E3C07001687DD /* Auth0AuthService.swift */; };
 		ED890D00277E3C07001687DD /* AuthStateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED890CF9277E3C07001687DD /* AuthStateRepository.swift */; };
 		ED890D01277E3C07001687DD /* KeychainAuthStateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED890CFA277E3C07001687DD /* KeychainAuthStateRepository.swift */; };
-		ED890D02277E3C07001687DD /* SharedUserDefaultsAuthStateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED890CFB277E3C07001687DD /* SharedUserDefaultsAuthStateRepository.swift */; };
 		ED890D04277E3C27001687DD /* TinyConstraints in Frameworks */ = {isa = PBXBuildFile; productRef = ED890D03277E3C27001687DD /* TinyConstraints */; };
 		ED890D06277E3C28001687DD /* AppAuth in Frameworks */ = {isa = PBXBuildFile; productRef = ED890D05277E3C28001687DD /* AppAuth */; };
 		ED890D08277E3C28001687DD /* AppAuthCore in Frameworks */ = {isa = PBXBuildFile; productRef = ED890D07277E3C28001687DD /* AppAuthCore */; };
@@ -124,7 +123,6 @@
 		ED890CF7277E3C07001687DD /* Auth0AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Auth0AuthService.swift; sourceTree = "<group>"; };
 		ED890CF9277E3C07001687DD /* AuthStateRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthStateRepository.swift; sourceTree = "<group>"; };
 		ED890CFA277E3C07001687DD /* KeychainAuthStateRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainAuthStateRepository.swift; sourceTree = "<group>"; };
-		ED890CFB277E3C07001687DD /* SharedUserDefaultsAuthStateRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedUserDefaultsAuthStateRepository.swift; sourceTree = "<group>"; };
 		EDC1DB13277DF3FA005D1652 /* SharedAppAuthState.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SharedAppAuthState.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDC1DB16277DF3FA005D1652 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDC1DB18277DF3FA005D1652 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -242,7 +240,6 @@
 			children = (
 				ED890CF9277E3C07001687DD /* AuthStateRepository.swift */,
 				ED890CFA277E3C07001687DD /* KeychainAuthStateRepository.swift */,
-				ED890CFB277E3C07001687DD /* SharedUserDefaultsAuthStateRepository.swift */,
 			);
 			path = AuthStateRepository;
 			sourceTree = "<group>";
@@ -560,7 +557,6 @@
 				ED890CFD277E3C07001687DD /* AuthError.swift in Sources */,
 				ED890D01277E3C07001687DD /* KeychainAuthStateRepository.swift in Sources */,
 				ED890D00277E3C07001687DD /* AuthStateRepository.swift in Sources */,
-				ED890D02277E3C07001687DD /* SharedUserDefaultsAuthStateRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
