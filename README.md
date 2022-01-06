@@ -6,6 +6,7 @@ A collection of iOS examples.
 - [Custom Presentation Controller](CustomPresentationController)
 - [Transition images to full screen + zoomable image](FullScreenImageTransition)
 - [Stretchy table header view](StretchyTableViewHeader)
+- [Shared authentication state](SharedAppAuthState)
 
 These examples are created as a way to learn. Feel free to use them as you please.
 Feedback are also welcome.
