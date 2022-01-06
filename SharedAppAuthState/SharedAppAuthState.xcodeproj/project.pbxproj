@@ -154,6 +154,7 @@
 		EDC1DBC2277E152B005D1652 /* WidgetAuthTokenProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetAuthTokenProvider.swift; sourceTree = "<group>"; };
 		EDC1DBC4277E2029005D1652 /* SharedAppAuthState.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SharedAppAuthState.entitlements; sourceTree = "<group>"; };
 		EDC1DBC5277E2145005D1652 /* SharedAppAuthStateWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SharedAppAuthStateWidgetExtension.entitlements; sourceTree = "<group>"; };
+		EDE7DC742781257A0052906F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,6 +248,7 @@
 		EDC1DB0A277DF3FA005D1652 = {
 			isa = PBXGroup;
 			children = (
+				EDE7DC742781257A0052906F /* README.md */,
 				EDC1DBC5277E2145005D1652 /* SharedAppAuthStateWidgetExtension.entitlements */,
 				EDC1DB15277DF3FA005D1652 /* SharedAppAuthState */,
 				EDC1DB53277DF60E005D1652 /* SharedAppAuthStateAppClip */,

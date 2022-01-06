@@ -4,3 +4,4 @@
 - [Custom Presentation Controller](CustomPresentationController)
 - [Transition images to full screen + zoomable image](FullScreenImageTransition)
 - [Stretchy table header view](StretchyTableViewHeader)
+- [Shared authentication state](SharedAppAuthState)
