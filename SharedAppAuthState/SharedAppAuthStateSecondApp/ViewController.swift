@@ -9,15 +9,15 @@ import UIKit
 import TinyConstraints
 
 struct Dependencies {
-    private static let migrationRepository: AuthStateRepository = SharedUserDefaultsAuthStateRepository(appGroupIdentifier: "group.com.my.app")
-    private static let authStateRepository: AuthStateRepository = KeyChainAuthStateRepository(accessGroup: "<TeamId>.com.my.app",
-                                                                                              serviceName: "com.my.app",
-                                                                                              accountName: "My App",
+    private static let migrationRepository: AuthStateRepository = SharedUserDefaultsAuthStateRepository(appGroupIdentifier: "group.com.mydomain.shared")
+    private static let authStateRepository: AuthStateRepository = KeychainAuthStateRepository(accessGroup: "<teamId>.com.mydomain.shared",
+                                                                                              serviceName: "com.thomsmed.SharedAppAuthState",
+                                                                                              accountName: "SharedAppAuthState",
                                                                                               migrationRepository: migrationRepository)
     private static let auth0AuthService = Auth0AuthService(configuration: Auth0Configuration(openIdDomain: "<openIdDomain>",
-                                                                                             openIdClientId: "<openIdClientId>",
-                                                                                             issuer: URL(string: "<openIdIssuer>")!,
-                                                                                             callbackUrl: URL(string: "com.my.app://app/authentication")!),
+                                                                                             openIdClientId: "<openIdClientId",
+                                                                                             issuer: URL(string: "https://openid.issuer.com")!,
+                                                                                             callbackUrl: URL(string: "com.thomsmed.SharedAppAuthState://app/authentication")!),
                                                            authStateRepository: authStateRepository)
     static let authService: AuthService = auth0AuthService
     static let authTokenProvider: AuthTokenProvider = auth0AuthService

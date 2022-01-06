@@ -1,5 +1,5 @@
 //
-//  KeyChainAuthStateRepository.swift
+//  KeychainAuthStateRepository.swift
 //  SharedAppAuthState
 //
 //  Created by Thomas Asheim Smedmann on 30/12/2021.
@@ -23,8 +23,8 @@ import AppAuth
  https://developer.apple.com/documentation/foundation/nskeyedarchiver
  https://developer.apple.com/documentation/foundation/nskeyedunarchiver
  */
-final class KeyChainAuthStateRepository {
-    private let migrationRepository: AuthStateRepository
+final class KeychainAuthStateRepository {
+    private let migrationRepository: AuthStateRepository?
     private let secureItemDescription = "Auth state"
     private let accessGroup: String
     private let accountName: String
@@ -49,7 +49,7 @@ final class KeyChainAuthStateRepository {
         kSecAttrAccount: accountName,
     ] as CFDictionary
     
-    init(accessGroup: String, serviceName: String, accountName: String, migrationRepository: AuthStateRepository) {
+    init(accessGroup: String, serviceName: String, accountName: String, migrationRepository: AuthStateRepository? = nil) {
         self.accessGroup = accessGroup
         self.serviceName = serviceName
         self.accountName = accountName
@@ -57,17 +57,17 @@ final class KeyChainAuthStateRepository {
     }
 }
 
-extension KeyChainAuthStateRepository: AuthStateRepository {
+extension KeychainAuthStateRepository: AuthStateRepository {
     var state: OIDAuthState? {
         if let state = cachedState {
             return state
         }
         
-        if let migratedState = migrationRepository.state {
+        if let migratedState = migrationRepository?.state {
             do {
                 try persist(state: migratedState)
                 cachedState = migratedState
-                migrationRepository.clear()
+                migrationRepository?.clear()
                 return migratedState
             } catch {
                 print("Somehow failed to retrieve migrated AuthState")

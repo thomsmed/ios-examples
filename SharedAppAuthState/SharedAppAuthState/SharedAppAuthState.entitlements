@@ -4,11 +4,11 @@
 <dict>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>group.com.my.app</string>
+		<string>group.com.mydomain.shared</string>
 	</array>
 	<key>keychain-access-groups</key>
 	<array>
-		<string>$(AppIdentifierPrefix)com.my.app</string>
+		<string>$(AppIdentifierPrefix)com.mydomain.shared</string>
 	</array>
 </dict>
 </plist>

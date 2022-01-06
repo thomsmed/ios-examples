@@ -10,9 +10,9 @@ import SwiftUI
 import Intents
 
 struct Dependencies {
-    private static let authStateRepository: AuthStateRepository = KeyChainAuthStateRepository(accessGroup: "<TeamId>.com.my.app",
-                                                                                              serviceName: "com.my.app",
-                                                                                              accountName: "My App")
+    private static let authStateRepository: AuthStateRepository = KeychainAuthStateRepository(accessGroup: "<teamId>.com.mydomain.shared",
+                                                                                              serviceName: "com.thomsmed.SharedAppAuthState",
+                                                                                              accountName: "SharedAppAuthState")
     static let authTokenProvider: AuthTokenProvider = WidgetAuthTokenProvider(authStateRepository: authStateRepository)
 }
 

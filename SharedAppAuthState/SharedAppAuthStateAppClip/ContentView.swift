@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct Dependencies {
-    private static let authStateRepository: AuthStateRepository = SharedUserDefaultsAuthStateRepository(appGroupIdentifier: "group.com.my.app")
+    private static let authStateRepository: AuthStateRepository = SharedUserDefaultsAuthStateRepository(appGroupIdentifier: "group.com.mydomain.shared")
     private static let auth0AuthService = Auth0AuthService(configuration: Auth0Configuration(openIdDomain: "<openIdDomain>",
-                                                                                             openIdClientId: "<openIdClientId>",
-                                                                                             issuer: URL(string: "<openIdClientId>")!,
-                                                                                             callbackUrl: URL(string: "com.my.app://app/authentication")!),
+                                                                                             openIdClientId: "<openIdClientId",
+                                                                                             issuer: URL(string: "https://openid.issuer.com")!,
+                                                                                             callbackUrl: URL(string: "com.thomsmed.SharedAppAuthState://app/authentication")!),
                                                            authStateRepository: authStateRepository)
     static let authService: AuthService = auth0AuthService
     static let authTokenProvider: AuthTokenProvider = auth0AuthService
