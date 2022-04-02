@@ -28,6 +28,7 @@ final class OnboardingViewController: UIViewController {
         let button: UIButton = {
             let button = UIButton(type: .system)
             button.setTitle("Continue", for: .normal)
+            button.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
             return button
         }()
 
@@ -49,7 +50,7 @@ final class OnboardingViewController: UIViewController {
                 body.trailing == container.safeAreaLayoutGuide.trailing - 40
 
                 button.trailing == container.safeAreaLayoutGuide.trailing - 40
-                button.bottom == container.safeAreaLayoutGuide.bottom - 40
+                button.bottom == container.safeAreaLayoutGuide.bottom
             }
         }
     }
@@ -64,21 +65,21 @@ final class OnboardingViewController: UIViewController {
         let pageOne = PageViewController()
         pageOne.titleLabel.textColor = .orange
         pageOne.titleLabel.text = "Page one"
-        pageOne.bodyLabel.text = "Page one onboarding info about this app"
+        pageOne.bodyLabel.text = "Page one with onboarding info about this app"
         pageOne.button.isHidden = true
         pageOne.index = 0
 
         let pageTwo = PageViewController()
         pageTwo.titleLabel.textColor = .green
         pageTwo.titleLabel.text = "Page two"
-        pageTwo.bodyLabel.text = "Page two onboarding info about this app"
+        pageTwo.bodyLabel.text = "Page two with onboarding info about this app"
         pageTwo.button.isHidden = true
         pageTwo.index = 1
 
         let pageThree = PageViewController()
-        pageThree.titleLabel.textColor = .blue
+        pageThree.titleLabel.textColor = .cyan
         pageThree.titleLabel.text = "Page three"
-        pageThree.bodyLabel.text = "Page three onboarding info about this app"
+        pageThree.bodyLabel.text = "Page three with onboarding info about this app"
         pageThree.button.addTarget(self, action: #selector(completeOnboarding), for: .primaryActionTriggered)
         pageThree.index = 2
 
@@ -127,7 +128,8 @@ extension OnboardingViewController {
 
 extension OnboardingViewController: UIPageViewControllerDataSource {
 
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+    func pageViewController(_ pageViewController: UIPageViewController,
+                            viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard
             let pageViewController = viewController as? PageViewController,
             pageViewController.index > 0
@@ -136,12 +138,21 @@ extension OnboardingViewController: UIPageViewControllerDataSource {
         return pages[pageViewController.index - 1]
     }
 
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+    func pageViewController(_ pageViewController: UIPageViewController,
+                            viewControllerAfter viewController: UIViewController) -> UIViewController? {
         guard
             let pageViewController = viewController as? PageViewController,
             pageViewController.index < pages.count - 1
         else { return nil }
 
         return pages[pageViewController.index + 1]
+    }
+
+    func presentationCount(for pageViewController: UIPageViewController) -> Int {
+        pages.count
+    }
+
+    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
+        0
     }
 }

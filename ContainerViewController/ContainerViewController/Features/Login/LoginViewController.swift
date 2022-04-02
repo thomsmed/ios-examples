@@ -12,7 +12,7 @@ final class LoginViewController: UIViewController {
 
     private let label: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 24, weight: .bold)
+        label.font = .systemFont(ofSize: 32, weight: .bold)
         label.textColor = .orange
         label.text = "Login"
         return label
@@ -21,6 +21,7 @@ final class LoginViewController: UIViewController {
     private let button: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Sign in", for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
         return button
     }()
 
@@ -56,7 +57,7 @@ extension LoginViewController {
 
         constrain(label, button, view) { label, button, container in
             label.centerX == container.centerX
-            label.centerY == container.centerY - 60
+            label.centerY == container.centerY - 120
 
             button.centerX == container.centerX
             button.centerY == container.centerY + 20

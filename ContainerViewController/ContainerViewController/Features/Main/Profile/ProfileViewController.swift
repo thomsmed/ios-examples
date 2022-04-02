@@ -13,7 +13,7 @@ final class ProfileViewController: UIViewController {
     private let label: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 24, weight: .bold)
-        label.textColor = .blue
+        label.textColor = .cyan
         label.text = "Profile"
         return label
     }()

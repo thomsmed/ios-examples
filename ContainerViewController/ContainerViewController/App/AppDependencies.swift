@@ -8,7 +8,7 @@
 import Foundation
 
 protocol AppDependencies {
-
+    // Dependencies goes here
 }
 
 final class DefaultAppDependencies {
