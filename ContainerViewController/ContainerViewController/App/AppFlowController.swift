@@ -40,12 +40,13 @@ final class DefaultAppFlowController: CustomContainerViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setViewController(mainFlowController, with: .none)
+        setViewController(onboardingFlowController, with: .none)
     }
 
     private func configureAppearance() {
-        UINavigationBar.appearance().tintColor = .white
-        UITabBar.appearance().tintColor = .white
+        UINavigationBar.appearance().tintColor = .label
+        UITabBar.appearance().tintColor = .label
+        UIButton.appearance().tintColor = .label
     }
 }
 

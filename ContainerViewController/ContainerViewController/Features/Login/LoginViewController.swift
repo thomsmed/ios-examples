@@ -6,13 +6,43 @@
 //
 
 import UIKit
+import Cartography
 
-class LoginViewController: UIViewController {
+final class LoginViewController: UIViewController {
+
+    private let label: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 24, weight: .bold)
+        label.textColor = .orange
+        label.text = "Login"
+        return label
+    }()
+
+    private let button: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Sign in", for: .normal)
+        return button
+    }()
+
+    let viewModel: LoginViewModel
+
+    init(viewModel: LoginViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        button.addTarget(self, action: #selector(signIn), for: .primaryActionTriggered)
+    }
+
+    @objc private func signIn(_ target: UIButton) {
+        viewModel.signIn()
     }
 }
 
@@ -21,6 +51,17 @@ extension LoginViewController {
     override func loadView() {
         view = UIView()
 
-        view.backgroundColor = .black
+        view.addSubview(label)
+        view.addSubview(button)
+
+        constrain(label, button, view) { label, button, container in
+            label.centerX == container.centerX
+            label.centerY == container.centerY - 60
+
+            button.centerX == container.centerX
+            button.centerY == container.centerY + 20
+        }
+
+        view.backgroundColor = .systemGray4
     }
 }

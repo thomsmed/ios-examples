@@ -8,7 +8,7 @@
 import UIKit
 
 protocol LoginFlowController: AnyObject {
-
+    func signedIn()
 }
 
 final class DefaultLoginFlowController: UINavigationController {
@@ -30,6 +30,16 @@ final class DefaultLoginFlowController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setViewControllers([LoginViewController()], animated: false)
+        let loginViewController = LoginViewController(
+            viewModel: LoginViewModel(appDependencies: appDependencies, flowController: self)
+        )
+        setViewControllers([loginViewController], animated: false)
+    }
+}
+
+extension DefaultLoginFlowController: LoginFlowController {
+
+    func signedIn() {
+        flowController?.signedIn()
     }
 }

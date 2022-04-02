@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED136FA727F8A77400D5B3E7 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED136FA627F8A77400D5B3E7 /* LoginViewModel.swift */; };
+		ED136FA927F8A96600D5B3E7 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED136FA827F8A96600D5B3E7 /* OnboardingViewModel.swift */; };
 		ED6EC40027F8773300AD70C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6EC3FF27F8773300AD70C1 /* AppDelegate.swift */; };
 		ED6EC40227F8773300AD70C1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6EC40127F8773300AD70C1 /* SceneDelegate.swift */; };
 		ED6EC40927F8773500AD70C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED6EC40827F8773500AD70C1 /* Assets.xcassets */; };
@@ -30,6 +32,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		ED136FA627F8A77400D5B3E7 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		ED136FA827F8A96600D5B3E7 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		ED6EC3FC27F8773300AD70C1 /* ContainerViewController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContainerViewController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED6EC3FF27F8773300AD70C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED6EC40127F8773300AD70C1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -147,6 +151,7 @@
 			children = (
 				ED6EC43227F87FE100AD70C1 /* OnboardingFlowController.swift */,
 				ED6EC42627F87DBA00AD70C1 /* OnboardingViewController.swift */,
+				ED136FA827F8A96600D5B3E7 /* OnboardingViewModel.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -156,6 +161,7 @@
 			children = (
 				ED6EC43427F87FF400AD70C1 /* LoginFlowController.swift */,
 				ED6EC42827F87DC900AD70C1 /* LoginViewController.swift */,
+				ED136FA627F8A77400D5B3E7 /* LoginViewModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -272,9 +278,11 @@
 				ED6EC42727F87DBA00AD70C1 /* OnboardingViewController.swift in Sources */,
 				ED6EC43527F87FF400AD70C1 /* LoginFlowController.swift in Sources */,
 				ED6EC42F27F87DF800AD70C1 /* HomeViewController.swift in Sources */,
+				ED136FA727F8A77400D5B3E7 /* LoginViewModel.swift in Sources */,
 				ED6EC43F27F881F600AD70C1 /* AppDependencies.swift in Sources */,
 				ED6EC42B27F87DD800AD70C1 /* ProfileViewController.swift in Sources */,
 				ED6EC43927F8802100AD70C1 /* ProfileFlowController.swift in Sources */,
+				ED136FA927F8A96600D5B3E7 /* OnboardingViewModel.swift in Sources */,
 				ED6EC40227F8773300AD70C1 /* SceneDelegate.swift in Sources */,
 				ED6EC43127F87E5100AD70C1 /* AppFlowController.swift in Sources */,
 				ED6EC44127F88D4200AD70C1 /* ProfileViewModel.swift in Sources */,

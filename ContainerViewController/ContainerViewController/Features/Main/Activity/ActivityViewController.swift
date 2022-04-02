@@ -8,13 +8,13 @@
 import UIKit
 import Cartography
 
-class ActivityViewController: UIViewController {
+final class ActivityViewController: UIViewController {
 
     private let label: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 24, weight: .bold)
         label.textColor = .green
-        label.text = "Your activity"
+        label.text = "Activity"
         return label
     }()
 
@@ -35,6 +35,6 @@ extension ActivityViewController {
             label.center == container.center
         }
 
-        view.backgroundColor = .black
+        view.backgroundColor = .systemGray6
     }
 }

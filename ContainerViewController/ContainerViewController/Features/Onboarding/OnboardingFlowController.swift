@@ -8,7 +8,7 @@
 import UIKit
 
 protocol OnboardingFlowController: AnyObject {
-
+    func completedOnboarding()
 }
 
 final class DefaultOnboardingFlowController: UINavigationController {
@@ -30,6 +30,16 @@ final class DefaultOnboardingFlowController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setViewControllers([OnboardingViewController()], animated: false)
+        let onboardingViewController = OnboardingViewController(
+            viewModel: OnboardingViewModel(appDependencies: appDependencies, flowController: self)
+        )
+        setViewControllers([onboardingViewController], animated: false)
+    }
+}
+
+extension DefaultOnboardingFlowController: OnboardingFlowController {
+
+    func completedOnboarding() {
+        flowController?.completedOnboarding()
     }
 }

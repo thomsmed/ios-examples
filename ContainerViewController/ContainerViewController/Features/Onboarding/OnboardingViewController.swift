@@ -6,13 +6,103 @@
 //
 
 import UIKit
+import Cartography
 
-class OnboardingViewController: UIViewController {
+final class OnboardingViewController: UIViewController {
 
+    final class PageViewController: UIViewController {
+
+        let titleLabel: UILabel = {
+            let label = UILabel()
+            label.font = .systemFont(ofSize: 32, weight: .bold)
+            return label
+        }()
+
+        let bodyLabel: UILabel = {
+            let label = UILabel()
+            label.font = .systemFont(ofSize: 20)
+            label.numberOfLines = 0
+            return label
+        }()
+
+        let button: UIButton = {
+            let button = UIButton(type: .system)
+            button.setTitle("Continue", for: .normal)
+            return button
+        }()
+
+        var index = 0
+
+        override func loadView() {
+            view = UIView()
+
+            view.addSubview(titleLabel)
+            view.addSubview(bodyLabel)
+            view.addSubview(button)
+
+            constrain(titleLabel, bodyLabel, button, view) { title, body, button, container in
+                title.top == container.safeAreaLayoutGuide.top + 20
+                title.leading == container.safeAreaLayoutGuide.leading + 40
+
+                body.centerY == container.centerY
+                body.leading == container.safeAreaLayoutGuide.leading + 40
+                body.trailing == container.safeAreaLayoutGuide.trailing - 40
+
+                button.trailing == container.safeAreaLayoutGuide.trailing - 40
+                button.bottom == container.safeAreaLayoutGuide.bottom - 40
+            }
+        }
+    }
+
+    private let pageViewController = UIPageViewController(
+        transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil
+    )
+
+    let viewModel: OnboardingViewModel
+
+    private lazy var pages: [PageViewController] = {
+        let pageOne = PageViewController()
+        pageOne.titleLabel.textColor = .orange
+        pageOne.titleLabel.text = "Page one"
+        pageOne.bodyLabel.text = "Page one onboarding info about this app"
+        pageOne.button.isHidden = true
+        pageOne.index = 0
+
+        let pageTwo = PageViewController()
+        pageTwo.titleLabel.textColor = .green
+        pageTwo.titleLabel.text = "Page two"
+        pageTwo.bodyLabel.text = "Page two onboarding info about this app"
+        pageTwo.button.isHidden = true
+        pageTwo.index = 1
+
+        let pageThree = PageViewController()
+        pageThree.titleLabel.textColor = .blue
+        pageThree.titleLabel.text = "Page three"
+        pageThree.bodyLabel.text = "Page three onboarding info about this app"
+        pageThree.button.addTarget(self, action: #selector(completeOnboarding), for: .primaryActionTriggered)
+        pageThree.index = 2
+
+        return [pageOne, pageTwo, pageThree]
+    }()
+
+    init(viewModel: OnboardingViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        pageViewController.dataSource = self
+        pageViewController.setViewControllers([pages[0]], direction: .forward, animated: false)
+    }
+
+    @objc private func completeOnboarding() {
+        viewModel.completeOnboarding()
     }
 }
 
@@ -21,6 +111,37 @@ extension OnboardingViewController {
     override func loadView() {
         view = UIView()
 
-        view.backgroundColor = .black
+        addChild(pageViewController)
+
+        view.addSubview(pageViewController.view)
+
+        constrain(pageViewController.view, view) { child, container in
+            child.edges == container.edges
+        }
+
+        pageViewController.didMove(toParent: self)
+
+        view.backgroundColor = .systemGray2
+    }
+}
+
+extension OnboardingViewController: UIPageViewControllerDataSource {
+
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        guard
+            let pageViewController = viewController as? PageViewController,
+            pageViewController.index > 0
+        else { return nil }
+
+        return pages[pageViewController.index - 1]
+    }
+
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        guard
+            let pageViewController = viewController as? PageViewController,
+            pageViewController.index < pages.count - 1
+        else { return nil }
+
+        return pages[pageViewController.index + 1]
     }
 }

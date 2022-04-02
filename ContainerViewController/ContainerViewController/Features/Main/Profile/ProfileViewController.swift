@@ -14,7 +14,7 @@ final class ProfileViewController: UIViewController {
         let label = UILabel()
         label.font = .systemFont(ofSize: 24, weight: .bold)
         label.textColor = .blue
-        label.text = "Your profile"
+        label.text = "Profile"
         return label
     }()
 
@@ -52,6 +52,6 @@ extension ProfileViewController {
             label.center == container.center
         }
 
-        view.backgroundColor = .black
+        view.backgroundColor = .systemGray6
     }
 }

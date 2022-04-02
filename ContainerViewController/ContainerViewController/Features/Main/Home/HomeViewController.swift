@@ -8,7 +8,7 @@
 import UIKit
 import Cartography
 
-class HomeViewController: UIViewController {
+final class HomeViewController: UIViewController {
 
     private let label: UILabel = {
         let label = UILabel()
@@ -36,6 +36,6 @@ extension HomeViewController {
             label.center == container.center
         }
 
-        view.backgroundColor = .black
+        view.backgroundColor = .systemGray6
     }
 }
