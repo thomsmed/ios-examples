@@ -40,7 +40,7 @@ final class DefaultAppFlowController: CustomContainerViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setViewController(onboardingFlowController, with: .none)
+        setViewController(onboardingFlowController, using: .none)
     }
 
     private func configureAppearance() {
@@ -53,14 +53,14 @@ final class DefaultAppFlowController: CustomContainerViewController {
 extension DefaultAppFlowController: AppFlowController {
 
     func signedOut() {
-        setViewController(loginFlowController, with: .flip)
+        setViewController(loginFlowController, using: .flip)
     }
 
     func signedIn() {
-        setViewController(mainFlowController, with: .flip)
+        setViewController(mainFlowController, using: .flip)
     }
 
     func completedOnboarding() {
-        setViewController(loginFlowController, with: .dissolve)
+        setViewController(loginFlowController, using: .dissolve)
     }
 }

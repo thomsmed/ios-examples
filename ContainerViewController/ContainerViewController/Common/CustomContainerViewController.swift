@@ -10,7 +10,7 @@ import Cartography
 
 class CustomContainerViewController: UIViewController {
 
-    private func removeChildren() {
+    private func removeChildViewControllers() {
         children.forEach { child in
             child.willMove(toParent: nil)
 
@@ -21,7 +21,7 @@ class CustomContainerViewController: UIViewController {
     }
 
     private func setViewController(_ viewController: UIViewController) {
-        removeChildren()
+        removeChildViewControllers()
 
         addChild(viewController)
 
@@ -34,75 +34,75 @@ class CustomContainerViewController: UIViewController {
         viewController.didMove(toParent: self)
     }
 
-    private func flipTransition(to toViewController: UIViewController) {
-        guard let fromViewController = children.first else {
-            return setViewController(toViewController)
+    private func flipTransition(to viewController: UIViewController) {
+        guard let previousViewController = children.first else {
+            return setViewController(viewController)
         }
 
-        addChild(toViewController)
+        addChild(viewController)
 
-        fromViewController.willMove(toParent: nil)
+        previousViewController.willMove(toParent: nil)
 
-        view.addSubview(toViewController.view)
+        view.addSubview(viewController.view)
 
-        constrain(toViewController.view, view) { view, container in
+        constrain(viewController.view, view) { view, container in
             view.edges == container.edges
         }
 
         view.layoutIfNeeded()
 
         UIView.transition(
-            from: fromViewController.view,
-            to: toViewController.view,
+            from: previousViewController.view,
+            to: viewController.view,
             duration: 1,
             options: [.transitionFlipFromRight]
         )
 
-        fromViewController.removeFromParent()
+        previousViewController.removeFromParent()
 
-        toViewController.didMove(toParent: self)
+        viewController.didMove(toParent: self)
     }
 
-    private func dissolveTransition(to toViewController: UIViewController) {
-        guard let fromViewController = children.first else {
-            return setViewController(toViewController)
+    private func dissolveTransition(to viewController: UIViewController) {
+        guard let previousViewController = children.first else {
+            return setViewController(viewController)
         }
 
-        addChild(toViewController)
+        addChild(viewController)
 
-        fromViewController.willMove(toParent: nil)
+        previousViewController.willMove(toParent: nil)
 
-        view.addSubview(toViewController.view)
+        view.addSubview(viewController.view)
 
-        constrain(toViewController.view, view) { view, container in
+        constrain(viewController.view, view) { view, container in
             view.edges == container.edges
         }
 
         view.layoutIfNeeded()
 
         UIView.transition(
-            from: fromViewController.view,
-            to: toViewController.view,
+            from: previousViewController.view,
+            to: viewController.view,
             duration: 1,
             options: [.transitionCrossDissolve]
         )
 
-        fromViewController.removeFromParent()
+        previousViewController.removeFromParent()
 
-        toViewController.didMove(toParent: self)
+        viewController.didMove(toParent: self)
     }
 }
 
 extension CustomContainerViewController {
 
-    enum TransitionAnimation {
+    enum Transition {
         case none
         case flip
         case dissolve
     }
 
-    func setViewController(_ viewController: UIViewController, with animation: TransitionAnimation) {
-        switch animation {
+    func setViewController(_ viewController: UIViewController, using transition: Transition) {
+        switch transition {
         case .none:
             setViewController(viewController)
         case .flip:

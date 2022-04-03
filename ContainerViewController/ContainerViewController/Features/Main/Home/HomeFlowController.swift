@@ -30,7 +30,6 @@ final class DefaultHomeFlowController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
         setViewControllers([HomeViewController()], animated: false)
     }
 }
