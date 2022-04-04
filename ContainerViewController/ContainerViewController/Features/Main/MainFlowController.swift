@@ -15,7 +15,7 @@ final class DefaultMainFlowController: UITabBarController {
 
     private let appDependencies: AppDependencies
 
-    weak var flowController: AppFlowController?
+    weak var flowController: SceneFlowController?
 
     private lazy var homeFlowController = DefaultHomeFlowController(
         appDependencies: appDependencies, flowController: self
@@ -27,7 +27,7 @@ final class DefaultMainFlowController: UITabBarController {
         appDependencies: appDependencies, flowController: self
     )
 
-    init(appDependencies: AppDependencies, flowController: AppFlowController) {
+    init(appDependencies: AppDependencies, flowController: SceneFlowController) {
         self.appDependencies = appDependencies
         self.flowController = flowController
         super.init(nibName: nil, bundle: nil)

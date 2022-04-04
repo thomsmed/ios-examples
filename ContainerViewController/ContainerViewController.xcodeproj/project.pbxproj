@@ -23,7 +23,7 @@
 		ED6EC42927F87DC900AD70C1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6EC42827F87DC900AD70C1 /* LoginViewController.swift */; };
 		ED6EC42B27F87DD800AD70C1 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6EC42A27F87DD800AD70C1 /* ProfileViewController.swift */; };
 		ED6EC42D27F87DEF00AD70C1 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6EC42C27F87DEF00AD70C1 /* ActivityViewController.swift */; };
-		ED6EC43127F87E5100AD70C1 /* AppFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6EC43027F87E5100AD70C1 /* AppFlowController.swift */; };
+		ED6EC43127F87E5100AD70C1 /* SceneFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6EC43027F87E5100AD70C1 /* SceneFlowController.swift */; };
 		ED6EC43327F87FE100AD70C1 /* OnboardingFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6EC43227F87FE100AD70C1 /* OnboardingFlowController.swift */; };
 		ED6EC43527F87FF400AD70C1 /* LoginFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6EC43427F87FF400AD70C1 /* LoginFlowController.swift */; };
 		ED6EC43727F8801100AD70C1 /* HomeFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6EC43627F8801000AD70C1 /* HomeFlowController.swift */; };
@@ -53,7 +53,7 @@
 		ED6EC42827F87DC900AD70C1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		ED6EC42A27F87DD800AD70C1 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		ED6EC42C27F87DEF00AD70C1 /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
-		ED6EC43027F87E5100AD70C1 /* AppFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowController.swift; sourceTree = "<group>"; };
+		ED6EC43027F87E5100AD70C1 /* SceneFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneFlowController.swift; sourceTree = "<group>"; };
 		ED6EC43227F87FE100AD70C1 /* OnboardingFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFlowController.swift; sourceTree = "<group>"; };
 		ED6EC43427F87FF400AD70C1 /* LoginFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFlowController.swift; sourceTree = "<group>"; };
 		ED6EC43627F8801000AD70C1 /* HomeFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFlowController.swift; sourceTree = "<group>"; };
@@ -144,7 +144,7 @@
 			children = (
 				ED6EC3FF27F8773300AD70C1 /* AppDelegate.swift */,
 				ED6EC40127F8773300AD70C1 /* SceneDelegate.swift */,
-				ED6EC43027F87E5100AD70C1 /* AppFlowController.swift */,
+				ED6EC43027F87E5100AD70C1 /* SceneFlowController.swift */,
 				ED6EC43E27F881F600AD70C1 /* AppDependencies.swift */,
 				ED6EC40D27F8773500AD70C1 /* Info.plist */,
 			);
@@ -324,7 +324,7 @@
 				ED136FA927F8A96600D5B3E7 /* OnboardingViewModel.swift in Sources */,
 				ED136FB427F9E77D00D5B3E7 /* NewsViewController.swift in Sources */,
 				ED6EC40227F8773300AD70C1 /* SceneDelegate.swift in Sources */,
-				ED6EC43127F87E5100AD70C1 /* AppFlowController.swift in Sources */,
+				ED6EC43127F87E5100AD70C1 /* SceneFlowController.swift in Sources */,
 				ED6EC44127F88D4200AD70C1 /* ProfileViewModel.swift in Sources */,
 				ED6EC41827F8784D00AD70C1 /* LinearContainerViewController.swift in Sources */,
 				ED6EC43327F87FE100AD70C1 /* OnboardingFlowController.swift in Sources */,

@@ -15,9 +15,9 @@ final class DefaultLoginFlowController: UINavigationController {
 
     private let appDependencies: AppDependencies
 
-    weak var flowController: AppFlowController?
+    weak var flowController: SceneFlowController?
 
-    init(appDependencies: AppDependencies, flowController: AppFlowController) {
+    init(appDependencies: AppDependencies, flowController: SceneFlowController) {
         self.appDependencies = appDependencies
         self.flowController = flowController
         super.init(nibName: nil, bundle: nil)

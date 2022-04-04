@@ -1,5 +1,5 @@
 //
-//  AppFlowController.swift
+//  SceneFlowController.swift
 //  ContainerViewController
 //
 //  Created by Thomas Asheim Smedmann on 02/04/2022.
@@ -7,13 +7,13 @@
 
 import UIKit
 
-protocol AppFlowController: AnyObject {
+protocol SceneFlowController: AnyObject {
     func signedOut()
     func signedIn()
     func completedOnboarding()
 }
 
-final class DefaultAppFlowController: LinearContainerViewController {
+final class DefaultSceneFlowController: LinearContainerViewController {
 
     private let appDependencies: AppDependencies
 
@@ -50,7 +50,7 @@ final class DefaultAppFlowController: LinearContainerViewController {
     }
 }
 
-extension DefaultAppFlowController: AppFlowController {
+extension DefaultSceneFlowController: SceneFlowController {
 
     func signedOut() {
         setViewController(loginFlowController, using: .flip)
