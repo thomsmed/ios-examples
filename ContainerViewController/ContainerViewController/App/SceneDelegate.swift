@@ -10,7 +10,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    var appFlowController: SceneFlowController?
+    var sceneFlowController: SceneFlowController?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -21,13 +21,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let appDelegate = UIApplication.shared.delegate as? AppDelegate
         else { return }
 
-        let appFlowController = DefaultSceneFlowController(appDependencies: appDelegate.appDependencies)
+        let sceneFlowController = appDelegate.appFlowController.createSceneFlowController()
         let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = appFlowController
+        window.rootViewController = sceneFlowController
         window.makeKeyAndVisible()
 
         self.window = window
-        self.appFlowController = appFlowController
+        self.sceneFlowController = sceneFlowController
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

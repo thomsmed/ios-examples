@@ -7,6 +7,13 @@
 
 import UIKit
 
+protocol ViewController where Self: UIViewController { }
+
+protocol SceneFlowControllerFactory: AnyObject {
+
+    func createSceneFlowController() -> SceneFlowController & ViewController
+}
+
 protocol SceneFlowController: AnyObject {
     func signedOut()
     func signedIn()
@@ -16,6 +23,8 @@ protocol SceneFlowController: AnyObject {
 final class DefaultSceneFlowController: LinearContainerViewController {
 
     private let appDependencies: AppDependencies
+
+    weak var flowController: AppFlowController?
 
     private lazy var onboardingFlowController = DefaultOnboardingFlowController(
         appDependencies: appDependencies, flowController: self
@@ -27,10 +36,11 @@ final class DefaultSceneFlowController: LinearContainerViewController {
         appDependencies: appDependencies, flowController: self
     )
 
-    init(appDependencies: AppDependencies) {
+    init(appDependencies: AppDependencies, flowController: AppFlowController) {
         self.appDependencies = appDependencies
+        self.flowController = flowController
+
         super.init(nibName: nil, bundle: nil)
-        configureAppearance()
     }
 
     required init?(coder: NSCoder) {
@@ -42,13 +52,9 @@ final class DefaultSceneFlowController: LinearContainerViewController {
 
         setViewController(onboardingFlowController, using: .none)
     }
-
-    private func configureAppearance() {
-        UINavigationBar.appearance().tintColor = .label
-        UITabBar.appearance().tintColor = .label
-        UIButton.appearance().tintColor = .label
-    }
 }
+
+extension DefaultSceneFlowController: ViewController { }
 
 extension DefaultSceneFlowController: SceneFlowController {
 

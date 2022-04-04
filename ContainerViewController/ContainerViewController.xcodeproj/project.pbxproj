@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED0D793D27FB2A2C0020D4B2 /* AppFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0D793C27FB2A2C0020D4B2 /* AppFlowController.swift */; };
 		ED136FA727F8A77400D5B3E7 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED136FA627F8A77400D5B3E7 /* LoginViewModel.swift */; };
 		ED136FA927F8A96600D5B3E7 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED136FA827F8A96600D5B3E7 /* OnboardingViewModel.swift */; };
 		ED136FAC27F9E68B00D5B3E7 /* FeedFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED136FAB27F9E68B00D5B3E7 /* FeedFlowController.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		ED0D793C27FB2A2C0020D4B2 /* AppFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowController.swift; sourceTree = "<group>"; };
 		ED136FA627F8A77400D5B3E7 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		ED136FA827F8A96600D5B3E7 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		ED136FAB27F9E68B00D5B3E7 /* FeedFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedFlowController.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 			children = (
 				ED6EC3FF27F8773300AD70C1 /* AppDelegate.swift */,
 				ED6EC40127F8773300AD70C1 /* SceneDelegate.swift */,
+				ED0D793C27FB2A2C0020D4B2 /* AppFlowController.swift */,
 				ED6EC43027F87E5100AD70C1 /* SceneFlowController.swift */,
 				ED6EC43E27F881F600AD70C1 /* AppDependencies.swift */,
 				ED6EC40D27F8773500AD70C1 /* Info.plist */,
@@ -321,6 +324,7 @@
 				ED6EC42B27F87DD800AD70C1 /* ProfileViewController.swift in Sources */,
 				ED136FAC27F9E68B00D5B3E7 /* FeedFlowController.swift in Sources */,
 				ED6EC43927F8802100AD70C1 /* ProfileFlowController.swift in Sources */,
+				ED0D793D27FB2A2C0020D4B2 /* AppFlowController.swift in Sources */,
 				ED136FA927F8A96600D5B3E7 /* OnboardingViewModel.swift in Sources */,
 				ED136FB427F9E77D00D5B3E7 /* NewsViewController.swift in Sources */,
 				ED6EC40227F8773300AD70C1 /* SceneDelegate.swift in Sources */,
