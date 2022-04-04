@@ -9,16 +9,20 @@
 /* Begin PBXBuildFile section */
 		ED136FA727F8A77400D5B3E7 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED136FA627F8A77400D5B3E7 /* LoginViewModel.swift */; };
 		ED136FA927F8A96600D5B3E7 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED136FA827F8A96600D5B3E7 /* OnboardingViewModel.swift */; };
+		ED136FAC27F9E68B00D5B3E7 /* FeedFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED136FAB27F9E68B00D5B3E7 /* FeedFlowController.swift */; };
+		ED136FB027F9E71C00D5B3E7 /* PopularViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED136FAF27F9E71C00D5B3E7 /* PopularViewController.swift */; };
+		ED136FB427F9E77D00D5B3E7 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED136FB327F9E77D00D5B3E7 /* NewsViewController.swift */; };
+		ED136FB627F9EA8E00D5B3E7 /* SegmentedContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED136FB527F9EA8E00D5B3E7 /* SegmentedContainerViewController.swift */; };
+		ED136FB827FAE9BF00D5B3E7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED136FB727FAE9BF00D5B3E7 /* HomeViewController.swift */; };
 		ED6EC40027F8773300AD70C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6EC3FF27F8773300AD70C1 /* AppDelegate.swift */; };
 		ED6EC40227F8773300AD70C1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6EC40127F8773300AD70C1 /* SceneDelegate.swift */; };
 		ED6EC40927F8773500AD70C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED6EC40827F8773500AD70C1 /* Assets.xcassets */; };
-		ED6EC41827F8784D00AD70C1 /* CustomContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6EC41727F8784D00AD70C1 /* CustomContainerViewController.swift */; };
+		ED6EC41827F8784D00AD70C1 /* LinearContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6EC41727F8784D00AD70C1 /* LinearContainerViewController.swift */; };
 		ED6EC41B27F878BD00AD70C1 /* Cartography in Frameworks */ = {isa = PBXBuildFile; productRef = ED6EC41A27F878BD00AD70C1 /* Cartography */; };
 		ED6EC42727F87DBA00AD70C1 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6EC42627F87DBA00AD70C1 /* OnboardingViewController.swift */; };
 		ED6EC42927F87DC900AD70C1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6EC42827F87DC900AD70C1 /* LoginViewController.swift */; };
 		ED6EC42B27F87DD800AD70C1 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6EC42A27F87DD800AD70C1 /* ProfileViewController.swift */; };
 		ED6EC42D27F87DEF00AD70C1 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6EC42C27F87DEF00AD70C1 /* ActivityViewController.swift */; };
-		ED6EC42F27F87DF800AD70C1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6EC42E27F87DF800AD70C1 /* HomeViewController.swift */; };
 		ED6EC43127F87E5100AD70C1 /* AppFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6EC43027F87E5100AD70C1 /* AppFlowController.swift */; };
 		ED6EC43327F87FE100AD70C1 /* OnboardingFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6EC43227F87FE100AD70C1 /* OnboardingFlowController.swift */; };
 		ED6EC43527F87FF400AD70C1 /* LoginFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6EC43427F87FF400AD70C1 /* LoginFlowController.swift */; };
@@ -34,17 +38,21 @@
 /* Begin PBXFileReference section */
 		ED136FA627F8A77400D5B3E7 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		ED136FA827F8A96600D5B3E7 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
+		ED136FAB27F9E68B00D5B3E7 /* FeedFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedFlowController.swift; sourceTree = "<group>"; };
+		ED136FAF27F9E71C00D5B3E7 /* PopularViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularViewController.swift; sourceTree = "<group>"; };
+		ED136FB327F9E77D00D5B3E7 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		ED136FB527F9EA8E00D5B3E7 /* SegmentedContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedContainerViewController.swift; sourceTree = "<group>"; };
+		ED136FB727FAE9BF00D5B3E7 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		ED6EC3FC27F8773300AD70C1 /* ContainerViewController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContainerViewController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED6EC3FF27F8773300AD70C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED6EC40127F8773300AD70C1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		ED6EC40827F8773500AD70C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED6EC40D27F8773500AD70C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ED6EC41727F8784D00AD70C1 /* CustomContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomContainerViewController.swift; sourceTree = "<group>"; };
+		ED6EC41727F8784D00AD70C1 /* LinearContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearContainerViewController.swift; sourceTree = "<group>"; };
 		ED6EC42627F87DBA00AD70C1 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		ED6EC42827F87DC900AD70C1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		ED6EC42A27F87DD800AD70C1 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		ED6EC42C27F87DEF00AD70C1 /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
-		ED6EC42E27F87DF800AD70C1 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		ED6EC43027F87E5100AD70C1 /* AppFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowController.swift; sourceTree = "<group>"; };
 		ED6EC43227F87FE100AD70C1 /* OnboardingFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFlowController.swift; sourceTree = "<group>"; };
 		ED6EC43427F87FF400AD70C1 /* LoginFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFlowController.swift; sourceTree = "<group>"; };
@@ -69,6 +77,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ED136FAA27F9E64C00D5B3E7 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				ED136FAB27F9E68B00D5B3E7 /* FeedFlowController.swift */,
+				ED136FAE27F9E6A100D5B3E7 /* New */,
+				ED136FAD27F9E69500D5B3E7 /* Popular */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
+		ED136FAD27F9E69500D5B3E7 /* Popular */ = {
+			isa = PBXGroup;
+			children = (
+				ED136FAF27F9E71C00D5B3E7 /* PopularViewController.swift */,
+			);
+			path = Popular;
+			sourceTree = "<group>";
+		};
+		ED136FAE27F9E6A100D5B3E7 /* New */ = {
+			isa = PBXGroup;
+			children = (
+				ED136FB327F9E77D00D5B3E7 /* NewsViewController.swift */,
+			);
+			path = New;
+			sourceTree = "<group>";
+		};
 		ED6EC3F327F8773300AD70C1 = {
 			isa = PBXGroup;
 			children = (
@@ -130,7 +164,8 @@
 		ED6EC41627F877DF00AD70C1 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				ED6EC41727F8784D00AD70C1 /* CustomContainerViewController.swift */,
+				ED6EC41727F8784D00AD70C1 /* LinearContainerViewController.swift */,
+				ED136FB527F9EA8E00D5B3E7 /* SegmentedContainerViewController.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -170,7 +205,8 @@
 			isa = PBXGroup;
 			children = (
 				ED6EC43627F8801000AD70C1 /* HomeFlowController.swift */,
-				ED6EC42E27F87DF800AD70C1 /* HomeViewController.swift */,
+				ED136FB727FAE9BF00D5B3E7 /* HomeViewController.swift */,
+				ED136FAA27F9E64C00D5B3E7 /* Feed */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -276,17 +312,21 @@
 				ED6EC43D27F8805300AD70C1 /* MainFlowController.swift in Sources */,
 				ED6EC43727F8801100AD70C1 /* HomeFlowController.swift in Sources */,
 				ED6EC42727F87DBA00AD70C1 /* OnboardingViewController.swift in Sources */,
+				ED136FB827FAE9BF00D5B3E7 /* HomeViewController.swift in Sources */,
 				ED6EC43527F87FF400AD70C1 /* LoginFlowController.swift in Sources */,
-				ED6EC42F27F87DF800AD70C1 /* HomeViewController.swift in Sources */,
+				ED136FB627F9EA8E00D5B3E7 /* SegmentedContainerViewController.swift in Sources */,
 				ED136FA727F8A77400D5B3E7 /* LoginViewModel.swift in Sources */,
 				ED6EC43F27F881F600AD70C1 /* AppDependencies.swift in Sources */,
+				ED136FB027F9E71C00D5B3E7 /* PopularViewController.swift in Sources */,
 				ED6EC42B27F87DD800AD70C1 /* ProfileViewController.swift in Sources */,
+				ED136FAC27F9E68B00D5B3E7 /* FeedFlowController.swift in Sources */,
 				ED6EC43927F8802100AD70C1 /* ProfileFlowController.swift in Sources */,
 				ED136FA927F8A96600D5B3E7 /* OnboardingViewModel.swift in Sources */,
+				ED136FB427F9E77D00D5B3E7 /* NewsViewController.swift in Sources */,
 				ED6EC40227F8773300AD70C1 /* SceneDelegate.swift in Sources */,
 				ED6EC43127F87E5100AD70C1 /* AppFlowController.swift in Sources */,
 				ED6EC44127F88D4200AD70C1 /* ProfileViewModel.swift in Sources */,
-				ED6EC41827F8784D00AD70C1 /* CustomContainerViewController.swift in Sources */,
+				ED6EC41827F8784D00AD70C1 /* LinearContainerViewController.swift in Sources */,
 				ED6EC43327F87FE100AD70C1 /* OnboardingFlowController.swift in Sources */,
 				ED6EC43B27F8803300AD70C1 /* ActivityFlowController.swift in Sources */,
 			);

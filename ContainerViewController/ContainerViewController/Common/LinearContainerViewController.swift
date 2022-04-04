@@ -1,5 +1,5 @@
 //
-//  CustomContainerViewController.swift
+//  LinearContainerViewController.swift
 //  ContainerViewController
 //
 //  Created by Thomas Asheim Smedmann on 02/04/2022.
@@ -8,7 +8,7 @@
 import UIKit
 import Cartography
 
-class CustomContainerViewController: UIViewController {
+class LinearContainerViewController: UIViewController {
 
     private func removeChildViewControllers() {
         children.forEach { child in
@@ -93,7 +93,7 @@ class CustomContainerViewController: UIViewController {
     }
 }
 
-extension CustomContainerViewController {
+extension LinearContainerViewController {
 
     enum Transition {
         case none

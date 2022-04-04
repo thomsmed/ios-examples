@@ -13,7 +13,7 @@ protocol AppFlowController: AnyObject {
     func completedOnboarding()
 }
 
-final class DefaultAppFlowController: CustomContainerViewController {
+final class DefaultAppFlowController: LinearContainerViewController {
 
     private let appDependencies: AppDependencies
 

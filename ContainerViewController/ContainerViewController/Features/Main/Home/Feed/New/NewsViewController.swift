@@ -1,27 +1,27 @@
 //
-//  HomeViewController.swift
+//  NewsViewController.swift
 //  ContainerViewController
 //
-//  Created by Thomas Asheim Smedmann on 02/04/2022.
+//  Created by Thomas Asheim Smedmann on 03/04/2022.
 //
 
 import UIKit
 import Cartography
 
-final class HomeViewController: UIViewController {
+final class NewsViewController: UIViewController {
 
     private let label: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 24, weight: .bold)
         label.textColor = .orange
-        label.text = "Home"
+        label.text = "News"
         return label
     }()
 
     init() {
         super.init(nibName: nil, bundle: nil)
 
-        title = "Home"
+        title = "News"
     }
 
     required init?(coder: NSCoder) {
@@ -29,7 +29,7 @@ final class HomeViewController: UIViewController {
     }
 }
 
-extension HomeViewController {
+extension NewsViewController {
 
     override func loadView() {
         view = UIView()
@@ -39,7 +39,5 @@ extension HomeViewController {
         constrain(label, view) { label, container in
             label.center == container.safeAreaLayoutGuide.center
         }
-
-        view.backgroundColor = .systemGray6
     }
 }

@@ -13,6 +13,10 @@ protocol HomeFlowController: AnyObject {
 
 final class DefaultHomeFlowController: UINavigationController {
 
+    private lazy var feedFlowController = DefaultFeedFlowController(
+        appDependencies: appDependencies, flowController: self
+    )
+
     private let appDependencies: AppDependencies
 
     weak var flowController: MainFlowController?
@@ -30,7 +34,8 @@ final class DefaultHomeFlowController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setViewControllers([HomeViewController()], animated: false)
+        // setViewControllers([HomeViewController()], animated: false)
+        setViewControllers([feedFlowController], animated: false)
     }
 }
 

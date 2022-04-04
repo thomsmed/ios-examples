@@ -22,18 +22,16 @@ final class ProfileViewController: UIViewController {
 
     init(viewModel: ProfileViewModel) {
         self.viewModel = viewModel
+
         super.init(nibName: nil, bundle: nil)
+
+        title = "Profile"
+
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log out", style: .plain, target: self, action: #selector(signOut))
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        title = "Profile"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log out", style: .plain, target: self, action: #selector(signOut))
     }
 
     @objc private func signOut(_ target: UIBarButtonItem) {
@@ -49,7 +47,7 @@ extension ProfileViewController {
         view.addSubview(label)
 
         constrain(label, view) { label, container in
-            label.center == container.center
+            label.center == container.safeAreaLayoutGuide.center
         }
 
         view.backgroundColor = .systemGray6

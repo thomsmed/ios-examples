@@ -40,9 +40,10 @@ final class DefaultMainFlowController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        homeFlowController.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house"), tag: 1)
-        activityFlowController.tabBarItem = UITabBarItem(title: "Activity", image: UIImage(systemName: "list.star"), tag: 2)
-        profileFlowController.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), tag: 3)
+        // Note: Tab bar controller automatically sets the tab bar item title to the title of the associated view controller
+        homeFlowController.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "house"), tag: 1)
+        activityFlowController.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "list.star"), tag: 2)
+        profileFlowController.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "person"), tag: 3)
 
         setViewControllers([
             homeFlowController,
