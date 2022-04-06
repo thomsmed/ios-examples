@@ -59,7 +59,7 @@ final class OnboardingViewController: UIViewController {
         transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil
     )
 
-    let viewModel: OnboardingViewModel
+    private let viewModel: OnboardingViewModel
 
     private lazy var pages: [PageViewController] = {
         let pageOne = PageViewController()

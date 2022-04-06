@@ -18,7 +18,7 @@ final class ProfileViewController: UIViewController {
         return label
     }()
 
-    let viewModel: ProfileViewModel
+    private let viewModel: ProfileViewModel
 
     init(viewModel: ProfileViewModel) {
         self.viewModel = viewModel

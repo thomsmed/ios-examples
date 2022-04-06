@@ -25,7 +25,7 @@ final class LoginViewController: UIViewController {
         return button
     }()
 
-    let viewModel: LoginViewModel
+    private let viewModel: LoginViewModel
 
     init(viewModel: LoginViewModel) {
         self.viewModel = viewModel

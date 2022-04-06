@@ -24,7 +24,7 @@ final class DefaultSceneFlowController: LinearContainerViewController {
 
     private let appDependencies: AppDependencies
 
-    weak var flowController: AppFlowController?
+    private weak var flowController: AppFlowController?
 
     private lazy var onboardingFlowController = DefaultOnboardingFlowController(
         appDependencies: appDependencies, flowController: self

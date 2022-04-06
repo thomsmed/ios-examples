@@ -11,24 +11,24 @@ import Cartography
 class LinearContainerViewController: UIViewController {
 
     private func removeChildViewControllers() {
-        children.forEach { child in
-            child.willMove(toParent: nil)
+        children.forEach { viewController in
+            viewController.willMove(toParent: nil)
 
-            child.view.removeFromSuperview()
+            viewController.view.removeFromSuperview()
 
-            child.removeFromParent()
+            viewController.removeFromParent()
         }
     }
 
-    private func setViewController(_ viewController: UIViewController) {
+    private func setChildViewController(_ viewController: UIViewController) {
         removeChildViewControllers()
 
         addChild(viewController)
 
         view.addSubview(viewController.view)
 
-        constrain(viewController.view, view) { child, container in
-            child.edges == container.edges
+        constrain(viewController.view, view) { view, container in
+            view.edges == container.edges
         }
 
         viewController.didMove(toParent: self)
@@ -36,7 +36,7 @@ class LinearContainerViewController: UIViewController {
 
     private func flipTransition(to viewController: UIViewController) {
         guard let previousViewController = children.first else {
-            return setViewController(viewController)
+            return setChildViewController(viewController)
         }
 
         addChild(viewController)
@@ -65,7 +65,7 @@ class LinearContainerViewController: UIViewController {
 
     private func dissolveTransition(to viewController: UIViewController) {
         guard let previousViewController = children.first else {
-            return setViewController(viewController)
+            return setChildViewController(viewController)
         }
 
         addChild(viewController)
@@ -104,7 +104,7 @@ extension LinearContainerViewController {
     func setViewController(_ viewController: UIViewController, using transition: Transition) {
         switch transition {
         case .none:
-            setViewController(viewController)
+            setChildViewController(viewController)
         case .flip:
             flipTransition(to: viewController)
         case .dissolve:

@@ -19,7 +19,7 @@ final class DefaultHomeFlowController: UINavigationController {
 
     private let appDependencies: AppDependencies
 
-    weak var flowController: MainFlowController?
+    private weak var flowController: MainFlowController?
 
     init(appDependencies: AppDependencies, flowController: MainFlowController) {
         self.appDependencies = appDependencies
