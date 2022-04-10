@@ -5,3 +5,4 @@
 - [Transition images to full screen + zoomable image](FullScreenImageTransition)
 - [Stretchy table header view](StretchyTableViewHeader)
 - [Shared authentication state](SharedAppAuthState)
+- [Custom Container View Controller](ContainerViewController)
