@@ -18,10 +18,18 @@ final class LoginViewController: UIViewController {
         return label
     }()
 
-    private let button: UIButton = {
+    private let signInButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Sign in", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
+        return button
+    }()
+
+    private let registerButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Register", for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
+        button.setTitleColor(.secondaryLabel, for: .normal)
         return button
     }()
 
@@ -29,7 +37,10 @@ final class LoginViewController: UIViewController {
 
     init(viewModel: LoginViewModel) {
         self.viewModel = viewModel
+
         super.init(nibName: nil, bundle: nil)
+
+        title = "Login"
     }
 
     required init?(coder: NSCoder) {
@@ -39,11 +50,16 @@ final class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        button.addTarget(self, action: #selector(signIn), for: .primaryActionTriggered)
+        signInButton.addTarget(self, action: #selector(signIn), for: .primaryActionTriggered)
+        registerButton.addTarget(self, action: #selector(register), for: .primaryActionTriggered)
     }
 
     @objc private func signIn(_ target: UIButton) {
         viewModel.signIn()
+    }
+
+    @objc private func register(_ target: UIButton) {
+        viewModel.register()
     }
 }
 
@@ -53,14 +69,18 @@ extension LoginViewController {
         view = UIView()
 
         view.addSubview(label)
-        view.addSubview(button)
+        view.addSubview(signInButton)
+        view.addSubview(registerButton)
 
-        constrain(label, button, view) { label, button, container in
+        constrain(label, signInButton, registerButton, view) { label, signInButton, registerButton, container in
             label.centerX == container.centerX
             label.centerY == container.centerY - 120
 
-            button.centerX == container.centerX
-            button.centerY == container.centerY + 20
+            signInButton.centerX == container.centerX
+            signInButton.centerY == container.centerY + 20
+
+            registerButton.top == signInButton.bottom + 10
+            registerButton.centerX == container.centerX
         }
 
         view.backgroundColor = .systemGray4

@@ -8,6 +8,7 @@
 import UIKit
 
 protocol LoginFlowController: AnyObject {
+    func register()
     func signedIn()
 }
 
@@ -38,6 +39,13 @@ final class DefaultLoginFlowController: UINavigationController {
 }
 
 extension DefaultLoginFlowController: LoginFlowController {
+
+    func register() {
+        let registerViewController = RegisterViewController(
+            viewModel: RegisterViewModel(appDependencies: appDependencies, flowController: self)
+        )
+        pushViewController(registerViewController, animated: true)
+    }
 
     func signedIn() {
         flowController?.signedIn()

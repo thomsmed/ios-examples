@@ -1,13 +1,13 @@
 //
-//  LoginViewModel.swift
+//  RegisterViewModel.swift
 //  ContainerViewController
 //
-//  Created by Thomas Asheim Smedmann on 02/04/2022.
+//  Created by Thomas Asheim Smedmann on 10/04/2022.
 //
 
 import Foundation
 
-final class LoginViewModel {
+final class RegisterViewModel {
 
     private let appDependencies: AppDependencies
 
@@ -19,10 +19,10 @@ final class LoginViewModel {
     }
 }
 
-extension LoginViewModel {
+extension RegisterViewModel {
 
-    func signIn() {
-        // Sign in etc, then:
+    func register() {
+        // Register etc, then:
         flowController?.signedIn()
     }
 }
