@@ -43,6 +43,7 @@ class LinearContainerViewController: UIViewController {
 
         previousViewController.willMove(toParent: nil)
 
+        // Alternative 1 - Using Auto Layout Constraints:
         view.addSubview(viewController.view)
 
         constrain(viewController.view, view) { view, container in
@@ -56,11 +57,24 @@ class LinearContainerViewController: UIViewController {
             to: viewController.view,
             duration: 1,
             options: [.transitionFlipFromRight]
-        )
+        ) { completed in
+            previousViewController.removeFromParent()
+            viewController.didMove(toParent: self)
+        }
 
-        previousViewController.removeFromParent()
-
-        viewController.didMove(toParent: self)
+        // Alternative 2 - Manually setting frames:
+//        viewController.view.frame = view.frame
+//
+//        transition(
+//            from: previousViewController,
+//            to: viewController,
+//            duration: 1,
+//            options: [.transitionFlipFromRight],
+//            animations: nil
+//        ) { completed in
+//            previousViewController.removeFromParent()
+//            viewController.didMove(toParent: self)
+//        }
     }
 
     private func dissolveTransition(to viewController: UIViewController) {
@@ -72,6 +86,7 @@ class LinearContainerViewController: UIViewController {
 
         previousViewController.willMove(toParent: nil)
 
+        // Alternative 1 - Using Auto Layout Constraints:
         view.addSubview(viewController.view)
 
         constrain(viewController.view, view) { view, container in
@@ -85,11 +100,24 @@ class LinearContainerViewController: UIViewController {
             to: viewController.view,
             duration: 1,
             options: [.transitionCrossDissolve]
-        )
+        ) { completed in
+            previousViewController.removeFromParent()
+            viewController.didMove(toParent: self)
+        }
 
-        previousViewController.removeFromParent()
-
-        viewController.didMove(toParent: self)
+        // Alternative 2 - Manually setting frames:
+//        viewController.view.frame = view.frame
+//
+//        transition(
+//            from: previousViewController,
+//            to: viewController,
+//            duration: 1,
+//            options: [.transitionCrossDissolve],
+//            animations: nil
+//        ) { completed in
+//            previousViewController.removeFromParent()
+//            viewController.didMove(toParent: self)
+//        }
     }
 }
 
