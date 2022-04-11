@@ -1,5 +1,5 @@
 //
-//  HostedChatViewController.swift
+//  HostChatViewController.swift
 //  BLEChat
 //
 //  Created by Thomas Asheim Smedmann on 23/01/2022.
@@ -8,7 +8,8 @@
 import UIKit
 import Combine
 
-class HostedChatViewController: UIViewController {
+final class HostChatViewController: UIViewController {
+
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.separatorStyle = .none
@@ -45,12 +46,50 @@ class HostedChatViewController: UIViewController {
     private var messagesSub: AnyCancellable?
     private var reactionsSub: AnyCancellable?
 
+    override func loadView() {
+        super.loadView()
+
+        view.addSubview(tableView)
+
+        tableView.topToSuperview()
+        tableView.leadingToSuperview()
+        tableView.trailingToSuperview()
+
+        submitMessageButton.setHugging(.defaultHigh, for: .horizontal)
+        let horizontalStackView = UIStackView(arrangedSubviews: [messageInputTextField, submitMessageButton])
+        horizontalStackView.axis = .horizontal
+        horizontalStackView.spacing = 8
+
+        let verticalStackView = UIStackView(arrangedSubviews: [reactionsStackView, horizontalStackView])
+        verticalStackView.axis = .vertical
+        verticalStackView.spacing = 8
+
+        view.addSubview(verticalStackView)
+
+        verticalStackView.topToBottom(of: tableView)
+        verticalStackView.leadingToSuperview(offset: 8)
+        verticalStackView.trailingToSuperview(offset: 8)
+        verticalStackView.bottomToSuperview(offset: -8, usingSafeArea: true)
+
+        view.backgroundColor = .systemBackground
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
         title = "Chat (Hosting)"
+
         navigationItem.setLeftBarButton(UIBarButtonItem(systemItem: .close, primaryAction: UIAction(handler: close(_:))), animated: true)
-        configureUI()
-        configureBehaviour()
+
+        tableView.dataSource = self
+        tableView.register(ChatBubbleTableViewCell.self, forCellReuseIdentifier: "cell")
+
+        submitMessageButton.addAction(UIAction(handler: submitMessage(_:)), for: .primaryActionTriggered)
+
+        reactionsStackView.arrangedSubviews.forEach { view in
+            guard let  button = view as? UIButton else { return }
+            button.addAction(UIAction(handler: submitReaction(_:)), for: .primaryActionTriggered)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -66,41 +105,6 @@ class HostedChatViewController: UIViewController {
         tearDownSubscriptions()
         tearDownObservers()
         Dependencies.chatHost.stopBroadcast()
-    }
-    
-    private func configureUI() {
-        view.backgroundColor = .systemBackground
-        view.addSubview(tableView)
-        
-        tableView.topToSuperview()
-        tableView.leadingToSuperview()
-        tableView.trailingToSuperview()
-        
-        submitMessageButton.setHugging(.defaultHigh, for: .horizontal)
-        let horizontalStackView = UIStackView(arrangedSubviews: [messageInputTextField, submitMessageButton])
-        horizontalStackView.axis = .horizontal
-        horizontalStackView.spacing = 8
-        
-        let verticalStackView = UIStackView(arrangedSubviews: [reactionsStackView, horizontalStackView])
-        verticalStackView.axis = .vertical
-        verticalStackView.spacing = 8
-        
-        view.addSubview(verticalStackView)
-        
-        verticalStackView.topToBottom(of: tableView)
-        verticalStackView.leadingToSuperview(offset: 8)
-        verticalStackView.trailingToSuperview(offset: 8)
-        verticalStackView.bottomToSuperview(offset: -8, usingSafeArea: true)
-    }
-
-    private func configureBehaviour() {
-        tableView.dataSource = self
-        tableView.register(ChatBubbleTableViewCell.self, forCellReuseIdentifier: "cell")
-        submitMessageButton.addAction(UIAction(handler: submitMessage(_:)), for: .primaryActionTriggered)
-        reactionsStackView.arrangedSubviews.forEach { view in
-            guard let  button = view as? UIButton else { return }
-            button.addAction(UIAction(handler: submitReaction(_:)), for: .primaryActionTriggered)
-        }
     }
     
     private func close(_ action: UIAction) {
@@ -120,6 +124,7 @@ class HostedChatViewController: UIViewController {
                                           style: .default))
             self.present(alert, animated: true)
         })
+
         messagesSub = Dependencies.chatHost.messages.receive(on: DispatchQueue.main).sink(receiveValue: { [weak self] message in
             guard let self = self else { return }
             let indexPath = IndexPath(row: self.messages.count, section: 0)
@@ -127,6 +132,7 @@ class HostedChatViewController: UIViewController {
             self.tableView.insertRows(at: [indexPath], with: .bottom)
             self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
         })
+
         reactionsSub = Dependencies.chatHost.reactions.receive(on: DispatchQueue.main).sink(receiveValue: { [weak self] reaction in
             self?.animateReceived(reaction: reaction)
         })
@@ -139,10 +145,12 @@ class HostedChatViewController: UIViewController {
     }
     
     private func setupObservers() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(keyboardWillChangeFrame),
-                                               name: UIResponder.keyboardWillChangeFrameNotification,
-                                               object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillChangeFrame),
+            name: UIResponder.keyboardWillChangeFrameNotification,
+            object: nil
+        )
     }
 
     private func tearDownObservers() {
@@ -212,7 +220,8 @@ class HostedChatViewController: UIViewController {
 
 // MARK: UITableViewDataSource
 
-extension HostedChatViewController: UITableViewDataSource {
+extension HostChatViewController: UITableViewDataSource {
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         messages.count
     }

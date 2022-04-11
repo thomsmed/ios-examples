@@ -9,6 +9,7 @@ import Foundation
 import CoreBluetooth
 
 struct ChatServiceFactory {
+
     // Characteristic Format String Descriptor for Incoming Reactions Characteristic and Outgoing Reactions Characteristic
     // More Info in the Core BLE Specification: https://www.bluetooth.com/specifications/specs/core-specification/
     // TODO: Link/pointer to where this is in the specification
@@ -21,11 +22,13 @@ struct ChatServiceFactory {
     ]
     
     static let incomingReactionCharacteristic: CBMutableCharacteristic = {
-        let characteristic = CBMutableCharacteristic(type: AssignedNumbers.chatServiceIncomingReactionsCharacteristic,
-                                                     properties: [.write, .writeWithoutResponse],
-                                                     // Dynamic value - require implementation of CBPeripheralManagerDelegate.peripheralManager(_:, didReceiveRead:)
-                                                     value: nil,
-                                                     permissions: [.writeable]) // Do not require encryption
+        let characteristic = CBMutableCharacteristic(
+            type: AssignedNumbers.chatServiceIncomingReactionsCharacteristic,
+            properties: [.write, .writeWithoutResponse],
+            // Dynamic value - require implementation of CBPeripheralManagerDelegate.peripheralManager(_:, didReceiveRead:)
+            value: nil,
+            permissions: [.writeable] // Do not require encryption
+        )
         characteristic.descriptors = [
             CBMutableDescriptor(type: CBUUID(string: CBUUIDCharacteristicUserDescriptionString), value: "IncomingReactions"),
             CBMutableDescriptor(type: CBUUID(string: CBUUIDCharacteristicFormatString), value: Data(characteristicFormatStringValue))
@@ -34,11 +37,13 @@ struct ChatServiceFactory {
     }()
     
     static let outgoingReactionsCharacteristic: CBMutableCharacteristic = {
-        let characteristic = CBMutableCharacteristic(type: AssignedNumbers.chatServiceOutgoingReactionsCharacteristic,
-                                                     properties: [.read, .notify],
-                                                     // Dynamic value - require implementation of CBPeripheralManagerDelegate.peripheralManager(_:, didReceiveRead:)
-                                                     value: nil,
-                                                     permissions: [.readable]) // Do not require encryption
+        let characteristic = CBMutableCharacteristic(
+            type: AssignedNumbers.chatServiceOutgoingReactionsCharacteristic,
+            properties: [.read, .notify],
+            // Dynamic value - require implementation of CBPeripheralManagerDelegate.peripheralManager(_:, didReceiveRead:)
+            value: nil,
+            permissions: [.readable] // Do not require encryption
+        )
         characteristic.descriptors = [
             CBMutableDescriptor(type: CBUUID(string: CBUUIDCharacteristicUserDescriptionString), value: "OutgoingReactions"),
             CBMutableDescriptor(type: CBUUID(string: CBUUIDCharacteristicFormatString), value: Data(characteristicFormatStringValue))
@@ -48,11 +53,13 @@ struct ChatServiceFactory {
     
     static func make(with psm: CBL2CAPPSM) -> CBMutableService {
         let mutableService = CBMutableService(type: AssignedNumbers.chatService, primary: true)
-        let l2capPSMCharacteristic = CBMutableCharacteristic(type: AssignedNumbers.chatServiceL2CAPPSMCharacteristic,
-                                                             properties: [.read],
-                                                             // Static value - do not require implementation of CBPeripheralManagerDelegate.peripheralManager(_:, didReceiveRead:)
-                                                             value: Data(withUnsafeBytes(of: psm, Array.init)),
-                                                             permissions: [.readEncryptionRequired]) // Require encryption
+        let l2capPSMCharacteristic = CBMutableCharacteristic(
+            type: AssignedNumbers.chatServiceL2CAPPSMCharacteristic,
+            properties: [.read],
+            // Static value - do not require implementation of CBPeripheralManagerDelegate.peripheralManager(_:, didReceiveRead:)
+            value: Data(withUnsafeBytes(of: psm, Array.init)),
+            permissions: [.readEncryptionRequired] // Require encryption
+        )
         mutableService.characteristics = [
             ChatServiceFactory.incomingReactionCharacteristic,
             ChatServiceFactory.outgoingReactionsCharacteristic,

@@ -29,6 +29,7 @@ enum ChatHostScannerState {
 protocol ChatHostScanner: AnyObject {
     var state: AnyPublisher<ChatHostScannerState, Never> { get }
     var discoveries: AnyPublisher<ChatHostDiscovery, Never> { get }
+
     func startScan()
     func stopScan()
     func connect(to uuid: UUID, _ completion: @escaping (Result<ChatHostConnection, Error>) -> Void)

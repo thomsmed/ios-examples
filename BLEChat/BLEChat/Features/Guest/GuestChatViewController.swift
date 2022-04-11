@@ -1,5 +1,5 @@
 //
-//  JoinedChatViewController.swift
+//  GuestChatViewController.swift
 //  BLEChat
 //
 //  Created by Thomas Asheim Smedmann on 23/01/2022.
@@ -8,7 +8,8 @@
 import UIKit
 import Combine
 
-class JoinedChatViewController: UIViewController {
+final class GuestChatViewController: UIViewController {
+
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.separatorStyle = .none
@@ -56,12 +57,49 @@ class JoinedChatViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    override func loadView() {
+        super.loadView()
+
+        view.addSubview(tableView)
+
+        tableView.topToSuperview()
+        tableView.leadingToSuperview()
+        tableView.trailingToSuperview()
+
+        submitMessageButton.setHugging(.defaultHigh, for: .horizontal)
+        let horizontalStackView = UIStackView(arrangedSubviews: [messageInputTextField, submitMessageButton])
+        horizontalStackView.axis = .horizontal
+        horizontalStackView.spacing = 8
+
+        let verticalStackView = UIStackView(arrangedSubviews: [reactionsStackView, horizontalStackView])
+        verticalStackView.axis = .vertical
+        verticalStackView.spacing = 8
+
+        view.addSubview(verticalStackView)
+
+        verticalStackView.topToBottom(of: tableView)
+        verticalStackView.leadingToSuperview(offset: 8)
+        verticalStackView.trailingToSuperview(offset: 8)
+        verticalStackView.bottomToSuperview(offset: -8, usingSafeArea: true)
+
+        view.backgroundColor = .systemBackground
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         title = chatHost.name
-        configureUI()
-        configureBehaviour()
+
+        tableView.dataSource = self
+        tableView.register(ChatBubbleTableViewCell.self, forCellReuseIdentifier: "cell")
+
+        submitMessageButton.addAction(UIAction(handler: submitMessage(_:)), for: .primaryActionTriggered)
+
+        reactionsStackView.arrangedSubviews.forEach { view in
+            guard let  button = view as? UIButton else { return }
+            button.addAction(UIAction(handler: submitReaction(_:)), for: .primaryActionTriggered)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -86,42 +124,7 @@ class JoinedChatViewController: UIViewController {
         tearDownObservers()
         connection?.disconnect()
     }
-    
-    private func configureUI() {
-        view.backgroundColor = .systemBackground
-        view.addSubview(tableView)
-        
-        tableView.topToSuperview()
-        tableView.leadingToSuperview()
-        tableView.trailingToSuperview()
-        
-        submitMessageButton.setHugging(.defaultHigh, for: .horizontal)
-        let horizontalStackView = UIStackView(arrangedSubviews: [messageInputTextField, submitMessageButton])
-        horizontalStackView.axis = .horizontal
-        horizontalStackView.spacing = 8
-        
-        let verticalStackView = UIStackView(arrangedSubviews: [reactionsStackView, horizontalStackView])
-        verticalStackView.axis = .vertical
-        verticalStackView.spacing = 8
-        
-        view.addSubview(verticalStackView)
-        
-        verticalStackView.topToBottom(of: tableView)
-        verticalStackView.leadingToSuperview(offset: 8)
-        verticalStackView.trailingToSuperview(offset: 8)
-        verticalStackView.bottomToSuperview(offset: -8, usingSafeArea: true)
-    }
 
-    private func configureBehaviour() {
-        tableView.dataSource = self
-        tableView.register(ChatBubbleTableViewCell.self, forCellReuseIdentifier: "cell")
-        submitMessageButton.addAction(UIAction(handler: submitMessage(_:)), for: .primaryActionTriggered)
-        reactionsStackView.arrangedSubviews.forEach { view in
-            guard let  button = view as? UIButton else { return }
-            button.addAction(UIAction(handler: submitReaction(_:)), for: .primaryActionTriggered)
-        }
-    }
-    
     private func setupSubscriptions() {
         messagesSub = connection?.messages.receive(on: DispatchQueue.main).sink(receiveValue: { [weak self] message in
             guard let self = self else { return }
@@ -130,6 +133,7 @@ class JoinedChatViewController: UIViewController {
             self.tableView.insertRows(at: [indexPath], with: .bottom)
             self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
         })
+
         reactionsSub = connection?.reactions.receive(on: DispatchQueue.main).sink(receiveValue: { [weak self] reaction in
             self?.animateReceived(reaction: reaction)
         })
@@ -141,10 +145,12 @@ class JoinedChatViewController: UIViewController {
     }
     
     private func setupObservers() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(keyboardWillChangeFrame),
-                                               name: UIResponder.keyboardWillChangeFrameNotification,
-                                               object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillChangeFrame),
+            name: UIResponder.keyboardWillChangeFrameNotification,
+            object: nil
+        )
     }
 
     private func tearDownObservers() {
@@ -214,7 +220,8 @@ class JoinedChatViewController: UIViewController {
 
 // MARK: UITableViewDataSource
 
-extension JoinedChatViewController: UITableViewDataSource {
+extension GuestChatViewController: UITableViewDataSource {
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         messages.count
     }

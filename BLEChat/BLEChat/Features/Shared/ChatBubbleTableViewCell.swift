@@ -13,7 +13,8 @@ struct ChatBubbleMessage {
     let incoming: Bool
 }
 
-class ChatBubbleTableViewCell: UITableViewCell {
+final class ChatBubbleTableViewCell: UITableViewCell {
+
     private let wrapperView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 8
@@ -32,7 +33,10 @@ class ChatBubbleTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        configureUI()
+
+        selectionStyle = .none
+
+        placeContent(in: contentView)
     }
     
     @available(*, unavailable)
@@ -40,9 +44,10 @@ class ChatBubbleTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func configureUI() {
-        selectionStyle = .none
-        contentView.addSubview(wrapperView)
+    private func placeContent(in view: UIView) {
+
+        view.addSubview(wrapperView)
+
         wrapperView.addSubview(messageLabel)
         
         messageLabel.edgesToSuperview(insets: .uniform(8))

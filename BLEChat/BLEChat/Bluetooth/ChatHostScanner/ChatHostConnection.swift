@@ -19,6 +19,7 @@ protocol ChatHostConnection: AnyObject {
     var state: AnyPublisher<ChatHostConnectionState, Never> { get }
     var messages: AnyPublisher<String, Never> { get }
     var reactions: AnyPublisher<String, Never> { get }
+
     func submit(message: String)
     func submit(reaction: String)
     func disconnect()
