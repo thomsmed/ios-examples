@@ -8,7 +8,8 @@
 import UIKit
 import Combine
 
-class JoinViewController: UITableViewController {
+final class JoinViewController: UITableViewController {
+
     private let lastSeenFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH.mm"
@@ -20,11 +21,22 @@ class JoinViewController: UITableViewController {
     private var stateSub: AnyCancellable?
     private var chatHostsSub: AnyCancellable?
 
+    override func loadView() {
+        super.loadView()
+
+        view.backgroundColor = .systemBackground
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
         title = "Who to chat with?"
-        configureUI()
-        configureBehaviour()
+
+        navigationItem.setLeftBarButton(UIBarButtonItem(systemItem: .close, primaryAction: UIAction(handler: close(_:))), animated: true)
+
+        refreshControl = UIRefreshControl(frame: .zero, primaryAction: UIAction(handler: refresh(_:)))
+
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -38,16 +50,6 @@ class JoinViewController: UITableViewController {
         super.viewDidDisappear(animated)
         tearDownSubscriptions()
         Dependencies.chatHostScanner.stopScan()
-    }
-    
-    private func configureUI() {
-        view.backgroundColor = .systemBackground
-    }
-
-    private func configureBehaviour() {
-        navigationItem.setLeftBarButton(UIBarButtonItem(systemItem: .close, primaryAction: UIAction(handler: close(_:))), animated: true)
-        refreshControl = UIRefreshControl(frame: .zero, primaryAction: UIAction(handler: refresh(_:)))
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
     
     private func setupSubscriptions() {
@@ -66,6 +68,7 @@ class JoinViewController: UITableViewController {
                 self.present(alert, animated: true)
             }
         })
+
         chatHostsSub = Dependencies.chatHostScanner.discoveries.receive(on: DispatchQueue.main).sink(receiveValue: { [weak self] discovery in
             guard let self = self else { return }
             switch discovery {
@@ -106,15 +109,17 @@ class JoinViewController: UITableViewController {
 // MARK: UITableViewDelegate
 
 extension JoinViewController {
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let chatHost = chatHosts[indexPath.row]
-        navigationController?.pushViewController(JoinedChatViewController(chatHost: chatHost), animated: true)
+        navigationController?.pushViewController(GuestChatViewController(chatHost: chatHost), animated: true)
     }
 }
 
 // MARK: UITableViewDataSource
 
 extension JoinViewController {
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return chatHosts.count
     }

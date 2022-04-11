@@ -10,6 +10,7 @@ import CoreBluetooth
 import Combine
 
 final class CoreBluetoothChatHostConnection: NSObject {
+
     private let serialQueue: DispatchQueue
     private let centralManager: CBCentralManager
     
@@ -46,6 +47,7 @@ final class CoreBluetoothChatHostConnection: NSObject {
 // MARK: CBPeripheralDelegate
 
 extension CoreBluetoothChatHostConnection: CBPeripheralDelegate {
+
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         didEncounterErrors = error != nil
         let services = peripheral.services ?? []
@@ -206,6 +208,7 @@ extension CoreBluetoothChatHostConnection: CBPeripheralDelegate {
 // MARK: StreamDelegate
 
 extension CoreBluetoothChatHostConnection: StreamDelegate {
+
     // More about working with streams here:
     // https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Streams/Streams.html#//apple_ref/doc/uid/10000188-SW1
     func stream(_ stream: Stream, handle event: Stream.Event) {
@@ -248,6 +251,7 @@ extension CoreBluetoothChatHostConnection: StreamDelegate {
 // MARK: ChatHostConnection
 
 extension CoreBluetoothChatHostConnection: ChatHostConnection {
+
     var state: AnyPublisher<ChatHostConnectionState, Never> {
         stateSubject.eraseToAnyPublisher()
     }

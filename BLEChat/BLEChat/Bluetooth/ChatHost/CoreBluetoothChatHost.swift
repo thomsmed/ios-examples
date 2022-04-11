@@ -27,11 +27,16 @@ fileprivate extension CBManagerState {
 // MARK: CoreBluetoothChatHost
 
 final class CoreBluetoothChatHost: NSObject {
-    private lazy var serialQueue = DispatchQueue(label: "\(String(describing: CoreBluetoothChatHostScanner.self)).\(String(describing: DispatchQueue.self))",
-                                                 qos: .userInitiated,
-                                                 attributes: [],
-                                                 target: .global(qos: .userInitiated))
+
+    private lazy var serialQueue = DispatchQueue(
+        label: "\(String(describing: CoreBluetoothChatHostScanner.self)).\(String(describing: DispatchQueue.self))",
+        qos: .userInitiated,
+        attributes: [],
+        target: .global(qos: .userInitiated)
+    )
+
     private lazy var peripheralManager = CBPeripheralManager(delegate: self, queue: serialQueue)
+
     private lazy var stateSubject = CurrentValueSubject<ChatHostState, Never>(peripheralManager.state.asBPState)
     
     private let reactionsSubject = PassthroughSubject<String, Never>()
@@ -187,6 +192,7 @@ extension CoreBluetoothChatHost: CBPeripheralManagerDelegate {
 // MARK: StreamDelegate
 
 extension CoreBluetoothChatHost: StreamDelegate {
+
     // More about working with streams here:
     // https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Streams/Streams.html#//apple_ref/doc/uid/10000188-SW1
     func stream(_ stream: Stream, handle eventCode: Stream.Event) {
@@ -229,6 +235,7 @@ extension CoreBluetoothChatHost: StreamDelegate {
 // MARK: BluetoothPeripheralManager
 
 extension CoreBluetoothChatHost: ChatHost {
+
     var state: AnyPublisher<ChatHostState, Never> {
         stateSubject.eraseToAnyPublisher()
     }

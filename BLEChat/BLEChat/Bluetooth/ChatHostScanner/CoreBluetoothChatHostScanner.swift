@@ -27,12 +27,17 @@ fileprivate extension CBManagerState {
 // MARK: CoreBluetoothChatHostScanner
 
 final class CoreBluetoothChatHostScanner: NSObject {
-    private lazy var serialQueue = DispatchQueue(label: "\(String(describing: CoreBluetoothChatHostScanner.self)).\(String(describing: DispatchQueue.self))",
-                                                 qos: .userInitiated,
-                                                 attributes: [],
-                                                 target: .global(qos: .userInitiated))
+
+    private lazy var serialQueue = DispatchQueue(
+        label: "\(String(describing: CoreBluetoothChatHostScanner.self)).\(String(describing: DispatchQueue.self))",
+        qos: .userInitiated,
+        attributes: [],
+        target: .global(qos: .userInitiated)
+    )
+
     private lazy var centralManager = CBCentralManager(delegate: self,
                                                        queue: serialQueue)
+
     private lazy var stateSubject = CurrentValueSubject<ChatHostScannerState, Never>(centralManager.state.asBMState)
     
     private let discoveriesSubject = PassthroughSubject<ChatHostDiscovery, Never>()
@@ -45,6 +50,7 @@ final class CoreBluetoothChatHostScanner: NSObject {
 // MARK: CBCentralManagerDelegate
 
 extension CoreBluetoothChatHostScanner: CBCentralManagerDelegate {
+
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         stateSubject.send(central.state.asBMState)
     }
@@ -92,6 +98,7 @@ extension CoreBluetoothChatHostScanner: CBCentralManagerDelegate {
 // MARK: BluetoothCentralManager
 
 extension CoreBluetoothChatHostScanner: ChatHostScanner {
+
     var state: AnyPublisher<ChatHostScannerState, Never> {
         stateSubject.eraseToAnyPublisher()
     }
