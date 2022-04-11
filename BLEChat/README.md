@@ -1,2 +1,1 @@
-#  BLE (Bluetooth Low Energy) Chat, showcasing the Core Bluetooth framework
-
+#  Bluetooth Low Energy (BLE) Chat App
