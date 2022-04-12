@@ -46,7 +46,7 @@ final class CoreBluetoothChatHostScanner: NSObject {
     private var discoveredPeripherals: [CBPeripheral] = []
 
     private var chatHostConnectionCompletion: ((Result<ChatHostConnection, Error>) -> Void)?
-    private var internalPeripheralConnection: CoreBluetoothChatHostConnection?
+    private var coreBluetoothChatHostConnection: CoreBluetoothChatHostConnection?
 }
 
 // MARK: CBCentralManagerDelegate
@@ -67,25 +67,35 @@ extension CoreBluetoothChatHostScanner: CBCentralManagerDelegate {
             discoveredPeripherals[index] = peripheral
             // If the device has been connected to before, it might have been assigned a different name than first specified in the advertisement data
             let chatBroadcastingName = advertisementData[CBAdvertisementDataLocalNameKey] as? String
-            discoveriesSubject.send(.rediscovered(DiscoveredChatHost(name: chatBroadcastingName ?? peripheral.name,
-                                                                     uuid: peripheral.identifier,
-                                                                     lastSeen: Date())))
+            discoveriesSubject.send(.rediscovered(
+                DiscoveredChatHost(
+                    name: chatBroadcastingName ?? peripheral.name,
+                    uuid: peripheral.identifier,
+                    lastSeen: Date()
+                )
+            ))
         } else {
             discoveredPeripherals.append(peripheral)
             // If the device has been connected to before, it might have been assigned a different name than first specified in the advertisement data
             let chatBroadcastingName = advertisementData[CBAdvertisementDataLocalNameKey] as? String
-            discoveriesSubject.send(.discovered(DiscoveredChatHost(name: chatBroadcastingName ?? peripheral.name,
-                                                                   uuid: peripheral.identifier,
-                                                                   lastSeen: Date())))
+            discoveriesSubject.send(.discovered(
+                DiscoveredChatHost(
+                    name: chatBroadcastingName ?? peripheral.name,
+                    uuid: peripheral.identifier,
+                    lastSeen: Date()
+                )
+            ))
         }
     }
 
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
-        let internalPeripheralConnection = CoreBluetoothChatHostConnection(serialQueue: self.serialQueue,
-                                                                           centralManager: self.centralManager)
-        internalPeripheralConnection.connected(to: peripheral)
-        self.internalPeripheralConnection = internalPeripheralConnection
-        chatHostConnectionCompletion?(.success(internalPeripheralConnection))
+        let coreBluetoothChatHostConnection = CoreBluetoothChatHostConnection(
+            serialQueue: self.serialQueue,
+            centralManager: self.centralManager
+        )
+        coreBluetoothChatHostConnection.connected(to: peripheral)
+        self.coreBluetoothChatHostConnection = coreBluetoothChatHostConnection
+        chatHostConnectionCompletion?(.success(coreBluetoothChatHostConnection))
     }
 
     func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
@@ -93,11 +103,11 @@ extension CoreBluetoothChatHostScanner: CBCentralManagerDelegate {
     }
 
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
-        internalPeripheralConnection?.disconnected(from: peripheral, with: error)
+        coreBluetoothChatHostConnection?.disconnected(from: peripheral, with: error)
     }
 }
 
-// MARK: BluetoothCentralManager
+// MARK: ChatHostScanner
 
 extension CoreBluetoothChatHostScanner: ChatHostScanner {
 
@@ -142,7 +152,7 @@ extension CoreBluetoothChatHostScanner: ChatHostScanner {
             }
 
             // Cancel any existing connections
-            self.internalPeripheralConnection?.disconnect()
+            self.coreBluetoothChatHostConnection?.disconnect()
 
             guard let peripheral = self.discoveredPeripherals.first(where: { discoveredPeripheral in
                 discoveredPeripheral.identifier == uuid
