@@ -77,7 +77,7 @@ extension CoreBluetoothChatHostConnection: CBPeripheralDelegate {
 
     func peripheral(_ peripheral: CBPeripheral, didModifyServices invalidatedServices: [CBService]) {
         // This is called when a disconnection occur or when the peripheral does not broadcast these services anymore.
-        // When an app, acting as a peripheral, goes into background mode, the system (iOS) removes services added by the app from the broadcast.
+        // NOTE: When an app, acting as a peripheral, goes into background mode, the system (iOS) removes services added by the app from the broadcast.
         guard self.stateSubject.value == .connected else { return }
         centralManager.cancelPeripheralConnection(peripheral)
     }
@@ -233,7 +233,9 @@ extension CoreBluetoothChatHostConnection: StreamDelegate {
             }
             let data = Data(buffer: UnsafeMutableBufferPointer(start: buffer, count: totalNumberOfBytesRead))
             guard let message = String(data: data, encoding: .utf8) else { return }
-            messagesSubject.send(message)
+            serialQueue.async {
+                self.messagesSubject.send(message)
+            }
         case .hasSpaceAvailable:
             print("\(stream is InputStream ? "input" : "output")Stream:hasSpaceAvailable")
         case .endEncountered:

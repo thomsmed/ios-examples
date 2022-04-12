@@ -217,22 +217,28 @@ extension CoreBluetoothChatHost: StreamDelegate {
             }
             let data = Data(buffer: UnsafeMutableBufferPointer(start: buffer, count: totalNumberOfBytesRead))
             guard let message = String(data: data, encoding: .utf8) else { return }
-            messagesSubject.send(message)
+            serialQueue.async {
+                self.messagesSubject.send(message)
+            }
         case .hasSpaceAvailable:
             print("\(stream is InputStream ? "input" : "output")Stream:hasSpaceAvailable")
         case .endEncountered:
             print("\(stream is InputStream ? "input" : "output")Stream:endEncountered")
-            dismantleL2CAPChannel()
+            serialQueue.async {
+                self.dismantleL2CAPChannel()
+            }
         case .errorOccurred:
             print("\(stream is InputStream ? "input" : "output")Stream:errorOccurred")
-            dismantleL2CAPChannel()
+            serialQueue.async {
+                self.dismantleL2CAPChannel()
+            }
         default:
             print("\(stream is InputStream ? "input" : "output")Stream:unknownEventCode")
         }
     }
 }
 
-// MARK: BluetoothPeripheralManager
+// MARK: ChatHost
 
 extension CoreBluetoothChatHost: ChatHost {
 
