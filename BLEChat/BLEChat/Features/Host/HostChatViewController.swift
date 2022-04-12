@@ -15,7 +15,7 @@ final class HostChatViewController: UIViewController {
         tableView.separatorStyle = .none
         return tableView
     }()
-    
+
     private let reactionsStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: ["❤️", "🥺", "😱", "👏", "🙂", "🤣"].map { reaction in
             var configuration: UIButton.Configuration = .plain()
@@ -26,20 +26,20 @@ final class HostChatViewController: UIViewController {
         stackView.distribution = .fillEqually
         return stackView
     }()
-    
+
     private let messageInputTextField: UITextField = {
         let textField = UITextField()
         textField.backgroundColor = .secondarySystemBackground
         textField.layer.cornerRadius = 8
         return textField
     }()
-    
+
     private let submitMessageButton: UIButton = {
         var configuration: UIButton.Configuration = .borderedTinted()
         configuration.title = "Send"
         return UIButton(configuration: configuration)
     }()
-    
+
     private var messages: [ChatBubbleMessage] = []
     
     private var stateSub: AnyCancellable?
@@ -91,7 +91,7 @@ final class HostChatViewController: UIViewController {
             button.addAction(UIAction(handler: submitReaction(_:)), for: .primaryActionTriggered)
         }
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         setupSubscriptions()
@@ -99,18 +99,18 @@ final class HostChatViewController: UIViewController {
         messageInputTextField.becomeFirstResponder()
         Dependencies.chatHost.startBroadcast()
     }
-    
+
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         tearDownSubscriptions()
         tearDownObservers()
         Dependencies.chatHost.stopBroadcast()
     }
-    
+
     private func close(_ action: UIAction) {
         navigationController?.popViewController(animated: true)
     }
-    
+
     private func setupSubscriptions() {
         stateSub = Dependencies.chatHost.state.receive(on: DispatchQueue.main).sink(receiveValue: { [weak self] state in
             guard
@@ -137,13 +137,13 @@ final class HostChatViewController: UIViewController {
             self?.animateReceived(reaction: reaction)
         })
     }
-    
+
     private func tearDownSubscriptions() {
         stateSub = nil
         messagesSub = nil
         reactionsSub = nil
     }
-    
+
     private func setupObservers() {
         NotificationCenter.default.addObserver(
             self,
@@ -164,7 +164,7 @@ final class HostChatViewController: UIViewController {
         let height = keyboardValue.cgRectValue.height - view.safeAreaInsets.bottom
         additionalSafeAreaInsets = .bottom(height)
     }
-    
+
     private func submitMessage(_ action: UIAction) {
         if let message = messageInputTextField.text {
             let indexPath = IndexPath(row: messages.count, section: 0)
@@ -175,7 +175,7 @@ final class HostChatViewController: UIViewController {
         }
         messageInputTextField.text = nil
     }
-    
+
     private func submitReaction(_ action: UIAction) {
         guard
             let button = action.sender as? UIButton,
@@ -184,7 +184,7 @@ final class HostChatViewController: UIViewController {
         animateSubmitted(reaction: reaction, from: reactionsStackView.convert(button.center, to: view))
         Dependencies.chatHost.submit(reaction: reaction)
     }
-    
+
     private func animateSubmitted(reaction: String, from point: CGPoint) {
         let label = UILabel()
         label.text = reaction
@@ -200,7 +200,7 @@ final class HostChatViewController: UIViewController {
             label.removeFromSuperview()
         })
     }
-    
+
     private func animateReceived(reaction: String) {
         let label = UILabel()
         label.text = reaction

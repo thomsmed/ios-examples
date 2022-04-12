@@ -8,7 +8,7 @@
 import Foundation
 import CoreBluetooth
 
-struct ChatServiceFactory {
+enum ChatServiceFactory {
 
     // Characteristic Format String Descriptor for Incoming Reactions Characteristic and Outgoing Reactions Characteristic
     // More Info in the Core BLE Specification: https://www.bluetooth.com/specifications/specs/core-specification/
@@ -20,7 +20,7 @@ struct ChatServiceFactory {
         0x00, // Name Space (Aka organisation): none
         0x00, 0x00 // Description (a custom value defined by the organisation in Name Space): none
     ]
-    
+
     static let incomingReactionCharacteristic: CBMutableCharacteristic = {
         let characteristic = CBMutableCharacteristic(
             type: AssignedNumbers.chatServiceIncomingReactionsCharacteristic,
@@ -35,7 +35,7 @@ struct ChatServiceFactory {
         ]
         return characteristic
     }()
-    
+
     static let outgoingReactionsCharacteristic: CBMutableCharacteristic = {
         let characteristic = CBMutableCharacteristic(
             type: AssignedNumbers.chatServiceOutgoingReactionsCharacteristic,
@@ -50,7 +50,7 @@ struct ChatServiceFactory {
         ]
         return characteristic
     }()
-    
+
     static func make(with psm: CBL2CAPPSM) -> CBMutableService {
         let mutableService = CBMutableService(type: AssignedNumbers.chatService, primary: true)
         let l2capPSMCharacteristic = CBMutableCharacteristic(

@@ -15,9 +15,9 @@ final class JoinViewController: UITableViewController {
         dateFormatter.dateFormat = "HH.mm"
         return dateFormatter
     }()
-    
+
     private var chatHosts: [DiscoveredChatHost] = []
-    
+
     private var stateSub: AnyCancellable?
     private var chatHostsSub: AnyCancellable?
 
@@ -38,20 +38,20 @@ final class JoinViewController: UITableViewController {
 
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         setupSubscriptions()
         Dependencies.chatHostScanner.startScan()
         refreshControl?.beginRefreshing()
     }
-    
+
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         tearDownSubscriptions()
         Dependencies.chatHostScanner.stopScan()
     }
-    
+
     private func setupSubscriptions() {
         stateSub = Dependencies.chatHostScanner.state.receive(on: DispatchQueue.main).sink(receiveValue: { [weak self] state in
             guard let self = self else { return }
@@ -90,16 +90,16 @@ final class JoinViewController: UITableViewController {
             }
         })
     }
-    
+
     private func tearDownSubscriptions() {
         stateSub = nil
         chatHostsSub = nil
     }
-    
+
     private func close(_ action: UIAction) {
         navigationController?.popViewController(animated: true)
     }
-    
+
     private func refresh(_ action: UIAction) {
         refreshControl?.beginRefreshing()
         Dependencies.chatHostScanner.stopScan() // Triggers a state update (which then again triggers a new scan)

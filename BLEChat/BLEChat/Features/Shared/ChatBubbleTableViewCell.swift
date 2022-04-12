@@ -21,16 +21,16 @@ final class ChatBubbleTableViewCell: UITableViewCell {
         view.clipsToBounds = true
         return view
     }()
-    
+
     private let messageLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         return label
     }()
-    
+
     private lazy var leadingConstraint = wrapperView.leadingToSuperview()
     private lazy var trailingConstraint = wrapperView.trailingToSuperview()
-    
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
@@ -38,25 +38,25 @@ final class ChatBubbleTableViewCell: UITableViewCell {
 
         placeContent(in: contentView)
     }
-    
+
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     private func placeContent(in view: UIView) {
 
         view.addSubview(wrapperView)
 
         wrapperView.addSubview(messageLabel)
-        
+
         messageLabel.edgesToSuperview(insets: .uniform(8))
-        
+
         wrapperView.topToSuperview(offset: 8)
         wrapperView.bottomToSuperview(offset: -8)
         wrapperView.widthToSuperview(multiplier: 0.85, priority: .defaultHigh)
     }
-    
+
     func setup(with message: ChatBubbleMessage) {
         messageLabel.text = message.message
         leadingConstraint.isActive = message.incoming
