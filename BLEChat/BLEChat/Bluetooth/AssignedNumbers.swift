@@ -8,7 +8,7 @@
 import Foundation
 import CoreBluetooth
 
-struct AssignedNumbers {
+enum AssignedNumbers {
     // For a list of predefined services/profiles (by the Bluetooth SIG): https://www.bluetooth.com/specifications/assigned-numbers/
     // Apple's Core Bluetooth Programming Guide: https://developer.apple.com/library/archive/documentation/NetworkingInternetWeb/Conceptual/CoreBluetooth_concepts/AboutCoreBluetooth/Introduction.html#//apple_ref/doc/uid/TP40013257-CH1-SW1
     // WWDC videos:

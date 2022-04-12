@@ -9,10 +9,10 @@ import Foundation
 import Combine
 import CoreBluetooth
 
-// MARK: CBManagerState+asBMState
+// MARK: CBManagerState+asCHSState
 
 fileprivate extension CBManagerState {
-    var asBMState: ChatHostScannerState {
+    var asCHSState: ChatHostScannerState {
         switch self {
         case .poweredOn:
             return .ready
@@ -29,20 +29,22 @@ fileprivate extension CBManagerState {
 final class CoreBluetoothChatHostScanner: NSObject {
 
     private lazy var serialQueue = DispatchQueue(
-        label: "\(String(describing: CoreBluetoothChatHostScanner.self)).\(String(describing: DispatchQueue.self))",
+        label: "\(String(describing: Self.self)).\(String(describing: DispatchQueue.self))",
         qos: .userInitiated,
         attributes: [],
         target: .global(qos: .userInitiated)
     )
 
-    private lazy var centralManager = CBCentralManager(delegate: self,
-                                                       queue: serialQueue)
+    private lazy var centralManager = CBCentralManager(
+        delegate: self,
+        queue: serialQueue
+    )
 
-    private lazy var stateSubject = CurrentValueSubject<ChatHostScannerState, Never>(centralManager.state.asBMState)
-    
+    private lazy var stateSubject = CurrentValueSubject<ChatHostScannerState, Never>(centralManager.state.asCHSState)
+
     private let discoveriesSubject = PassthroughSubject<ChatHostDiscovery, Never>()
     private var discoveredPeripherals: [CBPeripheral] = []
-    
+
     private var chatHostConnectionCompletion: ((Result<ChatHostConnection, Error>) -> Void)?
     private var internalPeripheralConnection: CoreBluetoothChatHostConnection?
 }
@@ -52,9 +54,9 @@ final class CoreBluetoothChatHostScanner: NSObject {
 extension CoreBluetoothChatHostScanner: CBCentralManagerDelegate {
 
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
-        stateSubject.send(central.state.asBMState)
+        stateSubject.send(central.state.asCHSState)
     }
-    
+
     func centralManager(_ central: CBCentralManager,
                         didDiscover peripheral: CBPeripheral,
                         advertisementData: [String : Any],
@@ -77,7 +79,7 @@ extension CoreBluetoothChatHostScanner: CBCentralManagerDelegate {
                                                                    lastSeen: Date())))
         }
     }
-    
+
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         let internalPeripheralConnection = CoreBluetoothChatHostConnection(serialQueue: self.serialQueue,
                                                                            centralManager: self.centralManager)
@@ -85,11 +87,11 @@ extension CoreBluetoothChatHostScanner: CBCentralManagerDelegate {
         self.internalPeripheralConnection = internalPeripheralConnection
         chatHostConnectionCompletion?(.success(internalPeripheralConnection))
     }
-    
+
     func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
         chatHostConnectionCompletion?(.failure(error ?? BluetoothError.connectionFailure))
     }
-    
+
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         internalPeripheralConnection?.disconnected(from: peripheral, with: error)
     }
@@ -102,15 +104,15 @@ extension CoreBluetoothChatHostScanner: ChatHostScanner {
     var state: AnyPublisher<ChatHostScannerState, Never> {
         stateSubject.eraseToAnyPublisher()
     }
-    
+
     var discoveries: AnyPublisher<ChatHostDiscovery, Never> {
         discoveriesSubject.eraseToAnyPublisher()
     }
-    
+
     var isScanning: Bool {
         stateSubject.value == .scanning
     }
-    
+
     func startScan() {
         serialQueue.async {
             guard self.stateSubject.value == .ready else { return }
@@ -122,7 +124,7 @@ extension CoreBluetoothChatHostScanner: ChatHostScanner {
             ], options: nil)
         }
     }
-    
+
     func stopScan() {
         serialQueue.async {
             guard self.stateSubject.value == .scanning else { return }
@@ -130,7 +132,7 @@ extension CoreBluetoothChatHostScanner: ChatHostScanner {
             self.centralManager.stopScan()
         }
     }
-    
+
     func connect(to uuid: UUID, _ completion: @escaping ((Result<ChatHostConnection, Error>) -> Void)) {
         serialQueue.async {
             guard
@@ -138,16 +140,16 @@ extension CoreBluetoothChatHostScanner: ChatHostScanner {
             else {
                 return completion(.failure(BluetoothError.invalidState))
             }
-            
+
             // Cancel any existing connections
             self.internalPeripheralConnection?.disconnect()
-            
+
             guard let peripheral = self.discoveredPeripherals.first(where: { discoveredPeripheral in
                 discoveredPeripheral.identifier == uuid
             }) else {
                 return completion(.failure(BluetoothError.unknownPeripheral))
             }
-            
+
             self.chatHostConnectionCompletion = completion
             self.centralManager.connect(peripheral, options: nil)
         }

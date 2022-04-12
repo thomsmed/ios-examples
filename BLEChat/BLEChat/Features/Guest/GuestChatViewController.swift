@@ -15,7 +15,7 @@ final class GuestChatViewController: UIViewController {
         tableView.separatorStyle = .none
         return tableView
     }()
-    
+
     private let reactionsStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: ["❤️", "🥺", "😱", "👏", "🙂", "🤣"].map { reaction in
             var configuration: UIButton.Configuration = .plain()
@@ -26,33 +26,33 @@ final class GuestChatViewController: UIViewController {
         stackView.distribution = .fillEqually
         return stackView
     }()
-    
+
     private let messageInputTextField: UITextField = {
         let textField = UITextField()
         textField.backgroundColor = .secondarySystemBackground
         textField.layer.cornerRadius = 8
         return textField
     }()
-    
+
     private let submitMessageButton: UIButton = {
         var configuration: UIButton.Configuration = .borderedTinted()
         configuration.title = "Send"
         return UIButton(configuration: configuration)
     }()
-    
+
     private let chatHost: DiscoveredChatHost
-    
+
     private var connection: ChatHostConnection?
     private var messages: [ChatBubbleMessage] = []
-    
+
     private var messagesSub: AnyCancellable?
     private var reactionsSub: AnyCancellable?
-    
+
     init(chatHost: DiscoveredChatHost) {
         self.chatHost = chatHost
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -85,7 +85,7 @@ final class GuestChatViewController: UIViewController {
 
         view.backgroundColor = .systemBackground
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -101,7 +101,7 @@ final class GuestChatViewController: UIViewController {
             button.addAction(UIAction(handler: submitReaction(_:)), for: .primaryActionTriggered)
         }
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         setupObservers()
@@ -117,7 +117,7 @@ final class GuestChatViewController: UIViewController {
             }
         })
     }
-    
+
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         tearDownSubscriptions()
@@ -138,12 +138,12 @@ final class GuestChatViewController: UIViewController {
             self?.animateReceived(reaction: reaction)
         })
     }
-    
+
     private func tearDownSubscriptions() {
         messagesSub = nil
         reactionsSub = nil
     }
-    
+
     private func setupObservers() {
         NotificationCenter.default.addObserver(
             self,
@@ -164,7 +164,7 @@ final class GuestChatViewController: UIViewController {
         let height = keyboardValue.cgRectValue.height - view.safeAreaInsets.bottom
         additionalSafeAreaInsets = .bottom(height)
     }
-    
+
     private func submitMessage(_ action: UIAction) {
         if let message = messageInputTextField.text {
             let indexPath = IndexPath(row: messages.count, section: 0)
@@ -175,7 +175,7 @@ final class GuestChatViewController: UIViewController {
         }
         messageInputTextField.text = nil
     }
-    
+
     private func submitReaction(_ action: UIAction) {
         guard
             let button = action.sender as? UIButton,
@@ -184,7 +184,7 @@ final class GuestChatViewController: UIViewController {
         animateSubmitted(reaction: reaction, from: reactionsStackView.convert(button.center, to: view))
         connection?.submit(reaction: reaction)
     }
-    
+
     private func animateSubmitted(reaction: String, from point: CGPoint) {
         let label = UILabel()
         label.text = reaction
@@ -200,7 +200,7 @@ final class GuestChatViewController: UIViewController {
             label.removeFromSuperview()
         })
     }
-    
+
     private func animateReceived(reaction: String) {
         let label = UILabel()
         label.text = reaction
@@ -225,7 +225,7 @@ extension GuestChatViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         messages.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ChatBubbleTableViewCell

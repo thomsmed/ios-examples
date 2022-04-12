@@ -12,20 +12,20 @@ final class HomeViewController: UIViewController {
 
     private let hostButton: UIButton = {
         var configuration: UIButton.Configuration = .borderedTinted()
-        configuration.title = "Host a chat"
+        configuration.title = "Host"
         configuration.buttonSize = .large
         let button = UIButton(configuration: configuration)
         return button
     }()
-    
+
     private let joinButton: UIButton = {
         var configuration: UIButton.Configuration = .borderedTinted()
-        configuration.title = "Join a chat"
+        configuration.title = "Join"
         configuration.buttonSize = .large
         let button = UIButton(configuration: configuration)
         return button
     }()
-    
+
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [hostButton, joinButton])
         stackView.axis = .vertical
@@ -46,7 +46,7 @@ final class HomeViewController: UIViewController {
 
         view.backgroundColor = .systemBackground
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -58,11 +58,11 @@ final class HomeViewController: UIViewController {
 
     private func configureBehaviour() {
     }
-    
+
     private func host(_ action: UIAction) {
         navigationController?.pushViewController(HostChatViewController(), animated: true)
     }
-    
+
     private func join(_ action: UIAction) {
         navigationController?.pushViewController(JoinViewController(), animated: true)
     }

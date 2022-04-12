@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-struct Dependencies {
+enum Dependencies {
     static let chatHostScanner: ChatHostScanner = CoreBluetoothChatHostScanner()
     static let chatHost: ChatHost = CoreBluetoothChatHost(chatBroadcastingName: UIDevice.current.name)
 }

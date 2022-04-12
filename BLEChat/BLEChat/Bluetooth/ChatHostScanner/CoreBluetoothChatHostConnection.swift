@@ -13,22 +13,22 @@ final class CoreBluetoothChatHostConnection: NSObject {
 
     private let serialQueue: DispatchQueue
     private let centralManager: CBCentralManager
-    
+
     private let stateSubject = CurrentValueSubject<ChatHostConnectionState, Never>(.connecting)
     private let reactionsSubject = PassthroughSubject<String, Never>()
     private let messagesSubject = PassthroughSubject<String, Never>()
-    
+
     private var peripheral: CBPeripheral?
     private var discoveryProgression = 0
     private var connectionProgression = 0
     private var didEncounterErrors = false
     private var l2capChannel: CBL2CAPChannel?
-    
+
     init(serialQueue: DispatchQueue, centralManager: CBCentralManager) {
         self.serialQueue = serialQueue
         self.centralManager = centralManager
     }
-    
+
     func connected(to peripheral: CBPeripheral) {
         peripheral.delegate = self
         peripheral.discoverServices([
@@ -36,7 +36,7 @@ final class CoreBluetoothChatHostConnection: NSObject {
         ])
         self.peripheral = peripheral
     }
-    
+
     func disconnected(from peripheral: CBPeripheral, with error: Error?) {
         self.peripheral = nil
         dismantleL2CAPChannel()
@@ -57,7 +57,7 @@ extension CoreBluetoothChatHostConnection: CBPeripheralDelegate {
         }
         checkDiscoveryProgression()
     }
-    
+
     func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
         didEncounterErrors = error != nil
         let characteristics = service.characteristics ?? []
@@ -68,20 +68,20 @@ extension CoreBluetoothChatHostConnection: CBPeripheralDelegate {
         discoveryProgression -= 1
         checkDiscoveryProgression()
     }
-    
+
     func peripheral(_ peripheral: CBPeripheral, didDiscoverDescriptorsFor characteristic: CBCharacteristic, error: Error?) {
         didEncounterErrors = error != nil
         discoveryProgression -= 1
         checkDiscoveryProgression()
     }
-    
+
     func peripheral(_ peripheral: CBPeripheral, didModifyServices invalidatedServices: [CBService]) {
         // This is called when a disconnection occur or when the peripheral does not broadcast these services anymore.
         // When an app, acting as a peripheral, goes into background mode, the system (iOS) removes services added by the app from the broadcast.
         guard self.stateSubject.value == .connected else { return }
         centralManager.cancelPeripheralConnection(peripheral)
     }
-    
+
     func peripheral(_ peripheral: CBPeripheral, didOpen channel: CBL2CAPChannel?, error: Error?) {
         didEncounterErrors = error != nil
         guard let channel = channel else {
@@ -92,7 +92,7 @@ extension CoreBluetoothChatHostConnection: CBPeripheralDelegate {
         connectionProgression -= 1
         checkConnectionProgression()
     }
-    
+
     func peripheral(_ peripheral: CBPeripheral, didUpdateNotificationStateFor characteristic: CBCharacteristic, error: Error?) {
         didEncounterErrors = error != nil
         guard characteristic.isNotifying else {
@@ -102,14 +102,14 @@ extension CoreBluetoothChatHostConnection: CBPeripheralDelegate {
         connectionProgression -= 1
         checkConnectionProgression()
     }
-    
+
     func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) {
         // This is were you would verify that a write to a peripheral was successful.
         if let error = error {
             print(error)
         }
     }
-    
+
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
         // This method is called both when a read is initiated by the central, or when the peripheral has notified that a new value is available.
         if characteristic.uuid == AssignedNumbers.chatServiceL2CAPPSMCharacteristic {
@@ -127,7 +127,7 @@ extension CoreBluetoothChatHostConnection: CBPeripheralDelegate {
             }
         }
     }
-    
+
     private func checkDiscoveryProgression() {
         if didEncounterErrors {
             stateSubject.send(.error)
@@ -136,7 +136,7 @@ extension CoreBluetoothChatHostConnection: CBPeripheralDelegate {
             fetchL2CAPChannelSMP()
         }
     }
-    
+
     private func checkConnectionProgression() {
         if didEncounterErrors {
             stateSubject.send(.error)
@@ -144,7 +144,7 @@ extension CoreBluetoothChatHostConnection: CBPeripheralDelegate {
             stateSubject.send(.connected)
         }
     }
-    
+
     private func configureNotifications() {
         guard
             let peripheral = peripheral,
@@ -161,7 +161,7 @@ extension CoreBluetoothChatHostConnection: CBPeripheralDelegate {
         connectionProgression += 1
         peripheral.setNotifyValue(true, for: outboxCharacteristic)
     }
-    
+
     private func fetchL2CAPChannelSMP() {
         guard
             let peripheral = peripheral,
@@ -178,7 +178,7 @@ extension CoreBluetoothChatHostConnection: CBPeripheralDelegate {
         connectionProgression += 1
         peripheral.readValue(for: l2capChannelCharacteristic)
     }
-    
+
     private func prepare(l2capChannel channel: CBL2CAPChannel) {
         // More about working with streams here:
         // https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Streams/Streams.html#//apple_ref/doc/uid/10000188-SW1
@@ -191,7 +191,7 @@ extension CoreBluetoothChatHostConnection: CBPeripheralDelegate {
         channel.outputStream.open()
         l2capChannel = channel
     }
-    
+
     private func dismantleL2CAPChannel() {
         // More about working with streams here:
         // https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Streams/Streams.html#//apple_ref/doc/uid/10000188-SW1
@@ -255,15 +255,15 @@ extension CoreBluetoothChatHostConnection: ChatHostConnection {
     var state: AnyPublisher<ChatHostConnectionState, Never> {
         stateSubject.eraseToAnyPublisher()
     }
-    
+
     var messages: AnyPublisher<String, Never> {
         messagesSubject.eraseToAnyPublisher()
     }
-    
+
     var reactions: AnyPublisher<String, Never> {
         reactionsSubject.eraseToAnyPublisher()
     }
-    
+
     func submit(message: String) {
         serialQueue.async {
             guard
@@ -287,7 +287,7 @@ extension CoreBluetoothChatHostConnection: ChatHostConnection {
             }
         }
     }
-    
+
     func submit(reaction: String) {
         serialQueue.async {
             guard
@@ -304,7 +304,7 @@ extension CoreBluetoothChatHostConnection: ChatHostConnection {
             peripheral.writeValue(data, for: inboxCharacteristic, type: .withResponse)
         }
     }
-    
+
     func disconnect() {
         serialQueue.async {
             guard self.stateSubject.value == .connected, let peripheral = self.peripheral else { return }
