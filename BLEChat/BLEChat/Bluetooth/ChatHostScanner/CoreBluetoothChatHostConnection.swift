@@ -184,25 +184,58 @@ extension CoreBluetoothChatHostConnection: CBPeripheralDelegate {
     private func prepare(l2capChannel channel: CBL2CAPChannel) {
         // More about working with streams here:
         // https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Streams/Streams.html#//apple_ref/doc/uid/10000188-SW1
-        // TODO: Add links to docs about RunLoops / RunLoop modes
+        // More about run loops (for those interested): https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Multithreading/RunLoopManagement/RunLoopManagement.html#//apple_ref/doc/uid/10000057i-CH16-SW1
+
+        // Alternative 1 - Using the main thread's run loop to process stream events:
         channel.inputStream.delegate = self
         channel.inputStream.schedule(in: .main, forMode: .default)
         channel.inputStream.open()
         channel.outputStream.delegate = self
         channel.outputStream.schedule(in: .main, forMode: .default)
         channel.outputStream.open()
+
+        // Alternative 2 - Using a dedicated thread to process stream events:
+//        channel.inputStream.delegate = self
+//        channel.outputStream.delegate = self
+//
+//        let thread = Thread(block: {
+//            channel.inputStream.schedule(in: .current, forMode: .default)
+//            channel.inputStream.open()
+//            channel.outputStream.schedule(in: .current, forMode: .default)
+//            channel.outputStream.open()
+//
+//            while !Thread.current.isCancelled && RunLoop.current.run(mode: .default, before: .distantFuture) {
+//                // Loop while there is inputs to process and the thread is not cancelled.
+//                // Cancel the thread when the L2CAP channel is no longer in use.
+//            }
+//
+//            channel.inputStream.close()
+//            channel.inputStream.remove(from: .current, forMode: .default)
+//            channel.outputStream.close()
+//            channel.outputStream.remove(from: .current, forMode: .default)
+//        })
+//        thread.start()
+//        self.l2capChannelStreamingThread = thread // Remember to keep the thread reference around.
+
         l2capChannel = channel
     }
 
     private func releaseL2CAPChannel() {
         // More about working with streams here:
         // https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Streams/Streams.html#//apple_ref/doc/uid/10000188-SW1
-        // TODO: Add links to docs about RunLoops / RunLoop modes
+        // More about run loops (for those interested): https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Multithreading/RunLoopManagement/RunLoopManagement.html#//apple_ref/doc/uid/10000057i-CH16-SW1
+
         guard let channel = l2capChannel else { return }
+
+        // Alternative 1 - Removing the streams as input sources from the main thread's run loop:
         channel.inputStream.close()
         channel.inputStream.remove(from: .main, forMode: .default)
         channel.outputStream.close()
         channel.outputStream.remove(from: .main, forMode: .default)
+
+        // Alternative 2 - Cancel the thread dedicated to process streaming event:
+//        self.l2capChannelStreamingThread?.cancel()
+
         l2capChannel = nil
     }
 }
@@ -247,10 +280,14 @@ extension CoreBluetoothChatHostConnection: StreamDelegate {
             print("\(stream is InputStream ? "input" : "output")Stream:hasSpaceAvailable")
         case .endEncountered:
             print("\(stream is InputStream ? "input" : "output")Stream:endEncountered")
-            disconnect()
+            serialQueue.async {
+                self.disconnect()
+            }
         case .errorOccurred:
             print("\(stream is InputStream ? "input" : "output")Stream:errorOccurred")
-            disconnect()
+            serialQueue.async {
+                self.disconnect()
+            }
         default:
             print("\(stream is InputStream ? "input" : "output")Stream:unknownEventCode")
         }
