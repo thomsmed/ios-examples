@@ -37,6 +37,7 @@ final class GuestChatViewController: UIViewController {
     private let submitMessageButton: UIButton = {
         var configuration: UIButton.Configuration = .borderedTinted()
         configuration.title = "Send"
+        configuration.buttonSize = .small
         return UIButton(configuration: configuration)
     }()
 
@@ -70,6 +71,7 @@ final class GuestChatViewController: UIViewController {
         submitMessageButton.setHugging(.defaultHigh, for: .horizontal)
         let horizontalStackView = UIStackView(arrangedSubviews: [messageInputTextField, submitMessageButton])
         horizontalStackView.axis = .horizontal
+        horizontalStackView.distribution = .fillProportionally
         horizontalStackView.spacing = 8
 
         let verticalStackView = UIStackView(arrangedSubviews: [reactionsStackView, horizontalStackView])
