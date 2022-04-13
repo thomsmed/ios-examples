@@ -39,7 +39,7 @@ final class CoreBluetoothChatHostConnection: NSObject {
 
     func disconnected(from peripheral: CBPeripheral, with error: Error?) {
         self.peripheral = nil
-        dismantleL2CAPChannel()
+        releaseL2CAPChannel()
         stateSubject.send(.disconnected)
     }
 }
@@ -192,7 +192,7 @@ extension CoreBluetoothChatHostConnection: CBPeripheralDelegate {
         l2capChannel = channel
     }
 
-    private func dismantleL2CAPChannel() {
+    private func releaseL2CAPChannel() {
         // More about working with streams here:
         // https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Streams/Streams.html#//apple_ref/doc/uid/10000188-SW1
         // TODO: Add links to docs about RunLoops / RunLoop modes
