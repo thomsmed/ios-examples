@@ -44,6 +44,7 @@ final class CoreBluetoothChatHost: NSObject {
 
     private let chatBroadcastingName: String
 
+    private var publishedL2CAPSPM: CBL2CAPPSM?
     private var activeL2CAPChannel: CBL2CAPChannel?
     private var lastOutgoingReaction: String = ""
 
@@ -67,6 +68,7 @@ extension CoreBluetoothChatHost: CBPeripheralManagerDelegate {
             print(error)
         } else {
             peripheral.add(ChatServiceFactory.make(with: PSM))
+            publishedL2CAPSPM = PSM
         }
     }
 
@@ -135,7 +137,7 @@ extension CoreBluetoothChatHost: CBPeripheralManagerDelegate {
 
     func peripheralManager(_ peripheral: CBPeripheralManager, central: CBCentral, didSubscribeTo characteristic: CBCharacteristic) {
         print("centralDidSubscribeToCharacteristic")
-        // central.maximumUpdateValueLength // Use this value to limit notification data if you want to make sure all the data is sent with the notification. TODO: Investigate this!
+        // central.maximumUpdateValueLength // Use this value to limit notification data if you want to make sure all the data is sent with the notification.
     }
 
     func peripheralManager(_ peripheral: CBPeripheralManager, central: CBCentral, didUnsubscribeFrom characteristic: CBCharacteristic) {
@@ -155,8 +157,12 @@ extension CoreBluetoothChatHost: CBPeripheralManagerDelegate {
         if let error = error {
             print(error)
         }
+
         guard let channel = channel else { return }
-        releaseL2CAPChannel() // Making sure only one channel is active at the time
+
+        // Making sure only one channel (aka Chat Guest) is active at the time (for sake of simplicity):
+        releaseL2CAPChannel()
+
         // More about working with streams here:
         // https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Streams/Streams.html#//apple_ref/doc/uid/10000188-SW1
         // TODO: Add links to docs about RunLoops / RunLoop modes
@@ -177,10 +183,11 @@ extension CoreBluetoothChatHost: CBPeripheralManagerDelegate {
     }
 
     private func releaseL2CAPChannel() {
+        guard let channel = activeL2CAPChannel else { return }
+
         // More about working with streams here:
         // https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Streams/Streams.html#//apple_ref/doc/uid/10000188-SW1
         // TODO: Add links to docs about RunLoops / RunLoop modes
-        guard let channel = activeL2CAPChannel else { return }
         channel.inputStream.close()
         channel.inputStream.remove(from: .main, forMode: .default)
         channel.outputStream.close()
@@ -267,8 +274,8 @@ extension CoreBluetoothChatHost: ChatHost {
             guard self.stateSubject.value == .broadcasting else { return }
             self.peripheralManager.stopAdvertising()
             self.peripheralManager.removeAllServices()
-            if let activeL2CAPChannel = self.activeL2CAPChannel {
-                self.peripheralManager.unpublishL2CAPChannel(activeL2CAPChannel.psm)
+            if let psm = self.publishedL2CAPSPM {
+                self.peripheralManager.unpublishL2CAPChannel(psm)
             }
             self.stateSubject.send(.ready)
         }
@@ -285,8 +292,10 @@ extension CoreBluetoothChatHost: ChatHost {
                 guard let startOfData = ptr.baseAddress?.assumingMemoryBound(to: UInt8.self) else { return }
                 var totalNumberOfBytesWritten = 0
                 while channel.outputStream.hasSpaceAvailable && totalNumberOfBytesWritten < dataSize {
-                    let numberOfBytesWritten = channel.outputStream.write(startOfData.advanced(by: totalNumberOfBytesWritten),
-                                                                          maxLength: dataSize - totalNumberOfBytesWritten)
+                    let numberOfBytesWritten = channel.outputStream.write(
+                        startOfData.advanced(by: totalNumberOfBytesWritten),
+                        maxLength: dataSize - totalNumberOfBytesWritten
+                    )
                     if numberOfBytesWritten < 0, let error = channel.outputStream.streamError {
                         return print(error)
                     } else if numberOfBytesWritten == 0 {
@@ -304,12 +313,12 @@ extension CoreBluetoothChatHost: ChatHost {
                 self.stateSubject.value == .broadcasting,
                 let data = reaction.data(using: .utf8)
             else { return }
-            self.lastOutgoingReaction = reaction
             if !self.peripheralManager.updateValue(
                 data,
                 for: ChatServiceFactory.outgoingReactionsCharacteristic,
                 onSubscribedCentrals: nil
             ) {
+                self.lastOutgoingReaction = reaction
                 print("Transmit queue is full. Delegate will be notified when the queue is ready.")
             }
         }
