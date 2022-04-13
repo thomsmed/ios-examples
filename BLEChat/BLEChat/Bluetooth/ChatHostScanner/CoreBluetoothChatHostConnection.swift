@@ -38,8 +38,8 @@ final class CoreBluetoothChatHostConnection: NSObject {
     }
 
     func disconnected(from peripheral: CBPeripheral, with error: Error?) {
-        self.peripheral = nil
         releaseL2CAPChannel()
+        self.peripheral = nil
         stateSubject.send(.disconnected)
     }
 }
@@ -83,6 +83,7 @@ extension CoreBluetoothChatHostConnection: CBPeripheralDelegate {
     }
 
     func peripheral(_ peripheral: CBPeripheral, didOpen channel: CBL2CAPChannel?, error: Error?) {
+        // Called after a call to CBPeripheral.openL2CAPChannel(_:)
         didEncounterErrors = error != nil
         guard let channel = channel else {
             didEncounterErrors = true
@@ -94,6 +95,7 @@ extension CoreBluetoothChatHostConnection: CBPeripheralDelegate {
     }
 
     func peripheral(_ peripheral: CBPeripheral, didUpdateNotificationStateFor characteristic: CBCharacteristic, error: Error?) {
+        // Called after a call to CBPeripheral.setNotifyValue(_:for:)
         didEncounterErrors = error != nil
         guard characteristic.isNotifying else {
             didEncounterErrors = true
@@ -132,7 +134,7 @@ extension CoreBluetoothChatHostConnection: CBPeripheralDelegate {
         if didEncounterErrors {
             stateSubject.send(.error)
         } else if discoveryProgression == 0 {
-            configureNotifications()
+            subscribeToReactionsCharacteristic()
             fetchL2CAPChannelSMP()
         }
     }
@@ -145,13 +147,13 @@ extension CoreBluetoothChatHostConnection: CBPeripheralDelegate {
         }
     }
 
-    private func configureNotifications() {
+    private func subscribeToReactionsCharacteristic() {
         guard
             let peripheral = peripheral,
             let chatService = peripheral.services?.first(where: { service in
                 service.uuid == AssignedNumbers.chatService
             }),
-            let outboxCharacteristic = chatService.characteristics?.first(where: { characteristic in
+            let outgoingReactionsCharacteristic = chatService.characteristics?.first(where: { characteristic in
                 characteristic.uuid == AssignedNumbers.chatServiceOutgoingReactionsCharacteristic
             })
         else {
@@ -159,7 +161,7 @@ extension CoreBluetoothChatHostConnection: CBPeripheralDelegate {
             return checkConnectionProgression()
         }
         connectionProgression += 1
-        peripheral.setNotifyValue(true, for: outboxCharacteristic)
+        peripheral.setNotifyValue(true, for: outgoingReactionsCharacteristic)
     }
 
     private func fetchL2CAPChannelSMP() {
@@ -218,12 +220,16 @@ extension CoreBluetoothChatHostConnection: StreamDelegate {
         case .hasBytesAvailable:
             print("\(stream is InputStream ? "input" : "output")Stream:hasBytesAvailable")
             guard let inputStream = stream as? InputStream else { return }
+            // Use a buffer size of an arbitrary number, just for simplicity.
+            // Messages longer than 255 bytes will be cropped (and might end up at the start for next message)
             let bufferSize = 255
             let buffer = UnsafeMutablePointer<UInt8>.allocate(capacity: bufferSize)
             var totalNumberOfBytesRead = 0
             while inputStream.hasBytesAvailable && totalNumberOfBytesRead < bufferSize {
-                let numberOfBytesRead = inputStream.read(buffer.advanced(by: totalNumberOfBytesRead),
-                                                         maxLength: bufferSize - totalNumberOfBytesRead)
+                let numberOfBytesRead = inputStream.read(
+                    buffer.advanced(by: totalNumberOfBytesRead),
+                    maxLength: bufferSize - totalNumberOfBytesRead
+                )
                 if numberOfBytesRead < 0, let error = inputStream.streamError {
                     return print(error)
                 } else if numberOfBytesRead == 0 {
@@ -276,9 +282,12 @@ extension CoreBluetoothChatHostConnection: ChatHostConnection {
             data.withUnsafeBytes { ptr in
                 guard let startOfData = ptr.baseAddress?.assumingMemoryBound(to: UInt8.self) else { return }
                 var totalNumberOfBytesWritten = 0
+                // For simplicity, ignore messages that is longer than the output stream buffer's available space.
                 while channel.outputStream.hasSpaceAvailable && totalNumberOfBytesWritten < dataSize {
-                    let numberOfBytesWritten = channel.outputStream.write(startOfData.advanced(by: totalNumberOfBytesWritten),
-                                                                          maxLength: dataSize - totalNumberOfBytesWritten)
+                    let numberOfBytesWritten = channel.outputStream.write(
+                        startOfData.advanced(by: totalNumberOfBytesWritten),
+                        maxLength: dataSize - totalNumberOfBytesWritten
+                    )
                     if numberOfBytesWritten < 0, let error = channel.outputStream.streamError {
                         return print(error)
                     } else if numberOfBytesWritten == 0 {

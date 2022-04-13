@@ -61,11 +61,11 @@ extension CoreBluetoothChatHostScanner: CBCentralManagerDelegate {
                         didDiscover peripheral: CBPeripheral,
                         advertisementData: [String : Any],
                         rssi RSSI: NSNumber) {
+        // Note: If the device has been connected to before, it might have been assigned a different name than first specified in the advertisement data
         if let index = discoveredPeripherals.firstIndex(where: { discoveredPeripheral in
             discoveredPeripheral == peripheral
         }) {
             discoveredPeripherals[index] = peripheral
-            // If the device has been connected to before, it might have been assigned a different name than first specified in the advertisement data
             let chatBroadcastingName = advertisementData[CBAdvertisementDataLocalNameKey] as? String
             discoveriesSubject.send(.rediscovered(
                 DiscoveredChatHost(
@@ -76,7 +76,6 @@ extension CoreBluetoothChatHostScanner: CBCentralManagerDelegate {
             ))
         } else {
             discoveredPeripherals.append(peripheral)
-            // If the device has been connected to before, it might have been assigned a different name than first specified in the advertisement data
             let chatBroadcastingName = advertisementData[CBAdvertisementDataLocalNameKey] as? String
             discoveriesSubject.send(.discovered(
                 DiscoveredChatHost(
@@ -151,7 +150,7 @@ extension CoreBluetoothChatHostScanner: ChatHostScanner {
                 return completion(.failure(BluetoothError.invalidState))
             }
 
-            // Cancel any existing connections
+            // Cancel any existing connection
             self.coreBluetoothChatHostConnection?.disconnect()
 
             guard let peripheral = self.discoveredPeripherals.first(where: { discoveredPeripheral in

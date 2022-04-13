@@ -209,12 +209,16 @@ extension CoreBluetoothChatHost: StreamDelegate {
         case .hasBytesAvailable:
             print("\(stream is InputStream ? "input" : "output")Stream:hasBytesAvailable")
             guard let inputStream = stream as? InputStream else { return }
-            let bufferSize = 255 // Just a random number for the purpose of this example
+            // Use a buffer size of an arbitrary number, just for simplicity.
+            // Messages longer than 255 bytes will be cropped (and might end up at the start for next message)
+            let bufferSize = 255
             let buffer = UnsafeMutablePointer<UInt8>.allocate(capacity: bufferSize)
             var totalNumberOfBytesRead = 0
             while inputStream.hasBytesAvailable && totalNumberOfBytesRead < bufferSize {
-                let numberOfBytesRead = inputStream.read(buffer.advanced(by: totalNumberOfBytesRead),
-                                                         maxLength: bufferSize - totalNumberOfBytesRead)
+                let numberOfBytesRead = inputStream.read(
+                    buffer.advanced(by: totalNumberOfBytesRead),
+                    maxLength: bufferSize - totalNumberOfBytesRead
+                )
                 if numberOfBytesRead < 0, let error = inputStream.streamError {
                     return print(error)
                 } else if numberOfBytesRead == 0 {
@@ -291,6 +295,7 @@ extension CoreBluetoothChatHost: ChatHost {
             data.withUnsafeBytes { ptr in
                 guard let startOfData = ptr.baseAddress?.assumingMemoryBound(to: UInt8.self) else { return }
                 var totalNumberOfBytesWritten = 0
+                // For simplicity, ignore messages that is longer than the output stream buffer's available space.
                 while channel.outputStream.hasSpaceAvailable && totalNumberOfBytesWritten < dataSize {
                     let numberOfBytesWritten = channel.outputStream.write(
                         startOfData.advanced(by: totalNumberOfBytesWritten),
