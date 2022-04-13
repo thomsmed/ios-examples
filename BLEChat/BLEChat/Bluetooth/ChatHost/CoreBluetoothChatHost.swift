@@ -210,7 +210,8 @@ extension CoreBluetoothChatHost: StreamDelegate {
             print("\(stream is InputStream ? "input" : "output")Stream:hasBytesAvailable")
             guard let inputStream = stream as? InputStream else { return }
             // Use a buffer size of an arbitrary number, just for simplicity.
-            // Messages longer than 255 bytes will be cropped (and might end up at the start for next message)
+            // Messages longer than 255 bytes will be split into multiple messages.
+            // The delegate will be notified with a .hasBytesAvailable stream event as long as there is more bytes to read (after a call to InputStream.read(_:maxLength:)).
             let bufferSize = 255
             let buffer = UnsafeMutablePointer<UInt8>.allocate(capacity: bufferSize)
             var totalNumberOfBytesRead = 0
