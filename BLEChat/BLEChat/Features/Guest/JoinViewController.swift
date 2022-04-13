@@ -60,11 +60,15 @@ final class JoinViewController: UITableViewController {
                 self.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
                 Dependencies.chatHostScanner.startScan()
             } else if state == .unauthorised {
-                let alert = UIAlertController(title: "Unauthorised",
-                                              message: "This applications need access to Bluetooth",
-                                              preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"),
-                                              style: .default))
+                let alert = UIAlertController(
+                    title: "Unauthorised",
+                    message: "This applications need access to Bluetooth",
+                    preferredStyle: .alert
+                )
+                alert.addAction(UIAlertAction(
+                    title: NSLocalizedString("OK", comment: "Default action"),
+                    style: .default
+                ))
                 self.present(alert, animated: true)
             }
         })
