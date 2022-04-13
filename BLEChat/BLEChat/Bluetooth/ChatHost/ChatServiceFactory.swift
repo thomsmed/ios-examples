@@ -10,15 +10,18 @@ import CoreBluetooth
 
 enum ChatServiceFactory {
 
-    // Characteristic Format String Descriptor for Incoming Reactions Characteristic and Outgoing Reactions Characteristic
-    // More Info in the Core BLE Specification: https://www.bluetooth.com/specifications/specs/core-specification/
-    // TODO: Link/pointer to where this is in the specification
+    // The Attribute value for the Descriptor 'Characteristic Presentation Format'
+    // (used as a Descriptor for the Incoming Reactions Characteristic and Outgoing Reactions Characteristic):
+    // | Format | Exponent | Unit        | Name Space  | Description |
+    // | 16 bit | 16 bit   | 16 + 16 bit | 16 bit      | 16 + 16 bit |
+    // More Info in the Core BLE Specification: https://www.bluetooth.com/specifications/specs/core-specification/,
+    // chapter 3.3.3.5 - Characteristic Presentation Format
     private static let characteristicFormatStringValue: [UInt8] = [
-        0x19, // Format: UTF8
-        0x00, // Exponent: 0 (not used for the UTF8 format)
+        0x19,       // Format: UTF8
+        0x00,       // Exponent: 0 (not used for the UTF8 format)
         0x27, 0x00, // Unit (4 bytes): undefined (text has no unit)
-        0x00, // Name Space (Aka organisation): none
-        0x00, 0x00 // Description (a custom value defined by the organisation in Name Space): none
+        0x00,       // Name Space (Aka organisation): none
+        0x00, 0x00  // Description (a custom value defined by the organisation in Name Space): none
     ]
 
     static let incomingReactionCharacteristic: CBMutableCharacteristic = {

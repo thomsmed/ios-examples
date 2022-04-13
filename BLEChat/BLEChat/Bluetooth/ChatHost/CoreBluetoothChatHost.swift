@@ -156,7 +156,7 @@ extension CoreBluetoothChatHost: CBPeripheralManagerDelegate {
             print(error)
         }
         guard let channel = channel else { return }
-        dismantleL2CAPChannel() // Making sure only one channel is active at the time
+        releaseL2CAPChannel() // Making sure only one channel is active at the time
         // More about working with streams here:
         // https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Streams/Streams.html#//apple_ref/doc/uid/10000188-SW1
         // TODO: Add links to docs about RunLoops / RunLoop modes
@@ -173,10 +173,10 @@ extension CoreBluetoothChatHost: CBPeripheralManagerDelegate {
         if let error = error {
             print(error)
         }
-        dismantleL2CAPChannel()
+        releaseL2CAPChannel()
     }
 
-    private func dismantleL2CAPChannel() {
+    private func releaseL2CAPChannel() {
         // More about working with streams here:
         // https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Streams/Streams.html#//apple_ref/doc/uid/10000188-SW1
         // TODO: Add links to docs about RunLoops / RunLoop modes
@@ -225,12 +225,12 @@ extension CoreBluetoothChatHost: StreamDelegate {
         case .endEncountered:
             print("\(stream is InputStream ? "input" : "output")Stream:endEncountered")
             serialQueue.async {
-                self.dismantleL2CAPChannel()
+                self.releaseL2CAPChannel()
             }
         case .errorOccurred:
             print("\(stream is InputStream ? "input" : "output")Stream:errorOccurred")
             serialQueue.async {
-                self.dismantleL2CAPChannel()
+                self.releaseL2CAPChannel()
             }
         default:
             print("\(stream is InputStream ? "input" : "output")Stream:unknownEventCode")
