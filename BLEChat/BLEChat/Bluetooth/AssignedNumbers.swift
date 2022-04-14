@@ -18,7 +18,6 @@ enum AssignedNumbers {
     // Identifiers for our custom service and characteristics (Chat Service)
     // - Can be any 128 bit UUID, but must not be within the range of the base UUID defined by the Bluetooth SIG
     // - More info in the specification here: https://www.bluetooth.com/specifications/specs/core-specification/
-    // - The base UUID is part of the Service Discovery Protocol (SDP) defined by the Bluetooth SIG // TODO: Link/pointer to where to find this in the specification PDF
     static let chatService = CBUUID(string: "00000001-d21a-4245-bcda-1067110a2762") // We use this as our "base" identifier.
     static let chatServiceIncomingReactionsCharacteristic = CBUUID(string: "00000002-d21a-4245-bcda-1067110a2762")
     static let chatServiceOutgoingReactionsCharacteristic = CBUUID(string: "00000003-d21a-4245-bcda-1067110a2762")
