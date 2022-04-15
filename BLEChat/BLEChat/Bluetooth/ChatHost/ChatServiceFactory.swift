@@ -63,6 +63,8 @@ enum ChatServiceFactory {
             value: Data(withUnsafeBytes(of: psm, Array.init)),
             permissions: [.readEncryptionRequired] // Require encryption
         )
+        // Note: GATT service characteristic descriptors are not really required (it depends on the use case),
+        // so we'll skip adding descriptors for our L2CAP PSM characteristic
         mutableService.characteristics = [
             ChatServiceFactory.incomingReactionCharacteristic,
             ChatServiceFactory.outgoingReactionsCharacteristic,
