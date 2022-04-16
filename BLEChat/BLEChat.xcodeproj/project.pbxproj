@@ -21,6 +21,7 @@
 		ED4C997E27973BD90032EE6B /* CoreBluetoothChatHostConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4C997D27973BD90032EE6B /* CoreBluetoothChatHostConnection.swift */; };
 		ED4C998027973DF80032EE6B /* ChatHostConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4C997F27973DF80032EE6B /* ChatHostConnection.swift */; };
 		ED4C99822797471D0032EE6B /* BluetoothError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4C99812797471D0032EE6B /* BluetoothError.swift */; };
+		ED7E4BB1280B802500D7195B /* StopRunLoopSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7E4BB0280B802500D7195B /* StopRunLoopSource.swift */; };
 		EDB8090F279D3597005FC8E0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB8090E279D3597005FC8E0 /* HomeViewController.swift */; };
 		EDB80917279D361E005FC8E0 /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB80916279D361E005FC8E0 /* JoinViewController.swift */; };
 		EDB8091A279D3633005FC8E0 /* HostChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB80919279D3633005FC8E0 /* HostChatViewController.swift */; };
@@ -46,6 +47,7 @@
 		ED4C997D27973BD90032EE6B /* CoreBluetoothChatHostConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreBluetoothChatHostConnection.swift; sourceTree = "<group>"; };
 		ED4C997F27973DF80032EE6B /* ChatHostConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatHostConnection.swift; sourceTree = "<group>"; };
 		ED4C99812797471D0032EE6B /* BluetoothError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothError.swift; sourceTree = "<group>"; };
+		ED7E4BB0280B802500D7195B /* StopRunLoopSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopRunLoopSource.swift; sourceTree = "<group>"; };
 		EDB8090E279D3597005FC8E0 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		EDB80916279D361E005FC8E0 /* JoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
 		EDB80919279D3633005FC8E0 /* HostChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostChatViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 				ED17A01E279043D00078B6DE /* Info.plist */,
 				EDB8090D279D3572005FC8E0 /* Features */,
 				ED17A04427918BAE0078B6DE /* Bluetooth */,
+				ED7E4BAF280B800400D7195B /* Utils */,
 			);
 			path = BLEChat;
 			sourceTree = "<group>";
@@ -128,6 +131,14 @@
 				EDB80926279D85AC005FC8E0 /* ChatServiceFactory.swift */,
 			);
 			path = ChatHost;
+			sourceTree = "<group>";
+		};
+		ED7E4BAF280B800400D7195B /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				ED7E4BB0280B802500D7195B /* StopRunLoopSource.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		EDB8090D279D3572005FC8E0 /* Features */ = {
@@ -250,6 +261,7 @@
 				EDB8090F279D3597005FC8E0 /* HomeViewController.swift in Sources */,
 				ED17A0522791F3130078B6DE /* Dependencies.swift in Sources */,
 				ED17A04A27918CA40078B6DE /* CoreBluetoothChatHostScanner.swift in Sources */,
+				ED7E4BB1280B802500D7195B /* StopRunLoopSource.swift in Sources */,
 				ED17A04827918C5C0078B6DE /* ChatHostScanner.swift in Sources */,
 				ED4C998027973DF80032EE6B /* ChatHostConnection.swift in Sources */,
 				EDB80921279D4B41005FC8E0 /* ChatBubbleTableViewCell.swift in Sources */,
