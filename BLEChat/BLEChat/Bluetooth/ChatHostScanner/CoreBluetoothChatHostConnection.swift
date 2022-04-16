@@ -195,7 +195,11 @@ extension CoreBluetoothChatHostConnection: CBPeripheralDelegate {
         channel.outputStream.open()
 
         // Alternative 2 - Using a dedicated thread to process stream events:
+//        let stopRunLoopSource = StopRunLoopSource()
 //        let thread = Thread(block: {
+//
+//            stopRunLoopSource.schedule(in: .current)
+//
 //            channel.inputStream.delegate = self
 //            channel.inputStream.schedule(in: .current, forMode: .default)
 //            channel.inputStream.open()
@@ -203,10 +207,12 @@ extension CoreBluetoothChatHostConnection: CBPeripheralDelegate {
 //            channel.outputStream.schedule(in: .current, forMode: .default)
 //            channel.outputStream.open()
 //
-//            while !Thread.current.isCancelled && RunLoop.current.run(mode: .default, before: .distantFuture) {
-//                // Loop while there is inputs to process and the thread is not cancelled.
-//                // Cancel the thread when the L2CAP channel is no longer in use.
-//            }
+//            var stop: Bool?
+//            repeat {
+//                stop = Thread.current.threadDictionary[StopRunLoopSource.threadDictionaryKey] as? Bool
+//            } while stop != true && RunLoop.current.run(mode: .default, before: .distantFuture)
+//
+//            stopRunLoopSource.invalidate()
 //
 //            channel.inputStream.close()
 //            channel.inputStream.remove(from: .current, forMode: .default)
@@ -214,7 +220,9 @@ extension CoreBluetoothChatHostConnection: CBPeripheralDelegate {
 //            channel.outputStream.remove(from: .current, forMode: .default)
 //        })
 //        thread.start()
-//        l2capChannelStreamingThread = thread // Remember to keep the thread reference around.
+//
+//        streamEventThread = thread // Remember to keep the thread reference around.
+//        streamEventThreadStopRunLoopSource = stopRunLoopSource
 
         l2capChannel = channel
     }
@@ -232,8 +240,8 @@ extension CoreBluetoothChatHostConnection: CBPeripheralDelegate {
         channel.outputStream.close()
         channel.outputStream.remove(from: .main, forMode: .default)
 
-        // Alternative 2 - Cancel the thread dedicated to process streaming event:
-//        l2capChannelStreamingThread?.cancel()
+        // Alternative 2 - Signal the StopRunLoopSource to tell the stream event thread to stop processing stream event.
+//        streamEventThreadStopRunLoopSource?.signal()
 
         l2capChannel = nil
     }
