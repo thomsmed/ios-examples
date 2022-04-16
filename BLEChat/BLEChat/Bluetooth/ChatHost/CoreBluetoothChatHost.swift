@@ -176,12 +176,11 @@ extension CoreBluetoothChatHost: CBPeripheralManagerDelegate {
         channel.outputStream.open()
 
         // Alternative 2 - Using a dedicated thread to process stream events:
-//        channel.inputStream.delegate = self
-//        channel.outputStream.delegate = self
-//
 //        let thread = Thread(block: {
+//            channel.inputStream.delegate = self
 //            channel.inputStream.schedule(in: .current, forMode: .default)
 //            channel.inputStream.open()
+//            channel.outputStream.delegate = self
 //            channel.outputStream.schedule(in: .current, forMode: .default)
 //            channel.outputStream.open()
 //
@@ -196,7 +195,7 @@ extension CoreBluetoothChatHost: CBPeripheralManagerDelegate {
 //            channel.outputStream.remove(from: .current, forMode: .default)
 //        })
 //        thread.start()
-//        self.l2capChannelStreamingThread = thread // Remember to keep the thread reference around.
+//        l2capChannelStreamingThread = thread // Remember to keep the thread reference around.
 
         activeL2CAPChannel = channel
     }
@@ -222,7 +221,7 @@ extension CoreBluetoothChatHost: CBPeripheralManagerDelegate {
         channel.outputStream.remove(from: .main, forMode: .default)
 
         // Alternative 2 - Cancel the thread dedicated to process streaming event:
-//        self.l2capChannelStreamingThread?.cancel()
+//        l2capChannelStreamingThread?.cancel()
 
         activeL2CAPChannel = nil
     }
