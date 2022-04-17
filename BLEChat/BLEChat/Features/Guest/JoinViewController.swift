@@ -65,10 +65,12 @@ final class JoinViewController: UITableViewController {
                     message: "This applications need access to Bluetooth",
                     preferredStyle: .alert
                 )
-                alert.addAction(UIAlertAction(
-                    title: NSLocalizedString("OK", comment: "Default action"),
-                    style: .default
-                ))
+                alert.addAction(
+                    UIAlertAction(
+                        title: NSLocalizedString("OK", comment: "Default action"),
+                        style: .default
+                    )
+                )
                 self.present(alert, animated: true)
             }
         })

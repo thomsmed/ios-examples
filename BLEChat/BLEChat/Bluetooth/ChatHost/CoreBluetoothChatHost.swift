@@ -39,6 +39,7 @@ final class CoreBluetoothChatHost: NSObject {
 
     private lazy var stateSubject = CurrentValueSubject<ChatHostState, Never>(peripheralManager.state.asCHState)
 
+    private let chatEventsSubject = PassthroughSubject<ChatEvent, Never>()
     private let reactionsSubject = PassthroughSubject<String, Never>()
     private let messagesSubject = PassthroughSubject<String, Never>()
 
@@ -138,11 +139,13 @@ extension CoreBluetoothChatHost: CBPeripheralManagerDelegate {
     func peripheralManager(_ peripheral: CBPeripheralManager, central: CBCentral, didSubscribeTo characteristic: CBCharacteristic) {
         print("centralDidSubscribeToCharacteristic")
         // central.maximumUpdateValueLength // Use this value to limit notification data if you want to make sure all the data is sent with the notification.
+        chatEventsSubject.send(.guestJoined)
     }
 
     func peripheralManager(_ peripheral: CBPeripheralManager, central: CBCentral, didUnsubscribeFrom characteristic: CBCharacteristic) {
         print("centralDidUnsubscribeFromCharacteristic")
         // Useful if you want to track wether you should update a vale or not. E.g. if you do not want to update a value that has no subscribers to it.
+        chatEventsSubject.send(.guestLeft)
     }
 
     func peripheralManagerIsReady(toUpdateSubscribers peripheral: CBPeripheralManager) {
@@ -323,6 +326,10 @@ extension CoreBluetoothChatHost: ChatHost {
 
     var state: AnyPublisher<ChatHostState, Never> {
         stateSubject.eraseToAnyPublisher()
+    }
+
+    var chatEvents: AnyPublisher<ChatEvent, Never> {
+        chatEventsSubject.eraseToAnyPublisher()
     }
 
     var reactions: AnyPublisher<String, Never> {
