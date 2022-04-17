@@ -43,8 +43,9 @@ final class GuestChatViewController: UIViewController {
     private let chatHost: DiscoveredChatHost
 
     private var connection: ChatHostConnection?
-    private var messages: [ChatBubbleMessage] = []
+    private var chatSections: [ChatSection] = [ChatSection(title: "Joining...", messages: [])]
 
+    private var connectionStateSub: AnyCancellable?
     private var messagesSub: AnyCancellable?
     private var reactionsSub: AnyCancellable?
 
@@ -107,13 +108,15 @@ final class GuestChatViewController: UIViewController {
         setupObservers()
         messageInputTextField.becomeFirstResponder()
         Dependencies.chatHostScanner.connect(to: chatHost.uuid, { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case let .failure(error):
-                print(error)
-            case let .success(connection):
-                self.connection = connection
-                self.setupSubscriptions()
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+                switch result {
+                case let .failure(error):
+                    print(error)
+                case let .success(connection):
+                    self.connection = connection
+                    self.setupSubscriptions()
+                }
             }
         })
     }
@@ -126,10 +129,39 @@ final class GuestChatViewController: UIViewController {
     }
 
     private func setupSubscriptions() {
-        messagesSub = connection?.messages.receive(on: DispatchQueue.main).sink(receiveValue: { [weak self] message in
+        connectionStateSub = connection?.state.receive(on: DispatchQueue.main).sink(receiveValue: { [weak self] connectionState in
             guard let self = self else { return }
-            let indexPath = IndexPath(row: self.messages.count, section: 0)
-            self.messages.append(ChatBubbleMessage(message: message, incoming: true))
+            switch connectionState {
+            case .connecting:
+                return
+            case .connected:
+                self.chatSections.append(
+                    ChatSection(
+                        title: "Joined chat as guest",
+                        messages: []
+                    )
+                )
+                self.tableView.insertSections(IndexSet(integer: self.chatSections.count - 1), with: .left)
+                self.tableView.scrollToRow(at: IndexPath(row: NSNotFound, section: self.chatSections.count - 1), at: .bottom, animated: true)
+            case .disconnected, .error:
+                self.chatSections.append(
+                    ChatSection(
+                        title: "Disconnected from chat",
+                        messages: []
+                    )
+                )
+                self.tableView.insertSections(IndexSet(integer: self.chatSections.count - 1), with: .left)
+                self.tableView.scrollToRow(at: IndexPath(row: NSNotFound, section: self.chatSections.count - 1), at: .bottom, animated: true)
+            }
+        })
+
+        messagesSub = connection?.messages.receive(on: DispatchQueue.main).sink(receiveValue: { [weak self] message in
+            guard
+                let self = self,
+                let lastChatSection = self.chatSections.last
+            else { return }
+            let indexPath = IndexPath(row: lastChatSection.messages.count, section: self.chatSections.count - 1)
+            self.chatSections[self.chatSections.count - 1].messages.append(ChatBubbleMessage(message: message, incoming: true))
             self.tableView.insertRows(at: [indexPath], with: .bottom)
             self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
         })
@@ -140,6 +172,7 @@ final class GuestChatViewController: UIViewController {
     }
 
     private func tearDownSubscriptions() {
+        connectionStateSub = nil
         messagesSub = nil
         reactionsSub = nil
     }
@@ -166,9 +199,9 @@ final class GuestChatViewController: UIViewController {
     }
 
     private func submitMessage(_ action: UIAction) {
-        if let message = messageInputTextField.text {
-            let indexPath = IndexPath(row: messages.count, section: 0)
-            messages.append(ChatBubbleMessage(message: message, incoming: false))
+        if let message = messageInputTextField.text, let lastChatSection = chatSections.last {
+            let indexPath = IndexPath(row: lastChatSection.messages.count, section: chatSections.count - 1)
+            chatSections[chatSections.count - 1].messages.append(ChatBubbleMessage(message: message, incoming: false))
             tableView.insertRows(at: [indexPath], with: .bottom)
             tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
             connection?.submit(message: message)
@@ -222,8 +255,16 @@ final class GuestChatViewController: UIViewController {
 
 extension GuestChatViewController: UITableViewDataSource {
 
+    func numberOfSections(in tableView: UITableView) -> Int {
+        chatSections.count
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        messages.count
+        chatSections[section].messages.count
+    }
+
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        chatSections[section].title
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -232,7 +273,7 @@ extension GuestChatViewController: UITableViewDataSource {
         else {
             fatalError("Could not dequeue reusable cell of type \(String(describing: ChatBubbleTableViewCell.self))")
         }
-        let message = messages[indexPath.row]
+        let message = chatSections[indexPath.section].messages[indexPath.row]
         cell.setup(with: message)
         return cell
     }

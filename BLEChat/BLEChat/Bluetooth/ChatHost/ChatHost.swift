@@ -15,8 +15,14 @@ enum ChatHostState {
     case broadcasting
 }
 
+enum ChatEvent {
+    case guestJoined
+    case guestLeft
+}
+
 protocol ChatHost: AnyObject {
     var state: AnyPublisher<ChatHostState, Never> { get }
+    var chatEvents: AnyPublisher<ChatEvent, Never> { get }
     var messages: AnyPublisher<String, Never> { get }
     var reactions: AnyPublisher<String, Never> { get }
 
