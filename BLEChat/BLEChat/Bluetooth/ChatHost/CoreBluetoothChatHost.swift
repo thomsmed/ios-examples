@@ -202,8 +202,35 @@ extension CoreBluetoothChatHost: CBPeripheralManagerDelegate {
 //        })
 //        thread.start()
 //
-//        streamEventThread = thread // Remember to keep the thread reference around.
-//        streamEventThreadStopRunLoopSource = stopRunLoopSource
+//        streamEventsThread = thread // Remember to keep the thread reference around.
+//        streamEventsThreadStopRunLoopSource = stopRunLoopSource
+
+        // Alternative 3 - Stealing a thread from a concurrent dispatch queue to process stream events:
+//        let stopRunLoopSource = StopRunLoopSource()
+//        DispatchQueue.global(qos: .userInitiated).async {
+//
+//            stopRunLoopSource.schedule(in: .current)
+//
+//            channel.inputStream.delegate = self
+//            channel.inputStream.schedule(in: .current, forMode: .default)
+//            channel.inputStream.open()
+//            channel.outputStream.delegate = self
+//            channel.outputStream.schedule(in: .current, forMode: .default)
+//            channel.outputStream.open()
+//
+//            var stop: Bool?
+//            repeat {
+//                stop = Thread.current.threadDictionary[StopRunLoopSource.threadDictionaryKey] as? Bool
+//            } while stop != true && RunLoop.current.run(mode: .default, before: .distantFuture)
+//
+//            stopRunLoopSource.invalidate()
+//
+//            channel.inputStream.close()
+//            channel.inputStream.remove(from: .current, forMode: .default)
+//            channel.outputStream.close()
+//            channel.outputStream.remove(from: .current, forMode: .default)
+//        }
+//        streamEventsThreadStopRunLoopSource = stopRunLoopSource
 
         activeL2CAPChannel = channel
     }
@@ -212,6 +239,7 @@ extension CoreBluetoothChatHost: CBPeripheralManagerDelegate {
         if let error = error {
             print(error)
         }
+
         releaseL2CAPChannel()
     }
 
@@ -220,16 +248,16 @@ extension CoreBluetoothChatHost: CBPeripheralManagerDelegate {
         // https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Streams/Streams.html#//apple_ref/doc/uid/10000188-SW1
         // More about run loops (for those interested): https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Multithreading/RunLoopManagement/RunLoopManagement.html#//apple_ref/doc/uid/10000057i-CH16-SW1
 
+        // Alternative 1 - Removing the streams as input sources from the main thread's run loop:
         guard let channel = activeL2CAPChannel else { return }
 
-        // Alternative 1 - Removing the streams as input sources from the main thread's run loop:
         channel.inputStream.close()
         channel.inputStream.remove(from: .main, forMode: .default)
         channel.outputStream.close()
         channel.outputStream.remove(from: .main, forMode: .default)
 
-        // Alternative 2 - Signal the StopRunLoopSource to tell the stream event thread to stop processing stream event.
-//        streamEventThreadStopRunLoopSource?.signal()
+        // Alternative 2 and 3 - Signal the StopRunLoopSource to tell the stream events thread to stop processing stream event.
+//        streamEventsThreadStopRunLoopSource?.signal()
 
         activeL2CAPChannel = nil
     }
@@ -307,7 +335,10 @@ extension CoreBluetoothChatHost: ChatHost {
 
     func startBroadcast() {
         serialQueue.async {
-            guard self.stateSubject.value == .ready, self.activeL2CAPChannel == nil else { return }
+            guard
+                self.stateSubject.value == .ready,
+                self.activeL2CAPChannel == nil
+            else { return }
             self.stateSubject.send(.broadcasting)
             self.peripheralManager.publishL2CAPChannel(withEncryption: true)
         }
@@ -315,7 +346,9 @@ extension CoreBluetoothChatHost: ChatHost {
 
     func stopBroadcast() {
         serialQueue.async {
-            guard self.stateSubject.value == .broadcasting else { return }
+            guard
+                self.stateSubject.value == .broadcasting
+            else { return }
             self.peripheralManager.stopAdvertising()
             self.peripheralManager.removeAllServices()
             if let psm = self.publishedL2CAPSPM {

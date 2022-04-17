@@ -113,7 +113,8 @@ extension CoreBluetoothChatHostConnection: CBPeripheralDelegate {
     }
 
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
-        // This method is called both when a read is initiated by the central, or when the peripheral has notified that a new value is available.
+        // This method is called both when a read is initiated by the central,
+        // or when the peripheral has notified that a new value is available.
         if characteristic.uuid == AssignedNumbers.chatServiceL2CAPPSMCharacteristic {
             guard let data = characteristic.value else {
                 didEncounterErrors = true
@@ -221,8 +222,35 @@ extension CoreBluetoothChatHostConnection: CBPeripheralDelegate {
 //        })
 //        thread.start()
 //
-//        streamEventThread = thread // Remember to keep the thread reference around.
-//        streamEventThreadStopRunLoopSource = stopRunLoopSource
+//        streamEventsThread = thread // Remember to keep the thread reference around.
+//        streamEventsThreadStopRunLoopSource = stopRunLoopSource
+
+        // Alternative 3 - Stealing a thread from a concurrent dispatch queue to process stream events:
+//        let stopRunLoopSource = StopRunLoopSource()
+//        DispatchQueue.global(qos: .userInitiated).async {
+//
+//            stopRunLoopSource.schedule(in: .current)
+//
+//            channel.inputStream.delegate = self
+//            channel.inputStream.schedule(in: .current, forMode: .default)
+//            channel.inputStream.open()
+//            channel.outputStream.delegate = self
+//            channel.outputStream.schedule(in: .current, forMode: .default)
+//            channel.outputStream.open()
+//
+//            var stop: Bool?
+//            repeat {
+//                stop = Thread.current.threadDictionary[StopRunLoopSource.threadDictionaryKey] as? Bool
+//            } while stop != true && RunLoop.current.run(mode: .default, before: .distantFuture)
+//
+//            stopRunLoopSource.invalidate()
+//
+//            channel.inputStream.close()
+//            channel.inputStream.remove(from: .current, forMode: .default)
+//            channel.outputStream.close()
+//            channel.outputStream.remove(from: .current, forMode: .default)
+//        }
+//        streamEventsThreadStopRunLoopSource = stopRunLoopSource
 
         l2capChannel = channel
     }
@@ -232,16 +260,16 @@ extension CoreBluetoothChatHostConnection: CBPeripheralDelegate {
         // https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Streams/Streams.html#//apple_ref/doc/uid/10000188-SW1
         // More about run loops (for those interested): https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Multithreading/RunLoopManagement/RunLoopManagement.html#//apple_ref/doc/uid/10000057i-CH16-SW1
 
+        // Alternative 1 - Removing the streams as input sources from the main thread's run loop:
         guard let channel = l2capChannel else { return }
 
-        // Alternative 1 - Removing the streams as input sources from the main thread's run loop:
         channel.inputStream.close()
         channel.inputStream.remove(from: .main, forMode: .default)
         channel.outputStream.close()
         channel.outputStream.remove(from: .main, forMode: .default)
 
-        // Alternative 2 - Signal the StopRunLoopSource to tell the stream event thread to stop processing stream event.
-//        streamEventThreadStopRunLoopSource?.signal()
+        // Alternative 2 - Signal the StopRunLoopSource to tell the stream events thread to stop processing stream event.
+//        streamEventsThreadStopRunLoopSource?.signal()
 
         l2capChannel = nil
     }
@@ -363,7 +391,10 @@ extension CoreBluetoothChatHostConnection: ChatHostConnection {
 
     func disconnect() {
         serialQueue.async {
-            guard self.stateSubject.value == .connected, let peripheral = self.peripheral else { return }
+            guard
+                self.stateSubject.value == .connected,
+                let peripheral = self.peripheral
+            else { return }
             self.centralManager.cancelPeripheralConnection(peripheral)
         }
     }
