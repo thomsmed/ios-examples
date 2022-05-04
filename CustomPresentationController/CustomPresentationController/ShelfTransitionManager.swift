@@ -131,20 +131,39 @@ extension ShelfPresentationController {
 // MARK: ShelfTransitionManager
 
 final class ShelfTransitionManager: NSObject, UIViewControllerTransitioningDelegate {
-    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        return ShelfPresentationController(presentedViewController: presented, presenting: presenting ?? source)
+
+    func presentationController(
+        forPresented presented: UIViewController,
+        presenting: UIViewController?,
+        source: UIViewController
+    ) -> UIPresentationController? {
+        return ShelfPresentationController(
+            presentedViewController: presented,
+            presenting: presenting ?? source
+        )
     }
     
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        guard let shelfPresentationController = dismissed.presentationController as? ShelfPresentationController else { return nil }
+    func animationController(
+        forDismissed dismissed: UIViewController
+    ) -> UIViewControllerAnimatedTransitioning? {
+        guard let shelfPresentationController = dismissed.presentationController as? ShelfPresentationController else {
+            return nil
+        }
+
         return shelfPresentationController.shelfDismissAnimationController
     }
     
-    func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        guard let shelfDismissAnimationController = animator as? ShelfDismissAnimationController else { return nil }
+    func interactionControllerForDismissal(
+        using animator: UIViewControllerAnimatedTransitioning
+    ) -> UIViewControllerInteractiveTransitioning? {
+        guard let shelfDismissAnimationController = animator as? ShelfDismissAnimationController else {
+            return nil
+        }
+
         if shelfDismissAnimationController.interactiveDismissal {
             return shelfDismissAnimationController
         }
+
         return nil
     }
 }
@@ -152,54 +171,76 @@ final class ShelfTransitionManager: NSObject, UIViewControllerTransitioningDeleg
 // MARK: ShelfDismissAnimationController
 
 final class ShelfDismissAnimationController: UIPercentDrivenInteractiveTransition {
+
     private(set) var interactiveDismissal: Bool = false
-    
-    override func startInteractiveTransition(_ transitionContext: UIViewControllerContextTransitioning) {
-        super.startInteractiveTransition(transitionContext)
-    }
-    
+
     override func update(_ percentComplete: CGFloat) {
         super.update(percentComplete)
+
         interactiveDismissal = true
     }
     
     override func cancel() {
         super.cancel()
+
         interactiveDismissal = false
     }
     
     override func finish() {
         super.finish()
+
         interactiveDismissal = false
     }
 }
 
 extension ShelfDismissAnimationController: UIViewControllerAnimatedTransitioning {
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.3
+        return 0.25
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        interruptibleAnimator(using: transitionContext).startAnimation()
+        guard let fromView = transitionContext.view(forKey: .from) else {
+            return
+        }
+
+        transitionContext.containerView.addSubview(fromView)
+
+        let offset = fromView.frame.height
+
+        UIView.animate(
+            withDuration: transitionDuration(using: transitionContext),
+            delay: 0,
+            options: [.curveEaseInOut],
+            animations: {
+                fromView.center.y += offset
+            },
+            completion: { _ in
+                transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+            }
+        )
     }
     
-    func interruptibleAnimator(using transitionContext: UIViewControllerContextTransitioning) -> UIViewImplicitlyAnimating {
-        let propertyAnimator = UIViewPropertyAnimator(duration: transitionDuration(using: transitionContext), curve: .easeOut)
-        propertyAnimator.addCompletion({ _ in
+    func interruptibleAnimator(
+        using transitionContext: UIViewControllerContextTransitioning
+    ) -> UIViewImplicitlyAnimating {
+        let propertyAnimator = UIViewPropertyAnimator(
+            duration: transitionDuration(using: transitionContext),
+            curve: .easeInOut
+        )
+        propertyAnimator.addCompletion() { _ in
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
-        })
+        }
         
-        guard
-            let fromView = transitionContext.view(forKey: .from)
-        else {
+        guard let fromView = transitionContext.view(forKey: .from) else {
             return propertyAnimator
         }
         
         transitionContext.containerView.addSubview(fromView)
 
-        let height = fromView.frame.height
+        let offset = fromView.frame.height
+
         propertyAnimator.addAnimations {
-            fromView.frame.origin.y += height
+            fromView.center.y += offset
         }
         
         return propertyAnimator
