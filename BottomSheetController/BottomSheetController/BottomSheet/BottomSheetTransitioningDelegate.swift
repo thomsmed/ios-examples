@@ -14,6 +14,7 @@ final class BottomSheetTransitioningDelegate: NSObject, UIViewControllerTransiti
 
     private weak var currentBottomSheetPresentationController: BottomSheetPresentationController?
 
+    var preferredSheetCornerRadius: CGFloat
     var preferredSheetSizingFactor: CGFloat
 
     var tapToDismissEnabled: Bool = true {
@@ -28,8 +29,9 @@ final class BottomSheetTransitioningDelegate: NSObject, UIViewControllerTransiti
         }
     }
 
-    init(preferredSheetSizingFactor: CGFloat) {
+    init(preferredSheetSizingFactor: CGFloat, preferredSheetCornerRadius: CGFloat) {
         self.preferredSheetSizingFactor = preferredSheetSizingFactor
+        self.preferredSheetCornerRadius = preferredSheetCornerRadius
         super.init()
     }
 
@@ -42,6 +44,7 @@ final class BottomSheetTransitioningDelegate: NSObject, UIViewControllerTransiti
             presentedViewController: presented,
             presenting: presenting ?? source
         )
+        bottomSheetPresentationController.sheetCornerRadius = preferredSheetCornerRadius
         bottomSheetPresentationController.sheetSizingFactor = preferredSheetSizingFactor
         bottomSheetPresentationController.tapGestureRecognizer.isEnabled = tapToDismissEnabled
         bottomSheetPresentationController.panGestureRecognizer.isEnabled = panToDismissEnabled
@@ -90,6 +93,8 @@ final class BottomSheetPresentationController: UIPresentationController {
     let bottomSheetInteractiveTransition = BottomSheetInteractiveTransition()
 
     var sheetSizingFactor: CGFloat = 1
+    var sheetCornerRadius: CGFloat = 8
+    var sheetTopOffset: CGFloat = 24
 
     lazy var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(onTap))
     lazy var panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(onPan))
@@ -144,7 +149,7 @@ final class BottomSheetPresentationController: UIPresentationController {
         }
 
         let containerViewFrame = containerView.frame
-        let absoluteMaxHeight = containerViewFrame.height - containerView.safeAreaInsets.top - 24
+        let absoluteMaxHeight = containerViewFrame.height - containerView.safeAreaInsets.top - sheetTopOffset
         let preferredMaxHeight = absoluteMaxHeight * sheetSizingFactor
 
         let fittingSize = presentedView.systemLayoutSizeFitting(
@@ -186,7 +191,7 @@ final class BottomSheetPresentationController: UIPresentationController {
 
         presentedView.addGestureRecognizer(panGestureRecognizer)
 
-        presentedView.layer.cornerRadius = 10
+        presentedView.layer.cornerRadius = sheetCornerRadius
         presentedView.layer.maskedCorners = [
             .layerMinXMinYCorner,
             .layerMaxXMinYCorner

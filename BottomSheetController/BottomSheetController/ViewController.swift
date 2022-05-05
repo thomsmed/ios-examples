@@ -12,23 +12,50 @@ class ViewController: UIViewController {
     override func loadView() {
         view = UIView()
 
-        var configuration: UIButton.Configuration = .bordered()
-        configuration.title = "Click me!"
-        let button = UIButton(configuration: configuration, primaryAction: .init(handler: { _ in
-//            let viewController = FittingPageViewController()
-            let viewController = FullPageViewController()
-//            viewController.tapToDismissEnabled = false
-//            viewController.panToDismissEnabled = false
+        let button1 = UIButton(type: .system, primaryAction: .init(handler: { _ in
+            let viewController = FittingPageViewController()
+            viewController.preferredSheetSizing = .fit
             self.present(viewController, animated: true)
         }))
+        button1.setTitle("Fitting - fit", for: .normal)
 
-        view.addSubview(button)
+        let button2 = UIButton(type: .system, primaryAction: .init(handler: { _ in
+            let viewController = FittingPageViewController()
+            viewController.preferredSheetSizing = .small
+            self.present(viewController, animated: true)
+        }))
+        button2.setTitle("Fitting - small", for: .normal)
 
-        button.translatesAutoresizingMaskIntoConstraints = false
+        let button3 = UIButton(type: .system, primaryAction: .init(handler: { _ in
+            let viewController = FittingPageViewController()
+            viewController.preferredSheetSizing = .medium
+            self.present(viewController, animated: true)
+        }))
+        button3.setTitle("Fitting - medium", for: .normal)
+
+        let button4 = UIButton(type: .system, primaryAction: .init(handler: { _ in
+            let viewController = FittingPageViewController()
+            viewController.preferredSheetSizing = .large
+            self.present(viewController, animated: true)
+        }))
+        button4.setTitle("Fitting - large", for: .normal)
+
+        let stackView = UIStackView(arrangedSubviews: [
+            button1,
+            button2,
+            button3,
+            button4
+        ])
+        stackView.axis = .vertical
+        stackView.spacing = 20
+
+        view.addSubview(stackView)
+
+        stackView.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            button.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
         ])
 
         view.backgroundColor = .black
