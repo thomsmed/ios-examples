@@ -14,8 +14,10 @@ final class BottomSheetTransitioningDelegate: NSObject, UIViewControllerTransiti
 
     private weak var currentBottomSheetPresentationController: BottomSheetPresentationController?
 
+    var preferredSheetTopInset: CGFloat
     var preferredSheetCornerRadius: CGFloat
     var preferredSheetSizingFactor: CGFloat
+    var preferredSheetBackdropColor: UIColor
 
     var tapToDismissEnabled: Bool = true {
         didSet {
@@ -29,9 +31,16 @@ final class BottomSheetTransitioningDelegate: NSObject, UIViewControllerTransiti
         }
     }
 
-    init(preferredSheetSizingFactor: CGFloat, preferredSheetCornerRadius: CGFloat) {
-        self.preferredSheetSizingFactor = preferredSheetSizingFactor
+    init(
+        preferredSheetTopInset: CGFloat,
+        preferredSheetCornerRadius: CGFloat,
+        preferredSheetSizingFactor: CGFloat,
+        preferredSheetBackdropColor: UIColor
+    ) {
+        self.preferredSheetTopInset = preferredSheetTopInset
         self.preferredSheetCornerRadius = preferredSheetCornerRadius
+        self.preferredSheetSizingFactor = preferredSheetSizingFactor
+        self.preferredSheetBackdropColor = preferredSheetBackdropColor
         super.init()
     }
 
@@ -42,10 +51,13 @@ final class BottomSheetTransitioningDelegate: NSObject, UIViewControllerTransiti
     ) -> UIPresentationController? {
         let bottomSheetPresentationController = BottomSheetPresentationController(
             presentedViewController: presented,
-            presenting: presenting ?? source
+            presenting: presenting ?? source,
+            sheetTopInset: preferredSheetTopInset,
+            sheetCornerRadius: preferredSheetCornerRadius,
+            sheetSizingFactor: preferredSheetSizingFactor,
+            sheetBackdropColor: preferredSheetBackdropColor
         )
-        bottomSheetPresentationController.sheetCornerRadius = preferredSheetCornerRadius
-        bottomSheetPresentationController.sheetSizingFactor = preferredSheetSizingFactor
+
         bottomSheetPresentationController.tapGestureRecognizer.isEnabled = tapToDismissEnabled
         bottomSheetPresentationController.panGestureRecognizer.isEnabled = panToDismissEnabled
 
@@ -83,21 +95,37 @@ final class BottomSheetTransitioningDelegate: NSObject, UIViewControllerTransiti
 
 final class BottomSheetPresentationController: UIPresentationController {
 
-    private let backgroundView: UIView = {
+    private lazy var backdropView: UIView = {
         let view = UIView()
-        view.backgroundColor = .black
+        view.backgroundColor = sheetBackdropColor
         view.alpha = 0
         return view
     }()
 
     let bottomSheetInteractiveTransition = BottomSheetInteractiveTransition()
 
-    var sheetSizingFactor: CGFloat = 1
-    var sheetCornerRadius: CGFloat = 8
-    var sheetTopOffset: CGFloat = 24
+    let sheetTopInset: CGFloat
+    let sheetCornerRadius: CGFloat
+    let sheetSizingFactor: CGFloat
+    let sheetBackdropColor: UIColor
 
     lazy var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(onTap))
     lazy var panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(onPan))
+
+    init(
+        presentedViewController: UIViewController,
+        presenting presentingViewController: UIViewController?,
+        sheetTopInset: CGFloat,
+        sheetCornerRadius: CGFloat,
+        sheetSizingFactor: CGFloat,
+        sheetBackdropColor: UIColor
+    ) {
+        self.sheetTopInset = sheetTopInset
+        self.sheetCornerRadius = sheetCornerRadius
+        self.sheetSizingFactor = sheetSizingFactor
+        self.sheetBackdropColor = sheetBackdropColor
+        super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
+    }
 
     @objc private func onTap(_ gestureRecognizer: UITapGestureRecognizer) {
         guard
@@ -149,7 +177,7 @@ final class BottomSheetPresentationController: UIPresentationController {
         }
 
         let containerViewFrame = containerView.frame
-        let absoluteMaxHeight = containerViewFrame.height - containerView.safeAreaInsets.top - sheetTopOffset
+        let absoluteMaxHeight = containerViewFrame.height - containerView.safeAreaInsets.top - sheetTopInset
         let preferredMaxHeight = absoluteMaxHeight * sheetSizingFactor
 
         let fittingSize = presentedView.systemLayoutSizeFitting(
@@ -203,31 +231,31 @@ final class BottomSheetPresentationController: UIPresentationController {
 
         containerView.addGestureRecognizer(tapGestureRecognizer)
 
-        containerView.addSubview(backgroundView)
+        containerView.addSubview(backdropView)
 
-        backgroundView.translatesAutoresizingMaskIntoConstraints = false
+        backdropView.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            backgroundView.topAnchor.constraint(equalTo: containerView.topAnchor),
-            backgroundView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-            backgroundView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-            backgroundView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+            backdropView.topAnchor.constraint(equalTo: containerView.topAnchor),
+            backdropView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            backdropView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            backdropView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
         ])
 
-        backgroundView.layoutIfNeeded()
+        backdropView.layoutIfNeeded()
 
         guard let transitionCoordinator = presentingViewController.transitionCoordinator else {
             return
         }
 
         transitionCoordinator.animate() { context in
-            self.backgroundView.alpha = 0.3
+            self.backdropView.alpha = 0.3
         }
     }
 
     override func presentationTransitionDidEnd(_ completed: Bool) {
         if !completed {
-            backgroundView.removeFromSuperview()
+            backdropView.removeFromSuperview()
             presentedView?.removeGestureRecognizer(panGestureRecognizer)
             containerView?.removeGestureRecognizer(tapGestureRecognizer)
         }
@@ -239,20 +267,20 @@ final class BottomSheetPresentationController: UIPresentationController {
         }
 
         transitionCoordinator.animate(alongsideTransition: { context in
-            self.backgroundView.alpha = 0
+            self.backdropView.alpha = 0
         })
     }
 
     override func dismissalTransitionDidEnd(_ completed: Bool) {
         if completed {
-            backgroundView.removeFromSuperview()
+            backdropView.removeFromSuperview()
             presentedView?.removeGestureRecognizer(panGestureRecognizer)
             containerView?.removeGestureRecognizer(tapGestureRecognizer)
         }
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        backgroundView.layoutIfNeeded()
+        backdropView.layoutIfNeeded()
 
         guard let presentedView = presentedView else {
             return
