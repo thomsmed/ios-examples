@@ -7,47 +7,92 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
 
     override func loadView() {
         view = UIView()
 
-        let button1 = UIButton(type: .system, primaryAction: .init(handler: { _ in
-            let viewController = FittingPageViewController()
+        let sparseContentFitButton = UIButton(type: .system, primaryAction: .init(handler: { _ in
+            let viewController = SparseContentSheetViewController()
             viewController.preferredSheetSizing = .fit
             self.present(viewController, animated: true)
         }))
-        button1.setTitle("Fitting - fit", for: .normal)
+        sparseContentFitButton.setTitle("Sparse content - fit", for: .normal)
 
-        let button2 = UIButton(type: .system, primaryAction: .init(handler: { _ in
-            let viewController = FittingPageViewController()
+        let sparseContentSmallButton = UIButton(type: .system, primaryAction: .init(handler: { _ in
+            let viewController = SparseContentSheetViewController()
             viewController.preferredSheetSizing = .small
             self.present(viewController, animated: true)
         }))
-        button2.setTitle("Fitting - small", for: .normal)
+        sparseContentSmallButton.setTitle("Sparse content - small", for: .normal)
 
-        let button3 = UIButton(type: .system, primaryAction: .init(handler: { _ in
-            let viewController = FittingPageViewController()
+        let sparseContentMediumButton = UIButton(type: .system, primaryAction: .init(handler: { _ in
+            let viewController = SparseContentSheetViewController()
             viewController.preferredSheetSizing = .medium
             self.present(viewController, animated: true)
         }))
-        button3.setTitle("Fitting - medium", for: .normal)
+        sparseContentMediumButton.setTitle("Sparse content - medium", for: .normal)
 
-        let button4 = UIButton(type: .system, primaryAction: .init(handler: { _ in
-            let viewController = FittingPageViewController()
+        let sparseContentLargeButton = UIButton(type: .system, primaryAction: .init(handler: { _ in
+            let viewController = SparseContentSheetViewController()
             viewController.preferredSheetSizing = .large
             self.present(viewController, animated: true)
         }))
-        button4.setTitle("Fitting - large", for: .normal)
+        sparseContentLargeButton.setTitle("Sparse content - large", for: .normal)
+
+        let sparseContentStackView = UIStackView(arrangedSubviews: [
+            sparseContentFitButton,
+            sparseContentSmallButton,
+            sparseContentMediumButton,
+            sparseContentLargeButton
+        ])
+        sparseContentStackView.axis = .vertical
+        sparseContentStackView.spacing = 20
+
+        let denseContentFitButton = UIButton(type: .system, primaryAction: .init(handler: { _ in
+            let viewController = DenseContentSheetViewController()
+            viewController.preferredSheetSizing = .fit
+            self.present(viewController, animated: true)
+        }))
+        denseContentFitButton.setTitle("Dense content - fit", for: .normal)
+
+        let denseContentSmallButton = UIButton(type: .system, primaryAction: .init(handler: { _ in
+            let viewController = DenseContentSheetViewController()
+            viewController.preferredSheetSizing = .small
+            self.present(viewController, animated: true)
+        }))
+        denseContentSmallButton.setTitle("Dense content - small", for: .normal)
+
+        let denseContentMediumButton = UIButton(type: .system, primaryAction: .init(handler: { _ in
+            let viewController = DenseContentSheetViewController()
+            viewController.preferredSheetSizing = .medium
+            self.present(viewController, animated: true)
+        }))
+        denseContentMediumButton.setTitle("Dense content - medium", for: .normal)
+
+        let denseContentLargeButton = UIButton(type: .system, primaryAction: .init(handler: { _ in
+            let viewController = DenseContentSheetViewController()
+            viewController.preferredSheetSizing = .large
+            self.present(viewController, animated: true)
+        }))
+        denseContentLargeButton.setTitle("Dense content - large", for: .normal)
+
+        let denseContentStackView = UIStackView(arrangedSubviews: [
+            denseContentFitButton,
+            denseContentSmallButton,
+            denseContentMediumButton,
+            denseContentLargeButton
+        ])
+        denseContentStackView.axis = .vertical
+        denseContentStackView.spacing = 20
+
 
         let stackView = UIStackView(arrangedSubviews: [
-            button1,
-            button2,
-            button3,
-            button4
+            sparseContentStackView,
+            denseContentStackView
         ])
         stackView.axis = .vertical
-        stackView.spacing = 20
+        stackView.spacing = 60
 
         view.addSubview(stackView)
 
@@ -58,6 +103,6 @@ class ViewController: UIViewController {
             stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
         ])
 
-        view.backgroundColor = .black
+        view.backgroundColor = .systemBackground
     }
 }

@@ -182,7 +182,7 @@ final class BottomSheetPresentationController: UIPresentationController {
 
         let fittingSize = presentedView.systemLayoutSizeFitting(
             .init(width: containerViewFrame.width, height: preferredMaxHeight),
-            withHorizontalFittingPriority: .fittingSizeLevel,
+            withHorizontalFittingPriority: .required,
             verticalFittingPriority: .fittingSizeLevel
         )
 

@@ -14,8 +14,8 @@
 		EDE826482822E839009DF63E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDE826462822E839009DF63E /* LaunchScreen.storyboard */; };
 		EDE826502822EA89009DF63E /* BottomSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE8264F2822EA89009DF63E /* BottomSheetController.swift */; };
 		EDE826532822EC51009DF63E /* BottomSheetTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE826522822EC51009DF63E /* BottomSheetTransitioningDelegate.swift */; };
-		EDE826552822F228009DF63E /* FittingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE826542822F228009DF63E /* FittingPageViewController.swift */; };
-		EDE826572823241F009DF63E /* FullPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE826562823241F009DF63E /* FullPageViewController.swift */; };
+		EDE826552822F228009DF63E /* SparseContentSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE826542822F228009DF63E /* SparseContentSheetViewController.swift */; };
+		EDE826572823241F009DF63E /* DenseContentSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE826562823241F009DF63E /* DenseContentSheetViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,8 +28,8 @@
 		EDE826492822E839009DF63E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EDE8264F2822EA89009DF63E /* BottomSheetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetController.swift; sourceTree = "<group>"; };
 		EDE826522822EC51009DF63E /* BottomSheetTransitioningDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetTransitioningDelegate.swift; sourceTree = "<group>"; };
-		EDE826542822F228009DF63E /* FittingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FittingPageViewController.swift; sourceTree = "<group>"; };
-		EDE826562823241F009DF63E /* FullPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullPageViewController.swift; sourceTree = "<group>"; };
+		EDE826542822F228009DF63E /* SparseContentSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparseContentSheetViewController.swift; sourceTree = "<group>"; };
+		EDE826562823241F009DF63E /* DenseContentSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DenseContentSheetViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,8 +65,8 @@
 				EDE8263B2822E837009DF63E /* AppDelegate.swift */,
 				EDE8263D2822E837009DF63E /* SceneDelegate.swift */,
 				EDE8263F2822E837009DF63E /* ViewController.swift */,
-				EDE826542822F228009DF63E /* FittingPageViewController.swift */,
-				EDE826562823241F009DF63E /* FullPageViewController.swift */,
+				EDE826542822F228009DF63E /* SparseContentSheetViewController.swift */,
+				EDE826562823241F009DF63E /* DenseContentSheetViewController.swift */,
 				EDE826512822EB7A009DF63E /* BottomSheet */,
 				EDE826442822E839009DF63E /* Assets.xcassets */,
 				EDE826462822E839009DF63E /* LaunchScreen.storyboard */,
@@ -155,11 +155,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				EDE826502822EA89009DF63E /* BottomSheetController.swift in Sources */,
-				EDE826552822F228009DF63E /* FittingPageViewController.swift in Sources */,
+				EDE826552822F228009DF63E /* SparseContentSheetViewController.swift in Sources */,
 				EDE826402822E837009DF63E /* ViewController.swift in Sources */,
 				EDE826532822EC51009DF63E /* BottomSheetTransitioningDelegate.swift in Sources */,
 				EDE8263C2822E837009DF63E /* AppDelegate.swift in Sources */,
-				EDE826572823241F009DF63E /* FullPageViewController.swift in Sources */,
+				EDE826572823241F009DF63E /* DenseContentSheetViewController.swift in Sources */,
 				EDE8263E2822E837009DF63E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
