@@ -150,17 +150,18 @@ final class BottomSheetPresentationController: UIPresentationController {
 
         switch gestureRecognizer.state {
         case .began:
-            bottomSheetInteractiveTransition.update(progress)
+            bottomSheetInteractiveTransition.interactiveDismissal = true
             presentedViewController.dismiss(animated: true)
         case .changed:
             bottomSheetInteractiveTransition.update(progress)
         case .ended, .cancelled:
             let velocity = gestureRecognizer.velocity(in: presentedView)
-            if progress > 0.5 && velocity.y > 0 {
+            if (progress > 0.5 && velocity.y > 0) || velocity.y > presentedView.frame.height {
                 bottomSheetInteractiveTransition.finish()
             } else {
                 bottomSheetInteractiveTransition.cancel()
             }
+            bottomSheetInteractiveTransition.interactiveDismissal = false
         default:
             return
         }
@@ -296,25 +297,7 @@ final class BottomSheetPresentationController: UIPresentationController {
 
 final class BottomSheetInteractiveTransition: UIPercentDrivenInteractiveTransition {
 
-    private(set) var interactiveDismissal: Bool = false
-
-    override func update(_ percentComplete: CGFloat) {
-        super.update(percentComplete)
-
-        interactiveDismissal = true
-    }
-
-    override func cancel() {
-        super.cancel()
-
-        interactiveDismissal = false
-    }
-
-    override func finish() {
-        super.finish()
-
-        interactiveDismissal = false
-    }
+    var interactiveDismissal: Bool = false
 }
 
 extension BottomSheetInteractiveTransition: UIViewControllerAnimatedTransitioning {
