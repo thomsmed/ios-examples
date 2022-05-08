@@ -154,7 +154,7 @@ final class BottomSheetPresentationController: UIPresentationController {
             presentedViewController.dismiss(animated: true)
         case .changed:
             bottomSheetInteractiveTransition.update(progress)
-        case .ended, .cancelled:
+        default:
             let velocity = gestureRecognizer.velocity(in: presentedView)
             if (progress > 0.5 && velocity.y > 0) || velocity.y > presentedView.frame.height {
                 bottomSheetInteractiveTransition.finish()
@@ -162,8 +162,6 @@ final class BottomSheetPresentationController: UIPresentationController {
                 bottomSheetInteractiveTransition.cancel()
             }
             bottomSheetInteractiveTransition.interactiveDismissal = false
-        default:
-            return
         }
     }
 
