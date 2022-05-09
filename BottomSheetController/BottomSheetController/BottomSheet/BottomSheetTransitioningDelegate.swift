@@ -5,7 +5,6 @@
 //  Created by Thomas Asheim Smedmann on 04/05/2022.
 //
 
-import Foundation
 import UIKit
 
 // MARK: BottomSheetTransitioningDelegate
@@ -343,7 +342,7 @@ final class BottomSheetInteractiveTransition: NSObject {
         currentPropertyAnimator?.isReversed = true
         currentPropertyAnimator?.continueAnimation(
             withTimingParameters: nil,
-            durationFactor: 1 - (currentPropertyAnimator?.fractionComplete ?? 1)
+            durationFactor: 0
         )
         interactiveDismissal = false
     }
@@ -352,7 +351,7 @@ final class BottomSheetInteractiveTransition: NSObject {
         currentTransitionContext?.finishInteractiveTransition()
         currentPropertyAnimator?.continueAnimation(
             withTimingParameters: nil,
-            durationFactor: 1 - (currentPropertyAnimator?.fractionComplete ?? 1)
+            durationFactor: 0
         )
         interactiveDismissal = false
     }
