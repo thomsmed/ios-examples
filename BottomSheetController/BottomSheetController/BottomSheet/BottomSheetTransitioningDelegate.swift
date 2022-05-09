@@ -69,7 +69,10 @@ final class BottomSheetTransitioningDelegate: NSObject, UIViewControllerTransiti
     func animationController(
         forDismissed dismissed: UIViewController
     ) -> UIViewControllerAnimatedTransitioning? {
-        guard let bottomSheetPresentationController = dismissed.presentationController as? BottomSheetPresentationController else {
+        guard
+            let bottomSheetPresentationController = dismissed.presentationController as? BottomSheetPresentationController,
+            bottomSheetPresentationController.bottomSheetInteractiveTransition.wantsInteractiveStart
+        else {
             return nil
         }
 
@@ -79,15 +82,13 @@ final class BottomSheetTransitioningDelegate: NSObject, UIViewControllerTransiti
     func interactionControllerForDismissal(
         using animator: UIViewControllerAnimatedTransitioning
     ) -> UIViewControllerInteractiveTransitioning? {
-        guard let bottomSheetInteractiveTransition = animator as? BottomSheetInteractiveTransition else {
+        guard
+            let bottomSheetInteractiveTransition = animator as? BottomSheetInteractiveTransition
+        else {
             return nil
         }
 
-        if bottomSheetInteractiveTransition.interactiveDismissal {
-            return bottomSheetInteractiveTransition
-        }
-
-        return nil
+        return bottomSheetInteractiveTransition
     }
 }
 
@@ -150,7 +151,7 @@ final class BottomSheetPresentationController: UIPresentationController {
 
         switch gestureRecognizer.state {
         case .began:
-            bottomSheetInteractiveTransition.interactiveDismissal = true
+            bottomSheetInteractiveTransition.prepare()
             presentedViewController.dismiss(animated: true)
         case .changed:
             bottomSheetInteractiveTransition.update(progress)
@@ -161,7 +162,6 @@ final class BottomSheetPresentationController: UIPresentationController {
             } else {
                 bottomSheetInteractiveTransition.cancel()
             }
-            bottomSheetInteractiveTransition.interactiveDismissal = false
         }
     }
 
@@ -293,45 +293,23 @@ final class BottomSheetPresentationController: UIPresentationController {
 
 // MARK: BottomSheetInteractiveTransition
 
-final class BottomSheetInteractiveTransition: UIPercentDrivenInteractiveTransition {
+final class BottomSheetInteractiveTransition: NSObject {
 
-    var interactiveDismissal: Bool = false
-}
+    private let transitionDuration: CGFloat = 0.33
+    private let animationCurve: UIView.AnimationCurve = .easeInOut
 
-extension BottomSheetInteractiveTransition: UIViewControllerAnimatedTransitioning {
-    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.25
-    }
+    private weak var currentTransitionContext: UIViewControllerContextTransitioning?
 
-    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        guard let fromView = transitionContext.view(forKey: .from) else {
-            return
-        }
+    private var currentPropertyAnimator: UIViewPropertyAnimator?
 
-        transitionContext.containerView.addSubview(fromView)
+    private var interactiveDismissal: Bool = false
 
-        let offset = fromView.frame.height
-
-        UIView.animate(
-            withDuration: transitionDuration(using: transitionContext),
-            delay: 0,
-            options: [.curveEaseInOut],
-            animations: {
-                fromView.center.y += offset
-            },
-            completion: { _ in
-                transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
-            }
-        )
-    }
-
-    func interruptibleAnimator(
-        using transitionContext: UIViewControllerContextTransitioning
-    ) -> UIViewImplicitlyAnimating {
+    private func createPropertyAnimator(using transitionContext: UIViewControllerContextTransitioning) -> UIViewPropertyAnimator {
         let propertyAnimator = UIViewPropertyAnimator(
-            duration: transitionDuration(using: transitionContext),
-            curve: .easeInOut
+            duration: transitionDuration,
+            curve: animationCurve
         )
+
         propertyAnimator.addCompletion() { _ in
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         }
@@ -347,6 +325,92 @@ extension BottomSheetInteractiveTransition: UIViewControllerAnimatedTransitionin
         propertyAnimator.addAnimations {
             fromView.center.y += offset
         }
+
+        return propertyAnimator
+    }
+
+    func prepare() {
+        interactiveDismissal = true
+    }
+
+    func update(_ percentComplete: CGFloat) {
+        currentTransitionContext?.updateInteractiveTransition(percentComplete)
+        currentPropertyAnimator?.fractionComplete = percentComplete
+    }
+
+    func cancel() {
+        currentTransitionContext?.cancelInteractiveTransition()
+        currentPropertyAnimator?.isReversed = true
+        currentPropertyAnimator?.continueAnimation(
+            withTimingParameters: nil,
+            durationFactor: 1 - (currentPropertyAnimator?.fractionComplete ?? 1)
+        )
+        interactiveDismissal = false
+    }
+
+    func finish() {
+        currentTransitionContext?.finishInteractiveTransition()
+        currentPropertyAnimator?.continueAnimation(
+            withTimingParameters: nil,
+            durationFactor: 1 - (currentPropertyAnimator?.fractionComplete ?? 1)
+        )
+        interactiveDismissal = false
+    }
+}
+
+extension BottomSheetInteractiveTransition: UIViewControllerInteractiveTransitioning {
+
+    func startInteractiveTransition(_ transitionContext: UIViewControllerContextTransitioning) {
+        let propertyAnimator = createPropertyAnimator(using: transitionContext)
+        propertyAnimator.fractionComplete = 0
+
+        transitionContext.updateInteractiveTransition(0)
+
+        currentPropertyAnimator = propertyAnimator
+        currentTransitionContext = transitionContext
+    }
+
+    var wantsInteractiveStart: Bool {
+        interactiveDismissal
+    }
+
+    var completionCurve: UIView.AnimationCurve {
+        animationCurve
+    }
+
+    var completionSpeed: CGFloat {
+        1.0
+    }
+}
+
+extension BottomSheetInteractiveTransition: UIViewControllerAnimatedTransitioning {
+
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+        transitionDuration
+    }
+
+    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        if let propertyAnimator = currentPropertyAnimator {
+            return propertyAnimator.startAnimation()
+        }
+
+        let propertyAnimator = createPropertyAnimator(using: transitionContext)
+
+        currentPropertyAnimator = propertyAnimator
+
+        propertyAnimator.startAnimation()
+    }
+
+    func interruptibleAnimator(
+        using transitionContext: UIViewControllerContextTransitioning
+    ) -> UIViewImplicitlyAnimating {
+        if let propertyAnimator = currentPropertyAnimator {
+            return propertyAnimator
+        }
+
+        let propertyAnimator = createPropertyAnimator(using: transitionContext)
+
+        currentPropertyAnimator = propertyAnimator
 
         return propertyAnimator
     }
