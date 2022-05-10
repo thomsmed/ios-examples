@@ -166,50 +166,6 @@ final class BottomSheetPresentationController: UIPresentationController {
 
     // MARK: UIPresentationController
 
-    override var frameOfPresentedViewInContainerView: CGRect {
-        guard
-            let containerView = containerView,
-            let presentedView = presentedView
-        else {
-            return .zero
-        }
-
-        let containerViewFrame = containerView.frame
-        let absoluteMaxHeight = containerViewFrame.height - containerView.safeAreaInsets.top - sheetTopInset
-        let preferredMaxHeight = absoluteMaxHeight * sheetSizingFactor
-
-        let fittingSize = presentedView.systemLayoutSizeFitting(
-            .init(width: containerViewFrame.width, height: preferredMaxHeight),
-            withHorizontalFittingPriority: .required,
-            verticalFittingPriority: .fittingSizeLevel
-        )
-
-        let size: CGSize
-        let origin: CGPoint
-
-        if fittingSize.height > absoluteMaxHeight {
-            size = .init(
-                width: containerViewFrame.width,
-                height: absoluteMaxHeight
-            )
-            origin = .init(
-                x: containerViewFrame.minX,
-                y: containerViewFrame.maxY - absoluteMaxHeight
-            )
-        } else {
-            size = .init(
-                width: containerViewFrame.width,
-                height: fittingSize.height
-            )
-            origin = .init(
-                x: containerViewFrame.minX,
-                y: containerViewFrame.maxY - fittingSize.height
-            )
-        }
-
-        return CGRect(origin: origin, size: size)
-    }
-
     override func presentationTransitionWillBegin() {
         guard let presentedView = presentedView else {
             return
@@ -241,6 +197,34 @@ final class BottomSheetPresentationController: UIPresentationController {
         ])
 
         backdropView.layoutIfNeeded()
+
+        containerView.addSubview(presentedView)
+
+        presentedView.translatesAutoresizingMaskIntoConstraints = false
+
+        let preferredHeightConstraint = presentedView.heightAnchor.constraint(
+            equalTo: containerView.safeAreaLayoutGuide.heightAnchor,
+            multiplier: sheetSizingFactor
+        )
+
+        let constraints = [
+            presentedView.topAnchor.constraint(greaterThanOrEqualTo: containerView.topAnchor),
+            presentedView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            presentedView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            presentedView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+            preferredHeightConstraint
+        ]
+
+        constraints.forEach { constraint in
+            // To help UIKit brake these constraints during dismiss animation
+            constraint.priority = .required - 1
+        }
+
+        preferredHeightConstraint.priority = .fittingSizeLevel
+
+        NSLayoutConstraint.activate(constraints)
+
+        presentedView.layoutIfNeeded()
 
         guard let transitionCoordinator = presentingViewController.transitionCoordinator else {
             return
@@ -278,15 +262,7 @@ final class BottomSheetPresentationController: UIPresentationController {
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        backdropView.layoutIfNeeded()
-
-        guard let presentedView = presentedView else {
-            return
-        }
-
-        coordinator.animate() { context in
-            presentedView.frame = self.frameOfPresentedViewInContainerView
-        }
+        backdropView.layoutIfNeeded() // Do not animate backdrop
     }
 }
 
@@ -313,16 +289,18 @@ final class BottomSheetInteractiveTransition: NSObject {
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         }
 
-        guard let fromView = transitionContext.view(forKey: .from) else {
+        guard let dismissedView = transitionContext.view(forKey: .from) else {
             return propertyAnimator
         }
 
-        transitionContext.containerView.addSubview(fromView)
+        // Turn on auto constraints to make it easier to animate the dismissed view
+        // (no need to animate constraints)
+        dismissedView.translatesAutoresizingMaskIntoConstraints = true
 
-        let offset = fromView.frame.height
+        let offset = dismissedView.frame.height
 
         propertyAnimator.addAnimations {
-            fromView.center.y += offset
+            dismissedView.center.y += offset
         }
 
         return propertyAnimator
