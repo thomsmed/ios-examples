@@ -70,24 +70,24 @@ final class BottomSheetTransitioningDelegate: NSObject, UIViewControllerTransiti
     ) -> UIViewControllerAnimatedTransitioning? {
         guard
             let bottomSheetPresentationController = dismissed.presentationController as? BottomSheetPresentationController,
-            bottomSheetPresentationController.bottomSheetInteractiveTransition.wantsInteractiveStart
+            bottomSheetPresentationController.bottomSheetInteractiveDismissalTransition.wantsInteractiveStart
         else {
             return nil
         }
 
-        return bottomSheetPresentationController.bottomSheetInteractiveTransition
+        return bottomSheetPresentationController.bottomSheetInteractiveDismissalTransition
     }
 
     func interactionControllerForDismissal(
         using animator: UIViewControllerAnimatedTransitioning
     ) -> UIViewControllerInteractiveTransitioning? {
         guard
-            let bottomSheetInteractiveTransition = animator as? BottomSheetInteractiveTransition
+            let bottomSheetInteractiveDismissalTransition = animator as? BottomSheetInteractiveDismissalTransition
         else {
             return nil
         }
 
-        return bottomSheetInteractiveTransition
+        return bottomSheetInteractiveDismissalTransition
     }
 }
 
@@ -102,7 +102,7 @@ final class BottomSheetPresentationController: UIPresentationController {
         return view
     }()
 
-    let bottomSheetInteractiveTransition = BottomSheetInteractiveTransition()
+    let bottomSheetInteractiveDismissalTransition = BottomSheetInteractiveDismissalTransition()
 
     let sheetTopInset: CGFloat
     let sheetCornerRadius: CGFloat
@@ -150,16 +150,16 @@ final class BottomSheetPresentationController: UIPresentationController {
 
         switch gestureRecognizer.state {
         case .began:
-            bottomSheetInteractiveTransition.prepare()
+            bottomSheetInteractiveDismissalTransition.prepare()
             presentedViewController.dismiss(animated: true)
         case .changed:
-            bottomSheetInteractiveTransition.update(progress)
+            bottomSheetInteractiveDismissalTransition.update(progress)
         default:
             let velocity = gestureRecognizer.velocity(in: presentedView)
             if (progress > 0.5 && velocity.y > 0) || velocity.y > presentedView.frame.height {
-                bottomSheetInteractiveTransition.finish()
+                bottomSheetInteractiveDismissalTransition.finish()
             } else {
-                bottomSheetInteractiveTransition.cancel()
+                bottomSheetInteractiveDismissalTransition.cancel()
             }
         }
     }
@@ -190,13 +190,19 @@ final class BottomSheetPresentationController: UIPresentationController {
         backdropView.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            backdropView.topAnchor.constraint(equalTo: containerView.topAnchor),
-            backdropView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-            backdropView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-            backdropView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+            backdropView.topAnchor.constraint(
+                equalTo: containerView.topAnchor
+            ),
+            backdropView.leadingAnchor.constraint(
+                equalTo: containerView.leadingAnchor
+            ),
+            backdropView.trailingAnchor.constraint(
+                equalTo: containerView.trailingAnchor
+            ),
+            backdropView.bottomAnchor.constraint(
+                equalTo: containerView.bottomAnchor
+            ),
         ])
-
-        backdropView.layoutIfNeeded()
 
         containerView.addSubview(presentedView)
 
@@ -207,24 +213,24 @@ final class BottomSheetPresentationController: UIPresentationController {
             multiplier: sheetSizingFactor
         )
 
-        let constraints = [
-            presentedView.topAnchor.constraint(greaterThanOrEqualTo: containerView.topAnchor),
-            presentedView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-            presentedView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-            presentedView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
-            preferredHeightConstraint
-        ]
-
-        constraints.forEach { constraint in
-            // To help UIKit brake these constraints during dismiss animation
-            constraint.priority = .required - 1
-        }
-
         preferredHeightConstraint.priority = .fittingSizeLevel
 
-        NSLayoutConstraint.activate(constraints)
-
-        presentedView.layoutIfNeeded()
+        NSLayoutConstraint.activate([
+            presentedView.topAnchor.constraint(
+                greaterThanOrEqualTo: containerView.safeAreaLayoutGuide.topAnchor,
+                constant: sheetTopInset
+            ),
+            presentedView.leadingAnchor.constraint(
+                equalTo: containerView.leadingAnchor
+            ),
+            presentedView.trailingAnchor.constraint(
+                equalTo: containerView.trailingAnchor
+            ),
+            presentedView.bottomAnchor.constraint(
+                equalTo: containerView.bottomAnchor
+            ),
+            preferredHeightConstraint
+        ])
 
         guard let transitionCoordinator = presentingViewController.transitionCoordinator else {
             return
@@ -260,15 +266,11 @@ final class BottomSheetPresentationController: UIPresentationController {
             containerView?.removeGestureRecognizer(tapGestureRecognizer)
         }
     }
-
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        backdropView.layoutIfNeeded() // Do not animate backdrop
-    }
 }
 
-// MARK: BottomSheetInteractiveTransition
+// MARK: BottomSheetInteractiveDismissalTransition
 
-final class BottomSheetInteractiveTransition: NSObject {
+final class BottomSheetInteractiveDismissalTransition: NSObject {
 
     private let transitionDuration: CGFloat = 0.33
     private let animationCurve: UIView.AnimationCurve = .easeInOut
@@ -279,7 +281,9 @@ final class BottomSheetInteractiveTransition: NSObject {
 
     private var interactiveDismissal: Bool = false
 
-    private func createPropertyAnimator(using transitionContext: UIViewControllerContextTransitioning) -> UIViewPropertyAnimator {
+    private func createPropertyAnimator(
+        using transitionContext: UIViewControllerContextTransitioning
+    ) -> UIViewPropertyAnimator {
         let propertyAnimator = UIViewPropertyAnimator(
             duration: transitionDuration,
             curve: animationCurve
@@ -292,10 +296,6 @@ final class BottomSheetInteractiveTransition: NSObject {
         guard let dismissedView = transitionContext.view(forKey: .from) else {
             return propertyAnimator
         }
-
-        // Turn on auto constraints to make it easier to animate the dismissed view
-        // (no need to animate constraints)
-        dismissedView.translatesAutoresizingMaskIntoConstraints = true
 
         let offset = dismissedView.frame.height
 
@@ -335,7 +335,7 @@ final class BottomSheetInteractiveTransition: NSObject {
     }
 }
 
-extension BottomSheetInteractiveTransition: UIViewControllerInteractiveTransitioning {
+extension BottomSheetInteractiveDismissalTransition: UIViewControllerInteractiveTransitioning {
 
     func startInteractiveTransition(_ transitionContext: UIViewControllerContextTransitioning) {
         let propertyAnimator = createPropertyAnimator(using: transitionContext)
@@ -360,7 +360,7 @@ extension BottomSheetInteractiveTransition: UIViewControllerInteractiveTransitio
     }
 }
 
-extension BottomSheetInteractiveTransition: UIViewControllerAnimatedTransitioning {
+extension BottomSheetInteractiveDismissalTransition: UIViewControllerAnimatedTransitioning {
 
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         transitionDuration

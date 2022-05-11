@@ -10,10 +10,11 @@ import UIKit
 class BottomSheetController: UIViewController {
 
     enum PreferredSheetSizing: CGFloat {
-        case fit = 0 // Fit, based on the view's intrinsicContentSize
+        case fit = 0 // Fit, based on the view's constraints
         case small = 0.25
         case medium = 0.5
-        case large = 1
+        case large = 0.75
+        case fill = 1
     }
 
     private lazy var bottomSheetTransitioningDelegate = BottomSheetTransitioningDelegate(

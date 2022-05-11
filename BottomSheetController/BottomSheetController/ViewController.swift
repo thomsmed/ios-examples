@@ -40,14 +40,22 @@ final class ViewController: UIViewController {
         }))
         sparseContentLargeButton.setTitle("Sparse content - large", for: .normal)
 
+        let sparseContentFillButton = UIButton(type: .system, primaryAction: .init(handler: { _ in
+            let viewController = SparseContentSheetViewController()
+            viewController.preferredSheetSizing = .fill
+            self.present(viewController, animated: true)
+        }))
+        sparseContentFillButton.setTitle("Sparse content - fill", for: .normal)
+
         let sparseContentStackView = UIStackView(arrangedSubviews: [
             sparseContentFitButton,
             sparseContentSmallButton,
             sparseContentMediumButton,
-            sparseContentLargeButton
+            sparseContentLargeButton,
+            sparseContentFillButton
         ])
         sparseContentStackView.axis = .vertical
-        sparseContentStackView.spacing = 20
+        sparseContentStackView.spacing = 8
 
         let denseContentFitButton = UIButton(type: .system, primaryAction: .init(handler: { _ in
             let viewController = DenseContentSheetViewController()
@@ -77,14 +85,22 @@ final class ViewController: UIViewController {
         }))
         denseContentLargeButton.setTitle("Dense content - large", for: .normal)
 
+        let denseContentFillButton = UIButton(type: .system, primaryAction: .init(handler: { _ in
+            let viewController = DenseContentSheetViewController()
+            viewController.preferredSheetSizing = .fill
+            self.present(viewController, animated: true)
+        }))
+        denseContentFillButton.setTitle("Dense content - fill", for: .normal)
+
         let denseContentStackView = UIStackView(arrangedSubviews: [
             denseContentFitButton,
             denseContentSmallButton,
             denseContentMediumButton,
-            denseContentLargeButton
+            denseContentLargeButton,
+            denseContentFillButton
         ])
         denseContentStackView.axis = .vertical
-        denseContentStackView.spacing = 20
+        denseContentStackView.spacing = 8
 
 
         let stackView = UIStackView(arrangedSubviews: [
@@ -92,7 +108,7 @@ final class ViewController: UIViewController {
             denseContentStackView
         ])
         stackView.axis = .vertical
-        stackView.spacing = 60
+        stackView.spacing = 16
 
         view.addSubview(stackView)
 

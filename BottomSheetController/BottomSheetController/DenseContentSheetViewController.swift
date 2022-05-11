@@ -46,15 +46,6 @@ final class DenseContentSheetViewController: BottomSheetController {
 
         stackView.translatesAutoresizingMaskIntoConstraints = false
 
-        topLabel.setContentHuggingPriority(.required, for: .vertical)
-        topLabel.setContentCompressionResistancePriority(.required, for: .vertical)
-
-        textView.setContentHuggingPriority(.defaultLow, for: .vertical)
-        textView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
-
-        bottomLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
-        bottomLabel.setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
-
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 32),
             stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
