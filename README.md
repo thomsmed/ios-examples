@@ -8,6 +8,7 @@ A collection of iOS examples.
 - [Stretchy table header view](StretchyTableViewHeader)
 - [Shared authentication state](SharedAppAuthState)
 - [Custom Container View Controller](ContainerViewController)
+- [Dynamic sized bottom sheet controller](BottomSheetController)
 
 These examples are created as a way to learn. Feel free to use them as you please.
 Feedback are also welcome.
