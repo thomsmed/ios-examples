@@ -88,7 +88,7 @@ class DialogController: UIViewController {
         }
     }
 
-    var preferredDialogBackdropColor: UIColor = .black {
+    var preferredDialogBackdropColor: UIColor = .label {
         didSet {
             dialogTransitioningDelegate.preferredDialogBackdropColor = preferredDialogBackdropColor
         }

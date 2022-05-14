@@ -13,22 +13,22 @@ final class FormDialogController: DialogController {
         view = UIView()
 
         let label = UILabel()
-        label.font = .systemFont(ofSize: 17, weight: .regular)
+        label.font = .systemFont(ofSize: 20, weight: .regular)
         label.numberOfLines = 0
         label.text = """
             Proin tempus dui tempor lectus tempor cursus. Aliquam vitae lorem id libero blandit faucibus.
         """
 
         let textFieldOne = UITextField()
-        textFieldOne.placeholder = "Name"
-        textFieldOne.font = .systemFont(ofSize: 17, weight: .regular)
+        textFieldOne.placeholder = "Input one"
+        textFieldOne.font = .systemFont(ofSize: 20, weight: .regular)
 
         let textFieldTwo = UITextField()
-        textFieldOne.placeholder = "Description"
-        textFieldTwo.font = .systemFont(ofSize: 17, weight: .regular)
+        textFieldTwo.placeholder = "Input two"
+        textFieldTwo.font = .systemFont(ofSize: 20, weight: .regular)
 
         let switchOneLabel = UILabel()
-        switchOneLabel.text = "Camera"
+        switchOneLabel.text = "Option one"
         switchOneLabel.textAlignment = .right
         let switchOneStackView = UIStackView(arrangedSubviews: [UISwitch(), switchOneLabel])
         switchOneStackView.axis = .horizontal
@@ -36,7 +36,7 @@ final class FormDialogController: DialogController {
         switchOneStackView.alignment = .fill
 
         let switchTwoLabel = UILabel()
-        switchTwoLabel.text = "Sound"
+        switchTwoLabel.text = "Option two"
         switchTwoLabel.textAlignment = .left
         let switchTwoStackView = UIStackView(arrangedSubviews: [switchTwoLabel, UISwitch()])
         switchTwoStackView.axis = .horizontal
@@ -45,12 +45,14 @@ final class FormDialogController: DialogController {
 
         let okButton = UIButton(type: .system)
         okButton.setTitle("Ok", for: .normal)
+        okButton.titleLabel?.font = .systemFont(ofSize: 20, weight: .regular)
         okButton.addAction(.init(handler: { [weak self] _ in
             self?.dismiss(animated: true)
         }), for: .primaryActionTriggered)
 
         let cancelButton = UIButton(type: .system)
         cancelButton.setTitle("Cancel", for: .normal)
+        cancelButton.titleLabel?.font = .systemFont(ofSize: 20, weight: .regular)
         cancelButton.addAction(.init(handler: { [weak self] _ in
             self?.dismiss(animated: true)
         }), for: .primaryActionTriggered)
@@ -72,7 +74,7 @@ final class FormDialogController: DialogController {
         verticalStackView.axis = .vertical
         verticalStackView.distribution = .fill
         verticalStackView.alignment = .fill
-        verticalStackView.spacing = 8
+        verticalStackView.spacing = 16
 
         view.addSubview(verticalStackView)
         view.addSubview(horizontalStackView)
@@ -81,12 +83,12 @@ final class FormDialogController: DialogController {
         horizontalStackView.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            verticalStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            verticalStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            verticalStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            verticalStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
+            verticalStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            verticalStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
 
             horizontalStackView.topAnchor.constraint(greaterThanOrEqualTo: verticalStackView.bottomAnchor),
-            horizontalStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            horizontalStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
             horizontalStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             horizontalStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])

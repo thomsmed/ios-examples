@@ -13,7 +13,7 @@ final class OkCancelDialogController: DialogController {
         view = UIView()
 
         let label = UILabel()
-        label.font = .systemFont(ofSize: 17, weight: .regular)
+        label.font = .systemFont(ofSize: 20, weight: .regular)
         label.numberOfLines = 0
         label.text = """
             Proin tempus dui tempor lectus tempor cursus. Aliquam vitae lorem id libero blandit faucibus.
@@ -21,12 +21,14 @@ final class OkCancelDialogController: DialogController {
 
         let okButton = UIButton(type: .system)
         okButton.setTitle("Ok", for: .normal)
+        okButton.titleLabel?.font = .systemFont(ofSize: 20, weight: .regular)
         okButton.addAction(.init(handler: { [weak self] _ in
             self?.dismiss(animated: true)
         }), for: .primaryActionTriggered)
 
         let cancelButton = UIButton(type: .system)
         cancelButton.setTitle("Cancel", for: .normal)
+        cancelButton.titleLabel?.font = .systemFont(ofSize: 20, weight: .regular)
         cancelButton.addAction(.init(handler: { [weak self] _ in
             self?.dismiss(animated: true)
         }), for: .primaryActionTriggered)
@@ -38,26 +40,18 @@ final class OkCancelDialogController: DialogController {
         horizontalStackView.distribution = .fillEqually
         horizontalStackView.alignment = .fill
 
-        let verticalStackView = UIStackView(arrangedSubviews: [
-            label, horizontalStackView
-        ])
-        verticalStackView.axis = .vertical
-        verticalStackView.distribution = .fill
-        verticalStackView.alignment = .fill
-        verticalStackView.spacing = 16
-
-        view.addSubview(verticalStackView)
+        view.addSubview(label)
         view.addSubview(horizontalStackView)
 
-        verticalStackView.translatesAutoresizingMaskIntoConstraints = false
+        label.translatesAutoresizingMaskIntoConstraints = false
         horizontalStackView.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            verticalStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            verticalStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            verticalStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            label.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
+            label.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            label.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
 
-            horizontalStackView.topAnchor.constraint(greaterThanOrEqualTo: verticalStackView.bottomAnchor),
+            horizontalStackView.topAnchor.constraint(greaterThanOrEqualTo: label.bottomAnchor, constant: 16),
             horizontalStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             horizontalStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             horizontalStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
