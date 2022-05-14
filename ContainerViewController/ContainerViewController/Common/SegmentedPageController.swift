@@ -1,5 +1,5 @@
 //
-//  SegmentedContainerViewController.swift
+//  SegmentedPageController.swift
 //  ContainerViewController
 //
 //  Created by Thomas Asheim Smedmann on 03/04/2022.
@@ -8,7 +8,7 @@
 import UIKit
 import Cartography
 
-class SegmentedContainerViewController: UIViewController {
+class SegmentedPageController: UIViewController {
 
     private let segmentedControl = UISegmentedControl()
 
@@ -83,7 +83,7 @@ class SegmentedContainerViewController: UIViewController {
     }
 }
 
-extension SegmentedContainerViewController {
+extension SegmentedPageController {
 
     override func loadView() {
         view = UIView()
@@ -99,7 +99,7 @@ extension SegmentedContainerViewController {
     }
 }
 
-extension SegmentedContainerViewController {
+extension SegmentedPageController {
 
     var selectedSegmentIndex: Int {
         get {

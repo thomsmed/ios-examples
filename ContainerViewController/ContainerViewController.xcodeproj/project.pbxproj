@@ -13,12 +13,12 @@
 		ED136FAC27F9E68B00D5B3E7 /* FeedFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED136FAB27F9E68B00D5B3E7 /* FeedFlowController.swift */; };
 		ED136FB027F9E71C00D5B3E7 /* PopularViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED136FAF27F9E71C00D5B3E7 /* PopularViewController.swift */; };
 		ED136FB427F9E77D00D5B3E7 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED136FB327F9E77D00D5B3E7 /* NewsViewController.swift */; };
-		ED136FB627F9EA8E00D5B3E7 /* SegmentedContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED136FB527F9EA8E00D5B3E7 /* SegmentedContainerViewController.swift */; };
+		ED136FB627F9EA8E00D5B3E7 /* SegmentedPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED136FB527F9EA8E00D5B3E7 /* SegmentedPageController.swift */; };
 		ED136FB827FAE9BF00D5B3E7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED136FB727FAE9BF00D5B3E7 /* HomeViewController.swift */; };
 		ED6EC40027F8773300AD70C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6EC3FF27F8773300AD70C1 /* AppDelegate.swift */; };
 		ED6EC40227F8773300AD70C1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6EC40127F8773300AD70C1 /* SceneDelegate.swift */; };
 		ED6EC40927F8773500AD70C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED6EC40827F8773500AD70C1 /* Assets.xcassets */; };
-		ED6EC41827F8784D00AD70C1 /* LinearContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6EC41727F8784D00AD70C1 /* LinearContainerViewController.swift */; };
+		ED6EC41827F8784D00AD70C1 /* SinglePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6EC41727F8784D00AD70C1 /* SinglePageController.swift */; };
 		ED6EC41B27F878BD00AD70C1 /* Cartography in Frameworks */ = {isa = PBXBuildFile; productRef = ED6EC41A27F878BD00AD70C1 /* Cartography */; };
 		ED6EC42727F87DBA00AD70C1 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6EC42627F87DBA00AD70C1 /* OnboardingViewController.swift */; };
 		ED6EC42927F87DC900AD70C1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6EC42827F87DC900AD70C1 /* LoginViewController.swift */; };
@@ -46,14 +46,14 @@
 		ED136FAB27F9E68B00D5B3E7 /* FeedFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedFlowController.swift; sourceTree = "<group>"; };
 		ED136FAF27F9E71C00D5B3E7 /* PopularViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularViewController.swift; sourceTree = "<group>"; };
 		ED136FB327F9E77D00D5B3E7 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
-		ED136FB527F9EA8E00D5B3E7 /* SegmentedContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedContainerViewController.swift; sourceTree = "<group>"; };
+		ED136FB527F9EA8E00D5B3E7 /* SegmentedPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedPageController.swift; sourceTree = "<group>"; };
 		ED136FB727FAE9BF00D5B3E7 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		ED6EC3FC27F8773300AD70C1 /* ContainerViewController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContainerViewController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED6EC3FF27F8773300AD70C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED6EC40127F8773300AD70C1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		ED6EC40827F8773500AD70C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED6EC40D27F8773500AD70C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ED6EC41727F8784D00AD70C1 /* LinearContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearContainerViewController.swift; sourceTree = "<group>"; };
+		ED6EC41727F8784D00AD70C1 /* SinglePageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePageController.swift; sourceTree = "<group>"; };
 		ED6EC42627F87DBA00AD70C1 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		ED6EC42827F87DC900AD70C1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		ED6EC42A27F87DD800AD70C1 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -174,8 +174,8 @@
 		ED6EC41627F877DF00AD70C1 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				ED6EC41727F8784D00AD70C1 /* LinearContainerViewController.swift */,
-				ED136FB527F9EA8E00D5B3E7 /* SegmentedContainerViewController.swift */,
+				ED6EC41727F8784D00AD70C1 /* SinglePageController.swift */,
+				ED136FB527F9EA8E00D5B3E7 /* SegmentedPageController.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -343,7 +343,7 @@
 				ED6EC42727F87DBA00AD70C1 /* OnboardingViewController.swift in Sources */,
 				ED136FB827FAE9BF00D5B3E7 /* HomeViewController.swift in Sources */,
 				ED6EC43527F87FF400AD70C1 /* LoginFlowController.swift in Sources */,
-				ED136FB627F9EA8E00D5B3E7 /* SegmentedContainerViewController.swift in Sources */,
+				ED136FB627F9EA8E00D5B3E7 /* SegmentedPageController.swift in Sources */,
 				EDEEF62C2803358C0007D3C4 /* RegisterViewModel.swift in Sources */,
 				ED136FA727F8A77400D5B3E7 /* LoginViewModel.swift in Sources */,
 				ED6EC43F27F881F600AD70C1 /* AppDependencies.swift in Sources */,
@@ -358,7 +358,7 @@
 				ED6EC40227F8773300AD70C1 /* SceneDelegate.swift in Sources */,
 				ED6EC43127F87E5100AD70C1 /* SceneFlowController.swift in Sources */,
 				ED6EC44127F88D4200AD70C1 /* ProfileViewModel.swift in Sources */,
-				ED6EC41827F8784D00AD70C1 /* LinearContainerViewController.swift in Sources */,
+				ED6EC41827F8784D00AD70C1 /* SinglePageController.swift in Sources */,
 				ED6EC43327F87FE100AD70C1 /* OnboardingFlowController.swift in Sources */,
 				ED6EC43B27F8803300AD70C1 /* ActivityFlowController.swift in Sources */,
 			);
