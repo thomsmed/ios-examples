@@ -70,7 +70,7 @@ class BottomSheetController: UIViewController {
         }
     }
 
-    var preferredSheetBackdropColor: UIColor = .black {
+    var preferredSheetBackdropColor: UIColor = .label {
         didSet {
             bottomSheetTransitioningDelegate.preferredSheetBackdropColor = preferredSheetBackdropColor
         }

@@ -53,6 +53,6 @@ final class DenseContentSheetViewController: BottomSheetController {
             stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16)
         ])
 
-        view.backgroundColor = .tertiarySystemBackground
+        view.backgroundColor = .systemBackground
     }
 }

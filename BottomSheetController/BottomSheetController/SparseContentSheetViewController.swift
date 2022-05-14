@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SparseContentSheetViewController: BottomSheetController {
+final class SparseContentSheetViewController: BottomSheetController {
 
     override func loadView() {
         view = UIView()
@@ -41,6 +41,6 @@ class SparseContentSheetViewController: BottomSheetController {
             label.bottomAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])
 
-        view.backgroundColor = .tertiarySystemBackground
+        view.backgroundColor = .systemBackground
     }
 }
