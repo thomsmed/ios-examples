@@ -229,6 +229,8 @@ final class DialogPresentationController: UIPresentationController {
             NSLayoutConstraint.activate(landscapeConstraints)
         }
 
+        presentedView.layoutIfNeeded()
+
         guard let transitionCoordinator = presentingViewController.transitionCoordinator else {
             return
         }
@@ -293,13 +295,38 @@ final class DialogAnimatedTransition: NSObject {
         self.animationType = animationType
     }
 
+    private func presentationTransitionDurationBased(
+        on containerView: UIView,
+        and presentedView: UIView
+    ) -> TimeInterval {
+        let containerViewDimension = max(
+            containerView.safeAreaLayoutGuide.layoutFrame.height,
+            containerView.safeAreaLayoutGuide.layoutFrame.width
+        )
+
+        guard containerViewDimension > 0 else {
+            return transitionDuration
+        }
+
+        let presentedViewDimension = max(
+            presentedView.frame.height,
+            presentedView.frame.width
+        )
+
+        // Calculate duration based on the size of the presented view (larger views take longer to present).
+        return transitionDuration + transitionDuration * presentedViewDimension / containerViewDimension
+    }
+
     private func presentAnimation(
         with transitionContext: UIViewControllerContextTransitioning,
         and viewController: UIViewController,
         animating view: UIView
     ) {
-        let finalFrame = transitionContext.finalFrame(for: viewController)
-        view.frame = finalFrame
+        let transitionDuration = presentationTransitionDurationBased(
+            on: transitionContext.containerView,
+            and: view
+        )
+
         view.transform = CGAffineTransform(scaleX: 0.2, y: 0.2)
         view.alpha = 0
 
@@ -340,7 +367,21 @@ final class DialogAnimatedTransition: NSObject {
 extension DialogAnimatedTransition: UIViewControllerAnimatedTransitioning {
 
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        transitionDuration
+        if case .dismiss = animationType {
+            return transitionDuration
+        }
+
+        guard
+            let transitionContext = transitionContext,
+            let presentedView = transitionContext.view(forKey: .to)
+        else {
+            return transitionDuration
+        }
+
+        return presentationTransitionDurationBased(
+            on: transitionContext.containerView,
+            and: presentedView
+        )
     }
 
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
