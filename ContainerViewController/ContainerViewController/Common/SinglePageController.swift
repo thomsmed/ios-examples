@@ -1,5 +1,5 @@
 //
-//  LinearContainerViewController.swift
+//  SinglePageController.swift
 //  ContainerViewController
 //
 //  Created by Thomas Asheim Smedmann on 02/04/2022.
@@ -8,7 +8,7 @@
 import UIKit
 import Cartography
 
-class LinearContainerViewController: UIViewController {
+class SinglePageController: UIViewController {
 
     private func removeChildViewControllers() {
         children.forEach { viewController in
@@ -121,7 +121,7 @@ class LinearContainerViewController: UIViewController {
     }
 }
 
-extension LinearContainerViewController {
+extension SinglePageController {
 
     enum Transition {
         case none

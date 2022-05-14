@@ -20,7 +20,7 @@ protocol SceneFlowController: AnyObject {
     func completedOnboarding()
 }
 
-final class DefaultSceneFlowController: LinearContainerViewController {
+final class DefaultSceneFlowController: SinglePageController {
 
     private let appDependencies: AppDependencies
 

@@ -11,7 +11,7 @@ protocol FeedFlowController {
 
 }
 
-final class DefaultFeedFlowController: SegmentedContainerViewController {
+final class DefaultFeedFlowController: SegmentedPageController {
 
     private let appDependencies: AppDependencies
 
