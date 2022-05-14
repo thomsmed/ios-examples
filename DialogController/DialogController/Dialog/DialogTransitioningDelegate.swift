@@ -63,13 +63,13 @@ final class DialogTransitioningDelegate: NSObject, UIViewControllerTransitioning
         presenting: UIViewController,
         source: UIViewController
     ) -> UIViewControllerAnimatedTransitioning? {
-        DialogAnimatedTransitioning(animationType: .present)
+        DialogAnimatedTransition(animationType: .present)
     }
 
     func animationController(
         forDismissed dismissed: UIViewController
     ) -> UIViewControllerAnimatedTransitioning? {
-        DialogAnimatedTransitioning(animationType: .dismiss)
+        DialogAnimatedTransition(animationType: .dismiss)
     }
 }
 
@@ -277,7 +277,7 @@ final class DialogPresentationController: UIPresentationController {
 
 // MARK: BottomSheetInteractiveTransition
 
-final class DialogAnimatedTransitioning: NSObject {
+final class DialogAnimatedTransition: NSObject {
 
     enum AnimationType {
         case present
@@ -337,7 +337,7 @@ final class DialogAnimatedTransitioning: NSObject {
     }
 }
 
-extension DialogAnimatedTransitioning: UIViewControllerAnimatedTransitioning {
+extension DialogAnimatedTransition: UIViewControllerAnimatedTransitioning {
 
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         transitionDuration
