@@ -68,6 +68,14 @@ final class ViewController: UIViewController {
         dialogFillButton.titleLabel?.font = .systemFont(ofSize: 20, weight: .regular)
         dialogFillButton.setTitle("Form dialog - fill/fill", for: .normal)
 
+        let dialogExpandableButton = UIButton(type: .system, primaryAction: .init(handler: { _ in
+            let viewController = ExpandableDialogController()
+            viewController.preferredDialogSizing = .init(horizontal: .small, vertical: .fit)
+            self.present(viewController, animated: true)
+        }))
+        dialogExpandableButton.titleLabel?.font = .systemFont(ofSize: 20, weight: .regular)
+        dialogExpandableButton.setTitle("Expandable dialog - small/fit", for: .normal)
+
         let stackView = UIStackView(arrangedSubviews: [
             dialogFitButton,
             dialogSmallButton,
@@ -75,7 +83,8 @@ final class ViewController: UIViewController {
             dialogMediumButton,
             dialogMediumFillButton,
             dialogLargeButton,
-            dialogFillButton
+            dialogFillButton,
+            dialogExpandableButton
         ])
         stackView.axis = .vertical
         stackView.spacing = 8

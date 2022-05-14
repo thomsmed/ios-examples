@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED123E9E282FEC9800516C67 /* ExpandableDialogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED123E9D282FEC9800516C67 /* ExpandableDialogController.swift */; };
 		ED89A3A82829B04000216E59 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED89A3A72829B04000216E59 /* AppDelegate.swift */; };
 		ED89A3AA2829B04000216E59 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED89A3A92829B04000216E59 /* SceneDelegate.swift */; };
 		ED89A3AC2829B04000216E59 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED89A3AB2829B04000216E59 /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		ED123E9D282FEC9800516C67 /* ExpandableDialogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableDialogController.swift; sourceTree = "<group>"; };
 		ED89A3A42829B04000216E59 /* DialogController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DialogController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED89A3A72829B04000216E59 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED89A3A92829B04000216E59 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				ED89A3C02829B30500216E59 /* OkDialogController.swift */,
 				ED89A3C22829B31E00216E59 /* OkCancelDialogController.swift */,
 				ED89A3C42829B32D00216E59 /* FormDialogController.swift */,
+				ED123E9D282FEC9800516C67 /* ExpandableDialogController.swift */,
 				ED89A3BB2829B0B100216E59 /* Dialog */,
 				ED89A3B02829B04200216E59 /* Assets.xcassets */,
 				ED89A3B22829B04200216E59 /* LaunchScreen.storyboard */,
@@ -161,6 +164,7 @@
 			files = (
 				ED89A3AC2829B04000216E59 /* ViewController.swift in Sources */,
 				ED89A3BD2829B11F00216E59 /* DialogController.swift in Sources */,
+				ED123E9E282FEC9800516C67 /* ExpandableDialogController.swift in Sources */,
 				ED89A3A82829B04000216E59 /* AppDelegate.swift in Sources */,
 				ED89A3C32829B31E00216E59 /* OkCancelDialogController.swift in Sources */,
 				ED89A3AA2829B04000216E59 /* SceneDelegate.swift in Sources */,

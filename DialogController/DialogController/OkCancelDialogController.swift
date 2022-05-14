@@ -14,6 +14,7 @@ final class OkCancelDialogController: DialogController {
 
         let label = UILabel()
         label.font = .systemFont(ofSize: 20, weight: .regular)
+        label.textAlignment = .center
         label.numberOfLines = 0
         label.text = """
             Proin tempus dui tempor lectus tempor cursus. Aliquam vitae lorem id libero blandit faucibus.

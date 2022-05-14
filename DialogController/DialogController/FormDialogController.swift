@@ -14,6 +14,7 @@ final class FormDialogController: DialogController {
 
         let label = UILabel()
         label.font = .systemFont(ofSize: 20, weight: .regular)
+        label.textAlignment = .center
         label.numberOfLines = 0
         label.text = """
             Proin tempus dui tempor lectus tempor cursus. Aliquam vitae lorem id libero blandit faucibus.
@@ -87,7 +88,7 @@ final class FormDialogController: DialogController {
             verticalStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
             verticalStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
 
-            horizontalStackView.topAnchor.constraint(greaterThanOrEqualTo: verticalStackView.bottomAnchor),
+            horizontalStackView.topAnchor.constraint(greaterThanOrEqualTo: verticalStackView.bottomAnchor, constant: 16),
             horizontalStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
             horizontalStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             horizontalStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
