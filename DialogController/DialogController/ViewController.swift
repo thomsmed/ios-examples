@@ -22,11 +22,11 @@ final class ViewController: UIViewController {
 
         let dialogSmallButton = UIButton(type: .system, primaryAction: .init(handler: { _ in
             let viewController = OkDialogController()
-            viewController.preferredDialogSizing = .init(horizontal: .small, vertical: .matching)
+            viewController.preferredDialogSizing = .init(horizontal: .small, vertical: .matched)
             self.present(viewController, animated: true)
         }))
         dialogSmallButton.titleLabel?.font = .systemFont(ofSize: 20, weight: .regular)
-        dialogSmallButton.setTitle("Ok dialog - small/appropriate", for: .normal)
+        dialogSmallButton.setTitle("Ok dialog - small/matched", for: .normal)
 
         let dialogMediumFitButton = UIButton(type: .system, primaryAction: .init(handler: { _ in
             let viewController = OkCancelDialogController()
@@ -38,11 +38,11 @@ final class ViewController: UIViewController {
 
         let dialogMediumButton = UIButton(type: .system, primaryAction: .init(handler: { _ in
             let viewController = OkCancelDialogController()
-            viewController.preferredDialogSizing = .init(horizontal: .medium, vertical: .matching)
+            viewController.preferredDialogSizing = .init(horizontal: .medium, vertical: .matched)
             self.present(viewController, animated: true)
         }))
         dialogMediumButton.titleLabel?.font = .systemFont(ofSize: 20, weight: .regular)
-        dialogMediumButton.setTitle("Ok/Cancel dialog - medium/appropriate", for: .normal)
+        dialogMediumButton.setTitle("Ok/Cancel dialog - medium/matched", for: .normal)
 
         let dialogMediumFillButton = UIButton(type: .system, primaryAction: .init(handler: { _ in
             let viewController = OkCancelDialogController()
@@ -54,11 +54,11 @@ final class ViewController: UIViewController {
 
         let dialogLargeButton = UIButton(type: .system, primaryAction: .init(handler: { _ in
             let viewController = FormDialogController()
-            viewController.preferredDialogSizing = .init(horizontal: .large, vertical: .matching)
+            viewController.preferredDialogSizing = .init(horizontal: .large, vertical: .matched)
             self.present(viewController, animated: true)
         }))
         dialogLargeButton.titleLabel?.font = .systemFont(ofSize: 20, weight: .regular)
-        dialogLargeButton.setTitle("Form dialog - large/appropriate", for: .normal)
+        dialogLargeButton.setTitle("Form dialog - large/matched", for: .normal)
 
         let dialogFillButton = UIButton(type: .system, primaryAction: .init(handler: { _ in
             let viewController = FormDialogController()

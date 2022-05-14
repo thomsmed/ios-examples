@@ -223,7 +223,7 @@ final class DialogPresentationController: UIPresentationController {
             preferredLandscapeHeightConstraint
         ]
 
-        if traitCollection.horizontalSizeClass == .compact {
+        if traitCollection.verticalSizeClass != .compact  {
             NSLayoutConstraint.activate(portraitConstraints)
         } else {
             NSLayoutConstraint.activate(landscapeConstraints)
@@ -265,7 +265,7 @@ final class DialogPresentationController: UIPresentationController {
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
 
-        if traitCollection.horizontalSizeClass == .compact {
+        if traitCollection.verticalSizeClass != .compact {
             NSLayoutConstraint.deactivate(landscapeConstraints)
             NSLayoutConstraint.activate(portraitConstraints)
         } else {

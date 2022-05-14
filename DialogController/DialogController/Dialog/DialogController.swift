@@ -21,7 +21,7 @@ class DialogController: UIViewController {
 
         enum Vertical: CGFloat {
             case fit = 0 // Fit, based on the view's constraints
-            case matching = 0.8
+            case matched = 0.8
             case fill = 10 // Some high number
         }
 
@@ -79,7 +79,7 @@ class DialogController: UIViewController {
         }
     }
 
-    var preferredDialogSizing: PreferredDialogSizing = .init(horizontal: .medium, vertical: .matching) {
+    var preferredDialogSizing: PreferredDialogSizing = .init(horizontal: .medium, vertical: .matched) {
         didSet {
             dialogTransitioningDelegate.preferredDialogSizingFactor = .init(
                 multiplier: preferredDialogSizing.horizontal.rawValue,
