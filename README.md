@@ -6,3 +6,4 @@
 - [Stretchy table header view](StretchyTableViewHeader)
 - [Shared authentication state](SharedAppAuthState)
 - [Custom Container View Controller](ContainerViewController)
+- [Dynamic sized bottom sheet controller](BottomSheetController)
