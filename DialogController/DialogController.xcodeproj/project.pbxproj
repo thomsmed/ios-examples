@@ -32,6 +32,7 @@
 		ED89A3C02829B30500216E59 /* OkDialogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OkDialogController.swift; sourceTree = "<group>"; };
 		ED89A3C22829B31E00216E59 /* OkCancelDialogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OkCancelDialogController.swift; sourceTree = "<group>"; };
 		ED89A3C42829B32D00216E59 /* FormDialogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormDialogController.swift; sourceTree = "<group>"; };
+		EDA96F48282FB9B50036E1EA /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +49,7 @@
 		ED89A39B2829B04000216E59 = {
 			isa = PBXGroup;
 			children = (
+				EDA96F48282FB9B50036E1EA /* README.md */,
 				ED89A3A62829B04000216E59 /* DialogController */,
 				ED89A3A52829B04000216E59 /* Products */,
 			);
