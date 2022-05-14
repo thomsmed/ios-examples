@@ -34,6 +34,7 @@
 		ED6EC43F27F881F600AD70C1 /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6EC43E27F881F600AD70C1 /* AppDependencies.swift */; };
 		ED6EC44127F88D4200AD70C1 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6EC44027F88D4200AD70C1 /* ProfileViewModel.swift */; };
 		ED6EC44327F8968700AD70C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED6EC44227F8968700AD70C1 /* LaunchScreen.storyboard */; };
+		EDA96F4A282FBDE30036E1EA /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = EDA96F49282FBDE30036E1EA /* README.md */; };
 		EDEEF62A2803357F0007D3C4 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEEF6292803357F0007D3C4 /* RegisterViewController.swift */; };
 		EDEEF62C2803358C0007D3C4 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEEF62B2803358C0007D3C4 /* RegisterViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -67,6 +68,7 @@
 		ED6EC43E27F881F600AD70C1 /* AppDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencies.swift; sourceTree = "<group>"; };
 		ED6EC44027F88D4200AD70C1 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		ED6EC44227F8968700AD70C1 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EDA96F49282FBDE30036E1EA /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		EDEEF6292803357F0007D3C4 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		EDEEF62B2803358C0007D3C4 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -112,6 +114,7 @@
 		ED6EC3F327F8773300AD70C1 = {
 			isa = PBXGroup;
 			children = (
+				EDA96F49282FBDE30036E1EA /* README.md */,
 				ED6EC3FE27F8773300AD70C1 /* ContainerViewController */,
 				ED6EC3FD27F8773300AD70C1 /* Products */,
 			);
@@ -319,6 +322,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDA96F4A282FBDE30036E1EA /* README.md in Resources */,
 				ED6EC40927F8773500AD70C1 /* Assets.xcassets in Resources */,
 				ED6EC44327F8968700AD70C1 /* LaunchScreen.storyboard in Resources */,
 			);
