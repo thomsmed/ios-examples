@@ -199,7 +199,7 @@ final class DialogPresentationController: UIPresentationController {
             equalTo: containerView.safeAreaLayoutGuide.widthAnchor,
             multiplier: dialogSizingFactor.multiplier * dialogSizingFactor.verticalAdjustmentMultiplier
         )
-        preferredPortraitHeightConstraint.priority = dialogSizingFactor.verticalAdjustmentMultiplier == 0 ? .fittingSizeLevel : .required - 1
+        preferredPortraitHeightConstraint.priority = dialogSizingFactor.verticalAdjustmentMultiplier < 10 ? .fittingSizeLevel : .required - 1
 
         portraitConstraints = [
             preferredPortraitWidthConstraint,
@@ -216,7 +216,7 @@ final class DialogPresentationController: UIPresentationController {
             equalTo: containerView.safeAreaLayoutGuide.heightAnchor,
             multiplier: dialogSizingFactor.multiplier * dialogSizingFactor.verticalAdjustmentMultiplier
         )
-        preferredLandscapeHeightConstraint.priority = dialogSizingFactor.verticalAdjustmentMultiplier == 0 ? .fittingSizeLevel : .required - 1
+        preferredLandscapeHeightConstraint.priority = dialogSizingFactor.verticalAdjustmentMultiplier < 10 ? .fittingSizeLevel : .required - 1
 
         landscapeConstraints = [
             preferredLandscapeWidthConstraint,
