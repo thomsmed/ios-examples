@@ -7,3 +7,4 @@
 - [Shared authentication state](SharedAppAuthState)
 - [Custom Container View Controller](ContainerViewController)
 - [Dynamic sized bottom sheet controller](BottomSheetController)
+- [Dynamic sized dialog controller](DialogController)
