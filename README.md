@@ -9,6 +9,7 @@ A collection of iOS examples.
 - [Shared authentication state](SharedAppAuthState)
 - [Custom Container View Controller](ContainerViewController)
 - [Dynamic sized bottom sheet controller](BottomSheetController)
+- [Dynamic sized dialog controller](DialogController)
 
 These examples are created as a way to learn. Feel free to use them as you please.
 Feedback are also welcome.
