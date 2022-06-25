@@ -38,7 +38,14 @@ final class DefaultClientFactory {
                     GRPCTLSConfiguration.makeClientDefault(compatibleWith: eventLoopGroup)
                 ),
                 eventLoopGroup: eventLoopGroup
-            )
+            ) { configuration in
+                // Additional configuration, like keepalive.
+                // Note: Keepalive should in most circumstances not be necessary.
+                configuration.keepalive = ClientConnectionKeepalive(
+                    interval: .seconds(15),
+                    timeout: .seconds(10)
+                )
+            }
         } catch {
             fatalError("Failed to open GRPC channel")
         }
@@ -70,7 +77,7 @@ extension DefaultClientFactory {
         sharedFooServiceClient?.defaultCallOptions.customMetadata = .init(
             sharedHeaders.map { ($0.rawValue, $1) }
         )
-        sharedFooServiceClient?.defaultCallOptions.customMetadata = .init(
+        sharedBarServiceClient?.defaultCallOptions.customMetadata = .init(
             sharedHeaders.map { ($0.rawValue, $1) }
         )
     }
