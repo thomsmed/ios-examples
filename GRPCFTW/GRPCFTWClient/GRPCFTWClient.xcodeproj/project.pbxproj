@@ -16,6 +16,8 @@
 		ED1E8AED2867369100236C6C /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1E8AEC2867369100236C6C /* AuthenticationService.swift */; };
 		ED1E8AEF28673A9900236C6C /* GRPCClient+makeUnaryCallWithRetry.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1E8AEE28673A9900236C6C /* GRPCClient+makeUnaryCallWithRetry.swift */; };
 		ED1E8AF128673ABF00236C6C /* GRPCClient+makeStreamingCallWithRetry.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1E8AF028673ABF00236C6C /* GRPCClient+makeStreamingCallWithRetry.swift */; };
+		ED1E8B062867AB4300236C6C /* FooService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1E8B052867AB4300236C6C /* FooService.swift */; };
+		ED1E8B0D28697F2F00236C6C /* AuthTokenInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1E8B0C28697F2F00236C6C /* AuthTokenInterceptor.swift */; };
 		EDF496C5284E374A00B49E38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF496C4284E374A00B49E38 /* AppDelegate.swift */; };
 		EDF496C7284E374A00B49E38 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF496C6284E374A00B49E38 /* SceneDelegate.swift */; };
 		EDF496C9284E374A00B49E38 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF496C8284E374A00B49E38 /* ViewController.swift */; };
@@ -35,6 +37,8 @@
 		ED1E8AEC2867369100236C6C /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		ED1E8AEE28673A9900236C6C /* GRPCClient+makeUnaryCallWithRetry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GRPCClient+makeUnaryCallWithRetry.swift"; sourceTree = "<group>"; };
 		ED1E8AF028673ABF00236C6C /* GRPCClient+makeStreamingCallWithRetry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GRPCClient+makeStreamingCallWithRetry.swift"; sourceTree = "<group>"; };
+		ED1E8B052867AB4300236C6C /* FooService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooService.swift; sourceTree = "<group>"; };
+		ED1E8B0C28697F2F00236C6C /* AuthTokenInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTokenInterceptor.swift; sourceTree = "<group>"; };
 		EDF496C1284E374A00B49E38 /* GRPCFTWClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GRPCFTWClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDF496C4284E374A00B49E38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDF496C6284E374A00B49E38 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,6 +64,7 @@
 		ED1E8AD8286722F300236C6C /* Interceptors */ = {
 			isa = PBXGroup;
 			children = (
+				ED1E8B0B28697F0F00236C6C /* AuthToken */,
 				ED1E8AE52867350B00236C6C /* Logging */,
 				ED1E8AD92867234900236C6C /* FooServiceClientInterceptorFactory.swift */,
 			);
@@ -80,6 +85,22 @@
 				ED1E8AEC2867369100236C6C /* AuthenticationService.swift */,
 			);
 			path = Authentication;
+			sourceTree = "<group>";
+		};
+		ED1E8B072867AB4700236C6C /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				ED1E8B052867AB4300236C6C /* FooService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		ED1E8B0B28697F0F00236C6C /* AuthToken */ = {
+			isa = PBXGroup;
+			children = (
+				ED1E8B0C28697F2F00236C6C /* AuthTokenInterceptor.swift */,
+			);
+			path = AuthToken;
 			sourceTree = "<group>";
 		};
 		EDF496B8284E374900B49E38 = {
@@ -104,6 +125,7 @@
 				EDF496C4284E374A00B49E38 /* AppDelegate.swift */,
 				EDF496C6284E374A00B49E38 /* SceneDelegate.swift */,
 				EDF496C8284E374A00B49E38 /* ViewController.swift */,
+				ED1E8B072867AB4700236C6C /* Services */,
 				ED1E8AEB2867367E00236C6C /* Authentication */,
 				EDF496EB284E3A3E00B49E38 /* Networking */,
 				EDF496CD284E374B00B49E38 /* Assets.xcassets */,
@@ -224,6 +246,7 @@
 				ED1E8AE228672D9500236C6C /* foo.pb.swift in Sources */,
 				ED1E8AE028672D9500236C6C /* foo.grpc.swift in Sources */,
 				ED1E8AE128672D9500236C6C /* bar.pb.swift in Sources */,
+				ED1E8B062867AB4300236C6C /* FooService.swift in Sources */,
 				ED1E8AEF28673A9900236C6C /* GRPCClient+makeUnaryCallWithRetry.swift in Sources */,
 				ED1E8AF128673ABF00236C6C /* GRPCClient+makeStreamingCallWithRetry.swift in Sources */,
 				EDF496C9284E374A00B49E38 /* ViewController.swift in Sources */,
@@ -233,6 +256,7 @@
 				ED1E8AE8286735B900236C6C /* LoggingInterceptor.swift in Sources */,
 				ED1E8AED2867369100236C6C /* AuthenticationService.swift in Sources */,
 				EDF496C7284E374A00B49E38 /* SceneDelegate.swift in Sources */,
+				ED1E8B0D28697F2F00236C6C /* AuthTokenInterceptor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

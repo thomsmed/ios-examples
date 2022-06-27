@@ -8,10 +8,13 @@
 import NIO
 import GRPC
 
-protocol ClientFactory: AnyObject {
+protocol EventLoopProvider: AnyObject {
 
     // Expose the underlying EventLoop(s) in case we want to run work on it.
     var eventLoop: EventLoop { get }
+}
+
+protocol ClientFactory: EventLoopProvider {
 
     func fooServiceClient() -> Grpcftw_FooServiceClientProtocol
     func barServiceClient() -> Grpcftw_BarServiceClientProtocol
@@ -27,7 +30,8 @@ final class DefaultClientFactory {
     // GRPC Performance best practices:
     // https://grpc.io/docs/guides/performance/
 
-    // TODO: Short about eventLoops vs Threads and Network.framework
+    // On Apple platforms the returned EventLoopGroup uses the Network.framework,
+    // and each EventLoop is backed by a DispatchQueue.
     private lazy var eventLoopGroup = PlatformSupport.makeEventLoopGroup(loopCount: 1)
 
     private lazy var sharedChannel: GRPCChannel = {
@@ -101,7 +105,8 @@ extension DefaultClientFactory: ClientFactory {
             defaultCallOptions: .init(
                 customMetadata: .init(sharedHeaders.map { ($0.rawValue, $1) }),
                 timeLimit: .timeout(.seconds(15))
-            )
+            ),
+            interceptors: FooServiceClientInterceptorFactory() // Optionally interceptors
         )
 
         sharedFooServiceClient = fooServiceClient

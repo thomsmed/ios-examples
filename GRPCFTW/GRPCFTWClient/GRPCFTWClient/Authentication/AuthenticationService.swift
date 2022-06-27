@@ -7,15 +7,28 @@
 
 import NIOCore
 
-protocol AuthenticationService: AnyObject {
+protocol AuthTokenProvider: AnyObject {
+
     var currentAuthToken: String? { get }
-//    var authToken: EventLoopFuture<String> { get }
+
+    func freshAuthToken(_ completion: @escaping (Result<String, AuthTokenProviderError>) -> Void)
+    func freshAuthToken() -> EventLoopFuture<String>
+}
+
+enum AuthTokenProviderError: Error {
+    case notAuthenticated
+}
+
+protocol AuthenticationService: AnyObject {
+
 }
 
 final class DefaultAuthenticationService {
 
-    init() {
-        // Initialize the AuthenticationService
+    private let eventLoopProvider: EventLoopProvider
+
+    init(eventLoopProvider: EventLoopProvider) {
+        self.eventLoopProvider = eventLoopProvider
     }
 }
 
@@ -23,11 +36,33 @@ final class DefaultAuthenticationService {
 
 extension DefaultAuthenticationService: AuthenticationService {
 
+}
+
+// MARK: AuthTokenProvider
+
+extension DefaultAuthenticationService: AuthTokenProvider {
+
     var currentAuthToken: String? {
-        "<some-auth-token>"
+        "<a-valid-access-token>"
     }
 
-//    var authToken: EventLoopFuture<String> {
-//
-//    }
+    func freshAuthToken(_ completion: @escaping (Result<String, AuthTokenProviderError>) -> Void) {
+        // Call the completion with a success result containing a valid access token, refreshing it if necessary
+        completion(.success("<a-valid-access-token>"))
+
+        // Or call the completion with a failure result if an access token is not possible to obtain
+        // completion(.failure(SomeError))
+    }
+
+    func freshAuthToken() -> EventLoopFuture<String> {
+        let promise: EventLoopPromise<String> = eventLoopProvider.eventLoop.makePromise()
+
+        // Succeed the promise with a valid access token, refreshing it if necessary
+        promise.succeed("<a-valid-access-token>")
+
+        // Or fail the promise if an access token is not possible to obtain
+        // promise.fail(SomeError)
+
+        return promise.futureResult
+    }
 }

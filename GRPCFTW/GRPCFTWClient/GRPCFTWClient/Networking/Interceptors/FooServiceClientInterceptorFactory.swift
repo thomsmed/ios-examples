@@ -7,7 +7,14 @@
 
 import GRPC
 
-final class FooServiceClientInterceptorFactory: Grpcftw_FooServiceClientInterceptorFactoryProtocol {
+final class FooServiceClientInterceptorFactory {
+
+    init() {
+
+    }
+}
+
+extension FooServiceClientInterceptorFactory: Grpcftw_FooServiceClientInterceptorFactoryProtocol {
 
     func makeListFooInterceptors() -> [ClientInterceptor<Grpcftw_ListFooRequest, Grpcftw_GetFooResponse>] {
         [LoggingInterceptor()]
