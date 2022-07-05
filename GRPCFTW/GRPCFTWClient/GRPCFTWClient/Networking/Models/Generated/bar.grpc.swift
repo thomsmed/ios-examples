@@ -196,3 +196,144 @@ public final class Grpcftw_BarServiceClient: Grpcftw_BarServiceClientProtocol {
   }
 }
 
+public final class Grpcftw_BarServiceTestClient: Grpcftw_BarServiceClientProtocol {
+  private let fakeChannel: FakeChannel
+  public var defaultCallOptions: CallOptions
+  public var interceptors: Grpcftw_BarServiceClientInterceptorFactoryProtocol?
+
+  public var channel: GRPCChannel {
+    return self.fakeChannel
+  }
+
+  public init(
+    fakeChannel: FakeChannel = FakeChannel(),
+    defaultCallOptions callOptions: CallOptions = CallOptions(),
+    interceptors: Grpcftw_BarServiceClientInterceptorFactoryProtocol? = nil
+  ) {
+    self.fakeChannel = fakeChannel
+    self.defaultCallOptions = callOptions
+    self.interceptors = interceptors
+  }
+
+  /// Make a streaming response for the ListBar RPC. This must be called
+  /// before calling 'listBar'. See also 'FakeStreamingResponse'.
+  ///
+  /// - Parameter requestHandler: a handler for request parts sent by the RPC.
+  public func makeListBarResponseStream(
+    _ requestHandler: @escaping (FakeRequestPart<Grpcftw_ListBarRequest>) -> () = { _ in }
+  ) -> FakeStreamingResponse<Grpcftw_ListBarRequest, Grpcftw_GetBarResponse> {
+    return self.fakeChannel.makeFakeStreamingResponse(path: "/grpcftw.BarService/ListBar", requestHandler: requestHandler)
+  }
+
+  public func enqueueListBarResponses(
+    _ responses: [Grpcftw_GetBarResponse],
+    _ requestHandler: @escaping (FakeRequestPart<Grpcftw_ListBarRequest>) -> () = { _ in }
+  )  {
+    let stream = self.makeListBarResponseStream(requestHandler)
+    // These are the only operation on the stream; try! is fine.
+    responses.forEach { try! stream.sendMessage($0) }
+    try! stream.sendEnd()
+  }
+
+  /// Returns true if there are response streams enqueued for 'ListBar'
+  public var hasListBarResponsesRemaining: Bool {
+    return self.fakeChannel.hasFakeResponseEnqueued(forPath: "/grpcftw.BarService/ListBar")
+  }
+
+  /// Make a unary response for the GetBar RPC. This must be called
+  /// before calling 'getBar'. See also 'FakeUnaryResponse'.
+  ///
+  /// - Parameter requestHandler: a handler for request parts sent by the RPC.
+  public func makeGetBarResponseStream(
+    _ requestHandler: @escaping (FakeRequestPart<Grpcftw_GetBarRequest>) -> () = { _ in }
+  ) -> FakeUnaryResponse<Grpcftw_GetBarRequest, Grpcftw_GetBarResponse> {
+    return self.fakeChannel.makeFakeUnaryResponse(path: "/grpcftw.BarService/GetBar", requestHandler: requestHandler)
+  }
+
+  public func enqueueGetBarResponse(
+    _ response: Grpcftw_GetBarResponse,
+    _ requestHandler: @escaping (FakeRequestPart<Grpcftw_GetBarRequest>) -> () = { _ in }
+  )  {
+    let stream = self.makeGetBarResponseStream(requestHandler)
+    // This is the only operation on the stream; try! is fine.
+    try! stream.sendMessage(response)
+  }
+
+  /// Returns true if there are response streams enqueued for 'GetBar'
+  public var hasGetBarResponsesRemaining: Bool {
+    return self.fakeChannel.hasFakeResponseEnqueued(forPath: "/grpcftw.BarService/GetBar")
+  }
+
+  /// Make a unary response for the SetBar RPC. This must be called
+  /// before calling 'setBar'. See also 'FakeUnaryResponse'.
+  ///
+  /// - Parameter requestHandler: a handler for request parts sent by the RPC.
+  public func makeSetBarResponseStream(
+    _ requestHandler: @escaping (FakeRequestPart<Grpcftw_SetBarRequest>) -> () = { _ in }
+  ) -> FakeUnaryResponse<Grpcftw_SetBarRequest, Grpcftw_SetBarResponse> {
+    return self.fakeChannel.makeFakeUnaryResponse(path: "/grpcftw.BarService/SetBar", requestHandler: requestHandler)
+  }
+
+  public func enqueueSetBarResponse(
+    _ response: Grpcftw_SetBarResponse,
+    _ requestHandler: @escaping (FakeRequestPart<Grpcftw_SetBarRequest>) -> () = { _ in }
+  )  {
+    let stream = self.makeSetBarResponseStream(requestHandler)
+    // This is the only operation on the stream; try! is fine.
+    try! stream.sendMessage(response)
+  }
+
+  /// Returns true if there are response streams enqueued for 'SetBar'
+  public var hasSetBarResponsesRemaining: Bool {
+    return self.fakeChannel.hasFakeResponseEnqueued(forPath: "/grpcftw.BarService/SetBar")
+  }
+
+  /// Make a unary response for the UpdateBar RPC. This must be called
+  /// before calling 'updateBar'. See also 'FakeUnaryResponse'.
+  ///
+  /// - Parameter requestHandler: a handler for request parts sent by the RPC.
+  public func makeUpdateBarResponseStream(
+    _ requestHandler: @escaping (FakeRequestPart<Grpcftw_UpdateBarRequest>) -> () = { _ in }
+  ) -> FakeUnaryResponse<Grpcftw_UpdateBarRequest, Grpcftw_UpdateBarResponse> {
+    return self.fakeChannel.makeFakeUnaryResponse(path: "/grpcftw.BarService/UpdateBar", requestHandler: requestHandler)
+  }
+
+  public func enqueueUpdateBarResponse(
+    _ response: Grpcftw_UpdateBarResponse,
+    _ requestHandler: @escaping (FakeRequestPart<Grpcftw_UpdateBarRequest>) -> () = { _ in }
+  )  {
+    let stream = self.makeUpdateBarResponseStream(requestHandler)
+    // This is the only operation on the stream; try! is fine.
+    try! stream.sendMessage(response)
+  }
+
+  /// Returns true if there are response streams enqueued for 'UpdateBar'
+  public var hasUpdateBarResponsesRemaining: Bool {
+    return self.fakeChannel.hasFakeResponseEnqueued(forPath: "/grpcftw.BarService/UpdateBar")
+  }
+
+  /// Make a unary response for the DeleteBar RPC. This must be called
+  /// before calling 'deleteBar'. See also 'FakeUnaryResponse'.
+  ///
+  /// - Parameter requestHandler: a handler for request parts sent by the RPC.
+  public func makeDeleteBarResponseStream(
+    _ requestHandler: @escaping (FakeRequestPart<Grpcftw_DeleteBarRequest>) -> () = { _ in }
+  ) -> FakeUnaryResponse<Grpcftw_DeleteBarRequest, Grpcftw_DeleteBarResponse> {
+    return self.fakeChannel.makeFakeUnaryResponse(path: "/grpcftw.BarService/DeleteBar", requestHandler: requestHandler)
+  }
+
+  public func enqueueDeleteBarResponse(
+    _ response: Grpcftw_DeleteBarResponse,
+    _ requestHandler: @escaping (FakeRequestPart<Grpcftw_DeleteBarRequest>) -> () = { _ in }
+  )  {
+    let stream = self.makeDeleteBarResponseStream(requestHandler)
+    // This is the only operation on the stream; try! is fine.
+    try! stream.sendMessage(response)
+  }
+
+  /// Returns true if there are response streams enqueued for 'DeleteBar'
+  public var hasDeleteBarResponsesRemaining: Bool {
+    return self.fakeChannel.hasFakeResponseEnqueued(forPath: "/grpcftw.BarService/DeleteBar")
+  }
+}
+

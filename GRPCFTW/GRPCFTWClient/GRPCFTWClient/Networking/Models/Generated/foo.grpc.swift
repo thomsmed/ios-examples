@@ -196,3 +196,144 @@ public final class Grpcftw_FooServiceClient: Grpcftw_FooServiceClientProtocol {
   }
 }
 
+public final class Grpcftw_FooServiceTestClient: Grpcftw_FooServiceClientProtocol {
+  private let fakeChannel: FakeChannel
+  public var defaultCallOptions: CallOptions
+  public var interceptors: Grpcftw_FooServiceClientInterceptorFactoryProtocol?
+
+  public var channel: GRPCChannel {
+    return self.fakeChannel
+  }
+
+  public init(
+    fakeChannel: FakeChannel = FakeChannel(),
+    defaultCallOptions callOptions: CallOptions = CallOptions(),
+    interceptors: Grpcftw_FooServiceClientInterceptorFactoryProtocol? = nil
+  ) {
+    self.fakeChannel = fakeChannel
+    self.defaultCallOptions = callOptions
+    self.interceptors = interceptors
+  }
+
+  /// Make a streaming response for the ListFoo RPC. This must be called
+  /// before calling 'listFoo'. See also 'FakeStreamingResponse'.
+  ///
+  /// - Parameter requestHandler: a handler for request parts sent by the RPC.
+  public func makeListFooResponseStream(
+    _ requestHandler: @escaping (FakeRequestPart<Grpcftw_ListFooRequest>) -> () = { _ in }
+  ) -> FakeStreamingResponse<Grpcftw_ListFooRequest, Grpcftw_GetFooResponse> {
+    return self.fakeChannel.makeFakeStreamingResponse(path: "/grpcftw.FooService/ListFoo", requestHandler: requestHandler)
+  }
+
+  public func enqueueListFooResponses(
+    _ responses: [Grpcftw_GetFooResponse],
+    _ requestHandler: @escaping (FakeRequestPart<Grpcftw_ListFooRequest>) -> () = { _ in }
+  )  {
+    let stream = self.makeListFooResponseStream(requestHandler)
+    // These are the only operation on the stream; try! is fine.
+    responses.forEach { try! stream.sendMessage($0) }
+    try! stream.sendEnd()
+  }
+
+  /// Returns true if there are response streams enqueued for 'ListFoo'
+  public var hasListFooResponsesRemaining: Bool {
+    return self.fakeChannel.hasFakeResponseEnqueued(forPath: "/grpcftw.FooService/ListFoo")
+  }
+
+  /// Make a unary response for the GetFoo RPC. This must be called
+  /// before calling 'getFoo'. See also 'FakeUnaryResponse'.
+  ///
+  /// - Parameter requestHandler: a handler for request parts sent by the RPC.
+  public func makeGetFooResponseStream(
+    _ requestHandler: @escaping (FakeRequestPart<Grpcftw_GetFooRequest>) -> () = { _ in }
+  ) -> FakeUnaryResponse<Grpcftw_GetFooRequest, Grpcftw_GetFooResponse> {
+    return self.fakeChannel.makeFakeUnaryResponse(path: "/grpcftw.FooService/GetFoo", requestHandler: requestHandler)
+  }
+
+  public func enqueueGetFooResponse(
+    _ response: Grpcftw_GetFooResponse,
+    _ requestHandler: @escaping (FakeRequestPart<Grpcftw_GetFooRequest>) -> () = { _ in }
+  )  {
+    let stream = self.makeGetFooResponseStream(requestHandler)
+    // This is the only operation on the stream; try! is fine.
+    try! stream.sendMessage(response)
+  }
+
+  /// Returns true if there are response streams enqueued for 'GetFoo'
+  public var hasGetFooResponsesRemaining: Bool {
+    return self.fakeChannel.hasFakeResponseEnqueued(forPath: "/grpcftw.FooService/GetFoo")
+  }
+
+  /// Make a unary response for the SetFoo RPC. This must be called
+  /// before calling 'setFoo'. See also 'FakeUnaryResponse'.
+  ///
+  /// - Parameter requestHandler: a handler for request parts sent by the RPC.
+  public func makeSetFooResponseStream(
+    _ requestHandler: @escaping (FakeRequestPart<Grpcftw_SetFooRequest>) -> () = { _ in }
+  ) -> FakeUnaryResponse<Grpcftw_SetFooRequest, Grpcftw_SetFooResponse> {
+    return self.fakeChannel.makeFakeUnaryResponse(path: "/grpcftw.FooService/SetFoo", requestHandler: requestHandler)
+  }
+
+  public func enqueueSetFooResponse(
+    _ response: Grpcftw_SetFooResponse,
+    _ requestHandler: @escaping (FakeRequestPart<Grpcftw_SetFooRequest>) -> () = { _ in }
+  )  {
+    let stream = self.makeSetFooResponseStream(requestHandler)
+    // This is the only operation on the stream; try! is fine.
+    try! stream.sendMessage(response)
+  }
+
+  /// Returns true if there are response streams enqueued for 'SetFoo'
+  public var hasSetFooResponsesRemaining: Bool {
+    return self.fakeChannel.hasFakeResponseEnqueued(forPath: "/grpcftw.FooService/SetFoo")
+  }
+
+  /// Make a unary response for the UpdateFoo RPC. This must be called
+  /// before calling 'updateFoo'. See also 'FakeUnaryResponse'.
+  ///
+  /// - Parameter requestHandler: a handler for request parts sent by the RPC.
+  public func makeUpdateFooResponseStream(
+    _ requestHandler: @escaping (FakeRequestPart<Grpcftw_UpdateFooRequest>) -> () = { _ in }
+  ) -> FakeUnaryResponse<Grpcftw_UpdateFooRequest, Grpcftw_UpdateFooResponse> {
+    return self.fakeChannel.makeFakeUnaryResponse(path: "/grpcftw.FooService/UpdateFoo", requestHandler: requestHandler)
+  }
+
+  public func enqueueUpdateFooResponse(
+    _ response: Grpcftw_UpdateFooResponse,
+    _ requestHandler: @escaping (FakeRequestPart<Grpcftw_UpdateFooRequest>) -> () = { _ in }
+  )  {
+    let stream = self.makeUpdateFooResponseStream(requestHandler)
+    // This is the only operation on the stream; try! is fine.
+    try! stream.sendMessage(response)
+  }
+
+  /// Returns true if there are response streams enqueued for 'UpdateFoo'
+  public var hasUpdateFooResponsesRemaining: Bool {
+    return self.fakeChannel.hasFakeResponseEnqueued(forPath: "/grpcftw.FooService/UpdateFoo")
+  }
+
+  /// Make a unary response for the DeleteFoo RPC. This must be called
+  /// before calling 'deleteFoo'. See also 'FakeUnaryResponse'.
+  ///
+  /// - Parameter requestHandler: a handler for request parts sent by the RPC.
+  public func makeDeleteFooResponseStream(
+    _ requestHandler: @escaping (FakeRequestPart<Grpcftw_DeleteFooRequest>) -> () = { _ in }
+  ) -> FakeUnaryResponse<Grpcftw_DeleteFooRequest, Grpcftw_DeleteFooResponse> {
+    return self.fakeChannel.makeFakeUnaryResponse(path: "/grpcftw.FooService/DeleteFoo", requestHandler: requestHandler)
+  }
+
+  public func enqueueDeleteFooResponse(
+    _ response: Grpcftw_DeleteFooResponse,
+    _ requestHandler: @escaping (FakeRequestPart<Grpcftw_DeleteFooRequest>) -> () = { _ in }
+  )  {
+    let stream = self.makeDeleteFooResponseStream(requestHandler)
+    // This is the only operation on the stream; try! is fine.
+    try! stream.sendMessage(response)
+  }
+
+  /// Returns true if there are response streams enqueued for 'DeleteFoo'
+  public var hasDeleteFooResponsesRemaining: Bool {
+    return self.fakeChannel.hasFakeResponseEnqueued(forPath: "/grpcftw.FooService/DeleteFoo")
+  }
+}
+

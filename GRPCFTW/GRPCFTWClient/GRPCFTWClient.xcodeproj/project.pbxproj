@@ -18,6 +18,7 @@
 		ED1E8AF128673ABF00236C6C /* GRPCClient+makeStreamingCallWithRetry.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1E8AF028673ABF00236C6C /* GRPCClient+makeStreamingCallWithRetry.swift */; };
 		ED1E8B062867AB4300236C6C /* FooService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1E8B052867AB4300236C6C /* FooService.swift */; };
 		ED1E8B0D28697F2F00236C6C /* AuthTokenInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1E8B0C28697F2F00236C6C /* AuthTokenInterceptor.swift */; };
+		EDC39716286DFE040005B24A /* GRPCFTWClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC39715286DFE040005B24A /* GRPCFTWClientTests.swift */; };
 		EDF496C5284E374A00B49E38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF496C4284E374A00B49E38 /* AppDelegate.swift */; };
 		EDF496C7284E374A00B49E38 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF496C6284E374A00B49E38 /* SceneDelegate.swift */; };
 		EDF496C9284E374A00B49E38 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF496C8284E374A00B49E38 /* ViewController.swift */; };
@@ -26,6 +27,16 @@
 		EDF496ED284E3A5600B49E38 /* ClientFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF496EC284E3A5600B49E38 /* ClientFactory.swift */; };
 		EDF49716284E754400B49E38 /* GRPC in Frameworks */ = {isa = PBXBuildFile; productRef = EDF49715284E754400B49E38 /* GRPC */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EDC39717286DFE040005B24A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EDF496B9284E374900B49E38 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EDF496C0284E374A00B49E38;
+			remoteInfo = GRPCFTWClient;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		ED1E8AD92867234900236C6C /* FooServiceClientInterceptorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooServiceClientInterceptorFactory.swift; sourceTree = "<group>"; };
@@ -39,6 +50,8 @@
 		ED1E8AF028673ABF00236C6C /* GRPCClient+makeStreamingCallWithRetry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GRPCClient+makeStreamingCallWithRetry.swift"; sourceTree = "<group>"; };
 		ED1E8B052867AB4300236C6C /* FooService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooService.swift; sourceTree = "<group>"; };
 		ED1E8B0C28697F2F00236C6C /* AuthTokenInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTokenInterceptor.swift; sourceTree = "<group>"; };
+		EDC39713286DFE040005B24A /* GRPCFTWClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GRPCFTWClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDC39715286DFE040005B24A /* GRPCFTWClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GRPCFTWClientTests.swift; sourceTree = "<group>"; };
 		EDF496C1284E374A00B49E38 /* GRPCFTWClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GRPCFTWClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDF496C4284E374A00B49E38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDF496C6284E374A00B49E38 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -50,6 +63,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		EDC39710286DFE040005B24A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EDF496BE284E374A00B49E38 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -103,10 +123,19 @@
 			path = AuthToken;
 			sourceTree = "<group>";
 		};
+		EDC39714286DFE040005B24A /* GRPCFTWClientTests */ = {
+			isa = PBXGroup;
+			children = (
+				EDC39715286DFE040005B24A /* GRPCFTWClientTests.swift */,
+			);
+			path = GRPCFTWClientTests;
+			sourceTree = "<group>";
+		};
 		EDF496B8284E374900B49E38 = {
 			isa = PBXGroup;
 			children = (
 				EDF496C3284E374A00B49E38 /* GRPCFTWClient */,
+				EDC39714286DFE040005B24A /* GRPCFTWClientTests */,
 				EDF496C2284E374A00B49E38 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -115,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				EDF496C1284E374A00B49E38 /* GRPCFTWClient.app */,
+				EDC39713286DFE040005B24A /* GRPCFTWClientTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -169,6 +199,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		EDC39712286DFE040005B24A /* GRPCFTWClientTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EDC3971B286DFE040005B24A /* Build configuration list for PBXNativeTarget "GRPCFTWClientTests" */;
+			buildPhases = (
+				EDC3970F286DFE040005B24A /* Sources */,
+				EDC39710286DFE040005B24A /* Frameworks */,
+				EDC39711286DFE040005B24A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EDC39718286DFE040005B24A /* PBXTargetDependency */,
+			);
+			name = GRPCFTWClientTests;
+			productName = GRPCFTWClientTests;
+			productReference = EDC39713286DFE040005B24A /* GRPCFTWClientTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		EDF496C0284E374A00B49E38 /* GRPCFTWClient */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = EDF496D5284E374B00B49E38 /* Build configuration list for PBXNativeTarget "GRPCFTWClient" */;
@@ -199,6 +247,10 @@
 				LastSwiftUpdateCheck = 1330;
 				LastUpgradeCheck = 1330;
 				TargetAttributes = {
+					EDC39712286DFE040005B24A = {
+						CreatedOnToolsVersion = 13.3.1;
+						TestTargetID = EDF496C0284E374A00B49E38;
+					};
 					EDF496C0284E374A00B49E38 = {
 						CreatedOnToolsVersion = 13.3.1;
 					};
@@ -221,11 +273,19 @@
 			projectRoot = "";
 			targets = (
 				EDF496C0284E374A00B49E38 /* GRPCFTWClient */,
+				EDC39712286DFE040005B24A /* GRPCFTWClientTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		EDC39711286DFE040005B24A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EDF496BF284E374A00B49E38 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -238,6 +298,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		EDC3970F286DFE040005B24A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDC39716286DFE040005B24A /* GRPCFTWClientTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EDF496BD284E374A00B49E38 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -262,6 +330,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		EDC39718286DFE040005B24A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EDF496C0284E374A00B49E38 /* GRPCFTWClient */;
+			targetProxy = EDC39717286DFE040005B24A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		EDF496CF284E374B00B49E38 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -274,6 +350,42 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		EDC39719286DFE040005B24A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 55ATZ58U6M;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thomsmed.GRPCFTWClientTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GRPCFTWClient.app/GRPCFTWClient";
+			};
+			name = Debug;
+		};
+		EDC3971A286DFE040005B24A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 55ATZ58U6M;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thomsmed.GRPCFTWClientTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GRPCFTWClient.app/GRPCFTWClient";
+			};
+			name = Release;
+		};
 		EDF496D3284E374B00B49E38 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -445,6 +557,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		EDC3971B286DFE040005B24A /* Build configuration list for PBXNativeTarget "GRPCFTWClientTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDC39719286DFE040005B24A /* Debug */,
+				EDC3971A286DFE040005B24A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		EDF496BC284E374900B49E38 /* Build configuration list for PBXProject "GRPCFTWClient" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

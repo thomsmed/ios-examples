@@ -17,11 +17,15 @@ protocol FooService: AnyObject {
 final class DefaultFooService {
 
     private let fooServiceClient: Grpcftw_FooServiceClientProtocol
-    private let authTokenProvider: AuthTokenProvider
+//    private let authTokenProvider: AuthTokenProvider
 
-    init(clientFactory: ClientFactory, authTokenProvider: AuthTokenProvider) {
-        self.fooServiceClient = clientFactory.fooServiceClient()
-        self.authTokenProvider = authTokenProvider
+//    init(clientFactory: ClientFactory, authTokenProvider: AuthTokenProvider) {
+//        self.fooServiceClient = clientFactory.fooServiceClient()
+//        self.authTokenProvider = authTokenProvider
+//    }
+
+    init(fooServiceClient: Grpcftw_FooServiceClientProtocol) {
+        self.fooServiceClient = fooServiceClient
     }
 }
 
@@ -47,17 +51,26 @@ extension DefaultFooService: FooService {
 
     func getFoo(_ completion: @escaping (Result<Void, Error>) -> Void) {
 
-        authTokenProvider.freshAuthToken()
-            .flatMap { accessToken in
-                self.fooServiceClient.getFoo(Grpcftw_GetFooRequest()).response
+        self.fooServiceClient.getFoo(Grpcftw_GetFooRequest()).response.whenComplete { result in
+            switch result {
+            case let .failure(error):
+                completion(.failure(error))
+            case let .success(response):
+                completion(.success(()))
             }
-            .whenComplete { result in
-                switch result {
-                case let .failure(error):
-                    completion(.failure(error))
-                case let .success(response):
-                    completion(.success(()))
-                }
-            }
+        }
+
+//        authTokenProvider.freshAuthToken()
+//            .flatMap { accessToken in
+//                self.fooServiceClient.getFoo(Grpcftw_GetFooRequest()).response
+//            }
+//            .whenComplete { result in
+//                switch result {
+//                case let .failure(error):
+//                    completion(.failure(error))
+//                case let .success(response):
+//                    completion(.success(()))
+//                }
+//            }
     }
 }

@@ -9,6 +9,8 @@ import UIKit
 
 final class DenseContentSheetViewController: BottomSheetController {
 
+    private let items = (0..<10).map { index in "Item \(index)" }
+
     override func loadView() {
         view = UIView()
 
@@ -19,13 +21,16 @@ final class DenseContentSheetViewController: BottomSheetController {
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse mattis, est sed facilisis auctor, velit nunc facilisis lorem, quis consectetur elit lorem eget nisl.
         """
 
-        let textView = UITextView()
-        textView.font = .systemFont(ofSize: 17, weight: .regular)
-        textView.backgroundColor = .secondarySystemBackground
-        textView.layer.cornerRadius = 4
-        textView.text = """
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse mattis, est sed facilisis auctor, velit nunc facilisis lorem, quis consectetur elit lorem eget nisl. Vivamus porttitor porttitor congue. Maecenas venenatis nunc eu sodales egestas. Phasellus ut ante in augue mollis aliquet. Morbi varius finibus orci, quis varius quam consectetur ut. Donec placerat quam at dictum fringilla. Aenean a lacus eget lacus elementum aliquam. Nullam ultrices nulla augue, sed mattis orci elementum eleifend. Proin viverra accumsan est vel aliquam.
-        """
+        let tableView = UITableView()
+        tableView.dataSource = self
+
+//        let textView = UITextView()
+//        textView.font = .systemFont(ofSize: 17, weight: .regular)
+//        textView.backgroundColor = .secondarySystemBackground
+//        textView.layer.cornerRadius = 4
+//        textView.text = """
+//        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse mattis, est sed facilisis auctor, velit nunc facilisis lorem, quis consectetur elit lorem eget nisl. Vivamus porttitor porttitor congue. Maecenas venenatis nunc eu sodales egestas. Phasellus ut ante in augue mollis aliquet. Morbi varius finibus orci, quis varius quam consectetur ut. Donec placerat quam at dictum fringilla. Aenean a lacus eget lacus elementum aliquam. Nullam ultrices nulla augue, sed mattis orci elementum eleifend. Proin viverra accumsan est vel aliquam.
+//        """
 
         let bottomLabel = UILabel()
         bottomLabel.font = .systemFont(ofSize: 17, weight: .regular)
@@ -35,7 +40,7 @@ final class DenseContentSheetViewController: BottomSheetController {
         """
 
         let stackView = UIStackView(arrangedSubviews: [
-            topLabel, textView, bottomLabel
+            topLabel, tableView, bottomLabel
         ])
         stackView.axis = .vertical
         stackView.distribution = .fill
@@ -54,5 +59,39 @@ final class DenseContentSheetViewController: BottomSheetController {
         ])
 
         view.backgroundColor = .systemBackground
+    }
+}
+
+extension DenseContentSheetViewController: UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        items.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        var configuration = cell.defaultContentConfiguration()
+        configuration.text = items[indexPath.row]
+        cell.contentConfiguration = configuration
+        return cell
+    }
+}
+
+extension DenseContentSheetViewController {
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
     }
 }
