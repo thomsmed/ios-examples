@@ -83,6 +83,7 @@ final class ViewController: UIViewController {
         let denseContentMediumButton = UIButton(type: .system, primaryAction: .init(handler: { _ in
             let viewController = DenseContentSheetViewController()
             viewController.preferredSheetSizing = .medium
+            viewController.panToDismissEnabled = false
             self.present(viewController, animated: true)
         }))
         denseContentMediumButton.titleLabel?.font = .systemFont(ofSize: 20, weight: .regular)
@@ -117,6 +118,7 @@ final class ViewController: UIViewController {
         let expandingContentMediumButton = UIButton(type: .system, primaryAction: .init(handler: { _ in
             let viewController = ExpandingContentSheetViewController()
             viewController.preferredSheetSizing = .fit
+            viewController.panToDismissEnabled = false
             self.present(viewController, animated: true)
         }))
         expandingContentMediumButton.titleLabel?.font = .systemFont(ofSize: 20, weight: .regular)
