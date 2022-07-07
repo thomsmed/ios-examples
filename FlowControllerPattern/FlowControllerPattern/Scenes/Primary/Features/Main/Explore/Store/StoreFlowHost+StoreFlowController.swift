@@ -8,7 +8,7 @@
 import UIKit
 
 protocol StoreFlowController: AnyObject {
-
+    func goToBooking(with storeInfo: StoreInfo)
 }
 
 protocol StoreFlowHost: StoreFlowController & UIViewController {

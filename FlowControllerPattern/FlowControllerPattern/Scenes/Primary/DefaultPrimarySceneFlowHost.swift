@@ -9,9 +9,11 @@ import UIKit
 
 final class DefaultPrimarySceneFlowHost: SinglePageController {
 
+    private let appDependencies: AppDependencies
     private weak var flowController: AppFlowController?
 
     init(appDependencies: AppDependencies, flowController: AppFlowController) {
+        self.appDependencies = appDependencies
         self.flowController = flowController
         super.init(nibName: nil, bundle: nil)
     }
@@ -30,7 +32,7 @@ extension DefaultPrimarySceneFlowHost: PrimarySceneFlowHost {
             onboardingFlowHost.start(page)
             setViewController(onboardingFlowHost, using: .none)
         case let .main(page):
-            let mainFlowHost = DefaultMainFlowHost()
+            let mainFlowHost = DefaultMainFlowHost(appDependencies: appDependencies)
             mainFlowHost.start(page)
             setViewController(mainFlowHost, using: .none)
         }
@@ -50,7 +52,7 @@ extension DefaultPrimarySceneFlowHost: PrimarySceneFlowHost {
             if let mainFlowHost = viewController as? MainFlowHost {
                 mainFlowHost.go(to: page)
             } else {
-                let mainFlowHost = DefaultMainFlowHost()
+                let mainFlowHost = DefaultMainFlowHost(appDependencies: appDependencies)
                 mainFlowHost.start(page)
                 setViewController(mainFlowHost, using: .flip)
             }

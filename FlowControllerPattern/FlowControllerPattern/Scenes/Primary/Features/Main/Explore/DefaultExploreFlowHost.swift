@@ -65,7 +65,7 @@ extension DefaultExploreFlowHost: ExploreFlowHost {
 
 extension DefaultExploreFlowHost {
 
-    func go(to page: PrimaryScenePage.Main.Booking, with storeId: String) {
-        flowController?.go(to: page, with: storeId)
+    func go(to page: PrimaryScenePage.Main.Booking, with storeId: String, and storeInfo: StoreInfo?) {
+        flowController?.go(to: page, with: storeId, and: storeInfo)
     }
 }

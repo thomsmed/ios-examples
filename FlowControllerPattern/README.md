@@ -2,6 +2,8 @@
 And general app architecture example.
 
 ## TODO
+- Deep links from launch options
+- Deep links from pasteboard
 - Register for notifications
 - Handle app lifecycle event
 - Analytics

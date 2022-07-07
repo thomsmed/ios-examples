@@ -29,7 +29,7 @@ enum PrimaryScenePage {
                 case history
             }
 
-            case purchases
+            case purchases(page: Purchases)
         }
 
         enum Profile {
@@ -50,7 +50,7 @@ enum PrimaryScenePage {
         case explore(page: Explore)
         case activity(page: Activity)
         case profile(page: Profile)
-        case booking(page: Booking, storeId: String)
+        case booking(page: Booking, storeId: String, info: StoreInfo? = nil)
     }
 
     case onboarding(page: Onboarding)

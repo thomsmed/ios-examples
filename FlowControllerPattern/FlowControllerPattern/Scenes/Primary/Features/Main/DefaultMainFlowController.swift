@@ -9,9 +9,20 @@ import UIKit
 
 final class DefaultMainFlowHost: UITabBarController {
 
+    private let appDependencies: AppDependencies
+
     private var exploreFlowHost: ExploreFlowHost?
     private var activityFlowHost: ActivityFlowHost?
     private var profileFlowHost: ProfileFlowHost?
+
+    init(appDependencies: AppDependencies) {
+        self.appDependencies = appDependencies
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
 
 extension DefaultMainFlowHost: MainFlowHost {
@@ -62,10 +73,12 @@ extension DefaultMainFlowHost: MainFlowHost {
         case let .profile(page):
             selectedIndex = 2
             profileFlowHost?.go(to: page)
-        case let .booking(page, storeId):
+        case let .booking(page, storeId, storeInfo):
             dismiss(animated: false) {
-                let bookingFlowHost = DefaultBookingFlowHost()
-                bookingFlowHost.start(page, with: storeId)
+                let bookingFlowHost = DefaultBookingFlowHost(
+                    appDependencies: self.appDependencies, flowController: self
+                )
+                bookingFlowHost.start(page, with: storeId, and: storeInfo)
                 self.present(bookingFlowHost, animated: true)
             }
         }
@@ -76,10 +89,27 @@ extension DefaultMainFlowHost: MainFlowHost {
 
 extension DefaultMainFlowHost {
 
-    func go(to page: PrimaryScenePage.Main.Booking, with storeId: String) {
+    func go(to page: PrimaryScenePage.Main.Explore) {
+        selectedIndex = 0
+        exploreFlowHost?.go(to: page)
+    }
+
+    func go(to page: PrimaryScenePage.Main.Activity) {
+        selectedIndex = 1
+        activityFlowHost?.go(to: page)
+    }
+
+    func go(to page: PrimaryScenePage.Main.Profile) {
+        selectedIndex = 2
+        profileFlowHost?.go(to: page)
+    }
+
+    func go(to page: PrimaryScenePage.Main.Booking, with storeId: String, and storeInfo: StoreInfo?) {
         dismiss(animated: false) {
-            let bookingFlowHost = DefaultBookingFlowHost()
-            bookingFlowHost.start(page, with: storeId)
+            let bookingFlowHost = DefaultBookingFlowHost(
+                appDependencies: self.appDependencies, flowController: self
+            )
+            bookingFlowHost.start(page, with: storeId, and: storeInfo)
             self.present(bookingFlowHost, animated: true)
         }
     }
