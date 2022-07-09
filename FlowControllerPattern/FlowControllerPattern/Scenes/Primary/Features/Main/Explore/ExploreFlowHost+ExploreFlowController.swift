@@ -8,10 +8,10 @@
 import UIKit
 
 protocol ExploreFlowController: AnyObject {
-    func go(to page: PrimaryScenePage.Main.Booking, with storeId: String, and storeInfo: StoreInfo?)
+    func go(to page: PrimaryPage.Main.Booking, with storeId: String, and storeInfo: StoreInfo?)
 }
 
 protocol ExploreFlowHost: ExploreFlowController & UIViewController {
-    func start(_ page: PrimaryScenePage.Main.Explore)
-    func go(to page: PrimaryScenePage.Main.Explore)
+    func start(_ page: PrimaryPage.Main.Explore)
+    func go(to page: PrimaryPage.Main.Explore)
 }

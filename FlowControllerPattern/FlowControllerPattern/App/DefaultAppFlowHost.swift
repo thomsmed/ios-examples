@@ -26,15 +26,10 @@ extension DefaultAppFlowHost: AppFlowHost {
         self.launchOptions = launchOptions
     }
 
-    func startAndReturnFlowHost(for scene: UIScene) -> PrimarySceneFlowHost {
-        if let sceneFlowHost = flowHostsByScene[scene] {
-            return sceneFlowHost
-        }
-
+    func makeFlowHost(for scene: UIScene) -> PrimarySceneFlowHost {
         let sceneFlowHost = DefaultPrimarySceneFlowHost(
             appDependencies: appDependencies, flowController: self
         )
-        sceneFlowHost.start(.onboarding(page: .home)) // TODO: Check launch options and pasteboard?
 
         flowHostsByScene[scene] = sceneFlowHost
 

@@ -8,13 +8,13 @@
 import UIKit
 
 protocol MainFlowController: AnyObject {
-    func go(to page: PrimaryScenePage.Main.Explore)
-    func go(to page: PrimaryScenePage.Main.Activity)
-    func go(to page: PrimaryScenePage.Main.Profile)
-    func go(to page: PrimaryScenePage.Main.Booking, with storeId: String, and storeInfo: StoreInfo?)
+    func go(to page: PrimaryPage.Main.Explore)
+    func go(to page: PrimaryPage.Main.Activity)
+    func go(to page: PrimaryPage.Main.Profile)
+    func go(to page: PrimaryPage.Main.Booking, with storeId: String, and storeInfo: StoreInfo?)
 }
 
 protocol MainFlowHost: MainFlowController & UIViewController {
-    func start(_ page: PrimaryScenePage.Main)
-    func go(to page: PrimaryScenePage.Main)
+    func start(_ page: PrimaryPage.Main)
+    func go(to page: PrimaryPage.Main)
 }

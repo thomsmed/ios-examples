@@ -27,7 +27,7 @@ final class DefaultMainFlowHost: UITabBarController {
 
 extension DefaultMainFlowHost: MainFlowHost {
 
-    func start(_ page: PrimaryScenePage.Main) {
+    func start(_ page: PrimaryPage.Main) {
         let exploreFlowHost = DefaultExploreFlowHost(flowController: self)
         let activityFlowHost = DefaultActivityFlowHost()
         let profileFlowHost = DefaultProfileFlowHost()
@@ -58,7 +58,7 @@ extension DefaultMainFlowHost: MainFlowHost {
         self.profileFlowHost = profileFlowHost
     }
 
-    func go(to page: PrimaryScenePage.Main) {
+    func go(to page: PrimaryPage.Main) {
         guard viewControllers?.isEmpty == false else {
             return start(page)
         }
@@ -89,22 +89,22 @@ extension DefaultMainFlowHost: MainFlowHost {
 
 extension DefaultMainFlowHost {
 
-    func go(to page: PrimaryScenePage.Main.Explore) {
+    func go(to page: PrimaryPage.Main.Explore) {
         selectedIndex = 0
         exploreFlowHost?.go(to: page)
     }
 
-    func go(to page: PrimaryScenePage.Main.Activity) {
+    func go(to page: PrimaryPage.Main.Activity) {
         selectedIndex = 1
         activityFlowHost?.go(to: page)
     }
 
-    func go(to page: PrimaryScenePage.Main.Profile) {
+    func go(to page: PrimaryPage.Main.Profile) {
         selectedIndex = 2
         profileFlowHost?.go(to: page)
     }
 
-    func go(to page: PrimaryScenePage.Main.Booking, with storeId: String, and storeInfo: StoreInfo?) {
+    func go(to page: PrimaryPage.Main.Booking, with storeId: String, and storeInfo: StoreInfo?) {
         dismiss(animated: false) {
             let bookingFlowHost = DefaultBookingFlowHost(
                 appDependencies: self.appDependencies, flowController: self

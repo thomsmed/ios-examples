@@ -12,6 +12,6 @@ protocol ProfileFlowController: AnyObject {
 }
 
 protocol ProfileFlowHost: ProfileFlowController & UIViewController {
-    func start(_ page: PrimaryScenePage.Main.Profile)
-    func go(to page: PrimaryScenePage.Main.Profile)
+    func start(_ page: PrimaryPage.Main.Profile)
+    func go(to page: PrimaryPage.Main.Profile)
 }

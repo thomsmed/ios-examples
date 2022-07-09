@@ -13,11 +13,11 @@ final class DefaultOnboardingFlowHost: UIViewController {
 
 extension DefaultOnboardingFlowHost: OnboardingFlowHost {
 
-    func start(_ page: PrimaryScenePage.Onboarding) {
+    func start(_ page: PrimaryPage.Onboarding) {
         
     }
 
-    func go(to page: PrimaryScenePage.Onboarding) {
+    func go(to page: PrimaryPage.Onboarding) {
         
     }
 }

@@ -24,7 +24,7 @@
 		ED7549E328736A3900768561 /* DefaultMainFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7549E228736A3900768561 /* DefaultMainFlowController.swift */; };
 		ED7549E828736A3B00768561 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED7549E728736A3B00768561 /* Assets.xcassets */; };
 		ED7549EB28736A3B00768561 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED7549E928736A3B00768561 /* LaunchScreen.storyboard */; };
-		ED7549F428736B4000768561 /* PrimaryScenePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7549F328736B4000768561 /* PrimaryScenePage.swift */; };
+		ED7549F428736B4000768561 /* PrimaryPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7549F328736B4000768561 /* PrimaryPage.swift */; };
 		ED7549FA28736DF200768561 /* AppFlowHost+AppFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7549F928736DF200768561 /* AppFlowHost+AppFlowController.swift */; };
 		ED7549FC28736E0400768561 /* DefaultAppFlowHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7549FB28736E0400768561 /* DefaultAppFlowHost.swift */; };
 		ED754A0028736EA000768561 /* SinglePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7549FF28736EA000768561 /* SinglePageController.swift */; };
@@ -44,6 +44,7 @@
 		EDD3E5E928778EFC008318C0 /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD3E5E828778EFC008318C0 /* StoreViewController.swift */; };
 		EDD3E5EB28778F19008318C0 /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD3E5EA28778F19008318C0 /* CheckoutViewController.swift */; };
 		EDD3E5ED2877901A008318C0 /* StoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD3E5EC2877901A008318C0 /* StoreViewModel.swift */; };
+		EDEB06072878D6420012A05D /* Extractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEB06062878D6420012A05D /* Extractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,7 +68,7 @@
 		ED7549E728736A3B00768561 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED7549EA28736A3B00768561 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED7549EC28736A3B00768561 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ED7549F328736B4000768561 /* PrimaryScenePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryScenePage.swift; sourceTree = "<group>"; };
+		ED7549F328736B4000768561 /* PrimaryPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryPage.swift; sourceTree = "<group>"; };
 		ED7549F928736DF200768561 /* AppFlowHost+AppFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppFlowHost+AppFlowController.swift"; sourceTree = "<group>"; };
 		ED7549FB28736E0400768561 /* DefaultAppFlowHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAppFlowHost.swift; sourceTree = "<group>"; };
 		ED7549FF28736EA000768561 /* SinglePageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePageController.swift; sourceTree = "<group>"; };
@@ -87,6 +88,7 @@
 		EDD3E5E828778EFC008318C0 /* StoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
 		EDD3E5EA28778F19008318C0 /* CheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
 		EDD3E5EC2877901A008318C0 /* StoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewModel.swift; sourceTree = "<group>"; };
+		EDEB06062878D6420012A05D /* Extractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +105,7 @@
 		ED423AEE28776ADB00DBD724 /* Primary */ = {
 			isa = PBXGroup;
 			children = (
-				ED7549F328736B4000768561 /* PrimaryScenePage.swift */,
+				ED7549F328736B4000768561 /* PrimaryPage.swift */,
 				ED754A092873736200768561 /* PrimarySceneFlowHost+PrimarySceneFlowController.swift */,
 				ED754A0B2873738900768561 /* DefaultPrimarySceneFlowHost.swift */,
 				ED7549F528736CB800768561 /* Features */,
@@ -115,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				ED7549E028736A3900768561 /* SceneDelegate.swift */,
+				EDEB06062878D6420012A05D /* Extractor.swift */,
 				ED423AEE28776ADB00DBD724 /* Primary */,
 			);
 			path = Scenes;
@@ -458,6 +461,7 @@
 				ED7549E328736A3900768561 /* DefaultMainFlowController.swift in Sources */,
 				EDD3E5DE287776E1008318C0 /* StoreMapViewController.swift in Sources */,
 				ED7549DF28736A3900768561 /* AppDelegate.swift in Sources */,
+				EDEB06072878D6420012A05D /* Extractor.swift in Sources */,
 				ED67EF332875F702004E2500 /* DefaultExploreFlowHost.swift in Sources */,
 				ED754A0C2873738900768561 /* DefaultPrimarySceneFlowHost.swift in Sources */,
 				ED67EF47287636C2004E2500 /* PurchasesFlowHost+PurchasesFlowController.swift in Sources */,
@@ -471,7 +475,7 @@
 				ED67EF3C28760141004E2500 /* DefaultBookingFlowHost.swift in Sources */,
 				EDD3E5EB28778F19008318C0 /* CheckoutViewController.swift in Sources */,
 				ED754A04287371CF00768561 /* OnboardingFlowHost+OnboardingFlowController.swift in Sources */,
-				ED7549F428736B4000768561 /* PrimaryScenePage.swift in Sources */,
+				ED7549F428736B4000768561 /* PrimaryPage.swift in Sources */,
 				ED7549E128736A3900768561 /* SceneDelegate.swift in Sources */,
 				ED754A1828737DB000768561 /* Analytics.swift in Sources */,
 				ED67EF422876229F004E2500 /* StoreFlowHost+StoreFlowController.swift in Sources */,

@@ -13,11 +13,11 @@ final class DefaultActivityFlowHost: UINavigationController {
 
 extension DefaultActivityFlowHost: ActivityFlowHost {
 
-    func start(_ page: PrimaryScenePage.Main.Activity) {
+    func start(_ page: PrimaryPage.Main.Activity) {
         
     }
 
-    func go(to page: PrimaryScenePage.Main.Activity) {
+    func go(to page: PrimaryPage.Main.Activity) {
 
     }
 }

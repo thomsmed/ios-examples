@@ -1,0 +1,238 @@
+//
+//  PrimaryPage.swift
+//  FlowControllerPattern
+//
+//  Created by Thomas Asheim Smedmann on 04/07/2022.
+//
+
+import Foundation
+
+protocol PathComponent: Equatable {
+    static func from(_ pathComponents: [String], and queryItems: [URLQueryItem]) -> Self
+}
+
+private extension String {
+
+    func isCaseInsensitiveEqual(to otherString: String) -> Bool {
+        range(of: otherString, options: .caseInsensitive) != nil
+    }
+}
+
+enum PrimaryPage: PathComponent {
+    enum Onboarding: PathComponent {
+        case home
+    }
+
+    enum Main: PathComponent {
+        enum Explore: PathComponent {
+            enum Store: PathComponent {
+                case map(page: Booking? = nil, storeId: String? = nil)
+                case list
+            }
+
+            case store(page: Store)
+            case referral
+        }
+
+        enum Activity: PathComponent {
+            enum Purchases: PathComponent {
+                case active
+                case history
+            }
+
+            case purchases(page: Purchases)
+        }
+
+        enum Profile: PathComponent {
+            case home
+            case edit
+        }
+
+        enum Booking: PathComponent {
+            struct Details: Equatable {
+                let services: [String]
+                let products: [String]
+            }
+
+            case home(details: Details)
+            case checkout(details: Details)
+        }
+
+        case explore(page: Explore)
+        case activity(page: Activity)
+        case profile(page: Profile)
+        case booking(page: Booking, storeId: String, info: StoreInfo? = nil)
+    }
+
+    case onboarding(page: Onboarding)
+    case main(page: Main)
+}
+
+extension PrimaryPage {
+
+    static func from(_ urlComponents: URLComponents) -> PrimaryPage {
+        let path = urlComponents.path
+        let queryItems = urlComponents.queryItems ?? []
+        let pathComponents = path.components(separatedBy: "/")
+
+        // Example paths:
+        // ".../main/explore/store/map/{storeId}/booking/checkout?service={service}&product={product}"
+        // ".../main/booking/checkout?service={service}&product={product}"
+
+        if pathComponents.isEmpty {
+            return .main(page: .explore(page: .store(page: .map(page: nil, storeId: nil))))
+        }
+
+        return .from(pathComponents, and: queryItems)
+    }
+}
+
+extension PrimaryPage {
+
+    static func from(_ pathComponents: [String], and queryItems: [URLQueryItem]) -> PrimaryPage {
+        guard let pathComponent = pathComponents.first else {
+            return .main(page: .explore(page: .store(page: .map(page: nil, storeId: nil))))
+        }
+
+        if pathComponent.isCaseInsensitiveEqual(to: "onboarding") {
+            return .onboarding(page: .from(.init(pathComponents.dropFirst()), and: queryItems))
+        }
+
+        return .main(page: .explore(page: .store(page: .map(page: nil, storeId: nil))))
+    }
+}
+
+extension PrimaryPage.Onboarding {
+
+    static func from(_ pathComponents: [String], and queryItems: [URLQueryItem]) -> PrimaryPage.Onboarding {
+        .home
+    }
+}
+
+extension PrimaryPage.Main {
+
+    static func from(_ pathComponents: [String], and queryItems: [URLQueryItem]) -> PrimaryPage.Main {
+        guard let pathComponent = pathComponents.first else {
+            return .explore(page: .store(page: .map(page: nil, storeId: nil)))
+        }
+
+        if pathComponent.isCaseInsensitiveEqual(to: "explore") {
+            return .explore(page: .from(.init(pathComponents.dropFirst()), and: queryItems))
+        } else if pathComponent.isCaseInsensitiveEqual(to: "activity") {
+            return .activity(page: .from(.init(pathComponents.dropFirst()), and: queryItems))
+        } else if pathComponent.isCaseInsensitiveEqual(to: "profile") {
+            return .profile(page: .from(.init(pathComponents.dropFirst()), and: queryItems))
+        } else if pathComponent.isCaseInsensitiveEqual(to: "booking") {
+            let morePathComponents: [String] = .init(pathComponents.dropFirst())
+            guard let storeId = morePathComponents.first else {
+                return .explore(page: .store(page: .map(page: nil, storeId: nil)))
+            }
+            return .booking(page: .from(.init(pathComponents.dropFirst()), and: queryItems), storeId: storeId, info: nil)
+        }
+
+        return .explore(page: .store(page: .map(page: nil, storeId: nil)))
+    }
+}
+
+extension PrimaryPage.Main.Explore {
+
+    static func from(_ pathComponents: [String], and queryItems: [URLQueryItem]) -> PrimaryPage.Main.Explore {
+        guard let pathComponent = pathComponents.first else {
+            return .store(page: .map(page: nil, storeId: nil))
+        }
+
+        if pathComponent.isCaseInsensitiveEqual(to: "referral") {
+            return .referral
+        }
+
+        return .store(page: .from(.init(pathComponents.dropFirst()), and: queryItems))
+    }
+}
+
+extension PrimaryPage.Main.Explore.Store {
+
+    static func from(_ pathComponents: [String], and queryItems: [URLQueryItem]) -> PrimaryPage.Main.Explore.Store {
+        guard let pathComponent = pathComponents.first else {
+            return .map(page: nil, storeId: nil)
+        }
+
+        if pathComponent.isCaseInsensitiveEqual(to: "list") {
+            return .list
+        }
+
+        guard
+            pathComponents.count > 2,
+            pathComponents[1].isCaseInsensitiveEqual(to: "booking")
+        else {
+            return .map(page: nil, storeId: nil)
+        }
+
+        return .map(page: .from(.init(pathComponents.dropFirst(3)), and: queryItems), storeId: pathComponents[2])
+    }
+}
+
+extension PrimaryPage.Main.Activity {
+
+    static func from(_ pathComponents: [String], and queryItems: [URLQueryItem]) -> PrimaryPage.Main.Activity {
+        if pathComponents.isEmpty {
+            return .purchases(page: .history)
+        }
+
+        return .purchases(page: .from(.init(pathComponents.dropFirst()), and: queryItems))
+    }
+}
+
+extension PrimaryPage.Main.Activity.Purchases {
+
+    static func from(_ pathComponents: [String], and queryItems: [URLQueryItem]) -> PrimaryPage.Main.Activity.Purchases {
+        guard let pathComponent = pathComponents.first else {
+            return .history
+        }
+
+        if pathComponent.isCaseInsensitiveEqual(to: "active"){
+            return .active
+        }
+
+        return .history
+    }
+}
+
+extension PrimaryPage.Main.Profile {
+
+    static func from(_ pathComponents: [String], and queryItems: [URLQueryItem]) -> PrimaryPage.Main.Profile {
+        guard let pathComponent = pathComponents.first else {
+            return .home
+        }
+
+        if pathComponent.isCaseInsensitiveEqual(to: "edit") {
+            return .edit
+        }
+
+        return .home
+    }
+}
+
+extension PrimaryPage.Main.Booking {
+
+    static func from(_ pathComponents: [String], and queryItems: [URLQueryItem]) -> PrimaryPage.Main.Booking {
+        guard let pathComponent = pathComponents.first else {
+            return .home(details: .init(services: [], products: []))
+        }
+
+        var services: [String] = []
+        var products: [String] = []
+        queryItems.forEach { queryItem in
+            if queryItem.name == "service", let value = queryItem.value {
+                services.append(value)
+            } else if queryItem.name == "product", let value = queryItem.value {
+                products.append(value)
+            }
+        }
+
+        if pathComponent.isCaseInsensitiveEqual(to: "checkout") {
+            return .checkout(details: .init(services: services, products: products))
+        }
+
+        return .home(details: .init(services: services, products: products))
+    }
+}

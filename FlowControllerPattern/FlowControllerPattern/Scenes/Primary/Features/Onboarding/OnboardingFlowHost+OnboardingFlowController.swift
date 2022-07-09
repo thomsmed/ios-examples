@@ -12,6 +12,6 @@ protocol OnboardingFlowController: AnyObject {
 }
 
 protocol OnboardingFlowHost: OnboardingFlowController & UIViewController {
-    func start(_ page: PrimaryScenePage.Onboarding)
-    func go(to page: PrimaryScenePage.Onboarding)
+    func start(_ page: PrimaryPage.Onboarding)
+    func go(to page: PrimaryPage.Onboarding)
 }

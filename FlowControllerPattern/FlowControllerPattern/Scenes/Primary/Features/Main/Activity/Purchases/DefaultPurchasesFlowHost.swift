@@ -13,11 +13,11 @@ final class DefaultPurchasesFlowHost: SegmentedPageController {
 
 extension DefaultPurchasesFlowHost: PurchasesFlowHost {
 
-    func start(_ page: PrimaryScenePage.Main.Activity.Purchases) {
+    func start(_ page: PrimaryPage.Main.Activity.Purchases) {
         
     }
 
-    func go(to page: PrimaryScenePage.Main.Activity.Purchases) {
+    func go(to page: PrimaryPage.Main.Activity.Purchases) {
         
     }
 }

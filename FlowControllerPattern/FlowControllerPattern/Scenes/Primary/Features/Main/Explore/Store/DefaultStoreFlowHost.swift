@@ -26,7 +26,7 @@ final class DefaultStoreFlowHost: SinglePageController {
 
 extension DefaultStoreFlowHost: StoreFlowHost {
 
-    func start(_ page: PrimaryScenePage.Main.Explore.Store) {
+    func start(_ page: PrimaryPage.Main.Explore.Store) {
         switch page {
         case let .map(bookingPage, storeId):
             let storeMapViewController = StoreMapViewController()
@@ -55,7 +55,7 @@ extension DefaultStoreFlowHost: StoreFlowHost {
         }
     }
 
-    func go(to page: PrimaryScenePage.Main.Explore.Store) {
+    func go(to page: PrimaryPage.Main.Explore.Store) {
         switch page {
         case let .map(bookingPage, storeId):
             guard let storeMapViewController = self.storeMapViewController else {

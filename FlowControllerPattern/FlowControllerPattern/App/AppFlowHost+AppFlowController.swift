@@ -14,6 +14,6 @@ protocol AppFlowController: AnyObject {
 protocol AppFlowHost: AppFlowController {
     var flowHostsByScene: [UIScene: PrimarySceneFlowHost] { get }
     func applicationDidFinishLaunchingWith(_ launchOptions: [UIApplication.LaunchOptionsKey: Any]?)
-    func startAndReturnFlowHost(for scene: UIScene) -> PrimarySceneFlowHost
+    func makeFlowHost(for scene: UIScene) -> PrimarySceneFlowHost
     func discardFlowHost(for scene: UIScene)
 }

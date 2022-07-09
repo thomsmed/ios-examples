@@ -23,7 +23,7 @@ final class DefaultExploreFlowHost: UINavigationController {
 
 extension DefaultExploreFlowHost: ExploreFlowHost {
 
-    func start(_ page: PrimaryScenePage.Main.Explore) {
+    func start(_ page: PrimaryPage.Main.Explore) {
         let storesFlowHost = DefaultStoreFlowHost(flowController: self)
         var viewControllers: [UIViewController] = [storesFlowHost]
 
@@ -38,7 +38,7 @@ extension DefaultExploreFlowHost: ExploreFlowHost {
         setViewControllers(viewControllers, animated: false)
     }
 
-    func go(to page: PrimaryScenePage.Main.Explore) {
+    func go(to page: PrimaryPage.Main.Explore) {
         guard !viewControllers.isEmpty else {
             return start(page)
         }
@@ -65,7 +65,7 @@ extension DefaultExploreFlowHost: ExploreFlowHost {
 
 extension DefaultExploreFlowHost {
 
-    func go(to page: PrimaryScenePage.Main.Booking, with storeId: String, and storeInfo: StoreInfo?) {
+    func go(to page: PrimaryPage.Main.Booking, with storeId: String, and storeInfo: StoreInfo?) {
         flowController?.go(to: page, with: storeId, and: storeInfo)
     }
 }

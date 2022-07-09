@@ -12,11 +12,10 @@ protocol PrimarySceneFlowController: AnyObject {
 }
 
 protocol PrimarySceneFlowHost: PrimarySceneFlowController & UIViewController {
-    func start(_ page: PrimaryScenePage)
-    func go(to page: PrimaryScenePage)
+    func start(_ page: PrimaryPage)
+    func go(to page: PrimaryPage)
     func sceneDidBecomeActive()
     func sceneWillResignActive()
     func sceneWillEnterForeground()
     func sceneDidEnterBackground()
-    func open(_ urlContexts: Set<UIOpenURLContext>)
 }

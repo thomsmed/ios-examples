@@ -25,7 +25,7 @@ final class DefaultPrimarySceneFlowHost: SinglePageController {
 
 extension DefaultPrimarySceneFlowHost: PrimarySceneFlowHost {
 
-    func start(_ page: PrimaryScenePage) {
+    func start(_ page: PrimaryPage) {
         switch page {
         case let .onboarding(page):
             let onboardingFlowHost = DefaultOnboardingFlowHost()
@@ -38,7 +38,7 @@ extension DefaultPrimarySceneFlowHost: PrimarySceneFlowHost {
         }
     }
 
-    func go(to page: PrimaryScenePage) {
+    func go(to page: PrimaryPage) {
         switch page {
         case let .onboarding(page):
             if let onboardingFlowHost = viewController as? OnboardingFlowHost {
@@ -64,10 +64,6 @@ extension DefaultPrimarySceneFlowHost: PrimarySceneFlowHost {
     }
 
     func sceneWillEnterForeground() {
-
-    }
-
-    func open(_ urlContexts: Set<UIOpenURLContext>) {
 
     }
 

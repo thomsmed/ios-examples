@@ -10,4 +10,7 @@ And general app architecture example.
 - Error reporting
 - UserDefaults / app settings
 - Networking
+- Remote config / feature toggling
+- Localisation
+- Handle resources (swiftgen)
 

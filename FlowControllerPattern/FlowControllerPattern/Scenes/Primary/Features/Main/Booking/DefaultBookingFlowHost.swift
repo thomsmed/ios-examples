@@ -29,7 +29,7 @@ final class DefaultBookingFlowHost: UIViewController {
 
 extension DefaultBookingFlowHost: BookingFlowHost {
 
-    func start(_ page: PrimaryScenePage.Main.Booking, with storeId: String, and storeInfo: StoreInfo?) {
+    func start(_ page: PrimaryPage.Main.Booking, with storeId: String, and storeInfo: StoreInfo?) {
         let initialServices: [String]
         let initialProducts: [String]
         let goStraightToCheckout: Bool
@@ -62,7 +62,7 @@ extension DefaultBookingFlowHost: BookingFlowHost {
         )
     }
 
-    func go(to page: PrimaryScenePage.Main.Booking) {
+    func go(to page: PrimaryPage.Main.Booking) {
 
     }
 }

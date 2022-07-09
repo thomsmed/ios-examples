@@ -10,7 +10,10 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+
     weak var appFlowHost: AppFlowHost?
+
+    // MARK: Lifecycle
 
     func scene(
         _ scene: UIScene,
@@ -24,8 +27,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
 
+        let flowHost = appDelegate.appFlowHost.makeFlowHost(for: scene)
+
+        if let urlComponents = Extractor.urlComponents(from: connectionOptions) {
+            flowHost.start(.from(urlComponents))
+        } else {
+            flowHost.start(.onboarding(page: .home))
+        }
+
         let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = appDelegate.appFlowHost.startAndReturnFlowHost(for: scene)
+        window.rootViewController = flowHost
         window.makeKeyAndVisible()
 
         self.appFlowHost = appDelegate.appFlowHost
@@ -64,8 +75,26 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
         appFlowHost?.flowHostsByScene[scene]?.sceneDidEnterBackground()
     }
+}
+
+// MARK: Handle user activities (like clicking a Universal Link)
+
+extension SceneDelegate {
+
+    func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
+        guard let urlComponents = Extractor.urlComponents(from: userActivity) else {
+            return
+        }
+
+        appFlowHost?.flowHostsByScene[scene]?.go(to: .from(urlComponents))
+    }
+}
+
+// MARK: Handle URLs with custom URL scheme (iOS 13+)
+
+extension SceneDelegate {
 
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
-        appFlowHost?.flowHostsByScene[scene]?.open(URLContexts)
+
     }
 }

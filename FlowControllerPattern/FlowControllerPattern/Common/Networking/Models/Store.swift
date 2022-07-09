@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct StoreInfo {
+struct StoreInfo: Equatable {
     let id: String
     let name: String
 }
