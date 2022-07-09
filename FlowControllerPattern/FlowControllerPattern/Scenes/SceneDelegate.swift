@@ -29,7 +29,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let flowHost = appDelegate.appFlowHost.makeFlowHost(for: scene)
 
-        if let urlComponents = Extractor.urlComponents(from: connectionOptions) {
+        let onboardingComplete = false // TODO: Fetch from settings / UserDefaults
+        if onboardingComplete {
+            if let urlComponents = Extractor.urlComponents(from: connectionOptions) {
+                flowHost.start(.from(urlComponents))
+            } else {
+                flowHost.start(.main(page: .explore(page: .store(page: .map(page: nil, storeId: nil)))))
+            }
+        } else if let urlComponents = Extractor.urlComponents(from: UIPasteboard.general) {
             flowHost.start(.from(urlComponents))
         } else {
             flowHost.start(.onboarding(page: .home))

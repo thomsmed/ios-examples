@@ -28,4 +28,19 @@ final class Extractor {
 
         return components
     }
+
+    static func urlComponents(from pasteboard: UIPasteboard) -> URLComponents? {
+        guard
+            pasteboard.hasURLs,
+            let pasteboardURL = pasteboard.url,
+            let _ = pasteboardURL.absoluteString.range(of: "www.flowcontrolpattern.com", options: .caseInsensitive),
+            let components = URLComponents(url: pasteboardURL, resolvingAgainstBaseURL: true)
+        else {
+            return nil
+        }
+
+        pasteboard.url = nil
+
+        return components
+    }
 }
