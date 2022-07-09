@@ -28,8 +28,8 @@ extension DefaultOnboardingFlowHost: OnboardingFlowHost {
     func start(_ page: PrimaryPage.Onboarding) {
         let onboardingViewController = OnboardingViewController(
             viewModel: OnboardingViewModel(
-                appDependencies: appDependencies,
-                flowController: self
+                flowController: self,
+                analytics: appDependencies.analytics
             )
         )
         setViewController(onboardingViewController, using: .none)

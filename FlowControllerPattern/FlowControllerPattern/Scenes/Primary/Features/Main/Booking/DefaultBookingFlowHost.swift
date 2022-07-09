@@ -12,6 +12,8 @@ final class DefaultBookingFlowHost: UIViewController {
     private let appDependencies: AppDependencies
     private weak var flowController: MainFlowController?
 
+    private var shoppingCart: ShoppingCart?
+
     private let pageViewController = UIPageViewController(
         transitionStyle: .scroll, navigationOrientation: .horizontal
     )
@@ -45,10 +47,13 @@ extension DefaultBookingFlowHost: BookingFlowHost {
             goStraightToCheckout = true
         }
 
+        let shoppingCart = ShoppingCart()
+
         let storeViewController = StoreViewController(
             viewModel: .init(
-                appDependencies: appDependencies,
                 flowController: self,
+                storeService: appDependencies.storeService,
+                shoppingCart: shoppingCart,
                 initialServices: initialServices,
                 initialProducts: initialProducts,
                 goStraightToCheckout: goStraightToCheckout
@@ -60,6 +65,8 @@ extension DefaultBookingFlowHost: BookingFlowHost {
             direction: .forward,
             animated: false
         )
+
+        self.shoppingCart = shoppingCart
     }
 
     func go(to page: PrimaryPage.Main.Booking) {
@@ -72,8 +79,19 @@ extension DefaultBookingFlowHost: BookingFlowHost {
 extension DefaultBookingFlowHost {
 
     func continueToCheckout() {
+        guard let shoppingCart = shoppingCart else {
+            return
+        }
+
+        let checkoutViewController = CheckoutViewController(
+            viewModel: .init(
+                flowController: self,
+                bookingService: appDependencies.bookingService,
+                shoppingCart: shoppingCart
+            )
+        )
         pageViewController.setViewControllers(
-            [CheckoutViewController()],
+            [checkoutViewController],
             direction: .forward,
             animated: true
         )

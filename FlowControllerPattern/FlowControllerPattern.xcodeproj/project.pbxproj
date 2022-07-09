@@ -37,7 +37,18 @@
 		ED754A0E2873744F00768561 /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED754A0D2873744F00768561 /* AppDependencies.swift */; };
 		ED754A102873747D00768561 /* DefaultAppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED754A0F2873747D00768561 /* DefaultAppDependencies.swift */; };
 		ED754A1528737D6B00768561 /* ExploreFlowHost+ExploreFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED754A1428737D6B00768561 /* ExploreFlowHost+ExploreFlowController.swift */; };
-		ED754A1828737DB000768561 /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED754A1728737DB000768561 /* Analytics.swift */; };
+		ED889334287A1C3500031665 /* AnalyticsLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED889333287A1C3500031665 /* AnalyticsLogger.swift */; };
+		ED889336287A1C4B00031665 /* CrashlyticsRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED889335287A1C4B00031665 /* CrashlyticsRecorder.swift */; };
+		ED889339287A1D8400031665 /* DefaultAnalyticsLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED889338287A1D8400031665 /* DefaultAnalyticsLogger.swift */; };
+		ED88933B287A1EFB00031665 /* DefaultCrashlyticsRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED88933A287A1EFB00031665 /* DefaultCrashlyticsRecorder.swift */; };
+		ED88933E287A201F00031665 /* BookingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED88933D287A201F00031665 /* BookingService.swift */; };
+		ED889342287A207E00031665 /* DefaultBookingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED889341287A207E00031665 /* DefaultBookingService.swift */; };
+		ED889348287A20FA00031665 /* ShoppingCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED889347287A20FA00031665 /* ShoppingCart.swift */; };
+		ED88934C287A24A000031665 /* DefaultsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED88934B287A24A000031665 /* DefaultsRepository.swift */; };
+		ED88934F287A24B600031665 /* DefaultDefaultsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED88934E287A24B600031665 /* DefaultDefaultsRepository.swift */; };
+		ED889351287A28AC00031665 /* CheckoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED889350287A28AC00031665 /* CheckoutViewModel.swift */; };
+		ED889354287A297100031665 /* StoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED889353287A297100031665 /* StoreService.swift */; };
+		ED889356287A298100031665 /* DefaultStoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED889355287A298100031665 /* DefaultStoreService.swift */; };
 		EDD3E5DE287776E1008318C0 /* StoreMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD3E5DD287776E1008318C0 /* StoreMapViewController.swift */; };
 		EDD3E5E028777731008318C0 /* StoreListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD3E5DF28777731008318C0 /* StoreListViewController.swift */; };
 		EDD3E5E4287789C6008318C0 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD3E5E3287789C6008318C0 /* Store.swift */; };
@@ -85,7 +96,18 @@
 		ED754A0D2873744F00768561 /* AppDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencies.swift; sourceTree = "<group>"; };
 		ED754A0F2873747D00768561 /* DefaultAppDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAppDependencies.swift; sourceTree = "<group>"; };
 		ED754A1428737D6B00768561 /* ExploreFlowHost+ExploreFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExploreFlowHost+ExploreFlowController.swift"; sourceTree = "<group>"; };
-		ED754A1728737DB000768561 /* Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
+		ED889333287A1C3500031665 /* AnalyticsLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsLogger.swift; sourceTree = "<group>"; };
+		ED889335287A1C4B00031665 /* CrashlyticsRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashlyticsRecorder.swift; sourceTree = "<group>"; };
+		ED889338287A1D8400031665 /* DefaultAnalyticsLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAnalyticsLogger.swift; sourceTree = "<group>"; };
+		ED88933A287A1EFB00031665 /* DefaultCrashlyticsRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCrashlyticsRecorder.swift; sourceTree = "<group>"; };
+		ED88933D287A201F00031665 /* BookingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingService.swift; sourceTree = "<group>"; };
+		ED889341287A207E00031665 /* DefaultBookingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultBookingService.swift; sourceTree = "<group>"; };
+		ED889347287A20FA00031665 /* ShoppingCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCart.swift; sourceTree = "<group>"; };
+		ED88934B287A24A000031665 /* DefaultsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsRepository.swift; sourceTree = "<group>"; };
+		ED88934E287A24B600031665 /* DefaultDefaultsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDefaultsRepository.swift; sourceTree = "<group>"; };
+		ED889350287A28AC00031665 /* CheckoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewModel.swift; sourceTree = "<group>"; };
+		ED889353287A297100031665 /* StoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreService.swift; sourceTree = "<group>"; };
+		ED889355287A298100031665 /* DefaultStoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultStoreService.swift; sourceTree = "<group>"; };
 		EDD3E5DD287776E1008318C0 /* StoreMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreMapViewController.swift; sourceTree = "<group>"; };
 		EDD3E5DF28777731008318C0 /* StoreListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreListViewController.swift; sourceTree = "<group>"; };
 		EDD3E5E3287789C6008318C0 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
@@ -288,9 +310,12 @@
 		ED7549FD28736E4800768561 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				EDD3E5E1287789A3008318C0 /* Networking */,
+				ED889332287A1B2E00031665 /* Views */,
 				ED7549FE28736E8800768561 /* ViewControllers */,
-				ED754A1628737DA200768561 /* Analytics */,
+				ED889343287A20B400031665 /* Models */,
+				ED889330287A1AFC00031665 /* Services */,
+				ED889331287A1B0500031665 /* Repositories */,
+				EDD3E5E1287789A3008318C0 /* Networking */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -337,9 +362,105 @@
 		ED754A1628737DA200768561 /* Analytics */ = {
 			isa = PBXGroup;
 			children = (
-				ED754A1728737DB000768561 /* Analytics.swift */,
+				ED889333287A1C3500031665 /* AnalyticsLogger.swift */,
+				ED889338287A1D8400031665 /* DefaultAnalyticsLogger.swift */,
 			);
 			path = Analytics;
+			sourceTree = "<group>";
+		};
+		ED88932F287A1ACD00031665 /* Crashlytics */ = {
+			isa = PBXGroup;
+			children = (
+				ED889335287A1C4B00031665 /* CrashlyticsRecorder.swift */,
+				ED88933A287A1EFB00031665 /* DefaultCrashlyticsRecorder.swift */,
+			);
+			path = Crashlytics;
+			sourceTree = "<group>";
+		};
+		ED889330287A1AFC00031665 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				ED889352287A295500031665 /* Store */,
+				ED889349287A221600031665 /* Authentication */,
+				ED88933C287A200400031665 /* Booking */,
+				ED754A1628737DA200768561 /* Analytics */,
+				ED88932F287A1ACD00031665 /* Crashlytics */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		ED889331287A1B0500031665 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				ED88934D287A24A400031665 /* Defaults */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		ED889332287A1B2E00031665 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		ED88933C287A200400031665 /* Booking */ = {
+			isa = PBXGroup;
+			children = (
+				ED88933D287A201F00031665 /* BookingService.swift */,
+				ED889341287A207E00031665 /* DefaultBookingService.swift */,
+			);
+			path = Booking;
+			sourceTree = "<group>";
+		};
+		ED889343287A20B400031665 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				ED88934A287A232B00031665 /* Store */,
+				ED889346287A20E900031665 /* ShoppingCart */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		ED889346287A20E900031665 /* ShoppingCart */ = {
+			isa = PBXGroup;
+			children = (
+				ED889347287A20FA00031665 /* ShoppingCart.swift */,
+			);
+			path = ShoppingCart;
+			sourceTree = "<group>";
+		};
+		ED889349287A221600031665 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		ED88934A287A232B00031665 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				EDD3E5E3287789C6008318C0 /* Store.swift */,
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
+		ED88934D287A24A400031665 /* Defaults */ = {
+			isa = PBXGroup;
+			children = (
+				ED88934B287A24A000031665 /* DefaultsRepository.swift */,
+				ED88934E287A24B600031665 /* DefaultDefaultsRepository.swift */,
+			);
+			path = Defaults;
+			sourceTree = "<group>";
+		};
+		ED889352287A295500031665 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				ED889353287A297100031665 /* StoreService.swift */,
+				ED889355287A298100031665 /* DefaultStoreService.swift */,
+			);
+			path = Store;
 			sourceTree = "<group>";
 		};
 		EDD3E5E1287789A3008318C0 /* Networking */ = {
@@ -354,7 +475,6 @@
 		EDD3E5E2287789B9008318C0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				EDD3E5E3287789C6008318C0 /* Store.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -379,6 +499,7 @@
 			isa = PBXGroup;
 			children = (
 				EDD3E5EA28778F19008318C0 /* CheckoutViewController.swift */,
+				ED889350287A28AC00031665 /* CheckoutViewModel.swift */,
 			);
 			path = Checkout;
 			sourceTree = "<group>";
@@ -464,11 +585,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED67EF49287636D1004E2500 /* DefaultPurchasesFlowHost.swift in Sources */,
+				ED889356287A298100031665 /* DefaultStoreService.swift in Sources */,
 				ED7549FA28736DF200768561 /* AppFlowHost+AppFlowController.swift in Sources */,
 				EDD3E5E928778EFC008318C0 /* StoreViewController.swift in Sources */,
 				ED67EF312875F5F6004E2500 /* ProfileFlowHost+ProfileFlowController.swift in Sources */,
 				ED67EF4028762200004E2500 /* ReferralViewController.swift in Sources */,
 				ED754A1528737D6B00768561 /* ExploreFlowHost+ExploreFlowController.swift in Sources */,
+				ED889342287A207E00031665 /* DefaultBookingService.swift in Sources */,
+				ED889351287A28AC00031665 /* CheckoutViewModel.swift in Sources */,
 				ED67EF352875FBD5004E2500 /* DefaultActivityHost.swift in Sources */,
 				ED7549FC28736E0400768561 /* DefaultAppFlowHost.swift in Sources */,
 				EDD3E5ED2877901A008318C0 /* StoreViewModel.swift in Sources */,
@@ -476,6 +600,7 @@
 				ED67EF372875FBE3004E2500 /* DefaultProfileFlowHost.swift in Sources */,
 				EDEB061228798BC70012A05D /* StoreMapView.swift in Sources */,
 				EDEB060E287983790012A05D /* OnboardingView.swift in Sources */,
+				ED88933E287A201F00031665 /* BookingService.swift in Sources */,
 				ED67EF44287622AC004E2500 /* DefaultStoreFlowHost.swift in Sources */,
 				ED754A102873747D00768561 /* DefaultAppDependencies.swift in Sources */,
 				ED754A0E2873744F00768561 /* AppDependencies.swift in Sources */,
@@ -484,11 +609,16 @@
 				EDD3E5DE287776E1008318C0 /* StoreMapViewController.swift in Sources */,
 				ED7549DF28736A3900768561 /* AppDelegate.swift in Sources */,
 				EDEB0610287986130012A05D /* OnboardingViewModel.swift in Sources */,
+				ED88934F287A24B600031665 /* DefaultDefaultsRepository.swift in Sources */,
 				EDEB06072878D6420012A05D /* Extractor.swift in Sources */,
 				ED67EF332875F702004E2500 /* DefaultExploreFlowHost.swift in Sources */,
 				ED754A0C2873738900768561 /* DefaultPrimarySceneFlowHost.swift in Sources */,
 				ED67EF47287636C2004E2500 /* PurchasesFlowHost+PurchasesFlowController.swift in Sources */,
+				ED889354287A297100031665 /* StoreService.swift in Sources */,
+				ED88934C287A24A000031665 /* DefaultsRepository.swift in Sources */,
+				ED88933B287A1EFB00031665 /* DefaultCrashlyticsRecorder.swift in Sources */,
 				EDD3E5E4287789C6008318C0 /* Store.swift in Sources */,
+				ED889339287A1D8400031665 /* DefaultAnalyticsLogger.swift in Sources */,
 				ED754A0028736EA000768561 /* SinglePageController.swift in Sources */,
 				ED754A082873728900768561 /* MainFlowHost+MainFlowController.swift in Sources */,
 				ED67EF3A28760134004E2500 /* BookingFlowHost+BookingFlowController.swift in Sources */,
@@ -497,11 +627,13 @@
 				ED754A06287371F400768561 /* DefaultOnboardingFlowHost.swift in Sources */,
 				ED67EF3C28760141004E2500 /* DefaultBookingFlowHost.swift in Sources */,
 				EDD3E5EB28778F19008318C0 /* CheckoutViewController.swift in Sources */,
+				ED889334287A1C3500031665 /* AnalyticsLogger.swift in Sources */,
 				EDEB060B287983610012A05D /* OnboardingViewController.swift in Sources */,
 				ED754A04287371CF00768561 /* OnboardingFlowHost+OnboardingFlowController.swift in Sources */,
 				ED7549F428736B4000768561 /* PrimaryPage.swift in Sources */,
 				ED7549E128736A3900768561 /* SceneDelegate.swift in Sources */,
-				ED754A1828737DB000768561 /* Analytics.swift in Sources */,
+				ED889348287A20FA00031665 /* ShoppingCart.swift in Sources */,
+				ED889336287A1C4B00031665 /* CrashlyticsRecorder.swift in Sources */,
 				ED67EF422876229F004E2500 /* StoreFlowHost+StoreFlowController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

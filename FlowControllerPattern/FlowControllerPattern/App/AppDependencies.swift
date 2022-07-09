@@ -8,5 +8,8 @@
 import Foundation
 
 protocol AppDependencies: AnyObject {
-
+    var analytics: AnalyticsLogger { get }
+    var crashlytics: CrashlyticsRecorder { get }
+    var storeService: StoreService { get }
+    var bookingService: BookingService { get }
 }

@@ -9,18 +9,20 @@ import Foundation
 
 final class OnboardingViewModel {
 
-    private let appDependencies: AppDependencies
     private weak var flowController: OnboardingFlowController?
 
-    init(appDependencies: AppDependencies, flowController: OnboardingFlowController) {
-        self.appDependencies = appDependencies
+    private let analytics: AnalyticsLogger
+
+    init(flowController: OnboardingFlowController, analytics: AnalyticsLogger) {
         self.flowController = flowController
+        self.analytics = analytics
     }
 }
 
 extension OnboardingViewModel {
 
     func goNext() {
+        analytics.set(.hasCompletedOnboarding(value: true))
         flowController?.onboardingComplete(continueTo: .explore(page: .store(page: .map(page: nil, storeId: nil))))
     }
 }

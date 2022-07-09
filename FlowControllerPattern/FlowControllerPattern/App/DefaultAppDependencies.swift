@@ -9,6 +9,17 @@ import Foundation
 
 final class DefaultAppDependencies {
 
+    let analytics: AnalyticsLogger
+    let crashlytics: CrashlyticsRecorder
+    let storeService: StoreService
+    let bookingService: BookingService
+
+    init() {
+        analytics = DefaultAnalyticsLogger()
+        crashlytics = DefaultCrashlyticsRecorder()
+        storeService = DefaultStoreService()
+        bookingService = DefaultBookingService()
+    }
 }
 
 extension DefaultAppDependencies: AppDependencies {
