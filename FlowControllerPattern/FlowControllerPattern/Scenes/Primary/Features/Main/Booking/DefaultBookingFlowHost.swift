@@ -71,7 +71,7 @@ extension DefaultBookingFlowHost: BookingFlowHost {
 
 extension DefaultBookingFlowHost {
 
-    func goToCheckout() {
+    func continueToCheckout() {
         pageViewController.setViewControllers(
             [CheckoutViewController()],
             direction: .forward,
@@ -84,6 +84,6 @@ extension DefaultBookingFlowHost {
     }
 
     func bookingComplete() {
-        flowController?.go(to: .purchases(page: .active))
+        flowController?.bookingComplete(continueTo: .purchases(page: .active))
     }
 }

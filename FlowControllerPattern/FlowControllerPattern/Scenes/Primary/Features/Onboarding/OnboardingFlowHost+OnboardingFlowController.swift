@@ -8,7 +8,7 @@
 import UIKit
 
 protocol OnboardingFlowController: AnyObject {
-
+    func onboardingComplete(continueTo mainPage: PrimaryPage.Main)
 }
 
 protocol OnboardingFlowHost: OnboardingFlowController & UIViewController {

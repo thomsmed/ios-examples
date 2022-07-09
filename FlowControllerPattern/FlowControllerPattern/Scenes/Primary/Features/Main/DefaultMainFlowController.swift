@@ -89,28 +89,39 @@ extension DefaultMainFlowHost: MainFlowHost {
 
 extension DefaultMainFlowHost {
 
-    func go(to page: PrimaryPage.Main.Explore) {
+    func continueToExploreAnd(startAt explorePage: PrimaryPage.Main.Explore) {
         selectedIndex = 0
-        exploreFlowHost?.go(to: page)
+        exploreFlowHost?.go(to: explorePage)
     }
 
-    func go(to page: PrimaryPage.Main.Activity) {
+    func continueToActivityAnd(startAt activityPage: PrimaryPage.Main.Activity) {
         selectedIndex = 1
-        activityFlowHost?.go(to: page)
+        activityFlowHost?.go(to: activityPage)
     }
 
-    func go(to page: PrimaryPage.Main.Profile) {
+    func continueToProfileAnd(startAt profilePage: PrimaryPage.Main.Profile) {
         selectedIndex = 2
-        profileFlowHost?.go(to: page)
+        profileFlowHost?.go(to: profilePage)
     }
 
-    func go(to page: PrimaryPage.Main.Booking, with storeId: String, and storeInfo: StoreInfo?) {
+    func continueToBookingAnd(
+        startAt bookingPage: PrimaryPage.Main.Booking,
+        with storeId: String,
+        and storeInfo: StoreInfo?
+    ) {
         dismiss(animated: false) {
             let bookingFlowHost = DefaultBookingFlowHost(
                 appDependencies: self.appDependencies, flowController: self
             )
-            bookingFlowHost.start(page, with: storeId, and: storeInfo)
+            bookingFlowHost.start(bookingPage, with: storeId, and: storeInfo)
             self.present(bookingFlowHost, animated: true)
+        }
+    }
+
+    func bookingComplete(continueTo activityPage: PrimaryPage.Main.Activity) {
+        dismiss(animated: true) {
+            self.selectedIndex = 1
+            self.activityFlowHost?.go(to: activityPage)
         }
     }
 }

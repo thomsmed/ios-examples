@@ -9,6 +9,12 @@ import UIKit
 
 final class StoreMapViewController: UIViewController {
 
+    private lazy var storeMapView = StoreMapView()
+
+    override func loadView() {
+        view = storeMapView
+    }
+
 }
 
 // MARK: Public methods

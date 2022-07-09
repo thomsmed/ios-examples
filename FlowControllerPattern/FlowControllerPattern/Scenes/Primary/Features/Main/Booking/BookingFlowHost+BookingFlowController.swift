@@ -8,7 +8,7 @@
 import UIKit
 
 protocol BookingFlowController: AnyObject {
-    func goToCheckout()
+    func continueToCheckout()
     func disableSwipeToDismiss(_ disable: Bool)
     func bookingComplete()
 }

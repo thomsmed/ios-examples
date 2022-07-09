@@ -8,7 +8,7 @@
 import UIKit
 
 protocol PrimarySceneFlowController: AnyObject {
-
+    func onboardingComplete(continueTo mainPage: PrimaryPage.Main)
 }
 
 protocol PrimarySceneFlowHost: PrimarySceneFlowController & UIViewController {

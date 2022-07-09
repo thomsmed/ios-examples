@@ -45,7 +45,7 @@ extension DefaultStoreFlowHost: StoreFlowHost {
                 return
             }
 
-            flowController?.go(to: bookingPage, with: storeId, and: nil)
+            flowController?.continueToBookingAnd(startAt: bookingPage, with: storeId, and: nil)
         case .list:
             let storeListViewController = StoreListViewController()
 
@@ -74,7 +74,7 @@ extension DefaultStoreFlowHost: StoreFlowHost {
                 return
             }
 
-            flowController?.go(to: bookingPage, with: storeId, and: nil)
+            flowController?.continueToBookingAnd(startAt: bookingPage, with: storeId, and: nil)
         case .list:
             guard let storeListViewController = self.storeListViewController else {
                 return start(page)
@@ -89,11 +89,10 @@ extension DefaultStoreFlowHost: StoreFlowHost {
 
 extension DefaultStoreFlowHost {
 
-    func goToBooking(with storeInfo: StoreInfo) {
-        flowController?.go(
-            to: .checkout(
-                details: .init(services: [], products: [])
-            ),
+
+    func continueToBooking(with storeInfo: StoreInfo) {
+        flowController?.continueToBookingAnd(
+            startAt: .checkout(details: .init(services: [], products: [])),
             with: storeInfo.id,
             and: storeInfo
         )

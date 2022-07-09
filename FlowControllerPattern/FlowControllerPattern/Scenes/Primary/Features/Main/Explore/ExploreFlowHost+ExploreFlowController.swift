@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ExploreFlowController: AnyObject {
-    func go(to page: PrimaryPage.Main.Booking, with storeId: String, and storeInfo: StoreInfo?)
+    func continueToBookingAnd(startAt bookingPage: PrimaryPage.Main.Booking, with storeId: String, and storeInfo: StoreInfo?)
 }
 
 protocol ExploreFlowHost: ExploreFlowController & UIViewController {

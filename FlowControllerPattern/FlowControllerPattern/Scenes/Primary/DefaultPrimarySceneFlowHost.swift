@@ -28,7 +28,9 @@ extension DefaultPrimarySceneFlowHost: PrimarySceneFlowHost {
     func start(_ page: PrimaryPage) {
         switch page {
         case let .onboarding(page):
-            let onboardingFlowHost = DefaultOnboardingFlowHost()
+            let onboardingFlowHost = DefaultOnboardingFlowHost(
+                appDependencies: appDependencies, flowController: self
+            )
             onboardingFlowHost.start(page)
             setViewController(onboardingFlowHost, using: .none)
         case let .main(page):
@@ -44,7 +46,9 @@ extension DefaultPrimarySceneFlowHost: PrimarySceneFlowHost {
             if let onboardingFlowHost = viewController as? OnboardingFlowHost {
                 onboardingFlowHost.go(to: page)
             } else {
-                let onboardingFlowHost = DefaultOnboardingFlowHost()
+                let onboardingFlowHost = DefaultOnboardingFlowHost(
+                    appDependencies: appDependencies, flowController: self
+                )
                 onboardingFlowHost.start(page)
                 setViewController(onboardingFlowHost, using: .dissolve)
             }
@@ -73,5 +77,12 @@ extension DefaultPrimarySceneFlowHost: PrimarySceneFlowHost {
 
     func sceneDidEnterBackground() {
 
+    }
+}
+
+extension DefaultPrimarySceneFlowHost {
+
+    func onboardingComplete(continueTo mainPage: PrimaryPage.Main) {
+        go(to: .main(page: mainPage))
     }
 }
