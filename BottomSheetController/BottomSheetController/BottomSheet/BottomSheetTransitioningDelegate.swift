@@ -214,6 +214,13 @@ final class BottomSheetPresentationController: UIPresentationController {
 
         preferredHeightConstraint.priority = .fittingSizeLevel
 
+        let maxHeightConstraint = presentedView.topAnchor.constraint(
+            greaterThanOrEqualTo: containerView.safeAreaLayoutGuide.topAnchor,
+            constant: sheetTopInset
+        )
+
+        maxHeightConstraint.priority = .required - 1
+
         let heightConstraint = presentedView.heightAnchor.constraint(
             equalToConstant: 0
         )
@@ -223,10 +230,7 @@ final class BottomSheetPresentationController: UIPresentationController {
         )
 
         NSLayoutConstraint.activate([
-            presentedView.topAnchor.constraint(
-                greaterThanOrEqualTo: containerView.safeAreaLayoutGuide.topAnchor,
-                constant: sheetTopInset
-            ),
+            maxHeightConstraint,
             presentedView.leadingAnchor.constraint(
                 equalTo: containerView.leadingAnchor
             ),
