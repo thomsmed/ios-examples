@@ -11,7 +11,7 @@ import UIKit
 
 final class BottomSheetTransitioningDelegate: NSObject, UIViewControllerTransitioningDelegate {
 
-    private weak var currentBottomSheetPresentationController: BottomSheetPresentationController?
+    private weak var bottomSheetPresentationController: BottomSheetPresentationController?
 
     var preferredSheetTopInset: CGFloat
     var preferredSheetCornerRadius: CGFloat
@@ -20,13 +20,13 @@ final class BottomSheetTransitioningDelegate: NSObject, UIViewControllerTransiti
 
     var tapToDismissEnabled: Bool = true {
         didSet {
-            currentBottomSheetPresentationController?.tapGestureRecognizer.isEnabled = tapToDismissEnabled
+            bottomSheetPresentationController?.tapGestureRecognizer.isEnabled = tapToDismissEnabled
         }
     }
 
     var panToDismissEnabled: Bool = true {
         didSet {
-            currentBottomSheetPresentationController?.panGestureRecognizer.isEnabled = panToDismissEnabled
+            bottomSheetPresentationController?.panToDismissEnabled = panToDismissEnabled
         }
     }
 
@@ -58,9 +58,9 @@ final class BottomSheetTransitioningDelegate: NSObject, UIViewControllerTransiti
         )
 
         bottomSheetPresentationController.tapGestureRecognizer.isEnabled = tapToDismissEnabled
-        bottomSheetPresentationController.panGestureRecognizer.isEnabled = panToDismissEnabled
+        bottomSheetPresentationController.panToDismissEnabled = panToDismissEnabled
 
-        currentBottomSheetPresentationController = bottomSheetPresentationController
+        self.bottomSheetPresentationController = bottomSheetPresentationController
 
         return bottomSheetPresentationController
     }
@@ -81,13 +81,7 @@ final class BottomSheetTransitioningDelegate: NSObject, UIViewControllerTransiti
     func interactionControllerForDismissal(
         using animator: UIViewControllerAnimatedTransitioning
     ) -> UIViewControllerInteractiveTransitioning? {
-        guard
-            let bottomSheetInteractiveDismissalTransition = animator as? BottomSheetInteractiveDismissalTransition
-        else {
-            return nil
-        }
-
-        return bottomSheetInteractiveDismissalTransition
+        animator as? BottomSheetInteractiveDismissalTransition
     }
 }
 
@@ -109,8 +103,9 @@ final class BottomSheetPresentationController: UIPresentationController {
     let sheetSizingFactor: CGFloat
     let sheetBackdropColor: UIColor
 
-    lazy var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(onTap))
-    lazy var panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(onPan))
+    private(set) lazy var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(onTap))
+    private lazy var panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(onPan))
+    var panToDismissEnabled: Bool = true
 
     init(
         presentedViewController: UIViewController,
@@ -136,7 +131,7 @@ final class BottomSheetPresentationController: UIPresentationController {
             return
         }
 
-        presentedViewController.dismiss(animated: true)
+        presentingViewController.dismiss(animated: true)
     }
 
     @objc private func onPan(_ gestureRecognizer: UIPanGestureRecognizer) {
@@ -146,21 +141,25 @@ final class BottomSheetPresentationController: UIPresentationController {
 
         let translation = gestureRecognizer.translation(in: presentedView)
 
-        let progress = min(max(translation.y / presentedView.frame.height, 0), 1)
+        let progress = translation.y / presentedView.frame.height
 
         switch gestureRecognizer.state {
         case .began:
-            bottomSheetInteractiveDismissalTransition.prepare()
-            presentedViewController.dismiss(animated: true)
+            bottomSheetInteractiveDismissalTransition.start(
+                moving: presentedView, interactiveDismissal: panToDismissEnabled
+            )
         case .changed:
-            bottomSheetInteractiveDismissalTransition.update(progress)
+            if panToDismissEnabled && progress > 0 && !presentedViewController.isBeingDismissed {
+                presentingViewController.dismiss(animated: true)
+            }
+            bottomSheetInteractiveDismissalTransition.move(
+                presentedView, using: translation.y
+            )
         default:
             let velocity = gestureRecognizer.velocity(in: presentedView)
-            if (progress > 0.5 && velocity.y > 0) || velocity.y > presentedView.frame.height {
-                bottomSheetInteractiveDismissalTransition.finish()
-            } else {
-                bottomSheetInteractiveDismissalTransition.cancel()
-            }
+            bottomSheetInteractiveDismissalTransition.stop(
+                moving: presentedView, at: translation.y, with: velocity
+            )
         }
     }
 
@@ -215,28 +214,42 @@ final class BottomSheetPresentationController: UIPresentationController {
 
         preferredHeightConstraint.priority = .fittingSizeLevel
 
+        let maxHeightConstraint = presentedView.topAnchor.constraint(
+            greaterThanOrEqualTo: containerView.safeAreaLayoutGuide.topAnchor,
+            constant: sheetTopInset
+        )
+
+        // Prevents conflicts with the height constraint used by the animated transition
+        maxHeightConstraint.priority = .required - 1
+
+        let heightConstraint = presentedView.heightAnchor.constraint(
+            equalToConstant: 0
+        )
+
+        let bottomConstraint = presentedView.bottomAnchor.constraint(
+            equalTo: containerView.bottomAnchor
+        )
+
         NSLayoutConstraint.activate([
-            presentedView.topAnchor.constraint(
-                greaterThanOrEqualTo: containerView.safeAreaLayoutGuide.topAnchor,
-                constant: sheetTopInset
-            ),
+            maxHeightConstraint,
             presentedView.leadingAnchor.constraint(
                 equalTo: containerView.leadingAnchor
             ),
             presentedView.trailingAnchor.constraint(
                 equalTo: containerView.trailingAnchor
             ),
-            presentedView.bottomAnchor.constraint(
-                equalTo: containerView.bottomAnchor
-            ),
+            bottomConstraint,
             preferredHeightConstraint
         ])
+
+        bottomSheetInteractiveDismissalTransition.bottomConstraint = bottomConstraint
+        bottomSheetInteractiveDismissalTransition.heightConstraint = heightConstraint
 
         guard let transitionCoordinator = presentingViewController.transitionCoordinator else {
             return
         }
 
-        transitionCoordinator.animate() { context in
+        transitionCoordinator.animate { context in
             self.backdropView.alpha = 0.3
         }
     }
@@ -254,9 +267,9 @@ final class BottomSheetPresentationController: UIPresentationController {
             return
         }
 
-        transitionCoordinator.animate(alongsideTransition: { context in
+        transitionCoordinator.animate { context in
             self.backdropView.alpha = 0
-        })
+        }
     }
 
     override func dismissalTransitionDidEnd(_ completed: Bool) {
@@ -266,85 +279,216 @@ final class BottomSheetPresentationController: UIPresentationController {
             containerView?.removeGestureRecognizer(tapGestureRecognizer)
         }
     }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        panGestureRecognizer.isEnabled = false // This will cancel any ongoing pan gesture
+        coordinator.animate(alongsideTransition: nil) { context in
+            self.panGestureRecognizer.isEnabled = true
+        }
+    }
 }
 
 // MARK: BottomSheetInteractiveDismissalTransition
 
 final class BottomSheetInteractiveDismissalTransition: NSObject {
 
-    private let transitionDuration: CGFloat = 0.33
-    private let animationCurve: UIView.AnimationCurve = .easeInOut
+    private let stretchOffset: CGFloat = 16
+    private let maxTransitionDuration: CGFloat = 0.25
+    private let minTransitionDuration: CGFloat = 0.15
+    private let animationCurve: UIView.AnimationCurve = .easeIn
 
-    private weak var currentTransitionContext: UIViewControllerContextTransitioning?
+    private weak var transitionContext: UIViewControllerContextTransitioning?
 
-    private var currentPropertyAnimator: UIViewPropertyAnimator?
+    private var heightAnimator: UIViewPropertyAnimator?
+    private var offsetAnimator: UIViewPropertyAnimator?
 
     private var interactiveDismissal: Bool = false
 
-    private func createPropertyAnimator(
-        using transitionContext: UIViewControllerContextTransitioning
-    ) -> UIViewPropertyAnimator {
+    var bottomConstraint: NSLayoutConstraint?
+    var heightConstraint: NSLayoutConstraint?
+
+    private func createHeightAnimator(animating view: UIView, from height: CGFloat) -> UIViewPropertyAnimator {
         let propertyAnimator = UIViewPropertyAnimator(
-            duration: transitionDuration,
+            duration: minTransitionDuration,
             curve: animationCurve
         )
 
-        propertyAnimator.addCompletion() { _ in
-            transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
-        }
+        heightConstraint?.constant = height
+        heightConstraint?.isActive = true
 
-        guard let dismissedView = transitionContext.view(forKey: .from) else {
-            return propertyAnimator
-        }
-
-        let offset = dismissedView.frame.height
+        let finalHeight = height + stretchOffset
 
         propertyAnimator.addAnimations {
-            dismissedView.center.y += offset
+            self.heightConstraint?.constant = finalHeight
+            view.superview?.layoutIfNeeded()
+        }
+
+        propertyAnimator.addCompletion { position in
+            self.heightConstraint?.constant = position == .end ? finalHeight : height
+            self.heightConstraint?.isActive = position == .end ? true : false
         }
 
         return propertyAnimator
     }
 
-    func prepare() {
-        interactiveDismissal = true
+    private func createOffsetAnimator(animating view: UIView, to offset: CGFloat) -> UIViewPropertyAnimator {
+        let propertyAnimator = UIViewPropertyAnimator(
+            duration: maxTransitionDuration,
+            curve: animationCurve
+        )
+
+        propertyAnimator.addAnimations {
+            self.bottomConstraint?.constant = offset
+            view.superview?.layoutIfNeeded()
+        }
+
+        propertyAnimator.addCompletion { position in
+            self.bottomConstraint?.constant = position == .end ? offset : 0
+        }
+
+        return propertyAnimator
     }
 
-    func update(_ percentComplete: CGFloat) {
-        currentTransitionContext?.updateInteractiveTransition(percentComplete)
-        currentPropertyAnimator?.fractionComplete = percentComplete
+    private func stretchProgress(basedOn translation: CGFloat) -> CGFloat {
+        (translation > 0 ? pow(translation, 0.33) : -pow(-translation, 0.33)) / stretchOffset
+    }
+}
+
+// MARK: Public methods
+
+extension BottomSheetInteractiveDismissalTransition {
+
+    func start(moving presentedView: UIView, interactiveDismissal: Bool) {
+        self.interactiveDismissal = interactiveDismissal
+
+        heightAnimator?.stopAnimation(false)
+        heightAnimator?.finishAnimation(at: .start)
+        offsetAnimator?.stopAnimation(false)
+        offsetAnimator?.finishAnimation(at: .start)
+
+        heightAnimator = createHeightAnimator(
+            animating: presentedView, from: presentedView.frame.height
+        )
+
+        if !interactiveDismissal {
+            offsetAnimator = createOffsetAnimator(
+                animating: presentedView, to: stretchOffset
+            )
+        }
     }
 
-    func cancel() {
-        currentTransitionContext?.cancelInteractiveTransition()
-        currentPropertyAnimator?.isReversed = true
-        currentPropertyAnimator?.continueAnimation(
+    func move(_ presentedView: UIView, using translation: CGFloat) {
+        let progress = translation / presentedView.frame.height
+
+        let stretchProgress = stretchProgress(basedOn: translation)
+
+        heightAnimator?.fractionComplete = stretchProgress * -1
+        offsetAnimator?.fractionComplete = interactiveDismissal ? progress : stretchProgress
+
+        transitionContext?.updateInteractiveTransition(progress)
+    }
+
+    func stop(moving presentedView: UIView, at translation: CGFloat, with velocity: CGPoint) {
+        let progress = translation / presentedView.frame.height
+
+        let stretchProgress = stretchProgress(basedOn: translation)
+
+        heightAnimator?.fractionComplete = stretchProgress * -1
+        offsetAnimator?.fractionComplete = interactiveDismissal ? progress : stretchProgress
+
+        transitionContext?.updateInteractiveTransition(progress)
+
+        let cancelDismiss = !interactiveDismissal || velocity.y < 500 || (progress < 0.5 && velocity.y <= 0)
+
+        heightAnimator?.isReversed = true
+        offsetAnimator?.isReversed = cancelDismiss
+
+        if cancelDismiss {
+            transitionContext?.cancelInteractiveTransition()
+        } else {
+            transitionContext?.finishInteractiveTransition()
+        }
+
+        heightAnimator?.continueAnimation(
             withTimingParameters: nil,
             durationFactor: 0
         )
-        interactiveDismissal = false
-    }
-
-    func finish() {
-        currentTransitionContext?.finishInteractiveTransition()
-        currentPropertyAnimator?.continueAnimation(
+        offsetAnimator?.continueAnimation(
             withTimingParameters: nil,
             durationFactor: 0
         )
+
         interactiveDismissal = false
     }
 }
 
+// MARK: UIViewControllerAnimatedTransitioning
+
+extension BottomSheetInteractiveDismissalTransition: UIViewControllerAnimatedTransitioning {
+
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+        maxTransitionDuration
+    }
+
+    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        // This method is never called since we only care about interactive transitions,
+        // and use UIKit's default transitions/animations for non-interactive transitions.
+        guard let presentedView = transitionContext.view(forKey: .from) else {
+            return
+        }
+
+        offsetAnimator?.stopAnimation(true)
+
+        let offset = presentedView.frame.height
+        let offsetAnimator = createOffsetAnimator(animating: presentedView, to: offset)
+
+        offsetAnimator.addCompletion { position in
+            transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+        }
+
+        offsetAnimator.startAnimation()
+
+        self.offsetAnimator = offsetAnimator
+    }
+
+    func interruptibleAnimator(
+        using transitionContext: UIViewControllerContextTransitioning
+    ) -> UIViewImplicitlyAnimating {
+        guard let offsetAnimator = offsetAnimator else {
+            fatalError("Somehow the offset animator was not set")
+        }
+
+        return offsetAnimator
+    }
+}
+
+// MARK: UIViewControllerInteractiveTransitioning
+
 extension BottomSheetInteractiveDismissalTransition: UIViewControllerInteractiveTransitioning {
 
     func startInteractiveTransition(_ transitionContext: UIViewControllerContextTransitioning) {
-        let propertyAnimator = createPropertyAnimator(using: transitionContext)
-        propertyAnimator.fractionComplete = 0
+        guard
+            transitionContext.isInteractive,
+            let presentedView = transitionContext.view(forKey: .from)
+        else {
+            return animateTransition(using: transitionContext)
+        }
+
+        offsetAnimator?.stopAnimation(true)
+
+        let offset = presentedView.frame.height
+        let offsetAnimator = createOffsetAnimator(animating: presentedView, to: offset)
+
+        offsetAnimator.addCompletion { position in
+            transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+        }
+
+        offsetAnimator.fractionComplete = 0
 
         transitionContext.updateInteractiveTransition(0)
 
-        currentPropertyAnimator = propertyAnimator
-        currentTransitionContext = transitionContext
+        self.offsetAnimator = offsetAnimator
+        self.transitionContext = transitionContext
     }
 
     var wantsInteractiveStart: Bool {
@@ -357,38 +501,5 @@ extension BottomSheetInteractiveDismissalTransition: UIViewControllerInteractive
 
     var completionSpeed: CGFloat {
         1.0
-    }
-}
-
-extension BottomSheetInteractiveDismissalTransition: UIViewControllerAnimatedTransitioning {
-
-    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        transitionDuration
-    }
-
-    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        if let propertyAnimator = currentPropertyAnimator {
-            return propertyAnimator.startAnimation()
-        }
-
-        let propertyAnimator = createPropertyAnimator(using: transitionContext)
-
-        currentPropertyAnimator = propertyAnimator
-
-        propertyAnimator.startAnimation()
-    }
-
-    func interruptibleAnimator(
-        using transitionContext: UIViewControllerContextTransitioning
-    ) -> UIViewImplicitlyAnimating {
-        if let propertyAnimator = currentPropertyAnimator {
-            return propertyAnimator
-        }
-
-        let propertyAnimator = createPropertyAnimator(using: transitionContext)
-
-        currentPropertyAnimator = propertyAnimator
-
-        return propertyAnimator
     }
 }
