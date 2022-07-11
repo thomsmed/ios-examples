@@ -278,6 +278,13 @@ final class BottomSheetPresentationController: UIPresentationController {
             containerView?.removeGestureRecognizer(tapGestureRecognizer)
         }
     }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        panGestureRecognizer.isEnabled = false
+        coordinator.animate(alongsideTransition: nil) { context in
+            self.panGestureRecognizer.isEnabled = true
+        }
+    }
 }
 
 // MARK: BottomSheetInteractiveDismissalTransition
