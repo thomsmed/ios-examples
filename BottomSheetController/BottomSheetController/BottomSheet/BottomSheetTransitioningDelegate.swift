@@ -141,7 +141,7 @@ final class BottomSheetPresentationController: UIPresentationController {
 
         let translation = gestureRecognizer.translation(in: presentedView)
 
-        let fractionComplete = translation.y / presentedView.frame.height
+        let progress = translation.y / presentedView.frame.height
 
         switch gestureRecognizer.state {
         case .began:
@@ -149,7 +149,7 @@ final class BottomSheetPresentationController: UIPresentationController {
                 moving: presentedView, interactiveDismissal: panToDismissEnabled
             )
         case .changed:
-            if panToDismissEnabled && fractionComplete > 0 && !presentedViewController.isBeingDismissed {
+            if panToDismissEnabled && progress > 0 && !presentedViewController.isBeingDismissed {
                 presentingViewController.dismiss(animated: true)
             }
             bottomSheetInteractiveDismissalTransition.move(
@@ -349,7 +349,7 @@ final class BottomSheetInteractiveDismissalTransition: NSObject {
         return propertyAnimator
     }
 
-    private func stretchFractionComplete(basedOn translation: CGFloat) -> CGFloat {
+    private func stretchProgress(basedOn translation: CGFloat) -> CGFloat {
         (translation > 0 ? pow(translation, 0.33) : -pow(-translation, 0.33)) / stretchOffset
     }
 }
@@ -378,27 +378,27 @@ extension BottomSheetInteractiveDismissalTransition {
     }
 
     func move(_ presentedView: UIView, using translation: CGFloat) {
-        let fractionComplete = translation / presentedView.frame.height
+        let progress = translation / presentedView.frame.height
 
-        let stretchFractionComplete = stretchFractionComplete(basedOn: translation)
+        let stretchProgress = stretchProgress(basedOn: translation)
 
-        heightAnimator?.fractionComplete = stretchFractionComplete * -1
-        offsetAnimator?.fractionComplete = interactiveDismissal ? fractionComplete : stretchFractionComplete
+        heightAnimator?.fractionComplete = stretchProgress * -1
+        offsetAnimator?.fractionComplete = interactiveDismissal ? progress : stretchProgress
 
-        transitionContext?.updateInteractiveTransition(fractionComplete)
+        transitionContext?.updateInteractiveTransition(progress)
     }
 
     func stop(moving presentedView: UIView, at translation: CGFloat, with velocity: CGPoint) {
-        let fractionComplete = translation / presentedView.frame.height
+        let progress = translation / presentedView.frame.height
 
-        let stretchFractionComplete = stretchFractionComplete(basedOn: translation)
+        let stretchProgress = stretchProgress(basedOn: translation)
 
-        heightAnimator?.fractionComplete = stretchFractionComplete * -1
-        offsetAnimator?.fractionComplete = interactiveDismissal ? fractionComplete : stretchFractionComplete
+        heightAnimator?.fractionComplete = stretchProgress * -1
+        offsetAnimator?.fractionComplete = interactiveDismissal ? progress : stretchProgress
 
-        transitionContext?.updateInteractiveTransition(fractionComplete)
+        transitionContext?.updateInteractiveTransition(progress)
 
-        let cancelDismiss = !interactiveDismissal || velocity.y < 500 || (fractionComplete < 0.5 && velocity.y <= 0)
+        let cancelDismiss = !interactiveDismissal || velocity.y < 500 || (progress < 0.5 && velocity.y <= 0)
 
         heightAnimator?.isReversed = true
         offsetAnimator?.isReversed = cancelDismiss
