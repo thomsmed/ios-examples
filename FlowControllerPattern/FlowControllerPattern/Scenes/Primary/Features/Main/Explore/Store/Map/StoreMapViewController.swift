@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol StoreMapViewHolder: UIViewController {
+    func selectStore(with storeId: String)
+}
+
 final class StoreMapViewController: UIViewController {
 
     private lazy var storeMapView = StoreMapView()
@@ -19,7 +23,7 @@ final class StoreMapViewController: UIViewController {
 
 // MARK: Public methods
 
-extension StoreMapViewController {
+extension StoreMapViewController: StoreMapViewHolder {
 
     func selectStore(with storeId: String) {
         

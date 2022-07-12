@@ -6,7 +6,7 @@ An app navigation pattern
 AppPage
 ```swift
 // Defining all app-pages that can be deep linked to (via e.g. Universal Links),
-// or pages the user can jump into with one click (e.g jumping from Profile to ShoppingCart under the Booking flow)
+// or pages the user can jump to with one click (e.g jumping from Profile to ShoppingCart under the Booking flow)
 // Thought of as representing an URL, e.g.: https://www.myapp.com/app/main/booking/{storeId}/checkout?service=123&product=123
 enum AppPage {
     enum Main {
@@ -71,7 +71,7 @@ extension DefaultMainFlowHost: MainFlowHost {
         
         // ...
         
-        swift page {
+        switch page {
             case .home:
                 homeFlowHost.start()
                 selectedIndex = 0

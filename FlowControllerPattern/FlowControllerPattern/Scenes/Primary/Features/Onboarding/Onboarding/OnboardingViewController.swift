@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol OnboardingViewHolder: UIViewController {
+    
+}
+
 final class OnboardingViewController: UIViewController {
 
     private lazy var onboardingView = OnboardingView()
@@ -37,4 +41,8 @@ final class OnboardingViewController: UIViewController {
     @objc private func goNext(_ target: UIButton) {
         viewModel.goNext()
     }
+}
+
+extension OnboardingViewController: OnboardingViewHolder {
+    
 }

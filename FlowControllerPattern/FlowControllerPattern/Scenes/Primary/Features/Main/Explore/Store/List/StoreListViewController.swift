@@ -7,6 +7,14 @@
 
 import UIKit
 
+protocol StoreListViewHolder: UIViewController {
+
+}
+
 final class StoreListViewController: UIViewController {
+    
+}
+
+extension StoreListViewController: StoreListViewHolder {
     
 }

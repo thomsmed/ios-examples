@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol StoreViewHolder: UIViewController {
+
+}
+
 final class StoreViewController: UIViewController {
 
     private let viewModel: StoreViewModel
@@ -19,4 +23,8 @@ final class StoreViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+extension StoreViewController: StoreViewHolder {
+    
 }

@@ -9,12 +9,14 @@ import UIKit
 
 final class DefaultStoreFlowHost: SinglePageController {
 
+    private let flowFactory: StoreFlowFactory
     private weak var flowController: ExploreFlowController?
 
-    private var storeMapViewController: StoreMapViewController?
-    private var storeListViewController: StoreListViewController?
+    private var storeMapViewHolder: StoreMapViewHolder?
+    private var storeListViewHolder: StoreListViewHolder?
 
-    init(flowController: ExploreFlowController) {
+    init(flowFactory: StoreFlowFactory, flowController: ExploreFlowController) {
+        self.flowFactory = flowFactory
         self.flowController = flowController
         super.init(nibName: nil, bundle: nil)
     }
@@ -29,17 +31,17 @@ extension DefaultStoreFlowHost: StoreFlowHost {
     func start(_ page: PrimaryPage.Main.Explore.Store) {
         switch page {
         case let .map(bookingPage, storeId):
-            let storeMapViewController = StoreMapViewController()
+            let storeMapViewHolder = flowFactory.makeStoreMapViewHolder()
 
-            setViewController(storeMapViewController, using: .dissolve)
+            setViewController(storeMapViewHolder, using: .dissolve)
 
-            self.storeMapViewController = storeMapViewController
+            self.storeMapViewHolder = storeMapViewHolder
 
             guard let storeId = storeId else {
                 return
             }
 
-            storeMapViewController.selectStore(with: storeId)
+            storeMapViewHolder.selectStore(with: storeId)
 
             guard let bookingPage = bookingPage else {
                 return
@@ -47,28 +49,28 @@ extension DefaultStoreFlowHost: StoreFlowHost {
 
             flowController?.continueToBookingAnd(startAt: bookingPage, with: storeId, and: nil)
         case .list:
-            let storeListViewController = StoreListViewController()
+            let storeListViewHolder = flowFactory.makeStoreListViewHolder()
 
-            setViewController(storeListViewController, using: .dissolve)
+            setViewController(storeListViewHolder, using: .dissolve)
 
-            self.storeListViewController = storeListViewController
+            self.storeListViewHolder = storeListViewHolder
         }
     }
 
     func go(to page: PrimaryPage.Main.Explore.Store) {
         switch page {
         case let .map(bookingPage, storeId):
-            guard let storeMapViewController = self.storeMapViewController else {
+            guard let storeMapViewHolder = self.storeMapViewHolder else {
                 return start(page)
             }
 
-            setViewController(storeMapViewController, using: .dissolve)
+            setViewController(storeMapViewHolder, using: .dissolve)
 
             guard let storeId = storeId else {
                 return
             }
 
-            storeMapViewController.selectStore(with: storeId)
+            storeMapViewHolder.selectStore(with: storeId)
 
             guard let bookingPage = bookingPage else {
                 return
@@ -76,11 +78,11 @@ extension DefaultStoreFlowHost: StoreFlowHost {
 
             flowController?.continueToBookingAnd(startAt: bookingPage, with: storeId, and: nil)
         case .list:
-            guard let storeListViewController = self.storeListViewController else {
+            guard let storeListViewHolder = self.storeListViewHolder else {
                 return start(page)
             }
 
-            setViewController(storeListViewController, using: .dissolve)
+            setViewController(storeListViewHolder, using: .dissolve)
         }
     }
 }
@@ -88,7 +90,6 @@ extension DefaultStoreFlowHost: StoreFlowHost {
 // MARK: StoreFlowController
 
 extension DefaultStoreFlowHost {
-
 
     func continueToBooking(with storeInfo: StoreInfo) {
         flowController?.continueToBookingAnd(

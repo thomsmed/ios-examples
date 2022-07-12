@@ -9,11 +9,11 @@ import UIKit
 
 final class DefaultPrimarySceneFlowHost: SinglePageController {
 
-    private let appDependencies: AppDependencies
+    private let flowFactory: PrimarySceneFlowFactory
     private weak var flowController: AppFlowController?
 
-    init(appDependencies: AppDependencies, flowController: AppFlowController) {
-        self.appDependencies = appDependencies
+    init(flowFactory: PrimarySceneFlowFactory, flowController: AppFlowController) {
+        self.flowFactory = flowFactory
         self.flowController = flowController
         super.init(nibName: nil, bundle: nil)
     }
@@ -28,13 +28,11 @@ extension DefaultPrimarySceneFlowHost: PrimarySceneFlowHost {
     func start(_ page: PrimaryPage) {
         switch page {
         case let .onboarding(page):
-            let onboardingFlowHost = DefaultOnboardingFlowHost(
-                appDependencies: appDependencies, flowController: self
-            )
+            let onboardingFlowHost = flowFactory.makeOnboardingFlowHost(with: self)
             onboardingFlowHost.start(page)
             setViewController(onboardingFlowHost, using: .none)
         case let .main(page):
-            let mainFlowHost = DefaultMainFlowHost(appDependencies: appDependencies)
+            let mainFlowHost = flowFactory.makeMainFlowHost(with: self)
             mainFlowHost.start(page)
             setViewController(mainFlowHost, using: .none)
         }
@@ -46,9 +44,7 @@ extension DefaultPrimarySceneFlowHost: PrimarySceneFlowHost {
             if let onboardingFlowHost = viewController as? OnboardingFlowHost {
                 onboardingFlowHost.go(to: page)
             } else {
-                let onboardingFlowHost = DefaultOnboardingFlowHost(
-                    appDependencies: appDependencies, flowController: self
-                )
+                let onboardingFlowHost = flowFactory.makeOnboardingFlowHost(with: self)
                 onboardingFlowHost.start(page)
                 setViewController(onboardingFlowHost, using: .dissolve)
             }
@@ -56,7 +52,7 @@ extension DefaultPrimarySceneFlowHost: PrimarySceneFlowHost {
             if let mainFlowHost = viewController as? MainFlowHost {
                 mainFlowHost.go(to: page)
             } else {
-                let mainFlowHost = DefaultMainFlowHost(appDependencies: appDependencies)
+                let mainFlowHost = flowFactory.makeMainFlowHost(with: self)
                 mainFlowHost.start(page)
                 setViewController(mainFlowHost, using: .flip)
             }

@@ -9,11 +9,11 @@ import UIKit
 
 final class DefaultOnboardingFlowHost: SinglePageController {
 
-    private let appDependencies: AppDependencies
+    private let flowFactory: OnboardingFlowFactory
     private weak var flowController: PrimarySceneFlowController?
 
-    init(appDependencies: AppDependencies, flowController: PrimarySceneFlowController) {
-        self.appDependencies = appDependencies
+    init(flowFactory: OnboardingFlowFactory, flowController: PrimarySceneFlowController) {
+        self.flowFactory = flowFactory
         self.flowController = flowController
         super.init(nibName: nil, bundle: nil)
     }
@@ -26,13 +26,8 @@ final class DefaultOnboardingFlowHost: SinglePageController {
 extension DefaultOnboardingFlowHost: OnboardingFlowHost {
 
     func start(_ page: PrimaryPage.Onboarding) {
-        let onboardingViewController = OnboardingViewController(
-            viewModel: OnboardingViewModel(
-                flowController: self,
-                analytics: appDependencies.analytics
-            )
-        )
-        setViewController(onboardingViewController, using: .none)
+        let onboardingViewHolder = flowFactory.makeOnboardingViewHolder(with: self)
+        setViewController(onboardingViewHolder, using: .none)
     }
 
     func go(to page: PrimaryPage.Onboarding) {

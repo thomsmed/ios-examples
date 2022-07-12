@@ -9,14 +9,14 @@ import UIKit
 
 final class DefaultAppFlowHost {
 
-    private let appDependencies: AppDependencies
+    private let flowFactory: AppFlowFactory
 
-    private(set) var flowHostsByScene: [UIScene: PrimarySceneFlowHost] = [:]
+    private var flowHostsByScene: [UIScene: PrimarySceneFlowHost] = [:]
 
     private var launchOptions: [UIApplication.LaunchOptionsKey : Any]?
 
-    init(appDependencies: AppDependencies) {
-        self.appDependencies = appDependencies
+    init(flowFactory: AppFlowFactory) {
+        self.flowFactory = flowFactory
     }
 }
 
@@ -26,14 +26,16 @@ extension DefaultAppFlowHost: AppFlowHost {
         self.launchOptions = launchOptions
     }
 
-    func makeFlowHost(for scene: UIScene) -> PrimarySceneFlowHost {
-        let sceneFlowHost = DefaultPrimarySceneFlowHost(
-            appDependencies: appDependencies, flowController: self
-        )
+    func flowHost(for scene: UIScene) -> PrimarySceneFlowHost {
+        if let flowHost = flowHostsByScene[scene] {
+            return flowHost
+        }
 
-        flowHostsByScene[scene] = sceneFlowHost
+        let flowHost = flowFactory.makePrimarySceneFlowHost(with: self)
 
-        return sceneFlowHost
+        flowHostsByScene[scene] = flowHost
+
+        return flowHost
     }
 
     func discardFlowHost(for scene: UIScene) {

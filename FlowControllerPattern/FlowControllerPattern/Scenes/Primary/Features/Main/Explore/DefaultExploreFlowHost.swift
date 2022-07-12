@@ -9,9 +9,11 @@ import UIKit
 
 final class DefaultExploreFlowHost: UINavigationController {
 
+    private let flowFactory: ExploreFlowFactory
     private weak var flowController: MainFlowController?
 
-    init(flowController: MainFlowController) {
+    init(flowFactory: ExploreFlowFactory, flowController: MainFlowController) {
+        self.flowFactory = flowFactory
         self.flowController = flowController
         super.init(nibName: nil, bundle: nil)
     }
@@ -24,14 +26,14 @@ final class DefaultExploreFlowHost: UINavigationController {
 extension DefaultExploreFlowHost: ExploreFlowHost {
 
     func start(_ page: PrimaryPage.Main.Explore) {
-        let storesFlowHost = DefaultStoreFlowHost(flowController: self)
-        var viewControllers: [UIViewController] = [storesFlowHost]
+        let storeFlowHost = flowFactory.makeStoreFlowHost(with: self)
+        var viewControllers: [UIViewController] = [storeFlowHost]
 
         switch page {
         case let .store(page):
-            storesFlowHost.start(page)
+            storeFlowHost.start(page)
         case .referral:
-            storesFlowHost.start(.map())
+            storeFlowHost.start(.map())
             viewControllers.append(ReferralViewController())
         }
 
@@ -56,7 +58,7 @@ extension DefaultExploreFlowHost: ExploreFlowHost {
                 return
             }
 
-            pushViewController(ReferralViewController(), animated: true)
+            pushViewController(flowFactory.makeReferralViewHolder(), animated: true)
         }
     }
 }

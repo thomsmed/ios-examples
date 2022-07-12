@@ -7,6 +7,14 @@
 
 import UIKit
 
+protocol ReferralViewHolder: UIViewController {
+
+}
+
 final class ReferralViewController: UIViewController {
+    
+}
+
+extension ReferralViewController: ReferralViewHolder {
     
 }

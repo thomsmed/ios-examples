@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol CheckoutViewHolder: UIViewController {
+
+}
+
 final class CheckoutViewController: UIViewController {
 
     private let viewModel: CheckoutViewModel
@@ -19,4 +23,8 @@ final class CheckoutViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+extension CheckoutViewController: CheckoutViewHolder {
+    
 }

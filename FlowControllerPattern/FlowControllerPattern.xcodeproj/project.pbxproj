@@ -10,7 +10,7 @@
 		ED67EF2F2875F5E1004E2500 /* ActivityFlowHost+ActivityFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED67EF2E2875F5E1004E2500 /* ActivityFlowHost+ActivityFlowController.swift */; };
 		ED67EF312875F5F6004E2500 /* ProfileFlowHost+ProfileFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED67EF302875F5F6004E2500 /* ProfileFlowHost+ProfileFlowController.swift */; };
 		ED67EF332875F702004E2500 /* DefaultExploreFlowHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED67EF322875F702004E2500 /* DefaultExploreFlowHost.swift */; };
-		ED67EF352875FBD5004E2500 /* DefaultActivityHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED67EF342875FBD5004E2500 /* DefaultActivityHost.swift */; };
+		ED67EF352875FBD5004E2500 /* DefaultActivityFlowHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED67EF342875FBD5004E2500 /* DefaultActivityFlowHost.swift */; };
 		ED67EF372875FBE3004E2500 /* DefaultProfileFlowHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED67EF362875FBE3004E2500 /* DefaultProfileFlowHost.swift */; };
 		ED67EF3A28760134004E2500 /* BookingFlowHost+BookingFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED67EF3928760134004E2500 /* BookingFlowHost+BookingFlowController.swift */; };
 		ED67EF3C28760141004E2500 /* DefaultBookingFlowHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED67EF3B28760141004E2500 /* DefaultBookingFlowHost.swift */; };
@@ -55,6 +55,16 @@
 		EDD3E5E928778EFC008318C0 /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD3E5E828778EFC008318C0 /* StoreViewController.swift */; };
 		EDD3E5EB28778F19008318C0 /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD3E5EA28778F19008318C0 /* CheckoutViewController.swift */; };
 		EDD3E5ED2877901A008318C0 /* StoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD3E5EC2877901A008318C0 /* StoreViewModel.swift */; };
+		EDD56E72287E28900018E4EC /* AppFlowFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD56E71287E28900018E4EC /* AppFlowFactory.swift */; };
+		EDD56E74287E28AF0018E4EC /* DefaultAppFlowFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD56E73287E28AF0018E4EC /* DefaultAppFlowFactory.swift */; };
+		EDD56E76287E2A430018E4EC /* PrimarySceneFlowFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD56E75287E2A430018E4EC /* PrimarySceneFlowFactory.swift */; };
+		EDD56E78287E2E3F0018E4EC /* OnboardingFlowFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD56E77287E2E3F0018E4EC /* OnboardingFlowFactory.swift */; };
+		EDD56E7A287E31520018E4EC /* MainFlowFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD56E79287E31520018E4EC /* MainFlowFactory.swift */; };
+		EDD56E7C287E34830018E4EC /* ExploreFlowFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD56E7B287E34830018E4EC /* ExploreFlowFactory.swift */; };
+		EDD56E7E287E34C50018E4EC /* ActivityFlowFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD56E7D287E34C50018E4EC /* ActivityFlowFactory.swift */; };
+		EDD56E80287E34E50018E4EC /* ProfileFlowFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD56E7F287E34E50018E4EC /* ProfileFlowFactory.swift */; };
+		EDD56E82287E35000018E4EC /* BookingFlowFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD56E81287E35000018E4EC /* BookingFlowFactory.swift */; };
+		EDD56E84287E37C30018E4EC /* StoreFlowFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD56E83287E37C30018E4EC /* StoreFlowFactory.swift */; };
 		EDEB06072878D6420012A05D /* Extractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEB06062878D6420012A05D /* Extractor.swift */; };
 		EDEB060B287983610012A05D /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEB060A287983610012A05D /* OnboardingViewController.swift */; };
 		EDEB060E287983790012A05D /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEB060D287983790012A05D /* OnboardingView.swift */; };
@@ -66,7 +76,7 @@
 		ED67EF2E2875F5E1004E2500 /* ActivityFlowHost+ActivityFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityFlowHost+ActivityFlowController.swift"; sourceTree = "<group>"; };
 		ED67EF302875F5F6004E2500 /* ProfileFlowHost+ProfileFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileFlowHost+ProfileFlowController.swift"; sourceTree = "<group>"; };
 		ED67EF322875F702004E2500 /* DefaultExploreFlowHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultExploreFlowHost.swift; sourceTree = "<group>"; };
-		ED67EF342875FBD5004E2500 /* DefaultActivityHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultActivityHost.swift; sourceTree = "<group>"; };
+		ED67EF342875FBD5004E2500 /* DefaultActivityFlowHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultActivityFlowHost.swift; sourceTree = "<group>"; };
 		ED67EF362875FBE3004E2500 /* DefaultProfileFlowHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultProfileFlowHost.swift; sourceTree = "<group>"; };
 		ED67EF3928760134004E2500 /* BookingFlowHost+BookingFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookingFlowHost+BookingFlowController.swift"; sourceTree = "<group>"; };
 		ED67EF3B28760141004E2500 /* DefaultBookingFlowHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultBookingFlowHost.swift; sourceTree = "<group>"; };
@@ -114,6 +124,16 @@
 		EDD3E5E828778EFC008318C0 /* StoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
 		EDD3E5EA28778F19008318C0 /* CheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
 		EDD3E5EC2877901A008318C0 /* StoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewModel.swift; sourceTree = "<group>"; };
+		EDD56E71287E28900018E4EC /* AppFlowFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowFactory.swift; sourceTree = "<group>"; };
+		EDD56E73287E28AF0018E4EC /* DefaultAppFlowFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAppFlowFactory.swift; sourceTree = "<group>"; };
+		EDD56E75287E2A430018E4EC /* PrimarySceneFlowFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimarySceneFlowFactory.swift; sourceTree = "<group>"; };
+		EDD56E77287E2E3F0018E4EC /* OnboardingFlowFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFlowFactory.swift; sourceTree = "<group>"; };
+		EDD56E79287E31520018E4EC /* MainFlowFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlowFactory.swift; sourceTree = "<group>"; };
+		EDD56E7B287E34830018E4EC /* ExploreFlowFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreFlowFactory.swift; sourceTree = "<group>"; };
+		EDD56E7D287E34C50018E4EC /* ActivityFlowFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityFlowFactory.swift; sourceTree = "<group>"; };
+		EDD56E7F287E34E50018E4EC /* ProfileFlowFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFlowFactory.swift; sourceTree = "<group>"; };
+		EDD56E81287E35000018E4EC /* BookingFlowFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingFlowFactory.swift; sourceTree = "<group>"; };
+		EDD56E83287E37C30018E4EC /* StoreFlowFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreFlowFactory.swift; sourceTree = "<group>"; };
 		EDEB06062878D6420012A05D /* Extractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extractor.swift; sourceTree = "<group>"; };
 		EDEB060A287983610012A05D /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		EDEB060D287983790012A05D /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -136,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				ED7549F328736B4000768561 /* PrimaryPage.swift */,
+				EDD56E75287E2A430018E4EC /* PrimarySceneFlowFactory.swift */,
 				ED754A092873736200768561 /* PrimarySceneFlowHost+PrimarySceneFlowController.swift */,
 				ED754A0B2873738900768561 /* DefaultPrimarySceneFlowHost.swift */,
 				ED7549F528736CB800768561 /* Features */,
@@ -156,6 +177,7 @@
 		ED67EF3828760119004E2500 /* Booking */ = {
 			isa = PBXGroup;
 			children = (
+				EDD56E81287E35000018E4EC /* BookingFlowFactory.swift */,
 				ED67EF3928760134004E2500 /* BookingFlowHost+BookingFlowController.swift */,
 				ED67EF3B28760141004E2500 /* DefaultBookingFlowHost.swift */,
 				EDD3E5E628778ECF008318C0 /* Store */,
@@ -175,6 +197,7 @@
 		ED67EF3E287621CC004E2500 /* Store */ = {
 			isa = PBXGroup;
 			children = (
+				EDD56E83287E37C30018E4EC /* StoreFlowFactory.swift */,
 				ED67EF412876229F004E2500 /* StoreFlowHost+StoreFlowController.swift */,
 				ED67EF43287622AC004E2500 /* DefaultStoreFlowHost.swift */,
 				ED67EF4A28763826004E2500 /* Map */,
@@ -261,6 +284,8 @@
 				ED7549DE28736A3900768561 /* AppDelegate.swift */,
 				ED754A0D2873744F00768561 /* AppDependencies.swift */,
 				ED754A0F2873747D00768561 /* DefaultAppDependencies.swift */,
+				EDD56E71287E28900018E4EC /* AppFlowFactory.swift */,
+				EDD56E73287E28AF0018E4EC /* DefaultAppFlowFactory.swift */,
 				ED7549F928736DF200768561 /* AppFlowHost+AppFlowController.swift */,
 				ED7549FB28736E0400768561 /* DefaultAppFlowHost.swift */,
 			);
@@ -270,8 +295,8 @@
 		ED7549F528736CB800768561 /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				ED7549F828736D9800768561 /* Main */,
 				ED7549F728736D9200768561 /* Onboarding */,
+				ED7549F828736D9800768561 /* Main */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -287,6 +312,7 @@
 		ED7549F728736D9200768561 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				EDD56E77287E2E3F0018E4EC /* OnboardingFlowFactory.swift */,
 				ED754A03287371CF00768561 /* OnboardingFlowHost+OnboardingFlowController.swift */,
 				ED754A05287371F400768561 /* DefaultOnboardingFlowHost.swift */,
 				EDEB060C287983640012A05D /* Onboarding */,
@@ -297,6 +323,7 @@
 		ED7549F828736D9800768561 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				EDD56E79287E31520018E4EC /* MainFlowFactory.swift */,
 				ED754A072873728900768561 /* MainFlowHost+MainFlowController.swift */,
 				ED7549E228736A3900768561 /* DefaultMainFlowController.swift */,
 				ED754A1128737D3F00768561 /* Explore */,
@@ -332,6 +359,7 @@
 		ED754A1128737D3F00768561 /* Explore */ = {
 			isa = PBXGroup;
 			children = (
+				EDD56E7B287E34830018E4EC /* ExploreFlowFactory.swift */,
 				ED754A1428737D6B00768561 /* ExploreFlowHost+ExploreFlowController.swift */,
 				ED67EF322875F702004E2500 /* DefaultExploreFlowHost.swift */,
 				ED67EF3E287621CC004E2500 /* Store */,
@@ -343,8 +371,9 @@
 		ED754A1228737D4700768561 /* Activity */ = {
 			isa = PBXGroup;
 			children = (
+				EDD56E7D287E34C50018E4EC /* ActivityFlowFactory.swift */,
 				ED67EF2E2875F5E1004E2500 /* ActivityFlowHost+ActivityFlowController.swift */,
-				ED67EF342875FBD5004E2500 /* DefaultActivityHost.swift */,
+				ED67EF342875FBD5004E2500 /* DefaultActivityFlowHost.swift */,
 				ED67EF4528763696004E2500 /* Purchases */,
 			);
 			path = Activity;
@@ -353,6 +382,7 @@
 		ED754A1328737D5000768561 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				EDD56E7F287E34E50018E4EC /* ProfileFlowFactory.swift */,
 				ED67EF302875F5F6004E2500 /* ProfileFlowHost+ProfileFlowController.swift */,
 				ED67EF362875FBE3004E2500 /* DefaultProfileFlowHost.swift */,
 			);
@@ -593,10 +623,11 @@
 				ED754A1528737D6B00768561 /* ExploreFlowHost+ExploreFlowController.swift in Sources */,
 				ED889342287A207E00031665 /* DefaultBookingService.swift in Sources */,
 				ED889351287A28AC00031665 /* CheckoutViewModel.swift in Sources */,
-				ED67EF352875FBD5004E2500 /* DefaultActivityHost.swift in Sources */,
+				ED67EF352875FBD5004E2500 /* DefaultActivityFlowHost.swift in Sources */,
 				ED7549FC28736E0400768561 /* DefaultAppFlowHost.swift in Sources */,
 				EDD3E5ED2877901A008318C0 /* StoreViewModel.swift in Sources */,
 				EDD3E5E028777731008318C0 /* StoreListViewController.swift in Sources */,
+				EDD56E80287E34E50018E4EC /* ProfileFlowFactory.swift in Sources */,
 				ED67EF372875FBE3004E2500 /* DefaultProfileFlowHost.swift in Sources */,
 				EDEB061228798BC70012A05D /* StoreMapView.swift in Sources */,
 				EDEB060E287983790012A05D /* OnboardingView.swift in Sources */,
@@ -611,8 +642,12 @@
 				EDEB0610287986130012A05D /* OnboardingViewModel.swift in Sources */,
 				ED88934F287A24B600031665 /* DefaultDefaultsRepository.swift in Sources */,
 				EDEB06072878D6420012A05D /* Extractor.swift in Sources */,
+				EDD56E82287E35000018E4EC /* BookingFlowFactory.swift in Sources */,
 				ED67EF332875F702004E2500 /* DefaultExploreFlowHost.swift in Sources */,
 				ED754A0C2873738900768561 /* DefaultPrimarySceneFlowHost.swift in Sources */,
+				EDD56E7A287E31520018E4EC /* MainFlowFactory.swift in Sources */,
+				EDD56E78287E2E3F0018E4EC /* OnboardingFlowFactory.swift in Sources */,
+				EDD56E7C287E34830018E4EC /* ExploreFlowFactory.swift in Sources */,
 				ED67EF47287636C2004E2500 /* PurchasesFlowHost+PurchasesFlowController.swift in Sources */,
 				ED889354287A297100031665 /* StoreService.swift in Sources */,
 				ED88934C287A24A000031665 /* DefaultsRepository.swift in Sources */,
@@ -624,12 +659,17 @@
 				ED67EF3A28760134004E2500 /* BookingFlowHost+BookingFlowController.swift in Sources */,
 				ED67EF2F2875F5E1004E2500 /* ActivityFlowHost+ActivityFlowController.swift in Sources */,
 				ED754A0228736EEC00768561 /* SegmentedPageController.swift in Sources */,
+				EDD56E72287E28900018E4EC /* AppFlowFactory.swift in Sources */,
 				ED754A06287371F400768561 /* DefaultOnboardingFlowHost.swift in Sources */,
+				EDD56E76287E2A430018E4EC /* PrimarySceneFlowFactory.swift in Sources */,
 				ED67EF3C28760141004E2500 /* DefaultBookingFlowHost.swift in Sources */,
 				EDD3E5EB28778F19008318C0 /* CheckoutViewController.swift in Sources */,
 				ED889334287A1C3500031665 /* AnalyticsLogger.swift in Sources */,
+				EDD56E74287E28AF0018E4EC /* DefaultAppFlowFactory.swift in Sources */,
 				EDEB060B287983610012A05D /* OnboardingViewController.swift in Sources */,
+				EDD56E7E287E34C50018E4EC /* ActivityFlowFactory.swift in Sources */,
 				ED754A04287371CF00768561 /* OnboardingFlowHost+OnboardingFlowController.swift in Sources */,
+				EDD56E84287E37C30018E4EC /* StoreFlowFactory.swift in Sources */,
 				ED7549F428736B4000768561 /* PrimaryPage.swift in Sources */,
 				ED7549E128736A3900768561 /* SceneDelegate.swift in Sources */,
 				ED889348287A20FA00031665 /* ShoppingCart.swift in Sources */,

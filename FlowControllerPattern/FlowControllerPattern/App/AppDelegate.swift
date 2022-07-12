@@ -11,7 +11,8 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     lazy var appDependencies = DefaultAppDependencies()
-    lazy var appFlowHost = DefaultAppFlowHost(appDependencies: appDependencies)
+    lazy var appFlowFactory = DefaultAppFlowFactory(appDependencies: appDependencies)
+    lazy var appFlowHost = DefaultAppFlowHost(flowFactory: appFlowFactory)
 
     func application(
         _ application: UIApplication,

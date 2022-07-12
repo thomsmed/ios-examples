@@ -9,14 +9,14 @@ import UIKit
 
 final class DefaultMainFlowHost: UITabBarController {
 
-    private let appDependencies: AppDependencies
+    private let flowFactory: MainFlowFactory
 
     private var exploreFlowHost: ExploreFlowHost?
     private var activityFlowHost: ActivityFlowHost?
     private var profileFlowHost: ProfileFlowHost?
 
-    init(appDependencies: AppDependencies) {
-        self.appDependencies = appDependencies
+    init(flowFactory: MainFlowFactory) {
+        self.flowFactory = flowFactory
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -28,9 +28,9 @@ final class DefaultMainFlowHost: UITabBarController {
 extension DefaultMainFlowHost: MainFlowHost {
 
     func start(_ page: PrimaryPage.Main) {
-        let exploreFlowHost = DefaultExploreFlowHost(flowController: self)
-        let activityFlowHost = DefaultActivityFlowHost()
-        let profileFlowHost = DefaultProfileFlowHost()
+        let exploreFlowHost = flowFactory.makeExploreFlowHost(with: self)
+        let activityFlowHost = flowFactory.makeActivityFlowHost(with: self)
+        let profileFlowHost = flowFactory.makeProfileFlowHost(with: self)
 
         setViewControllers([
             exploreFlowHost,
@@ -75,9 +75,7 @@ extension DefaultMainFlowHost: MainFlowHost {
             profileFlowHost?.go(to: page)
         case let .booking(page, storeId, storeInfo):
             dismiss(animated: false) {
-                let bookingFlowHost = DefaultBookingFlowHost(
-                    appDependencies: self.appDependencies, flowController: self
-                )
+                let bookingFlowHost = self.flowFactory.makeBookingFlowHost(with: self)
                 bookingFlowHost.start(page, with: storeId, and: storeInfo)
                 self.present(bookingFlowHost, animated: true)
             }
@@ -110,9 +108,7 @@ extension DefaultMainFlowHost {
         and storeInfo: StoreInfo?
     ) {
         dismiss(animated: false) {
-            let bookingFlowHost = DefaultBookingFlowHost(
-                appDependencies: self.appDependencies, flowController: self
-            )
+            let bookingFlowHost = self.flowFactory.makeBookingFlowHost(with: self)
             bookingFlowHost.start(bookingPage, with: storeId, and: storeInfo)
             self.present(bookingFlowHost, animated: true)
         }

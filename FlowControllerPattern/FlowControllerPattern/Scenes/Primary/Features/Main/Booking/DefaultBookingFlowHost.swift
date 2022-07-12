@@ -9,7 +9,7 @@ import UIKit
 
 final class DefaultBookingFlowHost: UIViewController {
 
-    private let appDependencies: AppDependencies
+    private let flowFactory: BookingFlowFactory
     private weak var flowController: MainFlowController?
 
     private var shoppingCart: ShoppingCart?
@@ -18,8 +18,8 @@ final class DefaultBookingFlowHost: UIViewController {
         transitionStyle: .scroll, navigationOrientation: .horizontal
     )
 
-    init(appDependencies: AppDependencies, flowController: MainFlowController) {
-        self.appDependencies = appDependencies
+    init(flowFactory: BookingFlowFactory, flowController: MainFlowController) {
+        self.flowFactory = flowFactory
         self.flowController = flowController
         super.init(nibName: nil, bundle: nil)
     }
@@ -32,36 +32,14 @@ final class DefaultBookingFlowHost: UIViewController {
 extension DefaultBookingFlowHost: BookingFlowHost {
 
     func start(_ page: PrimaryPage.Main.Booking, with storeId: String, and storeInfo: StoreInfo?) {
-        let initialServices: [String]
-        let initialProducts: [String]
-        let goStraightToCheckout: Bool
+        let shoppingCart = flowFactory.makeShoppingCart()
 
-        switch page {
-        case let .home(details):
-            initialServices = details.services
-            initialProducts = details.products
-            goStraightToCheckout = false
-        case let .checkout(details):
-            initialServices = details.services
-            initialProducts = details.products
-            goStraightToCheckout = true
-        }
-
-        let shoppingCart = ShoppingCart()
-
-        let storeViewController = StoreViewController(
-            viewModel: .init(
-                flowController: self,
-                storeService: appDependencies.storeService,
-                shoppingCart: shoppingCart,
-                initialServices: initialServices,
-                initialProducts: initialProducts,
-                goStraightToCheckout: goStraightToCheckout
-            )
+        let storeViewHolder = flowFactory.makeStoreViewHolder(
+            with: self, targeting: page, using: shoppingCart
         )
 
         pageViewController.setViewControllers(
-            [storeViewController],
+            [storeViewHolder],
             direction: .forward,
             animated: false
         )
@@ -83,15 +61,12 @@ extension DefaultBookingFlowHost {
             return
         }
 
-        let checkoutViewController = CheckoutViewController(
-            viewModel: .init(
-                flowController: self,
-                bookingService: appDependencies.bookingService,
-                shoppingCart: shoppingCart
-            )
+        let checkoutViewHolder = flowFactory.makeCheckoutViewHolder(
+            with: self, using: shoppingCart
         )
+
         pageViewController.setViewControllers(
-            [checkoutViewController],
+            [checkoutViewHolder],
             direction: .forward,
             animated: true
         )
