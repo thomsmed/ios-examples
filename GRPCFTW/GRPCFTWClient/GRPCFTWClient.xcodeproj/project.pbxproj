@@ -50,6 +50,7 @@
 		ED1E8AF028673ABF00236C6C /* GRPCClient+makeStreamingCallWithRetry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GRPCClient+makeStreamingCallWithRetry.swift"; sourceTree = "<group>"; };
 		ED1E8B052867AB4300236C6C /* FooService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooService.swift; sourceTree = "<group>"; };
 		ED1E8B0C28697F2F00236C6C /* AuthTokenInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTokenInterceptor.swift; sourceTree = "<group>"; };
+		ED29E42C287F22F2009D4EC6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		EDC39713286DFE040005B24A /* GRPCFTWClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GRPCFTWClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDC39715286DFE040005B24A /* GRPCFTWClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GRPCFTWClientTests.swift; sourceTree = "<group>"; };
 		EDF496C1284E374A00B49E38 /* GRPCFTWClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GRPCFTWClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,6 +135,7 @@
 		EDF496B8284E374900B49E38 = {
 			isa = PBXGroup;
 			children = (
+				ED29E42C287F22F2009D4EC6 /* README.md */,
 				EDF496C3284E374A00B49E38 /* GRPCFTWClient */,
 				EDC39714286DFE040005B24A /* GRPCFTWClientTests */,
 				EDF496C2284E374A00B49E38 /* Products */,

@@ -51,14 +51,15 @@ extension DefaultFooService: FooService {
 
     func getFoo(_ completion: @escaping (Result<Void, Error>) -> Void) {
 
-        self.fooServiceClient.getFoo(Grpcftw_GetFooRequest()).response.whenComplete { result in
-            switch result {
-            case let .failure(error):
-                completion(.failure(error))
-            case let .success(response):
-                completion(.success(()))
+        fooServiceClient.getFoo(Grpcftw_GetFooRequest()).response
+            .whenComplete { result in
+                switch result {
+                case let .failure(error):
+                    completion(.failure(error))
+                case let .success(response):
+                    completion(.success(()))
+                }
             }
-        }
 
 //        authTokenProvider.freshAuthToken()
 //            .flatMap { accessToken in
