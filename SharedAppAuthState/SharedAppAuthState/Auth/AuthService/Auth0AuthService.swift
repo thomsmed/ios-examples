@@ -121,6 +121,14 @@ extension Auth0AuthService: AuthTokenProvider {
         
         authState.performAction { (accessToken, idToken, error) in
             if let error = error {
+                let nsError = error as NSError
+                let oidErrorCode = OIDErrorCode(rawValue: nsError.code)
+
+                if case .networkError = oidErrorCode ?? .networkError, let accessToken = accessToken {
+                    // Network error, so assume the token is still valid
+                    return action(.success(accessToken))
+                }
+
                 return action(.failure(error))
             }
             

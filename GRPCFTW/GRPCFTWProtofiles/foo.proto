@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package grpcftw;
+
+import "google/protobuf/empty.proto";
+
+message ListFooRequest {
+  google.protobuf.Empty empty = 1;
+}
+
+message GetFooRequest {
+  google.protobuf.Empty empty = 1;
+}
+
+message GetFooResponse {
+  google.protobuf.Empty empty = 1;
+}
+
+message SetFooRequest {
+  google.protobuf.Empty empty = 1;
+}
+
+message SetFooResponse {
+  google.protobuf.Empty empty = 1;
+}
+
+message UpdateFooRequest {
+  google.protobuf.Empty empty = 1;
+}
+
+message UpdateFooResponse {
+  google.protobuf.Empty empty = 1;
+}
+
+message DeleteFooRequest {
+  google.protobuf.Empty empty = 1;
+}
+
+message DeleteFooResponse {
+  google.protobuf.Empty empty = 1;
+}
+
+service FooService {
+  rpc ListFoo(ListFooRequest) returns (stream GetFooResponse);
+  rpc GetFoo(GetFooRequest) returns (GetFooResponse);
+  rpc SetFoo(SetFooRequest) returns (SetFooResponse);
+  rpc UpdateFoo(UpdateFooRequest) returns (UpdateFooResponse);
+  rpc DeleteFoo(DeleteFooRequest) returns (DeleteFooResponse);
+}
