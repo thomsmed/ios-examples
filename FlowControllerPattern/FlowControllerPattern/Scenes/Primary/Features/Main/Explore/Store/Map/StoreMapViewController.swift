@@ -21,7 +21,7 @@ final class StoreMapViewController: UIViewController {
 
 }
 
-// MARK: Public methods
+// MARK: StoreMapViewHolder
 
 extension StoreMapViewController: StoreMapViewHolder {
 
