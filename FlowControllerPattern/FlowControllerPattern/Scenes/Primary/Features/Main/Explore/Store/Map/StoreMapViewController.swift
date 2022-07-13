@@ -17,6 +17,8 @@ final class StoreMapViewController: UIViewController {
 
     override func loadView() {
         view = storeMapView
+
+        view.backgroundColor = .systemBackground
     }
 
 }

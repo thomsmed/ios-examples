@@ -49,7 +49,7 @@ extension DefaultStoreFlowHost: StoreFlowHost {
 
             flowController?.continueToBookingAnd(startAt: bookingPage, with: storeId, and: nil)
         case .list:
-            let storeListViewHolder = flowFactory.makeStoreListViewHolder()
+            let storeListViewHolder = flowFactory.makeStoreListViewHolder(with: self)
 
             setViewController(storeListViewHolder, using: .dissolve)
 
@@ -90,6 +90,11 @@ extension DefaultStoreFlowHost: StoreFlowHost {
 // MARK: StoreFlowController
 
 extension DefaultStoreFlowHost {
+
+    func selectStoreFilterOptions(_ completion: @escaping (StoreFlow.FilterOptions) -> Void) {
+        let storeFilterSheetHolder = flowFactory.makeStoreFilterSheetHolder(passing: completion)
+        present(storeFilterSheetHolder, animated: true)
+    }
 
     func continueToBooking(with storeInfo: StoreInfo) {
         flowController?.continueToBookingAnd(

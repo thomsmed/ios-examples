@@ -8,6 +8,7 @@
 import UIKit
 
 protocol StoreFlowController: AnyObject {
+    func selectStoreFilterOptions(_ completion: @escaping (StoreFlow.FilterOptions) -> Void)
     func continueToBooking(with storeInfo: StoreInfo)
 }
 

@@ -296,6 +296,7 @@ extension DefaultAppFlowFactory: BookingFlowFactory {
 
 ## TODO
 - Register for remote notifications
+- Deep links from remote notifications
 - Handle app lifecycle events
 - Networking
 - Remote config / feature toggling

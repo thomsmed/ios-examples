@@ -9,7 +9,10 @@ import Foundation
 
 protocol StoreFlowFactory: AnyObject {
     func makeStoreMapViewHolder() -> StoreMapViewHolder
-    func makeStoreListViewHolder() -> StoreListViewHolder
+    func makeStoreListViewHolder(with flowController: StoreFlowController) -> StoreListViewHolder
+    func makeStoreFilterSheetHolder(
+        passing completion: @escaping (StoreFlow.FilterOptions) -> Void
+    ) -> StoreFilterSheetHolder
 }
 
 extension DefaultAppFlowFactory: StoreFlowFactory {
@@ -18,7 +21,15 @@ extension DefaultAppFlowFactory: StoreFlowFactory {
         StoreMapViewController()
     }
 
-    func makeStoreListViewHolder() -> StoreListViewHolder {
-        StoreListViewController()
+    func makeStoreListViewHolder(with flowController: StoreFlowController) -> StoreListViewHolder {
+        StoreListViewController(viewModel: .init(flowController: flowController))
+    }
+
+    func makeStoreFilterSheetHolder(
+        passing completion: @escaping (StoreFlow.FilterOptions) -> Void
+    ) -> StoreFilterSheetHolder {
+        let storeListFilterSheetHolder = StoreFilterSheetController()
+        storeListFilterSheetHolder.onSelect = completion
+        return storeListFilterSheetHolder
     }
 }
