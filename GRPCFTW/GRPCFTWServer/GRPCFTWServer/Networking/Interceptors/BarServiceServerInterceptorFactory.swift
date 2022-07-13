@@ -1,5 +1,5 @@
 //
-//  Factory.swift
+//  BarServiceServerInterceptorFactory.swift
 //  GRPCFTWServer
 //
 //  Created by Thomas Asheim Smedmann on 25/06/2022.
@@ -8,7 +8,7 @@
 import NIO
 import GRPC
 
-final class Factory: Grpcftw_BarServiceServerInterceptorFactoryProtocol {
+final class BarServiceServerInterceptorFactory: Grpcftw_BarServiceServerInterceptorFactoryProtocol {
 
     func makeListBarInterceptors() -> [ServerInterceptor<Grpcftw_ListBarRequest, Grpcftw_GetBarResponse>] {
         []

@@ -20,32 +20,41 @@ extension DefaultBarServiceProvider: Grpcftw_BarServiceProvider {
         nil
     }
 
-    func listBar(request: Grpcftw_ListBarRequest, context: StreamingResponseCallContext<Grpcftw_GetBarResponse>) -> EventLoopFuture<GRPCStatus> {
-        context.sendResponse(.with({ _ in })).flatMap { _ in
+    func listBar(
+        request: Grpcftw_ListBarRequest,
+        context: StreamingResponseCallContext<Grpcftw_GetBarResponse>
+    ) -> EventLoopFuture<GRPCStatus> {
+        context.sendResponse(.init()).whenComplete { result in
             context.statusPromise.completeWith(.success(.ok))
         }
         return context.statusPromise.futureResult
     }
 
-    func getBar(request: Grpcftw_GetBarRequest, context: StatusOnlyCallContext) -> EventLoopFuture<Grpcftw_GetBarResponse> {
-        context.statusPromise.completeWith(.success(.ok))
-        return context.statusPromise.futureResult
+    func getBar(
+        request: Grpcftw_GetBarRequest,
+        context: StatusOnlyCallContext
+    ) -> EventLoopFuture<Grpcftw_GetBarResponse> {
+        return context.eventLoop.makeCompletedFuture(.success(.init()))
     }
 
-    func setBar(request: Grpcftw_SetBarRequest, context: StatusOnlyCallContext) -> EventLoopFuture<Grpcftw_SetBarResponse> {
-        context.statusPromise.completeWith(.success(.ok))
-        return context.statusPromise.futureResult
+    func setBar(
+        request: Grpcftw_SetBarRequest,
+        context: StatusOnlyCallContext
+    ) -> EventLoopFuture<Grpcftw_SetBarResponse> {
+        return context.eventLoop.makeCompletedFuture(.success(.init()))
     }
 
-    func updateBar(request: Grpcftw_UpdateBarRequest, context: StatusOnlyCallContext) -> EventLoopFuture<Grpcftw_UpdateBarResponse> {
-        context.statusPromise.completeWith(.success(.ok))
-        return context.statusPromise.futureResult
+    func updateBar(
+        request: Grpcftw_UpdateBarRequest,
+        context: StatusOnlyCallContext
+    ) -> EventLoopFuture<Grpcftw_UpdateBarResponse> {
+        return context.eventLoop.makeCompletedFuture(.success(.init()))
     }
 
-    func deleteBar(request: Grpcftw_DeleteBarRequest, context: StatusOnlyCallContext) -> EventLoopFuture<Grpcftw_DeleteBarResponse> {
-        context.statusPromise.completeWith(.success(.ok))
-        return context.statusPromise.futureResult
+    func deleteBar(
+        request: Grpcftw_DeleteBarRequest,
+        context: StatusOnlyCallContext
+    ) -> EventLoopFuture<Grpcftw_DeleteBarResponse> {
+        return context.eventLoop.makeCompletedFuture(.success(.init()))
     }
-
-
 }

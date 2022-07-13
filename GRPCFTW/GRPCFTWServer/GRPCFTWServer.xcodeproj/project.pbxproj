@@ -12,7 +12,7 @@
 		ED1E8AFB286746BA00236C6C /* bar.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1E8AF7286746BA00236C6C /* bar.pb.swift */; };
 		ED1E8AFC286746BA00236C6C /* foo.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1E8AF8286746BA00236C6C /* foo.pb.swift */; };
 		ED1E8AFE2867471900236C6C /* DefaultFooServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1E8AFD2867471900236C6C /* DefaultFooServiceProvider.swift */; };
-		ED1E8B012867979800236C6C /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1E8B002867979800236C6C /* Factory.swift */; };
+		ED1E8B012867979800236C6C /* BarServiceServerInterceptorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1E8B002867979800236C6C /* BarServiceServerInterceptorFactory.swift */; };
 		ED1E8B042867980300236C6C /* LoggingInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1E8B032867980300236C6C /* LoggingInterceptor.swift */; };
 		EDF496E5284E387100B49E38 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF496E4284E387100B49E38 /* main.swift */; };
 		EDF49710284E73FC00B49E38 /* DefaultBarServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF4970F284E73FC00B49E38 /* DefaultBarServiceProvider.swift */; };
@@ -37,8 +37,9 @@
 		ED1E8AF7286746BA00236C6C /* bar.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = bar.pb.swift; sourceTree = "<group>"; };
 		ED1E8AF8286746BA00236C6C /* foo.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = foo.pb.swift; sourceTree = "<group>"; };
 		ED1E8AFD2867471900236C6C /* DefaultFooServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultFooServiceProvider.swift; sourceTree = "<group>"; };
-		ED1E8B002867979800236C6C /* Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
+		ED1E8B002867979800236C6C /* BarServiceServerInterceptorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarServiceServerInterceptorFactory.swift; sourceTree = "<group>"; };
 		ED1E8B032867980300236C6C /* LoggingInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingInterceptor.swift; sourceTree = "<group>"; };
+		ED29E42D287F287C009D4EC6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		EDF496E1284E387100B49E38 /* GRPCFTWServer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GRPCFTWServer; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDF496E4284E387100B49E38 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		EDF4970F284E73FC00B49E38 /* DefaultBarServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultBarServiceProvider.swift; sourceTree = "<group>"; };
@@ -59,7 +60,7 @@
 		ED1E8AFF2867977900236C6C /* Interceptors */ = {
 			isa = PBXGroup;
 			children = (
-				ED1E8B002867979800236C6C /* Factory.swift */,
+				ED1E8B002867979800236C6C /* BarServiceServerInterceptorFactory.swift */,
 				ED1E8B02286797F200236C6C /* Logging */,
 			);
 			path = Interceptors;
@@ -76,6 +77,7 @@
 		EDF496D8284E387100B49E38 = {
 			isa = PBXGroup;
 			children = (
+				ED29E42D287F287C009D4EC6 /* README.md */,
 				EDF496E3284E387100B49E38 /* GRPCFTWServer */,
 				EDF496E2284E387100B49E38 /* Products */,
 			);
@@ -192,7 +194,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED1E8B012867979800236C6C /* Factory.swift in Sources */,
+				ED1E8B012867979800236C6C /* BarServiceServerInterceptorFactory.swift in Sources */,
 				ED1E8AFB286746BA00236C6C /* bar.pb.swift in Sources */,
 				ED1E8AFE2867471900236C6C /* DefaultFooServiceProvider.swift in Sources */,
 				ED1E8AFC286746BA00236C6C /* foo.pb.swift in Sources */,
