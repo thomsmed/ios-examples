@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol PathComponent: Equatable {
+protocol PathRepresentable: Equatable {
     static func from(_ pathComponents: [String], and queryItems: [URLQueryItem]) -> Self
 }
 
@@ -18,14 +18,14 @@ private extension String {
     }
 }
 
-enum PrimaryPage: PathComponent {
-    enum Onboarding: PathComponent {
+enum PrimaryPage: PathRepresentable {
+    enum Onboarding: PathRepresentable {
         case home
     }
 
-    enum Main: PathComponent {
-        enum Explore: PathComponent {
-            enum Store: PathComponent {
+    enum Main: PathRepresentable {
+        enum Explore: PathRepresentable {
+            enum Store: PathRepresentable {
                 case map(page: Booking? = nil, storeId: String? = nil)
                 case list
             }
@@ -34,8 +34,8 @@ enum PrimaryPage: PathComponent {
             case referral
         }
 
-        enum Activity: PathComponent {
-            enum Purchases: PathComponent {
+        enum Activity: PathRepresentable {
+            enum Purchases: PathRepresentable {
                 case active
                 case history
             }
@@ -43,12 +43,12 @@ enum PrimaryPage: PathComponent {
             case purchases(page: Purchases)
         }
 
-        enum Profile: PathComponent {
+        enum Profile: PathRepresentable {
             case home
             case edit
         }
 
-        enum Booking: PathComponent {
+        enum Booking: PathRepresentable {
             struct Details: Equatable {
                 let services: [String]
                 let products: [String]
