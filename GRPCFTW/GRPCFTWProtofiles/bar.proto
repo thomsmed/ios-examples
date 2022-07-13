@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package grpcftw;
+
+import "google/protobuf/empty.proto";
+
+message ListBarRequest {
+  google.protobuf.Empty empty = 1;
+}
+
+message GetBarRequest {
+  google.protobuf.Empty empty = 1;
+}
+
+message GetBarResponse {
+  google.protobuf.Empty empty = 1;
+}
+
+message SetBarRequest {
+  google.protobuf.Empty empty = 1;
+}
+
+message SetBarResponse {
+  google.protobuf.Empty empty = 1;
+}
+
+message UpdateBarRequest {
+  google.protobuf.Empty empty = 1;
+}
+
+message UpdateBarResponse {
+  google.protobuf.Empty empty = 1;
+}
+
+message DeleteBarRequest {
+  google.protobuf.Empty empty = 1;
+}
+
+message DeleteBarResponse {
+  google.protobuf.Empty empty = 1;
+}
+
+service BarService {
+  rpc ListBar(ListBarRequest) returns (stream GetBarResponse);
+  rpc GetBar(GetBarRequest) returns (GetBarResponse);
+  rpc SetBar(SetBarRequest) returns (SetBarResponse);
+  rpc UpdateBar(UpdateBarRequest) returns (UpdateBarResponse);
+  rpc DeleteBar(DeleteBarRequest) returns (DeleteBarResponse);
+}

@@ -10,6 +10,7 @@ A collection of iOS examples.
 - [Custom Container View Controller](ContainerViewController)
 - [Dynamic sized bottom sheet controller](BottomSheetController)
 - [Dynamic sized dialog controller](DialogController)
+- [gRPC Swift](GRPCFTW)
 
 These examples are created as a way to learn. Feel free to use them as you please.
 Feedback are also welcome.

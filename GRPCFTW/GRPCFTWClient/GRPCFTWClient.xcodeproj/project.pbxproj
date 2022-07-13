@@ -1,0 +1,490 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		ED1E8ADA2867234900236C6C /* FooServiceClientInterceptorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1E8AD92867234900236C6C /* FooServiceClientInterceptorFactory.swift */; };
+		ED1E8ADF28672D9500236C6C /* bar.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1E8ADB28672D9500236C6C /* bar.grpc.swift */; };
+		ED1E8AE028672D9500236C6C /* foo.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1E8ADC28672D9500236C6C /* foo.grpc.swift */; };
+		ED1E8AE128672D9500236C6C /* bar.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1E8ADD28672D9500236C6C /* bar.pb.swift */; };
+		ED1E8AE228672D9500236C6C /* foo.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1E8ADE28672D9500236C6C /* foo.pb.swift */; };
+		ED1E8AE8286735B900236C6C /* LoggingInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1E8AE7286735B900236C6C /* LoggingInterceptor.swift */; };
+		ED1E8AED2867369100236C6C /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1E8AEC2867369100236C6C /* AuthenticationService.swift */; };
+		ED1E8AEF28673A9900236C6C /* GRPCClient+makeUnaryCallWithRetry.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1E8AEE28673A9900236C6C /* GRPCClient+makeUnaryCallWithRetry.swift */; };
+		ED1E8AF128673ABF00236C6C /* GRPCClient+makeStreamingCallWithRetry.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1E8AF028673ABF00236C6C /* GRPCClient+makeStreamingCallWithRetry.swift */; };
+		ED1E8B062867AB4300236C6C /* FooService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1E8B052867AB4300236C6C /* FooService.swift */; };
+		ED1E8B0D28697F2F00236C6C /* AuthTokenInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1E8B0C28697F2F00236C6C /* AuthTokenInterceptor.swift */; };
+		EDF496C5284E374A00B49E38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF496C4284E374A00B49E38 /* AppDelegate.swift */; };
+		EDF496C7284E374A00B49E38 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF496C6284E374A00B49E38 /* SceneDelegate.swift */; };
+		EDF496C9284E374A00B49E38 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF496C8284E374A00B49E38 /* ViewController.swift */; };
+		EDF496CE284E374B00B49E38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDF496CD284E374B00B49E38 /* Assets.xcassets */; };
+		EDF496D1284E374B00B49E38 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDF496CF284E374B00B49E38 /* LaunchScreen.storyboard */; };
+		EDF496ED284E3A5600B49E38 /* ClientFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF496EC284E3A5600B49E38 /* ClientFactory.swift */; };
+		EDF49716284E754400B49E38 /* GRPC in Frameworks */ = {isa = PBXBuildFile; productRef = EDF49715284E754400B49E38 /* GRPC */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		ED1E8AD92867234900236C6C /* FooServiceClientInterceptorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooServiceClientInterceptorFactory.swift; sourceTree = "<group>"; };
+		ED1E8ADB28672D9500236C6C /* bar.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = bar.grpc.swift; sourceTree = "<group>"; };
+		ED1E8ADC28672D9500236C6C /* foo.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = foo.grpc.swift; sourceTree = "<group>"; };
+		ED1E8ADD28672D9500236C6C /* bar.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = bar.pb.swift; sourceTree = "<group>"; };
+		ED1E8ADE28672D9500236C6C /* foo.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = foo.pb.swift; sourceTree = "<group>"; };
+		ED1E8AE7286735B900236C6C /* LoggingInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingInterceptor.swift; sourceTree = "<group>"; };
+		ED1E8AEC2867369100236C6C /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
+		ED1E8AEE28673A9900236C6C /* GRPCClient+makeUnaryCallWithRetry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GRPCClient+makeUnaryCallWithRetry.swift"; sourceTree = "<group>"; };
+		ED1E8AF028673ABF00236C6C /* GRPCClient+makeStreamingCallWithRetry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GRPCClient+makeStreamingCallWithRetry.swift"; sourceTree = "<group>"; };
+		ED1E8B052867AB4300236C6C /* FooService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooService.swift; sourceTree = "<group>"; };
+		ED1E8B0C28697F2F00236C6C /* AuthTokenInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTokenInterceptor.swift; sourceTree = "<group>"; };
+		ED29E42C287F22F2009D4EC6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		EDF496C1284E374A00B49E38 /* GRPCFTWClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GRPCFTWClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDF496C4284E374A00B49E38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EDF496C6284E374A00B49E38 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		EDF496C8284E374A00B49E38 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EDF496CD284E374B00B49E38 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EDF496D0284E374B00B49E38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EDF496D2284E374B00B49E38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EDF496EC284E3A5600B49E38 /* ClientFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientFactory.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EDF496BE284E374A00B49E38 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDF49716284E754400B49E38 /* GRPC in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		ED1E8AD8286722F300236C6C /* Interceptors */ = {
+			isa = PBXGroup;
+			children = (
+				ED1E8B0B28697F0F00236C6C /* AuthToken */,
+				ED1E8AE52867350B00236C6C /* Logging */,
+				ED1E8AD92867234900236C6C /* FooServiceClientInterceptorFactory.swift */,
+			);
+			path = Interceptors;
+			sourceTree = "<group>";
+		};
+		ED1E8AE52867350B00236C6C /* Logging */ = {
+			isa = PBXGroup;
+			children = (
+				ED1E8AE7286735B900236C6C /* LoggingInterceptor.swift */,
+			);
+			path = Logging;
+			sourceTree = "<group>";
+		};
+		ED1E8AEB2867367E00236C6C /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				ED1E8AEC2867369100236C6C /* AuthenticationService.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		ED1E8B072867AB4700236C6C /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				ED1E8B052867AB4300236C6C /* FooService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		ED1E8B0B28697F0F00236C6C /* AuthToken */ = {
+			isa = PBXGroup;
+			children = (
+				ED1E8B0C28697F2F00236C6C /* AuthTokenInterceptor.swift */,
+			);
+			path = AuthToken;
+			sourceTree = "<group>";
+		};
+		EDF496B8284E374900B49E38 = {
+			isa = PBXGroup;
+			children = (
+				ED29E42C287F22F2009D4EC6 /* README.md */,
+				EDF496C3284E374A00B49E38 /* GRPCFTWClient */,
+				EDF496C2284E374A00B49E38 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EDF496C2284E374A00B49E38 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EDF496C1284E374A00B49E38 /* GRPCFTWClient.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EDF496C3284E374A00B49E38 /* GRPCFTWClient */ = {
+			isa = PBXGroup;
+			children = (
+				EDF496C4284E374A00B49E38 /* AppDelegate.swift */,
+				EDF496C6284E374A00B49E38 /* SceneDelegate.swift */,
+				EDF496C8284E374A00B49E38 /* ViewController.swift */,
+				ED1E8B072867AB4700236C6C /* Services */,
+				ED1E8AEB2867367E00236C6C /* Authentication */,
+				EDF496EB284E3A3E00B49E38 /* Networking */,
+				EDF496CD284E374B00B49E38 /* Assets.xcassets */,
+				EDF496CF284E374B00B49E38 /* LaunchScreen.storyboard */,
+				EDF496D2284E374B00B49E38 /* Info.plist */,
+			);
+			path = GRPCFTWClient;
+			sourceTree = "<group>";
+		};
+		EDF496EB284E3A3E00B49E38 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				EDF496EC284E3A5600B49E38 /* ClientFactory.swift */,
+				ED1E8AEE28673A9900236C6C /* GRPCClient+makeUnaryCallWithRetry.swift */,
+				ED1E8AF028673ABF00236C6C /* GRPCClient+makeStreamingCallWithRetry.swift */,
+				ED1E8AD8286722F300236C6C /* Interceptors */,
+				EDF496F0284E481A00B49E38 /* Models */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		EDF496F0284E481A00B49E38 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EDF496F2284E71E300B49E38 /* Generated */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		EDF496F2284E71E300B49E38 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				ED1E8ADB28672D9500236C6C /* bar.grpc.swift */,
+				ED1E8ADD28672D9500236C6C /* bar.pb.swift */,
+				ED1E8ADC28672D9500236C6C /* foo.grpc.swift */,
+				ED1E8ADE28672D9500236C6C /* foo.pb.swift */,
+			);
+			path = Generated;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EDF496C0284E374A00B49E38 /* GRPCFTWClient */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EDF496D5284E374B00B49E38 /* Build configuration list for PBXNativeTarget "GRPCFTWClient" */;
+			buildPhases = (
+				EDF496BD284E374A00B49E38 /* Sources */,
+				EDF496BE284E374A00B49E38 /* Frameworks */,
+				EDF496BF284E374A00B49E38 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GRPCFTWClient;
+			packageProductDependencies = (
+				EDF49715284E754400B49E38 /* GRPC */,
+			);
+			productName = GRPCFTWClient;
+			productReference = EDF496C1284E374A00B49E38 /* GRPCFTWClient.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EDF496B9284E374900B49E38 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1330;
+				LastUpgradeCheck = 1330;
+				TargetAttributes = {
+					EDF496C0284E374A00B49E38 = {
+						CreatedOnToolsVersion = 13.3.1;
+					};
+				};
+			};
+			buildConfigurationList = EDF496BC284E374900B49E38 /* Build configuration list for PBXProject "GRPCFTWClient" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EDF496B8284E374900B49E38;
+			packageReferences = (
+				EDF49714284E754400B49E38 /* XCRemoteSwiftPackageReference "grpc-swift" */,
+			);
+			productRefGroup = EDF496C2284E374A00B49E38 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EDF496C0284E374A00B49E38 /* GRPCFTWClient */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EDF496BF284E374A00B49E38 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDF496D1284E374B00B49E38 /* LaunchScreen.storyboard in Resources */,
+				EDF496CE284E374B00B49E38 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EDF496BD284E374A00B49E38 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED1E8ADA2867234900236C6C /* FooServiceClientInterceptorFactory.swift in Sources */,
+				ED1E8AE228672D9500236C6C /* foo.pb.swift in Sources */,
+				ED1E8AE028672D9500236C6C /* foo.grpc.swift in Sources */,
+				ED1E8AE128672D9500236C6C /* bar.pb.swift in Sources */,
+				ED1E8B062867AB4300236C6C /* FooService.swift in Sources */,
+				ED1E8AEF28673A9900236C6C /* GRPCClient+makeUnaryCallWithRetry.swift in Sources */,
+				ED1E8AF128673ABF00236C6C /* GRPCClient+makeStreamingCallWithRetry.swift in Sources */,
+				EDF496C9284E374A00B49E38 /* ViewController.swift in Sources */,
+				EDF496C5284E374A00B49E38 /* AppDelegate.swift in Sources */,
+				ED1E8ADF28672D9500236C6C /* bar.grpc.swift in Sources */,
+				EDF496ED284E3A5600B49E38 /* ClientFactory.swift in Sources */,
+				ED1E8AE8286735B900236C6C /* LoggingInterceptor.swift in Sources */,
+				ED1E8AED2867369100236C6C /* AuthenticationService.swift in Sources */,
+				EDF496C7284E374A00B49E38 /* SceneDelegate.swift in Sources */,
+				ED1E8B0D28697F2F00236C6C /* AuthTokenInterceptor.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		EDF496CF284E374B00B49E38 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EDF496D0284E374B00B49E38 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EDF496D3284E374B00B49E38 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EDF496D4284E374B00B49E38 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EDF496D6284E374B00B49E38 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GRPCFTWClient/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ios.example.GRPCFTWClient;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EDF496D7284E374B00B49E38 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GRPCFTWClient/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ios.example.GRPCFTWClient;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EDF496BC284E374900B49E38 /* Build configuration list for PBXProject "GRPCFTWClient" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDF496D3284E374B00B49E38 /* Debug */,
+				EDF496D4284E374B00B49E38 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EDF496D5284E374B00B49E38 /* Build configuration list for PBXNativeTarget "GRPCFTWClient" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDF496D6284E374B00B49E38 /* Debug */,
+				EDF496D7284E374B00B49E38 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EDF49714284E754400B49E38 /* XCRemoteSwiftPackageReference "grpc-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/grpc/grpc-swift";
+			requirement = {
+				kind = exactVersion;
+				version = 1.7.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EDF49715284E754400B49E38 /* GRPC */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EDF49714284E754400B49E38 /* XCRemoteSwiftPackageReference "grpc-swift" */;
+			productName = GRPC;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = EDF496B9284E374900B49E38 /* Project object */;
+}
