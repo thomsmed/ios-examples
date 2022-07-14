@@ -31,13 +31,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let onboardingComplete = false // TODO: Fetch from settings / UserDefaults
         if onboardingComplete {
-            if let urlComponents = Extractor.urlComponents(from: connectionOptions) {
-                flowHost.start(.from(urlComponents))
+            if
+                let urlComponents = Extractor.urlComponents(from: connectionOptions),
+                let appPage: AppPage = .from(urlComponents),
+                case let .primary(primaryPage) = appPage
+            {
+                flowHost.start(primaryPage)
             } else {
                 flowHost.start(.main(page: .explore(page: .store(page: .map(page: nil, storeId: nil)))))
             }
-        } else if let urlComponents = Extractor.urlComponents(from: UIPasteboard.general) {
-            flowHost.start(.from(urlComponents))
+        } else if
+            let urlComponents = Extractor.urlComponents(from: UIPasteboard.general),
+            let appPage: AppPage = .from(urlComponents),
+            case let .primary(primaryPage) = appPage
+        {
+            flowHost.start(primaryPage)
         } else {
             flowHost.start(.onboarding(page: .home))
         }
@@ -89,11 +97,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 extension SceneDelegate {
 
     func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
-        guard let urlComponents = Extractor.urlComponents(from: userActivity) else {
+        guard
+            let urlComponents = Extractor.urlComponents(from: userActivity),
+            let appPage: AppPage = .from(urlComponents)
+        else {
             return
         }
 
-        appFlowHost?.flowHost(for: scene).go(to: .from(urlComponents))
+        appFlowHost?.go(to: appPage)
     }
 }
 

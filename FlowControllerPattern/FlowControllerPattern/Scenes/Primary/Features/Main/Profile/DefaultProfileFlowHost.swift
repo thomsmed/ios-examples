@@ -25,11 +25,11 @@ final class DefaultProfileFlowHost: UINavigationController {
 
 extension DefaultProfileFlowHost: ProfileFlowHost {
 
-    func start(_ page: PrimaryPage.Main.Profile) {
+    func start(_ page: AppPage.Primary.Main.Profile) {
         
     }
 
-    func go(to page: PrimaryPage.Main.Profile) {
+    func go(to page: AppPage.Primary.Main.Profile) {
 
     }
 }

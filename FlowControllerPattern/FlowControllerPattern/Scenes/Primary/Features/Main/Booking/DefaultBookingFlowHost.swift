@@ -31,7 +31,7 @@ final class DefaultBookingFlowHost: UIViewController {
 
 extension DefaultBookingFlowHost: BookingFlowHost {
 
-    func start(_ page: PrimaryPage.Main.Booking, with storeId: String, and storeInfo: StoreInfo?) {
+    func start(_ page: AppPage.Primary.Main.Booking, with storeId: String, and storeInfo: StoreInfo?) {
         let shoppingCart = flowFactory.makeShoppingCart()
 
         let storeViewHolder = flowFactory.makeStoreViewHolder(
@@ -47,7 +47,7 @@ extension DefaultBookingFlowHost: BookingFlowHost {
         self.shoppingCart = shoppingCart
     }
 
-    func go(to page: PrimaryPage.Main.Booking) {
+    func go(to page: AppPage.Primary.Main.Booking) {
 
     }
 }

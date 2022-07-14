@@ -49,6 +49,13 @@ extension DefaultAppFlowHost: AppFlowHost {
     func discardFlowHost(for scene: UIScene) {
         flowHostsByScene[scene] = nil
     }
+
+    func go(to page: AppPage) {
+        switch page {
+        case let .primary(page):
+            flowHostsByScene.first?.value.go(to: page)
+        }
+    }
 }
 
 
@@ -84,8 +91,11 @@ extension DefaultAppFlowHost: UNUserNotificationCenterDelegate {
         case "com.thomsmed.UNNotificationCustomActionIdentifier":
             print(userInfo)
         case UNNotificationDefaultActionIdentifier:
-            if let urlComponents = Extractor.urlComponents(from: response) {
-                flowHostsByScene.first?.value.go(to: .from(urlComponents))
+            if
+                let urlComponents = Extractor.urlComponents(from: response),
+                let appPage: AppPage = .from(urlComponents)
+            {
+                go(to: appPage)
             } else {
                 print(categoryIdentifier)
             }

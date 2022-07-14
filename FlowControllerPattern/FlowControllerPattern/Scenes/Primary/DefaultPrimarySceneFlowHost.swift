@@ -25,7 +25,7 @@ final class DefaultPrimarySceneFlowHost: SinglePageController {
 
 extension DefaultPrimarySceneFlowHost: PrimarySceneFlowHost {
 
-    func start(_ page: PrimaryPage) {
+    func start(_ page: AppPage.Primary) {
         switch page {
         case let .onboarding(page):
             let onboardingFlowHost = flowFactory.makeOnboardingFlowHost(with: self)
@@ -38,7 +38,7 @@ extension DefaultPrimarySceneFlowHost: PrimarySceneFlowHost {
         }
     }
 
-    func go(to page: PrimaryPage) {
+    func go(to page: AppPage.Primary) {
         switch page {
         case let .onboarding(page):
             if let onboardingFlowHost = viewController as? OnboardingFlowHost {
@@ -78,7 +78,7 @@ extension DefaultPrimarySceneFlowHost: PrimarySceneFlowHost {
 
 extension DefaultPrimarySceneFlowHost {
 
-    func onboardingComplete(continueTo mainPage: PrimaryPage.Main) {
+    func onboardingComplete(continueTo mainPage: AppPage.Primary.Main) {
         go(to: .main(page: mainPage))
     }
 }

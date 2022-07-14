@@ -8,10 +8,10 @@
 import UIKit
 
 protocol OnboardingFlowController: AnyObject {
-    func onboardingComplete(continueTo mainPage: PrimaryPage.Main)
+    func onboardingComplete(continueTo mainPage: AppPage.Primary.Main)
 }
 
 protocol OnboardingFlowHost: OnboardingFlowController & UIViewController {
-    func start(_ page: PrimaryPage.Onboarding)
-    func go(to page: PrimaryPage.Onboarding)
+    func start(_ page: AppPage.Primary.Onboarding)
+    func go(to page: AppPage.Primary.Onboarding)
 }

@@ -25,19 +25,19 @@ final class DefaultOnboardingFlowHost: SinglePageController {
 
 extension DefaultOnboardingFlowHost: OnboardingFlowHost {
 
-    func start(_ page: PrimaryPage.Onboarding) {
+    func start(_ page: AppPage.Primary.Onboarding) {
         let onboardingViewHolder = flowFactory.makeOnboardingViewHolder(with: self)
         setViewController(onboardingViewHolder, using: .none)
     }
 
-    func go(to page: PrimaryPage.Onboarding) {
+    func go(to page: AppPage.Primary.Onboarding) {
         
     }
 }
 
 extension DefaultOnboardingFlowHost {
 
-    func onboardingComplete(continueTo mainPage: PrimaryPage.Main) {
+    func onboardingComplete(continueTo mainPage: AppPage.Primary.Main) {
         flowController?.onboardingComplete(continueTo: mainPage)
     }
 }

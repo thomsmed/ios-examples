@@ -13,6 +13,6 @@ protocol StoreFlowController: AnyObject {
 }
 
 protocol StoreFlowHost: StoreFlowController & UIViewController {
-    func start(_ page: PrimaryPage.Main.Explore.Store)
-    func go(to page: PrimaryPage.Main.Explore.Store)
+    func start(_ page: AppPage.Primary.Main.Explore.Store)
+    func go(to page: AppPage.Primary.Main.Explore.Store)
 }

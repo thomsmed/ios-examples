@@ -8,12 +8,12 @@
 import UIKit
 
 protocol PrimarySceneFlowController: AnyObject {
-    func onboardingComplete(continueTo mainPage: PrimaryPage.Main)
+    func onboardingComplete(continueTo mainPage: AppPage.Primary.Main)
 }
 
 protocol PrimarySceneFlowHost: PrimarySceneFlowController & UIViewController {
-    func start(_ page: PrimaryPage)
-    func go(to page: PrimaryPage)
+    func start(_ page: AppPage.Primary)
+    func go(to page: AppPage.Primary)
     func sceneDidBecomeActive()
     func sceneWillResignActive()
     func sceneWillEnterForeground()

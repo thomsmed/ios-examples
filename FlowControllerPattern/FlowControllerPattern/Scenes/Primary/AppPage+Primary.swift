@@ -7,89 +7,62 @@
 
 import Foundation
 
-protocol PathRepresentable: Equatable {
-    static func from(_ pathComponents: [String], and queryItems: [URLQueryItem]) -> Self
-}
+extension AppPage {
 
-private extension String {
-
-    func isCaseInsensitiveEqual(to otherString: String) -> Bool {
-        range(of: otherString, options: .caseInsensitive) != nil
-    }
-}
-
-enum PrimaryPage: PathRepresentable {
-    enum Onboarding: PathRepresentable {
-        case home
-    }
-
-    enum Main: PathRepresentable {
-        enum Explore: PathRepresentable {
-            enum Store: PathRepresentable {
-                case map(page: Booking? = nil, storeId: String? = nil)
-                case list
-            }
-
-            case store(page: Store)
-            case referral
-        }
-
-        enum Activity: PathRepresentable {
-            enum Purchases: PathRepresentable {
-                case active
-                case history
-            }
-
-            case purchases(page: Purchases)
-        }
-
-        enum Profile: PathRepresentable {
+    enum Primary: PathRepresentable {
+        enum Onboarding: PathRepresentable {
             case home
-            case edit
         }
 
-        enum Booking: PathRepresentable {
-            struct Details: Equatable {
-                let services: [String]
-                let products: [String]
+        enum Main: PathRepresentable {
+            enum Explore: PathRepresentable {
+                enum Store: PathRepresentable {
+                    case map(page: Booking? = nil, storeId: String? = nil)
+                    case list
+                }
+
+                case store(page: Store)
+                case referral
             }
 
-            case home(details: Details)
-            case checkout(details: Details)
+            enum Activity: PathRepresentable {
+                enum Purchases: PathRepresentable {
+                    case active
+                    case history
+                }
+
+                case purchases(page: Purchases)
+            }
+
+            enum Profile: PathRepresentable {
+                case home
+                case edit
+            }
+
+            enum Booking: PathRepresentable {
+                struct Details: Equatable {
+                    let services: [String]
+                    let products: [String]
+                }
+
+                case home(details: Details)
+                case checkout(details: Details)
+            }
+
+            case explore(page: Explore)
+            case activity(page: Activity)
+            case profile(page: Profile)
+            case booking(page: Booking, storeId: String, info: StoreInfo? = nil)
         }
 
-        case explore(page: Explore)
-        case activity(page: Activity)
-        case profile(page: Profile)
-        case booking(page: Booking, storeId: String, info: StoreInfo? = nil)
-    }
-
-    case onboarding(page: Onboarding)
-    case main(page: Main)
-}
-
-extension PrimaryPage {
-
-    static func from(_ urlComponents: URLComponents) -> PrimaryPage {
-        let path = urlComponents.path
-        let queryItems = urlComponents.queryItems ?? []
-        let pathComponents = path.components(separatedBy: "/")
-
-        // Example paths:
-        // ".../main/explore/store/map/{storeId}/booking/checkout?service={service}&product={product}"
-        // ".../main/booking/checkout?service={service}&product={product}"
-
-        if pathComponents.isEmpty {
-            return .main(page: .explore(page: .store(page: .map(page: nil, storeId: nil))))
-        }
-
-        return .from(pathComponents, and: queryItems)
+        case onboarding(page: Onboarding)
+        case main(page: Main)
     }
 }
 
-extension PrimaryPage {
+extension AppPage.Primary {
 
-    static func from(_ pathComponents: [String], and queryItems: [URLQueryItem]) -> PrimaryPage {
+    static func from(_ pathComponents: [String], and queryItems: [URLQueryItem]) -> AppPage.Primary {
         guard let pathComponent = pathComponents.first else {
             return .main(page: .explore(page: .store(page: .map(page: nil, storeId: nil))))
         }
@@ -102,16 +75,16 @@ extension PrimaryPage {
     }
 }
 
-extension PrimaryPage.Onboarding {
+extension AppPage.Primary.Onboarding {
 
-    static func from(_ pathComponents: [String], and queryItems: [URLQueryItem]) -> PrimaryPage.Onboarding {
+    static func from(_ pathComponents: [String], and queryItems: [URLQueryItem]) -> AppPage.Primary.Onboarding {
         .home
     }
 }
 
-extension PrimaryPage.Main {
+extension AppPage.Primary.Main {
 
-    static func from(_ pathComponents: [String], and queryItems: [URLQueryItem]) -> PrimaryPage.Main {
+    static func from(_ pathComponents: [String], and queryItems: [URLQueryItem]) -> AppPage.Primary.Main {
         guard let pathComponent = pathComponents.first else {
             return .explore(page: .store(page: .map(page: nil, storeId: nil)))
         }
@@ -134,9 +107,9 @@ extension PrimaryPage.Main {
     }
 }
 
-extension PrimaryPage.Main.Explore {
+extension AppPage.Primary.Main.Explore {
 
-    static func from(_ pathComponents: [String], and queryItems: [URLQueryItem]) -> PrimaryPage.Main.Explore {
+    static func from(_ pathComponents: [String], and queryItems: [URLQueryItem]) -> AppPage.Primary.Main.Explore {
         guard let pathComponent = pathComponents.first else {
             return .store(page: .map(page: nil, storeId: nil))
         }
@@ -149,9 +122,9 @@ extension PrimaryPage.Main.Explore {
     }
 }
 
-extension PrimaryPage.Main.Explore.Store {
+extension AppPage.Primary.Main.Explore.Store {
 
-    static func from(_ pathComponents: [String], and queryItems: [URLQueryItem]) -> PrimaryPage.Main.Explore.Store {
+    static func from(_ pathComponents: [String], and queryItems: [URLQueryItem]) -> AppPage.Primary.Main.Explore.Store {
         guard let pathComponent = pathComponents.first else {
             return .map(page: nil, storeId: nil)
         }
@@ -171,9 +144,9 @@ extension PrimaryPage.Main.Explore.Store {
     }
 }
 
-extension PrimaryPage.Main.Activity {
+extension AppPage.Primary.Main.Activity {
 
-    static func from(_ pathComponents: [String], and queryItems: [URLQueryItem]) -> PrimaryPage.Main.Activity {
+    static func from(_ pathComponents: [String], and queryItems: [URLQueryItem]) -> AppPage.Primary.Main.Activity {
         if pathComponents.isEmpty {
             return .purchases(page: .history)
         }
@@ -182,9 +155,9 @@ extension PrimaryPage.Main.Activity {
     }
 }
 
-extension PrimaryPage.Main.Activity.Purchases {
+extension AppPage.Primary.Main.Activity.Purchases {
 
-    static func from(_ pathComponents: [String], and queryItems: [URLQueryItem]) -> PrimaryPage.Main.Activity.Purchases {
+    static func from(_ pathComponents: [String], and queryItems: [URLQueryItem]) -> AppPage.Primary.Main.Activity.Purchases {
         guard let pathComponent = pathComponents.first else {
             return .history
         }
@@ -197,9 +170,9 @@ extension PrimaryPage.Main.Activity.Purchases {
     }
 }
 
-extension PrimaryPage.Main.Profile {
+extension AppPage.Primary.Main.Profile {
 
-    static func from(_ pathComponents: [String], and queryItems: [URLQueryItem]) -> PrimaryPage.Main.Profile {
+    static func from(_ pathComponents: [String], and queryItems: [URLQueryItem]) -> AppPage.Primary.Main.Profile {
         guard let pathComponent = pathComponents.first else {
             return .home
         }
@@ -212,9 +185,9 @@ extension PrimaryPage.Main.Profile {
     }
 }
 
-extension PrimaryPage.Main.Booking {
+extension AppPage.Primary.Main.Booking {
 
-    static func from(_ pathComponents: [String], and queryItems: [URLQueryItem]) -> PrimaryPage.Main.Booking {
+    static func from(_ pathComponents: [String], and queryItems: [URLQueryItem]) -> AppPage.Primary.Main.Booking {
         guard let pathComponent = pathComponents.first else {
             return .home(details: .init(services: [], products: []))
         }

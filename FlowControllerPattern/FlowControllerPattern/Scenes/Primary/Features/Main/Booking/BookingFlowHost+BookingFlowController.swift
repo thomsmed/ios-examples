@@ -14,6 +14,6 @@ protocol BookingFlowController: AnyObject {
 }
 
 protocol BookingFlowHost: BookingFlowController & UIViewController {
-    func start(_ page: PrimaryPage.Main.Booking, with storeId: String, and storeInfo: StoreInfo?)
-    func go(to page: PrimaryPage.Main.Booking)
+    func start(_ page: AppPage.Primary.Main.Booking, with storeId: String, and storeInfo: StoreInfo?)
+    func go(to page: AppPage.Primary.Main.Booking)
 }

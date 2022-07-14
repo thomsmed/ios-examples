@@ -11,7 +11,7 @@ protocol BookingFlowFactory: AnyObject {
     func makeShoppingCart() -> ShoppingCart
     func makeStoreViewHolder(
         with flowController: BookingFlowController,
-        targeting page: PrimaryPage.Main.Booking,
+        targeting page: AppPage.Primary.Main.Booking,
         using shoppingCart: ShoppingCart
     ) -> StoreViewHolder
     func makeCheckoutViewHolder(
@@ -28,7 +28,7 @@ extension DefaultAppFlowFactory: BookingFlowFactory {
 
     func makeStoreViewHolder(
         with flowController: BookingFlowController,
-        targeting page: PrimaryPage.Main.Booking,
+        targeting page: AppPage.Primary.Main.Booking,
         using shoppingCart: ShoppingCart
     ) -> StoreViewHolder {
         let initialServices: [String]

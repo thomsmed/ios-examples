@@ -27,7 +27,7 @@ final class DefaultMainFlowHost: UITabBarController {
 
 extension DefaultMainFlowHost: MainFlowHost {
 
-    func start(_ page: PrimaryPage.Main) {
+    func start(_ page: AppPage.Primary.Main) {
         let exploreFlowHost = flowFactory.makeExploreFlowHost(with: self)
         let activityFlowHost = flowFactory.makeActivityFlowHost(with: self)
         let profileFlowHost = flowFactory.makeProfileFlowHost(with: self)
@@ -58,7 +58,7 @@ extension DefaultMainFlowHost: MainFlowHost {
         self.profileFlowHost = profileFlowHost
     }
 
-    func go(to page: PrimaryPage.Main) {
+    func go(to page: AppPage.Primary.Main) {
         guard viewControllers?.isEmpty == false else {
             return start(page)
         }
@@ -87,23 +87,23 @@ extension DefaultMainFlowHost: MainFlowHost {
 
 extension DefaultMainFlowHost {
 
-    func continueToExploreAnd(startAt explorePage: PrimaryPage.Main.Explore) {
+    func continueToExploreAnd(startAt explorePage: AppPage.Primary.Main.Explore) {
         selectedIndex = 0
         exploreFlowHost?.go(to: explorePage)
     }
 
-    func continueToActivityAnd(startAt activityPage: PrimaryPage.Main.Activity) {
+    func continueToActivityAnd(startAt activityPage: AppPage.Primary.Main.Activity) {
         selectedIndex = 1
         activityFlowHost?.go(to: activityPage)
     }
 
-    func continueToProfileAnd(startAt profilePage: PrimaryPage.Main.Profile) {
+    func continueToProfileAnd(startAt profilePage: AppPage.Primary.Main.Profile) {
         selectedIndex = 2
         profileFlowHost?.go(to: profilePage)
     }
 
     func continueToBookingAnd(
-        startAt bookingPage: PrimaryPage.Main.Booking,
+        startAt bookingPage: AppPage.Primary.Main.Booking,
         with storeId: String,
         and storeInfo: StoreInfo?
     ) {
@@ -114,7 +114,7 @@ extension DefaultMainFlowHost {
         }
     }
 
-    func bookingComplete(continueTo activityPage: PrimaryPage.Main.Activity) {
+    func bookingComplete(continueTo activityPage: AppPage.Primary.Main.Activity) {
         dismiss(animated: true) {
             self.selectedIndex = 1
             self.activityFlowHost?.go(to: activityPage)

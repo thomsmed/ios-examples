@@ -25,7 +25,7 @@ final class DefaultExploreFlowHost: UINavigationController {
 
 extension DefaultExploreFlowHost: ExploreFlowHost {
 
-    func start(_ page: PrimaryPage.Main.Explore) {
+    func start(_ page: AppPage.Primary.Main.Explore) {
         let storeFlowHost = flowFactory.makeStoreFlowHost(with: self)
         var viewControllers: [UIViewController] = [storeFlowHost]
 
@@ -40,7 +40,7 @@ extension DefaultExploreFlowHost: ExploreFlowHost {
         setViewControllers(viewControllers, animated: false)
     }
 
-    func go(to page: PrimaryPage.Main.Explore) {
+    func go(to page: AppPage.Primary.Main.Explore) {
         guard !viewControllers.isEmpty else {
             return start(page)
         }
@@ -68,7 +68,7 @@ extension DefaultExploreFlowHost: ExploreFlowHost {
 extension DefaultExploreFlowHost {
 
     func continueToBookingAnd(
-        startAt bookingPage: PrimaryPage.Main.Booking,
+        startAt bookingPage: AppPage.Primary.Main.Booking,
         with storeId: String,
         and storeInfo: StoreInfo?
     ) {

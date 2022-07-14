@@ -12,6 +12,6 @@ protocol PurchasesFlowController: AnyObject {
 }
 
 protocol PurchasesFlowHost: PurchasesFlowController & UIViewController {
-    func start(_ page: PrimaryPage.Main.Activity.Purchases)
-    func go(to page: PrimaryPage.Main.Activity.Purchases)
+    func start(_ page: AppPage.Primary.Main.Activity.Purchases)
+    func go(to page: AppPage.Primary.Main.Activity.Purchases)
 }
