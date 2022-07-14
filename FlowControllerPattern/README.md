@@ -294,11 +294,19 @@ extension DefaultAppFlowFactory: BookingFlowFactory {
 }
 ```
 
+## Push notifications
+
+```bash
+xcrun simctl push <device-identifier> com.thomsmed.FlowControllerPattern ExamplePush.apns
+
+// For iPhone 13 Pro simulator:
+xcrun simctl push "2216FFD1-B7AF-4676-B888-A0A8F2509FE9" com.thomsmed.FlowControllerPattern ExamplePush.apns
+```
+
 ## TODO
-- Register for remote notifications
-- Deep links from remote notifications
-- Handle app lifecycle events
+- Environment
 - Networking
+- UserDefaults
 - Remote config / feature toggling
 - Localization
 - Handle resources (swiftgen)

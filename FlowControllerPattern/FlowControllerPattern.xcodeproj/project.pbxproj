@@ -132,6 +132,8 @@
 		EDD54052287F711800E5FFFA /* StoreListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreListView.swift; sourceTree = "<group>"; };
 		EDD54054287F75D700E5FFFA /* StoreFlowModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreFlowModels.swift; sourceTree = "<group>"; };
 		EDD54056287F768200E5FFFA /* StoreFilterSheetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreFilterSheetController.swift; sourceTree = "<group>"; };
+		EDD54059287FF70D00E5FFFA /* FlowControllerPattern.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FlowControllerPattern.entitlements; sourceTree = "<group>"; };
+		EDD5405A2880162200E5FFFA /* ExamplePush.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = ExamplePush.apns; sourceTree = "<group>"; };
 		EDD56E71287E28900018E4EC /* AppFlowFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowFactory.swift; sourceTree = "<group>"; };
 		EDD56E73287E28AF0018E4EC /* DefaultAppFlowFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAppFlowFactory.swift; sourceTree = "<group>"; };
 		EDD56E75287E2A430018E4EC /* PrimarySceneFlowFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimarySceneFlowFactory.swift; sourceTree = "<group>"; };
@@ -264,6 +266,7 @@
 			isa = PBXGroup;
 			children = (
 				ED67EF5028775F1B004E2500 /* README.md */,
+				EDD5405A2880162200E5FFFA /* ExamplePush.apns */,
 				ED7549DD28736A3900768561 /* FlowControllerPattern */,
 				ED7549DC28736A3900768561 /* Products */,
 			);
@@ -291,6 +294,7 @@
 		ED7549F228736B1F00768561 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				EDD54059287FF70D00E5FFFA /* FlowControllerPattern.entitlements */,
 				ED7549E928736A3B00768561 /* LaunchScreen.storyboard */,
 				ED7549EC28736A3B00768561 /* Info.plist */,
 				ED7549DE28736A3900768561 /* AppDelegate.swift */,
@@ -835,6 +839,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FlowControllerPattern/App/FlowControllerPattern.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 55ATZ58U6M;
@@ -862,6 +867,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FlowControllerPattern/App/FlowControllerPattern.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 55ATZ58U6M;

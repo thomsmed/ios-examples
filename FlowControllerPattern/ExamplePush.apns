@@ -1,0 +1,13 @@
+{
+    "aps": {
+        "alert" : {
+            "title" : "Test Notification",
+            "subtitle" : "Just a test notification",
+            "body" : "This notification was sent to you for testing purpose"
+        },
+        "sound": "default",
+        "badge": 1,
+        "category" : "LINK"
+    },
+    "link": "https://www.flowcontrolpattern.com//main/explore/store/map/1a2b/booking/checkout?service=123&product=123"
+}

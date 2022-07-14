@@ -10,37 +10,56 @@ import UIKit
 final class Extractor {
 
     static func urlComponents(from connectionOptions: UIScene.ConnectionOptions) -> URLComponents? {
-        guard let userActivity = connectionOptions.userActivities.first else {
+        if let userActivity = connectionOptions.userActivities.first {
+            return urlComponents(from: userActivity)
+        }
+
+        // NOTE:
+        // UNUserNotificationCenterDelegate.userNotificationCenter(_:,didReceive:,withCompletionHandler:) Will still be called if you process the notificationResponse
+        guard let notificationResponse = connectionOptions.notificationResponse else {
             return nil
         }
 
-        return urlComponents(from: userActivity)
+        return urlComponents(from: notificationResponse)
     }
 
     static func urlComponents(from userActivity: NSUserActivity) -> URLComponents? {
         guard
             userActivity.activityType == NSUserActivityTypeBrowsingWeb,
-            let incomingURL = userActivity.webpageURL,
-            let components = URLComponents(url: incomingURL, resolvingAgainstBaseURL: true)
+            let incomingURL = userActivity.webpageURL
         else {
             return nil
         }
 
-        return components
+        return URLComponents(url: incomingURL, resolvingAgainstBaseURL: true)
     }
 
     static func urlComponents(from pasteboard: UIPasteboard) -> URLComponents? {
         guard
             pasteboard.hasURLs,
             let pasteboardURL = pasteboard.url,
-            let _ = pasteboardURL.absoluteString.range(of: "www.flowcontrolpattern.com", options: .caseInsensitive),
-            let components = URLComponents(url: pasteboardURL, resolvingAgainstBaseURL: true)
+            let _ = pasteboardURL.absoluteString.range(of: "www.flowcontrolpattern.com", options: .caseInsensitive)
         else {
             return nil
         }
 
         pasteboard.url = nil
 
-        return components
+        return URLComponents(url: pasteboardURL, resolvingAgainstBaseURL: true)
+    }
+
+    static func urlComponents(from notificationResponse: UNNotificationResponse) -> URLComponents? {
+        let userInfo = notificationResponse.notification.request.content.userInfo
+        let categoryIdentifier = notificationResponse.notification.request.content.categoryIdentifier
+
+        guard
+            categoryIdentifier == "LINK",
+            let deepLink = userInfo["link"] as? String,
+            let deepLinkUrl = URL(string: deepLink)
+        else {
+            return nil
+        }
+
+        return URLComponents(url: deepLinkUrl, resolvingAgainstBaseURL: true)
     }
 }
