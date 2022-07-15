@@ -304,7 +304,6 @@ xcrun simctl push "2216FFD1-B7AF-4676-B888-A0A8F2509FE9" com.thomsmed.FlowContro
 ```
 
 ## TODO
-- Environment
 - Networking
 - UserDefaults
 - Remote config / feature toggling

@@ -59,8 +59,8 @@
 		EDD54053287F711800E5FFFA /* StoreListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD54052287F711800E5FFFA /* StoreListView.swift */; };
 		EDD54055287F75D700E5FFFA /* StoreFlowModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD54054287F75D700E5FFFA /* StoreFlowModels.swift */; };
 		EDD54057287F768200E5FFFA /* StoreFilterSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD54056287F768200E5FFFA /* StoreFilterSheetController.swift */; };
-		EDD5405C288039BC00E5FFFA /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD5405B288039BC00E5FFFA /* AppEnvironment.swift */; };
-		EDD5405E288039CE00E5FFFA /* DefaultAppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD5405D288039CE00E5FFFA /* DefaultAppEnvironment.swift */; };
+		EDD5405C288039BC00E5FFFA /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD5405B288039BC00E5FFFA /* AppConfiguration.swift */; };
+		EDD5405E288039CE00E5FFFA /* DefaultAppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD5405D288039CE00E5FFFA /* DefaultAppConfiguration.swift */; };
 		EDD5406028803A9000E5FFFA /* AppPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD5405F28803A9000E5FFFA /* AppPage.swift */; };
 		EDD56E72287E28900018E4EC /* AppFlowFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD56E71287E28900018E4EC /* AppFlowFactory.swift */; };
 		EDD56E74287E28AF0018E4EC /* DefaultAppFlowFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD56E73287E28AF0018E4EC /* DefaultAppFlowFactory.swift */; };
@@ -137,8 +137,8 @@
 		EDD54056287F768200E5FFFA /* StoreFilterSheetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreFilterSheetController.swift; sourceTree = "<group>"; };
 		EDD54059287FF70D00E5FFFA /* FlowControllerPattern.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FlowControllerPattern.entitlements; sourceTree = "<group>"; };
 		EDD5405A2880162200E5FFFA /* ExamplePush.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = ExamplePush.apns; sourceTree = "<group>"; };
-		EDD5405B288039BC00E5FFFA /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
-		EDD5405D288039CE00E5FFFA /* DefaultAppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAppEnvironment.swift; sourceTree = "<group>"; };
+		EDD5405B288039BC00E5FFFA /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
+		EDD5405D288039CE00E5FFFA /* DefaultAppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAppConfiguration.swift; sourceTree = "<group>"; };
 		EDD5405F28803A9000E5FFFA /* AppPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPage.swift; sourceTree = "<group>"; };
 		EDD56E71287E28900018E4EC /* AppFlowFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowFactory.swift; sourceTree = "<group>"; };
 		EDD56E73287E28AF0018E4EC /* DefaultAppFlowFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAppFlowFactory.swift; sourceTree = "<group>"; };
@@ -304,8 +304,8 @@
 				ED7549E928736A3B00768561 /* LaunchScreen.storyboard */,
 				ED7549EC28736A3B00768561 /* Info.plist */,
 				ED7549DE28736A3900768561 /* AppDelegate.swift */,
-				EDD5405B288039BC00E5FFFA /* AppEnvironment.swift */,
-				EDD5405D288039CE00E5FFFA /* DefaultAppEnvironment.swift */,
+				EDD5405B288039BC00E5FFFA /* AppConfiguration.swift */,
+				EDD5405D288039CE00E5FFFA /* DefaultAppConfiguration.swift */,
 				ED754A0D2873744F00768561 /* AppDependencies.swift */,
 				ED754A0F2873747D00768561 /* DefaultAppDependencies.swift */,
 				EDD56E71287E28900018E4EC /* AppFlowFactory.swift */,
@@ -668,7 +668,7 @@
 				EDD5406028803A9000E5FFFA /* AppPage.swift in Sources */,
 				ED88933E287A201F00031665 /* BookingService.swift in Sources */,
 				ED67EF44287622AC004E2500 /* DefaultStoreFlowHost.swift in Sources */,
-				EDD5405E288039CE00E5FFFA /* DefaultAppEnvironment.swift in Sources */,
+				EDD5405E288039CE00E5FFFA /* DefaultAppConfiguration.swift in Sources */,
 				ED754A102873747D00768561 /* DefaultAppDependencies.swift in Sources */,
 				ED754A0E2873744F00768561 /* AppDependencies.swift in Sources */,
 				ED754A0A2873736200768561 /* PrimarySceneFlowHost+PrimarySceneFlowController.swift in Sources */,
@@ -714,7 +714,7 @@
 				EDD54055287F75D700E5FFFA /* StoreFlowModels.swift in Sources */,
 				ED889336287A1C4B00031665 /* CrashlyticsRecorder.swift in Sources */,
 				ED67EF422876229F004E2500 /* StoreFlowHost+StoreFlowController.swift in Sources */,
-				EDD5405C288039BC00E5FFFA /* AppEnvironment.swift in Sources */,
+				EDD5405C288039BC00E5FFFA /* AppConfiguration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
