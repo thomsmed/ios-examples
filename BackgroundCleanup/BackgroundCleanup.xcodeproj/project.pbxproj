@@ -12,6 +12,7 @@
 		ED2996BD288184CF00D2BCB3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2996BC288184CF00D2BCB3 /* ViewController.swift */; };
 		ED2996C2288184D000D2BCB3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED2996C1288184D000D2BCB3 /* Assets.xcassets */; };
 		ED2996C5288184D000D2BCB3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED2996C3288184D000D2BCB3 /* LaunchScreen.storyboard */; };
+		ED2996CD2882E09B00D2BCB3 /* SomeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2996CC2882E09B00D2BCB3 /* SomeData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,8 @@
 		ED2996C1288184D000D2BCB3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED2996C4288184D000D2BCB3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED2996C6288184D000D2BCB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ED2996CC2882E09B00D2BCB3 /* SomeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeData.swift; sourceTree = "<group>"; };
+		ED2996CE2882E74500D2BCB3 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +41,7 @@
 		ED2996AC288184CF00D2BCB3 = {
 			isa = PBXGroup;
 			children = (
+				ED2996CE2882E74500D2BCB3 /* README.md */,
 				ED2996B7288184CF00D2BCB3 /* BackgroundCleanup */,
 				ED2996B6288184CF00D2BCB3 /* Products */,
 			);
@@ -57,6 +61,7 @@
 				ED2996B8288184CF00D2BCB3 /* AppDelegate.swift */,
 				ED2996BA288184CF00D2BCB3 /* SceneDelegate.swift */,
 				ED2996BC288184CF00D2BCB3 /* ViewController.swift */,
+				ED2996CC2882E09B00D2BCB3 /* SomeData.swift */,
 				ED2996C1288184D000D2BCB3 /* Assets.xcassets */,
 				ED2996C3288184D000D2BCB3 /* LaunchScreen.storyboard */,
 				ED2996C6288184D000D2BCB3 /* Info.plist */,
@@ -137,6 +142,7 @@
 				ED2996BD288184CF00D2BCB3 /* ViewController.swift in Sources */,
 				ED2996B9288184CF00D2BCB3 /* AppDelegate.swift in Sources */,
 				ED2996BB288184CF00D2BCB3 /* SceneDelegate.swift in Sources */,
+				ED2996CD2882E09B00D2BCB3 /* SomeData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
