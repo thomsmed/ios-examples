@@ -23,6 +23,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         appDependencies.refreshService.ensureScheduled()
         appDependencies.cleanupService.ensureScheduled()
 
+        BGTaskScheduler.shared.getPendingTaskRequests { taskRequests in
+            print("Scheduled background tasks:")
+            print(taskRequests)
+        }
+
         return true
     }
 

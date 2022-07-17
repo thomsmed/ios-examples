@@ -29,26 +29,31 @@ final class DefaultCleanupService {
     }
 
     private func registerHandler() {
-        BGTaskScheduler.shared.register(
+        guard BGTaskScheduler.shared.register(
             forTaskWithIdentifier: processingTaskIdentifier,
-            using: nil
-        ) { backgroundTask in
-            guard let processingTask = backgroundTask as? BGProcessingTask else {
-                return
-            }
+            using: nil,
+            launchHandler: { backgroundTask in
+                guard let processingTask = backgroundTask as? BGProcessingTask else {
+                    return
+                }
 
-            self.handle(task: processingTask)
+                self.handle(task: processingTask)
+            }
+        ) else {
+            fatalError("Failed to register launch handler for Processing Task. Check that \(processingTaskIdentifier) is defined in Info.plist")
         }
     }
 
     private func scheduleProcessingTask() {
         do {
-            let request = BGAppRefreshTaskRequest(
+            let request = BGProcessingTaskRequest(
                 identifier: processingTaskIdentifier
             )
             if let thisEarlyMorningDate = Calendar.current.date(bySettingHour: 1, minute: 0, second: 0, of: .now) {
                 request.earliestBeginDate = Calendar.current.date(byAdding: .day, value: 1, to: thisEarlyMorningDate)
             }
+            request.requiresExternalPower = false
+            request.requiresNetworkConnectivity = false
             try BGTaskScheduler.shared.submit(request)
         } catch {
             print("Failed to schedule Processing task, with error:", error)

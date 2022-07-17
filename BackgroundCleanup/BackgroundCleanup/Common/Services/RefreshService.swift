@@ -29,15 +29,18 @@ final class DefaultRefreshService {
     }
 
     private func registerHandler() {
-        taskScheduler.register(
+        guard taskScheduler.register(
             forTaskWithIdentifier: appRefreshTaskIdentifier,
-            using: nil
-        ) { backgroundTask in
-            guard let appRefreshTask = backgroundTask as? BGAppRefreshTask else {
-                return
-            }
+            using: nil,
+            launchHandler: { backgroundTask in
+                guard let appRefreshTask = backgroundTask as? BGAppRefreshTask else {
+                    return
+                }
 
-            self.handle(task: appRefreshTask)
+                self.handle(task: appRefreshTask)
+            }
+        ) else {
+            fatalError("Failed to register launch handler for App Refresh Task. Check that \(appRefreshTaskIdentifier) is defined in Info.plist")
         }
     }
 
