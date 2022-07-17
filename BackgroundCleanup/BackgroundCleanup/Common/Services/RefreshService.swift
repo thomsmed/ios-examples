@@ -9,6 +9,7 @@ import Foundation
 import BackgroundTasks
 
 protocol RefreshService: AnyObject {
+    func registerHandler()
     func ensureScheduled()
 }
 
@@ -26,22 +27,6 @@ final class DefaultRefreshService {
 
     init(itemRepository: ItemRepository) {
         self.itemRepository = itemRepository
-    }
-
-    private func registerHandler() {
-        guard taskScheduler.register(
-            forTaskWithIdentifier: appRefreshTaskIdentifier,
-            using: nil,
-            launchHandler: { backgroundTask in
-                guard let appRefreshTask = backgroundTask as? BGAppRefreshTask else {
-                    return
-                }
-
-                self.handle(task: appRefreshTask)
-            }
-        ) else {
-            fatalError("Failed to register launch handler for App Refresh Task. Check that \(appRefreshTaskIdentifier) is defined in Info.plist")
-        }
     }
 
     private func scheduleAppRefreshTask() {
@@ -72,10 +57,27 @@ final class DefaultRefreshService {
 
 extension DefaultRefreshService: RefreshService {
 
-    func ensureScheduled() {
-        //NOTE: Re-scheduling a background task will clear the previous schedule.
+    func registerHandler() {
+        // NOTE: All handlers must be registered before application finishes launching
 
-        registerHandler() // All handlers must be registered before application finishes launching
+        guard taskScheduler.register(
+            forTaskWithIdentifier: appRefreshTaskIdentifier,
+            using: nil,
+            launchHandler: { backgroundTask in
+                guard let appRefreshTask = backgroundTask as? BGAppRefreshTask else {
+                    return
+                }
+
+                self.handle(task: appRefreshTask)
+            }
+        ) else {
+            fatalError("Failed to register launch handler for App Refresh Task. Check that \(appRefreshTaskIdentifier) is defined in Info.plist")
+        }
+    }
+
+    func ensureScheduled() {
+        // NOTE: Re-scheduling a background task will clear the previous schedule.
+
         scheduleAppRefreshTask()
     }
 }

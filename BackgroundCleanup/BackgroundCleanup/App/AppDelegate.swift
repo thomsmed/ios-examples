@@ -18,10 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Pre iOS 13:
         application.setMinimumBackgroundFetchInterval(24 * 60 * 60) // Once a day
 
-        // Ensure background tasks are scheduled.
         // NOTE: All handlers for background tasks must be registered before application finishes launching.
-        appDependencies.refreshService.ensureScheduled()
-        appDependencies.cleanupService.ensureScheduled()
+        appDependencies.refreshService.registerHandler()
+        appDependencies.cleanupService.registerHandler()
 
         BGTaskScheduler.shared.getPendingTaskRequests { taskRequests in
             print("Scheduled background tasks:")

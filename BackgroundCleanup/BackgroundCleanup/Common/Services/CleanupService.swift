@@ -9,6 +9,7 @@ import Foundation
 import BackgroundTasks
 
 protocol CleanupService: AnyObject {
+    func registerHandler()
     func ensureScheduled()
 }
 
@@ -26,22 +27,6 @@ final class DefaultCleanupService {
 
     init(itemRepository: ItemRepository) {
         self.itemRepository = itemRepository
-    }
-
-    private func registerHandler() {
-        guard BGTaskScheduler.shared.register(
-            forTaskWithIdentifier: processingTaskIdentifier,
-            using: nil,
-            launchHandler: { backgroundTask in
-                guard let processingTask = backgroundTask as? BGProcessingTask else {
-                    return
-                }
-
-                self.handle(task: processingTask)
-            }
-        ) else {
-            fatalError("Failed to register launch handler for Processing Task. Check that \(processingTaskIdentifier) is defined in Info.plist")
-        }
     }
 
     private func scheduleProcessingTask() {
@@ -84,10 +69,26 @@ final class DefaultCleanupService {
 
 extension DefaultCleanupService: CleanupService {
 
-    func ensureScheduled() {
-        //NOTE: Re-scheduling a background task will clear the previous schedule.
+    func registerHandler() {
+        // NOTE: All handlers must be registered before application finishes launching
 
-        registerHandler() // All handlers must be registered before application finishes launching
+        guard BGTaskScheduler.shared.register(
+            forTaskWithIdentifier: processingTaskIdentifier,
+            using: nil,
+            launchHandler: { backgroundTask in
+                guard let processingTask = backgroundTask as? BGProcessingTask else {
+                    return
+                }
+
+                self.handle(task: processingTask)
+            }
+        ) else {
+            fatalError("Failed to register launch handler for Processing Task. Check that \(processingTaskIdentifier) is defined in Info.plist")
+        }
+    }
+
+    func ensureScheduled() {
+        // NOTE: Re-scheduling a background task will clear the previous schedule.
 
         taskScheduler.getPendingTaskRequests { taskRequests in
             if taskRequests.contains(
