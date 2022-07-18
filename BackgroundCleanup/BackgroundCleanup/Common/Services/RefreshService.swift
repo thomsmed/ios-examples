@@ -5,11 +5,12 @@
 //  Created by Thomas Asheim Smedmann on 17/07/2022.
 //
 
-import Foundation
+import UIKit
 import BackgroundTasks
 
 protocol RefreshService: AnyObject {
     func registerHandler()
+    func forceRefresh()
     func ensureScheduled()
 }
 
@@ -23,9 +24,11 @@ final class DefaultRefreshService {
 
     private let taskScheduler: BGTaskScheduler = .shared
 
+    private let application: Application
     private let itemRepository: ItemRepository
 
-    init(itemRepository: ItemRepository) {
+    init(application: Application, itemRepository: ItemRepository) {
+        self.application = application
         self.itemRepository = itemRepository
     }
 
@@ -72,6 +75,22 @@ extension DefaultRefreshService: RefreshService {
             }
         ) else {
             fatalError("Failed to register launch handler for App Refresh Task. Check that \(appRefreshTaskIdentifier) is defined in Info.plist")
+        }
+    }
+
+    func forceRefresh() {
+        // NOTE: Force a refresh of your data when you can while the user is engaged with the app.
+        // It is always recommended to do such work when the app is in the foreground.
+        // You can never be 100% sure a background task will be run by the system (iOS).
+
+        var backgroundTaskIdentifier: UIBackgroundTaskIdentifier = .invalid
+        backgroundTaskIdentifier = application.beginBackgroundTask {
+            // The app is suspending our app, and stopping task execution
+            self.application.endBackgroundTask(backgroundTaskIdentifier)
+        }
+
+        itemRepository.generateNewItem { _ in
+            self.application.endBackgroundTask(backgroundTaskIdentifier)
         }
     }
 

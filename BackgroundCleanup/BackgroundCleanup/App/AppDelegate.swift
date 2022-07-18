@@ -27,6 +27,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print(taskRequests)
         }
 
+        // NOTE: Since the system (iOS) can never guarantee that your scheduled background tasks will be run,
+        // it is always best to try and have the work done while the app is in the foreground.
+
+        //appDependencies.refreshService.forceRefresh()
+        //appDependencies.cleanupService.forceCleanup()
+
         return true
     }
 

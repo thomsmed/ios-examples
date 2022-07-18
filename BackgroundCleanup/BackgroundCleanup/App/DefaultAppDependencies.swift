@@ -17,8 +17,8 @@ final class DefaultAppDependencies {
     init() {
         application = UIApplication.shared
         itemRepository = DefaultItemRepository()
-        refreshService = DefaultRefreshService(itemRepository: itemRepository)
-        cleanupService = DefaultCleanupService(itemRepository: itemRepository)
+        refreshService = DefaultRefreshService(application: application, itemRepository: itemRepository)
+        cleanupService = DefaultCleanupService(application: application, itemRepository: itemRepository)
     }
 }
 
