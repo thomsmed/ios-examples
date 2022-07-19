@@ -103,6 +103,10 @@ final class ItemsViewController: UIViewController {
                     return
                 }
                 self.itemsTableView.refreshControl?.beginRefreshing()
+                self.itemsTableView.scrollRectToVisible(
+                    self.itemsTableView.refreshControl?.frame ?? .zero,
+                    animated: true
+                )
             case .ready:
                 self.addItemButton.isEnabled = true
                 self.itemsTableView.reloadSections(.init(integer: 0), with: .automatic)

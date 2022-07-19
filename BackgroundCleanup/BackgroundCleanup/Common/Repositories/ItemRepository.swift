@@ -33,6 +33,8 @@ final class DefaultItemRepository {
     private var cachedItems: [Item]?
 
     private func loadItems() -> [Item] {
+        Thread.sleep(forTimeInterval: 3) // Do not do this at home
+
         guard let data = userDefaults.data(forKey: itemRepositoryKey) else {
             return []
         }
@@ -41,6 +43,8 @@ final class DefaultItemRepository {
     }
 
     private func store(items: [Item]) {
+        Thread.sleep(forTimeInterval: 3) // Do not do this at home
+
         guard let data = try? jsonEncoder.encode(items) else {
             return
         }
@@ -58,8 +62,6 @@ extension DefaultItemRepository: ItemRepository {
             if let items = self.cachedItems {
                 return completion(items)
             }
-
-            Thread.sleep(forTimeInterval: 3) // Do not do this at home
 
             let items = self.loadItems()
 
@@ -81,6 +83,8 @@ extension DefaultItemRepository: ItemRepository {
 
             self.store(items: items)
 
+            self.cachedItems = items // Update cache
+
             completion(item)
         }
     }
@@ -96,6 +100,8 @@ extension DefaultItemRepository: ItemRepository {
             })
 
             self.store(items: items)
+
+            self.cachedItems = items // Update cache
 
             completion()
         }
