@@ -29,8 +29,8 @@ The documentation states that [ProcessingTasks](https://developer.apple.com/docu
 
 Several system conditions, and other factors, effects when and if your scheduled background tasks are run: 
 
-- App frequently used have a higher chance of having their background tasks run.
-- Background tasks not relying on network, or that is not too power consuming, have a higher chance to be run.
+- Apps frequently used have a higher chance of having their background tasks run.
+- Background tasks not relying on network, or tasks that is not too power consuming, have a higher chance to be run.
 - The system have a higher chance of running background tasks when the device is plugged in to a power source.
 - Apps visible in the App Switcher (and not forcefully killed by the user) have a higher chance of having their background tasks run.
 - App that have their Background App Refresh setting (in the Settings app) turned off, will not have their background tasks run. The setting is on by default.
@@ -56,4 +56,4 @@ e -l objc -- (void)[[BGTaskScheduler sharedScheduler] _simulateExpirationForTask
 
 ## Bonus: Background URLSessions
 
-You can schedule and download content in the background by configureing an URLSession as a Background URLSession. Check out more in [the docs](https://developer.apple.com/documentation/foundation/url_loading_system/downloading_files_in_the_background)
+You can schedule and download content in the background by configuring an URLSession as a Background URLSession. Check out [the docs](https://developer.apple.com/documentation/foundation/url_loading_system/downloading_files_in_the_background)
