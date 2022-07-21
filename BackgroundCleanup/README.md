@@ -8,15 +8,19 @@ A simple example on how to use the [Background Tasks](https://developer.apple.co
 
 For an awesome writeup on factors that effects the running of BackgroundTasks, check out this [article by Andy Ibanez](https://www.andyibanez.com/posts/common-reasons-background-tasks-fail-ios/).
 
+Apple Developer Forums post worth checking out: [UIApplication Background Task Notes](https://developer.apple.com/forums/thread/85066)
+
 ### Execution time
+
+It is worth noting that the system (iOS) might launch several of your background tasks at the same time. The running tasks will then share the available execution time the system has given your app, so you should always make sure that your tasks can run concurrent. Otherwise your tasks might not finish in time.
 
 #### App Refresh Tasks
 
-Currently [AppRefreshTasks](https://developer.apple.com/documentation/backgroundtasks/bgapprefreshtask) seems to be given around 30 seconds of execution time.
+Currently [AppRefreshTasks](https://developer.apple.com/documentation/backgroundtasks/bgapprefreshtask) seems to be given around 30 seconds of execution time (the same as you get from using [UIApplication.beginBackgroundTask(expirationHandler:)](https://developer.apple.com/documentation/uikit/uiapplication/1623031-beginbackgroundtask)).
 
 #### Processing Tasks
 
-Currently [ProcessingTasks](https://developer.apple.com/documentation/backgroundtasks/bgprocessingtask) seem to be given around x minutes of execution time.
+The documentation states that [ProcessingTasks](https://developer.apple.com/documentation/backgroundtasks/bgprocessingtask) can give your app _several_ minutes of background execution time, without giving an actual number.
 
 > NOTE (From the docs): Processing tasks run only when the device is idle. The system terminates any background processing tasks running when the user starts using the device. Background refresh tasks are not affected. 
 

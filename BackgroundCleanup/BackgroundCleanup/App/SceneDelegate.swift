@@ -24,7 +24,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.rootViewController = ItemsViewController(
             viewModel: .init(
                 application: appDelegate.appDependencies.application,
-                itemRepository: appDelegate.appDependencies.itemRepository
+                itemRepository: appDelegate.appDependencies.itemRepository,
+                refreshService: appDelegate.appDependencies.refreshService,
+                cleanupService: appDelegate.appDependencies.cleanupService
             )
         )
         window.makeKeyAndVisible()
@@ -61,6 +63,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
 
+        // Schedule background tasks when best suited.
+        // Typically when the app enters background (on it's way to be killed or switched out by the user).
         appDelegate.appDependencies.refreshService.ensureScheduled()
         appDelegate.appDependencies.cleanupService.ensureScheduled()
     }

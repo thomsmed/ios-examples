@@ -19,14 +19,23 @@ final class ItemsViewModel {
 
     private let application: Application
     private let itemRepository: ItemRepository
+    private let refreshService: RefreshService
+    private let cleanupService: CleanupService
 
     private let statusSubject = CurrentValueSubject<Status, Never>(.idle)
 
     private(set) var items = [Item]()
 
-    init(application: Application, itemRepository: ItemRepository) {
+    init(
+        application: Application,
+        itemRepository: ItemRepository,
+        refreshService: RefreshService,
+        cleanupService: CleanupService
+    ) {
         self.application = application
         self.itemRepository = itemRepository
+        self.refreshService = refreshService
+        self.cleanupService = cleanupService
     }
 }
 
@@ -70,5 +79,21 @@ extension ItemsViewModel {
 
             self.application.endBackgroundTask(backgroundTaskIdentifier)
         }
+    }
+
+    func lastRefresh() -> String {
+        guard let lastRefresh = refreshService.lastRefresh() else {
+            return "Last refresh: Never"
+        }
+
+        return "Last refresh: \(lastRefresh.formatted())"
+    }
+
+    func lastCleanup() -> String {
+        guard let lastCleanup = cleanupService.lastCleanup() else {
+            return "Last cleanup: Never"
+        }
+
+        return "Last cleanup: \(lastCleanup.formatted())"
     }
 }

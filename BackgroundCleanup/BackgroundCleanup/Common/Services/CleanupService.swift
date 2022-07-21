@@ -12,6 +12,7 @@ protocol CleanupService: AnyObject {
     func registerHandler()
     func forceCleanup()
     func ensureScheduled()
+    func lastCleanup() -> Date?
 }
 
 final class DefaultCleanupService {
@@ -24,6 +25,10 @@ final class DefaultCleanupService {
 
     private let taskScheduler: BGTaskScheduler = .shared
 
+    private let lastCleanupKey = "com.thomsmed.CleanupService.LastCleanup"
+
+    private let userDefaults = UserDefaults.standard
+
     private let application: Application
     private let itemRepository: ItemRepository
 
@@ -33,6 +38,9 @@ final class DefaultCleanupService {
     }
 
     private func scheduleProcessingTask() {
+        // NOTE: Submitting background task requests is blocking,
+        // so be mindful of when and how you submit your background task requests.
+
         do {
             let request = BGProcessingTaskRequest(
                 identifier: processingTaskIdentifier
@@ -65,8 +73,13 @@ final class DefaultCleanupService {
         }
 
         itemRepository.deleteItems(olderThan: expirationDate) {
+            self.store(lastCleanup: .now)
             task.setTaskCompleted(success: true)
         }
+    }
+
+    private func store(lastCleanup: Date) {
+        userDefaults.set(lastCleanup.timeIntervalSince1970, forKey: lastCleanupKey)
     }
 }
 
@@ -110,6 +123,7 @@ extension DefaultCleanupService: CleanupService {
         }
 
         itemRepository.deleteItems(olderThan: expirationDate) {
+            self.store(lastCleanup: .now)
             self.application.endBackgroundTask(backgroundTaskIdentifier)
         }
     }
@@ -127,5 +141,15 @@ extension DefaultCleanupService: CleanupService {
             // Only schedule this background task when it is not already scheduled
             self.scheduleProcessingTask()
         }
+    }
+
+    func lastCleanup() -> Date? {
+        let timeIntervalSince1970 = userDefaults.double(forKey: lastCleanupKey)
+
+        guard timeIntervalSince1970 > 0 else {
+            return nil
+        }
+
+        return Date(timeIntervalSince1970: timeIntervalSince1970)
     }
 }

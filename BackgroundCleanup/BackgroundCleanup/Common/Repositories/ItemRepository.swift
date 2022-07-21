@@ -15,7 +15,8 @@ protocol ItemRepository: AnyObject {
 
 final class DefaultItemRepository {
 
-    private let itemRepositoryKey = "com.thomsmed.ItemRepository"
+    private let itemRepositoryItemsKey = "com.thomsmed.ItemRepository.Items"
+    private let itemRepositorySequenceNumberKey = "com.thomsmed.ItemRepository.SequenceNumber"
 
     private let queue = DispatchQueue(
         label: "com.thomsmed.ItemRepositoryQueue",
@@ -32,10 +33,10 @@ final class DefaultItemRepository {
 
     private var cachedItems: [Item]?
 
-    private func loadItems() -> [Item] {
+    private func items() -> [Item] {
         Thread.sleep(forTimeInterval: 3) // Do not do this at home
 
-        guard let data = userDefaults.data(forKey: itemRepositoryKey) else {
+        guard let data = userDefaults.data(forKey: itemRepositoryItemsKey) else {
             return []
         }
 
@@ -49,7 +50,15 @@ final class DefaultItemRepository {
             return
         }
 
-        userDefaults.set(data, forKey: itemRepositoryKey)
+        userDefaults.set(data, forKey: itemRepositoryItemsKey)
+    }
+
+    private func generateSequenceNumber() -> Int {
+        let nextSequenceNumber = userDefaults.integer(forKey: itemRepositorySequenceNumberKey) + 1
+
+        userDefaults.set(nextSequenceNumber, forKey: itemRepositorySequenceNumberKey)
+
+        return nextSequenceNumber
     }
 }
 
@@ -63,7 +72,7 @@ extension DefaultItemRepository: ItemRepository {
                 return completion(items)
             }
 
-            let items = self.loadItems()
+            let items = self.items()
 
             self.cachedItems = items
 
@@ -75,9 +84,12 @@ extension DefaultItemRepository: ItemRepository {
         queue.async {
             Thread.sleep(forTimeInterval: 5) // Do not do this at home
 
-            var items = self.loadItems()
+            var items = self.items()
 
-            let item: Item = .init(text: "Item \(items.count)", timestamp: .now)
+            let item: Item = .init(
+                text: "Item \(self.generateSequenceNumber())",
+                timestamp: .now
+            )
 
             items.append(item)
 
@@ -93,7 +105,7 @@ extension DefaultItemRepository: ItemRepository {
         queue.async {
             Thread.sleep(forTimeInterval: 15) // Do not do this at home
 
-            var items = self.loadItems()
+            var items = self.items()
 
             items.removeAll(where: { item in
                 return item.timestamp < expirationDate
