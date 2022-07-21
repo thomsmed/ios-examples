@@ -9,3 +9,4 @@
 - [Dynamic sized bottom sheet controller](BottomSheetController)
 - [Dynamic sized dialog controller](DialogController)
 - [gRPC Swift](GRPCFTW)
+- [Background refresh and cleanup](BackgroundCleanup)
