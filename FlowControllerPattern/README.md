@@ -2,6 +2,18 @@
 
 An app navigation pattern
 
+Key stuff:
+- Flow Controller Pattern:
+    - AppPage - Nested enums with associated values, describing content in the app.
+    - FlowController and FlowHost - Protocols implemented by container view controllers, where FlowHost is acting as an interface "down" the navigation hierarchy, and FlowController acting as an interface "up" the navigation hierarchy.
+    - ViewHolder - Protocol implemented by view controllers, acting as it's "public" interface.
+    - FlowFactory - Responsible for the instantiation of all FlowControllers, FlowHosts and ViewHolders (aka view controllers). Plus other shared objects.
+- AppConfiguration - Interface exposing configuration properties (usually from .plist files), like app bundle display name or credentials for authentication services etc.
+- DefaultsRepository - Interface exposing methods to get and set defaults values that affect the app's content or navigation flow. E.g. if the user has completed onboarding.
+- AnalyticsLogger - Interface exposing methods to log analytics events.
+- CrashlyticsRecorder - Interface exposing methods to record and track errors.
+- RemoteConfiguration - Interface exposing properties that tell something about what or how content should be available to the user.
+
 ## AppPage
 
 ```swift
@@ -305,7 +317,3 @@ xcrun simctl push "2216FFD1-B7AF-4676-B888-A0A8F2509FE9" com.thomsmed.FlowContro
 
 ## TODO
 - Networking
-- UserDefaults
-- Remote config / feature toggling
-- Localization
-- Handle resources (swiftgen)
