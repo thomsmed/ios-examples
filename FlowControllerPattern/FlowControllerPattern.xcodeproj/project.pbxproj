@@ -49,6 +49,8 @@
 		ED889351287A28AC00031665 /* CheckoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED889350287A28AC00031665 /* CheckoutViewModel.swift */; };
 		ED889354287A297100031665 /* StoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED889353287A297100031665 /* StoreService.swift */; };
 		ED889356287A298100031665 /* DefaultStoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED889355287A298100031665 /* DefaultStoreService.swift */; };
+		EDB10191288D8E86005625EE /* RemoteConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB10190288D8E86005625EE /* RemoteConfiguration.swift */; };
+		EDB10193288D8E92005625EE /* DefaultRemoteConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB10192288D8E92005625EE /* DefaultRemoteConfiguration.swift */; };
 		EDD3E5DE287776E1008318C0 /* StoreMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD3E5DD287776E1008318C0 /* StoreMapViewController.swift */; };
 		EDD3E5E028777731008318C0 /* StoreListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD3E5DF28777731008318C0 /* StoreListViewController.swift */; };
 		EDD3E5E4287789C6008318C0 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD3E5E3287789C6008318C0 /* Store.swift */; };
@@ -125,6 +127,8 @@
 		ED889350287A28AC00031665 /* CheckoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewModel.swift; sourceTree = "<group>"; };
 		ED889353287A297100031665 /* StoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreService.swift; sourceTree = "<group>"; };
 		ED889355287A298100031665 /* DefaultStoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultStoreService.swift; sourceTree = "<group>"; };
+		EDB10190288D8E86005625EE /* RemoteConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfiguration.swift; sourceTree = "<group>"; };
+		EDB10192288D8E92005625EE /* DefaultRemoteConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRemoteConfiguration.swift; sourceTree = "<group>"; };
 		EDD3E5DD287776E1008318C0 /* StoreMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreMapViewController.swift; sourceTree = "<group>"; };
 		EDD3E5DF28777731008318C0 /* StoreListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreListViewController.swift; sourceTree = "<group>"; };
 		EDD3E5E3287789C6008318C0 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
@@ -304,8 +308,6 @@
 				ED7549E928736A3B00768561 /* LaunchScreen.storyboard */,
 				ED7549EC28736A3B00768561 /* Info.plist */,
 				ED7549DE28736A3900768561 /* AppDelegate.swift */,
-				EDD5405B288039BC00E5FFFA /* AppConfiguration.swift */,
-				EDD5405D288039CE00E5FFFA /* DefaultAppConfiguration.swift */,
 				ED754A0D2873744F00768561 /* AppDependencies.swift */,
 				ED754A0F2873747D00768561 /* DefaultAppDependencies.swift */,
 				EDD56E71287E28900018E4EC /* AppFlowFactory.swift */,
@@ -368,6 +370,7 @@
 				ED889330287A1AFC00031665 /* Services */,
 				ED889331287A1B0500031665 /* Repositories */,
 				EDD3E5E1287789A3008318C0 /* Networking */,
+				EDB1018C288D8E43005625EE /* Configuration */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -518,6 +521,33 @@
 			path = Store;
 			sourceTree = "<group>";
 		};
+		EDB1018C288D8E43005625EE /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				EDB1018D288D8E60005625EE /* App */,
+				EDB1018F288D8E6F005625EE /* Remote */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		EDB1018D288D8E60005625EE /* App */ = {
+			isa = PBXGroup;
+			children = (
+				EDD5405B288039BC00E5FFFA /* AppConfiguration.swift */,
+				EDD5405D288039CE00E5FFFA /* DefaultAppConfiguration.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		EDB1018F288D8E6F005625EE /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				EDB10190288D8E86005625EE /* RemoteConfiguration.swift */,
+				EDB10192288D8E92005625EE /* DefaultRemoteConfiguration.swift */,
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
 		EDD3E5E1287789A3008318C0 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -648,6 +678,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED67EF49287636D1004E2500 /* DefaultPurchasesFlowHost.swift in Sources */,
+				EDB10191288D8E86005625EE /* RemoteConfiguration.swift in Sources */,
+				EDB10193288D8E92005625EE /* DefaultRemoteConfiguration.swift in Sources */,
 				ED889356287A298100031665 /* DefaultStoreService.swift in Sources */,
 				ED7549FA28736DF200768561 /* AppFlowHost+AppFlowController.swift in Sources */,
 				EDD3E5E928778EFC008318C0 /* StoreViewController.swift in Sources */,
