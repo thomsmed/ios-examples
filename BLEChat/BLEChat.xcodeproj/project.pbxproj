@@ -1,0 +1,514 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		ED17A011279043CE0078B6DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED17A010279043CE0078B6DE /* AppDelegate.swift */; };
+		ED17A013279043CE0078B6DE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED17A012279043CE0078B6DE /* SceneDelegate.swift */; };
+		ED17A01A279043D00078B6DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED17A019279043D00078B6DE /* Assets.xcassets */; };
+		ED17A01D279043D00078B6DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED17A01B279043D00078B6DE /* LaunchScreen.storyboard */; };
+		ED17A04327918B170078B6DE /* TinyConstraints in Frameworks */ = {isa = PBXBuildFile; productRef = ED17A04227918B170078B6DE /* TinyConstraints */; };
+		ED17A04827918C5C0078B6DE /* ChatHostScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED17A04727918C5C0078B6DE /* ChatHostScanner.swift */; };
+		ED17A04A27918CA40078B6DE /* CoreBluetoothChatHostScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED17A04927918CA40078B6DE /* CoreBluetoothChatHostScanner.swift */; };
+		ED17A04C27918CF00078B6DE /* ChatHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED17A04B27918CF00078B6DE /* ChatHost.swift */; };
+		ED17A04E27918D040078B6DE /* CoreBluetoothChatHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED17A04D27918D040078B6DE /* CoreBluetoothChatHost.swift */; };
+		ED17A05027919C260078B6DE /* AssignedNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED17A04F27919C260078B6DE /* AssignedNumbers.swift */; };
+		ED17A0522791F3130078B6DE /* Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED17A0512791F3130078B6DE /* Dependencies.swift */; };
+		ED4C997E27973BD90032EE6B /* CoreBluetoothChatHostConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4C997D27973BD90032EE6B /* CoreBluetoothChatHostConnection.swift */; };
+		ED4C998027973DF80032EE6B /* ChatHostConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4C997F27973DF80032EE6B /* ChatHostConnection.swift */; };
+		ED4C99822797471D0032EE6B /* BluetoothError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4C99812797471D0032EE6B /* BluetoothError.swift */; };
+		ED7E4BB1280B802500D7195B /* StopRunLoopSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7E4BB0280B802500D7195B /* StopRunLoopSource.swift */; };
+		ED7E4BB3280C290200D7195B /* ChatSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7E4BB2280C290200D7195B /* ChatSection.swift */; };
+		EDB8090F279D3597005FC8E0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB8090E279D3597005FC8E0 /* HomeViewController.swift */; };
+		EDB80917279D361E005FC8E0 /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB80916279D361E005FC8E0 /* JoinViewController.swift */; };
+		EDB8091A279D3633005FC8E0 /* HostChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB80919279D3633005FC8E0 /* HostChatViewController.swift */; };
+		EDB8091D279D3651005FC8E0 /* GuestChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB8091C279D3651005FC8E0 /* GuestChatViewController.swift */; };
+		EDB80921279D4B41005FC8E0 /* ChatBubbleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB80920279D4B41005FC8E0 /* ChatBubbleTableViewCell.swift */; };
+		EDB80927279D85AC005FC8E0 /* ChatServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB80926279D85AC005FC8E0 /* ChatServiceFactory.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		ED17A00D279043CE0078B6DE /* BLEChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BLEChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED17A010279043CE0078B6DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		ED17A012279043CE0078B6DE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		ED17A019279043D00078B6DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		ED17A01C279043D00078B6DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		ED17A01E279043D00078B6DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ED17A040279189490078B6DE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		ED17A04727918C5C0078B6DE /* ChatHostScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatHostScanner.swift; sourceTree = "<group>"; };
+		ED17A04927918CA40078B6DE /* CoreBluetoothChatHostScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreBluetoothChatHostScanner.swift; sourceTree = "<group>"; };
+		ED17A04B27918CF00078B6DE /* ChatHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatHost.swift; sourceTree = "<group>"; };
+		ED17A04D27918D040078B6DE /* CoreBluetoothChatHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreBluetoothChatHost.swift; sourceTree = "<group>"; };
+		ED17A04F27919C260078B6DE /* AssignedNumbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignedNumbers.swift; sourceTree = "<group>"; };
+		ED17A0512791F3130078B6DE /* Dependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependencies.swift; sourceTree = "<group>"; };
+		ED4C997D27973BD90032EE6B /* CoreBluetoothChatHostConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreBluetoothChatHostConnection.swift; sourceTree = "<group>"; };
+		ED4C997F27973DF80032EE6B /* ChatHostConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatHostConnection.swift; sourceTree = "<group>"; };
+		ED4C99812797471D0032EE6B /* BluetoothError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothError.swift; sourceTree = "<group>"; };
+		ED7E4BB0280B802500D7195B /* StopRunLoopSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopRunLoopSource.swift; sourceTree = "<group>"; };
+		ED7E4BB2280C290200D7195B /* ChatSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSection.swift; sourceTree = "<group>"; };
+		EDB8090E279D3597005FC8E0 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		EDB80916279D361E005FC8E0 /* JoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
+		EDB80919279D3633005FC8E0 /* HostChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostChatViewController.swift; sourceTree = "<group>"; };
+		EDB8091C279D3651005FC8E0 /* GuestChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestChatViewController.swift; sourceTree = "<group>"; };
+		EDB80920279D4B41005FC8E0 /* ChatBubbleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubbleTableViewCell.swift; sourceTree = "<group>"; };
+		EDB80926279D85AC005FC8E0 /* ChatServiceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatServiceFactory.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		ED17A00A279043CE0078B6DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED17A04327918B170078B6DE /* TinyConstraints in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		ED17A004279043CE0078B6DE = {
+			isa = PBXGroup;
+			children = (
+				ED17A040279189490078B6DE /* README.md */,
+				ED17A00F279043CE0078B6DE /* BLEChat */,
+				ED17A00E279043CE0078B6DE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		ED17A00E279043CE0078B6DE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ED17A00D279043CE0078B6DE /* BLEChat.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		ED17A00F279043CE0078B6DE /* BLEChat */ = {
+			isa = PBXGroup;
+			children = (
+				ED17A010279043CE0078B6DE /* AppDelegate.swift */,
+				ED17A012279043CE0078B6DE /* SceneDelegate.swift */,
+				ED17A0512791F3130078B6DE /* Dependencies.swift */,
+				ED17A019279043D00078B6DE /* Assets.xcassets */,
+				ED17A01B279043D00078B6DE /* LaunchScreen.storyboard */,
+				ED17A01E279043D00078B6DE /* Info.plist */,
+				EDB8090D279D3572005FC8E0 /* Features */,
+				ED17A04427918BAE0078B6DE /* Bluetooth */,
+				ED7E4BAF280B800400D7195B /* Utils */,
+			);
+			path = BLEChat;
+			sourceTree = "<group>";
+		};
+		ED17A04427918BAE0078B6DE /* Bluetooth */ = {
+			isa = PBXGroup;
+			children = (
+				ED17A04F27919C260078B6DE /* AssignedNumbers.swift */,
+				ED4C99812797471D0032EE6B /* BluetoothError.swift */,
+				ED17A04527918BB60078B6DE /* ChatHostScanner */,
+				ED17A04627918BC90078B6DE /* ChatHost */,
+			);
+			path = Bluetooth;
+			sourceTree = "<group>";
+		};
+		ED17A04527918BB60078B6DE /* ChatHostScanner */ = {
+			isa = PBXGroup;
+			children = (
+				ED17A04727918C5C0078B6DE /* ChatHostScanner.swift */,
+				ED4C997F27973DF80032EE6B /* ChatHostConnection.swift */,
+				ED17A04927918CA40078B6DE /* CoreBluetoothChatHostScanner.swift */,
+				ED4C997D27973BD90032EE6B /* CoreBluetoothChatHostConnection.swift */,
+			);
+			path = ChatHostScanner;
+			sourceTree = "<group>";
+		};
+		ED17A04627918BC90078B6DE /* ChatHost */ = {
+			isa = PBXGroup;
+			children = (
+				ED17A04B27918CF00078B6DE /* ChatHost.swift */,
+				ED17A04D27918D040078B6DE /* CoreBluetoothChatHost.swift */,
+				EDB80926279D85AC005FC8E0 /* ChatServiceFactory.swift */,
+			);
+			path = ChatHost;
+			sourceTree = "<group>";
+		};
+		ED7E4BAF280B800400D7195B /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				ED7E4BB0280B802500D7195B /* StopRunLoopSource.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		EDB8090D279D3572005FC8E0 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				EDB8090E279D3597005FC8E0 /* HomeViewController.swift */,
+				EDB80911279D359D005FC8E0 /* Host */,
+				EDB80912279D35AD005FC8E0 /* Guest */,
+				EDB8091F279D4B0E005FC8E0 /* Shared */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		EDB80911279D359D005FC8E0 /* Host */ = {
+			isa = PBXGroup;
+			children = (
+				EDB80919279D3633005FC8E0 /* HostChatViewController.swift */,
+			);
+			path = Host;
+			sourceTree = "<group>";
+		};
+		EDB80912279D35AD005FC8E0 /* Guest */ = {
+			isa = PBXGroup;
+			children = (
+				EDB80916279D361E005FC8E0 /* JoinViewController.swift */,
+				EDB8091C279D3651005FC8E0 /* GuestChatViewController.swift */,
+			);
+			path = Guest;
+			sourceTree = "<group>";
+		};
+		EDB8091F279D4B0E005FC8E0 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				EDB80920279D4B41005FC8E0 /* ChatBubbleTableViewCell.swift */,
+				ED7E4BB2280C290200D7195B /* ChatSection.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		ED17A00C279043CE0078B6DE /* BLEChat */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ED17A037279043D00078B6DE /* Build configuration list for PBXNativeTarget "BLEChat" */;
+			buildPhases = (
+				ED17A009279043CE0078B6DE /* Sources */,
+				ED17A00A279043CE0078B6DE /* Frameworks */,
+				ED17A00B279043CE0078B6DE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BLEChat;
+			packageProductDependencies = (
+				ED17A04227918B170078B6DE /* TinyConstraints */,
+			);
+			productName = BLEChat;
+			productReference = ED17A00D279043CE0078B6DE /* BLEChat.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		ED17A005279043CE0078B6DE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1320;
+				LastUpgradeCheck = 1320;
+				TargetAttributes = {
+					ED17A00C279043CE0078B6DE = {
+						CreatedOnToolsVersion = 13.2;
+					};
+				};
+			};
+			buildConfigurationList = ED17A008279043CE0078B6DE /* Build configuration list for PBXProject "BLEChat" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = ED17A004279043CE0078B6DE;
+			packageReferences = (
+				ED17A04127918B170078B6DE /* XCRemoteSwiftPackageReference "TinyConstraints" */,
+			);
+			productRefGroup = ED17A00E279043CE0078B6DE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				ED17A00C279043CE0078B6DE /* BLEChat */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		ED17A00B279043CE0078B6DE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED17A01D279043D00078B6DE /* LaunchScreen.storyboard in Resources */,
+				ED17A01A279043D00078B6DE /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		ED17A009279043CE0078B6DE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDB8091A279D3633005FC8E0 /* HostChatViewController.swift in Sources */,
+				EDB80917279D361E005FC8E0 /* JoinViewController.swift in Sources */,
+				ED17A04C27918CF00078B6DE /* ChatHost.swift in Sources */,
+				ED4C997E27973BD90032EE6B /* CoreBluetoothChatHostConnection.swift in Sources */,
+				ED17A011279043CE0078B6DE /* AppDelegate.swift in Sources */,
+				EDB8090F279D3597005FC8E0 /* HomeViewController.swift in Sources */,
+				ED17A0522791F3130078B6DE /* Dependencies.swift in Sources */,
+				ED7E4BB3280C290200D7195B /* ChatSection.swift in Sources */,
+				ED17A04A27918CA40078B6DE /* CoreBluetoothChatHostScanner.swift in Sources */,
+				ED7E4BB1280B802500D7195B /* StopRunLoopSource.swift in Sources */,
+				ED17A04827918C5C0078B6DE /* ChatHostScanner.swift in Sources */,
+				ED4C998027973DF80032EE6B /* ChatHostConnection.swift in Sources */,
+				EDB80921279D4B41005FC8E0 /* ChatBubbleTableViewCell.swift in Sources */,
+				ED17A04E27918D040078B6DE /* CoreBluetoothChatHost.swift in Sources */,
+				EDB8091D279D3651005FC8E0 /* GuestChatViewController.swift in Sources */,
+				ED17A013279043CE0078B6DE /* SceneDelegate.swift in Sources */,
+				ED17A05027919C260078B6DE /* AssignedNumbers.swift in Sources */,
+				EDB80927279D85AC005FC8E0 /* ChatServiceFactory.swift in Sources */,
+				ED4C99822797471D0032EE6B /* BluetoothError.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		ED17A01B279043D00078B6DE /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ED17A01C279043D00078B6DE /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		ED17A035279043D00078B6DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		ED17A036279043D00078B6DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		ED17A038279043D00078B6DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BLEChat/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "BLE Chat";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Need access to bluetooth";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ios.example.BLEChat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		ED17A039279043D00078B6DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BLEChat/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "BLE Chat";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Need access to bluetooth";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ios.example.BLEChat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		ED17A008279043CE0078B6DE /* Build configuration list for PBXProject "BLEChat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED17A035279043D00078B6DE /* Debug */,
+				ED17A036279043D00078B6DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ED17A037279043D00078B6DE /* Build configuration list for PBXNativeTarget "BLEChat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED17A038279043D00078B6DE /* Debug */,
+				ED17A039279043D00078B6DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		ED17A04127918B170078B6DE /* XCRemoteSwiftPackageReference "TinyConstraints" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:roberthein/TinyConstraints.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		ED17A04227918B170078B6DE /* TinyConstraints */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ED17A04127918B170078B6DE /* XCRemoteSwiftPackageReference "TinyConstraints" */;
+			productName = TinyConstraints;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = ED17A005279043CE0078B6DE /* Project object */;
+}

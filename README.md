@@ -13,6 +13,7 @@ A collection of iOS examples.
 - [gRPC Swift](GRPCFTW)
 - [Background refresh and cleanup](BackgroundCleanup)
 - [Flow coordinator pattern](FlowControllerPattern)
+- [Bluetooth Low Energy (BLE)](BLEChat)
 
 These examples are created as a way to learn. Feel free to use them as you please.
 Feedback are also welcome.
