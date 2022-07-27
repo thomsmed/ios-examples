@@ -51,6 +51,11 @@
 		ED889356287A298100031665 /* DefaultStoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED889355287A298100031665 /* DefaultStoreService.swift */; };
 		EDB10191288D8E86005625EE /* RemoteConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB10190288D8E86005625EE /* RemoteConfiguration.swift */; };
 		EDB10193288D8E92005625EE /* DefaultRemoteConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB10192288D8E92005625EE /* DefaultRemoteConfiguration.swift */; };
+		EDB10195288D9931005625EE /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB10194288D9931005625EE /* RequestBuilder.swift */; };
+		EDB10197288D9AFA005625EE /* Request+Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB10196288D9AFA005625EE /* Request+Endpoint.swift */; };
+		EDB10199288DA253005625EE /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB10198288DA253005625EE /* Request.swift */; };
+		EDB1019B288DA7E4005625EE /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB1019A288DA7E4005625EE /* NetworkClient.swift */; };
+		EDB1019D288DA7ED005625EE /* DefaultNetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB1019C288DA7ED005625EE /* DefaultNetworkClient.swift */; };
 		EDD3E5DE287776E1008318C0 /* StoreMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD3E5DD287776E1008318C0 /* StoreMapViewController.swift */; };
 		EDD3E5E028777731008318C0 /* StoreListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD3E5DF28777731008318C0 /* StoreListViewController.swift */; };
 		EDD3E5E4287789C6008318C0 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD3E5E3287789C6008318C0 /* Store.swift */; };
@@ -129,6 +134,11 @@
 		ED889355287A298100031665 /* DefaultStoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultStoreService.swift; sourceTree = "<group>"; };
 		EDB10190288D8E86005625EE /* RemoteConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfiguration.swift; sourceTree = "<group>"; };
 		EDB10192288D8E92005625EE /* DefaultRemoteConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRemoteConfiguration.swift; sourceTree = "<group>"; };
+		EDB10194288D9931005625EE /* RequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestBuilder.swift; sourceTree = "<group>"; };
+		EDB10196288D9AFA005625EE /* Request+Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Request+Endpoint.swift"; sourceTree = "<group>"; };
+		EDB10198288DA253005625EE /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		EDB1019A288DA7E4005625EE /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
+		EDB1019C288DA7ED005625EE /* DefaultNetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNetworkClient.swift; sourceTree = "<group>"; };
 		EDD3E5DD287776E1008318C0 /* StoreMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreMapViewController.swift; sourceTree = "<group>"; };
 		EDD3E5DF28777731008318C0 /* StoreListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreListViewController.swift; sourceTree = "<group>"; };
 		EDD3E5E3287789C6008318C0 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
@@ -552,21 +562,18 @@
 			isa = PBXGroup;
 			children = (
 				EDD3E5E5287789FC008318C0 /* Core */,
-				EDD3E5E2287789B9008318C0 /* Models */,
 			);
 			path = Networking;
-			sourceTree = "<group>";
-		};
-		EDD3E5E2287789B9008318C0 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		EDD3E5E5287789FC008318C0 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				EDB10198288DA253005625EE /* Request.swift */,
+				EDB10196288D9AFA005625EE /* Request+Endpoint.swift */,
+				EDB10194288D9931005625EE /* RequestBuilder.swift */,
+				EDB1019A288DA7E4005625EE /* NetworkClient.swift */,
+				EDB1019C288DA7ED005625EE /* DefaultNetworkClient.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -679,6 +686,7 @@
 			files = (
 				ED67EF49287636D1004E2500 /* DefaultPurchasesFlowHost.swift in Sources */,
 				EDB10191288D8E86005625EE /* RemoteConfiguration.swift in Sources */,
+				EDB1019B288DA7E4005625EE /* NetworkClient.swift in Sources */,
 				EDB10193288D8E92005625EE /* DefaultRemoteConfiguration.swift in Sources */,
 				ED889356287A298100031665 /* DefaultStoreService.swift in Sources */,
 				ED7549FA28736DF200768561 /* AppFlowHost+AppFlowController.swift in Sources */,
@@ -694,8 +702,10 @@
 				EDD3E5E028777731008318C0 /* StoreListViewController.swift in Sources */,
 				EDD56E80287E34E50018E4EC /* ProfileFlowFactory.swift in Sources */,
 				ED67EF372875FBE3004E2500 /* DefaultProfileFlowHost.swift in Sources */,
+				EDB10199288DA253005625EE /* Request.swift in Sources */,
 				EDEB061228798BC70012A05D /* StoreMapView.swift in Sources */,
 				EDD54051287F706D00E5FFFA /* StoreListViewModel.swift in Sources */,
+				EDB10195288D9931005625EE /* RequestBuilder.swift in Sources */,
 				EDEB060E287983790012A05D /* OnboardingView.swift in Sources */,
 				EDD5406028803A9000E5FFFA /* AppPage.swift in Sources */,
 				ED88933E287A201F00031665 /* BookingService.swift in Sources */,
@@ -706,6 +716,7 @@
 				ED754A0A2873736200768561 /* PrimarySceneFlowHost+PrimarySceneFlowController.swift in Sources */,
 				EDD54053287F711800E5FFFA /* StoreListView.swift in Sources */,
 				ED7549E328736A3900768561 /* DefaultMainFlowController.swift in Sources */,
+				EDB1019D288DA7ED005625EE /* DefaultNetworkClient.swift in Sources */,
 				EDD3E5DE287776E1008318C0 /* StoreMapViewController.swift in Sources */,
 				ED7549DF28736A3900768561 /* AppDelegate.swift in Sources */,
 				EDEB0610287986130012A05D /* OnboardingViewModel.swift in Sources */,
@@ -714,6 +725,7 @@
 				EDD56E82287E35000018E4EC /* BookingFlowFactory.swift in Sources */,
 				ED67EF332875F702004E2500 /* DefaultExploreFlowHost.swift in Sources */,
 				ED754A0C2873738900768561 /* DefaultPrimarySceneFlowHost.swift in Sources */,
+				EDB10197288D9AFA005625EE /* Request+Endpoint.swift in Sources */,
 				EDD56E7A287E31520018E4EC /* MainFlowFactory.swift in Sources */,
 				EDD56E78287E2E3F0018E4EC /* OnboardingFlowFactory.swift in Sources */,
 				EDD56E7C287E34830018E4EC /* ExploreFlowFactory.swift in Sources */,
