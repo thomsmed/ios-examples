@@ -1,13 +1,13 @@
 # Flow Controller / Flow Coordinator Pattern
 
-An app navigation pattern.
+An app navigation pattern (and some other stuff).
 
 Key takeaways:
-- Flow Controller / Flow Coordinator Pattern:
-    - AppPage - Nested enums with associated values, describing content / pages in the app.
-    - FlowController / FlowCoordinator and FlowHost - Protocols implemented by container view controllers. Where FlowHost is acting as an interface "down" the navigation hierarchy, and FlowController/FlowCoordinator acting as an interface "up" the navigation hierarchy.
-    - ViewHolder - Protocol implemented by view controllers. The protocol is acting as the view controller's "public" interface.
-    - FlowFactory - Responsible for the instantiation of all FlowControllers/FlowCoordinators, FlowHosts and ViewHolders (and other objects as needed).
+- **Flow Controller / Flow Coordinator Pattern**:
+    - _**AppPage**_ - Nested enums with associated values, describing content / pages in the app.
+    - _**FlowController / FlowCoordinator and FlowHost**_ - Protocols implemented by container view controllers. Where FlowHost is acting as an interface "down" the navigation hierarchy, and FlowController/FlowCoordinator acting as an interface "up" the navigation hierarchy.
+    - _**ViewHolder**_ - Protocol implemented by view controllers. The protocol is acting as the view controller's "public" interface.
+    - _**FlowFactory**_ - Responsible for the instantiation of all FlowControllers/FlowCoordinators, FlowHosts and ViewHolders (and other objects as needed).
 - AppConfiguration - Interface exposing configuration properties (usually from .plist files), like app bundle display name or credentials for authentication services etc.
 - DefaultsRepository - Interface exposing methods to get and set defaults values that affect the app's content or navigation flow. E.g. if the user has completed onboarding.
 - AnalyticsLogger - Interface exposing methods to log analytics events.
