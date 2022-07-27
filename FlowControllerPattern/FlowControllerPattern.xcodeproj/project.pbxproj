@@ -1,0 +1,973 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		ED67EF2F2875F5E1004E2500 /* ActivityFlowHost+ActivityFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED67EF2E2875F5E1004E2500 /* ActivityFlowHost+ActivityFlowController.swift */; };
+		ED67EF312875F5F6004E2500 /* ProfileFlowHost+ProfileFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED67EF302875F5F6004E2500 /* ProfileFlowHost+ProfileFlowController.swift */; };
+		ED67EF332875F702004E2500 /* DefaultExploreFlowHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED67EF322875F702004E2500 /* DefaultExploreFlowHost.swift */; };
+		ED67EF352875FBD5004E2500 /* DefaultActivityFlowHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED67EF342875FBD5004E2500 /* DefaultActivityFlowHost.swift */; };
+		ED67EF372875FBE3004E2500 /* DefaultProfileFlowHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED67EF362875FBE3004E2500 /* DefaultProfileFlowHost.swift */; };
+		ED67EF3A28760134004E2500 /* BookingFlowHost+BookingFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED67EF3928760134004E2500 /* BookingFlowHost+BookingFlowController.swift */; };
+		ED67EF3C28760141004E2500 /* DefaultBookingFlowHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED67EF3B28760141004E2500 /* DefaultBookingFlowHost.swift */; };
+		ED67EF4028762200004E2500 /* ReferralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED67EF3F28762200004E2500 /* ReferralViewController.swift */; };
+		ED67EF422876229F004E2500 /* StoreFlowHost+StoreFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED67EF412876229F004E2500 /* StoreFlowHost+StoreFlowController.swift */; };
+		ED67EF44287622AC004E2500 /* DefaultStoreFlowHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED67EF43287622AC004E2500 /* DefaultStoreFlowHost.swift */; };
+		ED67EF47287636C2004E2500 /* PurchasesFlowHost+PurchasesFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED67EF46287636C2004E2500 /* PurchasesFlowHost+PurchasesFlowController.swift */; };
+		ED67EF49287636D1004E2500 /* DefaultPurchasesFlowHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED67EF48287636D1004E2500 /* DefaultPurchasesFlowHost.swift */; };
+		ED7549DF28736A3900768561 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7549DE28736A3900768561 /* AppDelegate.swift */; };
+		ED7549E128736A3900768561 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7549E028736A3900768561 /* SceneDelegate.swift */; };
+		ED7549E328736A3900768561 /* DefaultMainFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7549E228736A3900768561 /* DefaultMainFlowController.swift */; };
+		ED7549E828736A3B00768561 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED7549E728736A3B00768561 /* Assets.xcassets */; };
+		ED7549EB28736A3B00768561 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED7549E928736A3B00768561 /* LaunchScreen.storyboard */; };
+		ED7549F428736B4000768561 /* AppPage+Primary.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7549F328736B4000768561 /* AppPage+Primary.swift */; };
+		ED7549FA28736DF200768561 /* AppFlowHost+AppFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7549F928736DF200768561 /* AppFlowHost+AppFlowController.swift */; };
+		ED7549FC28736E0400768561 /* DefaultAppFlowHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7549FB28736E0400768561 /* DefaultAppFlowHost.swift */; };
+		ED754A0028736EA000768561 /* SinglePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7549FF28736EA000768561 /* SinglePageController.swift */; };
+		ED754A0228736EEC00768561 /* SegmentedPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED754A0128736EEC00768561 /* SegmentedPageController.swift */; };
+		ED754A04287371CF00768561 /* OnboardingFlowHost+OnboardingFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED754A03287371CF00768561 /* OnboardingFlowHost+OnboardingFlowController.swift */; };
+		ED754A06287371F400768561 /* DefaultOnboardingFlowHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED754A05287371F400768561 /* DefaultOnboardingFlowHost.swift */; };
+		ED754A082873728900768561 /* MainFlowHost+MainFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED754A072873728900768561 /* MainFlowHost+MainFlowController.swift */; };
+		ED754A0A2873736200768561 /* PrimarySceneFlowHost+PrimarySceneFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED754A092873736200768561 /* PrimarySceneFlowHost+PrimarySceneFlowController.swift */; };
+		ED754A0C2873738900768561 /* DefaultPrimarySceneFlowHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED754A0B2873738900768561 /* DefaultPrimarySceneFlowHost.swift */; };
+		ED754A0E2873744F00768561 /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED754A0D2873744F00768561 /* AppDependencies.swift */; };
+		ED754A102873747D00768561 /* DefaultAppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED754A0F2873747D00768561 /* DefaultAppDependencies.swift */; };
+		ED754A1528737D6B00768561 /* ExploreFlowHost+ExploreFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED754A1428737D6B00768561 /* ExploreFlowHost+ExploreFlowController.swift */; };
+		ED889334287A1C3500031665 /* AnalyticsLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED889333287A1C3500031665 /* AnalyticsLogger.swift */; };
+		ED889336287A1C4B00031665 /* CrashlyticsRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED889335287A1C4B00031665 /* CrashlyticsRecorder.swift */; };
+		ED889339287A1D8400031665 /* DefaultAnalyticsLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED889338287A1D8400031665 /* DefaultAnalyticsLogger.swift */; };
+		ED88933B287A1EFB00031665 /* DefaultCrashlyticsRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED88933A287A1EFB00031665 /* DefaultCrashlyticsRecorder.swift */; };
+		ED88933E287A201F00031665 /* BookingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED88933D287A201F00031665 /* BookingService.swift */; };
+		ED889342287A207E00031665 /* DefaultBookingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED889341287A207E00031665 /* DefaultBookingService.swift */; };
+		ED889348287A20FA00031665 /* ShoppingCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED889347287A20FA00031665 /* ShoppingCart.swift */; };
+		ED88934C287A24A000031665 /* DefaultsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED88934B287A24A000031665 /* DefaultsRepository.swift */; };
+		ED88934F287A24B600031665 /* DefaultDefaultsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED88934E287A24B600031665 /* DefaultDefaultsRepository.swift */; };
+		ED889351287A28AC00031665 /* CheckoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED889350287A28AC00031665 /* CheckoutViewModel.swift */; };
+		ED889354287A297100031665 /* StoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED889353287A297100031665 /* StoreService.swift */; };
+		ED889356287A298100031665 /* DefaultStoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED889355287A298100031665 /* DefaultStoreService.swift */; };
+		EDB10191288D8E86005625EE /* RemoteConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB10190288D8E86005625EE /* RemoteConfiguration.swift */; };
+		EDB10193288D8E92005625EE /* DefaultRemoteConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB10192288D8E92005625EE /* DefaultRemoteConfiguration.swift */; };
+		EDB10195288D9931005625EE /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB10194288D9931005625EE /* RequestBuilder.swift */; };
+		EDB10197288D9AFA005625EE /* Request+Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB10196288D9AFA005625EE /* Request+Endpoint.swift */; };
+		EDB10199288DA253005625EE /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB10198288DA253005625EE /* Request.swift */; };
+		EDB1019B288DA7E4005625EE /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB1019A288DA7E4005625EE /* NetworkClient.swift */; };
+		EDB1019D288DA7ED005625EE /* DefaultNetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB1019C288DA7ED005625EE /* DefaultNetworkClient.swift */; };
+		EDD3E5DE287776E1008318C0 /* StoreMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD3E5DD287776E1008318C0 /* StoreMapViewController.swift */; };
+		EDD3E5E028777731008318C0 /* StoreListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD3E5DF28777731008318C0 /* StoreListViewController.swift */; };
+		EDD3E5E4287789C6008318C0 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD3E5E3287789C6008318C0 /* Store.swift */; };
+		EDD3E5E928778EFC008318C0 /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD3E5E828778EFC008318C0 /* StoreViewController.swift */; };
+		EDD3E5EB28778F19008318C0 /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD3E5EA28778F19008318C0 /* CheckoutViewController.swift */; };
+		EDD3E5ED2877901A008318C0 /* StoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD3E5EC2877901A008318C0 /* StoreViewModel.swift */; };
+		EDD54051287F706D00E5FFFA /* StoreListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD54050287F706D00E5FFFA /* StoreListViewModel.swift */; };
+		EDD54053287F711800E5FFFA /* StoreListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD54052287F711800E5FFFA /* StoreListView.swift */; };
+		EDD54055287F75D700E5FFFA /* StoreFlowModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD54054287F75D700E5FFFA /* StoreFlowModels.swift */; };
+		EDD54057287F768200E5FFFA /* StoreFilterSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD54056287F768200E5FFFA /* StoreFilterSheetController.swift */; };
+		EDD5405C288039BC00E5FFFA /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD5405B288039BC00E5FFFA /* AppConfiguration.swift */; };
+		EDD5405E288039CE00E5FFFA /* DefaultAppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD5405D288039CE00E5FFFA /* DefaultAppConfiguration.swift */; };
+		EDD5406028803A9000E5FFFA /* AppPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD5405F28803A9000E5FFFA /* AppPage.swift */; };
+		EDD56E72287E28900018E4EC /* AppFlowFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD56E71287E28900018E4EC /* AppFlowFactory.swift */; };
+		EDD56E74287E28AF0018E4EC /* DefaultAppFlowFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD56E73287E28AF0018E4EC /* DefaultAppFlowFactory.swift */; };
+		EDD56E76287E2A430018E4EC /* PrimarySceneFlowFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD56E75287E2A430018E4EC /* PrimarySceneFlowFactory.swift */; };
+		EDD56E78287E2E3F0018E4EC /* OnboardingFlowFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD56E77287E2E3F0018E4EC /* OnboardingFlowFactory.swift */; };
+		EDD56E7A287E31520018E4EC /* MainFlowFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD56E79287E31520018E4EC /* MainFlowFactory.swift */; };
+		EDD56E7C287E34830018E4EC /* ExploreFlowFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD56E7B287E34830018E4EC /* ExploreFlowFactory.swift */; };
+		EDD56E7E287E34C50018E4EC /* ActivityFlowFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD56E7D287E34C50018E4EC /* ActivityFlowFactory.swift */; };
+		EDD56E80287E34E50018E4EC /* ProfileFlowFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD56E7F287E34E50018E4EC /* ProfileFlowFactory.swift */; };
+		EDD56E82287E35000018E4EC /* BookingFlowFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD56E81287E35000018E4EC /* BookingFlowFactory.swift */; };
+		EDD56E84287E37C30018E4EC /* StoreFlowFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD56E83287E37C30018E4EC /* StoreFlowFactory.swift */; };
+		EDEB06072878D6420012A05D /* Extractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEB06062878D6420012A05D /* Extractor.swift */; };
+		EDEB060B287983610012A05D /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEB060A287983610012A05D /* OnboardingViewController.swift */; };
+		EDEB060E287983790012A05D /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEB060D287983790012A05D /* OnboardingView.swift */; };
+		EDEB0610287986130012A05D /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEB060F287986130012A05D /* OnboardingViewModel.swift */; };
+		EDEB061228798BC70012A05D /* StoreMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEB061128798BC70012A05D /* StoreMapView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		ED67EF2E2875F5E1004E2500 /* ActivityFlowHost+ActivityFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityFlowHost+ActivityFlowController.swift"; sourceTree = "<group>"; };
+		ED67EF302875F5F6004E2500 /* ProfileFlowHost+ProfileFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileFlowHost+ProfileFlowController.swift"; sourceTree = "<group>"; };
+		ED67EF322875F702004E2500 /* DefaultExploreFlowHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultExploreFlowHost.swift; sourceTree = "<group>"; };
+		ED67EF342875FBD5004E2500 /* DefaultActivityFlowHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultActivityFlowHost.swift; sourceTree = "<group>"; };
+		ED67EF362875FBE3004E2500 /* DefaultProfileFlowHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultProfileFlowHost.swift; sourceTree = "<group>"; };
+		ED67EF3928760134004E2500 /* BookingFlowHost+BookingFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookingFlowHost+BookingFlowController.swift"; sourceTree = "<group>"; };
+		ED67EF3B28760141004E2500 /* DefaultBookingFlowHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultBookingFlowHost.swift; sourceTree = "<group>"; };
+		ED67EF3F28762200004E2500 /* ReferralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferralViewController.swift; sourceTree = "<group>"; };
+		ED67EF412876229F004E2500 /* StoreFlowHost+StoreFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StoreFlowHost+StoreFlowController.swift"; sourceTree = "<group>"; };
+		ED67EF43287622AC004E2500 /* DefaultStoreFlowHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultStoreFlowHost.swift; sourceTree = "<group>"; };
+		ED67EF46287636C2004E2500 /* PurchasesFlowHost+PurchasesFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PurchasesFlowHost+PurchasesFlowController.swift"; sourceTree = "<group>"; };
+		ED67EF48287636D1004E2500 /* DefaultPurchasesFlowHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPurchasesFlowHost.swift; sourceTree = "<group>"; };
+		ED67EF5028775F1B004E2500 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		ED7549DB28736A3900768561 /* FlowControllerPattern.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlowControllerPattern.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED7549DE28736A3900768561 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		ED7549E028736A3900768561 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		ED7549E228736A3900768561 /* DefaultMainFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMainFlowController.swift; sourceTree = "<group>"; };
+		ED7549E728736A3B00768561 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		ED7549EA28736A3B00768561 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		ED7549EC28736A3B00768561 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ED7549F328736B4000768561 /* AppPage+Primary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppPage+Primary.swift"; sourceTree = "<group>"; };
+		ED7549F928736DF200768561 /* AppFlowHost+AppFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppFlowHost+AppFlowController.swift"; sourceTree = "<group>"; };
+		ED7549FB28736E0400768561 /* DefaultAppFlowHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAppFlowHost.swift; sourceTree = "<group>"; };
+		ED7549FF28736EA000768561 /* SinglePageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePageController.swift; sourceTree = "<group>"; };
+		ED754A0128736EEC00768561 /* SegmentedPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedPageController.swift; sourceTree = "<group>"; };
+		ED754A03287371CF00768561 /* OnboardingFlowHost+OnboardingFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardingFlowHost+OnboardingFlowController.swift"; sourceTree = "<group>"; };
+		ED754A05287371F400768561 /* DefaultOnboardingFlowHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultOnboardingFlowHost.swift; sourceTree = "<group>"; };
+		ED754A072873728900768561 /* MainFlowHost+MainFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainFlowHost+MainFlowController.swift"; sourceTree = "<group>"; };
+		ED754A092873736200768561 /* PrimarySceneFlowHost+PrimarySceneFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrimarySceneFlowHost+PrimarySceneFlowController.swift"; sourceTree = "<group>"; };
+		ED754A0B2873738900768561 /* DefaultPrimarySceneFlowHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPrimarySceneFlowHost.swift; sourceTree = "<group>"; };
+		ED754A0D2873744F00768561 /* AppDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencies.swift; sourceTree = "<group>"; };
+		ED754A0F2873747D00768561 /* DefaultAppDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAppDependencies.swift; sourceTree = "<group>"; };
+		ED754A1428737D6B00768561 /* ExploreFlowHost+ExploreFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExploreFlowHost+ExploreFlowController.swift"; sourceTree = "<group>"; };
+		ED889333287A1C3500031665 /* AnalyticsLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsLogger.swift; sourceTree = "<group>"; };
+		ED889335287A1C4B00031665 /* CrashlyticsRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashlyticsRecorder.swift; sourceTree = "<group>"; };
+		ED889338287A1D8400031665 /* DefaultAnalyticsLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAnalyticsLogger.swift; sourceTree = "<group>"; };
+		ED88933A287A1EFB00031665 /* DefaultCrashlyticsRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCrashlyticsRecorder.swift; sourceTree = "<group>"; };
+		ED88933D287A201F00031665 /* BookingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingService.swift; sourceTree = "<group>"; };
+		ED889341287A207E00031665 /* DefaultBookingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultBookingService.swift; sourceTree = "<group>"; };
+		ED889347287A20FA00031665 /* ShoppingCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCart.swift; sourceTree = "<group>"; };
+		ED88934B287A24A000031665 /* DefaultsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsRepository.swift; sourceTree = "<group>"; };
+		ED88934E287A24B600031665 /* DefaultDefaultsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDefaultsRepository.swift; sourceTree = "<group>"; };
+		ED889350287A28AC00031665 /* CheckoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewModel.swift; sourceTree = "<group>"; };
+		ED889353287A297100031665 /* StoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreService.swift; sourceTree = "<group>"; };
+		ED889355287A298100031665 /* DefaultStoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultStoreService.swift; sourceTree = "<group>"; };
+		EDB10190288D8E86005625EE /* RemoteConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfiguration.swift; sourceTree = "<group>"; };
+		EDB10192288D8E92005625EE /* DefaultRemoteConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRemoteConfiguration.swift; sourceTree = "<group>"; };
+		EDB10194288D9931005625EE /* RequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestBuilder.swift; sourceTree = "<group>"; };
+		EDB10196288D9AFA005625EE /* Request+Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Request+Endpoint.swift"; sourceTree = "<group>"; };
+		EDB10198288DA253005625EE /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		EDB1019A288DA7E4005625EE /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
+		EDB1019C288DA7ED005625EE /* DefaultNetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNetworkClient.swift; sourceTree = "<group>"; };
+		EDD3E5DD287776E1008318C0 /* StoreMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreMapViewController.swift; sourceTree = "<group>"; };
+		EDD3E5DF28777731008318C0 /* StoreListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreListViewController.swift; sourceTree = "<group>"; };
+		EDD3E5E3287789C6008318C0 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		EDD3E5E828778EFC008318C0 /* StoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
+		EDD3E5EA28778F19008318C0 /* CheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
+		EDD3E5EC2877901A008318C0 /* StoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewModel.swift; sourceTree = "<group>"; };
+		EDD54050287F706D00E5FFFA /* StoreListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreListViewModel.swift; sourceTree = "<group>"; };
+		EDD54052287F711800E5FFFA /* StoreListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreListView.swift; sourceTree = "<group>"; };
+		EDD54054287F75D700E5FFFA /* StoreFlowModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreFlowModels.swift; sourceTree = "<group>"; };
+		EDD54056287F768200E5FFFA /* StoreFilterSheetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreFilterSheetController.swift; sourceTree = "<group>"; };
+		EDD54059287FF70D00E5FFFA /* FlowControllerPattern.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FlowControllerPattern.entitlements; sourceTree = "<group>"; };
+		EDD5405A2880162200E5FFFA /* ExamplePush.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = ExamplePush.apns; sourceTree = "<group>"; };
+		EDD5405B288039BC00E5FFFA /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
+		EDD5405D288039CE00E5FFFA /* DefaultAppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAppConfiguration.swift; sourceTree = "<group>"; };
+		EDD5405F28803A9000E5FFFA /* AppPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPage.swift; sourceTree = "<group>"; };
+		EDD56E71287E28900018E4EC /* AppFlowFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowFactory.swift; sourceTree = "<group>"; };
+		EDD56E73287E28AF0018E4EC /* DefaultAppFlowFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAppFlowFactory.swift; sourceTree = "<group>"; };
+		EDD56E75287E2A430018E4EC /* PrimarySceneFlowFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimarySceneFlowFactory.swift; sourceTree = "<group>"; };
+		EDD56E77287E2E3F0018E4EC /* OnboardingFlowFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFlowFactory.swift; sourceTree = "<group>"; };
+		EDD56E79287E31520018E4EC /* MainFlowFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlowFactory.swift; sourceTree = "<group>"; };
+		EDD56E7B287E34830018E4EC /* ExploreFlowFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreFlowFactory.swift; sourceTree = "<group>"; };
+		EDD56E7D287E34C50018E4EC /* ActivityFlowFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityFlowFactory.swift; sourceTree = "<group>"; };
+		EDD56E7F287E34E50018E4EC /* ProfileFlowFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFlowFactory.swift; sourceTree = "<group>"; };
+		EDD56E81287E35000018E4EC /* BookingFlowFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingFlowFactory.swift; sourceTree = "<group>"; };
+		EDD56E83287E37C30018E4EC /* StoreFlowFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreFlowFactory.swift; sourceTree = "<group>"; };
+		EDEB06062878D6420012A05D /* Extractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extractor.swift; sourceTree = "<group>"; };
+		EDEB060A287983610012A05D /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		EDEB060D287983790012A05D /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		EDEB060F287986130012A05D /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
+		EDEB061128798BC70012A05D /* StoreMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreMapView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		ED7549D828736A3900768561 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		ED423AEE28776ADB00DBD724 /* Primary */ = {
+			isa = PBXGroup;
+			children = (
+				ED7549F328736B4000768561 /* AppPage+Primary.swift */,
+				EDD56E75287E2A430018E4EC /* PrimarySceneFlowFactory.swift */,
+				ED754A092873736200768561 /* PrimarySceneFlowHost+PrimarySceneFlowController.swift */,
+				ED754A0B2873738900768561 /* DefaultPrimarySceneFlowHost.swift */,
+				ED7549F528736CB800768561 /* Features */,
+			);
+			path = Primary;
+			sourceTree = "<group>";
+		};
+		ED67EF2D2875EA5E004E2500 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				ED7549E028736A3900768561 /* SceneDelegate.swift */,
+				EDEB06062878D6420012A05D /* Extractor.swift */,
+				ED423AEE28776ADB00DBD724 /* Primary */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		ED67EF3828760119004E2500 /* Booking */ = {
+			isa = PBXGroup;
+			children = (
+				EDD56E81287E35000018E4EC /* BookingFlowFactory.swift */,
+				ED67EF3928760134004E2500 /* BookingFlowHost+BookingFlowController.swift */,
+				ED67EF3B28760141004E2500 /* DefaultBookingFlowHost.swift */,
+				EDD3E5E628778ECF008318C0 /* Store */,
+				EDD3E5E728778EEA008318C0 /* Checkout */,
+			);
+			path = Booking;
+			sourceTree = "<group>";
+		};
+		ED67EF3D287621B3004E2500 /* Referral */ = {
+			isa = PBXGroup;
+			children = (
+				ED67EF3F28762200004E2500 /* ReferralViewController.swift */,
+			);
+			path = Referral;
+			sourceTree = "<group>";
+		};
+		ED67EF3E287621CC004E2500 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				EDD56E83287E37C30018E4EC /* StoreFlowFactory.swift */,
+				ED67EF412876229F004E2500 /* StoreFlowHost+StoreFlowController.swift */,
+				ED67EF43287622AC004E2500 /* DefaultStoreFlowHost.swift */,
+				EDD54054287F75D700E5FFFA /* StoreFlowModels.swift */,
+				EDD54058287F768C00E5FFFA /* StoreFilterSheet */,
+				ED67EF4A28763826004E2500 /* Map */,
+				ED67EF4B2876382C004E2500 /* List */,
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
+		ED67EF4528763696004E2500 /* Purchases */ = {
+			isa = PBXGroup;
+			children = (
+				ED67EF46287636C2004E2500 /* PurchasesFlowHost+PurchasesFlowController.swift */,
+				ED67EF48287636D1004E2500 /* DefaultPurchasesFlowHost.swift */,
+				ED67EF4C28763838004E2500 /* Active */,
+				ED67EF4D2876383E004E2500 /* History */,
+			);
+			path = Purchases;
+			sourceTree = "<group>";
+		};
+		ED67EF4A28763826004E2500 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				EDD3E5DD287776E1008318C0 /* StoreMapViewController.swift */,
+				EDEB061128798BC70012A05D /* StoreMapView.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		ED67EF4B2876382C004E2500 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				EDD3E5DF28777731008318C0 /* StoreListViewController.swift */,
+				EDD54050287F706D00E5FFFA /* StoreListViewModel.swift */,
+				EDD54052287F711800E5FFFA /* StoreListView.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		ED67EF4C28763838004E2500 /* Active */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Active;
+			sourceTree = "<group>";
+		};
+		ED67EF4D2876383E004E2500 /* History */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		ED7549D228736A3800768561 = {
+			isa = PBXGroup;
+			children = (
+				ED67EF5028775F1B004E2500 /* README.md */,
+				EDD5405A2880162200E5FFFA /* ExamplePush.apns */,
+				ED7549DD28736A3900768561 /* FlowControllerPattern */,
+				ED7549DC28736A3900768561 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		ED7549DC28736A3900768561 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ED7549DB28736A3900768561 /* FlowControllerPattern.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		ED7549DD28736A3900768561 /* FlowControllerPattern */ = {
+			isa = PBXGroup;
+			children = (
+				ED7549F228736B1F00768561 /* App */,
+				ED67EF2D2875EA5E004E2500 /* Scenes */,
+				ED7549FD28736E4800768561 /* Common */,
+				ED7549F628736CC500768561 /* Resources */,
+			);
+			path = FlowControllerPattern;
+			sourceTree = "<group>";
+		};
+		ED7549F228736B1F00768561 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				EDD54059287FF70D00E5FFFA /* FlowControllerPattern.entitlements */,
+				ED7549E928736A3B00768561 /* LaunchScreen.storyboard */,
+				ED7549EC28736A3B00768561 /* Info.plist */,
+				ED7549DE28736A3900768561 /* AppDelegate.swift */,
+				ED754A0D2873744F00768561 /* AppDependencies.swift */,
+				ED754A0F2873747D00768561 /* DefaultAppDependencies.swift */,
+				EDD56E71287E28900018E4EC /* AppFlowFactory.swift */,
+				EDD56E73287E28AF0018E4EC /* DefaultAppFlowFactory.swift */,
+				ED7549F928736DF200768561 /* AppFlowHost+AppFlowController.swift */,
+				ED7549FB28736E0400768561 /* DefaultAppFlowHost.swift */,
+				EDD5405F28803A9000E5FFFA /* AppPage.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		ED7549F528736CB800768561 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				ED7549F728736D9200768561 /* Onboarding */,
+				ED7549F828736D9800768561 /* Main */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		ED7549F628736CC500768561 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				ED7549E728736A3B00768561 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		ED7549F728736D9200768561 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				EDD56E77287E2E3F0018E4EC /* OnboardingFlowFactory.swift */,
+				ED754A03287371CF00768561 /* OnboardingFlowHost+OnboardingFlowController.swift */,
+				ED754A05287371F400768561 /* DefaultOnboardingFlowHost.swift */,
+				EDEB060C287983640012A05D /* Onboarding */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		ED7549F828736D9800768561 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				EDD56E79287E31520018E4EC /* MainFlowFactory.swift */,
+				ED754A072873728900768561 /* MainFlowHost+MainFlowController.swift */,
+				ED7549E228736A3900768561 /* DefaultMainFlowController.swift */,
+				ED754A1128737D3F00768561 /* Explore */,
+				ED754A1228737D4700768561 /* Activity */,
+				ED754A1328737D5000768561 /* Profile */,
+				ED67EF3828760119004E2500 /* Booking */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		ED7549FD28736E4800768561 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				ED889332287A1B2E00031665 /* Views */,
+				ED7549FE28736E8800768561 /* ViewControllers */,
+				ED889343287A20B400031665 /* Models */,
+				ED889330287A1AFC00031665 /* Services */,
+				ED889331287A1B0500031665 /* Repositories */,
+				EDD3E5E1287789A3008318C0 /* Networking */,
+				EDB1018C288D8E43005625EE /* Configuration */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		ED7549FE28736E8800768561 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				ED7549FF28736EA000768561 /* SinglePageController.swift */,
+				ED754A0128736EEC00768561 /* SegmentedPageController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		ED754A1128737D3F00768561 /* Explore */ = {
+			isa = PBXGroup;
+			children = (
+				EDD56E7B287E34830018E4EC /* ExploreFlowFactory.swift */,
+				ED754A1428737D6B00768561 /* ExploreFlowHost+ExploreFlowController.swift */,
+				ED67EF322875F702004E2500 /* DefaultExploreFlowHost.swift */,
+				ED67EF3E287621CC004E2500 /* Store */,
+				ED67EF3D287621B3004E2500 /* Referral */,
+			);
+			path = Explore;
+			sourceTree = "<group>";
+		};
+		ED754A1228737D4700768561 /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				EDD56E7D287E34C50018E4EC /* ActivityFlowFactory.swift */,
+				ED67EF2E2875F5E1004E2500 /* ActivityFlowHost+ActivityFlowController.swift */,
+				ED67EF342875FBD5004E2500 /* DefaultActivityFlowHost.swift */,
+				ED67EF4528763696004E2500 /* Purchases */,
+			);
+			path = Activity;
+			sourceTree = "<group>";
+		};
+		ED754A1328737D5000768561 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				EDD56E7F287E34E50018E4EC /* ProfileFlowFactory.swift */,
+				ED67EF302875F5F6004E2500 /* ProfileFlowHost+ProfileFlowController.swift */,
+				ED67EF362875FBE3004E2500 /* DefaultProfileFlowHost.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		ED754A1628737DA200768561 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				ED889333287A1C3500031665 /* AnalyticsLogger.swift */,
+				ED889338287A1D8400031665 /* DefaultAnalyticsLogger.swift */,
+			);
+			path = Analytics;
+			sourceTree = "<group>";
+		};
+		ED88932F287A1ACD00031665 /* Crashlytics */ = {
+			isa = PBXGroup;
+			children = (
+				ED889335287A1C4B00031665 /* CrashlyticsRecorder.swift */,
+				ED88933A287A1EFB00031665 /* DefaultCrashlyticsRecorder.swift */,
+			);
+			path = Crashlytics;
+			sourceTree = "<group>";
+		};
+		ED889330287A1AFC00031665 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				ED889352287A295500031665 /* Store */,
+				ED889349287A221600031665 /* Authentication */,
+				ED88933C287A200400031665 /* Booking */,
+				ED754A1628737DA200768561 /* Analytics */,
+				ED88932F287A1ACD00031665 /* Crashlytics */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		ED889331287A1B0500031665 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				ED88934D287A24A400031665 /* Defaults */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		ED889332287A1B2E00031665 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		ED88933C287A200400031665 /* Booking */ = {
+			isa = PBXGroup;
+			children = (
+				ED88933D287A201F00031665 /* BookingService.swift */,
+				ED889341287A207E00031665 /* DefaultBookingService.swift */,
+			);
+			path = Booking;
+			sourceTree = "<group>";
+		};
+		ED889343287A20B400031665 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				ED88934A287A232B00031665 /* Store */,
+				ED889346287A20E900031665 /* ShoppingCart */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		ED889346287A20E900031665 /* ShoppingCart */ = {
+			isa = PBXGroup;
+			children = (
+				ED889347287A20FA00031665 /* ShoppingCart.swift */,
+			);
+			path = ShoppingCart;
+			sourceTree = "<group>";
+		};
+		ED889349287A221600031665 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		ED88934A287A232B00031665 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				EDD3E5E3287789C6008318C0 /* Store.swift */,
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
+		ED88934D287A24A400031665 /* Defaults */ = {
+			isa = PBXGroup;
+			children = (
+				ED88934B287A24A000031665 /* DefaultsRepository.swift */,
+				ED88934E287A24B600031665 /* DefaultDefaultsRepository.swift */,
+			);
+			path = Defaults;
+			sourceTree = "<group>";
+		};
+		ED889352287A295500031665 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				ED889353287A297100031665 /* StoreService.swift */,
+				ED889355287A298100031665 /* DefaultStoreService.swift */,
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
+		EDB1018C288D8E43005625EE /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				EDB1018D288D8E60005625EE /* App */,
+				EDB1018F288D8E6F005625EE /* Remote */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		EDB1018D288D8E60005625EE /* App */ = {
+			isa = PBXGroup;
+			children = (
+				EDD5405B288039BC00E5FFFA /* AppConfiguration.swift */,
+				EDD5405D288039CE00E5FFFA /* DefaultAppConfiguration.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		EDB1018F288D8E6F005625EE /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				EDB10190288D8E86005625EE /* RemoteConfiguration.swift */,
+				EDB10192288D8E92005625EE /* DefaultRemoteConfiguration.swift */,
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
+		EDD3E5E1287789A3008318C0 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				EDD3E5E5287789FC008318C0 /* Core */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		EDD3E5E5287789FC008318C0 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				EDB10198288DA253005625EE /* Request.swift */,
+				EDB10196288D9AFA005625EE /* Request+Endpoint.swift */,
+				EDB10194288D9931005625EE /* RequestBuilder.swift */,
+				EDB1019A288DA7E4005625EE /* NetworkClient.swift */,
+				EDB1019C288DA7ED005625EE /* DefaultNetworkClient.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		EDD3E5E628778ECF008318C0 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				EDD3E5E828778EFC008318C0 /* StoreViewController.swift */,
+				EDD3E5EC2877901A008318C0 /* StoreViewModel.swift */,
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
+		EDD3E5E728778EEA008318C0 /* Checkout */ = {
+			isa = PBXGroup;
+			children = (
+				EDD3E5EA28778F19008318C0 /* CheckoutViewController.swift */,
+				ED889350287A28AC00031665 /* CheckoutViewModel.swift */,
+			);
+			path = Checkout;
+			sourceTree = "<group>";
+		};
+		EDD54058287F768C00E5FFFA /* StoreFilterSheet */ = {
+			isa = PBXGroup;
+			children = (
+				EDD54056287F768200E5FFFA /* StoreFilterSheetController.swift */,
+			);
+			path = StoreFilterSheet;
+			sourceTree = "<group>";
+		};
+		EDEB060C287983640012A05D /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				EDEB060A287983610012A05D /* OnboardingViewController.swift */,
+				EDEB060D287983790012A05D /* OnboardingView.swift */,
+				EDEB060F287986130012A05D /* OnboardingViewModel.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		ED7549DA28736A3900768561 /* FlowControllerPattern */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ED7549EF28736A3B00768561 /* Build configuration list for PBXNativeTarget "FlowControllerPattern" */;
+			buildPhases = (
+				ED7549D728736A3900768561 /* Sources */,
+				ED7549D828736A3900768561 /* Frameworks */,
+				ED7549D928736A3900768561 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FlowControllerPattern;
+			productName = FlowControllerPattern;
+			productReference = ED7549DB28736A3900768561 /* FlowControllerPattern.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		ED7549D328736A3800768561 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1330;
+				LastUpgradeCheck = 1330;
+				TargetAttributes = {
+					ED7549DA28736A3900768561 = {
+						CreatedOnToolsVersion = 13.3.1;
+					};
+				};
+			};
+			buildConfigurationList = ED7549D628736A3800768561 /* Build configuration list for PBXProject "FlowControllerPattern" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = ED7549D228736A3800768561;
+			productRefGroup = ED7549DC28736A3900768561 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				ED7549DA28736A3900768561 /* FlowControllerPattern */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		ED7549D928736A3900768561 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED7549EB28736A3B00768561 /* LaunchScreen.storyboard in Resources */,
+				ED7549E828736A3B00768561 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		ED7549D728736A3900768561 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED67EF49287636D1004E2500 /* DefaultPurchasesFlowHost.swift in Sources */,
+				EDB10191288D8E86005625EE /* RemoteConfiguration.swift in Sources */,
+				EDB1019B288DA7E4005625EE /* NetworkClient.swift in Sources */,
+				EDB10193288D8E92005625EE /* DefaultRemoteConfiguration.swift in Sources */,
+				ED889356287A298100031665 /* DefaultStoreService.swift in Sources */,
+				ED7549FA28736DF200768561 /* AppFlowHost+AppFlowController.swift in Sources */,
+				EDD3E5E928778EFC008318C0 /* StoreViewController.swift in Sources */,
+				ED67EF312875F5F6004E2500 /* ProfileFlowHost+ProfileFlowController.swift in Sources */,
+				ED67EF4028762200004E2500 /* ReferralViewController.swift in Sources */,
+				ED754A1528737D6B00768561 /* ExploreFlowHost+ExploreFlowController.swift in Sources */,
+				ED889342287A207E00031665 /* DefaultBookingService.swift in Sources */,
+				ED889351287A28AC00031665 /* CheckoutViewModel.swift in Sources */,
+				ED67EF352875FBD5004E2500 /* DefaultActivityFlowHost.swift in Sources */,
+				ED7549FC28736E0400768561 /* DefaultAppFlowHost.swift in Sources */,
+				EDD3E5ED2877901A008318C0 /* StoreViewModel.swift in Sources */,
+				EDD3E5E028777731008318C0 /* StoreListViewController.swift in Sources */,
+				EDD56E80287E34E50018E4EC /* ProfileFlowFactory.swift in Sources */,
+				ED67EF372875FBE3004E2500 /* DefaultProfileFlowHost.swift in Sources */,
+				EDB10199288DA253005625EE /* Request.swift in Sources */,
+				EDEB061228798BC70012A05D /* StoreMapView.swift in Sources */,
+				EDD54051287F706D00E5FFFA /* StoreListViewModel.swift in Sources */,
+				EDB10195288D9931005625EE /* RequestBuilder.swift in Sources */,
+				EDEB060E287983790012A05D /* OnboardingView.swift in Sources */,
+				EDD5406028803A9000E5FFFA /* AppPage.swift in Sources */,
+				ED88933E287A201F00031665 /* BookingService.swift in Sources */,
+				ED67EF44287622AC004E2500 /* DefaultStoreFlowHost.swift in Sources */,
+				EDD5405E288039CE00E5FFFA /* DefaultAppConfiguration.swift in Sources */,
+				ED754A102873747D00768561 /* DefaultAppDependencies.swift in Sources */,
+				ED754A0E2873744F00768561 /* AppDependencies.swift in Sources */,
+				ED754A0A2873736200768561 /* PrimarySceneFlowHost+PrimarySceneFlowController.swift in Sources */,
+				EDD54053287F711800E5FFFA /* StoreListView.swift in Sources */,
+				ED7549E328736A3900768561 /* DefaultMainFlowController.swift in Sources */,
+				EDB1019D288DA7ED005625EE /* DefaultNetworkClient.swift in Sources */,
+				EDD3E5DE287776E1008318C0 /* StoreMapViewController.swift in Sources */,
+				ED7549DF28736A3900768561 /* AppDelegate.swift in Sources */,
+				EDEB0610287986130012A05D /* OnboardingViewModel.swift in Sources */,
+				ED88934F287A24B600031665 /* DefaultDefaultsRepository.swift in Sources */,
+				EDEB06072878D6420012A05D /* Extractor.swift in Sources */,
+				EDD56E82287E35000018E4EC /* BookingFlowFactory.swift in Sources */,
+				ED67EF332875F702004E2500 /* DefaultExploreFlowHost.swift in Sources */,
+				ED754A0C2873738900768561 /* DefaultPrimarySceneFlowHost.swift in Sources */,
+				EDB10197288D9AFA005625EE /* Request+Endpoint.swift in Sources */,
+				EDD56E7A287E31520018E4EC /* MainFlowFactory.swift in Sources */,
+				EDD56E78287E2E3F0018E4EC /* OnboardingFlowFactory.swift in Sources */,
+				EDD56E7C287E34830018E4EC /* ExploreFlowFactory.swift in Sources */,
+				ED67EF47287636C2004E2500 /* PurchasesFlowHost+PurchasesFlowController.swift in Sources */,
+				ED889354287A297100031665 /* StoreService.swift in Sources */,
+				ED88934C287A24A000031665 /* DefaultsRepository.swift in Sources */,
+				ED88933B287A1EFB00031665 /* DefaultCrashlyticsRecorder.swift in Sources */,
+				EDD3E5E4287789C6008318C0 /* Store.swift in Sources */,
+				ED889339287A1D8400031665 /* DefaultAnalyticsLogger.swift in Sources */,
+				ED754A0028736EA000768561 /* SinglePageController.swift in Sources */,
+				ED754A082873728900768561 /* MainFlowHost+MainFlowController.swift in Sources */,
+				ED67EF3A28760134004E2500 /* BookingFlowHost+BookingFlowController.swift in Sources */,
+				ED67EF2F2875F5E1004E2500 /* ActivityFlowHost+ActivityFlowController.swift in Sources */,
+				ED754A0228736EEC00768561 /* SegmentedPageController.swift in Sources */,
+				EDD56E72287E28900018E4EC /* AppFlowFactory.swift in Sources */,
+				ED754A06287371F400768561 /* DefaultOnboardingFlowHost.swift in Sources */,
+				EDD56E76287E2A430018E4EC /* PrimarySceneFlowFactory.swift in Sources */,
+				ED67EF3C28760141004E2500 /* DefaultBookingFlowHost.swift in Sources */,
+				EDD3E5EB28778F19008318C0 /* CheckoutViewController.swift in Sources */,
+				ED889334287A1C3500031665 /* AnalyticsLogger.swift in Sources */,
+				EDD54057287F768200E5FFFA /* StoreFilterSheetController.swift in Sources */,
+				EDD56E74287E28AF0018E4EC /* DefaultAppFlowFactory.swift in Sources */,
+				EDEB060B287983610012A05D /* OnboardingViewController.swift in Sources */,
+				EDD56E7E287E34C50018E4EC /* ActivityFlowFactory.swift in Sources */,
+				ED754A04287371CF00768561 /* OnboardingFlowHost+OnboardingFlowController.swift in Sources */,
+				EDD56E84287E37C30018E4EC /* StoreFlowFactory.swift in Sources */,
+				ED7549F428736B4000768561 /* AppPage+Primary.swift in Sources */,
+				ED7549E128736A3900768561 /* SceneDelegate.swift in Sources */,
+				ED889348287A20FA00031665 /* ShoppingCart.swift in Sources */,
+				EDD54055287F75D700E5FFFA /* StoreFlowModels.swift in Sources */,
+				ED889336287A1C4B00031665 /* CrashlyticsRecorder.swift in Sources */,
+				ED67EF422876229F004E2500 /* StoreFlowHost+StoreFlowController.swift in Sources */,
+				EDD5405C288039BC00E5FFFA /* AppConfiguration.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		ED7549E928736A3B00768561 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ED7549EA28736A3B00768561 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		ED7549ED28736A3B00768561 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		ED7549EE28736A3B00768561 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		ED7549F028736A3B00768561 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FlowControllerPattern/App/FlowControllerPattern.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FlowControllerPattern/App/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = App/LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ios.example.FlowControllerPattern;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		ED7549F128736A3B00768561 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FlowControllerPattern/App/FlowControllerPattern.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FlowControllerPattern/App/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = App/LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ios.example.FlowControllerPattern;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		ED7549D628736A3800768561 /* Build configuration list for PBXProject "FlowControllerPattern" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED7549ED28736A3B00768561 /* Debug */,
+				ED7549EE28736A3B00768561 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ED7549EF28736A3B00768561 /* Build configuration list for PBXNativeTarget "FlowControllerPattern" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED7549F028736A3B00768561 /* Debug */,
+				ED7549F128736A3B00768561 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = ED7549D328736A3800768561 /* Project object */;
+}

@@ -12,6 +12,7 @@ A collection of iOS examples.
 - [Dynamic sized dialog controller](DialogController)
 - [gRPC Swift](GRPCFTW)
 - [Background refresh and cleanup](BackgroundCleanup)
+- [Flow coordinator pattern](FlowControllerPattern)
 
 These examples are created as a way to learn. Feel free to use them as you please.
 Feedback are also welcome.
