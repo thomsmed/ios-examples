@@ -11,3 +11,4 @@
 - [gRPC Swift](GRPCFTW)
 - [Background refresh and cleanup](BackgroundCleanup)
 - [Flow coordinator pattern](FlowControllerPattern)
+- [Bluetooth Low Energy (BLE)](BLEChat)
