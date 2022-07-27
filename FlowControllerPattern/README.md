@@ -315,6 +315,3 @@ xcrun simctl push <device-identifier> com.thomsmed.FlowControllerPattern Example
 // For iPhone 13 Pro simulator:
 xcrun simctl push "2216FFD1-B7AF-4676-B888-A0A8F2509FE9" com.thomsmed.FlowControllerPattern ExamplePush.apns
 ```
-
-## TODO
-- Networking
