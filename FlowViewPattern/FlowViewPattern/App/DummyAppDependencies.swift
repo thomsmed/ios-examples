@@ -9,10 +9,15 @@ import Foundation
 
 final class DummyAppDependencies {
 
-    private init() { }
+    static let shared: AppDependencies = DummyAppDependencies()
+
+    let defaultsRepository: DefaultsRepository
+
+    private init() {
+        defaultsRepository = DefaultDefaultsRepository() // TODO: Mock this (and rename from Dummy... to Mock...)
+    }
 }
 
 extension DummyAppDependencies: AppDependencies {
 
-    static let shared: AppDependencies = DummyAppDependencies()
 }

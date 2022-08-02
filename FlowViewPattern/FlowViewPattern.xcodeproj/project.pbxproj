@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED6946182896FE6200754C3F /* ActivityFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6946172896FE6200754C3F /* ActivityFlowCoordinator.swift */; };
+		ED69461A2896FE6C00754C3F /* ActivityFlowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6946192896FE6C00754C3F /* ActivityFlowViewModel.swift */; };
+		ED69461C2896FE7D00754C3F /* ActivityFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED69461B2896FE7D00754C3F /* ActivityFlowView.swift */; };
+		ED69462928970DEC00754C3F /* AppFlowViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED69462828970DEC00754C3F /* AppFlowViewFactory.swift */; };
+		ED69462E289710D300754C3F /* DefaultsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED69462D289710D300754C3F /* DefaultsRepository.swift */; };
+		ED694630289710ED00754C3F /* DefaultDefaultsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED69462F289710ED00754C3F /* DefaultDefaultsRepository.swift */; };
+		ED6946322897156200754C3F /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6946312897156200754C3F /* OnboardingView.swift */; };
+		ED6946342897158500754C3F /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6946332897158500754C3F /* OnboardingViewModel.swift */; };
+		ED6946372897388500754C3F /* OnboardingViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6946362897388500754C3F /* OnboardingViewFactory.swift */; };
 		EDA002802896906200A3D09F /* FlowViewPatternApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA0027F2896906200A3D09F /* FlowViewPatternApp.swift */; };
 		EDA002842896906400A3D09F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDA002832896906400A3D09F /* Assets.xcassets */; };
 		EDA002872896906400A3D09F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDA002862896906400A3D09F /* Preview Assets.xcassets */; };
@@ -36,6 +45,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		ED6946172896FE6200754C3F /* ActivityFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityFlowCoordinator.swift; sourceTree = "<group>"; };
+		ED6946192896FE6C00754C3F /* ActivityFlowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityFlowViewModel.swift; sourceTree = "<group>"; };
+		ED69461B2896FE7D00754C3F /* ActivityFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityFlowView.swift; sourceTree = "<group>"; };
+		ED69461D2896FFAF00754C3F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		ED69462828970DEC00754C3F /* AppFlowViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowViewFactory.swift; sourceTree = "<group>"; };
+		ED69462D289710D300754C3F /* DefaultsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsRepository.swift; sourceTree = "<group>"; };
+		ED69462F289710ED00754C3F /* DefaultDefaultsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDefaultsRepository.swift; sourceTree = "<group>"; };
+		ED6946312897156200754C3F /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		ED6946332897158500754C3F /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
+		ED6946362897388500754C3F /* OnboardingViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewFactory.swift; sourceTree = "<group>"; };
 		EDA0027C2896906200A3D09F /* FlowViewPattern.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlowViewPattern.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDA0027F2896906200A3D09F /* FlowViewPatternApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowViewPatternApp.swift; sourceTree = "<group>"; };
 		EDA002832896906400A3D09F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -76,9 +95,51 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ED6946162896FE4A00754C3F /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		ED69462A2897107600754C3F /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				ED69462B289710B100754C3F /* Repositories */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		ED69462B289710B100754C3F /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				ED69462C289710BA00754C3F /* Defaults */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		ED69462C289710BA00754C3F /* Defaults */ = {
+			isa = PBXGroup;
+			children = (
+				ED69462D289710D300754C3F /* DefaultsRepository.swift */,
+				ED69462F289710ED00754C3F /* DefaultDefaultsRepository.swift */,
+			);
+			path = Defaults;
+			sourceTree = "<group>";
+		};
+		ED6946352897159700754C3F /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				ED6946332897158500754C3F /* OnboardingViewModel.swift */,
+				ED6946312897156200754C3F /* OnboardingView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		EDA002732896906200A3D09F = {
 			isa = PBXGroup;
 			children = (
+				ED69461D2896FFAF00754C3F /* README.md */,
 				EDA0027E2896906200A3D09F /* FlowViewPattern */,
 				EDA0027D2896906200A3D09F /* Products */,
 			);
@@ -97,6 +158,7 @@
 			children = (
 				EDA0028E2896908B00A3D09F /* App */,
 				EDA0028F2896909400A3D09F /* Content */,
+				ED69462A2897107600754C3F /* Common */,
 				EDA0028D2896907A00A3D09F /* Resources */,
 			);
 			path = FlowViewPattern;
@@ -135,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				EDA002A92896B80B00A3D09F /* AppFlowCoordinator.swift */,
+				ED69462828970DEC00754C3F /* AppFlowViewFactory.swift */,
 				EDA002922896913800A3D09F /* AppFlowViewModel.swift */,
 				EDA002902896912500A3D09F /* AppFlowView.swift */,
 				EDA002952896915800A3D09F /* Main */,
@@ -147,8 +210,10 @@
 			isa = PBXGroup;
 			children = (
 				EDA002B12896BA5000A3D09F /* OnboardingFlowCoordinator.swift */,
+				ED6946362897388500754C3F /* OnboardingViewFactory.swift */,
 				EDA0029D2896919F00A3D09F /* OnboardingFlowViewModel.swift */,
 				EDA0029B2896919300A3D09F /* OnboardingFlowView.swift */,
+				ED6946352897159700754C3F /* Onboarding */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -160,6 +225,8 @@
 				EDA002972896917200A3D09F /* MainFlowViewModel.swift */,
 				EDA002992896917E00A3D09F /* MainFlowView.swift */,
 				EDA002962896916200A3D09F /* Explore */,
+				EDC52B642896FE0900307539 /* Activity */,
+				ED6946162896FE4A00754C3F /* Profile */,
 				EDA002B32896BD2100A3D09F /* Booking */,
 			);
 			path = Main;
@@ -203,6 +270,16 @@
 				EDA002C32896C23700A3D09F /* ExploreListView.swift */,
 			);
 			path = List;
+			sourceTree = "<group>";
+		};
+		EDC52B642896FE0900307539 /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				ED6946172896FE6200754C3F /* ActivityFlowCoordinator.swift */,
+				ED6946192896FE6C00754C3F /* ActivityFlowViewModel.swift */,
+				ED69461B2896FE7D00754C3F /* ActivityFlowView.swift */,
+			);
+			path = Activity;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -278,22 +355,31 @@
 				EDA002B72896BD3900A3D09F /* BookingFlowViewModel.swift in Sources */,
 				EDA002C02896BDCD00A3D09F /* ExploreMapView.swift in Sources */,
 				EDA002912896912500A3D09F /* AppFlowView.swift in Sources */,
+				ED6946342897158500754C3F /* OnboardingViewModel.swift in Sources */,
 				EDA002AA2896B80B00A3D09F /* AppFlowCoordinator.swift in Sources */,
 				EDA002B52896BD2F00A3D09F /* BookingFlowCoordinator.swift in Sources */,
+				ED694630289710ED00754C3F /* DefaultDefaultsRepository.swift in Sources */,
 				EDA002B02896B9C800A3D09F /* ExploreFlowCoordinator.swift in Sources */,
 				EDA002932896913800A3D09F /* AppFlowViewModel.swift in Sources */,
 				EDA002A0289691B000A3D09F /* ExploreFlowView.swift in Sources */,
 				EDA0029E2896919F00A3D09F /* OnboardingFlowViewModel.swift in Sources */,
 				EDA002A2289691B800A3D09F /* ExploreFlowViewModel.swift in Sources */,
 				EDA002B22896BA5000A3D09F /* OnboardingFlowCoordinator.swift in Sources */,
+				ED69462928970DEC00754C3F /* AppFlowViewFactory.swift in Sources */,
 				EDA002A82896986900A3D09F /* DummyAppDependencies.swift in Sources */,
 				EDA002802896906200A3D09F /* FlowViewPatternApp.swift in Sources */,
+				ED69461C2896FE7D00754C3F /* ActivityFlowView.swift in Sources */,
 				EDA002B92896BD4400A3D09F /* BookingFlowView.swift in Sources */,
 				EDA002C42896C23700A3D09F /* ExploreListView.swift in Sources */,
 				EDA0029C2896919300A3D09F /* OnboardingFlowView.swift in Sources */,
 				EDA002BE2896BDC200A3D09F /* ExploreMapViewModel.swift in Sources */,
+				ED6946372897388500754C3F /* OnboardingViewFactory.swift in Sources */,
+				ED6946322897156200754C3F /* OnboardingView.swift in Sources */,
+				ED69461A2896FE6C00754C3F /* ActivityFlowViewModel.swift in Sources */,
 				EDA002AE2896B90100A3D09F /* DummyFlowCoordinator.swift in Sources */,
+				ED6946182896FE6200754C3F /* ActivityFlowCoordinator.swift in Sources */,
 				EDA002A62896968400A3D09F /* DefaultAppDependencies.swift in Sources */,
+				ED69462E289710D300754C3F /* DefaultsRepository.swift in Sources */,
 				EDA0029A2896917E00A3D09F /* MainFlowView.swift in Sources */,
 				EDA002AC2896B85800A3D09F /* MainFlowCoordinator.swift in Sources */,
 				EDA002C22896C1FF00A3D09F /* ExploreListViewModel.swift in Sources */,

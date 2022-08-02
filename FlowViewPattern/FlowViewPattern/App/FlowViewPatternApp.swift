@@ -12,10 +12,14 @@ struct FlowViewPatternApp: App {
 
     @StateObject var appDependencies = DefaultAppDependencies()
 
+    init() {
+        // One time initialization etc...
+    }
+
     var body: some Scene {
         WindowGroup {
             AppFlowView(
-                viewModel: .init(
+                flowViewModel: .init(
                     appDependencies: appDependencies
                 )
             )

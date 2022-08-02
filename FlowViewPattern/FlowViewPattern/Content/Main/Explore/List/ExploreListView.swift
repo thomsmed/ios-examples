@@ -11,8 +11,22 @@ struct ExploreListView: View {
 
     @StateObject var viewModel: ExploreListViewModel
 
+    @Environment(\.scenePhase) var scenePhase
+
     var body: some View {
-        Text("Explore list view")
+        ZStack {
+            Text("Explore list view")
+        }
+        .onAppear() {
+            // Refresh view etc
+        }
+        .onChange(of: scenePhase) { newScenePhase in
+            guard newScenePhase == .active else {
+                return
+            }
+
+            // Refresh view etc
+        }
     }
 }
 

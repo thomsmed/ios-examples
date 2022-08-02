@@ -9,15 +9,22 @@ import SwiftUI
 
 struct OnboardingFlowView: View {
 
-    @StateObject var viewModel: OnboardingFlowViewModel
+    @StateObject var flowViewModel: OnboardingFlowViewModel
 
     var body: some View {
-        Text("Onboarding flow")
+        ZStack {
+            flowViewModel.makeOnboardingView()
+        }
     }
 }
 
 struct OnboardingFlowView_Previews: PreviewProvider {
     static var previews: some View {
-        OnboardingFlowView(viewModel: .init())
+        OnboardingFlowView(
+            flowViewModel: .init(
+                flowCoordinator: DummyFlowCoordinator.shared,
+                appDependencies: DummyAppDependencies.shared
+            )
+        )
     }
 }

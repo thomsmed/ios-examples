@@ -1,5 +1,5 @@
 //
-//  MainFlowView.swift
+//  OnboardingView.swift
 //  FlowViewPattern
 //
 //  Created by Thomas Asheim Smedmann on 31/07/2022.
@@ -7,26 +7,27 @@
 
 import SwiftUI
 
-struct MainFlowView: View {
+struct OnboardingView: View {
 
-    @StateObject var flowViewModel: MainFlowViewModel
+    @StateObject var viewModel: OnboardingViewModel
 
     @AppStorage("show") var show: Bool = false
-
+    
     var body: some View {
         VStack {
-            Text("Main flow")
+            Text("Onboarding view")
             Button("Continue") {
-                show = false
+                //viewModel.completeOnboarding()
+                show = true
             }
         }
     }
 }
 
-struct MainFlowView_Previews: PreviewProvider {
+struct OnboardingView_Previews: PreviewProvider {
     static var previews: some View {
-        MainFlowView(
-            flowViewModel: .init(
+        OnboardingView(
+            viewModel: .init(
                 flowCoordinator: DummyFlowCoordinator.shared,
                 appDependencies: DummyAppDependencies.shared
             )
