@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED54374B2899B7490005C830 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED54374A2899B7490005C830 /* ViewController.swift */; };
 		EDDB81AB289943A2003A7F8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDDB81AA289943A2003A7F8B /* AppDelegate.swift */; };
 		EDDB81AD289943A2003A7F8B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDDB81AC289943A2003A7F8B /* SceneDelegate.swift */; };
 		EDDB81AF289943A2003A7F8B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDDB81AE289943A2003A7F8B /* TabBarController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		ED54374A2899B7490005C830 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EDDB81A7289943A2003A7F8B /* ImprovedContainerViewController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImprovedContainerViewController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDDB81AA289943A2003A7F8B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDDB81AC289943A2003A7F8B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				EDDB81AA289943A2003A7F8B /* AppDelegate.swift */,
 				EDDB81AC289943A2003A7F8B /* SceneDelegate.swift */,
 				EDDB81AE289943A2003A7F8B /* TabBarController.swift */,
+				ED54374A2899B7490005C830 /* ViewController.swift */,
 				EDDB81C028994507003A7F8B /* SinglePageController */,
 				EDDB81C32899458F003A7F8B /* SegmentedPageViewController */,
 				EDDB81B3289943A4003A7F8B /* Assets.xcassets */,
@@ -161,6 +164,7 @@
 				EDDB81C228994518003A7F8B /* SinglePageController.swift in Sources */,
 				EDDB81C528994597003A7F8B /* SegmentedPageViewController.swift in Sources */,
 				EDDB81AF289943A2003A7F8B /* TabBarController.swift in Sources */,
+				ED54374B2899B7490005C830 /* ViewController.swift in Sources */,
 				EDDB81AB289943A2003A7F8B /* AppDelegate.swift in Sources */,
 				EDDB81AD289943A2003A7F8B /* SceneDelegate.swift in Sources */,
 			);

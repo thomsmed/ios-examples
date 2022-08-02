@@ -105,9 +105,9 @@ class SinglePageController: UIViewController {
         UIView.transition(
             from: previousViewController.view,
             to: viewController.view,
-            duration: 0.25,
+            duration: 0.5,
             options: [
-                .transitionCrossDissolve,
+                .transitionFlipFromRight,
                 .beginFromCurrentState,
                 .allowAnimatedContent
             ]
