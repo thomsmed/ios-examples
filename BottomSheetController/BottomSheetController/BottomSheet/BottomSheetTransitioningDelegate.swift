@@ -213,19 +213,19 @@ final class BottomSheetPresentationController: UIPresentationController {
         presentedView.translatesAutoresizingMaskIntoConstraints = false
 
         let preferredHeightConstraint = presentedView.heightAnchor.constraint(
-            equalTo: containerView.safeAreaLayoutGuide.heightAnchor,
+            equalTo: containerView.heightAnchor,
             multiplier: sheetSizingFactor
         )
 
         preferredHeightConstraint.priority = .fittingSizeLevel
 
-        let maxHeightConstraint = presentedView.topAnchor.constraint(
+        let topConstraint = presentedView.topAnchor.constraint(
             greaterThanOrEqualTo: containerView.safeAreaLayoutGuide.topAnchor,
             constant: sheetTopInset
         )
 
         // Prevents conflicts with the height constraint used by the animated transition
-        maxHeightConstraint.priority = .required - 1
+        topConstraint.priority = .required - 1
 
         let heightConstraint = presentedView.heightAnchor.constraint(
             equalToConstant: 0
@@ -236,7 +236,7 @@ final class BottomSheetPresentationController: UIPresentationController {
         )
 
         NSLayoutConstraint.activate([
-            maxHeightConstraint,
+            topConstraint,
             presentedView.leadingAnchor.constraint(
                 equalTo: containerView.leadingAnchor
             ),
@@ -329,8 +329,8 @@ final class BottomSheetInteractiveDismissalTransition: NSObject {
         }
 
         propertyAnimator.addCompletion { position in
-            self.heightConstraint?.constant = position == .end ? finalHeight : height
             self.heightConstraint?.isActive = position == .end ? true : false
+            self.heightConstraint?.constant = position == .end ? finalHeight : height
         }
 
         return propertyAnimator
