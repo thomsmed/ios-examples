@@ -8,9 +8,12 @@
 import Foundation
 
 protocol AppFlowCoordinator: AnyObject {
-
+    func onboardingCompleteContinueToMain()
 }
 
 extension DummyFlowCoordinator: AppFlowCoordinator {
-    
+
+    func onboardingCompleteContinueToMain() {
+        
+    }
 }

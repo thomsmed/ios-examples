@@ -9,6 +9,15 @@ import Foundation
 
 final class DefaultAppDependencies: ObservableObject {
 
+    let defaultsRepository: DefaultsRepository
+
+    init() {
+        defaultsRepository = DefaultDefaultsRepository()
+    }
+
+    func prepare() {
+        // Additional initialization etc...
+    }
 }
 
 extension DefaultAppDependencies: AppDependencies {

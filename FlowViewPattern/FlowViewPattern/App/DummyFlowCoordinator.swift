@@ -10,4 +10,6 @@ import Foundation
 final class DummyFlowCoordinator {
 
     static let shared = DummyFlowCoordinator()
+
+    private init() { }
 }

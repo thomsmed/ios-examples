@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ExploreFlowView: View {
 
-    @StateObject var viewModel: ExploreFlowViewModel
+    @StateObject var flowViewModel: ExploreFlowViewModel
 
     var body: some View {
         Text("Explore flow")
@@ -19,7 +19,7 @@ struct ExploreFlowView: View {
 struct ExploreFlowView_Previews: PreviewProvider {
     static var previews: some View {
         ExploreFlowView(
-            viewModel: .init(
+            flowViewModel: .init(
                 flowCoordinator: DummyFlowCoordinator.shared
             )
         )

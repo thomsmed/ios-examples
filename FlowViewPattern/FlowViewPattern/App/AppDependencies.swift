@@ -8,5 +8,5 @@
 import Foundation
 
 protocol AppDependencies: AnyObject {
-    
+    var defaultsRepository: DefaultsRepository { get }
 }
