@@ -62,31 +62,40 @@ final class TabBarController: UITabBarController {
     }
 
     func makeSegmentedPageControllerExample() -> UIViewController {
-        let singlePageViewController = SinglePageController()
+        let segmentedPageController = SegmentedPageController()
 
-        var backgroundColor: UIColor = .systemBlue
-        var transition: SinglePageController.Transition = .flip
+        let segmentOneViewController = ViewController()
+        segmentOneViewController.title = "Segment one"
+        segmentOneViewController.cardView.backgroundColor = .systemRed
+        segmentOneViewController.label.text = "Segment one"
+        segmentOneViewController.button.addAction(.init { [weak segmentedPageController] _ in
+            segmentedPageController?.setSelectedSegmentIndex(1, using: .slide)
+        }, for: .primaryActionTriggered)
 
-        var makeAndSetNextViewController: () -> Void = { }
-        makeAndSetNextViewController = { [weak singlePageViewController] in
-            backgroundColor = backgroundColor == .systemIndigo ? .systemBlue : .systemIndigo
-            transition = transition == .none ? .dissolve : transition == .dissolve ? .flip : .none
+        let segmentTwoViewController = ViewController()
+        segmentTwoViewController.title = "Segment two"
+        segmentTwoViewController.cardView.backgroundColor = .systemGreen
+        segmentTwoViewController.label.text = "Segment two"
+        segmentTwoViewController.button.addAction(.init { [weak segmentedPageController] _ in
+            segmentedPageController?.setSelectedSegmentIndex(2, using: .slide)
+        }, for: .primaryActionTriggered)
 
-            singlePageViewController?.setViewController({
-                let viewController = ViewController()
-                viewController.cardView.backgroundColor = backgroundColor
-                viewController.label.text = "SegmentedPageController"
-                viewController.button.addAction(.init { _ in
-                    makeAndSetNextViewController()
-                }, for: .primaryActionTriggered)
-                return viewController
-            }(), using: transition)
-        }
+        let segmentThreeViewController = ViewController()
+        segmentThreeViewController.title = "Segment three"
+        segmentThreeViewController.cardView.backgroundColor = .systemBlue
+        segmentThreeViewController.label.text = "Segment three"
+        segmentThreeViewController.button.addAction(.init { [weak segmentedPageController] _ in
+            segmentedPageController?.setSelectedSegmentIndex(0, using: .slide)
+        }, for: .primaryActionTriggered)
 
-        makeAndSetNextViewController()
+        segmentedPageController.viewControllers = [
+            segmentOneViewController,
+            segmentTwoViewController,
+            segmentThreeViewController
+        ]
 
         let navigationViewController = UINavigationController(
-            rootViewController: singlePageViewController
+            rootViewController: segmentedPageController
         )
 
         navigationViewController.isNavigationBarHidden = true
