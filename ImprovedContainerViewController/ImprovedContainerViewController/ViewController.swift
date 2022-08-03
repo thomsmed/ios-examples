@@ -25,7 +25,7 @@ final class ViewController: UIViewController {
         var configuration = UIButton.Configuration.filled()
         configuration.buttonSize = .large
         configuration.title = "Next"
-        configuration.baseBackgroundColor = .systemPurple
+        configuration.baseBackgroundColor = .systemGray6
         configuration.baseForegroundColor = .label
         let button = UIButton(configuration: configuration)
         return button
