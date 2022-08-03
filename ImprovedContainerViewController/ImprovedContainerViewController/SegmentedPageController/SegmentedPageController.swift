@@ -70,22 +70,28 @@ class SegmentedPageController: UIViewController {
         viewIfLoaded?.window != nil
     }
 
-    private func addAndConstraint(visibleViewControllerView: UIView) {
-        view.addSubview(visibleViewControllerView)
+    private func addAndConstrain(viewControllerView: UIView) {
+        view.addSubview(viewControllerView)
         
-        visibleViewControllerView.translatesAutoresizingMaskIntoConstraints = false
+        viewControllerView.translatesAutoresizingMaskIntoConstraints = false
 
-        visibleViewControllerView.setContentHuggingPriority(.defaultHigh, for: .vertical)
-        visibleViewControllerView.setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
+        viewControllerView.setContentHuggingPriority(.defaultHigh, for: .vertical)
+        viewControllerView.setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
+
+        let trailingConstraint = viewControllerView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        trailingConstraint.priority = .required - 1 // To avoid conflicts during initial layout calculations
+
+        let bottomConstraint = viewControllerView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        bottomConstraint.priority = .required - 1 // To avoid conflicts during initial layout calculations
 
         NSLayoutConstraint.activate([
-            visibleViewControllerView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor),
-            visibleViewControllerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            visibleViewControllerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            visibleViewControllerView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            viewControllerView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor),
+            viewControllerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            trailingConstraint,
+            bottomConstraint
         ])
 
-        visibleViewControllerView.layoutIfNeeded()
+        viewControllerView.layoutIfNeeded()
     }
 
     private func removeChildViewControllers() {
@@ -111,27 +117,91 @@ class SegmentedPageController: UIViewController {
         titleObservations.removeAll()
     }
 
-    private func setVisibleViewController(_ visibleViewController: UIViewController) {
+    private func setViewController(_ viewController: UIViewController) {
         removeChildViewControllers()
 
-        addChild(visibleViewController)
+        addChild(viewController)
 
-        addAndConstraint(visibleViewControllerView: visibleViewController.view)
+        addAndConstrain(viewControllerView: viewController.view)
 
         if isCurrentlyVisible {
-            visibleViewController.beginAppearanceTransition(true, animated: false)
-            visibleViewController.endAppearanceTransition()
+            viewController.beginAppearanceTransition(true, animated: false)
+            viewController.endAppearanceTransition()
         }
 
-        visibleViewController.didMove(toParent: self)
+        viewController.didMove(toParent: self)
     }
 
     private func slideLeftTransition(to viewController: UIViewController) {
+        let previousViewController = children.first
 
+        addChild(viewController)
+
+        previousViewController?.willMove(toParent: nil)
+
+        addAndConstrain(viewControllerView: viewController.view)
+
+        let offset = view.bounds.width
+
+        viewController.view.center.x += offset
+
+        previousViewController?.beginAppearanceTransition(false, animated: true)
+        viewController.beginAppearanceTransition(true, animated: true)
+
+        UIView.animate(
+            withDuration: 0.25,
+            delay: 0,
+            options: [
+                .curveEaseInOut,
+                .beginFromCurrentState,
+                .allowAnimatedContent,
+            ],
+            animations: {
+                previousViewController?.view.center.x -= offset
+                viewController.view.center.x -= offset
+            }, completion: { completed in
+                previousViewController?.endAppearanceTransition()
+                previousViewController?.removeFromParent()
+                viewController.endAppearanceTransition()
+                viewController.didMove(toParent: self)
+            }
+        )
     }
 
     private func slideRightTransition(to viewController: UIViewController) {
+        let previousViewController = children.first
 
+        addChild(viewController)
+
+        previousViewController?.willMove(toParent: nil)
+
+        addAndConstrain(viewControllerView: viewController.view)
+
+        let offset = view.bounds.width
+
+        viewController.view.center.x -= offset
+
+        previousViewController?.beginAppearanceTransition(false, animated: true)
+        viewController.beginAppearanceTransition(true, animated: true)
+
+        UIView.animate(
+            withDuration: 0.25,
+            delay: 0,
+            options: [
+                .curveEaseInOut,
+                .beginFromCurrentState,
+                .allowAnimatedContent
+            ],
+            animations: {
+                previousViewController?.view.center.x += offset
+                viewController.view.center.x += offset
+            }, completion: { completed in
+                previousViewController?.endAppearanceTransition()
+                previousViewController?.removeFromParent()
+                viewController.endAppearanceTransition()
+                viewController.didMove(toParent: self)
+            }
+        )
     }
 
     private func setSegmentedViewControllers(_ viewControllers: [UIViewController]) {
@@ -155,7 +225,7 @@ class SegmentedPageController: UIViewController {
     }
 
     @objc private func segmentChanged(_ target: UISegmentedControl) {
-        setVisibleViewController(segmentedViewControllers[segmentedControl.selectedSegmentIndex])
+        setViewController(segmentedViewControllers[segmentedControl.selectedSegmentIndex])
     }
 }
 
@@ -172,6 +242,14 @@ extension SegmentedPageController {
         }
         set {
             setSegmentedViewControllers(newValue)
+
+            guard let firstViewController = newValue.first else {
+                return
+            }
+
+            segmentedControl.selectedSegmentIndex = 0
+
+            setViewController(firstViewController)
         }
     }
 
@@ -188,7 +266,7 @@ extension SegmentedPageController {
 
             segmentedControl.selectedSegmentIndex = newValue
 
-            setVisibleViewController(segmentedViewControllers[newValue])
+            setViewController(segmentedViewControllers[newValue])
         }
     }
 
@@ -200,12 +278,12 @@ extension SegmentedPageController {
         segmentedControl.selectedSegmentIndex = index
 
         guard isCurrentlyVisible else {
-            return setVisibleViewController(segmentedViewControllers[index])
+            return setViewController(segmentedViewControllers[index])
         }
 
         switch transition {
         case .none:
-            setVisibleViewController(segmentedViewControllers[index])
+            setViewController(segmentedViewControllers[index])
         case .slide:
             if slideRight {
                 slideRightTransition(to: segmentedViewControllers[index])
@@ -225,12 +303,12 @@ extension SegmentedPageController {
         segmentedControl.selectedSegmentIndex = 0
 
         guard isCurrentlyVisible else {
-            return setVisibleViewController(firstViewController)
+            return setViewController(firstViewController)
         }
 
         switch transition {
         case .none:
-            setVisibleViewController(firstViewController)
+            setViewController(firstViewController)
         case .slide:
             slideLeftTransition(to: firstViewController)
         }

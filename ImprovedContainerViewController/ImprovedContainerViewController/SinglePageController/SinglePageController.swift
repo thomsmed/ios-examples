@@ -46,11 +46,17 @@ class SinglePageController: UIViewController {
 
         viewControllerView.translatesAutoresizingMaskIntoConstraints = false
 
+        let trailingConstraint = viewControllerView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        trailingConstraint.priority = .required - 1 // To avoid conflicts during initial layout calculations
+
+        let bottomConstraint = viewControllerView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        bottomConstraint.priority = .required - 1 // To avoid conflicts during initial layout calculations
+
         NSLayoutConstraint.activate([
             viewControllerView.topAnchor.constraint(equalTo: view.topAnchor),
             viewControllerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            viewControllerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            viewControllerView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            trailingConstraint,
+            bottomConstraint
         ])
 
         viewControllerView.layoutIfNeeded()
