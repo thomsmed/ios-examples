@@ -41,7 +41,7 @@ class SinglePageController: UIViewController {
         viewIfLoaded?.window != nil
     }
 
-    private func addAndConstrainViewControllerView(_ viewControllerView: UIView) {
+    private func addAndConstrain(viewControllerView: UIView) {
         view.addSubview(viewControllerView)
 
         viewControllerView.translatesAutoresizingMaskIntoConstraints = false
@@ -52,6 +52,8 @@ class SinglePageController: UIViewController {
             viewControllerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             viewControllerView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
+
+        viewControllerView.layoutIfNeeded()
     }
 
     private func removeChildViewControllers() {
@@ -74,9 +76,7 @@ class SinglePageController: UIViewController {
 
         addChild(viewController)
 
-        addAndConstrainViewControllerView(viewController.view)
-
-        viewController.view.layoutIfNeeded()
+        addAndConstrain(viewControllerView: viewController.view)
 
         if isCurrentlyVisible {
             viewController.beginAppearanceTransition(true, animated: false)
@@ -95,9 +95,7 @@ class SinglePageController: UIViewController {
 
         previousViewController.willMove(toParent: nil)
 
-        addAndConstrainViewControllerView(viewController.view)
-
-        viewController.view.layoutIfNeeded()
+        addAndConstrain(viewControllerView: viewController.view)
 
         previousViewController.beginAppearanceTransition(false, animated: true)
         viewController.beginAppearanceTransition(true, animated: true)
@@ -128,9 +126,7 @@ class SinglePageController: UIViewController {
 
         previousViewController.willMove(toParent: nil)
 
-        addAndConstrainViewControllerView(viewController.view)
-
-        viewController.view.layoutIfNeeded()
+        addAndConstrain(viewControllerView: viewController.view)
 
         previousViewController.beginAppearanceTransition(false, animated: true)
         viewController.beginAppearanceTransition(true, animated: true)
