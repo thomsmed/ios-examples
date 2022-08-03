@@ -29,6 +29,11 @@ class SegmentedPageController: UIViewController {
         segmentedControl.setContentHuggingPriority(.required, for: .vertical)
         segmentedControl.setContentCompressionResistancePriority(.required, for: .vertical)
 
+        let trailingConstraint = segmentedControl.trailingAnchor.constraint(
+            equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8
+        )
+        trailingConstraint.priority = .required - 1 // To avoid conflicts during initial layout calculations
+
         NSLayoutConstraint.activate([
             segmentedControl.topAnchor.constraint(
                 equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8
@@ -36,9 +41,7 @@ class SegmentedPageController: UIViewController {
             segmentedControl.leadingAnchor.constraint(
                 equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 8
             ),
-            segmentedControl.trailingAnchor.constraint(
-                equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8
-            )
+            trailingConstraint
         ])
     }
 
@@ -84,20 +87,23 @@ class SegmentedPageController: UIViewController {
         viewControllerView.setContentHuggingPriority(.defaultHigh, for: .vertical)
         viewControllerView.setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
 
-        let trailingConstraint = viewControllerView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-        trailingConstraint.priority = .required - 1 // To avoid conflicts during initial layout calculations
-
         let bottomConstraint = viewControllerView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         bottomConstraint.priority = .required - 1 // To avoid conflicts during initial layout calculations
 
+        let centerXConstraint = viewControllerView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        centerXConstraint.priority = .required - 1 // To avoid conflicts during initial layout calculations
+
+        let widthConstraint = viewControllerView.widthAnchor.constraint(equalTo: view.widthAnchor)
+        widthConstraint.priority = .required - 1 // To avoid conflicts during initial layout calculations
+
         NSLayoutConstraint.activate([
             viewControllerView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor),
-            viewControllerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            trailingConstraint,
-            bottomConstraint
+            bottomConstraint,
+            centerXConstraint,
+            widthConstraint,
         ])
 
-        viewControllerView.layoutIfNeeded()
+        view.layoutIfNeeded()
     }
 
     private func removeChildViewControllers() {
@@ -149,26 +155,38 @@ class SegmentedPageController: UIViewController {
 
         let offset = view.bounds.width
 
-        viewController.view.center.x += offset
+        let previousViewCenterXConstraint = previousViewController?.view.centerXAnchor.constraint(
+            equalTo: view.centerXAnchor
+        )
+        previousViewCenterXConstraint?.isActive = true
+
+        let viewCenterXConstraint = viewController.view.centerXAnchor.constraint(
+            equalTo: view.centerXAnchor, constant: offset
+        )
+        viewCenterXConstraint.isActive = true
+
+        view.layoutIfNeeded()
 
         previousViewController?.beginAppearanceTransition(false, animated: true)
         viewController.beginAppearanceTransition(true, animated: true)
 
-        UIView.animate(
-            withDuration: 0.25,
-            delay: 0,
+        UIView.transition(
+            with: view,
+            duration: 0.25,
             options: [
                 .curveEaseOut,
                 .beginFromCurrentState,
-                .allowAnimatedContent,
+                .allowAnimatedContent
             ],
             animations: {
-                previousViewController?.view.center.x -= offset
-                viewController.view.center.x -= offset
+                previousViewCenterXConstraint?.constant = -offset
+                viewCenterXConstraint.constant = 0
+                self.view.layoutIfNeeded()
             }, completion: { completed in
                 previousViewController?.endAppearanceTransition()
                 previousViewController?.view.removeFromSuperview()
                 previousViewController?.removeFromParent()
+                viewCenterXConstraint.isActive = false
                 viewController.endAppearanceTransition()
                 viewController.didMove(toParent: self)
             }
@@ -186,26 +204,38 @@ class SegmentedPageController: UIViewController {
 
         let offset = view.bounds.width
 
-        viewController.view.center.x -= offset
+        let previousViewCenterXConstraint = previousViewController?.view.centerXAnchor.constraint(
+            equalTo: view.centerXAnchor
+        )
+        previousViewCenterXConstraint?.isActive = true
+
+        let viewCenterXConstraint = viewController.view.centerXAnchor.constraint(
+            equalTo: view.centerXAnchor, constant: -offset
+        )
+        viewCenterXConstraint.isActive = true
+
+        view.layoutIfNeeded()
 
         previousViewController?.beginAppearanceTransition(false, animated: true)
         viewController.beginAppearanceTransition(true, animated: true)
 
-        UIView.animate(
-            withDuration: 0.25,
-            delay: 0,
+        UIView.transition(
+            with: view,
+            duration: 0.25,
             options: [
                 .curveEaseOut,
                 .beginFromCurrentState,
                 .allowAnimatedContent
             ],
             animations: {
-                previousViewController?.view.center.x += offset
-                viewController.view.center.x += offset
+                previousViewCenterXConstraint?.constant = offset
+                viewCenterXConstraint.constant = 0
+                self.view.layoutIfNeeded()
             }, completion: { completed in
                 previousViewController?.endAppearanceTransition()
                 previousViewController?.view.removeFromSuperview()
                 previousViewController?.removeFromParent()
+                viewCenterXConstraint.isActive = false
                 viewController.endAppearanceTransition()
                 viewController.didMove(toParent: self)
             }
