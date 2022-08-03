@@ -24,20 +24,20 @@ final class TabBarController: UITabBarController {
     }
 
     func makeSinglePageControllerExample() -> UIViewController {
-        let singlePageViewController = SinglePageController()
+        let singlePageController = SinglePageController()
 
-        var backgroundColor: UIColor = .systemBlue
+        var page: Int = 2
         var transition: SinglePageController.Transition = .flip
 
         var makeAndSetNextViewController: () -> Void = { }
-        makeAndSetNextViewController = { [weak singlePageViewController] in
-            backgroundColor = backgroundColor == .systemIndigo ? .systemBlue : .systemIndigo
+        makeAndSetNextViewController = { [weak singlePageController] in
+            page = page > 1 ? 1 : 2
             transition = transition == .none ? .dissolve : transition == .dissolve ? .flip : .none
 
-            singlePageViewController?.setViewController({
+            singlePageController?.setViewController({
                 let viewController = ViewController()
-                viewController.cardView.backgroundColor = backgroundColor
-                viewController.label.text = "SinglePageController"
+                viewController.label.text = "Page \(page == 1 ? "one" : "two")"
+                viewController.cardView.backgroundColor = page == 1 ? .systemBlue : .systemIndigo
                 viewController.button.addAction(.init { _ in
                     makeAndSetNextViewController()
                 }, for: .primaryActionTriggered)
@@ -48,7 +48,7 @@ final class TabBarController: UITabBarController {
         makeAndSetNextViewController()
 
         let navigationViewController = UINavigationController(
-            rootViewController: singlePageViewController
+            rootViewController: singlePageController
         )
 
         navigationViewController.isNavigationBarHidden = true
@@ -99,4 +99,3 @@ final class TabBarController: UITabBarController {
         return navigationViewController
     }
 }
-
