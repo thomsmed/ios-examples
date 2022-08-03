@@ -152,7 +152,7 @@ class SegmentedPageController: UIViewController {
             withDuration: 0.25,
             delay: 0,
             options: [
-                .curveEaseInOut,
+                .curveEaseOut,
                 .beginFromCurrentState,
                 .allowAnimatedContent,
             ],
@@ -161,6 +161,7 @@ class SegmentedPageController: UIViewController {
                 viewController.view.center.x -= offset
             }, completion: { completed in
                 previousViewController?.endAppearanceTransition()
+                previousViewController?.view.removeFromSuperview()
                 previousViewController?.removeFromParent()
                 viewController.endAppearanceTransition()
                 viewController.didMove(toParent: self)
@@ -188,7 +189,7 @@ class SegmentedPageController: UIViewController {
             withDuration: 0.25,
             delay: 0,
             options: [
-                .curveEaseInOut,
+                .curveEaseOut,
                 .beginFromCurrentState,
                 .allowAnimatedContent
             ],
@@ -197,6 +198,7 @@ class SegmentedPageController: UIViewController {
                 viewController.view.center.x += offset
             }, completion: { completed in
                 previousViewController?.endAppearanceTransition()
+                previousViewController?.view.removeFromSuperview()
                 previousViewController?.removeFromParent()
                 viewController.endAppearanceTransition()
                 viewController.didMove(toParent: self)
