@@ -37,7 +37,7 @@ final class TabBarController: UITabBarController {
             singlePageController?.setViewController({
                 let viewController = ViewController()
                 viewController.label.text = "Page \(page == 1 ? "one" : "two")"
-                viewController.cardView.backgroundColor = page == 1 ? .systemBlue : .systemIndigo
+                viewController.cardView.backgroundColor = page == 1 ? .systemRed : .systemBlue
                 viewController.button.addAction(.init { _ in
                     makeAndSetNextViewController()
                 }, for: .primaryActionTriggered)
