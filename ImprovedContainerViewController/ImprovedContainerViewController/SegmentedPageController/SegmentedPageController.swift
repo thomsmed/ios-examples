@@ -87,13 +87,19 @@ class SegmentedPageController: UIViewController {
         viewControllerView.setContentHuggingPriority(.defaultHigh, for: .vertical)
         viewControllerView.setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
 
-        let bottomConstraint = viewControllerView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        let bottomConstraint = viewControllerView.bottomAnchor.constraint(
+            equalTo: view.bottomAnchor
+        )
         bottomConstraint.priority = .required - 1 // To avoid conflicts during initial layout calculations
 
-        let centerXConstraint = viewControllerView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        let centerXConstraint = viewControllerView.centerXAnchor.constraint(
+            equalTo: view.centerXAnchor
+        )
         centerXConstraint.priority = .required - 1 // To avoid conflicts during initial layout calculations
 
-        let widthConstraint = viewControllerView.widthAnchor.constraint(equalTo: view.widthAnchor)
+        let widthConstraint = viewControllerView.widthAnchor.constraint(
+            equalTo: view.widthAnchor
+        )
         widthConstraint.priority = .required - 1 // To avoid conflicts during initial layout calculations
 
         NSLayoutConstraint.activate([
