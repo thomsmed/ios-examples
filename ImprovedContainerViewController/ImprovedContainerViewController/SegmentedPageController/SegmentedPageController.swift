@@ -95,7 +95,7 @@ class SegmentedPageController: UIViewController {
         let centerXConstraint = viewControllerView.centerXAnchor.constraint(
             equalTo: view.centerXAnchor
         )
-        centerXConstraint.priority = .required - 1 // To avoid conflicts during initial layout calculations
+        centerXConstraint.priority = .required - 1 // To avoid conflicts during transition animations
 
         let widthConstraint = viewControllerView.widthAnchor.constraint(
             equalTo: view.widthAnchor
