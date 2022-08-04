@@ -16,7 +16,11 @@ class SegmentedPageController: UIViewController {
     private var segmentedViewControllers = [UIViewController]()
 
     override var shouldAutomaticallyForwardAppearanceMethods: Bool {
-        false // Override this when animating views using constraints
+        // Override this to have full control of the appearance events of child view controllers.
+        // Call .beginAppearanceTransition(_:animated:) and .endAppearanceTransition() on child view controllers
+        // at appropriate times during transition to make sure all appearance methods gets called correctly
+        // (like .viewWillAppear(_:animated:) and .viewWillDisappear(_:animated:)).
+        false
     }
 
     override func loadView() {
