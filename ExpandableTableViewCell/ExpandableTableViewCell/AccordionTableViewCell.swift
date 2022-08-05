@@ -135,10 +135,8 @@ final class AccordionTableViewCell: UITableViewCell {
 
             tableView.beginUpdates()
 
-            let animationDuration = CATransaction.animationDuration()
-
             UIView.animate(
-                withDuration: animationDuration,
+                withDuration: 0.3, // An educated guess about the duration of UITableView's own update animation duration.
                 delay: 0,
                 options: [
                     .curveEaseInOut,
