@@ -1,8 +1,8 @@
 //
 //  AccordionTableViewCell.swift
-//  Simple example of an expandable table view cell (AccordionTableViewCell).
-//  The UITableViewCell gets a hold on its parent UITableView when it needs to update its layout.
-//  It then wraps updates (with or without animation) between calls to UITableView.beginUpdates() and UITableView.endUpdates().
+//  ExpandableTableViewCell
+//
+//  Created by Thomas Asheim Smedmann on 04/08/2022.
 //
 
 import UIKit

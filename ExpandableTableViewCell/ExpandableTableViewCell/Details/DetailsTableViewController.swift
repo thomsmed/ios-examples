@@ -56,6 +56,9 @@ extension DetailsTableViewController {
 extension DetailsTableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // Somehow take note of which cells that are currently expanded,
+        // and optionally animate the expanding / collapsing cell.
+
         guard let cell = tableView.cellForRow(at: indexPath) as? DetailsTableViewCell else {
             return
         }
@@ -64,6 +67,7 @@ extension DetailsTableViewController {
 
         tableView.beginUpdates()
 
+        // 0.3 is an educated guess about the duration of UITableView's own update animation duration.
         UIView.animate(withDuration: 0.3) {
             cell.expanded = expand
         }

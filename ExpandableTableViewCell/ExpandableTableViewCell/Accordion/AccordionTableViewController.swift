@@ -52,7 +52,7 @@ extension AccordionTableViewController {
 extension AccordionTableViewController: ExpandableTableViewCellDelegate {
 
     func expandableTableViewCell(_ tableViewCell: UITableViewCell, expanded: Bool) {
-        // Somehow take note of which cells that are currently expanded
+        // Somehow take note of which cells that are currently expanded.
 
         guard let indexPath = tableView.indexPath(for: tableViewCell) else {
             return
