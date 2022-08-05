@@ -138,11 +138,7 @@ final class AccordionTableViewCell: UITableViewCell {
             UIView.animate(
                 withDuration: 0.3, // An educated guess about the duration of UITableView's own update animation duration.
                 delay: 0,
-                options: [
-                    .curveEaseInOut,
-                    .beginFromCurrentState,
-                    .allowAnimatedContent
-                ], animations: {
+                animations: {
                     self.expandButton.transform = self.expanded
                         ? .init(rotationAngle: .pi - 0.001) // Makes sure button is rotated in the right direction
                         : .identity
