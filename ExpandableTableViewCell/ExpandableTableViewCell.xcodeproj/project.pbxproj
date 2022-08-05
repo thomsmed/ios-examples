@@ -9,24 +9,30 @@
 /* Begin PBXBuildFile section */
 		ED37FF59289C5C00007E5110 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED37FF58289C5C00007E5110 /* AppDelegate.swift */; };
 		ED37FF5B289C5C00007E5110 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED37FF5A289C5C00007E5110 /* SceneDelegate.swift */; };
-		ED37FF5D289C5C00007E5110 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED37FF5C289C5C00007E5110 /* TableViewController.swift */; };
+		ED37FF5D289C5C00007E5110 /* AccordionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED37FF5C289C5C00007E5110 /* AccordionTableViewController.swift */; };
 		ED37FF62289C5C02007E5110 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED37FF61289C5C02007E5110 /* Assets.xcassets */; };
 		ED37FF65289C5C02007E5110 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED37FF63289C5C02007E5110 /* LaunchScreen.storyboard */; };
 		ED37FF6E289C5EB9007E5110 /* AccordionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED37FF6D289C5EB9007E5110 /* AccordionTableViewCell.swift */; };
 		ED37FF72289D3079007E5110 /* ExpandableTableViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED37FF71289D3079007E5110 /* ExpandableTableViewCellDelegate.swift */; };
+		ED37FF74289D9C0D007E5110 /* DetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED37FF73289D9C0C007E5110 /* DetailsTableViewCell.swift */; };
+		ED37FF76289DAF86007E5110 /* DetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED37FF75289DAF86007E5110 /* DetailsTableViewController.swift */; };
+		ED37FF7A289DCD3A007E5110 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED37FF79289DCD3A007E5110 /* TabBarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		ED37FF55289C5C00007E5110 /* ExpandableTableViewCell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExpandableTableViewCell.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED37FF58289C5C00007E5110 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED37FF5A289C5C00007E5110 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		ED37FF5C289C5C00007E5110 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		ED37FF5C289C5C00007E5110 /* AccordionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccordionTableViewController.swift; sourceTree = "<group>"; };
 		ED37FF61289C5C02007E5110 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED37FF64289C5C02007E5110 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED37FF66289C5C02007E5110 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED37FF6C289C5C0C007E5110 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		ED37FF6D289C5EB9007E5110 /* AccordionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccordionTableViewCell.swift; sourceTree = "<group>"; };
 		ED37FF71289D3079007E5110 /* ExpandableTableViewCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableTableViewCellDelegate.swift; sourceTree = "<group>"; };
+		ED37FF73289D9C0C007E5110 /* DetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTableViewCell.swift; sourceTree = "<group>"; };
+		ED37FF75289DAF86007E5110 /* DetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTableViewController.swift; sourceTree = "<group>"; };
+		ED37FF79289DCD3A007E5110 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,14 +68,33 @@
 			children = (
 				ED37FF58289C5C00007E5110 /* AppDelegate.swift */,
 				ED37FF5A289C5C00007E5110 /* SceneDelegate.swift */,
-				ED37FF5C289C5C00007E5110 /* TableViewController.swift */,
+				ED37FF79289DCD3A007E5110 /* TabBarViewController.swift */,
 				ED37FF71289D3079007E5110 /* ExpandableTableViewCellDelegate.swift */,
-				ED37FF6D289C5EB9007E5110 /* AccordionTableViewCell.swift */,
+				ED37FF77289DB023007E5110 /* Accordion */,
+				ED37FF78289DB035007E5110 /* Details */,
 				ED37FF61289C5C02007E5110 /* Assets.xcassets */,
 				ED37FF63289C5C02007E5110 /* LaunchScreen.storyboard */,
 				ED37FF66289C5C02007E5110 /* Info.plist */,
 			);
 			path = ExpandableTableViewCell;
+			sourceTree = "<group>";
+		};
+		ED37FF77289DB023007E5110 /* Accordion */ = {
+			isa = PBXGroup;
+			children = (
+				ED37FF5C289C5C00007E5110 /* AccordionTableViewController.swift */,
+				ED37FF6D289C5EB9007E5110 /* AccordionTableViewCell.swift */,
+			);
+			path = Accordion;
+			sourceTree = "<group>";
+		};
+		ED37FF78289DB035007E5110 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				ED37FF75289DAF86007E5110 /* DetailsTableViewController.swift */,
+				ED37FF73289D9C0C007E5110 /* DetailsTableViewCell.swift */,
+			);
+			path = Details;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,9 +167,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED37FF5D289C5C00007E5110 /* TableViewController.swift in Sources */,
+				ED37FF7A289DCD3A007E5110 /* TabBarViewController.swift in Sources */,
+				ED37FF74289D9C0D007E5110 /* DetailsTableViewCell.swift in Sources */,
+				ED37FF5D289C5C00007E5110 /* AccordionTableViewController.swift in Sources */,
 				ED37FF59289C5C00007E5110 /* AppDelegate.swift in Sources */,
 				ED37FF5B289C5C00007E5110 /* SceneDelegate.swift in Sources */,
+				ED37FF76289DAF86007E5110 /* DetailsTableViewController.swift in Sources */,
 				ED37FF6E289C5EB9007E5110 /* AccordionTableViewCell.swift in Sources */,
 				ED37FF72289D3079007E5110 /* ExpandableTableViewCellDelegate.swift in Sources */,
 			);

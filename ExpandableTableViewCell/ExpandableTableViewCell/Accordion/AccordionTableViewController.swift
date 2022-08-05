@@ -1,5 +1,5 @@
 //
-//  TableViewController.swift
+//  AccordionTableViewController.swift
 //  ExpandableTableViewCell
 //
 //  Created by Thomas Asheim Smedmann on 04/08/2022.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class TableViewController: UITableViewController {
+final class AccordionTableViewController: UITableViewController {
 
     private var items: [AccordionTableViewCell.Model] = (1..<100).map { number in
         .init(
@@ -22,14 +22,14 @@ final class TableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Expandable table view cell"
+        title = "Accordion"
 
         tableView.separatorInset = .zero
         tableView.register(AccordionTableViewCell.self, forCellReuseIdentifier: "cell")
     }
 }
 
-extension TableViewController {
+extension AccordionTableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         1
@@ -49,7 +49,7 @@ extension TableViewController {
     }
 }
 
-extension TableViewController: ExpandableTableViewCellDelegate {
+extension AccordionTableViewController: ExpandableTableViewCellDelegate {
 
     func expandableTableViewCell(_ tableViewCell: UITableViewCell, expanded: Bool) {
         // Somehow take note of which cells that are currently expanded
