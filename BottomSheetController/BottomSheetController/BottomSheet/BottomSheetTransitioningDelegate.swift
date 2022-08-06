@@ -103,7 +103,12 @@ final class BottomSheetPresentationController: UIPresentationController {
     let sheetSizingFactor: CGFloat
     let sheetBackdropColor: UIColor
 
-    private(set) lazy var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(onTap))
+    private(set) lazy var tapGestureRecognizer: UITapGestureRecognizer = {
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(onTap))
+        gesture.cancelsTouchesInView = false
+        return gesture
+    }()
+    
     private lazy var panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(onPan))
     var panToDismissEnabled: Bool = true
 
