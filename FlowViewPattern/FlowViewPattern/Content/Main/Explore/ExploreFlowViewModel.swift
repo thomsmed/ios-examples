@@ -5,7 +5,7 @@
 //  Created by Thomas Asheim Smedmann on 31/07/2022.
 //
 
-import Foundation
+import SwiftUI
 
 final class ExploreFlowViewModel: ObservableObject {
 
@@ -13,7 +13,12 @@ final class ExploreFlowViewModel: ObservableObject {
 
     init(flowCoordinator: MainFlowCoordinator) {
         self.flowCoordinator = flowCoordinator
+
+        // TODO: Restore path?
+
     }
+
+    @Published var path = NavigationPath()
 }
 
 extension ExploreFlowViewModel: ExploreFlowCoordinator {

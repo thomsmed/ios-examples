@@ -28,7 +28,9 @@ struct MainFlowView: View {
         }
         .sheet(isPresented: $flowViewModel.sheetIsPresented) {
             switch flowViewModel.presentedSheet {
-            case .none, .booking:
+            case .none:
+                EmptyView()
+            case .booking:
                 flowViewModel.makeBookingFlowView()
             case .greeting:
                 flowViewModel.makeWelcomeBackView()

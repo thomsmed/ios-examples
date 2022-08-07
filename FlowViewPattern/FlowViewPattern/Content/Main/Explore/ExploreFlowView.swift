@@ -11,11 +11,20 @@ struct ExploreFlowView: View {
 
     @StateObject var flowViewModel: ExploreFlowViewModel
 
+    @Environment(\.scenePhase) private var scenePhase
+
     var body: some View {
-        VStack {
-            Text("Explore flow")
-            Button("Booking") {
-                flowViewModel.continueToBooking()
+        NavigationStack(path: $flowViewModel.path) {
+            VStack {
+                Text("Explore flow")
+                Button("Booking") {
+                    flowViewModel.continueToBooking()
+                }
+            }
+        }
+        .onChange(of: scenePhase) { scenePhase in
+            if scenePhase == .background {
+                // TODO: Save path? How to save View state?
             }
         }
     }

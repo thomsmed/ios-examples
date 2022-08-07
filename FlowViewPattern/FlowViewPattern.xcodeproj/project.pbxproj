@@ -46,6 +46,12 @@
 		EDA002C02896BDCD00A3D09F /* ExploreMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA002BF2896BDCD00A3D09F /* ExploreMapView.swift */; };
 		EDA002C22896C1FF00A3D09F /* ExploreListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA002C12896C1FF00A3D09F /* ExploreListViewModel.swift */; };
 		EDA002C42896C23700A3D09F /* ExploreListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA002C32896C23700A3D09F /* ExploreListView.swift */; };
+		EDD6F3F928A055AF00E2ED71 /* ExploreNewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD6F3F828A055AF00E2ED71 /* ExploreNewsView.swift */; };
+		EDD6F3FC28A055E300E2ED71 /* MapAndListFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD6F3FB28A055E300E2ED71 /* MapAndListFlowView.swift */; };
+		EDD6F3FE28A0561F00E2ED71 /* MapAndListFlowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD6F3FD28A0561F00E2ED71 /* MapAndListFlowViewModel.swift */; };
+		EDD6F40028A0563000E2ED71 /* MapAndListFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD6F3FF28A0563000E2ED71 /* MapAndListFlowCoordinator.swift */; };
+		EDD6F40228A0565100E2ED71 /* MapAndListFlowViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD6F40128A0565100E2ED71 /* MapAndListFlowViewFactory.swift */; };
+		EDD6F40428A056A500E2ED71 /* ExploreFlowViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD6F40328A056A500E2ED71 /* ExploreFlowViewFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,6 +96,12 @@
 		EDA002BF2896BDCD00A3D09F /* ExploreMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreMapView.swift; sourceTree = "<group>"; };
 		EDA002C12896C1FF00A3D09F /* ExploreListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreListViewModel.swift; sourceTree = "<group>"; };
 		EDA002C32896C23700A3D09F /* ExploreListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreListView.swift; sourceTree = "<group>"; };
+		EDD6F3F828A055AF00E2ED71 /* ExploreNewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreNewsView.swift; sourceTree = "<group>"; };
+		EDD6F3FB28A055E300E2ED71 /* MapAndListFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAndListFlowView.swift; sourceTree = "<group>"; };
+		EDD6F3FD28A0561F00E2ED71 /* MapAndListFlowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAndListFlowViewModel.swift; sourceTree = "<group>"; };
+		EDD6F3FF28A0563000E2ED71 /* MapAndListFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAndListFlowCoordinator.swift; sourceTree = "<group>"; };
+		EDD6F40128A0565100E2ED71 /* MapAndListFlowViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAndListFlowViewFactory.swift; sourceTree = "<group>"; };
+		EDD6F40328A056A500E2ED71 /* ExploreFlowViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreFlowViewFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -257,9 +269,10 @@
 			children = (
 				EDA002AF2896B9C800A3D09F /* ExploreFlowCoordinator.swift */,
 				EDA002A1289691B800A3D09F /* ExploreFlowViewModel.swift */,
+				EDD6F40328A056A500E2ED71 /* ExploreFlowViewFactory.swift */,
 				EDA0029F289691B000A3D09F /* ExploreFlowView.swift */,
-				EDA002BB2896BDA000A3D09F /* Map */,
-				EDA002BC2896BDAA00A3D09F /* List */,
+				EDD6F3FA28A055BF00E2ED71 /* MapAndList */,
+				EDD6F3F728A0559A00E2ED71 /* News */,
 			);
 			path = Explore;
 			sourceTree = "<group>";
@@ -300,6 +313,27 @@
 				ED69461B2896FE7D00754C3F /* ActivityFlowView.swift */,
 			);
 			path = Activity;
+			sourceTree = "<group>";
+		};
+		EDD6F3F728A0559A00E2ED71 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				EDD6F3F828A055AF00E2ED71 /* ExploreNewsView.swift */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
+		EDD6F3FA28A055BF00E2ED71 /* MapAndList */ = {
+			isa = PBXGroup;
+			children = (
+				EDD6F3FF28A0563000E2ED71 /* MapAndListFlowCoordinator.swift */,
+				EDD6F40128A0565100E2ED71 /* MapAndListFlowViewFactory.swift */,
+				EDD6F3FD28A0561F00E2ED71 /* MapAndListFlowViewModel.swift */,
+				EDD6F3FB28A055E300E2ED71 /* MapAndListFlowView.swift */,
+				EDA002BB2896BDA000A3D09F /* Map */,
+				EDA002BC2896BDAA00A3D09F /* List */,
+			);
+			path = MapAndList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -389,13 +423,17 @@
 				EDA002A82896986900A3D09F /* MockAppDependencies.swift in Sources */,
 				EDA002802896906200A3D09F /* FlowViewPatternApp.swift in Sources */,
 				ED69461C2896FE7D00754C3F /* ActivityFlowView.swift in Sources */,
+				EDD6F40028A0563000E2ED71 /* MapAndListFlowCoordinator.swift in Sources */,
 				EDA002B92896BD4400A3D09F /* BookingFlowView.swift in Sources */,
 				EDA002C42896C23700A3D09F /* ExploreListView.swift in Sources */,
 				EDA0029C2896919300A3D09F /* OnboardingFlowView.swift in Sources */,
 				ED37FF80289FE3D5007E5110 /* ProfileFlowView.swift in Sources */,
 				EDA002BE2896BDC200A3D09F /* ExploreMapViewModel.swift in Sources */,
 				ED6946372897388500754C3F /* OnboardingViewFactory.swift in Sources */,
+				EDD6F3FC28A055E300E2ED71 /* MapAndListFlowView.swift in Sources */,
+				EDD6F3F928A055AF00E2ED71 /* ExploreNewsView.swift in Sources */,
 				ED6946322897156200754C3F /* OnboardingView.swift in Sources */,
+				EDD6F40428A056A500E2ED71 /* ExploreFlowViewFactory.swift in Sources */,
 				ED69461A2896FE6C00754C3F /* ActivityFlowViewModel.swift in Sources */,
 				ED37FF83289FFAD0007E5110 /* WelcomeBackView.swift in Sources */,
 				EDA002AE2896B90100A3D09F /* MockFlowCoordinator.swift in Sources */,
@@ -403,6 +441,8 @@
 				EDA002A62896968400A3D09F /* DefaultAppDependencies.swift in Sources */,
 				ED69462E289710D300754C3F /* DefaultsRepository.swift in Sources */,
 				EDA0029A2896917E00A3D09F /* MainFlowView.swift in Sources */,
+				EDD6F40228A0565100E2ED71 /* MapAndListFlowViewFactory.swift in Sources */,
+				EDD6F3FE28A0561F00E2ED71 /* MapAndListFlowViewModel.swift in Sources */,
 				EDA002AC2896B85800A3D09F /* MainFlowCoordinator.swift in Sources */,
 				EDA002C22896C1FF00A3D09F /* ExploreListViewModel.swift in Sources */,
 				EDA002A42896966A00A3D09F /* AppDependencies.swift in Sources */,
@@ -465,7 +505,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -519,7 +559,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
