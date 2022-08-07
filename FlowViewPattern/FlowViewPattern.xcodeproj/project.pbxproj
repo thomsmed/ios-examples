@@ -10,6 +10,7 @@
 		ED37FF7C289FD88D007E5110 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED37FF7B289FD88D007E5110 /* AppDelegate.swift */; };
 		ED37FF7E289FE3AC007E5110 /* MainFlowViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED37FF7D289FE3AC007E5110 /* MainFlowViewFactory.swift */; };
 		ED37FF80289FE3D5007E5110 /* ProfileFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED37FF7F289FE3D5007E5110 /* ProfileFlowView.swift */; };
+		ED37FF83289FFAD0007E5110 /* WelcomeBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED37FF82289FFAD0007E5110 /* WelcomeBackView.swift */; };
 		ED6946182896FE6200754C3F /* ActivityFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6946172896FE6200754C3F /* ActivityFlowCoordinator.swift */; };
 		ED69461A2896FE6C00754C3F /* ActivityFlowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6946192896FE6C00754C3F /* ActivityFlowViewModel.swift */; };
 		ED69461C2896FE7D00754C3F /* ActivityFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED69461B2896FE7D00754C3F /* ActivityFlowView.swift */; };
@@ -51,6 +52,7 @@
 		ED37FF7B289FD88D007E5110 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED37FF7D289FE3AC007E5110 /* MainFlowViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlowViewFactory.swift; sourceTree = "<group>"; };
 		ED37FF7F289FE3D5007E5110 /* ProfileFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFlowView.swift; sourceTree = "<group>"; };
+		ED37FF82289FFAD0007E5110 /* WelcomeBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeBackView.swift; sourceTree = "<group>"; };
 		ED6946172896FE6200754C3F /* ActivityFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityFlowCoordinator.swift; sourceTree = "<group>"; };
 		ED6946192896FE6C00754C3F /* ActivityFlowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityFlowViewModel.swift; sourceTree = "<group>"; };
 		ED69461B2896FE7D00754C3F /* ActivityFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityFlowView.swift; sourceTree = "<group>"; };
@@ -101,6 +103,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ED37FF81289FFAB2007E5110 /* Greeting */ = {
+			isa = PBXGroup;
+			children = (
+				ED37FF82289FFAD0007E5110 /* WelcomeBackView.swift */,
+			);
+			path = Greeting;
+			sourceTree = "<group>";
+		};
 		ED6946162896FE4A00754C3F /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -237,6 +247,7 @@
 				EDC52B642896FE0900307539 /* Activity */,
 				ED6946162896FE4A00754C3F /* Profile */,
 				EDA002B32896BD2100A3D09F /* Booking */,
+				ED37FF81289FFAB2007E5110 /* Greeting */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -386,6 +397,7 @@
 				ED6946372897388500754C3F /* OnboardingViewFactory.swift in Sources */,
 				ED6946322897156200754C3F /* OnboardingView.swift in Sources */,
 				ED69461A2896FE6C00754C3F /* ActivityFlowViewModel.swift in Sources */,
+				ED37FF83289FFAD0007E5110 /* WelcomeBackView.swift in Sources */,
 				EDA002AE2896B90100A3D09F /* MockFlowCoordinator.swift in Sources */,
 				ED6946182896FE6200754C3F /* ActivityFlowCoordinator.swift in Sources */,
 				EDA002A62896968400A3D09F /* DefaultAppDependencies.swift in Sources */,

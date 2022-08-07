@@ -12,6 +12,7 @@ final class MainFlowViewModel: ObservableObject {
     enum PresentedSheet {
         case none
         case booking
+        case greeting
     }
 
     private weak var flowCoordinator: AppFlowCoordinator?
@@ -20,19 +21,23 @@ final class MainFlowViewModel: ObservableObject {
     init(flowCoordinator: AppFlowCoordinator, appDependencies: AppDependencies) {
         self.flowCoordinator = flowCoordinator
         self.appDependencies = appDependencies
+
+        let longTimeNoSee = true
+        if longTimeNoSee {
+            presentedSheet = .greeting
+            sheetIsPresented = true
+        }
     }
 
+    @Published var sheetIsPresented: Bool = false
     @Published var presentedSheet: PresentedSheet = .none
-
-    func presentedSheetDismissed() {
-        presentedSheet = .none
-    }
 }
 
 extension MainFlowViewModel: MainFlowCoordinator {
 
     func presentBooking() {
         presentedSheet = .booking
+        sheetIsPresented = true
     }
 }
 
@@ -52,5 +57,9 @@ extension MainFlowViewModel: MainFlowViewFactory {
 
     func makeBookingFlowView() -> BookingFlowView {
         BookingFlowView()
+    }
+
+    func makeWelcomeBackView() -> WelcomeBackView {
+        WelcomeBackView()
     }
 }

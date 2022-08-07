@@ -12,4 +12,5 @@ protocol MainFlowViewFactory: AnyObject {
     func makeActivityFlowView() -> ActivityFlowView
     func makeProfileFlowView() -> ProfileFlowView
     func makeBookingFlowView() -> BookingFlowView
+    func makeWelcomeBackView() -> WelcomeBackView
 }
