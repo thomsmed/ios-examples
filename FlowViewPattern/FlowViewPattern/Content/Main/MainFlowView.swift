@@ -11,7 +11,7 @@ struct MainFlowView: View {
 
     @StateObject var flowViewModel: MainFlowViewModel
 
-    @State private var bookingPresented: Bool = false
+    @State private var sheetIsPresented: Bool = false
 
     var body: some View {
         TabView {
@@ -28,8 +28,24 @@ struct MainFlowView: View {
                     Label("Profile", systemImage: "person")
                 }
         }
-        .sheet(isPresented: $bookingPresented) {
-            flowViewModel.makeBookingFlowView()
+        .onChange(of: flowViewModel.presentedSheet) { presentedSheet in
+            switch presentedSheet {
+            case .none:
+                sheetIsPresented = false
+            default:
+                sheetIsPresented = true
+            }
+        }
+        .sheet(
+            isPresented: $sheetIsPresented,
+            onDismiss: {
+                flowViewModel.presentedSheetDismissed()
+            }
+        ) {
+            switch flowViewModel.presentedSheet {
+            case .none, .booking:
+                flowViewModel.makeBookingFlowView()
+            }
         }
     }
 }

@@ -9,10 +9,9 @@ import SwiftUI
 
 final class MainFlowViewModel: ObservableObject {
 
-    enum Page {
-        case explore
-        case activity
-        case profile
+    enum PresentedSheet {
+        case none
+        case booking
     }
 
     private weak var flowCoordinator: AppFlowCoordinator?
@@ -23,15 +22,17 @@ final class MainFlowViewModel: ObservableObject {
         self.appDependencies = appDependencies
     }
 
-    @Published var page: Page = .explore
+    @Published var presentedSheet: PresentedSheet = .none
 
-    @State var bookingPresented: Bool = false
+    func presentedSheetDismissed() {
+        presentedSheet = .none
+    }
 }
 
 extension MainFlowViewModel: MainFlowCoordinator {
 
     func presentBooking() {
-        bookingPresented = true
+        presentedSheet = .booking
     }
 }
 

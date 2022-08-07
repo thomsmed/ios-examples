@@ -12,9 +12,11 @@ struct ExploreFlowView: View {
     @StateObject var flowViewModel: ExploreFlowViewModel
 
     var body: some View {
-        Text("Explore flow")
-        Button("Booking") {
-            flowViewModel.continueToBooking()
+        VStack {
+            Text("Explore flow")
+            Button("Booking") {
+                flowViewModel.continueToBooking()
+            }
         }
     }
 }
