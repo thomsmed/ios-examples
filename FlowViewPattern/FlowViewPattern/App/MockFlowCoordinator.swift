@@ -1,5 +1,5 @@
 //
-//  DummyFlowCoordinator.swift
+//  MockFlowCoordinator.swift
 //  FlowViewPattern
 //
 //  Created by Thomas Asheim Smedmann on 31/07/2022.
@@ -7,9 +7,9 @@
 
 import Foundation
 
-final class DummyFlowCoordinator {
+final class MockFlowCoordinator {
 
-    static let shared = DummyFlowCoordinator()
+    static let shared = MockFlowCoordinator()
 
     private init() { }
 }

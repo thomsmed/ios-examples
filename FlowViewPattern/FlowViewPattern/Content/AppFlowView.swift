@@ -11,10 +11,8 @@ struct AppFlowView: View {
 
     @StateObject var flowViewModel: AppFlowViewModel
 
-    @AppStorage("show") var show: Bool = false
-
     var body: some View {
-        if show {
+        if flowViewModel.onboardingComplete {
             flowViewModel.makeMainFlowView()
         } else {
             flowViewModel.makeOnboardingFlowView()
@@ -26,7 +24,7 @@ struct AppFlowView_Previews: PreviewProvider {
     static var previews: some View {
         AppFlowView(
             flowViewModel: .init(
-                appDependencies: DummyAppDependencies.shared
+                appDependencies: MockAppDependencies.shared
             )
         )
     }

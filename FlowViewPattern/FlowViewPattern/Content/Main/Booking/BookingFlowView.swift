@@ -8,8 +8,14 @@
 import SwiftUI
 
 struct BookingFlowView: View {
+
+    @Environment(\.dismiss) private var dismiss
+
     var body: some View {
         Text("Booking flow")
+        Button("Done") {
+            dismiss()
+        }
     }
 }
 

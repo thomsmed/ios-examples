@@ -11,14 +11,25 @@ struct MainFlowView: View {
 
     @StateObject var flowViewModel: MainFlowViewModel
 
-    @AppStorage("show") var show: Bool = false
+    @State private var bookingPresented: Bool = false
 
     var body: some View {
-        VStack {
-            Text("Main flow")
-            Button("Continue") {
-                show = false
-            }
+        TabView {
+            flowViewModel.makeExploreFlowView()
+                .tabItem {
+                    Label("Explore", systemImage: "map")
+                }
+            flowViewModel.makeActivityFlowView()
+                .tabItem {
+                    Label("Activity", systemImage: "star")
+                }
+            flowViewModel.makeProfileFlowView()
+                .tabItem {
+                    Label("Profile", systemImage: "person")
+                }
+        }
+        .sheet(isPresented: $bookingPresented) {
+            flowViewModel.makeBookingFlowView()
         }
     }
 }
@@ -27,8 +38,8 @@ struct MainFlowView_Previews: PreviewProvider {
     static var previews: some View {
         MainFlowView(
             flowViewModel: .init(
-                flowCoordinator: DummyFlowCoordinator.shared,
-                appDependencies: DummyAppDependencies.shared
+                flowCoordinator: MockFlowCoordinator.shared,
+                appDependencies: MockAppDependencies.shared
             )
         )
     }

@@ -12,9 +12,9 @@ struct OnboardingFlowView: View {
     @StateObject var flowViewModel: OnboardingFlowViewModel
 
     var body: some View {
-        ZStack {
+        TabView {
             flowViewModel.makeOnboardingView()
-        }
+        }.tabViewStyle(.page)
     }
 }
 
@@ -22,8 +22,8 @@ struct OnboardingFlowView_Previews: PreviewProvider {
     static var previews: some View {
         OnboardingFlowView(
             flowViewModel: .init(
-                flowCoordinator: DummyFlowCoordinator.shared,
-                appDependencies: DummyAppDependencies.shared
+                flowCoordinator: MockFlowCoordinator.shared,
+                appDependencies: MockAppDependencies.shared
             )
         )
     }

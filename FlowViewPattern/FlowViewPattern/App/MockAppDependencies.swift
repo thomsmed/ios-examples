@@ -1,5 +1,5 @@
 //
-//  DummyAppDependencies.swift
+//  MockAppDependencies.swift
 //  FlowViewPattern
 //
 //  Created by Thomas Asheim Smedmann on 31/07/2022.
@@ -7,9 +7,9 @@
 
 import Foundation
 
-final class DummyAppDependencies {
+final class MockAppDependencies {
 
-    static let shared: AppDependencies = DummyAppDependencies()
+    static let shared: AppDependencies = MockAppDependencies()
 
     let defaultsRepository: DefaultsRepository
 
@@ -18,6 +18,6 @@ final class DummyAppDependencies {
     }
 }
 
-extension DummyAppDependencies: AppDependencies {
+extension MockAppDependencies: AppDependencies {
 
 }

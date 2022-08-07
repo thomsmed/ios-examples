@@ -13,6 +13,9 @@ struct ExploreFlowView: View {
 
     var body: some View {
         Text("Explore flow")
+        Button("Booking") {
+            flowViewModel.continueToBooking()
+        }
     }
 }
 
@@ -20,7 +23,7 @@ struct ExploreFlowView_Previews: PreviewProvider {
     static var previews: some View {
         ExploreFlowView(
             flowViewModel: .init(
-                flowCoordinator: DummyFlowCoordinator.shared
+                flowCoordinator: MockFlowCoordinator.shared
             )
         )
     }

@@ -34,8 +34,8 @@ struct ExploreListView_Previews: PreviewProvider {
     static var previews: some View {
         ExploreListView(
             viewModel: .init(
-                flowCoordinator: DummyFlowCoordinator.shared,
-                appDependencies: DummyAppDependencies.shared
+                flowCoordinator: MockFlowCoordinator.shared,
+                appDependencies: MockAppDependencies.shared
             )
         )
     }

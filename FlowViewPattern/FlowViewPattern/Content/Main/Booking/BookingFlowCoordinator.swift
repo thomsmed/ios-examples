@@ -11,6 +11,6 @@ protocol BookingFlowCoordinator: AnyObject {
 
 }
 
-extension DummyFlowCoordinator: BookingFlowCoordinator {
+extension MockFlowCoordinator: BookingFlowCoordinator {
     
 }

@@ -10,15 +10,12 @@ import SwiftUI
 struct OnboardingView: View {
 
     @StateObject var viewModel: OnboardingViewModel
-
-    @AppStorage("show") var show: Bool = false
     
     var body: some View {
         VStack {
             Text("Onboarding view")
             Button("Continue") {
-                //viewModel.completeOnboarding()
-                show = true
+                viewModel.completeOnboarding()
             }
         }
     }
@@ -28,8 +25,8 @@ struct OnboardingView_Previews: PreviewProvider {
     static var previews: some View {
         OnboardingView(
             viewModel: .init(
-                flowCoordinator: DummyFlowCoordinator.shared,
-                appDependencies: DummyAppDependencies.shared
+                flowCoordinator: MockFlowCoordinator.shared,
+                appDependencies: MockAppDependencies.shared
             )
         )
     }

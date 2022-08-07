@@ -10,17 +10,13 @@ import SwiftUI
 @main
 struct FlowViewPatternApp: App {
 
-    @StateObject var appDependencies = DefaultAppDependencies()
-
-    init() {
-        // One time initialization etc...
-    }
+    @UIApplicationDelegateAdaptor private var appDelegate: AppDelegate
 
     var body: some Scene {
         WindowGroup {
             AppFlowView(
                 flowViewModel: .init(
-                    appDependencies: appDependencies
+                    appDependencies: appDelegate.appDependencies
                 )
             )
         }

@@ -34,8 +34,8 @@ struct ExploreMapView_Previews: PreviewProvider {
     static var previews: some View {
         ExploreMapView(
             viewModel: .init(
-                flowCoordinator: DummyFlowCoordinator.shared,
-                appDependencies: DummyAppDependencies.shared
+                flowCoordinator: MockFlowCoordinator.shared,
+                appDependencies: MockAppDependencies.shared
             )
         )
     }

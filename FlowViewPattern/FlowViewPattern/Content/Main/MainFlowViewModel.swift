@@ -5,7 +5,7 @@
 //  Created by Thomas Asheim Smedmann on 31/07/2022.
 //
 
-import Foundation
+import SwiftUI
 
 final class MainFlowViewModel: ObservableObject {
 
@@ -24,12 +24,32 @@ final class MainFlowViewModel: ObservableObject {
     }
 
     @Published var page: Page = .explore
-    @Published var bookingPresented: Bool = false
+
+    @State var bookingPresented: Bool = false
 }
 
 extension MainFlowViewModel: MainFlowCoordinator {
 
     func presentBooking() {
         bookingPresented = true
+    }
+}
+
+extension MainFlowViewModel: MainFlowViewFactory {
+
+    func makeExploreFlowView() -> ExploreFlowView {
+        ExploreFlowView(flowViewModel: .init(flowCoordinator: self))
+    }
+
+    func makeActivityFlowView() -> ActivityFlowView {
+        ActivityFlowView(flowViewModel: .init())
+    }
+
+    func makeProfileFlowView() -> ProfileFlowView {
+        ProfileFlowView()
+    }
+
+    func makeBookingFlowView() -> BookingFlowView {
+        BookingFlowView()
     }
 }

@@ -14,10 +14,6 @@ final class DefaultAppDependencies: ObservableObject {
     init() {
         defaultsRepository = DefaultDefaultsRepository()
     }
-
-    func prepare() {
-        // Additional initialization etc...
-    }
 }
 
 extension DefaultAppDependencies: AppDependencies {

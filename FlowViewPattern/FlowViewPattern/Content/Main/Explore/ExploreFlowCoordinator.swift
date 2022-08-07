@@ -11,7 +11,7 @@ protocol ExploreFlowCoordinator: AnyObject {
     func continueToBooking()
 }
 
-extension DummyFlowCoordinator: ExploreFlowCoordinator {
+extension MockFlowCoordinator: ExploreFlowCoordinator {
 
     func continueToBooking() {
         
