@@ -52,6 +52,7 @@
 		EDD6F40028A0563000E2ED71 /* MapAndListFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD6F3FF28A0563000E2ED71 /* MapAndListFlowCoordinator.swift */; };
 		EDD6F40228A0565100E2ED71 /* MapAndListFlowViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD6F40128A0565100E2ED71 /* MapAndListFlowViewFactory.swift */; };
 		EDD6F40428A056A500E2ED71 /* ExploreFlowViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD6F40328A056A500E2ED71 /* ExploreFlowViewFactory.swift */; };
+		EDEB131828A0D2710041C3E4 /* WelcomeBackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEB131728A0D2710041C3E4 /* WelcomeBackViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -102,6 +103,7 @@
 		EDD6F3FF28A0563000E2ED71 /* MapAndListFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAndListFlowCoordinator.swift; sourceTree = "<group>"; };
 		EDD6F40128A0565100E2ED71 /* MapAndListFlowViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAndListFlowViewFactory.swift; sourceTree = "<group>"; };
 		EDD6F40328A056A500E2ED71 /* ExploreFlowViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreFlowViewFactory.swift; sourceTree = "<group>"; };
+		EDEB131728A0D2710041C3E4 /* WelcomeBackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeBackViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				ED37FF82289FFAD0007E5110 /* WelcomeBackView.swift */,
+				EDEB131728A0D2710041C3E4 /* WelcomeBackViewModel.swift */,
 			);
 			path = Greeting;
 			sourceTree = "<group>";
@@ -268,8 +271,8 @@
 			isa = PBXGroup;
 			children = (
 				EDA002AF2896B9C800A3D09F /* ExploreFlowCoordinator.swift */,
-				EDA002A1289691B800A3D09F /* ExploreFlowViewModel.swift */,
 				EDD6F40328A056A500E2ED71 /* ExploreFlowViewFactory.swift */,
+				EDA002A1289691B800A3D09F /* ExploreFlowViewModel.swift */,
 				EDA0029F289691B000A3D09F /* ExploreFlowView.swift */,
 				EDD6F3FA28A055BF00E2ED71 /* MapAndList */,
 				EDD6F3F728A0559A00E2ED71 /* News */,
@@ -436,6 +439,7 @@
 				EDD6F40428A056A500E2ED71 /* ExploreFlowViewFactory.swift in Sources */,
 				ED69461A2896FE6C00754C3F /* ActivityFlowViewModel.swift in Sources */,
 				ED37FF83289FFAD0007E5110 /* WelcomeBackView.swift in Sources */,
+				EDEB131828A0D2710041C3E4 /* WelcomeBackViewModel.swift in Sources */,
 				EDA002AE2896B90100A3D09F /* MockFlowCoordinator.swift in Sources */,
 				ED6946182896FE6200754C3F /* ActivityFlowCoordinator.swift in Sources */,
 				EDA002A62896968400A3D09F /* DefaultAppDependencies.swift in Sources */,

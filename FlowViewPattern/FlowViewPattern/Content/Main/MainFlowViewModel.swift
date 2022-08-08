@@ -24,8 +24,10 @@ final class MainFlowViewModel: ObservableObject {
 
         let longTimeNoSee = true
         if longTimeNoSee {
-            presentedSheet = .greeting
-            sheetIsPresented = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+                self?.presentedSheet = .greeting
+                self?.sheetIsPresented = true
+            }
         }
     }
 
@@ -60,6 +62,6 @@ extension MainFlowViewModel: MainFlowViewFactory {
     }
 
     func makeWelcomeBackView() -> WelcomeBackView {
-        WelcomeBackView()
+        WelcomeBackView(viewModel: .init(flowCoordinator: self))
     }
 }

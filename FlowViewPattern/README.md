@@ -11,6 +11,8 @@ A SwiftUI navigation pattern.
 
 ### Avoid custom explicit View struct initialisers
 
+[Link to StackOverflow post about the topic](https://stackoverflow.com/questions/73271168/a-swiftui-views-default-memberwise-initializer-vs-custom-initializer)
+
 ```swift
 @main
 struct MyApp: App {
@@ -55,6 +57,11 @@ struct MyView: View {
     // WARNING: Uncommenting this causes the view model to be recreated every reconstruction of the view!
     //    init(viewModel: MyViewModel) {
     //        self._viewModel = StateObject(wrappedValue: viewModel)
+    //    }
+    
+    // NOTE: The proper way to pas arguments to a StateObject, is in the form of an @autoclosure like so:
+    //    init(viewModel: @autoclosure @escaping () -> MyViewModel) {
+    //        self._viewModel = StateObject(wrappedValue: viewModel())
     //    }
 
     var body: some View {

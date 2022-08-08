@@ -26,4 +26,19 @@ extension ExploreFlowViewModel: ExploreFlowCoordinator {
     func continueToBooking() {
         flowCoordinator?.presentBooking()
     }
+
+    func continueToNews() {
+        //path.append()
+    }
+}
+
+extension ExploreFlowViewModel: ExploreFlowViewFactory {
+
+    func makeMapAndListFlowView() -> MapAndListFlowView {
+        MapAndListFlowView()
+    }
+
+    func makeExploreNewsView() -> ExploreNewsView {
+        ExploreNewsView()
+    }
 }

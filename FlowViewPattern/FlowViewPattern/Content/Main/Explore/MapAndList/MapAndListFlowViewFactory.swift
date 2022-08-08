@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+protocol MapAndListFlowViewFactory: AnyObject {
+    func makeExploreMapView() -> ExploreMapView
+    func makeExploreListView() -> ExploreListView
+}

@@ -14,8 +14,16 @@ struct ExploreListView: View {
     @Environment(\.scenePhase) var scenePhase
 
     var body: some View {
-        ZStack {
-            Text("Explore list view")
+        VStack {
+            Button("Map") {
+
+            }
+            .padding(.bottom, 16)
+            Text("Explore list")
+                .padding(16)
+            Button("Booking") {
+                //viewModel.continueToBooking()
+            }.padding(.top, 16)
         }
         .onAppear() {
             // Refresh view etc

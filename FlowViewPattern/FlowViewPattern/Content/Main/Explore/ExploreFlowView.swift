@@ -15,12 +15,7 @@ struct ExploreFlowView: View {
 
     var body: some View {
         NavigationStack(path: $flowViewModel.path) {
-            VStack {
-                Text("Explore flow")
-                Button("Booking") {
-                    flowViewModel.continueToBooking()
-                }
-            }
+            
         }
         .onChange(of: scenePhase) { scenePhase in
             if scenePhase == .background {

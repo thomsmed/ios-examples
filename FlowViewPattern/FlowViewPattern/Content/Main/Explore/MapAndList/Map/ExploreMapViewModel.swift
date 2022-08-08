@@ -9,10 +9,10 @@ import Foundation
 
 final class ExploreMapViewModel: ObservableObject {
 
-    private weak var flowCoordinator: ExploreFlowCoordinator?
+    private weak var flowCoordinator: MapAndListFlowCoordinator?
     private let appDependencies: AppDependencies
 
-    init(flowCoordinator: ExploreFlowCoordinator, appDependencies: AppDependencies) {
+    init(flowCoordinator: MapAndListFlowCoordinator, appDependencies: AppDependencies) {
         self.flowCoordinator = flowCoordinator
         self.appDependencies = appDependencies
     }

@@ -14,8 +14,16 @@ struct ExploreMapView: View {
     @Environment(\.scenePhase) var scenePhase
 
     var body: some View {
-        ZStack {
-            Text("Explore map view")
+        VStack {
+            Button("List") {
+
+            }
+            .padding(.bottom, 16)
+            Text("Explore map")
+                .padding(16)
+            Button("Booking") {
+                //viewModel.continueToBooking()
+            }.padding(.top, 16)
         }
         .onAppear() {
             // Refresh view etc

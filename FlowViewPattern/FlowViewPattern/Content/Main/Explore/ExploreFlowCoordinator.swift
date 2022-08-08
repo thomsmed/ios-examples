@@ -8,10 +8,15 @@
 import Foundation
 
 protocol ExploreFlowCoordinator: AnyObject {
+    func continueToNews()
     func continueToBooking()
 }
 
 extension MockFlowCoordinator: ExploreFlowCoordinator {
+
+    func continueToNews() {
+        
+    }
 
     func continueToBooking() {
         
