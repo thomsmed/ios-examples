@@ -12,3 +12,4 @@
 - [Background refresh and cleanup](BackgroundCleanup)
 - [Flow coordinator pattern](FlowControllerPattern)
 - [Bluetooth Low Energy (BLE)](BLEChat)
+- [Expandable dynamic sized Table View Cell](ExpandableTableViewCell)
