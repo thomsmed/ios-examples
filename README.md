@@ -14,6 +14,7 @@ A collection of iOS examples.
 - [Background refresh and cleanup](BackgroundCleanup)
 - [Flow coordinator pattern](FlowControllerPattern)
 - [Bluetooth Low Energy (BLE)](BLEChat)
+- [Expandable dynamic sized Table View Cell](ExpandableTableViewCell)
 
 These examples are created as a way to learn. Feel free to use them as you please.
 Feedback are also welcome.
