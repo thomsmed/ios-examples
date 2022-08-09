@@ -2,6 +2,8 @@
 
 A couple of examples on how to create table view cells that can change its size without having the parent table view reload it.
 
+Check out [Expandable and dynamic sized Table View Cell](https://medium.com/@thomsmed/expandable-and-dynamic-sized-table-view-cell-a870e4320a7d) for a writeup @ Medium.
+
 ## AccordionTableViewCell
 
 Simple example of an expandable table view cell (AccordionTableViewCell).
