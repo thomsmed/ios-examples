@@ -26,6 +26,18 @@ final class AccordionTableViewController: UITableViewController {
 
         tableView.separatorInset = .zero
         tableView.register(AccordionTableViewCell.self, forCellReuseIdentifier: "cell")
+
+        let headerView = HeaderView()
+        headerView.frame.size = headerView.systemLayoutSizeFitting(
+            .init(
+                width: tableView.frameLayoutGuide.layoutFrame.width,
+                height: 0
+            ),
+            withHorizontalFittingPriority: .required,
+            verticalFittingPriority: .fittingSizeLevel
+        )
+
+        tableView.tableHeaderView = headerView
     }
 }
 
