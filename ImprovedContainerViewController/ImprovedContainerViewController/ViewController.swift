@@ -21,13 +21,24 @@ final class ViewController: UIViewController {
         return label
     }()
 
-    let button: UIButton = {
+    let nextButton: UIButton = {
         var configuration = UIButton.Configuration.filled()
         configuration.buttonSize = .large
         configuration.title = "Next"
         configuration.baseBackgroundColor = .systemGray6
         configuration.baseForegroundColor = .label
         let button = UIButton(configuration: configuration)
+        return button
+    }()
+
+    let previousButton: UIButton = {
+        var configuration = UIButton.Configuration.filled()
+        configuration.buttonSize = .large
+        configuration.title = "Previous"
+        configuration.baseBackgroundColor = .systemGray6
+        configuration.baseForegroundColor = .label
+        let button = UIButton(configuration: configuration)
+        button.isHidden = true
         return button
     }()
 
@@ -39,10 +50,12 @@ final class ViewController: UIViewController {
         cardView.translatesAutoresizingMaskIntoConstraints = false
 
         cardView.addSubview(label)
-        cardView.addSubview(button)
+        cardView.addSubview(nextButton)
+        cardView.addSubview(previousButton)
 
         label.translatesAutoresizingMaskIntoConstraints = false
-        button.translatesAutoresizingMaskIntoConstraints = false
+        nextButton.translatesAutoresizingMaskIntoConstraints = false
+        previousButton.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
             cardView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
@@ -53,8 +66,11 @@ final class ViewController: UIViewController {
             label.centerXAnchor.constraint(equalTo: cardView.centerXAnchor),
             label.centerYAnchor.constraint(equalTo: cardView.centerYAnchor, constant: -64),
 
-            button.centerXAnchor.constraint(equalTo: cardView.centerXAnchor),
-            button.centerYAnchor.constraint(equalTo: cardView.centerYAnchor, constant: 64)
+            nextButton.centerXAnchor.constraint(equalTo: cardView.centerXAnchor),
+            nextButton.centerYAnchor.constraint(equalTo: cardView.centerYAnchor, constant: 64),
+
+            previousButton.centerXAnchor.constraint(equalTo: cardView.centerXAnchor),
+            previousButton.centerYAnchor.constraint(equalTo: cardView.centerYAnchor, constant: 128)
         ])
 
         view.backgroundColor = .clear

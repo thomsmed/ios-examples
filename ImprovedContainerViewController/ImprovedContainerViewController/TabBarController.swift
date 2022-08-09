@@ -38,7 +38,7 @@ final class TabBarController: UITabBarController {
                 let viewController = ViewController()
                 viewController.label.text = "Page \(page == 1 ? "one" : "two")"
                 viewController.cardView.backgroundColor = page == 1 ? .systemRed : .systemBlue
-                viewController.button.addAction(.init { _ in
+                viewController.nextButton.addAction(.init { _ in
                     makeAndSetNextViewController()
                 }, for: .primaryActionTriggered)
                 return viewController
@@ -68,7 +68,7 @@ final class TabBarController: UITabBarController {
         segmentOneViewController.title = "Segment one"
         segmentOneViewController.cardView.backgroundColor = .systemRed
         segmentOneViewController.label.text = "Segment one"
-        segmentOneViewController.button.addAction(.init { [weak segmentedPageController] _ in
+        segmentOneViewController.nextButton.addAction(.init { [weak segmentedPageController] _ in
             segmentedPageController?.setSelectedSegmentIndex(1, using: .slide)
         }, for: .primaryActionTriggered)
 
@@ -76,16 +76,22 @@ final class TabBarController: UITabBarController {
         segmentTwoViewController.title = "Segment two"
         segmentTwoViewController.cardView.backgroundColor = .systemGreen
         segmentTwoViewController.label.text = "Segment two"
-        segmentTwoViewController.button.addAction(.init { [weak segmentedPageController] _ in
+        segmentTwoViewController.nextButton.addAction(.init { [weak segmentedPageController] _ in
             segmentedPageController?.setSelectedSegmentIndex(2, using: .slide)
+        }, for: .primaryActionTriggered)
+        segmentTwoViewController.previousButton.isHidden = false
+        segmentTwoViewController.previousButton.addAction(.init { [weak segmentedPageController] _ in
+            segmentedPageController?.setSelectedSegmentIndex(0, using: .slide)
         }, for: .primaryActionTriggered)
 
         let segmentThreeViewController = ViewController()
         segmentThreeViewController.title = "Segment three"
         segmentThreeViewController.cardView.backgroundColor = .systemBlue
         segmentThreeViewController.label.text = "Segment three"
-        segmentThreeViewController.button.addAction(.init { [weak segmentedPageController] _ in
-            segmentedPageController?.setSelectedSegmentIndex(0, using: .slide)
+        segmentThreeViewController.nextButton.isHidden = true
+        segmentThreeViewController.previousButton.isHidden = false
+        segmentThreeViewController.previousButton.addAction(.init { [weak segmentedPageController] _ in
+            segmentedPageController?.setSelectedSegmentIndex(1, using: .slide)
         }, for: .primaryActionTriggered)
 
         segmentedPageController.viewControllers = [

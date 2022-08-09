@@ -163,6 +163,10 @@ class SegmentedPageController: UIViewController {
 
         addAndConstrain(viewControllerView: viewController.view)
 
+        if let previousViewControllerView = previousViewController?.view {
+            view.bringSubviewToFront(previousViewControllerView)
+        }
+
         let offset = view.bounds.width
 
         let previousViewCenterXConstraint = previousViewController?.view.centerXAnchor.constraint(
@@ -170,10 +174,8 @@ class SegmentedPageController: UIViewController {
         )
         previousViewCenterXConstraint?.isActive = true
 
-        let viewCenterXConstraint = viewController.view.centerXAnchor.constraint(
-            equalTo: view.centerXAnchor, constant: offset
-        )
-        viewCenterXConstraint.isActive = true
+        previousViewController?.view.transform = .identity
+        viewController.view.transform = .init(scaleX: 0.75, y: 0.75)
 
         view.layoutIfNeeded()
 
@@ -190,13 +192,12 @@ class SegmentedPageController: UIViewController {
             ],
             animations: {
                 previousViewCenterXConstraint?.constant = -offset
-                viewCenterXConstraint.constant = 0
+                viewController.view.transform = .identity
                 self.view.layoutIfNeeded()
             }, completion: { completed in
                 previousViewController?.endAppearanceTransition()
                 previousViewController?.view.removeFromSuperview()
                 previousViewController?.removeFromParent()
-                viewCenterXConstraint.isActive = false
                 viewController.endAppearanceTransition()
                 viewController.didMove(toParent: self)
             }
@@ -214,15 +215,13 @@ class SegmentedPageController: UIViewController {
 
         let offset = view.bounds.width
 
-        let previousViewCenterXConstraint = previousViewController?.view.centerXAnchor.constraint(
-            equalTo: view.centerXAnchor
-        )
-        previousViewCenterXConstraint?.isActive = true
-
         let viewCenterXConstraint = viewController.view.centerXAnchor.constraint(
             equalTo: view.centerXAnchor, constant: -offset
         )
         viewCenterXConstraint.isActive = true
+
+        previousViewController?.view.transform = .identity
+        viewController.view.transform = .identity
 
         view.layoutIfNeeded()
 
@@ -238,7 +237,7 @@ class SegmentedPageController: UIViewController {
                 .allowAnimatedContent
             ],
             animations: {
-                previousViewCenterXConstraint?.constant = offset
+                previousViewController?.view.transform = .init(scaleX: 0.75, y: 0.75)
                 viewCenterXConstraint.constant = 0
                 self.view.layoutIfNeeded()
             }, completion: { completed in
