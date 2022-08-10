@@ -25,6 +25,7 @@ final class TabBarController: UITabBarController {
 
     func makeSinglePageControllerExample() -> UIViewController {
         let singlePageController = SinglePageController()
+        singlePageController.title = "SinglePageController"
 
         var page: Int = 2
         var transition: SinglePageController.Transition = .flip
@@ -51,7 +52,6 @@ final class TabBarController: UITabBarController {
             rootViewController: singlePageController
         )
 
-        navigationViewController.isNavigationBarHidden = true
         navigationViewController.tabBarItem = .init(
             title: "SinglePageController",
             image: .init(systemName: "1.circle"),
@@ -63,6 +63,7 @@ final class TabBarController: UITabBarController {
 
     func makeSegmentedPageControllerExample() -> UIViewController {
         let segmentedPageController = SegmentedPageController()
+        segmentedPageController.title = "SegmentedPageController"
 
         let segmentOneViewController = ViewController()
         segmentOneViewController.title = "Segment one"
@@ -104,7 +105,6 @@ final class TabBarController: UITabBarController {
             rootViewController: segmentedPageController
         )
 
-        navigationViewController.isNavigationBarHidden = true
         navigationViewController.tabBarItem = .init(
             title: "SegmentedPageController",
             image: .init(systemName: "2.circle"),

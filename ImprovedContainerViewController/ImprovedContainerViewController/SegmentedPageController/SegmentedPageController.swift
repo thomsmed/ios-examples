@@ -174,7 +174,6 @@ class SegmentedPageController: UIViewController {
         )
         previousViewCenterXConstraint?.isActive = true
 
-        previousViewController?.view.transform = .identity
         viewController.view.transform = .init(scaleX: 0.75, y: 0.75)
 
         view.layoutIfNeeded()
@@ -195,6 +194,7 @@ class SegmentedPageController: UIViewController {
                 viewController.view.transform = .identity
                 self.view.layoutIfNeeded()
             }, completion: { completed in
+                previousViewController?.view.transform = .identity
                 previousViewController?.endAppearanceTransition()
                 previousViewController?.view.removeFromSuperview()
                 previousViewController?.removeFromParent()
@@ -220,7 +220,6 @@ class SegmentedPageController: UIViewController {
         )
         viewCenterXConstraint.isActive = true
 
-        previousViewController?.view.transform = .identity
         viewController.view.transform = .identity
 
         view.layoutIfNeeded()
@@ -241,6 +240,7 @@ class SegmentedPageController: UIViewController {
                 viewCenterXConstraint.constant = 0
                 self.view.layoutIfNeeded()
             }, completion: { completed in
+                previousViewController?.view.transform = .identity
                 previousViewController?.endAppearanceTransition()
                 previousViewController?.view.removeFromSuperview()
                 previousViewController?.removeFromParent()
