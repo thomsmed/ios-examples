@@ -15,6 +15,7 @@ A collection of iOS examples.
 - [Flow coordinator pattern](FlowControllerPattern)
 - [Bluetooth Low Energy (BLE)](BLEChat)
 - [Expandable dynamic sized Table View Cell](ExpandableTableViewCell)
+- [Custom Container View Controller (improved)](ImprovedContainerViewController)
 
 These examples are created as a way to learn. Feel free to use them as you please.
 Feedback are also welcome.
