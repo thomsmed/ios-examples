@@ -10,6 +10,7 @@ import SwiftUI
 struct MapAndListFlowView: View {
     var body: some View {
         Text("Map and list")
+            .navigationTitle("Explore")
     }
 }
 

@@ -9,16 +9,18 @@ import SwiftUI
 
 final class ExploreFlowViewModel: ObservableObject {
 
+    enum Page {
+        case mapAndList
+        case news
+    }
+
     private weak var flowCoordinator: MainFlowCoordinator?
 
     init(flowCoordinator: MainFlowCoordinator) {
         self.flowCoordinator = flowCoordinator
-
-        // TODO: Restore path?
-
     }
 
-    @Published var path = NavigationPath()
+    @Published var pageStack: [Page] = []
 }
 
 extension ExploreFlowViewModel: ExploreFlowCoordinator {
@@ -28,7 +30,7 @@ extension ExploreFlowViewModel: ExploreFlowCoordinator {
     }
 
     func continueToNews() {
-        //path.append()
+        pageStack.append(.news)
     }
 }
 

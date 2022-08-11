@@ -14,8 +14,16 @@ struct ExploreFlowView: View {
     @Environment(\.scenePhase) private var scenePhase
 
     var body: some View {
-        NavigationStack(path: $flowViewModel.path) {
-            
+        NavigationStack(path: $flowViewModel.pageStack) {
+            flowViewModel.makeMapAndListFlowView()
+                .navigationDestination(for: ExploreFlowViewModel.Page.self) { page in
+                    switch page {
+                    case .mapAndList:
+                        flowViewModel.makeMapAndListFlowView()
+                    case .news:
+                        flowViewModel.makeExploreNewsView()
+                    }
+                }
         }
         .onChange(of: scenePhase) { scenePhase in
             if scenePhase == .background {

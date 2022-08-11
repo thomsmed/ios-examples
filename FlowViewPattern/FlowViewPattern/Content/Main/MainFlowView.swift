@@ -12,18 +12,30 @@ struct MainFlowView: View {
     @StateObject var flowViewModel: MainFlowViewModel
 
     var body: some View {
-        TabView {
+        TabView(selection: $flowViewModel.activeTab) {
             flowViewModel.makeExploreFlowView()
+                .tag(MainFlowViewModel.Tab.explore)
                 .tabItem {
-                    Label("Explore", systemImage: "map")
+                    Label(
+                        MainFlowViewModel.Tab.explore.title,
+                        systemImage: MainFlowViewModel.Tab.explore.systemImageName
+                    )
                 }
             flowViewModel.makeActivityFlowView()
+                .tag(MainFlowViewModel.Tab.activity)
                 .tabItem {
-                    Label("Activity", systemImage: "star")
+                    Label(
+                        MainFlowViewModel.Tab.activity.title,
+                        systemImage: MainFlowViewModel.Tab.activity.systemImageName
+                    )
                 }
             flowViewModel.makeProfileFlowView()
+                .tag(MainFlowViewModel.Tab.profile)
                 .tabItem {
-                    Label("Profile", systemImage: "person")
+                    Label(
+                        MainFlowViewModel.Tab.profile.title,
+                        systemImage: MainFlowViewModel.Tab.profile.systemImageName
+                    )
                 }
         }
         .sheet(isPresented: $flowViewModel.sheetIsPresented) {

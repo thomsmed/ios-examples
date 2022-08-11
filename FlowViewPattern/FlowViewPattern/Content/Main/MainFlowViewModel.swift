@@ -9,6 +9,34 @@ import SwiftUI
 
 final class MainFlowViewModel: ObservableObject {
 
+    enum Tab {
+        case explore
+        case activity
+        case profile
+
+        var title: String {
+            switch self {
+            case .explore:
+                return "Explore"
+            case .activity:
+                return "Activity"
+            case .profile:
+                return "Profile"
+            }
+        }
+
+        var systemImageName: String {
+            switch self {
+            case .explore:
+                return "map"
+            case .activity:
+                return "star"
+            case .profile:
+                return "person"
+            }
+        }
+    }
+
     enum PresentedSheet {
         case none
         case booking
@@ -31,6 +59,7 @@ final class MainFlowViewModel: ObservableObject {
         }
     }
 
+    @Published var activeTab: Tab = .explore
     @Published var sheetIsPresented: Bool = false
     @Published var presentedSheet: PresentedSheet = .none
 }
