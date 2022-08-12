@@ -11,7 +11,7 @@ protocol AppFlowCoordinator: AnyObject {
     func onboardingCompleteContinueToMain()
 }
 
-extension MockFlowCoordinator: AppFlowCoordinator {
+extension PreviewFlowCoordinator: AppFlowCoordinator {
 
     func onboardingCompleteContinueToMain() {
         

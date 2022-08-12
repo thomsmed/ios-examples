@@ -25,9 +25,9 @@ struct AppFlowView_Previews: PreviewProvider {
     static var previews: some View {
         AppFlowView(
             flowViewModel: .init(
-                appDependencies: MockAppDependencies.shared
+                appDependencies: PreviewAppDependencies.shared
             ),
-            flowViewFactory: MockFlowViewFactory.shared
+            flowViewFactory: PreviewFlowViewFactory.shared
         )
     }
 }

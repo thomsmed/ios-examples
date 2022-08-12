@@ -34,10 +34,10 @@
 		EDA002A2289691B800A3D09F /* ExploreFlowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA002A1289691B800A3D09F /* ExploreFlowViewModel.swift */; };
 		EDA002A42896966A00A3D09F /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA002A32896966A00A3D09F /* AppDependencies.swift */; };
 		EDA002A62896968400A3D09F /* DefaultAppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA002A52896968400A3D09F /* DefaultAppDependencies.swift */; };
-		EDA002A82896986900A3D09F /* MockAppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA002A72896986900A3D09F /* MockAppDependencies.swift */; };
+		EDA002A82896986900A3D09F /* PreviewAppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA002A72896986900A3D09F /* PreviewAppDependencies.swift */; };
 		EDA002AA2896B80B00A3D09F /* AppFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA002A92896B80B00A3D09F /* AppFlowCoordinator.swift */; };
 		EDA002AC2896B85800A3D09F /* MainFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA002AB2896B85800A3D09F /* MainFlowCoordinator.swift */; };
-		EDA002AE2896B90100A3D09F /* MockFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA002AD2896B90100A3D09F /* MockFlowCoordinator.swift */; };
+		EDA002AE2896B90100A3D09F /* PreviewFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA002AD2896B90100A3D09F /* PreviewFlowCoordinator.swift */; };
 		EDA002B02896B9C800A3D09F /* ExploreFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA002AF2896B9C800A3D09F /* ExploreFlowCoordinator.swift */; };
 		EDA002B22896BA5000A3D09F /* OnboardingFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA002B12896BA5000A3D09F /* OnboardingFlowCoordinator.swift */; };
 		EDA002B52896BD2F00A3D09F /* BookingFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA002B42896BD2F00A3D09F /* BookingFlowCoordinator.swift */; };
@@ -47,9 +47,10 @@
 		EDA002C02896BDCD00A3D09F /* ExploreMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA002BF2896BDCD00A3D09F /* ExploreMapView.swift */; };
 		EDA002C22896C1FF00A3D09F /* ExploreListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA002C12896C1FF00A3D09F /* ExploreListViewModel.swift */; };
 		EDA002C42896C23700A3D09F /* ExploreListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA002C32896C23700A3D09F /* ExploreListView.swift */; };
-		EDB466B028A6ADAC0046E9F4 /* MockFlowViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB466AF28A6ADAC0046E9F4 /* MockFlowViewFactory.swift */; };
+		EDB466B028A6ADAC0046E9F4 /* PreviewFlowViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB466AF28A6ADAC0046E9F4 /* PreviewFlowViewFactory.swift */; };
 		EDB466B428A6AE160046E9F4 /* DefaultAppFlowViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB466B328A6AE160046E9F4 /* DefaultAppFlowViewFactory.swift */; };
-		EDB466B628A6B45A0046E9F4 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB466B528A6B45A0046E9F4 /* Tab.swift */; };
+		EDB466B828A6F6040046E9F4 /* Extractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB466B728A6F6040046E9F4 /* Extractor.swift */; };
+		EDB466BA28A6F6470046E9F4 /* AppPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB466B928A6F6470046E9F4 /* AppPage.swift */; };
 		EDD6F3F928A055AF00E2ED71 /* ExploreNewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD6F3F828A055AF00E2ED71 /* ExploreNewsView.swift */; };
 		EDD6F3FC28A055E300E2ED71 /* MapAndListFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD6F3FB28A055E300E2ED71 /* MapAndListFlowView.swift */; };
 		EDD6F3FE28A0561F00E2ED71 /* MapAndListFlowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD6F3FD28A0561F00E2ED71 /* MapAndListFlowViewModel.swift */; };
@@ -89,10 +90,10 @@
 		EDA002A1289691B800A3D09F /* ExploreFlowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreFlowViewModel.swift; sourceTree = "<group>"; };
 		EDA002A32896966A00A3D09F /* AppDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencies.swift; sourceTree = "<group>"; };
 		EDA002A52896968400A3D09F /* DefaultAppDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAppDependencies.swift; sourceTree = "<group>"; };
-		EDA002A72896986900A3D09F /* MockAppDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAppDependencies.swift; sourceTree = "<group>"; };
+		EDA002A72896986900A3D09F /* PreviewAppDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewAppDependencies.swift; sourceTree = "<group>"; };
 		EDA002A92896B80B00A3D09F /* AppFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowCoordinator.swift; sourceTree = "<group>"; };
 		EDA002AB2896B85800A3D09F /* MainFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlowCoordinator.swift; sourceTree = "<group>"; };
-		EDA002AD2896B90100A3D09F /* MockFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFlowCoordinator.swift; sourceTree = "<group>"; };
+		EDA002AD2896B90100A3D09F /* PreviewFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewFlowCoordinator.swift; sourceTree = "<group>"; };
 		EDA002AF2896B9C800A3D09F /* ExploreFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreFlowCoordinator.swift; sourceTree = "<group>"; };
 		EDA002B12896BA5000A3D09F /* OnboardingFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFlowCoordinator.swift; sourceTree = "<group>"; };
 		EDA002B42896BD2F00A3D09F /* BookingFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingFlowCoordinator.swift; sourceTree = "<group>"; };
@@ -102,9 +103,10 @@
 		EDA002BF2896BDCD00A3D09F /* ExploreMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreMapView.swift; sourceTree = "<group>"; };
 		EDA002C12896C1FF00A3D09F /* ExploreListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreListViewModel.swift; sourceTree = "<group>"; };
 		EDA002C32896C23700A3D09F /* ExploreListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreListView.swift; sourceTree = "<group>"; };
-		EDB466AF28A6ADAC0046E9F4 /* MockFlowViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFlowViewFactory.swift; sourceTree = "<group>"; };
+		EDB466AF28A6ADAC0046E9F4 /* PreviewFlowViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewFlowViewFactory.swift; sourceTree = "<group>"; };
 		EDB466B328A6AE160046E9F4 /* DefaultAppFlowViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAppFlowViewFactory.swift; sourceTree = "<group>"; };
-		EDB466B528A6B45A0046E9F4 /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
+		EDB466B728A6F6040046E9F4 /* Extractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extractor.swift; sourceTree = "<group>"; };
+		EDB466B928A6F6470046E9F4 /* AppPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPage.swift; sourceTree = "<group>"; };
 		EDD6F3F828A055AF00E2ED71 /* ExploreNewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreNewsView.swift; sourceTree = "<group>"; };
 		EDD6F3FB28A055E300E2ED71 /* MapAndListFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAndListFlowView.swift; sourceTree = "<group>"; };
 		EDD6F3FD28A0561F00E2ED71 /* MapAndListFlowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAndListFlowViewModel.swift; sourceTree = "<group>"; };
@@ -125,19 +127,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		ED2AE4AB28A5753000229A54 /* View */ = {
+		ED2AE4AB28A5753000229A54 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = View;
+			path = Views;
 			sourceTree = "<group>";
 		};
-		ED2AE4AC28A5753900229A54 /* PresentationView */ = {
+		ED2AE4AC28A5753900229A54 /* PresentationViews */ = {
 			isa = PBXGroup;
 			children = (
 				ED2AE4AD28A5756100229A54 /* SinglePageView.swift */,
 			);
-			path = PresentationView;
+			path = PresentationViews;
 			sourceTree = "<group>";
 		};
 		ED37FF81289FFAB2007E5110 /* Greeting */ = {
@@ -160,8 +162,8 @@
 		ED69462A2897107600754C3F /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				ED2AE4AC28A5753900229A54 /* PresentationView */,
-				ED2AE4AB28A5753000229A54 /* View */,
+				ED2AE4AC28A5753900229A54 /* PresentationViews */,
+				ED2AE4AB28A5753000229A54 /* Views */,
 				ED69462B289710B100754C3F /* Repositories */,
 			);
 			path = Common;
@@ -225,6 +227,9 @@
 			isa = PBXGroup;
 			children = (
 				EDA002862896906400A3D09F /* PreviewAssets.xcassets */,
+				EDA002A72896986900A3D09F /* PreviewAppDependencies.swift */,
+				EDA002AD2896B90100A3D09F /* PreviewFlowCoordinator.swift */,
+				EDB466AF28A6ADAC0046E9F4 /* PreviewFlowViewFactory.swift */,
 			);
 			path = PreviewContent;
 			sourceTree = "<group>";
@@ -233,7 +238,6 @@
 			isa = PBXGroup;
 			children = (
 				EDA002832896906400A3D09F /* Assets.xcassets */,
-				EDB466AE28A6AD830046E9F4 /* Mocks */,
 				EDA002852896906400A3D09F /* PreviewContent */,
 			);
 			path = Resources;
@@ -247,6 +251,8 @@
 				EDA002A32896966A00A3D09F /* AppDependencies.swift */,
 				EDA002A52896968400A3D09F /* DefaultAppDependencies.swift */,
 				EDB466B328A6AE160046E9F4 /* DefaultAppFlowViewFactory.swift */,
+				EDB466B728A6F6040046E9F4 /* Extractor.swift */,
+				EDB466B928A6F6470046E9F4 /* AppPage.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -283,7 +289,6 @@
 				ED37FF7D289FE3AC007E5110 /* MainFlowViewFactory.swift */,
 				EDA002972896917200A3D09F /* MainFlowViewModel.swift */,
 				EDA002992896917E00A3D09F /* MainFlowView.swift */,
-				EDB466B528A6B45A0046E9F4 /* Tab.swift */,
 				EDA002962896916200A3D09F /* Explore */,
 				EDC52B642896FE0900307539 /* Activity */,
 				ED6946162896FE4A00754C3F /* Profile */,
@@ -332,16 +337,6 @@
 				EDA002C32896C23700A3D09F /* ExploreListView.swift */,
 			);
 			path = List;
-			sourceTree = "<group>";
-		};
-		EDB466AE28A6AD830046E9F4 /* Mocks */ = {
-			isa = PBXGroup;
-			children = (
-				EDA002A72896986900A3D09F /* MockAppDependencies.swift */,
-				EDA002AD2896B90100A3D09F /* MockFlowCoordinator.swift */,
-				EDB466AF28A6ADAC0046E9F4 /* MockFlowViewFactory.swift */,
-			);
-			path = Mocks;
 			sourceTree = "<group>";
 		};
 		EDC52B642896FE0900307539 /* Activity */ = {
@@ -445,6 +440,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDB466B828A6F6040046E9F4 /* Extractor.swift in Sources */,
 				EDA002B72896BD3900A3D09F /* BookingFlowViewModel.swift in Sources */,
 				EDA002C02896BDCD00A3D09F /* ExploreMapView.swift in Sources */,
 				EDA002912896912500A3D09F /* AppFlowView.swift in Sources */,
@@ -460,11 +456,11 @@
 				EDA002A2289691B800A3D09F /* ExploreFlowViewModel.swift in Sources */,
 				EDA002B22896BA5000A3D09F /* OnboardingFlowCoordinator.swift in Sources */,
 				ED69462928970DEC00754C3F /* AppFlowViewFactory.swift in Sources */,
-				EDA002A82896986900A3D09F /* MockAppDependencies.swift in Sources */,
+				EDA002A82896986900A3D09F /* PreviewAppDependencies.swift in Sources */,
 				EDA002802896906200A3D09F /* FlowViewPatternApp.swift in Sources */,
 				ED69461C2896FE7D00754C3F /* ActivityFlowView.swift in Sources */,
 				EDD6F40028A0563000E2ED71 /* MapAndListFlowCoordinator.swift in Sources */,
-				EDB466B028A6ADAC0046E9F4 /* MockFlowViewFactory.swift in Sources */,
+				EDB466B028A6ADAC0046E9F4 /* PreviewFlowViewFactory.swift in Sources */,
 				EDA002B92896BD4400A3D09F /* BookingFlowView.swift in Sources */,
 				EDA002C42896C23700A3D09F /* ExploreListView.swift in Sources */,
 				EDA0029C2896919300A3D09F /* OnboardingFlowView.swift in Sources */,
@@ -472,18 +468,18 @@
 				EDA002BE2896BDC200A3D09F /* ExploreMapViewModel.swift in Sources */,
 				ED6946372897388500754C3F /* OnboardingFlowViewFactory.swift in Sources */,
 				EDD6F3FC28A055E300E2ED71 /* MapAndListFlowView.swift in Sources */,
-				EDB466B628A6B45A0046E9F4 /* Tab.swift in Sources */,
 				EDD6F3F928A055AF00E2ED71 /* ExploreNewsView.swift in Sources */,
 				ED6946322897156200754C3F /* OnboardingView.swift in Sources */,
 				EDD6F40428A056A500E2ED71 /* ExploreFlowViewFactory.swift in Sources */,
 				ED69461A2896FE6C00754C3F /* ActivityFlowViewModel.swift in Sources */,
 				ED37FF83289FFAD0007E5110 /* WelcomeBackView.swift in Sources */,
 				EDEB131828A0D2710041C3E4 /* WelcomeBackViewModel.swift in Sources */,
-				EDA002AE2896B90100A3D09F /* MockFlowCoordinator.swift in Sources */,
+				EDA002AE2896B90100A3D09F /* PreviewFlowCoordinator.swift in Sources */,
 				ED6946182896FE6200754C3F /* ActivityFlowCoordinator.swift in Sources */,
 				EDA002A62896968400A3D09F /* DefaultAppDependencies.swift in Sources */,
 				ED69462E289710D300754C3F /* DefaultsRepository.swift in Sources */,
 				EDA0029A2896917E00A3D09F /* MainFlowView.swift in Sources */,
+				EDB466BA28A6F6470046E9F4 /* AppPage.swift in Sources */,
 				EDD6F40228A0565100E2ED71 /* MapAndListFlowViewFactory.swift in Sources */,
 				EDD6F3FE28A0561F00E2ED71 /* MapAndListFlowViewModel.swift in Sources */,
 				EDA002AC2896B85800A3D09F /* MainFlowCoordinator.swift in Sources */,

@@ -12,7 +12,7 @@ protocol ExploreFlowCoordinator: AnyObject {
     func continueToBooking()
 }
 
-extension MockFlowCoordinator: ExploreFlowCoordinator {
+extension PreviewFlowCoordinator: ExploreFlowCoordinator {
 
     func continueToNews() {
         

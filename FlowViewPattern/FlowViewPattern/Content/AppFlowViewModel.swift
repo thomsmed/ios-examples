@@ -12,7 +12,7 @@ final class AppFlowViewModel: ObservableObject {
     @Published var onboardingComplete: Bool
 
     init(appDependencies: AppDependencies) {
-        onboardingComplete = appDependencies.defaultsRepository.getBool(for: .onboardingCompleted)
+        onboardingComplete = appDependencies.defaultsRepository.bool(for: .onboardingCompleted)
     }
 }
 

@@ -14,7 +14,12 @@ protocol ExploreFlowViewFactory: AnyObject {
 
 extension DefaultAppFlowViewFactory: ExploreFlowViewFactory {
     func makeMapAndListFlowView(with flowCoordinator: ExploreFlowCoordinator) -> MapAndListFlowView {
-        MapAndListFlowView()
+        MapAndListFlowView(
+            flowViewModel: .init(
+                flowCoordinator: flowCoordinator
+            ),
+            flowViewFactory: self
+        )
     }
 
     func makeExploreNewsView() -> ExploreNewsView {

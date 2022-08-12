@@ -8,14 +8,27 @@
 import SwiftUI
 
 struct MapAndListFlowView: View {
+
+    @StateObject var flowViewModel: MapAndListFlowViewModel
+    let flowViewFactory: MapAndListFlowViewFactory
+
     var body: some View {
-        Text("Map and list")
-            .navigationTitle("Explore")
+        switch flowViewModel.selectedPage {
+        case .map:
+            flowViewFactory.makeExploreMapView(with: flowViewModel)
+        case .list:
+            flowViewFactory.makeExploreListView(with: flowViewModel)
+        }
     }
 }
 
 struct MapAndListFlowView_Previews: PreviewProvider {
     static var previews: some View {
-        MapAndListFlowView()
+        MapAndListFlowView(
+            flowViewModel: .init(
+                flowCoordinator: PreviewFlowCoordinator.shared
+            ),
+            flowViewFactory: PreviewFlowViewFactory.shared
+        )
     }
 }

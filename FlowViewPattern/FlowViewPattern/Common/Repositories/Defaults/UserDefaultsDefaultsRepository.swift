@@ -33,7 +33,7 @@ extension UserDefaultsDefaultsRepository: DefaultsRepository {
         userDefaults.set(data, forKey: key.rawValue)
     }
 
-    func getBool(for key: Defaults.Key) -> Bool {
+    func bool(for key: Defaults.Key) -> Bool {
         userDefaults.bool(forKey: key.rawValue)
     }
 
@@ -41,11 +41,23 @@ extension UserDefaultsDefaultsRepository: DefaultsRepository {
         userDefaults.set(value, forKey: key.rawValue)
     }
 
-    func getString(for key: Defaults.Key) -> String? {
+    func string(for key: Defaults.Key) -> String? {
         userDefaults.string(forKey: key.rawValue)
     }
 
     func set(_ value: String, for key: Defaults.Key) {
         userDefaults.set(value, forKey: key.rawValue)
+    }
+
+    func date(for key: Defaults.Key) -> Date? {
+        guard let timeInterval = userDefaults.value(forKey: key.rawValue) as? TimeInterval else {
+            return nil
+        }
+
+        return Date(timeIntervalSince1970: timeInterval)
+    }
+
+    func set(_ value: Date, for key: Defaults.Key) {
+        userDefaults.set(value.timeIntervalSince1970, forKey: key.rawValue)
     }
 }

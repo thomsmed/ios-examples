@@ -11,7 +11,7 @@ protocol MainFlowCoordinator: AnyObject {
     func presentBooking()
 }
 
-extension MockFlowCoordinator: MainFlowCoordinator {
+extension PreviewFlowCoordinator: MainFlowCoordinator {
 
     func presentBooking() {
         

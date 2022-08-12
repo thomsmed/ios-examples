@@ -8,6 +8,16 @@
 import Foundation
 
 protocol MapAndListFlowViewFactory: AnyObject {
-    func makeExploreMapView() -> ExploreMapView
-    func makeExploreListView() -> ExploreListView
+    func makeExploreMapView(with flowCoordinator: MapAndListFlowCoordinator) -> ExploreMapView
+    func makeExploreListView(with flowCoordinator: MapAndListFlowCoordinator) -> ExploreListView
+}
+
+extension DefaultAppFlowViewFactory: MapAndListFlowViewFactory {
+    func makeExploreMapView(with flowCoordinator: MapAndListFlowCoordinator) -> ExploreMapView {
+        ExploreMapView(viewModel: .init(flowCoordinator: flowCoordinator))
+    }
+
+    func makeExploreListView(with flowCoordinator: MapAndListFlowCoordinator) -> ExploreListView {
+        ExploreListView(viewModel: .init(flowCoordinator: flowCoordinator))
+    }
 }

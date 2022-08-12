@@ -18,7 +18,11 @@ struct ExploreMapViewModel {
 
 extension ExploreMapViewModel {
 
-    func bookAppointment() {
+    func goToList() {
+        flowCoordinator?.showList()
+    }
+
+    func continueToBooking() {
         flowCoordinator?.continueToBooking()
     }
 }

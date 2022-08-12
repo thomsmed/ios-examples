@@ -23,9 +23,9 @@ struct OnboardingFlowView_Previews: PreviewProvider {
     static var previews: some View {
         OnboardingFlowView(
             flowViewModel: .init(
-                flowCoordinator: MockFlowCoordinator.shared
+                flowCoordinator: PreviewFlowCoordinator.shared
             ),
-            flowViewFactory: MockFlowViewFactory.shared
+            flowViewFactory: PreviewFlowViewFactory.shared
         )
     }
 }

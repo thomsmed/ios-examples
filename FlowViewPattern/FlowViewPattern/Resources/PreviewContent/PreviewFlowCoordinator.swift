@@ -1,5 +1,5 @@
 //
-//  MockFlowCoordinator.swift
+//  PreviewFlowCoordinator.swift
 //  FlowViewPattern
 //
 //  Created by Thomas Asheim Smedmann on 31/07/2022.

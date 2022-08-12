@@ -31,9 +31,9 @@ struct ExploreFlowView_Previews: PreviewProvider {
     static var previews: some View {
         ExploreFlowView(
             flowViewModel: .init(
-                flowCoordinator: MockFlowCoordinator.shared
+                flowCoordinator: PreviewFlowCoordinator.shared
             ),
-            flowViewFactory: MockFlowViewFactory.shared
+            flowViewFactory: PreviewFlowViewFactory.shared
         )
     }
 }

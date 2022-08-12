@@ -9,11 +9,9 @@ import SwiftUI
 
 final class MainFlowViewModel: ObservableObject {
 
-    enum PresentedSheet {
-        case none
-        case booking
-        case greeting
-    }
+    @Published var selectedTab: MainFlowView.Tab = .explore
+    @Published var sheetIsPresented: Bool = false
+    @Published var presentedSheet: MainFlowView.PresentedSheet = .none
 
     private weak var flowCoordinator: AppFlowCoordinator?
     private let appDependencies: AppDependencies
@@ -30,10 +28,6 @@ final class MainFlowViewModel: ObservableObject {
             }
         }
     }
-
-    @Published var activeTab: Tab = .explore
-    @Published var sheetIsPresented: Bool = false
-    @Published var presentedSheet: PresentedSheet = .none
 }
 
 extension MainFlowViewModel: MainFlowCoordinator {

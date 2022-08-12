@@ -11,7 +11,7 @@ protocol OnboardingFlowCoordinator: AnyObject {
     func onboardingComplete()
 }
 
-extension MockFlowCoordinator: OnboardingFlowCoordinator {
+extension PreviewFlowCoordinator: OnboardingFlowCoordinator {
 
     func onboardingComplete() {
         

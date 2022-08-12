@@ -33,7 +33,7 @@ struct WelcomeBackView_Previews: PreviewProvider {
     static var previews: some View {
         WelcomeBackView(
             viewModel: .init(
-                flowCoordinator: MockFlowCoordinator.shared
+                flowCoordinator: PreviewFlowCoordinator.shared
             )
         )
     }

@@ -13,7 +13,7 @@ struct MainFlowView: View {
     let flowViewFactory: MainFlowViewFactory
 
     var body: some View {
-        TabView(selection: $flowViewModel.activeTab) {
+        TabView(selection: $flowViewModel.selectedTab) {
             flowViewFactory.makeExploreFlowView(with: flowViewModel)
                 .tag(Tab.explore)
                 .tabItem {
@@ -52,14 +52,51 @@ struct MainFlowView: View {
     }
 }
 
+extension MainFlowView {
+
+    enum Tab {
+        case explore
+        case activity
+        case profile
+
+        var title: String {
+            switch self {
+            case .explore:
+                return "Explore"
+            case .activity:
+                return "Activity"
+            case .profile:
+                return "Profile"
+            }
+        }
+
+        var systemImageName: String {
+            switch self {
+            case .explore:
+                return "map"
+            case .activity:
+                return "star"
+            case .profile:
+                return "person"
+            }
+        }
+    }
+
+    enum PresentedSheet {
+        case none
+        case booking
+        case greeting
+    }
+}
+
 struct MainFlowView_Previews: PreviewProvider {
     static var previews: some View {
         MainFlowView(
             flowViewModel: .init(
-                flowCoordinator: MockFlowCoordinator.shared,
-                appDependencies: MockAppDependencies.shared
+                flowCoordinator: PreviewFlowCoordinator.shared,
+                appDependencies: PreviewAppDependencies.shared
             ),
-            flowViewFactory: MockFlowViewFactory.shared
+            flowViewFactory: PreviewFlowViewFactory.shared
         )
     }
 }

@@ -14,7 +14,7 @@ protocol MapAndListFlowCoordinator: AnyObject {
     func continueToBooking()
 }
 
-extension MockFlowCoordinator: MapAndListFlowCoordinator {
+extension PreviewFlowCoordinator: MapAndListFlowCoordinator {
 
     func showMap() {
 

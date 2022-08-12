@@ -16,13 +16,13 @@ struct ExploreMapView: View {
     var body: some View {
         VStack {
             Button("List") {
-
+                viewModel.goToList()
             }
             .padding(.bottom, 16)
             Text("Explore map")
                 .padding(16)
             Button("Booking") {
-                //viewModel.continueToBooking()
+                viewModel.continueToBooking()
             }.padding(.top, 16)
         }
         .onAppear() {
@@ -42,7 +42,7 @@ struct ExploreMapView_Previews: PreviewProvider {
     static var previews: some View {
         ExploreMapView(
             viewModel: .init(
-                flowCoordinator: MockFlowCoordinator.shared
+                flowCoordinator: PreviewFlowCoordinator.shared
             )
         )
     }
