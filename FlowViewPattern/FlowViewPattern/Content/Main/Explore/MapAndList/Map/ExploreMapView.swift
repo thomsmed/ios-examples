@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ExploreMapView: View {
 
-    @StateObject var viewModel: ExploreMapViewModel
+    @State var viewModel: ExploreMapViewModel
 
     @Environment(\.scenePhase) var scenePhase
 
@@ -42,8 +42,7 @@ struct ExploreMapView_Previews: PreviewProvider {
     static var previews: some View {
         ExploreMapView(
             viewModel: .init(
-                flowCoordinator: MockFlowCoordinator.shared,
-                appDependencies: MockAppDependencies.shared
+                flowCoordinator: MockFlowCoordinator.shared
             )
         )
     }

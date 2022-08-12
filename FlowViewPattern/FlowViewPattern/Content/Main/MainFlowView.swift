@@ -10,31 +10,32 @@ import SwiftUI
 struct MainFlowView: View {
 
     @StateObject var flowViewModel: MainFlowViewModel
+    let flowViewFactory: MainFlowViewFactory
 
     var body: some View {
         TabView(selection: $flowViewModel.activeTab) {
-            flowViewModel.makeExploreFlowView()
-                .tag(MainFlowViewModel.Tab.explore)
+            flowViewFactory.makeExploreFlowView(with: flowViewModel)
+                .tag(Tab.explore)
                 .tabItem {
                     Label(
-                        MainFlowViewModel.Tab.explore.title,
-                        systemImage: MainFlowViewModel.Tab.explore.systemImageName
+                        Tab.explore.title,
+                        systemImage: Tab.explore.systemImageName
                     )
                 }
-            flowViewModel.makeActivityFlowView()
-                .tag(MainFlowViewModel.Tab.activity)
+            flowViewFactory.makeActivityFlowView()
+                .tag(Tab.activity)
                 .tabItem {
                     Label(
-                        MainFlowViewModel.Tab.activity.title,
-                        systemImage: MainFlowViewModel.Tab.activity.systemImageName
+                        Tab.activity.title,
+                        systemImage: Tab.activity.systemImageName
                     )
                 }
-            flowViewModel.makeProfileFlowView()
-                .tag(MainFlowViewModel.Tab.profile)
+            flowViewFactory.makeProfileFlowView()
+                .tag(Tab.profile)
                 .tabItem {
                     Label(
-                        MainFlowViewModel.Tab.profile.title,
-                        systemImage: MainFlowViewModel.Tab.profile.systemImageName
+                        Tab.profile.title,
+                        systemImage: Tab.profile.systemImageName
                     )
                 }
         }
@@ -43,9 +44,9 @@ struct MainFlowView: View {
             case .none:
                 EmptyView()
             case .booking:
-                flowViewModel.makeBookingFlowView()
+                flowViewFactory.makeBookingFlowView()
             case .greeting:
-                flowViewModel.makeWelcomeBackView()
+                flowViewFactory.makeWelcomeBackView(with: flowViewModel)
             }
         }
     }
@@ -57,7 +58,8 @@ struct MainFlowView_Previews: PreviewProvider {
             flowViewModel: .init(
                 flowCoordinator: MockFlowCoordinator.shared,
                 appDependencies: MockAppDependencies.shared
-            )
+            ),
+            flowViewFactory: MockFlowViewFactory.shared
         )
     }
 }

@@ -7,14 +7,12 @@
 
 import Foundation
 
-final class ExploreListViewModel: ObservableObject {
+struct ExploreListViewModel {
 
     private weak var flowCoordinator: MapAndListFlowCoordinator?
-    private let appDependencies: AppDependencies
 
-    init(flowCoordinator: MapAndListFlowCoordinator, appDependencies: AppDependencies) {
+    init(flowCoordinator: MapAndListFlowCoordinator) {
         self.flowCoordinator = flowCoordinator
-        self.appDependencies = appDependencies
     }
 }
 

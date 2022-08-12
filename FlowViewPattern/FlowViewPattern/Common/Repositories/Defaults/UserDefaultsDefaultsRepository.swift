@@ -1,5 +1,5 @@
 //
-//  DefaultDefaultsRepository.swift
+//  UserDefaultsDefaultsRepository.swift
 //  FlowViewPattern
 //
 //  Created by Thomas Asheim Smedmann on 31/07/2022.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class DefaultDefaultsRepository {
+final class UserDefaultsDefaultsRepository {
 
     private let userDefaults = UserDefaults.standard
 
@@ -15,7 +15,7 @@ final class DefaultDefaultsRepository {
     private let jsonDecoder = JSONDecoder()
 }
 
-extension DefaultDefaultsRepository: DefaultsRepository {
+extension UserDefaultsDefaultsRepository: DefaultsRepository {
 
     func get<T>(_ key: Defaults.Key) -> T? where T : Codable {
         guard let data = userDefaults.data(forKey: key.rawValue) else {

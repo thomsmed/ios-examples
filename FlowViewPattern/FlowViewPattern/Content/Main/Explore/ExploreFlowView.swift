@@ -10,25 +10,19 @@ import SwiftUI
 struct ExploreFlowView: View {
 
     @StateObject var flowViewModel: ExploreFlowViewModel
-
-    @Environment(\.scenePhase) private var scenePhase
+    let flowViewFactory: ExploreFlowViewFactory
 
     var body: some View {
         NavigationStack(path: $flowViewModel.pageStack) {
-            flowViewModel.makeMapAndListFlowView()
+            flowViewFactory.makeMapAndListFlowView(with: flowViewModel)
                 .navigationDestination(for: ExploreFlowViewModel.Page.self) { page in
                     switch page {
                     case .mapAndList:
-                        flowViewModel.makeMapAndListFlowView()
+                        flowViewFactory.makeMapAndListFlowView(with: flowViewModel)
                     case .news:
-                        flowViewModel.makeExploreNewsView()
+                        flowViewFactory.makeExploreNewsView()
                     }
                 }
-        }
-        .onChange(of: scenePhase) { scenePhase in
-            if scenePhase == .background {
-                // TODO: Save path? How to save View state?
-            }
         }
     }
 }
@@ -38,7 +32,8 @@ struct ExploreFlowView_Previews: PreviewProvider {
         ExploreFlowView(
             flowViewModel: .init(
                 flowCoordinator: MockFlowCoordinator.shared
-            )
+            ),
+            flowViewFactory: MockFlowViewFactory.shared
         )
     }
 }

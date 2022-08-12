@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class WelcomeBackViewModel: ObservableObject {
+struct WelcomeBackViewModel {
 
     private weak var flowCoordinator: MainFlowCoordinator?
 

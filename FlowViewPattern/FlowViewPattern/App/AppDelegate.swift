@@ -11,7 +11,9 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
 
     // NOTE: Let AppDelegate conform to ObservableObject if you need to have access to the delegate as an EnvironmentObject
 
-    private(set) lazy var appDependencies: AppDependencies = DefaultAppDependencies()
+    private(set) lazy var appDependencies = DefaultAppDependencies()
+    private(set) lazy var appFlowCoordinator = AppFlowViewModel(appDependencies: appDependencies)
+    private(set) lazy var appFlowViewFactory = DefaultAppFlowViewFactory(appDependencies: appDependencies)
 
     func application(
         _ application: UIApplication,

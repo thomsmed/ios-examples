@@ -10,12 +10,13 @@ import SwiftUI
 struct AppFlowView: View {
 
     @StateObject var flowViewModel: AppFlowViewModel
+    let flowViewFactory: AppFlowViewFactory
 
     var body: some View {
         if flowViewModel.onboardingComplete {
-            flowViewModel.makeMainFlowView()
+            flowViewFactory.makeMainFlowView(with: flowViewModel)
         } else {
-            flowViewModel.makeOnboardingFlowView()
+            flowViewFactory.makeOnboardingFlowView(with: flowViewModel)
         }
     }
 }
@@ -25,7 +26,8 @@ struct AppFlowView_Previews: PreviewProvider {
         AppFlowView(
             flowViewModel: .init(
                 appDependencies: MockAppDependencies.shared
-            )
+            ),
+            flowViewFactory: MockFlowViewFactory.shared
         )
     }
 }

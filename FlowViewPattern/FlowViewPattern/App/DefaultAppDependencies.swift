@@ -7,15 +7,11 @@
 
 import Foundation
 
-final class DefaultAppDependencies: ObservableObject {
+final class DefaultAppDependencies: AppDependencies {
 
     let defaultsRepository: DefaultsRepository
 
     init() {
-        defaultsRepository = DefaultDefaultsRepository()
+        defaultsRepository = UserDefaultsDefaultsRepository()
     }
-}
-
-extension DefaultAppDependencies: AppDependencies {
-    
 }

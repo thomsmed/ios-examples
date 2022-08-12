@@ -9,7 +9,7 @@ import SwiftUI
 
 struct WelcomeBackView: View {
 
-    @StateObject var viewModel: WelcomeBackViewModel
+    @State var viewModel: WelcomeBackViewModel
 
     @Environment(\.dismiss) var dismiss
 

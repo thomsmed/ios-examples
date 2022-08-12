@@ -10,11 +10,9 @@ import Foundation
 final class MapAndListFlowViewModel: ObservableObject {
 
     private weak var flowCoordinator: ExploreFlowCoordinator?
-    private let appDependencies: AppDependencies
 
-    init(flowCoordinator: ExploreFlowCoordinator, appDependencies: AppDependencies) {
+    init(flowCoordinator: ExploreFlowCoordinator) {
         self.flowCoordinator = flowCoordinator
-        self.appDependencies = appDependencies
     }
 }
 
@@ -34,26 +32,5 @@ extension MapAndListFlowViewModel: MapAndListFlowCoordinator {
 
     func continueToBooking() {
         flowCoordinator?.continueToBooking()
-    }
-}
-
-extension MapAndListFlowViewModel: MapAndListFlowViewFactory {
-
-    func makeExploreMapView() -> ExploreMapView {
-        ExploreMapView(
-            viewModel: .init(
-                flowCoordinator: self,
-                appDependencies: self.appDependencies
-            )
-        )
-    }
-
-    func makeExploreListView() -> ExploreListView {
-        ExploreListView(
-            viewModel: .init(
-                flowCoordinator: self,
-                appDependencies: self.appDependencies
-            )
-        )
     }
 }

@@ -7,17 +7,13 @@
 
 import Foundation
 
-final class MockAppDependencies {
+final class MockAppDependencies: AppDependencies {
 
     static let shared: AppDependencies = MockAppDependencies()
 
     let defaultsRepository: DefaultsRepository
 
     private init() {
-        defaultsRepository = DefaultDefaultsRepository() // TODO: Mock this (and rename from Dummy... to Mock...)
+        defaultsRepository = UserDefaultsDefaultsRepository()
     }
-}
-
-extension MockAppDependencies: AppDependencies {
-
 }

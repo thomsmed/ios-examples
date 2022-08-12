@@ -8,9 +8,36 @@
 import Foundation
 
 protocol MainFlowViewFactory: AnyObject {
-    func makeExploreFlowView() -> ExploreFlowView
+    func makeExploreFlowView(with flowCoordinator: MainFlowCoordinator) -> ExploreFlowView
     func makeActivityFlowView() -> ActivityFlowView
     func makeProfileFlowView() -> ProfileFlowView
     func makeBookingFlowView() -> BookingFlowView
-    func makeWelcomeBackView() -> WelcomeBackView
+    func makeWelcomeBackView(with flowCoordinator: MainFlowCoordinator) -> WelcomeBackView
+}
+
+extension DefaultAppFlowViewFactory: MainFlowViewFactory {
+    func makeExploreFlowView(with flowCoordinator: MainFlowCoordinator) -> ExploreFlowView {
+        ExploreFlowView(
+            flowViewModel: .init(
+                flowCoordinator: flowCoordinator
+            ),
+            flowViewFactory: self
+        )
+    }
+
+    func makeActivityFlowView() -> ActivityFlowView {
+        ActivityFlowView(flowViewModel: .init())
+    }
+
+    func makeProfileFlowView() -> ProfileFlowView {
+        ProfileFlowView()
+    }
+
+    func makeBookingFlowView() -> BookingFlowView {
+        BookingFlowView()
+    }
+
+    func makeWelcomeBackView(with flowCoordinator: MainFlowCoordinator) -> WelcomeBackView {
+        WelcomeBackView(viewModel: .init(flowCoordinator: flowCoordinator))
+    }
 }

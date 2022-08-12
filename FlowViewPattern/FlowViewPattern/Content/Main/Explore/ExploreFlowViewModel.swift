@@ -14,13 +14,13 @@ final class ExploreFlowViewModel: ObservableObject {
         case news
     }
 
+    @Published var pageStack: [Page] = []
+
     private weak var flowCoordinator: MainFlowCoordinator?
 
     init(flowCoordinator: MainFlowCoordinator) {
         self.flowCoordinator = flowCoordinator
     }
-
-    @Published var pageStack: [Page] = []
 }
 
 extension ExploreFlowViewModel: ExploreFlowCoordinator {
@@ -31,16 +31,5 @@ extension ExploreFlowViewModel: ExploreFlowCoordinator {
 
     func continueToNews() {
         pageStack.append(.news)
-    }
-}
-
-extension ExploreFlowViewModel: ExploreFlowViewFactory {
-
-    func makeMapAndListFlowView() -> MapAndListFlowView {
-        MapAndListFlowView()
-    }
-
-    func makeExploreNewsView() -> ExploreNewsView {
-        ExploreNewsView()
     }
 }

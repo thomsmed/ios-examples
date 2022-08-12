@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ExploreListView: View {
 
-    @StateObject var viewModel: ExploreListViewModel
+    @State var viewModel: ExploreListViewModel
 
     @Environment(\.scenePhase) var scenePhase
 
@@ -42,8 +42,7 @@ struct ExploreListView_Previews: PreviewProvider {
     static var previews: some View {
         ExploreListView(
             viewModel: .init(
-                flowCoordinator: MockFlowCoordinator.shared,
-                appDependencies: MockAppDependencies.shared
+                flowCoordinator: MockFlowCoordinator.shared
             )
         )
     }

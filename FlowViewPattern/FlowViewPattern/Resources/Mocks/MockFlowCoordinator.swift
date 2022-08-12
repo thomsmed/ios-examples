@@ -11,5 +11,5 @@ final class MockFlowCoordinator {
 
     static let shared = MockFlowCoordinator()
 
-    private init() { }
+    private init() {}
 }

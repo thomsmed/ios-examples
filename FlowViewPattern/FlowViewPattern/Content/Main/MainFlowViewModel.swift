@@ -9,34 +9,6 @@ import SwiftUI
 
 final class MainFlowViewModel: ObservableObject {
 
-    enum Tab {
-        case explore
-        case activity
-        case profile
-
-        var title: String {
-            switch self {
-            case .explore:
-                return "Explore"
-            case .activity:
-                return "Activity"
-            case .profile:
-                return "Profile"
-            }
-        }
-
-        var systemImageName: String {
-            switch self {
-            case .explore:
-                return "map"
-            case .activity:
-                return "star"
-            case .profile:
-                return "person"
-            }
-        }
-    }
-
     enum PresentedSheet {
         case none
         case booking
@@ -69,28 +41,5 @@ extension MainFlowViewModel: MainFlowCoordinator {
     func presentBooking() {
         presentedSheet = .booking
         sheetIsPresented = true
-    }
-}
-
-extension MainFlowViewModel: MainFlowViewFactory {
-
-    func makeExploreFlowView() -> ExploreFlowView {
-        ExploreFlowView(flowViewModel: .init(flowCoordinator: self))
-    }
-
-    func makeActivityFlowView() -> ActivityFlowView {
-        ActivityFlowView(flowViewModel: .init())
-    }
-
-    func makeProfileFlowView() -> ProfileFlowView {
-        ProfileFlowView()
-    }
-
-    func makeBookingFlowView() -> BookingFlowView {
-        BookingFlowView()
-    }
-
-    func makeWelcomeBackView() -> WelcomeBackView {
-        WelcomeBackView(viewModel: .init(flowCoordinator: self))
     }
 }

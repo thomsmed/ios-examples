@@ -15,9 +15,8 @@ struct FlowViewPatternApp: App {
     var body: some Scene {
         WindowGroup {
             AppFlowView(
-                flowViewModel: .init(
-                    appDependencies: appDelegate.appDependencies
-                )
+                flowViewModel: appDelegate.appFlowCoordinator,
+                flowViewFactory: appDelegate.appFlowViewFactory
             )
         }
     }

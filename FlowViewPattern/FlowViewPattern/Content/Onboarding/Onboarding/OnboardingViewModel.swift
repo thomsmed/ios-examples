@@ -7,21 +7,21 @@
 
 import Foundation
 
-final class OnboardingViewModel: ObservableObject {
+struct OnboardingViewModel {
 
     private weak var flowCoordinator: OnboardingFlowCoordinator?
-    private let appDependencies: AppDependencies
+    private let defaultsRepository: DefaultsRepository
 
     init(flowCoordinator: OnboardingFlowCoordinator, appDependencies: AppDependencies) {
         self.flowCoordinator = flowCoordinator
-        self.appDependencies = appDependencies
+        self.defaultsRepository = appDependencies.defaultsRepository
     }
 }
 
 extension OnboardingViewModel {
 
     func completeOnboarding() {
-        appDependencies.defaultsRepository.set(true, for: .onboardingCompleted)
+        defaultsRepository.set(true, for: .onboardingCompleted)
         flowCoordinator?.onboardingComplete()
     }
 }
