@@ -15,9 +15,13 @@ struct MapAndListFlowView: View {
     var body: some View {
         switch flowViewModel.selectedPage {
         case .map:
-            flowViewFactory.makeExploreMapView(with: flowViewModel)
+            flowViewFactory.makeExploreMapView(
+                with: flowViewModel
+            )
         case .list:
-            flowViewFactory.makeExploreListView(with: flowViewModel)
+            flowViewFactory.makeExploreListView(
+                with: flowViewModel
+            )
         }
     }
 }

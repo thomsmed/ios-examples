@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		ED2AE4AE28A5756100229A54 /* SinglePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2AE4AD28A5756100229A54 /* SinglePageView.swift */; };
 		ED37FF7C289FD88D007E5110 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED37FF7B289FD88D007E5110 /* AppDelegate.swift */; };
 		ED37FF7E289FE3AC007E5110 /* MainFlowViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED37FF7D289FE3AC007E5110 /* MainFlowViewFactory.swift */; };
 		ED37FF80289FE3D5007E5110 /* ProfileFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED37FF7F289FE3D5007E5110 /* ProfileFlowView.swift */; };
@@ -18,8 +17,8 @@
 		ED69462928970DEC00754C3F /* AppFlowViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED69462828970DEC00754C3F /* AppFlowViewFactory.swift */; };
 		ED69462E289710D300754C3F /* DefaultsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED69462D289710D300754C3F /* DefaultsRepository.swift */; };
 		ED694630289710ED00754C3F /* UserDefaultsDefaultsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED69462F289710ED00754C3F /* UserDefaultsDefaultsRepository.swift */; };
-		ED6946322897156200754C3F /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6946312897156200754C3F /* OnboardingView.swift */; };
-		ED6946342897158500754C3F /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6946332897158500754C3F /* OnboardingViewModel.swift */; };
+		ED6946322897156200754C3F /* GetStartedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6946312897156200754C3F /* GetStartedView.swift */; };
+		ED6946342897158500754C3F /* GetStartedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6946332897158500754C3F /* GetStartedViewModel.swift */; };
 		ED6946372897388500754C3F /* OnboardingFlowViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6946362897388500754C3F /* OnboardingFlowViewFactory.swift */; };
 		EDA002802896906200A3D09F /* FlowViewPatternApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA0027F2896906200A3D09F /* FlowViewPatternApp.swift */; };
 		EDA002842896906400A3D09F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDA002832896906400A3D09F /* Assets.xcassets */; };
@@ -52,7 +51,6 @@
 		EDB466B828A6F6040046E9F4 /* Extractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB466B728A6F6040046E9F4 /* Extractor.swift */; };
 		EDB466BA28A6F6470046E9F4 /* AppPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB466B928A6F6470046E9F4 /* AppPage.swift */; };
 		EDB466BC28A72CBF0046E9F4 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB466BB28A72CBF0046E9F4 /* WelcomeView.swift */; };
-		EDB466BF28A72CD30046E9F4 /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB466BE28A72CD30046E9F4 /* WelcomeViewModel.swift */; };
 		EDB466C128A732280046E9F4 /* ProfileFlowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB466C028A732280046E9F4 /* ProfileFlowViewModel.swift */; };
 		EDD6F3F928A055AF00E2ED71 /* ExploreNewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD6F3F828A055AF00E2ED71 /* ExploreNewsView.swift */; };
 		EDD6F3FC28A055E300E2ED71 /* MapAndListFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD6F3FB28A055E300E2ED71 /* MapAndListFlowView.swift */; };
@@ -64,7 +62,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		ED2AE4AD28A5756100229A54 /* SinglePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePageView.swift; sourceTree = "<group>"; };
 		ED37FF7B289FD88D007E5110 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED37FF7D289FE3AC007E5110 /* MainFlowViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlowViewFactory.swift; sourceTree = "<group>"; };
 		ED37FF7F289FE3D5007E5110 /* ProfileFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFlowView.swift; sourceTree = "<group>"; };
@@ -76,8 +73,8 @@
 		ED69462828970DEC00754C3F /* AppFlowViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowViewFactory.swift; sourceTree = "<group>"; };
 		ED69462D289710D300754C3F /* DefaultsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsRepository.swift; sourceTree = "<group>"; };
 		ED69462F289710ED00754C3F /* UserDefaultsDefaultsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsDefaultsRepository.swift; sourceTree = "<group>"; };
-		ED6946312897156200754C3F /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
-		ED6946332897158500754C3F /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
+		ED6946312897156200754C3F /* GetStartedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedView.swift; sourceTree = "<group>"; };
+		ED6946332897158500754C3F /* GetStartedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedViewModel.swift; sourceTree = "<group>"; };
 		ED6946362897388500754C3F /* OnboardingFlowViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFlowViewFactory.swift; sourceTree = "<group>"; };
 		EDA0027C2896906200A3D09F /* FlowViewPattern.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlowViewPattern.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDA0027F2896906200A3D09F /* FlowViewPatternApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowViewPatternApp.swift; sourceTree = "<group>"; };
@@ -111,7 +108,6 @@
 		EDB466B728A6F6040046E9F4 /* Extractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extractor.swift; sourceTree = "<group>"; };
 		EDB466B928A6F6470046E9F4 /* AppPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPage.swift; sourceTree = "<group>"; };
 		EDB466BB28A72CBF0046E9F4 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
-		EDB466BE28A72CD30046E9F4 /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
 		EDB466C028A732280046E9F4 /* ProfileFlowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFlowViewModel.swift; sourceTree = "<group>"; };
 		EDD6F3F828A055AF00E2ED71 /* ExploreNewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreNewsView.swift; sourceTree = "<group>"; };
 		EDD6F3FB28A055E300E2ED71 /* MapAndListFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAndListFlowView.swift; sourceTree = "<group>"; };
@@ -133,21 +129,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		ED2AE4AB28A5753000229A54 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		ED2AE4AC28A5753900229A54 /* PresentationViews */ = {
-			isa = PBXGroup;
-			children = (
-				ED2AE4AD28A5756100229A54 /* SinglePageView.swift */,
-			);
-			path = PresentationViews;
-			sourceTree = "<group>";
-		};
 		ED37FF81289FFAB2007E5110 /* Greeting */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,8 +150,6 @@
 		ED69462A2897107600754C3F /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				ED2AE4AC28A5753900229A54 /* PresentationViews */,
-				ED2AE4AB28A5753000229A54 /* Views */,
 				ED69462B289710B100754C3F /* Repositories */,
 			);
 			path = Common;
@@ -193,13 +172,13 @@
 			path = Defaults;
 			sourceTree = "<group>";
 		};
-		ED6946352897159700754C3F /* Onboarding */ = {
+		ED6946352897159700754C3F /* GetStarted */ = {
 			isa = PBXGroup;
 			children = (
-				ED6946332897158500754C3F /* OnboardingViewModel.swift */,
-				ED6946312897156200754C3F /* OnboardingView.swift */,
+				ED6946332897158500754C3F /* GetStartedViewModel.swift */,
+				ED6946312897156200754C3F /* GetStartedView.swift */,
 			);
-			path = Onboarding;
+			path = GetStarted;
 			sourceTree = "<group>";
 		};
 		EDA002732896906200A3D09F = {
@@ -285,7 +264,7 @@
 				EDA0029D2896919F00A3D09F /* OnboardingFlowViewModel.swift */,
 				EDA0029B2896919300A3D09F /* OnboardingFlowView.swift */,
 				EDB466BD28A72CC40046E9F4 /* Welcome */,
-				ED6946352897159700754C3F /* Onboarding */,
+				ED6946352897159700754C3F /* GetStarted */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -351,7 +330,6 @@
 			isa = PBXGroup;
 			children = (
 				EDB466BB28A72CBF0046E9F4 /* WelcomeView.swift */,
-				EDB466BE28A72CD30046E9F4 /* WelcomeViewModel.swift */,
 			);
 			path = Welcome;
 			sourceTree = "<group>";
@@ -461,7 +439,7 @@
 				EDA002B72896BD3900A3D09F /* BookingFlowViewModel.swift in Sources */,
 				EDA002C02896BDCD00A3D09F /* ExploreMapView.swift in Sources */,
 				EDA002912896912500A3D09F /* AppFlowView.swift in Sources */,
-				ED6946342897158500754C3F /* OnboardingViewModel.swift in Sources */,
+				ED6946342897158500754C3F /* GetStartedViewModel.swift in Sources */,
 				EDA002AA2896B80B00A3D09F /* AppFlowCoordinator.swift in Sources */,
 				EDA002B52896BD2F00A3D09F /* BookingFlowCoordinator.swift in Sources */,
 				ED694630289710ED00754C3F /* UserDefaultsDefaultsRepository.swift in Sources */,
@@ -483,12 +461,11 @@
 				EDA002C42896C23700A3D09F /* ExploreListView.swift in Sources */,
 				EDA0029C2896919300A3D09F /* OnboardingFlowView.swift in Sources */,
 				ED37FF80289FE3D5007E5110 /* ProfileFlowView.swift in Sources */,
-				EDB466BF28A72CD30046E9F4 /* WelcomeViewModel.swift in Sources */,
 				EDA002BE2896BDC200A3D09F /* ExploreMapViewModel.swift in Sources */,
 				ED6946372897388500754C3F /* OnboardingFlowViewFactory.swift in Sources */,
 				EDD6F3FC28A055E300E2ED71 /* MapAndListFlowView.swift in Sources */,
 				EDD6F3F928A055AF00E2ED71 /* ExploreNewsView.swift in Sources */,
-				ED6946322897156200754C3F /* OnboardingView.swift in Sources */,
+				ED6946322897156200754C3F /* GetStartedView.swift in Sources */,
 				EDD6F40428A056A500E2ED71 /* ExploreFlowViewFactory.swift in Sources */,
 				ED69461A2896FE6C00754C3F /* ActivityFlowViewModel.swift in Sources */,
 				ED37FF83289FFAD0007E5110 /* WelcomeBackView.swift in Sources */,
@@ -503,7 +480,6 @@
 				EDD6F3FE28A0561F00E2ED71 /* MapAndListFlowViewModel.swift in Sources */,
 				EDA002AC2896B85800A3D09F /* MainFlowCoordinator.swift in Sources */,
 				EDA002C22896C1FF00A3D09F /* ExploreListViewModel.swift in Sources */,
-				ED2AE4AE28A5756100229A54 /* SinglePageView.swift in Sources */,
 				EDB466BC28A72CBF0046E9F4 /* WelcomeView.swift in Sources */,
 				EDA002A42896966A00A3D09F /* AppDependencies.swift in Sources */,
 				ED37FF7C289FD88D007E5110 /* AppDelegate.swift in Sources */,

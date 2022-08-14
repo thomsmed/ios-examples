@@ -1,5 +1,5 @@
 //
-//  OnboardingView.swift
+//  GetStartedView.swift
 //  FlowViewPattern
 //
 //  Created by Thomas Asheim Smedmann on 31/07/2022.
@@ -7,23 +7,25 @@
 
 import SwiftUI
 
-struct OnboardingView: View {
+struct GetStartedView: View {
 
-    @State var viewModel: OnboardingViewModel
+    @State var viewModel: GetStartedViewModel
     
     var body: some View {
         VStack {
-            Text("Onboarding")
-            Button("Continue") {
+            Text("Awesome! 🙌")
+                .padding()
+            Button("Get started!") {
                 viewModel.completeOnboarding()
             }
+            .padding()
         }
     }
 }
 
-struct OnboardingView_Previews: PreviewProvider {
+struct GetStartedView_Previews: PreviewProvider {
     static var previews: some View {
-        OnboardingView(
+        GetStartedView(
             viewModel: .init(
                 flowCoordinator: PreviewFlowCoordinator.shared,
                 appDependencies: PreviewAppDependencies.shared

@@ -14,9 +14,13 @@ struct AppFlowView: View {
 
     var body: some View {
         if flowViewModel.onboardingComplete {
-            flowViewFactory.makeMainFlowView(with: flowViewModel)
+            flowViewFactory.makeMainFlowView(
+                with: flowViewModel
+            )
         } else {
-            flowViewFactory.makeOnboardingFlowView(with: flowViewModel)
+            flowViewFactory.makeOnboardingFlowView(
+                with: flowViewModel
+            )
         }
     }
 }

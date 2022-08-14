@@ -14,7 +14,10 @@ struct OnboardingFlowView: View {
 
     var body: some View {
         TabView {
-            flowViewFactory.makeOnboardingView(with: flowViewModel)
+            flowViewFactory.makeWelcomeView()
+            flowViewFactory.makeGetStartedView(
+                with: flowViewModel
+            )
         }.tabViewStyle(.page)
     }
 }

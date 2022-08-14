@@ -14,15 +14,19 @@ struct ExploreFlowView: View {
 
     var body: some View {
         NavigationStack(path: $flowViewModel.pageStack) {
-            flowViewFactory.makeMapAndListFlowView(with: flowViewModel)
-                .navigationDestination(for: ExploreFlowViewModel.Page.self) { page in
-                    switch page {
-                    case .mapAndList:
-                        flowViewFactory.makeMapAndListFlowView(with: flowViewModel)
-                    case .news:
-                        flowViewFactory.makeExploreNewsView()
-                    }
+            flowViewFactory.makeMapAndListFlowView(
+                with: flowViewModel
+            )
+            .navigationDestination(for: ExploreFlowViewModel.Page.self) { page in
+                switch page {
+                case .mapAndList:
+                    flowViewFactory.makeMapAndListFlowView(
+                        with: flowViewModel
+                    )
+                case .news:
+                    flowViewFactory.makeExploreNewsView()
                 }
+            }
         }
     }
 }

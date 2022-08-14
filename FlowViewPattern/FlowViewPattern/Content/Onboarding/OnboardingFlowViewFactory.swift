@@ -8,12 +8,16 @@
 import Foundation
 
 protocol OnboardingFlowViewFactory {
-    func makeOnboardingView(with flowCoordinator: OnboardingFlowCoordinator) -> OnboardingView
+    func makeWelcomeView() -> WelcomeView
+    func makeGetStartedView(with flowCoordinator: OnboardingFlowCoordinator) -> GetStartedView
 }
 
 extension DefaultAppFlowViewFactory: OnboardingFlowViewFactory {
-    func makeOnboardingView(with flowCoordinator: OnboardingFlowCoordinator) -> OnboardingView {
-        OnboardingView(
+    func makeWelcomeView() -> WelcomeView {
+        WelcomeView()
+    }
+    func makeGetStartedView(with flowCoordinator: OnboardingFlowCoordinator) -> GetStartedView {
+        GetStartedView(
             viewModel: .init(
                 flowCoordinator: flowCoordinator,
                 appDependencies: self.appDependencies

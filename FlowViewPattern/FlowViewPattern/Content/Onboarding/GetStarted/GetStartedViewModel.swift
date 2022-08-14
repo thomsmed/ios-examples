@@ -1,5 +1,5 @@
 //
-//  OnboardingViewModel.swift
+//  GetStartedViewModel.swift
 //  FlowViewPattern
 //
 //  Created by Thomas Asheim Smedmann on 31/07/2022.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct OnboardingViewModel {
+struct GetStartedViewModel {
 
     private weak var flowCoordinator: OnboardingFlowCoordinator?
     private let defaultsRepository: DefaultsRepository
@@ -18,7 +18,7 @@ struct OnboardingViewModel {
     }
 }
 
-extension OnboardingViewModel {
+extension GetStartedViewModel {
 
     func completeOnboarding() {
         defaultsRepository.set(true, for: .onboardingCompleted)

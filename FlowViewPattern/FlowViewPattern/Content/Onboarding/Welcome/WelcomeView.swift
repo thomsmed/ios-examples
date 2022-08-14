@@ -9,20 +9,15 @@ import SwiftUI
 
 struct WelcomeView: View {
 
-    @State var viewModel: WelcomeViewModel
-
     var body: some View {
         VStack {
-            Text("Welcome!")
-            Button("Continue") {
-                viewModel.continueOnboarding()
-            }
+            Text("Welcome! 👋")
         }
     }
 }
 
 struct WelcomeView_Previews: PreviewProvider {
     static var previews: some View {
-        WelcomeView(viewModel: .init())
+        WelcomeView()
     }
 }
