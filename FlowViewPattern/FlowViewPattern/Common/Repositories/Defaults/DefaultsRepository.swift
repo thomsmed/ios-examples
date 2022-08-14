@@ -8,18 +8,30 @@
 import Foundation
 
 enum Defaults {
-    enum Key: String {
+    enum Codable: String {
+        case favoritePaymentMethod
+    }
+
+    enum Boolean: String {
         case onboardingCompleted
+    }
+
+    enum Text: String {
+        case voucher
+    }
+
+    enum Date: String {
+        case firstAppLaunch
     }
 }
 
 protocol DefaultsRepository: AnyObject {
-    func get<T: Codable>(_ key: Defaults.Key) -> T?
-    func set<T: Codable>(_ object: T, for key: Defaults.Key)
-    func bool(for key: Defaults.Key) -> Bool
-    func set(_ value: Bool, for key: Defaults.Key)
-    func string(for key: Defaults.Key) -> String?
-    func set(_ value: String, for key: Defaults.Key)
-    func date(for key: Defaults.Key) -> Date?
-    func set(_ value: Date, for key: Defaults.Key)
+    func get<T: Codable>(_ key: Defaults.Codable) -> T?
+    func set<T: Codable>(_ object: T, for key: Defaults.Codable)
+    func bool(for key: Defaults.Boolean) -> Bool
+    func set(_ value: Bool, for key: Defaults.Boolean)
+    func string(for key: Defaults.Text) -> String?
+    func set(_ value: String, for key: Defaults.Text)
+    func date(for key: Defaults.Date) -> Date?
+    func set(_ value: Date, for key: Defaults.Date)
 }

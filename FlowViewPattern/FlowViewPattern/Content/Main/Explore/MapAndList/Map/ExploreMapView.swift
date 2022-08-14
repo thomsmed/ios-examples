@@ -25,6 +25,9 @@ struct ExploreMapView: View {
                 viewModel.continueToBooking()
             }.padding(.top, 16)
         }
+        .task {
+            // Run asynchronously
+        }
         .onAppear() {
             // Refresh view etc
         }

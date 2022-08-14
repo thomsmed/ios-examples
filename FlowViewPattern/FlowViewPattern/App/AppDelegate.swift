@@ -24,6 +24,23 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
 
         application.registerForRemoteNotifications()
 
+        guard let launchOptions = launchOptions else {
+            return true
+        }
+
+        if
+            let urlComponents = Extractor.urlComponents(from: launchOptions),
+            let appPage: AppPage = .from(urlComponents)
+        {
+            // TODO: Set initial page
+        }
+
+        guard appDependencies.defaultsRepository.date(for: .firstAppLaunch) == nil else {
+            return true
+        }
+
+        appDependencies.defaultsRepository.set(Date.now, for: .firstAppLaunch)
+
         return true
     }
 }
@@ -32,11 +49,99 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
 
 extension AppDelegate {
 
-    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+    func application(
+        _ application: UIApplication,
+        didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data
+    ) {
         print("didRegisterForRemoteNotificationsWithDeviceToken")
     }
 
-    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+    func application(
+        _ application: UIApplication,
+        didFailToRegisterForRemoteNotificationsWithError error: Error
+    ) {
         print("didFailToRegisterForRemoteNotificationsWithError")
     }
+
+    func application(
+        _ application: UIApplication,
+        didReceiveRemoteNotification userInfo: [AnyHashable : Any]
+    ) async -> UIBackgroundFetchResult {
+        return .noData
+    }
 }
+
+// MARK: Deep linking and other user actions
+
+extension AppDelegate {
+
+    func application(
+        _ application: UIApplication,
+        continue userActivity: NSUserActivity,
+        restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void
+    ) -> Bool {
+        guard
+            let urlComponents = Extractor.urlComponents(from: userActivity),
+            let appPage: AppPage = .from(urlComponents)
+        else {
+            return false
+        }
+
+        // TODO: Navigate to appPage
+
+        return true
+    }
+}
+
+// MARK: UNUserNotificationCenterDelegate
+
+extension AppDelegate: UNUserNotificationCenterDelegate {
+
+    func userNotificationCenter(
+        _ center: UNUserNotificationCenter,
+        willPresent notification: UNNotification,
+        withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void
+    ) {
+        let userInfo = notification.request.content.userInfo
+        let categoryIdentifier = notification.request.content.categoryIdentifier
+
+        if categoryIdentifier == "LINK" {
+            completionHandler([.banner, .sound])
+        } else {
+            print(userInfo)
+            completionHandler([])
+        }
+    }
+
+    func userNotificationCenter(
+        _ center: UNUserNotificationCenter,
+        didReceive response: UNNotificationResponse,
+        withCompletionHandler completionHandler: @escaping () -> Void
+    ) {
+        let userInfo = response.notification.request.content.userInfo
+        let categoryIdentifier = response.notification.request.content.categoryIdentifier
+
+        switch response.actionIdentifier {
+        case "com.thomsmed.UNNotificationCustomActionIdentifier":
+            print(userInfo)
+        case UNNotificationDefaultActionIdentifier:
+            print(categoryIdentifier)
+
+            guard
+                let urlComponents = Extractor.urlComponents(from: response),
+                let appPage: AppPage = .from(urlComponents)
+            else {
+                break
+            }
+
+            // TODO: Navigate to appPage
+        case UNNotificationDismissActionIdentifier:
+            break
+        default:
+            break
+        }
+
+        completionHandler()
+    }
+}
+

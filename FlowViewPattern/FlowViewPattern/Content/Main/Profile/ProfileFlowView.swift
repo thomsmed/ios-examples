@@ -8,13 +8,21 @@
 import SwiftUI
 
 struct ProfileFlowView: View {
+
+    @StateObject var flowViewModel: ProfileFlowViewModel
+
     var body: some View {
-        Text("Profile flow")
+        VStack {
+            Text("Profile flow")
+            Button("Toggle") {
+                flowViewModel.toggle()
+            }
+        }
     }
 }
 
 struct ProfileFlowView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileFlowView()
+        ProfileFlowView(flowViewModel: .init())
     }
 }

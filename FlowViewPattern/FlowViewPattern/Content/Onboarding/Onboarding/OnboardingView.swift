@@ -13,7 +13,7 @@ struct OnboardingView: View {
     
     var body: some View {
         VStack {
-            Text("Onboarding view")
+            Text("Onboarding")
             Button("Continue") {
                 viewModel.completeOnboarding()
             }

@@ -30,7 +30,7 @@ extension DefaultAppFlowViewFactory: MainFlowViewFactory {
     }
 
     func makeProfileFlowView() -> ProfileFlowView {
-        ProfileFlowView()
+        ProfileFlowView(flowViewModel: .init())
     }
 
     func makeBookingFlowView() -> BookingFlowView {

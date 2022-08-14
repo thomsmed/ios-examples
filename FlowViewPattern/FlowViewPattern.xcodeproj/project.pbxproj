@@ -51,6 +51,9 @@
 		EDB466B428A6AE160046E9F4 /* DefaultAppFlowViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB466B328A6AE160046E9F4 /* DefaultAppFlowViewFactory.swift */; };
 		EDB466B828A6F6040046E9F4 /* Extractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB466B728A6F6040046E9F4 /* Extractor.swift */; };
 		EDB466BA28A6F6470046E9F4 /* AppPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB466B928A6F6470046E9F4 /* AppPage.swift */; };
+		EDB466BC28A72CBF0046E9F4 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB466BB28A72CBF0046E9F4 /* WelcomeView.swift */; };
+		EDB466BF28A72CD30046E9F4 /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB466BE28A72CD30046E9F4 /* WelcomeViewModel.swift */; };
+		EDB466C128A732280046E9F4 /* ProfileFlowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB466C028A732280046E9F4 /* ProfileFlowViewModel.swift */; };
 		EDD6F3F928A055AF00E2ED71 /* ExploreNewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD6F3F828A055AF00E2ED71 /* ExploreNewsView.swift */; };
 		EDD6F3FC28A055E300E2ED71 /* MapAndListFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD6F3FB28A055E300E2ED71 /* MapAndListFlowView.swift */; };
 		EDD6F3FE28A0561F00E2ED71 /* MapAndListFlowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD6F3FD28A0561F00E2ED71 /* MapAndListFlowViewModel.swift */; };
@@ -107,6 +110,9 @@
 		EDB466B328A6AE160046E9F4 /* DefaultAppFlowViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAppFlowViewFactory.swift; sourceTree = "<group>"; };
 		EDB466B728A6F6040046E9F4 /* Extractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extractor.swift; sourceTree = "<group>"; };
 		EDB466B928A6F6470046E9F4 /* AppPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPage.swift; sourceTree = "<group>"; };
+		EDB466BB28A72CBF0046E9F4 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		EDB466BE28A72CD30046E9F4 /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
+		EDB466C028A732280046E9F4 /* ProfileFlowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFlowViewModel.swift; sourceTree = "<group>"; };
 		EDD6F3F828A055AF00E2ED71 /* ExploreNewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreNewsView.swift; sourceTree = "<group>"; };
 		EDD6F3FB28A055E300E2ED71 /* MapAndListFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAndListFlowView.swift; sourceTree = "<group>"; };
 		EDD6F3FD28A0561F00E2ED71 /* MapAndListFlowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAndListFlowViewModel.swift; sourceTree = "<group>"; };
@@ -155,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				ED37FF7F289FE3D5007E5110 /* ProfileFlowView.swift */,
+				EDB466C028A732280046E9F4 /* ProfileFlowViewModel.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -277,6 +284,7 @@
 				ED6946362897388500754C3F /* OnboardingFlowViewFactory.swift */,
 				EDA0029D2896919F00A3D09F /* OnboardingFlowViewModel.swift */,
 				EDA0029B2896919300A3D09F /* OnboardingFlowView.swift */,
+				EDB466BD28A72CC40046E9F4 /* Welcome */,
 				ED6946352897159700754C3F /* Onboarding */,
 			);
 			path = Onboarding;
@@ -337,6 +345,15 @@
 				EDA002C32896C23700A3D09F /* ExploreListView.swift */,
 			);
 			path = List;
+			sourceTree = "<group>";
+		};
+		EDB466BD28A72CC40046E9F4 /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				EDB466BB28A72CBF0046E9F4 /* WelcomeView.swift */,
+				EDB466BE28A72CD30046E9F4 /* WelcomeViewModel.swift */,
+			);
+			path = Welcome;
 			sourceTree = "<group>";
 		};
 		EDC52B642896FE0900307539 /* Activity */ = {
@@ -454,6 +471,7 @@
 				EDA002A0289691B000A3D09F /* ExploreFlowView.swift in Sources */,
 				EDA0029E2896919F00A3D09F /* OnboardingFlowViewModel.swift in Sources */,
 				EDA002A2289691B800A3D09F /* ExploreFlowViewModel.swift in Sources */,
+				EDB466C128A732280046E9F4 /* ProfileFlowViewModel.swift in Sources */,
 				EDA002B22896BA5000A3D09F /* OnboardingFlowCoordinator.swift in Sources */,
 				ED69462928970DEC00754C3F /* AppFlowViewFactory.swift in Sources */,
 				EDA002A82896986900A3D09F /* PreviewAppDependencies.swift in Sources */,
@@ -465,6 +483,7 @@
 				EDA002C42896C23700A3D09F /* ExploreListView.swift in Sources */,
 				EDA0029C2896919300A3D09F /* OnboardingFlowView.swift in Sources */,
 				ED37FF80289FE3D5007E5110 /* ProfileFlowView.swift in Sources */,
+				EDB466BF28A72CD30046E9F4 /* WelcomeViewModel.swift in Sources */,
 				EDA002BE2896BDC200A3D09F /* ExploreMapViewModel.swift in Sources */,
 				ED6946372897388500754C3F /* OnboardingFlowViewFactory.swift in Sources */,
 				EDD6F3FC28A055E300E2ED71 /* MapAndListFlowView.swift in Sources */,
@@ -485,6 +504,7 @@
 				EDA002AC2896B85800A3D09F /* MainFlowCoordinator.swift in Sources */,
 				EDA002C22896C1FF00A3D09F /* ExploreListViewModel.swift in Sources */,
 				ED2AE4AE28A5756100229A54 /* SinglePageView.swift in Sources */,
+				EDB466BC28A72CBF0046E9F4 /* WelcomeView.swift in Sources */,
 				EDA002A42896966A00A3D09F /* AppDependencies.swift in Sources */,
 				ED37FF7C289FD88D007E5110 /* AppDelegate.swift in Sources */,
 				EDA002982896917200A3D09F /* MainFlowViewModel.swift in Sources */,

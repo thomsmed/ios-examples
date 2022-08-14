@@ -17,7 +17,7 @@ final class UserDefaultsDefaultsRepository {
 
 extension UserDefaultsDefaultsRepository: DefaultsRepository {
 
-    func get<T>(_ key: Defaults.Key) -> T? where T : Codable {
+    func get<T>(_ key: Defaults.Codable) -> T? where T : Codable {
         guard let data = userDefaults.data(forKey: key.rawValue) else {
             return nil
         }
@@ -25,7 +25,7 @@ extension UserDefaultsDefaultsRepository: DefaultsRepository {
         return try? jsonDecoder.decode(T.self, from: data)
     }
 
-    func set<T>(_ object: T, for key: Defaults.Key) where T : Codable {
+    func set<T>(_ object: T, for key: Defaults.Codable) where T : Codable {
         guard let data = try? jsonEncoder.encode(object) else {
             return
         }
@@ -33,31 +33,33 @@ extension UserDefaultsDefaultsRepository: DefaultsRepository {
         userDefaults.set(data, forKey: key.rawValue)
     }
 
-    func bool(for key: Defaults.Key) -> Bool {
+    func bool(for key: Defaults.Boolean) -> Bool {
         userDefaults.bool(forKey: key.rawValue)
     }
 
-    func set(_ value: Bool, for key: Defaults.Key) {
+    func set(_ value: Bool, for key: Defaults.Boolean) {
         userDefaults.set(value, forKey: key.rawValue)
     }
 
-    func string(for key: Defaults.Key) -> String? {
+    func string(for key: Defaults.Text) -> String? {
         userDefaults.string(forKey: key.rawValue)
     }
 
-    func set(_ value: String, for key: Defaults.Key) {
+    func set(_ value: String, for key: Defaults.Text) {
         userDefaults.set(value, forKey: key.rawValue)
     }
 
-    func date(for key: Defaults.Key) -> Date? {
-        guard let timeInterval = userDefaults.value(forKey: key.rawValue) as? TimeInterval else {
+    func date(for key: Defaults.Date) -> Date? {
+        let timeInterval = userDefaults.double(forKey: key.rawValue)
+
+        guard timeInterval > 0 else {
             return nil
         }
 
         return Date(timeIntervalSince1970: timeInterval)
     }
 
-    func set(_ value: Date, for key: Defaults.Key) {
+    func set(_ value: Date, for key: Defaults.Date) {
         userDefaults.set(value.timeIntervalSince1970, forKey: key.rawValue)
     }
 }

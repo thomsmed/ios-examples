@@ -9,6 +9,14 @@ import UIKit
 
 enum Extractor {
 
+    static func urlComponents(from launchOptions: [UIApplication.LaunchOptionsKey : Any]) -> URLComponents? {
+        guard let url = launchOptions[.url] as? URL else {
+            return nil
+        }
+
+        return URLComponents(url: url, resolvingAgainstBaseURL: true)
+    }
+
     static func urlComponents(from connectionOptions: UIScene.ConnectionOptions) -> URLComponents? {
         if let userActivity = connectionOptions.userActivities.first {
             return urlComponents(from: userActivity)
@@ -38,7 +46,7 @@ enum Extractor {
         guard
             pasteboard.hasURLs,
             let pasteboardURL = pasteboard.url,
-            let _ = pasteboardURL.absoluteString.range(of: "www.flowcontrolpattern.com", options: .caseInsensitive)
+            let _ = pasteboardURL.absoluteString.range(of: "www.flowviewpattern.com", options: .caseInsensitive)
         else {
             return nil
         }
