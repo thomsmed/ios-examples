@@ -9,19 +9,41 @@ import SwiftUI
 
 struct AppFlowView: View {
 
-    @StateObject var flowViewModel: AppFlowViewModel
+    @ObservedObject var flowViewModel: AppFlowViewModel
     let flowViewFactory: AppFlowViewFactory
 
     var body: some View {
-        if flowViewModel.onboardingComplete {
-            flowViewFactory.makeMainFlowView(
-                with: flowViewModel
-            )
-        } else {
-            flowViewFactory.makeOnboardingFlowView(
-                with: flowViewModel
-            )
+        ZStack {
+            switch flowViewModel.selectedPage {
+            case .onboarding:
+                flowViewFactory.makeOnboardingFlowView(
+                    with: flowViewModel,
+                    at: flowViewModel.currentPage
+                )
+            case .main:
+                flowViewFactory.makeMainFlowView(
+                    with: flowViewModel,
+                    at: flowViewModel.currentPage
+                )
+            }
         }
+        .onOpenURL { url in
+            guard
+                let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true),
+                let page: AppPage = .from(urlComponents)
+            else {
+                return
+            }
+
+            flowViewModel.go(to: page)
+        }
+    }
+}
+
+extension AppFlowView {
+    enum Page {
+        case onboarding
+        case main
     }
 }
 

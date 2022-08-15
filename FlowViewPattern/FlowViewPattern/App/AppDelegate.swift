@@ -30,9 +30,9 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
 
         if
             let urlComponents = Extractor.urlComponents(from: launchOptions),
-            let appPage: AppPage = .from(urlComponents)
+            let page: AppPage = .from(urlComponents)
         {
-            // TODO: Set initial page
+            appFlowCoordinator.go(to: page)
         }
 
         guard appDependencies.defaultsRepository.date(for: .firstAppLaunch) == nil else {
@@ -71,6 +71,28 @@ extension AppDelegate {
     }
 }
 
+// MARK: Handling URLs with custom scheme
+
+extension AppDelegate {
+
+    func application(
+        _ app: UIApplication,
+        open url: URL,
+        options: [UIApplication.OpenURLOptionsKey : Any] = [:]
+    ) -> Bool {
+        guard
+            let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true),
+            let page: AppPage = .from(urlComponents)
+        else {
+            return false
+        }
+
+        appFlowCoordinator.go(to: page)
+
+        return true
+    }
+}
+
 // MARK: Deep linking and other user actions
 
 extension AppDelegate {
@@ -82,12 +104,12 @@ extension AppDelegate {
     ) -> Bool {
         guard
             let urlComponents = Extractor.urlComponents(from: userActivity),
-            let appPage: AppPage = .from(urlComponents)
+            let page: AppPage = .from(urlComponents)
         else {
             return false
         }
 
-        // TODO: Navigate to appPage
+        appFlowCoordinator.go(to: page)
 
         return true
     }
@@ -134,7 +156,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
                 break
             }
 
-            // TODO: Navigate to appPage
+            appFlowCoordinator.go(to: appPage)
         case UNNotificationDismissActionIdentifier:
             break
         default:

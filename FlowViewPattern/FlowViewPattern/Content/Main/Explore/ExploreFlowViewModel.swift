@@ -9,17 +9,32 @@ import SwiftUI
 
 final class ExploreFlowViewModel: ObservableObject {
 
-    enum Page {
-        case mapAndList
-        case news
-    }
+    @Published var pageStack: [ExploreFlowView.Page] = []
 
-    @Published var pageStack: [Page] = []
+    private(set) var currentPage: AppPage.Main.Explore
 
     private weak var flowCoordinator: MainFlowCoordinator?
 
-    init(flowCoordinator: MainFlowCoordinator) {
+    init(flowCoordinator: MainFlowCoordinator, currentPage: AppPage.Main) {
         self.flowCoordinator = flowCoordinator
+
+        switch currentPage {
+        case let .explore(page):
+            self.currentPage = page
+        default:
+            self.currentPage = .store(page: .map())
+        }
+    }
+
+    func go(to page: AppPage.Main.Explore) {
+        currentPage = page
+
+        switch page {
+        case .store:
+            pageStack = []
+        case .news:
+            pageStack.append(.news)
+        }
     }
 }
 
@@ -30,6 +45,7 @@ extension ExploreFlowViewModel: ExploreFlowCoordinator {
     }
 
     func continueToNews() {
+        currentPage = .news
         pageStack.append(.news)
     }
 }

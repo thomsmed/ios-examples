@@ -14,14 +14,17 @@ struct MainFlowView: View {
 
     var body: some View {
         TabView(selection: $flowViewModel.selectedTab) {
-            flowViewFactory.makeExploreFlowView(with: flowViewModel)
-                .tag(Tab.explore)
-                .tabItem {
-                    Label(
-                        Tab.explore.title,
-                        systemImage: Tab.explore.systemImageName
-                    )
-                }
+            flowViewFactory.makeExploreFlowView(
+                with: flowViewModel,
+                at: flowViewModel.currentPage
+            )
+            .tag(Tab.explore)
+            .tabItem {
+                Label(
+                    Tab.explore.title,
+                    systemImage: Tab.explore.systemImageName
+                )
+            }
             flowViewFactory.makeActivityFlowView()
                 .tag(Tab.activity)
                 .tabItem {
@@ -39,21 +42,40 @@ struct MainFlowView: View {
                     )
                 }
         }
-        .sheet(isPresented: $flowViewModel.sheetIsPresented) {
-            switch flowViewModel.presentedSheet {
-            case .none:
-                EmptyView()
-            case .booking:
-                flowViewFactory.makeBookingFlowView()
-            case .greeting:
-                flowViewFactory.makeWelcomeBackView(with: flowViewModel)
+        .sheet(isPresented: $flowViewModel.bookingIsPresented) {
+            flowViewFactory.makeBookingFlowView()
+        }
+        .sheet(isPresented: $flowViewModel.greetingIsPresented) {
+            flowViewFactory.makeWelcomeBackView(
+                with: flowViewModel
+            )
+        }
+        .onOpenURL { url in
+            guard
+                let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true),
+                let appPage: AppPage = .from(urlComponents),
+                let page = appPage.asMainPage()
+            else {
+                return
             }
+
+            flowViewModel.go(to: page)
+        }
+    }
+}
+
+extension AppPage {
+    func asMainPage() -> AppPage.Main? {
+        switch self {
+        case let .main(page):
+            return page
+        default:
+            return nil
         }
     }
 }
 
 extension MainFlowView {
-
     enum Tab {
         case explore
         case activity
@@ -81,12 +103,6 @@ extension MainFlowView {
             }
         }
     }
-
-    enum PresentedSheet {
-        case none
-        case booking
-        case greeting
-    }
 }
 
 struct MainFlowView_Previews: PreviewProvider {
@@ -94,7 +110,8 @@ struct MainFlowView_Previews: PreviewProvider {
         MainFlowView(
             flowViewModel: .init(
                 flowCoordinator: PreviewFlowCoordinator.shared,
-                appDependencies: PreviewAppDependencies.shared
+                appDependencies: PreviewAppDependencies.shared,
+                currentPage: .main(page: .explore(page: .store(page: .map())))
             ),
             flowViewFactory: PreviewFlowViewFactory.shared
         )

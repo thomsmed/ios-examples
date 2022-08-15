@@ -109,6 +109,8 @@
 		EDB466B928A6F6470046E9F4 /* AppPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPage.swift; sourceTree = "<group>"; };
 		EDB466BB28A72CBF0046E9F4 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		EDB466C028A732280046E9F4 /* ProfileFlowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFlowViewModel.swift; sourceTree = "<group>"; };
+		EDD0EBA228A9DFBF00927445 /* FlowViewPattern.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FlowViewPattern.entitlements; sourceTree = "<group>"; };
+		EDD0EBA328A9E1F200927445 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		EDD6F3F828A055AF00E2ED71 /* ExploreNewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreNewsView.swift; sourceTree = "<group>"; };
 		EDD6F3FB28A055E300E2ED71 /* MapAndListFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAndListFlowView.swift; sourceTree = "<group>"; };
 		EDD6F3FD28A0561F00E2ED71 /* MapAndListFlowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAndListFlowViewModel.swift; sourceTree = "<group>"; };
@@ -201,6 +203,8 @@
 		EDA0027E2896906200A3D09F /* FlowViewPattern */ = {
 			isa = PBXGroup;
 			children = (
+				EDD0EBA328A9E1F200927445 /* Info.plist */,
+				EDD0EBA228A9DFBF00927445 /* FlowViewPattern.entitlements */,
 				EDA0028E2896908B00A3D09F /* App */,
 				EDA0028F2896909400A3D09F /* Content */,
 				ED69462A2897107600754C3F /* Common */,
@@ -610,12 +614,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FlowViewPattern/FlowViewPattern.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FlowViewPattern/Resources/PreviewContent\"";
 				DEVELOPMENT_TEAM = 55ATZ58U6M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FlowViewPattern/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -639,12 +645,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FlowViewPattern/FlowViewPattern.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FlowViewPattern/Resources/PreviewContent\"";
 				DEVELOPMENT_TEAM = 55ATZ58U6M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FlowViewPattern/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

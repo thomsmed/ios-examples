@@ -19,7 +19,7 @@ extension String {
 
 enum AppPage: PathRepresentable {
     enum Onboarding: PathRepresentable {
-        case home
+        case welcome
     }
 
     enum Main: PathRepresentable {
@@ -30,7 +30,7 @@ enum AppPage: PathRepresentable {
             }
 
             case store(page: Store)
-            case referral
+            case news
         }
 
         enum Activity: PathRepresentable {
@@ -43,7 +43,7 @@ enum AppPage: PathRepresentable {
         }
 
         enum Profile: PathRepresentable {
-            case home
+            case persona
             case edit
         }
 
@@ -53,14 +53,14 @@ enum AppPage: PathRepresentable {
                 let products: [String]
             }
 
-            case home(details: Details)
-            case checkout(details: Details)
+            case store(details: Details?)
+            case checkout(details: Details?)
         }
 
         case explore(page: Explore)
         case activity(page: Activity)
         case profile(page: Profile)
-        case booking(page: Booking, storeId: String, details: Booking.Details?)
+        case booking(page: Booking, storeId: String)
     }
 
     case onboarding(page: Onboarding)
@@ -104,7 +104,7 @@ extension AppPage {
 extension AppPage.Onboarding {
 
     static func from(_ pathComponents: [String], and queryItems: [URLQueryItem]) -> AppPage.Onboarding {
-        .home
+        .welcome
     }
 }
 
@@ -126,7 +126,7 @@ extension AppPage.Main {
             guard let storeId = morePathComponents.first else {
                 return .explore(page: .store(page: .map(page: nil, storeId: nil)))
             }
-            return .booking(page: .from(.init(pathComponents.dropFirst()), and: queryItems), storeId: storeId, details: nil)
+            return .booking(page: .from(.init(pathComponents.dropFirst()), and: queryItems), storeId: storeId)
         }
 
         return .explore(page: .store(page: .map(page: nil, storeId: nil)))
@@ -140,8 +140,8 @@ extension AppPage.Main.Explore {
             return .store(page: .map(page: nil, storeId: nil))
         }
 
-        if pathComponent.isCaseInsensitiveEqual(to: "referral") {
-            return .referral
+        if pathComponent.isCaseInsensitiveEqual(to: "news") {
+            return .news
         }
 
         return .store(page: .from(.init(pathComponents.dropFirst()), and: queryItems))
@@ -200,14 +200,14 @@ extension AppPage.Main.Profile {
 
     static func from(_ pathComponents: [String], and queryItems: [URLQueryItem]) -> AppPage.Main.Profile {
         guard let pathComponent = pathComponents.first else {
-            return .home
+            return .persona
         }
 
         if pathComponent.isCaseInsensitiveEqual(to: "edit") {
             return .edit
         }
 
-        return .home
+        return .persona
     }
 }
 
@@ -215,7 +215,7 @@ extension AppPage.Main.Booking {
 
     static func from(_ pathComponents: [String], and queryItems: [URLQueryItem]) -> AppPage.Main.Booking {
         guard let pathComponent = pathComponents.first else {
-            return .home(details: .init(services: [], products: []))
+            return .store(details: .init(services: [], products: []))
         }
 
         var services: [String] = []
@@ -232,6 +232,6 @@ extension AppPage.Main.Booking {
             return .checkout(details: .init(services: services, products: products))
         }
 
-        return .home(details: .init(services: services, products: products))
+        return .store(details: .init(services: services, products: products))
     }
 }

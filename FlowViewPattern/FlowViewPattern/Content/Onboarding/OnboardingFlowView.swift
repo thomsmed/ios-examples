@@ -18,7 +18,18 @@ struct OnboardingFlowView: View {
             flowViewFactory.makeGetStartedView(
                 with: flowViewModel
             )
-        }.tabViewStyle(.page)
+        }
+        .tabViewStyle(.page)
+        .onOpenURL { url in
+            guard
+                let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true),
+                let appPage: AppPage = .from(urlComponents)
+            else {
+                return
+            }
+
+            print(appPage)
+        }
     }
 }
 

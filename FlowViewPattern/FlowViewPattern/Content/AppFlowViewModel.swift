@@ -5,14 +5,30 @@
 //  Created by Thomas Asheim Smedmann on 31/07/2022.
 //
 
-import Foundation
+import Combine
 
 final class AppFlowViewModel: ObservableObject {
 
-    @Published var onboardingComplete: Bool
+    @Published var selectedPage: AppFlowView.Page
+
+    private(set) var currentPage: AppPage
 
     init(appDependencies: AppDependencies) {
-        onboardingComplete = appDependencies.defaultsRepository.bool(for: .onboardingCompleted)
+        let onboardingCompleted = appDependencies.defaultsRepository.bool(for: .onboardingCompleted)
+        selectedPage = onboardingCompleted
+            ? .main
+            : .onboarding
+        currentPage = onboardingCompleted
+            ? .main(page: .explore(page: .store(page: .map())))
+            : .onboarding(page: .welcome)
+    }
+
+    func go(to page: AppPage) {
+        currentPage = page
+
+        if case .main = page {
+            selectedPage = .main
+        }
     }
 }
 
@@ -21,6 +37,6 @@ final class AppFlowViewModel: ObservableObject {
 extension AppFlowViewModel: AppFlowCoordinator {
 
     func onboardingCompleteContinueToMain() {
-        onboardingComplete = true
+        selectedPage = .main
     }
 }
