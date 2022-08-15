@@ -20,14 +20,24 @@ final class MapAndListFlowViewModel: ObservableObject {
         self.flowCoordinator = flowCoordinator
 
         switch flowCoordinator.currentExplorePage {
-        case let .store(mapPage):
-            selectedPage = .map
+        case let .store(mapAndListPage):
+            switch mapAndListPage {
+            case let .map(storePage, storeId):
+                selectedPage = .map
 
-            if case let .map(page, storeId) = mapPage {
+                guard let storeId = storeId else {
+                    return
+                }
+
                 // Enqueue asynchronous on main to avoid loop
                 DispatchQueue.main.async { [weak self] in
+                    print("storeId", storeId)
+                    print("storePage", storePage)
+
                     self?.continueToBooking()
                 }
+            case .list:
+                selectedPage = .list
             }
         default:
             selectedPage = .map
@@ -35,14 +45,26 @@ final class MapAndListFlowViewModel: ObservableObject {
 
         explorePageSubscription = flowCoordinator.explorePage
             .compactMap { explorePage in
-                if case let .store(mapPage) = explorePage {
-                    return mapPage
+                if case let .store(mapAndListPage) = explorePage {
+                    return mapAndListPage
                 }
                 return nil
             }
-            .sink { [weak self] mapPage in
-                if case let .map(page, storeId) = mapPage {
+            .sink { [weak self] mapAndListPage in
+                switch mapAndListPage {
+                case let .map(storePage, storeId):
+                    self?.selectedPage = .map
+
+                    guard let storeId = storeId else {
+                        return
+                    }
+
+                    print("storeId", storeId)
+                    print("storePage", storePage)
+
                     self?.continueToBooking()
+                case .list:
+                    self?.selectedPage = .list
                 }
             }
     }
