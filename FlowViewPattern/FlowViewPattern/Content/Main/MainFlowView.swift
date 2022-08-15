@@ -15,8 +15,7 @@ struct MainFlowView: View {
     var body: some View {
         TabView(selection: $flowViewModel.selectedTab) {
             flowViewFactory.makeExploreFlowView(
-                with: flowViewModel,
-                at: flowViewModel.currentPage
+                with: flowViewModel
             )
             .tag(Tab.explore)
             .tabItem {
@@ -49,28 +48,6 @@ struct MainFlowView: View {
             flowViewFactory.makeWelcomeBackView(
                 with: flowViewModel
             )
-        }
-        .onOpenURL { url in
-            guard
-                let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true),
-                let appPage: AppPage = .from(urlComponents),
-                let page = appPage.asMainPage()
-            else {
-                return
-            }
-
-            flowViewModel.go(to: page)
-        }
-    }
-}
-
-extension AppPage {
-    func asMainPage() -> AppPage.Main? {
-        switch self {
-        case let .main(page):
-            return page
-        default:
-            return nil
         }
     }
 }
@@ -110,8 +87,7 @@ struct MainFlowView_Previews: PreviewProvider {
         MainFlowView(
             flowViewModel: .init(
                 flowCoordinator: PreviewFlowCoordinator.shared,
-                appDependencies: PreviewAppDependencies.shared,
-                currentPage: .main(page: .explore(page: .store(page: .map())))
+                appDependencies: PreviewAppDependencies.shared
             ),
             flowViewFactory: PreviewFlowViewFactory.shared
         )

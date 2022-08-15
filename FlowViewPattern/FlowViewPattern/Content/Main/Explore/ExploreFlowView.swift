@@ -28,28 +28,6 @@ struct ExploreFlowView: View {
                 }
             }
         }
-        .onOpenURL { url in
-            guard
-                let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true),
-                let appPage: AppPage = .from(urlComponents),
-                let page = appPage.asMainPage()?.asExplorePage()
-            else {
-                return
-            }
-
-            flowViewModel.go(to: page)
-        }
-    }
-}
-
-extension AppPage.Main {
-    func asExplorePage() -> AppPage.Main.Explore? {
-        switch self {
-        case let .explore(page):
-            return page
-        default:
-            return nil
-        }
     }
 }
 
@@ -64,8 +42,7 @@ struct ExploreFlowView_Previews: PreviewProvider {
     static var previews: some View {
         ExploreFlowView(
             flowViewModel: .init(
-                flowCoordinator: PreviewFlowCoordinator.shared,
-                currentPage: .explore(page: .store(page: .map()))
+                flowCoordinator: PreviewFlowCoordinator.shared
             ),
             flowViewFactory: PreviewFlowViewFactory.shared
         )

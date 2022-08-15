@@ -26,6 +26,13 @@ struct MapAndListFlowView: View {
     }
 }
 
+extension MapAndListFlowView {
+    enum Page {
+        case map
+        case list
+    }
+}
+
 struct MapAndListFlowView_Previews: PreviewProvider {
     static var previews: some View {
         MapAndListFlowView(

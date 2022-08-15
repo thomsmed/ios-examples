@@ -17,25 +17,13 @@ struct AppFlowView: View {
             switch flowViewModel.selectedPage {
             case .onboarding:
                 flowViewFactory.makeOnboardingFlowView(
-                    with: flowViewModel,
-                    at: flowViewModel.currentPage
+                    with: flowViewModel
                 )
             case .main:
                 flowViewFactory.makeMainFlowView(
-                    with: flowViewModel,
-                    at: flowViewModel.currentPage
+                    with: flowViewModel
                 )
             }
-        }
-        .onOpenURL { url in
-            guard
-                let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true),
-                let page: AppPage = .from(urlComponents)
-            else {
-                return
-            }
-
-            flowViewModel.go(to: page)
         }
     }
 }

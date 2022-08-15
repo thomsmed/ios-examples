@@ -1,9 +1,8 @@
 # Flow View / ViewModel Pattern
 
-A SwiftUI navigation pattern.
+A SwiftUI navigation pattern. Inspired by [Flow Navigation With SwiftUI 4](https://betterprogramming.pub/flow-navigation-with-swiftui-4-e006882c5efa).
 
-### TODOs
-- Handle deep links (navigation "down" the tree)
+
 
 ## Tips
 

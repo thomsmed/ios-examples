@@ -18,6 +18,16 @@ struct FlowViewPatternApp: App {
                 flowViewModel: appDelegate.appFlowCoordinator,
                 flowViewFactory: appDelegate.appFlowViewFactory
             )
+            .onOpenURL { url in
+                guard
+                    let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true),
+                    let page: AppPage = .from(urlComponents)
+                else {
+                    return
+                }
+
+                appDelegate.appFlowCoordinator.go(to: page)
+            }
         }
     }
 }

@@ -6,46 +6,66 @@
 //
 
 import SwiftUI
+import Combine
 
 final class ExploreFlowViewModel: ObservableObject {
 
     @Published var pageStack: [ExploreFlowView.Page] = []
 
-    private(set) var currentPage: AppPage.Main.Explore
-
-    private weak var flowCoordinator: MainFlowCoordinator?
-
-    init(flowCoordinator: MainFlowCoordinator, currentPage: AppPage.Main) {
-        self.flowCoordinator = flowCoordinator
-
-        switch currentPage {
-        case let .explore(page):
-            self.currentPage = page
-        default:
-            self.currentPage = .store(page: .map())
+    private(set) var currentExplorePage: AppPage.Main.Explore {
+        didSet {
+            explorePageSubject.send(currentExplorePage)
         }
     }
 
-    func go(to page: AppPage.Main.Explore) {
-        currentPage = page
+    private let explorePageSubject = PassthroughSubject<AppPage.Main.Explore, Never>()
 
-        switch page {
-        case .store:
-            pageStack = []
-        case .news:
-            pageStack.append(.news)
+    private weak var flowCoordinator: MainFlowCoordinator?
+
+    private var mainPageSubscription: AnyCancellable?
+
+    init(flowCoordinator: MainFlowCoordinator) {
+        self.flowCoordinator = flowCoordinator
+
+        switch flowCoordinator.currentMainPage {
+        case let .explore(page):
+            self.currentExplorePage = page
+        default:
+            self.currentExplorePage = .store(page: .map())
         }
+
+        mainPageSubscription = flowCoordinator.mainPage
+            .compactMap { mainPage in
+                if case let .explore(explorePage) = mainPage {
+                    return explorePage
+                }
+                return nil
+            }
+            .sink { [weak self] explorePage in
+                self?.currentExplorePage = explorePage
+
+                switch explorePage {
+                case .store:
+                    self?.pageStack = []
+                case .news:
+                    self?.pageStack.append(.news)
+                }
+            }
     }
 }
 
 extension ExploreFlowViewModel: ExploreFlowCoordinator {
+
+    var explorePage: AnyPublisher<AppPage.Main.Explore, Never> {
+        explorePageSubject.eraseToAnyPublisher()
+    }
 
     func continueToBooking() {
         flowCoordinator?.presentBooking()
     }
 
     func continueToNews() {
-        currentPage = .news
+        currentExplorePage = .news
         pageStack.append(.news)
     }
 }

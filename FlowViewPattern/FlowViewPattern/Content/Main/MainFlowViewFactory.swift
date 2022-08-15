@@ -8,7 +8,7 @@
 import Foundation
 
 protocol MainFlowViewFactory: AnyObject {
-    func makeExploreFlowView(with flowCoordinator: MainFlowCoordinator, at currentPage: AppPage.Main) -> ExploreFlowView
+    func makeExploreFlowView(with flowCoordinator: MainFlowCoordinator) -> ExploreFlowView
     func makeActivityFlowView() -> ActivityFlowView
     func makeProfileFlowView() -> ProfileFlowView
     func makeBookingFlowView() -> BookingFlowView
@@ -16,11 +16,10 @@ protocol MainFlowViewFactory: AnyObject {
 }
 
 extension DefaultAppFlowViewFactory: MainFlowViewFactory {
-    func makeExploreFlowView(with flowCoordinator: MainFlowCoordinator, at currentPage: AppPage.Main) -> ExploreFlowView {
+    func makeExploreFlowView(with flowCoordinator: MainFlowCoordinator) -> ExploreFlowView {
         ExploreFlowView(
             flowViewModel: .init(
-                flowCoordinator: flowCoordinator,
-                currentPage: currentPage
+                flowCoordinator: flowCoordinator
             ),
             flowViewFactory: self
         )
