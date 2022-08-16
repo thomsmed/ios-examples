@@ -37,8 +37,10 @@ final class MainFlowViewModel: ObservableObject {
         switch flowCoordinator.currentAppPage {
         case let .main(page):
             self.currentMainPage = page
-        default:
-            self.currentMainPage = .explore(page: .store(page: .map()))
+
+            if case .booking = page {
+                return
+            }
 
             let longTimeNoSee = true
             if longTimeNoSee {
@@ -46,6 +48,8 @@ final class MainFlowViewModel: ObservableObject {
                     self?.greetingIsPresented = true
                 }
             }
+        default:
+            self.currentMainPage = .explore(page: .store(page: .map()))
         }
 
         appPageSubscription = flowCoordinator.appPage
