@@ -12,8 +12,8 @@ import Combine
 final class MainFlowViewModel: ObservableObject {
 
     @Published var selectedTab: MainFlowView.Tab = .explore
-    @Published var bookingIsPresented: Bool = false
-    @Published var greetingIsPresented: Bool = false
+    @Published var presentedSheet: MainFlowView.Sheet = .none
+    @Published var toggleSheet: Bool = false
 
     private(set) var currentMainPage: AppPage.Main {
         didSet {
@@ -46,7 +46,8 @@ final class MainFlowViewModel: ObservableObject {
             let longTimeNoSee = true
             if longTimeNoSee {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
-                    self?.greetingIsPresented = true
+                    self?.presentedSheet = .greeting
+                    self?.toggleSheet.toggle()
                 }
             }
         default:
@@ -71,7 +72,8 @@ final class MainFlowViewModel: ObservableObject {
                 case .profile:
                     self?.selectedTab = .profile
                 case .booking:
-                    self?.bookingIsPresented = true
+                    self?.presentedSheet = .booking
+                    self?.toggleSheet.toggle()
                 }
             }
     }
@@ -85,6 +87,7 @@ extension MainFlowViewModel: MainFlowCoordinator {
 
     func presentBooking() {
         currentMainPage = .booking(page: .store(details: nil), storeId: "")
-        bookingIsPresented = true
+        presentedSheet = .booking
+        toggleSheet.toggle()
     }
 }

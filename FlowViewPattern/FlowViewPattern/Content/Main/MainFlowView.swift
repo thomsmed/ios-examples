@@ -12,6 +12,8 @@ struct MainFlowView: View {
     @StateObject var flowViewModel: MainFlowViewModel
     let flowViewFactory: MainFlowViewFactory
 
+    @State private var sheetIsPresented: Bool = false
+
     var body: some View {
         TabView(selection: $flowViewModel.selectedTab) {
             flowViewFactory.makeExploreFlowView(
@@ -41,13 +43,20 @@ struct MainFlowView: View {
                     )
                 }
         }
-        .sheet(isPresented: $flowViewModel.bookingIsPresented) {
-            flowViewFactory.makeBookingFlowView()
+        .onChange(of: flowViewModel.toggleSheet) { _ in
+            sheetIsPresented = true
         }
-        .sheet(isPresented: $flowViewModel.greetingIsPresented) {
-            flowViewFactory.makeWelcomeBackView(
-                with: flowViewModel
-            )
+        .sheet(isPresented: $sheetIsPresented) {
+            switch flowViewModel.presentedSheet {
+            case .none:
+                EmptyView()
+            case .booking:
+                flowViewFactory.makeBookingFlowView()
+            case .greeting:
+                flowViewFactory.makeWelcomeBackView(
+                    with: flowViewModel
+                )
+            }
         }
     }
 }
@@ -79,6 +88,12 @@ extension MainFlowView {
                 return "person"
             }
         }
+    }
+
+    enum Sheet {
+        case none
+        case booking
+        case greeting
     }
 }
 
