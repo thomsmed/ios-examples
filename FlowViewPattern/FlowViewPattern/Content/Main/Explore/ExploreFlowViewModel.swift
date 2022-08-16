@@ -8,6 +8,7 @@
 import SwiftUI
 import Combine
 
+@MainActor
 final class ExploreFlowViewModel: ObservableObject {
 
     @Published var pageStack: [ExploreFlowView.Page] = []

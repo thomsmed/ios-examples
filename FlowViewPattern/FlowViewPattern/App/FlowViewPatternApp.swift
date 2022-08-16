@@ -19,6 +19,8 @@ struct FlowViewPatternApp: App {
                 flowViewFactory: appDelegate.appFlowViewFactory
             )
             .onOpenURL { url in
+                // NOTE: This view modifier can be applied to all views in the hierarchy.
+                // So that might be an alternative to propagating deep links down the view hierarchy (apply this modifier to FlowViews):
                 guard
                     let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true),
                     let page: AppPage = .from(urlComponents)

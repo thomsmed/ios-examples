@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 
+@MainActor
 final class AppFlowViewModel: ObservableObject {
 
     @Published var selectedPage: AppFlowView.Page

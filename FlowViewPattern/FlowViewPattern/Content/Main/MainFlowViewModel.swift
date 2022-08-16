@@ -8,6 +8,7 @@
 import SwiftUI
 import Combine
 
+@MainActor
 final class MainFlowViewModel: ObservableObject {
 
     @Published var selectedTab: MainFlowView.Tab = .explore

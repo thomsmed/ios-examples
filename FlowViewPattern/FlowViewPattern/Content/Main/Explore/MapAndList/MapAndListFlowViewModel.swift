@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 
+@MainActor
 final class MapAndListFlowViewModel: ObservableObject {
 
     @Published var selectedPage: MapAndListFlowView.Page

@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 final class ProfileFlowViewModel: ObservableObject {
 
     @Published var flag: Bool = false

@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 final class OnboardingFlowViewModel: ObservableObject {
 
     private weak var flowCoordinator: AppFlowCoordinator?
