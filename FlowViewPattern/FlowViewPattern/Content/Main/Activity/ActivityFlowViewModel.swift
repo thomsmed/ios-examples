@@ -9,6 +9,9 @@ import Foundation
 
 final class ActivityFlowViewModel: ObservableObject {
 
+    func go(to path: AppPath.Main.Activity) {
+        
+    }
 }
 
 extension ActivityFlowViewModel: ActivityFlowCoordinator {

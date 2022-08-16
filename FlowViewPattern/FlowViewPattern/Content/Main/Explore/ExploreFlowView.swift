@@ -19,14 +19,19 @@ struct ExploreFlowView: View {
             )
             .navigationDestination(for: Page.self) { page in
                 switch page {
-                case .mapAndList:
-                    flowViewFactory.makeMapAndListFlowView(
-                        with: flowViewModel
-                    )
                 case .news:
                     flowViewFactory.makeExploreNewsView()
+                default:
+                    EmptyView()
                 }
             }
+        }
+        .onOpenURL { url in
+            guard let path = AppPath.Main.Explore(url) else {
+                return
+            }
+
+            flowViewModel.go(to: path)
         }
     }
 }
@@ -35,6 +40,19 @@ extension ExploreFlowView {
     enum Page {
         case mapAndList
         case news
+    }
+}
+
+extension AppPath.Main.Explore {
+    init?(_ url: URL) {
+        guard
+            let mainPath = AppPath.Main(url),
+            case let .explore(subPath) = mainPath
+        else {
+            return nil
+        }
+
+        self = subPath
     }
 }
 

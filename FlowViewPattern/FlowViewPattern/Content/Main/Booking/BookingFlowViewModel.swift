@@ -7,7 +7,6 @@
 
 import Foundation
 
-@MainActor
 final class BookingFlowViewModel: ObservableObject {
 
 }

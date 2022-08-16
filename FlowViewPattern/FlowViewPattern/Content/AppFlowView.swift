@@ -19,11 +19,19 @@ struct AppFlowView: View {
                 flowViewFactory.makeOnboardingFlowView(
                     with: flowViewModel
                 )
-            case .main:
+            case let .main(subPath):
                 flowViewFactory.makeMainFlowView(
-                    with: flowViewModel
+                    with: flowViewModel,
+                    startingAt: subPath
                 )
             }
+        }
+        .onOpenURL { url in
+            guard let path = AppPath(url) else {
+                return
+            }
+
+            flowViewModel.go(to: path)
         }
     }
 }
@@ -31,7 +39,19 @@ struct AppFlowView: View {
 extension AppFlowView {
     enum Page {
         case onboarding
-        case main
+        case main(AppPath.Main? = nil)
+    }
+}
+
+extension AppPath {
+    init?(_ url: URL) {
+        guard let urlComponents = URLComponents(
+            url: url, resolvingAgainstBaseURL: true
+        ) else {
+            return nil
+        }
+
+        self.init(urlComponents)
     }
 }
 

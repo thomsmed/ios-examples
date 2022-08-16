@@ -3,8 +3,8 @@
 A SwiftUI navigation pattern. Inspired by [Flow Navigation With SwiftUI 4](https://betterprogramming.pub/flow-navigation-with-swiftui-4-e006882c5efa).
 
 The basic idea:
-- **Pages:** Nested enums representing pages in the app, and the logical navigation path to them (root enum `AppPage`).
-    - The main purpose is to represent deep links into content in the app.
+- **Paths:** Nested enums representing paths in the app, and the logical navigation path to them (root enum `AppPath`).
+    - The main purpose is to map deep links to content in the app.
 - **App dependencies singleton:** Singleton holding a reference to / value of all shared services/utilities etc (`AppDependencies`).
 - **Flow Coordinators, Flow Views and Flow ViewModels:** The protocol representing the interface to a View hierarchy's routing/navigation entity. Implemented by FlowViewModels, which holds the state of a view hierarchy logically grouped together by navigation flow. FlowViewModels is accompanied by a FlowView, representing the actual root view / container view at the top of a navigation path.
 - **FlowViewFactories (or just ViewFactories):** Protocols representing the interface to an entity responsible for instantiating and constructing Views and ViewModels. A nice way to implement the ViewFactories, is by using a singleton shared across the whole app. The singleton implements all the ViewFactory protocols, but is abstracted away from the FlowViews who uses it. The ViewFactory is constructor-injected (together with FlowViewModels).

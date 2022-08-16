@@ -24,17 +24,6 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
 
         application.registerForRemoteNotifications()
 
-        guard let launchOptions = launchOptions else {
-            return true
-        }
-
-        if
-            let urlComponents = Extractor.urlComponents(from: launchOptions),
-            let page: AppPage = .from(urlComponents)
-        {
-            appFlowCoordinator.go(to: page)
-        }
-
         guard appDependencies.defaultsRepository.date(for: .firstAppLaunch) == nil else {
             return true
         }
@@ -68,50 +57,6 @@ extension AppDelegate {
         didReceiveRemoteNotification userInfo: [AnyHashable : Any]
     ) async -> UIBackgroundFetchResult {
         return .noData
-    }
-}
-
-// MARK: Handling URLs with custom scheme
-
-extension AppDelegate {
-
-    func application(
-        _ app: UIApplication,
-        open url: URL,
-        options: [UIApplication.OpenURLOptionsKey : Any] = [:]
-    ) -> Bool {
-        guard
-            let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true),
-            let page: AppPage = .from(urlComponents)
-        else {
-            return false
-        }
-
-        appFlowCoordinator.go(to: page)
-
-        return true
-    }
-}
-
-// MARK: Deep linking and other user actions
-
-extension AppDelegate {
-
-    func application(
-        _ application: UIApplication,
-        continue userActivity: NSUserActivity,
-        restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void
-    ) -> Bool {
-        guard
-            let urlComponents = Extractor.urlComponents(from: userActivity),
-            let page: AppPage = .from(urlComponents)
-        else {
-            return false
-        }
-
-        appFlowCoordinator.go(to: page)
-
-        return true
     }
 }
 
@@ -151,12 +96,12 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 
             guard
                 let urlComponents = Extractor.urlComponents(from: response),
-                let appPage: AppPage = .from(urlComponents)
+                let path = AppPath(urlComponents)
             else {
                 break
             }
 
-            appFlowCoordinator.go(to: appPage)
+            appFlowCoordinator.go(to: path)
         case UNNotificationDismissActionIdentifier:
             break
         default:
@@ -166,4 +111,3 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         completionHandler()
     }
 }
-

@@ -7,10 +7,13 @@
 
 import Foundation
 
-@MainActor
 final class ProfileFlowViewModel: ObservableObject {
 
     @Published var flag: Bool = false
+
+    func go(to path: AppPath.Main.Profile) {
+        
+    }
 }
 
 extension ProfileFlowViewModel {

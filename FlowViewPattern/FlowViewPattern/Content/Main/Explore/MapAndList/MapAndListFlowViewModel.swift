@@ -8,66 +8,32 @@
 import Foundation
 import Combine
 
-@MainActor
 final class MapAndListFlowViewModel: ObservableObject {
 
-    @Published var selectedPage: MapAndListFlowView.Page
+    @Published var selectedPage: MapAndListFlowView.Page = .map
 
     private weak var flowCoordinator: ExploreFlowCoordinator?
 
-    private var explorePageSubscription: AnyCancellable?
-
     init(flowCoordinator: ExploreFlowCoordinator) {
         self.flowCoordinator = flowCoordinator
+    }
 
-        switch flowCoordinator.currentExplorePage {
-        case let .store(mapAndListPage):
-            switch mapAndListPage {
-            case let .map(storePage, storeId):
-                selectedPage = .map
-
-                guard let storeId = storeId else {
-                    return
-                }
-
-                // Enqueue asynchronous on main to avoid loop
-                DispatchQueue.main.async { [weak self] in
-                    print("storeId", storeId)
-                    print("storePage", storePage)
-
-                    self?.continueToBooking()
-                }
-            case .list:
-                selectedPage = .list
-            }
-        default:
+    func go(to path: AppPath.Main.Explore.Store) {
+        switch path {
+        case let .map(storePath, storeId):
             selectedPage = .map
+
+            guard let storeId = storeId else {
+                return
+            }
+
+            print("storeId", storeId)
+            print("storePath", storePath)
+
+            continueToBooking()
+        case .list:
+            selectedPage = .list
         }
-
-        explorePageSubscription = flowCoordinator.explorePage
-            .compactMap { explorePage in
-                if case let .store(mapAndListPage) = explorePage {
-                    return mapAndListPage
-                }
-                return nil
-            }
-            .sink { [weak self] mapAndListPage in
-                switch mapAndListPage {
-                case let .map(storePage, storeId):
-                    self?.selectedPage = .map
-
-                    guard let storeId = storeId else {
-                        return
-                    }
-
-                    print("storeId", storeId)
-                    print("storePage", storePage)
-
-                    self?.continueToBooking()
-                case .list:
-                    self?.selectedPage = .list
-                }
-            }
     }
 }
 

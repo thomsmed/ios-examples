@@ -15,12 +15,6 @@ protocol MapAndListFlowCoordinator: AnyObject {
 }
 
 extension PreviewFlowCoordinator: MapAndListFlowCoordinator {
-
-    func showMap() {
-
-    }
-
-    func showList() {
-
-    }
+    func showMap() {}
+    func showList() {}
 }

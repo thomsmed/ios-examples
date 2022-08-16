@@ -58,6 +58,13 @@ struct MainFlowView: View {
                 )
             }
         }
+        .onOpenURL { url in
+            guard let path = AppPath.Main(url) else {
+                return
+            }
+
+            flowViewModel.go(to: path)
+        }
     }
 }
 
@@ -97,12 +104,26 @@ extension MainFlowView {
     }
 }
 
+extension AppPath.Main {
+    init?(_ url: URL) {
+        guard
+            let appPath = AppPath(url),
+            case let .main(subPath) = appPath
+        else {
+            return nil
+        }
+
+        self = subPath
+    }
+}
+
 struct MainFlowView_Previews: PreviewProvider {
     static var previews: some View {
         MainFlowView(
             flowViewModel: .init(
                 flowCoordinator: PreviewFlowCoordinator.shared,
-                appDependencies: PreviewAppDependencies.shared
+                appDependencies: PreviewAppDependencies.shared,
+                initialPath: nil
             ),
             flowViewFactory: PreviewFlowViewFactory.shared
         )

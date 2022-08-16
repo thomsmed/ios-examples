@@ -13,15 +13,24 @@ struct MapAndListFlowView: View {
     let flowViewFactory: MapAndListFlowViewFactory
 
     var body: some View {
-        switch flowViewModel.selectedPage {
-        case .map:
-            flowViewFactory.makeExploreMapView(
-                with: flowViewModel
-            )
-        case .list:
-            flowViewFactory.makeExploreListView(
-                with: flowViewModel
-            )
+        ZStack {
+            switch flowViewModel.selectedPage {
+            case .map:
+                flowViewFactory.makeExploreMapView(
+                    with: flowViewModel
+                )
+            case .list:
+                flowViewFactory.makeExploreListView(
+                    with: flowViewModel
+                )
+            }
+        }
+        .onOpenURL { url in
+            guard let path = AppPath.Main.Explore.Store(url) else {
+                return
+            }
+
+            flowViewModel.go(to: path)
         }
     }
 }
@@ -30,6 +39,19 @@ extension MapAndListFlowView {
     enum Page {
         case map
         case list
+    }
+}
+
+extension AppPath.Main.Explore.Store {
+    init?(_ url: URL) {
+        guard
+            let explorePath = AppPath.Main.Explore(url),
+            case let .store(subPath) = explorePath
+        else {
+            return nil
+        }
+
+        self = subPath
     }
 }
 

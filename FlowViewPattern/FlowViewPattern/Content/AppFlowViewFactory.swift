@@ -9,7 +9,10 @@ import Foundation
 
 protocol AppFlowViewFactory {
     func makeOnboardingFlowView(with flowCoordinator: AppFlowCoordinator) -> OnboardingFlowView
-    func makeMainFlowView(with flowCoordinator: AppFlowCoordinator) -> MainFlowView
+    func makeMainFlowView(
+        with flowCoordinator: AppFlowCoordinator,
+        startingAt initialPath: AppPath.Main?
+    ) -> MainFlowView
 }
 
 extension DefaultAppFlowViewFactory: AppFlowViewFactory {
@@ -22,11 +25,15 @@ extension DefaultAppFlowViewFactory: AppFlowViewFactory {
         )
     }
 
-    func makeMainFlowView(with flowCoordinator: AppFlowCoordinator) -> MainFlowView {
+    func makeMainFlowView(
+        with flowCoordinator: AppFlowCoordinator,
+        startingAt initialPath: AppPath.Main?
+    ) -> MainFlowView {
         MainFlowView(
             flowViewModel: .init(
                 flowCoordinator: flowCoordinator,
-                appDependencies: self.appDependencies
+                appDependencies: self.appDependencies,
+                initialPath: initialPath
             ),
             flowViewFactory: self
         )

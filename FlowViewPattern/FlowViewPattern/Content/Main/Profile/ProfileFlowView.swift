@@ -18,6 +18,26 @@ struct ProfileFlowView: View {
                 flowViewModel.toggle()
             }
         }
+        .onOpenURL { url in
+            guard let path = AppPath.Main.Profile(url) else {
+                return
+            }
+
+            flowViewModel.go(to: path)
+        }
+    }
+}
+
+extension AppPath.Main.Profile {
+    init?(_ url: URL) {
+        guard
+            let mainPath = AppPath.Main(url),
+            case let .profile(subPath) = mainPath
+        else {
+            return nil
+        }
+
+        self = subPath
     }
 }
 

@@ -8,34 +8,20 @@
 import Foundation
 import Combine
 
-@MainActor
 final class AppFlowViewModel: ObservableObject {
 
     @Published var selectedPage: AppFlowView.Page
 
-    private(set) var currentAppPage: AppPage {
-        didSet {
-            appPageSubject.send(currentAppPage)
-        }
-    }
-
-    private let appPageSubject = PassthroughSubject<AppPage, Never>()
-
     init(appDependencies: AppDependencies) {
         let onboardingCompleted = appDependencies.defaultsRepository.bool(for: .onboardingCompleted)
         selectedPage = onboardingCompleted
-            ? .main
+            ? .main()
             : .onboarding
-        currentAppPage = onboardingCompleted
-            ? .main(page: .explore(page: .store(page: .map())))
-            : .onboarding(page: .welcome)
     }
 
-    func go(to page: AppPage) {
-        currentAppPage = page
-
-        if case .main = page {
-            selectedPage = .main
+    func go(to path: AppPath) {
+        if case let .main(subPath) = path {
+            selectedPage = .main(subPath)
         }
     }
 }
@@ -44,11 +30,7 @@ final class AppFlowViewModel: ObservableObject {
 
 extension AppFlowViewModel: AppFlowCoordinator {
 
-    var appPage: AnyPublisher<AppPage, Never> {
-        appPageSubject.eraseToAnyPublisher()
-    }
-
     func onboardingCompleteContinueToMain() {
-        selectedPage = .main
+        selectedPage = .main()
     }
 }

@@ -49,7 +49,7 @@
 		EDB466B028A6ADAC0046E9F4 /* PreviewFlowViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB466AF28A6ADAC0046E9F4 /* PreviewFlowViewFactory.swift */; };
 		EDB466B428A6AE160046E9F4 /* DefaultAppFlowViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB466B328A6AE160046E9F4 /* DefaultAppFlowViewFactory.swift */; };
 		EDB466B828A6F6040046E9F4 /* Extractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB466B728A6F6040046E9F4 /* Extractor.swift */; };
-		EDB466BA28A6F6470046E9F4 /* AppPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB466B928A6F6470046E9F4 /* AppPage.swift */; };
+		EDB466BA28A6F6470046E9F4 /* AppPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB466B928A6F6470046E9F4 /* AppPath.swift */; };
 		EDB466BC28A72CBF0046E9F4 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB466BB28A72CBF0046E9F4 /* WelcomeView.swift */; };
 		EDB466C128A732280046E9F4 /* ProfileFlowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB466C028A732280046E9F4 /* ProfileFlowViewModel.swift */; };
 		EDD6F3F928A055AF00E2ED71 /* ExploreNewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD6F3F828A055AF00E2ED71 /* ExploreNewsView.swift */; };
@@ -106,7 +106,7 @@
 		EDB466AF28A6ADAC0046E9F4 /* PreviewFlowViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewFlowViewFactory.swift; sourceTree = "<group>"; };
 		EDB466B328A6AE160046E9F4 /* DefaultAppFlowViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAppFlowViewFactory.swift; sourceTree = "<group>"; };
 		EDB466B728A6F6040046E9F4 /* Extractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extractor.swift; sourceTree = "<group>"; };
-		EDB466B928A6F6470046E9F4 /* AppPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPage.swift; sourceTree = "<group>"; };
+		EDB466B928A6F6470046E9F4 /* AppPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPath.swift; sourceTree = "<group>"; };
 		EDB466BB28A72CBF0046E9F4 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		EDB466C028A732280046E9F4 /* ProfileFlowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFlowViewModel.swift; sourceTree = "<group>"; };
 		EDD0EBA228A9DFBF00927445 /* FlowViewPattern.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FlowViewPattern.entitlements; sourceTree = "<group>"; };
@@ -143,8 +143,8 @@
 		ED6946162896FE4A00754C3F /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				ED37FF7F289FE3D5007E5110 /* ProfileFlowView.swift */,
 				EDB466C028A732280046E9F4 /* ProfileFlowViewModel.swift */,
+				ED37FF7F289FE3D5007E5110 /* ProfileFlowView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -242,7 +242,7 @@
 				EDA002A52896968400A3D09F /* DefaultAppDependencies.swift */,
 				EDB466B328A6AE160046E9F4 /* DefaultAppFlowViewFactory.swift */,
 				EDB466B728A6F6040046E9F4 /* Extractor.swift */,
-				EDB466B928A6F6470046E9F4 /* AppPage.swift */,
+				EDB466B928A6F6470046E9F4 /* AppPath.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -479,7 +479,7 @@
 				EDA002A62896968400A3D09F /* DefaultAppDependencies.swift in Sources */,
 				ED69462E289710D300754C3F /* DefaultsRepository.swift in Sources */,
 				EDA0029A2896917E00A3D09F /* MainFlowView.swift in Sources */,
-				EDB466BA28A6F6470046E9F4 /* AppPage.swift in Sources */,
+				EDB466BA28A6F6470046E9F4 /* AppPath.swift in Sources */,
 				EDD6F40228A0565100E2ED71 /* MapAndListFlowViewFactory.swift in Sources */,
 				EDD6F3FE28A0561F00E2ED71 /* MapAndListFlowViewModel.swift in Sources */,
 				EDA002AC2896B85800A3D09F /* MainFlowCoordinator.swift in Sources */,
