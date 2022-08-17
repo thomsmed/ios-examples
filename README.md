@@ -16,6 +16,7 @@ A collection of iOS examples.
 - [Bluetooth Low Energy (BLE)](BLEChat)
 - [Expandable dynamic sized Table View Cell](ExpandableTableViewCell)
 - [Custom Container View Controller (improved)](ImprovedContainerViewController)
+- [Flow View Pattern (SwiftUI)](FlowViewPattern)
 
 These examples are created as a way to learn. Feel free to use them as you please.
 Feedback are also welcome.

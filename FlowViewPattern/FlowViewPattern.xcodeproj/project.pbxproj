@@ -1,0 +1,698 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		ED37FF7C289FD88D007E5110 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED37FF7B289FD88D007E5110 /* AppDelegate.swift */; };
+		ED37FF7E289FE3AC007E5110 /* MainFlowViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED37FF7D289FE3AC007E5110 /* MainFlowViewFactory.swift */; };
+		ED37FF80289FE3D5007E5110 /* ProfileFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED37FF7F289FE3D5007E5110 /* ProfileFlowView.swift */; };
+		ED37FF83289FFAD0007E5110 /* WelcomeBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED37FF82289FFAD0007E5110 /* WelcomeBackView.swift */; };
+		ED6946182896FE6200754C3F /* ActivityFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6946172896FE6200754C3F /* ActivityFlowCoordinator.swift */; };
+		ED69461A2896FE6C00754C3F /* ActivityFlowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6946192896FE6C00754C3F /* ActivityFlowViewModel.swift */; };
+		ED69461C2896FE7D00754C3F /* ActivityFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED69461B2896FE7D00754C3F /* ActivityFlowView.swift */; };
+		ED69462928970DEC00754C3F /* AppFlowViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED69462828970DEC00754C3F /* AppFlowViewFactory.swift */; };
+		ED69462E289710D300754C3F /* DefaultsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED69462D289710D300754C3F /* DefaultsRepository.swift */; };
+		ED694630289710ED00754C3F /* UserDefaultsDefaultsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED69462F289710ED00754C3F /* UserDefaultsDefaultsRepository.swift */; };
+		ED6946322897156200754C3F /* GetStartedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6946312897156200754C3F /* GetStartedView.swift */; };
+		ED6946342897158500754C3F /* GetStartedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6946332897158500754C3F /* GetStartedViewModel.swift */; };
+		ED6946372897388500754C3F /* OnboardingFlowViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6946362897388500754C3F /* OnboardingFlowViewFactory.swift */; };
+		EDA002802896906200A3D09F /* FlowViewPatternApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA0027F2896906200A3D09F /* FlowViewPatternApp.swift */; };
+		EDA002842896906400A3D09F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDA002832896906400A3D09F /* Assets.xcassets */; };
+		EDA002872896906400A3D09F /* PreviewAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDA002862896906400A3D09F /* PreviewAssets.xcassets */; };
+		EDA002912896912500A3D09F /* AppFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA002902896912500A3D09F /* AppFlowView.swift */; };
+		EDA002932896913800A3D09F /* AppFlowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA002922896913800A3D09F /* AppFlowViewModel.swift */; };
+		EDA002982896917200A3D09F /* MainFlowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA002972896917200A3D09F /* MainFlowViewModel.swift */; };
+		EDA0029A2896917E00A3D09F /* MainFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA002992896917E00A3D09F /* MainFlowView.swift */; };
+		EDA0029C2896919300A3D09F /* OnboardingFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA0029B2896919300A3D09F /* OnboardingFlowView.swift */; };
+		EDA0029E2896919F00A3D09F /* OnboardingFlowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA0029D2896919F00A3D09F /* OnboardingFlowViewModel.swift */; };
+		EDA002A0289691B000A3D09F /* ExploreFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA0029F289691B000A3D09F /* ExploreFlowView.swift */; };
+		EDA002A2289691B800A3D09F /* ExploreFlowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA002A1289691B800A3D09F /* ExploreFlowViewModel.swift */; };
+		EDA002A42896966A00A3D09F /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA002A32896966A00A3D09F /* AppDependencies.swift */; };
+		EDA002A62896968400A3D09F /* DefaultAppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA002A52896968400A3D09F /* DefaultAppDependencies.swift */; };
+		EDA002A82896986900A3D09F /* PreviewAppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA002A72896986900A3D09F /* PreviewAppDependencies.swift */; };
+		EDA002AA2896B80B00A3D09F /* AppFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA002A92896B80B00A3D09F /* AppFlowCoordinator.swift */; };
+		EDA002AC2896B85800A3D09F /* MainFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA002AB2896B85800A3D09F /* MainFlowCoordinator.swift */; };
+		EDA002AE2896B90100A3D09F /* PreviewFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA002AD2896B90100A3D09F /* PreviewFlowCoordinator.swift */; };
+		EDA002B02896B9C800A3D09F /* ExploreFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA002AF2896B9C800A3D09F /* ExploreFlowCoordinator.swift */; };
+		EDA002B22896BA5000A3D09F /* OnboardingFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA002B12896BA5000A3D09F /* OnboardingFlowCoordinator.swift */; };
+		EDA002B52896BD2F00A3D09F /* BookingFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA002B42896BD2F00A3D09F /* BookingFlowCoordinator.swift */; };
+		EDA002B72896BD3900A3D09F /* BookingFlowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA002B62896BD3900A3D09F /* BookingFlowViewModel.swift */; };
+		EDA002B92896BD4400A3D09F /* BookingFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA002B82896BD4400A3D09F /* BookingFlowView.swift */; };
+		EDA002BE2896BDC200A3D09F /* ExploreMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA002BD2896BDC200A3D09F /* ExploreMapViewModel.swift */; };
+		EDA002C02896BDCD00A3D09F /* ExploreMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA002BF2896BDCD00A3D09F /* ExploreMapView.swift */; };
+		EDA002C22896C1FF00A3D09F /* ExploreListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA002C12896C1FF00A3D09F /* ExploreListViewModel.swift */; };
+		EDA002C42896C23700A3D09F /* ExploreListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA002C32896C23700A3D09F /* ExploreListView.swift */; };
+		EDB466B028A6ADAC0046E9F4 /* PreviewFlowViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB466AF28A6ADAC0046E9F4 /* PreviewFlowViewFactory.swift */; };
+		EDB466B428A6AE160046E9F4 /* DefaultAppFlowViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB466B328A6AE160046E9F4 /* DefaultAppFlowViewFactory.swift */; };
+		EDB466B828A6F6040046E9F4 /* Extractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB466B728A6F6040046E9F4 /* Extractor.swift */; };
+		EDB466BA28A6F6470046E9F4 /* AppPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB466B928A6F6470046E9F4 /* AppPath.swift */; };
+		EDB466BC28A72CBF0046E9F4 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB466BB28A72CBF0046E9F4 /* WelcomeView.swift */; };
+		EDB466C128A732280046E9F4 /* ProfileFlowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB466C028A732280046E9F4 /* ProfileFlowViewModel.swift */; };
+		EDD6F3F928A055AF00E2ED71 /* ExploreNewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD6F3F828A055AF00E2ED71 /* ExploreNewsView.swift */; };
+		EDD6F3FC28A055E300E2ED71 /* MapAndListFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD6F3FB28A055E300E2ED71 /* MapAndListFlowView.swift */; };
+		EDD6F3FE28A0561F00E2ED71 /* MapAndListFlowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD6F3FD28A0561F00E2ED71 /* MapAndListFlowViewModel.swift */; };
+		EDD6F40028A0563000E2ED71 /* MapAndListFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD6F3FF28A0563000E2ED71 /* MapAndListFlowCoordinator.swift */; };
+		EDD6F40228A0565100E2ED71 /* MapAndListFlowViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD6F40128A0565100E2ED71 /* MapAndListFlowViewFactory.swift */; };
+		EDD6F40428A056A500E2ED71 /* ExploreFlowViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD6F40328A056A500E2ED71 /* ExploreFlowViewFactory.swift */; };
+		EDEB131828A0D2710041C3E4 /* WelcomeBackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEB131728A0D2710041C3E4 /* WelcomeBackViewModel.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		ED37FF7B289FD88D007E5110 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		ED37FF7D289FE3AC007E5110 /* MainFlowViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlowViewFactory.swift; sourceTree = "<group>"; };
+		ED37FF7F289FE3D5007E5110 /* ProfileFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFlowView.swift; sourceTree = "<group>"; };
+		ED37FF82289FFAD0007E5110 /* WelcomeBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeBackView.swift; sourceTree = "<group>"; };
+		ED6946172896FE6200754C3F /* ActivityFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityFlowCoordinator.swift; sourceTree = "<group>"; };
+		ED6946192896FE6C00754C3F /* ActivityFlowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityFlowViewModel.swift; sourceTree = "<group>"; };
+		ED69461B2896FE7D00754C3F /* ActivityFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityFlowView.swift; sourceTree = "<group>"; };
+		ED69461D2896FFAF00754C3F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		ED69462828970DEC00754C3F /* AppFlowViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowViewFactory.swift; sourceTree = "<group>"; };
+		ED69462D289710D300754C3F /* DefaultsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsRepository.swift; sourceTree = "<group>"; };
+		ED69462F289710ED00754C3F /* UserDefaultsDefaultsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsDefaultsRepository.swift; sourceTree = "<group>"; };
+		ED6946312897156200754C3F /* GetStartedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedView.swift; sourceTree = "<group>"; };
+		ED6946332897158500754C3F /* GetStartedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedViewModel.swift; sourceTree = "<group>"; };
+		ED6946362897388500754C3F /* OnboardingFlowViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFlowViewFactory.swift; sourceTree = "<group>"; };
+		EDA0027C2896906200A3D09F /* FlowViewPattern.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlowViewPattern.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDA0027F2896906200A3D09F /* FlowViewPatternApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowViewPatternApp.swift; sourceTree = "<group>"; };
+		EDA002832896906400A3D09F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EDA002862896906400A3D09F /* PreviewAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = PreviewAssets.xcassets; sourceTree = "<group>"; };
+		EDA002902896912500A3D09F /* AppFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowView.swift; sourceTree = "<group>"; };
+		EDA002922896913800A3D09F /* AppFlowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowViewModel.swift; sourceTree = "<group>"; };
+		EDA002972896917200A3D09F /* MainFlowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlowViewModel.swift; sourceTree = "<group>"; };
+		EDA002992896917E00A3D09F /* MainFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlowView.swift; sourceTree = "<group>"; };
+		EDA0029B2896919300A3D09F /* OnboardingFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFlowView.swift; sourceTree = "<group>"; };
+		EDA0029D2896919F00A3D09F /* OnboardingFlowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFlowViewModel.swift; sourceTree = "<group>"; };
+		EDA0029F289691B000A3D09F /* ExploreFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreFlowView.swift; sourceTree = "<group>"; };
+		EDA002A1289691B800A3D09F /* ExploreFlowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreFlowViewModel.swift; sourceTree = "<group>"; };
+		EDA002A32896966A00A3D09F /* AppDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencies.swift; sourceTree = "<group>"; };
+		EDA002A52896968400A3D09F /* DefaultAppDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAppDependencies.swift; sourceTree = "<group>"; };
+		EDA002A72896986900A3D09F /* PreviewAppDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewAppDependencies.swift; sourceTree = "<group>"; };
+		EDA002A92896B80B00A3D09F /* AppFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowCoordinator.swift; sourceTree = "<group>"; };
+		EDA002AB2896B85800A3D09F /* MainFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlowCoordinator.swift; sourceTree = "<group>"; };
+		EDA002AD2896B90100A3D09F /* PreviewFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewFlowCoordinator.swift; sourceTree = "<group>"; };
+		EDA002AF2896B9C800A3D09F /* ExploreFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreFlowCoordinator.swift; sourceTree = "<group>"; };
+		EDA002B12896BA5000A3D09F /* OnboardingFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFlowCoordinator.swift; sourceTree = "<group>"; };
+		EDA002B42896BD2F00A3D09F /* BookingFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingFlowCoordinator.swift; sourceTree = "<group>"; };
+		EDA002B62896BD3900A3D09F /* BookingFlowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingFlowViewModel.swift; sourceTree = "<group>"; };
+		EDA002B82896BD4400A3D09F /* BookingFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingFlowView.swift; sourceTree = "<group>"; };
+		EDA002BD2896BDC200A3D09F /* ExploreMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreMapViewModel.swift; sourceTree = "<group>"; };
+		EDA002BF2896BDCD00A3D09F /* ExploreMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreMapView.swift; sourceTree = "<group>"; };
+		EDA002C12896C1FF00A3D09F /* ExploreListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreListViewModel.swift; sourceTree = "<group>"; };
+		EDA002C32896C23700A3D09F /* ExploreListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreListView.swift; sourceTree = "<group>"; };
+		EDB466AF28A6ADAC0046E9F4 /* PreviewFlowViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewFlowViewFactory.swift; sourceTree = "<group>"; };
+		EDB466B328A6AE160046E9F4 /* DefaultAppFlowViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAppFlowViewFactory.swift; sourceTree = "<group>"; };
+		EDB466B728A6F6040046E9F4 /* Extractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extractor.swift; sourceTree = "<group>"; };
+		EDB466B928A6F6470046E9F4 /* AppPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPath.swift; sourceTree = "<group>"; };
+		EDB466BB28A72CBF0046E9F4 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		EDB466C028A732280046E9F4 /* ProfileFlowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFlowViewModel.swift; sourceTree = "<group>"; };
+		EDD0EBA228A9DFBF00927445 /* FlowViewPattern.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FlowViewPattern.entitlements; sourceTree = "<group>"; };
+		EDD0EBA328A9E1F200927445 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		EDD6F3F828A055AF00E2ED71 /* ExploreNewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreNewsView.swift; sourceTree = "<group>"; };
+		EDD6F3FB28A055E300E2ED71 /* MapAndListFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAndListFlowView.swift; sourceTree = "<group>"; };
+		EDD6F3FD28A0561F00E2ED71 /* MapAndListFlowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAndListFlowViewModel.swift; sourceTree = "<group>"; };
+		EDD6F3FF28A0563000E2ED71 /* MapAndListFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAndListFlowCoordinator.swift; sourceTree = "<group>"; };
+		EDD6F40128A0565100E2ED71 /* MapAndListFlowViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAndListFlowViewFactory.swift; sourceTree = "<group>"; };
+		EDD6F40328A056A500E2ED71 /* ExploreFlowViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreFlowViewFactory.swift; sourceTree = "<group>"; };
+		EDEB131728A0D2710041C3E4 /* WelcomeBackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeBackViewModel.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EDA002792896906200A3D09F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		ED37FF81289FFAB2007E5110 /* Greeting */ = {
+			isa = PBXGroup;
+			children = (
+				EDEB131728A0D2710041C3E4 /* WelcomeBackViewModel.swift */,
+				ED37FF82289FFAD0007E5110 /* WelcomeBackView.swift */,
+			);
+			path = Greeting;
+			sourceTree = "<group>";
+		};
+		ED6946162896FE4A00754C3F /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				EDB466C028A732280046E9F4 /* ProfileFlowViewModel.swift */,
+				ED37FF7F289FE3D5007E5110 /* ProfileFlowView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		ED69462A2897107600754C3F /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				ED69462B289710B100754C3F /* Repositories */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		ED69462B289710B100754C3F /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				ED69462C289710BA00754C3F /* Defaults */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		ED69462C289710BA00754C3F /* Defaults */ = {
+			isa = PBXGroup;
+			children = (
+				ED69462D289710D300754C3F /* DefaultsRepository.swift */,
+				ED69462F289710ED00754C3F /* UserDefaultsDefaultsRepository.swift */,
+			);
+			path = Defaults;
+			sourceTree = "<group>";
+		};
+		ED6946352897159700754C3F /* GetStarted */ = {
+			isa = PBXGroup;
+			children = (
+				ED6946332897158500754C3F /* GetStartedViewModel.swift */,
+				ED6946312897156200754C3F /* GetStartedView.swift */,
+			);
+			path = GetStarted;
+			sourceTree = "<group>";
+		};
+		EDA002732896906200A3D09F = {
+			isa = PBXGroup;
+			children = (
+				ED69461D2896FFAF00754C3F /* README.md */,
+				EDA0027E2896906200A3D09F /* FlowViewPattern */,
+				EDA0027D2896906200A3D09F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EDA0027D2896906200A3D09F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EDA0027C2896906200A3D09F /* FlowViewPattern.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EDA0027E2896906200A3D09F /* FlowViewPattern */ = {
+			isa = PBXGroup;
+			children = (
+				EDD0EBA328A9E1F200927445 /* Info.plist */,
+				EDD0EBA228A9DFBF00927445 /* FlowViewPattern.entitlements */,
+				EDA0028E2896908B00A3D09F /* App */,
+				EDA0028F2896909400A3D09F /* Content */,
+				ED69462A2897107600754C3F /* Common */,
+				EDA0028D2896907A00A3D09F /* Resources */,
+			);
+			path = FlowViewPattern;
+			sourceTree = "<group>";
+		};
+		EDA002852896906400A3D09F /* PreviewContent */ = {
+			isa = PBXGroup;
+			children = (
+				EDA002862896906400A3D09F /* PreviewAssets.xcassets */,
+				EDA002A72896986900A3D09F /* PreviewAppDependencies.swift */,
+				EDA002AD2896B90100A3D09F /* PreviewFlowCoordinator.swift */,
+				EDB466AF28A6ADAC0046E9F4 /* PreviewFlowViewFactory.swift */,
+			);
+			path = PreviewContent;
+			sourceTree = "<group>";
+		};
+		EDA0028D2896907A00A3D09F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EDA002832896906400A3D09F /* Assets.xcassets */,
+				EDA002852896906400A3D09F /* PreviewContent */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		EDA0028E2896908B00A3D09F /* App */ = {
+			isa = PBXGroup;
+			children = (
+				EDA0027F2896906200A3D09F /* FlowViewPatternApp.swift */,
+				ED37FF7B289FD88D007E5110 /* AppDelegate.swift */,
+				EDA002A32896966A00A3D09F /* AppDependencies.swift */,
+				EDA002A52896968400A3D09F /* DefaultAppDependencies.swift */,
+				EDB466B328A6AE160046E9F4 /* DefaultAppFlowViewFactory.swift */,
+				EDB466B728A6F6040046E9F4 /* Extractor.swift */,
+				EDB466B928A6F6470046E9F4 /* AppPath.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		EDA0028F2896909400A3D09F /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				EDA002A92896B80B00A3D09F /* AppFlowCoordinator.swift */,
+				ED69462828970DEC00754C3F /* AppFlowViewFactory.swift */,
+				EDA002922896913800A3D09F /* AppFlowViewModel.swift */,
+				EDA002902896912500A3D09F /* AppFlowView.swift */,
+				EDA002952896915800A3D09F /* Main */,
+				EDA002942896914E00A3D09F /* Onboarding */,
+			);
+			path = Content;
+			sourceTree = "<group>";
+		};
+		EDA002942896914E00A3D09F /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				EDA002B12896BA5000A3D09F /* OnboardingFlowCoordinator.swift */,
+				ED6946362897388500754C3F /* OnboardingFlowViewFactory.swift */,
+				EDA0029D2896919F00A3D09F /* OnboardingFlowViewModel.swift */,
+				EDA0029B2896919300A3D09F /* OnboardingFlowView.swift */,
+				EDB466BD28A72CC40046E9F4 /* Welcome */,
+				ED6946352897159700754C3F /* GetStarted */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		EDA002952896915800A3D09F /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				EDA002AB2896B85800A3D09F /* MainFlowCoordinator.swift */,
+				ED37FF7D289FE3AC007E5110 /* MainFlowViewFactory.swift */,
+				EDA002972896917200A3D09F /* MainFlowViewModel.swift */,
+				EDA002992896917E00A3D09F /* MainFlowView.swift */,
+				EDA002962896916200A3D09F /* Explore */,
+				EDC52B642896FE0900307539 /* Activity */,
+				ED6946162896FE4A00754C3F /* Profile */,
+				EDA002B32896BD2100A3D09F /* Booking */,
+				ED37FF81289FFAB2007E5110 /* Greeting */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		EDA002962896916200A3D09F /* Explore */ = {
+			isa = PBXGroup;
+			children = (
+				EDA002AF2896B9C800A3D09F /* ExploreFlowCoordinator.swift */,
+				EDD6F40328A056A500E2ED71 /* ExploreFlowViewFactory.swift */,
+				EDA002A1289691B800A3D09F /* ExploreFlowViewModel.swift */,
+				EDA0029F289691B000A3D09F /* ExploreFlowView.swift */,
+				EDD6F3FA28A055BF00E2ED71 /* MapAndList */,
+				EDD6F3F728A0559A00E2ED71 /* News */,
+			);
+			path = Explore;
+			sourceTree = "<group>";
+		};
+		EDA002B32896BD2100A3D09F /* Booking */ = {
+			isa = PBXGroup;
+			children = (
+				EDA002B42896BD2F00A3D09F /* BookingFlowCoordinator.swift */,
+				EDA002B62896BD3900A3D09F /* BookingFlowViewModel.swift */,
+				EDA002B82896BD4400A3D09F /* BookingFlowView.swift */,
+			);
+			path = Booking;
+			sourceTree = "<group>";
+		};
+		EDA002BB2896BDA000A3D09F /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				EDA002BD2896BDC200A3D09F /* ExploreMapViewModel.swift */,
+				EDA002BF2896BDCD00A3D09F /* ExploreMapView.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		EDA002BC2896BDAA00A3D09F /* List */ = {
+			isa = PBXGroup;
+			children = (
+				EDA002C12896C1FF00A3D09F /* ExploreListViewModel.swift */,
+				EDA002C32896C23700A3D09F /* ExploreListView.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		EDB466BD28A72CC40046E9F4 /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				EDB466BB28A72CBF0046E9F4 /* WelcomeView.swift */,
+			);
+			path = Welcome;
+			sourceTree = "<group>";
+		};
+		EDC52B642896FE0900307539 /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				ED6946172896FE6200754C3F /* ActivityFlowCoordinator.swift */,
+				ED6946192896FE6C00754C3F /* ActivityFlowViewModel.swift */,
+				ED69461B2896FE7D00754C3F /* ActivityFlowView.swift */,
+			);
+			path = Activity;
+			sourceTree = "<group>";
+		};
+		EDD6F3F728A0559A00E2ED71 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				EDD6F3F828A055AF00E2ED71 /* ExploreNewsView.swift */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
+		EDD6F3FA28A055BF00E2ED71 /* MapAndList */ = {
+			isa = PBXGroup;
+			children = (
+				EDD6F3FF28A0563000E2ED71 /* MapAndListFlowCoordinator.swift */,
+				EDD6F40128A0565100E2ED71 /* MapAndListFlowViewFactory.swift */,
+				EDD6F3FD28A0561F00E2ED71 /* MapAndListFlowViewModel.swift */,
+				EDD6F3FB28A055E300E2ED71 /* MapAndListFlowView.swift */,
+				EDA002BB2896BDA000A3D09F /* Map */,
+				EDA002BC2896BDAA00A3D09F /* List */,
+			);
+			path = MapAndList;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EDA0027B2896906200A3D09F /* FlowViewPattern */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EDA0028A2896906400A3D09F /* Build configuration list for PBXNativeTarget "FlowViewPattern" */;
+			buildPhases = (
+				EDA002782896906200A3D09F /* Sources */,
+				EDA002792896906200A3D09F /* Frameworks */,
+				EDA0027A2896906200A3D09F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FlowViewPattern;
+			productName = FlowViewPattern;
+			productReference = EDA0027C2896906200A3D09F /* FlowViewPattern.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EDA002742896906200A3D09F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1330;
+				LastUpgradeCheck = 1330;
+				TargetAttributes = {
+					EDA0027B2896906200A3D09F = {
+						CreatedOnToolsVersion = 13.3.1;
+					};
+				};
+			};
+			buildConfigurationList = EDA002772896906200A3D09F /* Build configuration list for PBXProject "FlowViewPattern" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EDA002732896906200A3D09F;
+			productRefGroup = EDA0027D2896906200A3D09F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EDA0027B2896906200A3D09F /* FlowViewPattern */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EDA0027A2896906200A3D09F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDA002872896906400A3D09F /* PreviewAssets.xcassets in Resources */,
+				EDA002842896906400A3D09F /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EDA002782896906200A3D09F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDB466B828A6F6040046E9F4 /* Extractor.swift in Sources */,
+				EDA002B72896BD3900A3D09F /* BookingFlowViewModel.swift in Sources */,
+				EDA002C02896BDCD00A3D09F /* ExploreMapView.swift in Sources */,
+				EDA002912896912500A3D09F /* AppFlowView.swift in Sources */,
+				ED6946342897158500754C3F /* GetStartedViewModel.swift in Sources */,
+				EDA002AA2896B80B00A3D09F /* AppFlowCoordinator.swift in Sources */,
+				EDA002B52896BD2F00A3D09F /* BookingFlowCoordinator.swift in Sources */,
+				ED694630289710ED00754C3F /* UserDefaultsDefaultsRepository.swift in Sources */,
+				EDB466B428A6AE160046E9F4 /* DefaultAppFlowViewFactory.swift in Sources */,
+				EDA002B02896B9C800A3D09F /* ExploreFlowCoordinator.swift in Sources */,
+				EDA002932896913800A3D09F /* AppFlowViewModel.swift in Sources */,
+				EDA002A0289691B000A3D09F /* ExploreFlowView.swift in Sources */,
+				EDA0029E2896919F00A3D09F /* OnboardingFlowViewModel.swift in Sources */,
+				EDA002A2289691B800A3D09F /* ExploreFlowViewModel.swift in Sources */,
+				EDB466C128A732280046E9F4 /* ProfileFlowViewModel.swift in Sources */,
+				EDA002B22896BA5000A3D09F /* OnboardingFlowCoordinator.swift in Sources */,
+				ED69462928970DEC00754C3F /* AppFlowViewFactory.swift in Sources */,
+				EDA002A82896986900A3D09F /* PreviewAppDependencies.swift in Sources */,
+				EDA002802896906200A3D09F /* FlowViewPatternApp.swift in Sources */,
+				ED69461C2896FE7D00754C3F /* ActivityFlowView.swift in Sources */,
+				EDD6F40028A0563000E2ED71 /* MapAndListFlowCoordinator.swift in Sources */,
+				EDB466B028A6ADAC0046E9F4 /* PreviewFlowViewFactory.swift in Sources */,
+				EDA002B92896BD4400A3D09F /* BookingFlowView.swift in Sources */,
+				EDA002C42896C23700A3D09F /* ExploreListView.swift in Sources */,
+				EDA0029C2896919300A3D09F /* OnboardingFlowView.swift in Sources */,
+				ED37FF80289FE3D5007E5110 /* ProfileFlowView.swift in Sources */,
+				EDA002BE2896BDC200A3D09F /* ExploreMapViewModel.swift in Sources */,
+				ED6946372897388500754C3F /* OnboardingFlowViewFactory.swift in Sources */,
+				EDD6F3FC28A055E300E2ED71 /* MapAndListFlowView.swift in Sources */,
+				EDD6F3F928A055AF00E2ED71 /* ExploreNewsView.swift in Sources */,
+				ED6946322897156200754C3F /* GetStartedView.swift in Sources */,
+				EDD6F40428A056A500E2ED71 /* ExploreFlowViewFactory.swift in Sources */,
+				ED69461A2896FE6C00754C3F /* ActivityFlowViewModel.swift in Sources */,
+				ED37FF83289FFAD0007E5110 /* WelcomeBackView.swift in Sources */,
+				EDEB131828A0D2710041C3E4 /* WelcomeBackViewModel.swift in Sources */,
+				EDA002AE2896B90100A3D09F /* PreviewFlowCoordinator.swift in Sources */,
+				ED6946182896FE6200754C3F /* ActivityFlowCoordinator.swift in Sources */,
+				EDA002A62896968400A3D09F /* DefaultAppDependencies.swift in Sources */,
+				ED69462E289710D300754C3F /* DefaultsRepository.swift in Sources */,
+				EDA0029A2896917E00A3D09F /* MainFlowView.swift in Sources */,
+				EDB466BA28A6F6470046E9F4 /* AppPath.swift in Sources */,
+				EDD6F40228A0565100E2ED71 /* MapAndListFlowViewFactory.swift in Sources */,
+				EDD6F3FE28A0561F00E2ED71 /* MapAndListFlowViewModel.swift in Sources */,
+				EDA002AC2896B85800A3D09F /* MainFlowCoordinator.swift in Sources */,
+				EDA002C22896C1FF00A3D09F /* ExploreListViewModel.swift in Sources */,
+				EDB466BC28A72CBF0046E9F4 /* WelcomeView.swift in Sources */,
+				EDA002A42896966A00A3D09F /* AppDependencies.swift in Sources */,
+				ED37FF7C289FD88D007E5110 /* AppDelegate.swift in Sources */,
+				EDA002982896917200A3D09F /* MainFlowViewModel.swift in Sources */,
+				ED37FF7E289FE3AC007E5110 /* MainFlowViewFactory.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		EDA002882896906400A3D09F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EDA002892896906400A3D09F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EDA0028B2896906400A3D09F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FlowViewPattern/FlowViewPattern.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"FlowViewPattern/Resources/PreviewContent\"";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FlowViewPattern/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ios.example.FlowViewPattern;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EDA0028C2896906400A3D09F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FlowViewPattern/FlowViewPattern.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"FlowViewPattern/Resources/PreviewContent\"";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FlowViewPattern/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ios.example.FlowViewPattern;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EDA002772896906200A3D09F /* Build configuration list for PBXProject "FlowViewPattern" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDA002882896906400A3D09F /* Debug */,
+				EDA002892896906400A3D09F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EDA0028A2896906400A3D09F /* Build configuration list for PBXNativeTarget "FlowViewPattern" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDA0028B2896906400A3D09F /* Debug */,
+				EDA0028C2896906400A3D09F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EDA002742896906200A3D09F /* Project object */;
+}
