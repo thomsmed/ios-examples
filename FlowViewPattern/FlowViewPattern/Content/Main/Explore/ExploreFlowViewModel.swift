@@ -20,7 +20,7 @@ final class ExploreFlowViewModel: ObservableObject {
 
     func go(to path: AppPath.Main.Explore) {
         switch path {
-        case let .store(subPath):
+        case .store:
             pageStack.removeAll()
         case .news:
             pageStack.append(.news)

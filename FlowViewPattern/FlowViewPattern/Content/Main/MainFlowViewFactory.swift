@@ -11,7 +11,7 @@ protocol MainFlowViewFactory: AnyObject {
     func makeExploreFlowView(with flowCoordinator: MainFlowCoordinator) -> ExploreFlowView
     func makeActivityFlowView() -> ActivityFlowView
     func makeProfileFlowView() -> ProfileFlowView
-    func makeBookingFlowView() -> BookingFlowView
+    func makeBookingFlowView(startingAt path: AppPath.Main.Booking?) -> BookingFlowView
     func makeWelcomeBackView(with flowCoordinator: MainFlowCoordinator) -> WelcomeBackView
 }
 
@@ -33,7 +33,7 @@ extension DefaultAppFlowViewFactory: MainFlowViewFactory {
         ProfileFlowView(flowViewModel: .init())
     }
 
-    func makeBookingFlowView() -> BookingFlowView {
+    func makeBookingFlowView(startingAt path: AppPath.Main.Booking?) -> BookingFlowView {
         BookingFlowView()
     }
 

@@ -11,7 +11,7 @@ protocol AppFlowViewFactory {
     func makeOnboardingFlowView(with flowCoordinator: AppFlowCoordinator) -> OnboardingFlowView
     func makeMainFlowView(
         with flowCoordinator: AppFlowCoordinator,
-        startingAt initialPath: AppPath.Main?
+        startingAt path: AppPath.Main?
     ) -> MainFlowView
 }
 
@@ -27,13 +27,13 @@ extension DefaultAppFlowViewFactory: AppFlowViewFactory {
 
     func makeMainFlowView(
         with flowCoordinator: AppFlowCoordinator,
-        startingAt initialPath: AppPath.Main?
+        startingAt path: AppPath.Main?
     ) -> MainFlowView {
         MainFlowView(
             flowViewModel: .init(
                 flowCoordinator: flowCoordinator,
                 appDependencies: self.appDependencies,
-                initialPath: initialPath
+                initialPath: path
             ),
             flowViewFactory: self
         )

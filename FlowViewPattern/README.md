@@ -11,6 +11,10 @@ The basic idea:
 
 ## Tips
 
+## Handling Universal Links and URLs with custom URL scheme
+
+The `onOpenURL` is used to catch both Universal Links and URLs with custom URL scheme. You should use the `onOpenURL` View modifier on all the views you want to possible change when receiving a URL. The closure provided to `onOpenURL` is called on every View currently in the visible View hierarchy. This closure is also called if your app is launched as a response to handle an URL.
+
 ### Avoid custom explicit View struct initialisers
 
 [Link to StackOverflow post about the topic](https://stackoverflow.com/questions/73271168/a-swiftui-views-default-memberwise-initializer-vs-custom-initializer)

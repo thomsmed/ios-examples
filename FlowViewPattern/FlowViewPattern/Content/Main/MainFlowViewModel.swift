@@ -35,7 +35,7 @@ final class MainFlowViewModel: ObservableObject {
         case let .booking(subPath, storeId):
             selectedTab = .explore
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
-                self?.presentedSheet = .booking
+                self?.presentedSheet = .booking(subPath)
                 self?.toggleSheet.toggle()
             }
         default:
@@ -61,7 +61,7 @@ final class MainFlowViewModel: ObservableObject {
             selectedTab = .profile
         case let .booking(subPath, storeId):
             selectedTab = .explore
-            presentedSheet = .booking
+            presentedSheet = .booking(subPath)
             toggleSheet.toggle()
         }
     }
@@ -70,7 +70,7 @@ final class MainFlowViewModel: ObservableObject {
 extension MainFlowViewModel: MainFlowCoordinator {
 
     func presentBooking() {
-        presentedSheet = .booking
+        presentedSheet = .booking()
         toggleSheet.toggle()
     }
 }

@@ -50,8 +50,10 @@ struct MainFlowView: View {
             switch flowViewModel.presentedSheet {
             case .none:
                 EmptyView()
-            case .booking:
-                flowViewFactory.makeBookingFlowView()
+            case let .booking(subPath):
+                flowViewFactory.makeBookingFlowView(
+                    startingAt: subPath
+                )
             case .greeting:
                 flowViewFactory.makeWelcomeBackView(
                     with: flowViewModel
@@ -99,7 +101,7 @@ extension MainFlowView {
 
     enum Sheet {
         case none
-        case booking
+        case booking(AppPath.Main.Booking? = nil)
         case greeting
     }
 }
