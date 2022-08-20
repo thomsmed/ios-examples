@@ -74,19 +74,25 @@ final class TableHeaderView: UIView {
         }
     }
 
-    var expanded: Bool {
-        expandedConstraints.first?.isActive ?? false
-    }
+    var expanded: Bool = false {
+        didSet {
+            (superview as? UITableView)?.beginUpdates()
 
-    override func layoutSubviews() {
-        super.layoutSubviews()
+            // An educated guess about the duration of UITableView's own update animation duration.
+            UIView.animate(withDuration: 0.3) {
+                if self.expanded {
+                    NSLayoutConstraint.deactivate(self.collapsedConstraints)
+                    NSLayoutConstraint.activate(self.expandedConstraints)
+                } else {
+                    NSLayoutConstraint.deactivate(self.expandedConstraints)
+                    NSLayoutConstraint.activate(self.collapsedConstraints)
+                }
 
-        // TODO: Explain this essential trick
-        frame.size = systemLayoutSizeFitting(
-            .init(width: frame.size.width, height: 0),
-            withHorizontalFittingPriority: .required,
-            verticalFittingPriority: .fittingSizeLevel
-        )
+                self.layoutIfNeeded() // TODO: Notify UITableView instead, that way it can make sure footer follows etc...
+            }
+
+            (superview as? UITableView)?.endUpdates()
+        }
     }
 
     override init(frame: CGRect) {
@@ -98,6 +104,16 @@ final class TableHeaderView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
+    override func layoutSubviews() {
+
+        // TODO: Explain this essential trick
+        frame.size = systemLayoutSizeFitting(
+            .init(width: frame.size.width, height: 0),
+            withHorizontalFittingPriority: .required,
+            verticalFittingPriority: .fittingSizeLevel
+        )
+    }
+
     private func placeContent(in view: UIView) {
         view.addSubview(imageView)
         view.addSubview(nameLabel)
@@ -106,45 +122,5 @@ final class TableHeaderView: UIView {
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate(collapsedConstraints)
-    }
-}
-
-extension TableHeaderView {
-    func expand(animated: Bool = true) {
-        (superview as? UITableView)?.beginUpdates()
-
-        if animated {
-            // TODO: Explain the animation duration
-            UIView.animate(withDuration: 0.3) {
-                NSLayoutConstraint.deactivate(self.collapsedConstraints)
-                NSLayoutConstraint.activate(self.expandedConstraints)
-
-                self.layoutIfNeeded()
-            }
-        } else {
-            NSLayoutConstraint.deactivate(self.collapsedConstraints)
-            NSLayoutConstraint.activate(self.expandedConstraints)
-        }
-
-        (superview as? UITableView)?.endUpdates()
-    }
-
-    func collapse(animated: Bool = true) {
-        (superview as? UITableView)?.beginUpdates()
-
-        if animated {
-            // TODO: Explain the animation duration
-            UIView.animate(withDuration: 0.3) {
-                NSLayoutConstraint.deactivate(self.expandedConstraints)
-                NSLayoutConstraint.activate(self.collapsedConstraints)
-
-                self.layoutIfNeeded()
-            }
-        } else {
-            NSLayoutConstraint.deactivate(self.expandedConstraints)
-            NSLayoutConstraint.activate(self.collapsedConstraints)
-        }
-
-        (superview as? UITableView)?.endUpdates()
     }
 }
