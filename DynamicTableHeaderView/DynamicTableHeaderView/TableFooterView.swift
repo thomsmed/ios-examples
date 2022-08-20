@@ -7,6 +7,8 @@
 
 import UIKit
 
+// MARK: FilmCollectionViewCell
+
 final class FilmCollectionViewCell: UICollectionViewCell {
 
     let imageView: UIImageView = {
@@ -37,6 +39,8 @@ final class FilmCollectionViewCell: UICollectionViewCell {
         ])
     }
 }
+
+// MARK: TableFooterView
 
 final class TableFooterView: UIView {
 
@@ -169,8 +173,6 @@ final class TableFooterView: UIView {
         }
     }
 
-    private var diffableDataSource: UICollectionViewDiffableDataSource<Int, Int>?
-
     override init(frame: CGRect) {
         super.init(frame: frame)
         placeContent(in: self)
@@ -195,7 +197,10 @@ final class TableFooterView: UIView {
         // The UITableView ignores the view frame's width.
         // Documentation: https://developer.apple.com/documentation/uikit/uitableview/1614976-tablefooterview
         frame.size = systemLayoutSizeFitting(
-            .init(width: frame.size.width, height: 0),
+            .init(
+                width: frame.size.width,
+                height: 0
+            ),
             withHorizontalFittingPriority: .required,
             verticalFittingPriority: .fittingSizeLevel
         )
@@ -224,7 +229,9 @@ extension TableFooterView: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! FilmCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: "cell", for: indexPath
+        ) as! FilmCollectionViewCell
 
         let model = models[indexPath.row]
 

@@ -109,7 +109,10 @@ final class TableHeaderView: UIView {
         // The UITableView ignores the view frame's width.
         // Documentation: https://developer.apple.com/documentation/uikit/uitableview/1614904-tableheaderview
         frame.size = systemLayoutSizeFitting(
-            .init(width: frame.size.width, height: 0),
+            .init(
+                width: frame.size.width,
+                height: 0
+            ),
             withHorizontalFittingPriority: .required,
             verticalFittingPriority: .fittingSizeLevel
         )
