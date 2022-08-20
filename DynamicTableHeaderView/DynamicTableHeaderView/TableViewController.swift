@@ -72,32 +72,27 @@ final class TableViewController: UITableViewController {
     }
 
     @objc private func toggleExpandedHeaderView() {
-        tableView.beginUpdates()
+        tableView.performBatchUpdates {
 
-        // 0.3 is an educated guess about the duration of UITableView's own update animation duration.
-        UIView.animate(withDuration: 0.3) {
-            self.headerView.expanded = !self.headerView.expanded
-            self.tableView.layoutIfNeeded()
+            // 0.3 is an educated guess about the duration of UITableView's own update animation duration.
+            UIView.animate(withDuration: 0.3) {
+                self.headerView.expanded = !self.headerView.expanded
+                self.tableView.layoutIfNeeded()
+            }
         }
-
-        tableView.endUpdates()
     }
 
     @objc private func toggleExpandedFooterView() {
-        tableView.beginUpdates()
+        tableView.performBatchUpdates({
 
-        // 0.3 is an educated guess about the duration of UITableView's own update animation duration.
-        UIView.animate(
-            withDuration: 0.3,
-            animations: {
+            // 0.3 is an educated guess about the duration of UITableView's own update animation duration.
+            UIView.animate(withDuration: 0.3) {
                 self.footerView.expanded = !self.footerView.expanded
                 self.tableView.layoutIfNeeded()
             }
-        ) { _ in
+        }) { _ in
             self.tableView.scrollRectToVisible(self.footerView.frame, animated: true)
         }
-
-        tableView.endUpdates()
     }
 }
 
