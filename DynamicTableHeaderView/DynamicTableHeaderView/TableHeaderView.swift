@@ -101,6 +101,7 @@ final class TableHeaderView: UIView {
     }
 
     override func layoutSubviews() {
+        super.layoutSubviews()
 
         // Manually set the view's frame based on layout constraints.
         // The parent UITableView uses the header view's frame height when laying out it's subviews.

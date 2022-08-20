@@ -187,6 +187,7 @@ final class TableFooterView: UIView {
     }
 
     override func layoutSubviews() {
+        super.layoutSubviews()
 
         // Manually set the view's frame based on layout constraints.
         // The parent UITableView uses the footer view's frame height when laying out it's subviews.
