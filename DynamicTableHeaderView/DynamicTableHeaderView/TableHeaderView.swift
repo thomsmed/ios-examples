@@ -76,22 +76,13 @@ final class TableHeaderView: UIView {
 
     var expanded: Bool = false {
         didSet {
-            (superview as? UITableView)?.beginUpdates()
-
-            // An educated guess about the duration of UITableView's own update animation duration.
-            UIView.animate(withDuration: 0.3) {
-                if self.expanded {
-                    NSLayoutConstraint.deactivate(self.collapsedConstraints)
-                    NSLayoutConstraint.activate(self.expandedConstraints)
-                } else {
-                    NSLayoutConstraint.deactivate(self.expandedConstraints)
-                    NSLayoutConstraint.activate(self.collapsedConstraints)
-                }
-
-                self.layoutIfNeeded() // TODO: Notify UITableView instead, that way it can make sure footer follows etc...
+            if expanded {
+                NSLayoutConstraint.deactivate(collapsedConstraints)
+                NSLayoutConstraint.activate(expandedConstraints)
+            } else {
+                NSLayoutConstraint.deactivate(expandedConstraints)
+                NSLayoutConstraint.activate(collapsedConstraints)
             }
-
-            (superview as? UITableView)?.endUpdates()
         }
     }
 

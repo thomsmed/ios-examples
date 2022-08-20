@@ -7,38 +7,38 @@
 
 import UIKit
 
-final class TableFooterView: UIView {
+final class FilmCollectionViewCell: UICollectionViewCell {
 
-    final class FilmCollectionViewCell: UICollectionViewCell {
+    let imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
 
-        let imageView: UIImageView = {
-            let imageView = UIImageView()
-            imageView.contentMode = .scaleAspectFit
-            return imageView
-        }()
-
-        override init(frame: CGRect) {
-            super.init(frame: frame)
-            placeContent(in: contentView)
-        }
-
-        required init?(coder: NSCoder) {
-            fatalError("init(coder:) has not been implemented")
-        }
-
-        private func placeContent(in view: UIView) {
-            view.addSubview(imageView)
-
-            imageView.translatesAutoresizingMaskIntoConstraints = false
-
-            NSLayoutConstraint.activate([
-                imageView.topAnchor.constraint(equalTo: view.topAnchor),
-                imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-                imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-            ])
-        }
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        placeContent(in: contentView)
     }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    private func placeContent(in view: UIView) {
+        view.addSubview(imageView)
+
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            imageView.topAnchor.constraint(equalTo: view.topAnchor),
+            imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+    }
+}
+
+final class TableFooterView: UIView {
 
     private static let collectionViewHeight: CGFloat = 200
 
@@ -54,7 +54,7 @@ final class TableFooterView: UIView {
         return label
     }()
 
-    private let expandButton: UIButton = {
+    let expandButton: UIButton = {
         let button = UIButton(type: .system)
         button.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         button.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
@@ -157,29 +157,15 @@ final class TableFooterView: UIView {
 
     var expanded: Bool = false {
         didSet {
-            (superview as? UITableView)?.beginUpdates()
-
-            // An educated guess about the duration of UITableView's own update animation duration.
-            UIView.animate(
-                withDuration: 0.3, animations: {
-                    if self.expanded {
-                        NSLayoutConstraint.deactivate(self.collapsedConstraints)
-                        NSLayoutConstraint.activate(self.expandedConstraints)
-                    } else {
-                        NSLayoutConstraint.deactivate(self.expandedConstraints)
-                        NSLayoutConstraint.activate(self.collapsedConstraints)
-                    }
-
-                    self.expandButton.transform = self.expanded
-                    ? .init(rotationAngle: .pi - 0.001) // Makes sure button is rotated in the right direction
-                    : .identity
-
-                    self.layoutIfNeeded()
-                }) { _ in
-                    (self.superview as? UITableView)?.scrollRectToVisible(self.frame, animated: true)
-                }
-
-            (superview as? UITableView)?.endUpdates()
+            if expanded {
+                expandButton.transform = .init(rotationAngle: .pi - 0.001) // Makes sure button is rotated in the right direction
+                NSLayoutConstraint.deactivate(collapsedConstraints)
+                NSLayoutConstraint.activate(expandedConstraints)
+            } else {
+                expandButton.transform = .identity
+                NSLayoutConstraint.deactivate(expandedConstraints)
+                NSLayoutConstraint.activate(collapsedConstraints)
+            }
         }
     }
 
@@ -193,11 +179,7 @@ final class TableFooterView: UIView {
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.register(FilmCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
 
-        expandButton.addAction(.init { _ in
-            self.expanded = !self.expanded
-        }, for: .primaryActionTriggered)
-
-        clipsToBounds = true
+        clipsToBounds = true // Makes sure the collection view don't overflow when collapsed
     }
 
     required init?(coder: NSCoder) {
@@ -207,7 +189,6 @@ final class TableFooterView: UIView {
     override func layoutSubviews() {
 
         // TODO: Explain this essential trick
-        // TODO: Move this to superview / UITableView
         frame.size = systemLayoutSizeFitting(
             .init(width: frame.size.width, height: 0),
             withHorizontalFittingPriority: .required,

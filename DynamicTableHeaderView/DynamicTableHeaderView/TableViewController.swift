@@ -22,7 +22,6 @@ final class TableViewController: UITableViewController {
             (label: "Skin color", text: "Fair"),
             (label: "Birth year", text: "19BBY")
         ]
-
         let films: [(title: String, imageName: String)] = [
             (title: "A New Hope", imageName: "episode4"),
             (title: "The Empire Strikes Back", imageName: "episode5"),
@@ -45,39 +44,60 @@ final class TableViewController: UITableViewController {
         tableView.tableHeaderView = headerView
         tableView.tableFooterView = footerView
 
+        headerView.model = .init(name: model.name, imageName: model.imageName)
         headerView.addGestureRecognizer(
             UITapGestureRecognizer(
                 target: self,
                 action: #selector(toggleExpandedHeaderView)
             )
         )
-        headerView.model = .init(name: model.name, imageName: model.imageName)
 
-        footerView.addGestureRecognizer(
-            UITapGestureRecognizer(
-                target: self,
-                action: #selector(toggleExpandedFooterView)
-            )
-        )
         footerView.models = model.films.map { film in
             .init(
                 title: film.title,
                 imageName: film.imageName
             )
         }
+        footerView.expandButton.addTarget(
+            self,
+            action: #selector(toggleExpandedFooterView),
+            for: .primaryActionTriggered
+        )
 
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.dataSource = self
+        tableView.showsVerticalScrollIndicator = false
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
 
         tableView.layoutIfNeeded() // To make sure TableHeader- and TableFooterView's layout are updated.
     }
 
     @objc private func toggleExpandedHeaderView() {
-        headerView.expanded = !headerView.expanded
+        tableView.beginUpdates()
+
+        // 0.3 is an educated guess about the duration of UITableView's own update animation duration.
+        UIView.animate(withDuration: 0.3) {
+            self.headerView.expanded = !self.headerView.expanded
+            self.tableView.layoutIfNeeded()
+        }
+
+        tableView.endUpdates()
     }
 
     @objc private func toggleExpandedFooterView() {
-        footerView.expanded = !footerView.expanded
+        tableView.beginUpdates()
+
+        // 0.3 is an educated guess about the duration of UITableView's own update animation duration.
+        UIView.animate(
+            withDuration: 0.3,
+            animations: {
+                self.footerView.expanded = !self.footerView.expanded
+                self.tableView.layoutIfNeeded()
+            }
+        ) { _ in
+            self.tableView.scrollRectToVisible(self.footerView.frame, animated: true)
+        }
+
+        tableView.endUpdates()
     }
 }
 
@@ -88,7 +108,7 @@ extension TableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
-
+    
         let fact = model.facts[indexPath.row]
 
         var configuration = cell.defaultContentConfiguration()
