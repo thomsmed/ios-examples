@@ -74,10 +74,18 @@ final class TableViewController: UITableViewController {
     @objc private func toggleExpandedHeaderView() {
         tableView.performBatchUpdates {
 
+            let oldHeaderHeight = headerView.frame.height
+
             // 0.3 is an educated guess about the duration of UITableView's own update animation duration.
             UIView.animate(withDuration: 0.3) {
                 self.headerView.expanded = !self.headerView.expanded
+
                 self.tableView.layoutIfNeeded()
+
+                let newHeaderHeight = self.headerView.frame.height
+
+                // Animate the footer's center along the header's size change.
+                self.footerView.center.y += newHeaderHeight - oldHeaderHeight
             }
         }
     }
@@ -88,6 +96,7 @@ final class TableViewController: UITableViewController {
             // 0.3 is an educated guess about the duration of UITableView's own update animation duration.
             UIView.animate(withDuration: 0.3) {
                 self.footerView.expanded = !self.footerView.expanded
+
                 self.tableView.layoutIfNeeded()
             }
         }) { _ in

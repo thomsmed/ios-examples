@@ -9,6 +9,8 @@ import UIKit
 
 final class TableHeaderView: UIView {
 
+    private static let defaultImageSize: CGFloat = 100
+
     struct Model {
         let name: String
         let imageName: String
@@ -17,6 +19,7 @@ final class TableHeaderView: UIView {
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
         return imageView
     }()
 
@@ -35,7 +38,7 @@ final class TableHeaderView: UIView {
         return [
             imageView.topAnchor.constraint(equalTo: topAnchor, constant: 16),
             imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            imageView.heightAnchor.constraint(equalToConstant: 100),
+            imageView.heightAnchor.constraint(equalToConstant: Self.defaultImageSize),
             imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor),
 
             nameLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 16),
@@ -77,9 +80,11 @@ final class TableHeaderView: UIView {
     var expanded: Bool = false {
         didSet {
             if expanded {
+                imageView.layer.cornerRadius = 0
                 NSLayoutConstraint.deactivate(collapsedConstraints)
                 NSLayoutConstraint.activate(expandedConstraints)
             } else {
+                imageView.layer.cornerRadius = Self.defaultImageSize / 2
                 NSLayoutConstraint.deactivate(expandedConstraints)
                 NSLayoutConstraint.activate(collapsedConstraints)
             }
@@ -97,7 +102,11 @@ final class TableHeaderView: UIView {
 
     override func layoutSubviews() {
 
-        // TODO: Explain this essential trick
+        // Manually set the view's frame based on layout constraints.
+        // The parent UITableView uses the header view's frame height when laying out it's subviews.
+        // Only the header view's height is respected.
+        // The UITableView ignores the view frame's width.
+        // Documentation: https://developer.apple.com/documentation/uikit/uitableview/1614904-tableheaderview
         frame.size = systemLayoutSizeFitting(
             .init(width: frame.size.width, height: 0),
             withHorizontalFittingPriority: .required,
@@ -111,6 +120,8 @@ final class TableHeaderView: UIView {
 
         imageView.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
+
+        imageView.layer.cornerRadius = Self.defaultImageSize / 2
 
         NSLayoutConstraint.activate(collapsedConstraints)
     }

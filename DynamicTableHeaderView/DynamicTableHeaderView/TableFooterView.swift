@@ -188,7 +188,11 @@ final class TableFooterView: UIView {
 
     override func layoutSubviews() {
 
-        // TODO: Explain this essential trick
+        // Manually set the view's frame based on layout constraints.
+        // The parent UITableView uses the footer view's frame height when laying out it's subviews.
+        // Only the footer view's height is respected.
+        // The UITableView ignores the view frame's width.
+        // Documentation: https://developer.apple.com/documentation/uikit/uitableview/1614976-tablefooterview
         frame.size = systemLayoutSizeFitting(
             .init(width: frame.size.width, height: 0),
             withHorizontalFittingPriority: .required,
