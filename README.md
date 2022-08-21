@@ -15,3 +15,4 @@
 - [Expandable dynamic sized Table View Cell](ExpandableTableViewCell)
 - [Custom Container View Controller (improved)](ImprovedContainerViewController)
 - [Flow View Pattern (SwiftUI)](FlowViewPattern)
+- [Dynamic sized Table Header View and Table Footer View](DynamicTableHeaderView)
