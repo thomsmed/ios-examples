@@ -9,7 +9,7 @@
 set -euo pipefail
 
 # Ensure protoc and plugins ("protoc-gen-swift" and "protoc-gen-grpc-swift") is present
-if ! command -v protoc /dev/null
+if ! command -v protoc &> /dev/null
 then
     echo 'protoc is not installed on the system'
     echo 'It can be installed using Homebrew: brew install protobuf'
@@ -17,14 +17,14 @@ then
     exit 1
 fi
 
-if ! command -v protoc-gen-swift /dev/null
+if ! command -v protoc-gen-swift &> /dev/null
 then
     echo 'protoc-gen-swift is not installed on the system'
     echo 'It can be installed using Homebrew: brew install swift-protobuf'
     exit 1
 fi
 
-if ! command -v protoc-gen-grpc-swift /dev/null
+if ! command -v protoc-gen-grpc-swift &> /dev/null
 then
     echo 'protoc-gen-grpc-swift is not installed on the system'
     echo 'It can be installed using Homebrew: brew install grpc-swift'
