@@ -54,14 +54,14 @@ final class TableHeaderView: UIView {
 
     private lazy var expandedConstraints: [NSLayoutConstraint] = {
         let imageViewHeightConstraint = imageView.heightAnchor.constraint(
-            equalToConstant: Self.defaultImageSize * 4
+            equalToConstant: Self.defaultImageSize * 3
         )
         imageViewHeightConstraint.priority = .required - 1 // To avoid conflicts during initial layout calculations
 
         return [
             imageView.topAnchor.constraint(equalTo: topAnchor),
             imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            imageView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            imageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
             imageViewHeightConstraint,
             imageView.heightAnchor.constraint(lessThanOrEqualTo: widthAnchor),
             imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor),
@@ -82,7 +82,7 @@ final class TableHeaderView: UIView {
     var expanded: Bool = false {
         didSet {
             if expanded {
-                imageView.layer.cornerRadius = 0
+                imageView.layer.cornerRadius = Self.defaultImageSize / 8
                 NSLayoutConstraint.deactivate(collapsedConstraints)
                 NSLayoutConstraint.activate(expandedConstraints)
             } else {
