@@ -31,14 +31,19 @@ final class TableHeaderView: UIView {
     }()
 
     private lazy var collapsedConstraints: [NSLayoutConstraint] = {
+        let imageViewHeightConstraint = imageView.heightAnchor.constraint(
+            equalToConstant: Self.defaultImageSize
+        )
+        imageViewHeightConstraint.priority = .required - 1 // To avoid conflicts during initial layout calculations
         let nameLabelBottomConstraint = nameLabel.bottomAnchor.constraint(
             equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -16
         )
         nameLabelBottomConstraint.priority = .required - 1 // To avoid conflicts during initial layout calculations
+
         return [
             imageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
             imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            imageView.heightAnchor.constraint(equalToConstant: Self.defaultImageSize),
+            imageViewHeightConstraint,
             imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor),
 
             nameLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 16),
@@ -48,24 +53,21 @@ final class TableHeaderView: UIView {
     }()
 
     private lazy var expandedConstraints: [NSLayoutConstraint] = {
-        let imageViewTrailingConstraint = imageView.trailingAnchor.constraint(
-            equalTo: trailingAnchor
+        let imageViewHeightConstraint = imageView.heightAnchor.constraint(
+            equalToConstant: Self.defaultImageSize * 4
         )
-        imageViewTrailingConstraint.priority = .required - 1 // To avoid conflicts during initial layout calculations
-        let nameLabelTrailingConstraint = nameLabel.trailingAnchor.constraint(
-            lessThanOrEqualTo: trailingAnchor, constant: -16
-        )
-        nameLabelTrailingConstraint.priority = .required - 1 // To avoid conflicts during initial layout calculations
+        imageViewHeightConstraint.priority = .required - 1 // To avoid conflicts during initial layout calculations
 
         return [
             imageView.topAnchor.constraint(equalTo: topAnchor),
-            imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            imageViewTrailingConstraint,
+            imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
             imageView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor),
+            imageViewHeightConstraint,
+            imageView.heightAnchor.constraint(lessThanOrEqualTo: widthAnchor),
+            imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor),
 
-            nameLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            nameLabelTrailingConstraint,
+            nameLabel.leadingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: 16),
+            nameLabel.trailingAnchor.constraint(lessThanOrEqualTo: imageView.trailingAnchor, constant: -16),
             nameLabel.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -16)
         ]
     }()
