@@ -32,11 +32,11 @@ final class TableHeaderView: UIView {
 
     private lazy var collapsedConstraints: [NSLayoutConstraint] = {
         let nameLabelBottomConstraint = nameLabel.bottomAnchor.constraint(
-            equalTo: bottomAnchor, constant: -16
+            equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -16
         )
         nameLabelBottomConstraint.priority = .required - 1 // To avoid conflicts during initial layout calculations
         return [
-            imageView.topAnchor.constraint(equalTo: topAnchor, constant: 16),
+            imageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
             imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
             imageView.heightAnchor.constraint(equalToConstant: Self.defaultImageSize),
             imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor),
@@ -64,9 +64,9 @@ final class TableHeaderView: UIView {
             imageView.bottomAnchor.constraint(equalTo: bottomAnchor),
             imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor),
 
-            nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            nameLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
             nameLabelTrailingConstraint,
-            nameLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16)
+            nameLabel.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -16)
         ]
     }()
 

@@ -102,17 +102,17 @@ final class TableFooterView: UIView {
 
     private lazy var collapsedConstraints: [NSLayoutConstraint] = {
         let expandButtonTrailingConstraint = expandButton.trailingAnchor.constraint(
-            equalTo: trailingAnchor, constant: -16
+            equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16
         )
         expandButtonTrailingConstraint.priority = .required - 1
         let textLabelBottomConstraint = textLabel.bottomAnchor.constraint(
-            equalTo: bottomAnchor, constant: -8
+            equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -8
         )
         textLabelBottomConstraint.priority = .required - 1
 
         return [
             textLabel.topAnchor.constraint(equalTo: topAnchor, constant: 8),
-            textLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            textLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
             textLabelBottomConstraint,
 
             expandButton.centerYAnchor.constraint(equalTo: textLabel.centerYAnchor),
@@ -128,17 +128,17 @@ final class TableFooterView: UIView {
 
     private lazy var expandedConstraints: [NSLayoutConstraint] = {
         let expandButtonTrailingConstraint = expandButton.trailingAnchor.constraint(
-            equalTo: trailingAnchor, constant: -16
+            equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16
         )
         expandButtonTrailingConstraint.priority = .required - 1
         let collectionViewBottomConstraint = collectionView.bottomAnchor.constraint(
-            equalTo: bottomAnchor, constant: -8
+            equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -8
         )
         collectionViewBottomConstraint.priority = .required - 1
 
         return [
             textLabel.topAnchor.constraint(equalTo: topAnchor, constant: 8),
-            textLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            textLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
 
             expandButton.centerYAnchor.constraint(equalTo: textLabel.centerYAnchor),
             expandButton.leadingAnchor.constraint(equalTo: textLabel.trailingAnchor, constant: 8),
