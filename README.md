@@ -17,6 +17,7 @@ A collection of iOS examples.
 - [Expandable dynamic sized Table View Cell](ExpandableTableViewCell)
 - [Custom Container View Controller (improved)](ImprovedContainerViewController)
 - [Flow View Pattern (SwiftUI)](FlowViewPattern)
+- [Dynamic sized Table Header View and Table Footer View](DynamicTableHeaderView)
 
 These examples are created as a way to learn. Feel free to use them as you please.
 Feedback are also welcome.
