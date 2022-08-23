@@ -65,14 +65,13 @@ extension DetailsTableViewController {
 
         let expand = !(expandedCells[indexPath] ?? false)
 
-        tableView.beginUpdates()
+        tableView.performBatchUpdates {
 
-        // 0.3 is an educated guess about the duration of UITableView's own update animation duration.
-        UIView.animate(withDuration: 0.3) {
-            cell.expanded = expand
+            // 0.3 is an educated guess about the duration of UITableView's own update animation duration.
+            UIView.animate(withDuration: 0.3) {
+                cell.expanded = expand
+            }
         }
-
-        tableView.endUpdates()
 
         expandedCells[indexPath] = expand
     }
