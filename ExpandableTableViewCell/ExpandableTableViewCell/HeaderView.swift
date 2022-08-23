@@ -59,25 +59,24 @@ final class HeaderView: UIView {
 
             guard let tableView = self.superview as? UITableView else { return }
 
-            tableView.beginUpdates()
+            tableView.performBatchUpdates {
 
-            // 0.3 is an educated guess about the duration of UITableView's own update animation duration.
-            UIView.animate(withDuration: 0.3) {
-                self.expanded = !self.expanded
+                // 0.3 is an educated guess about the duration of UITableView's own update animation duration.
+                UIView.animate(withDuration: 0.3) {
+                    self.expanded = !self.expanded
 
-                self.frame.size = self.systemLayoutSizeFitting(
-                    .init(
-                        width: tableView.frameLayoutGuide.layoutFrame.width,
-                        height: 0
-                    ),
-                    withHorizontalFittingPriority: .required,
-                    verticalFittingPriority: .fittingSizeLevel
-                )
+                    self.frame.size = self.systemLayoutSizeFitting(
+                        .init(
+                            width: tableView.frameLayoutGuide.layoutFrame.width,
+                            height: 0
+                        ),
+                        withHorizontalFittingPriority: .required,
+                        verticalFittingPriority: .fittingSizeLevel
+                    )
 
-                self.layoutIfNeeded()
+                    self.layoutIfNeeded()
+                }
             }
-
-            tableView.endUpdates()
         }, for: .primaryActionTriggered)
     }
 }

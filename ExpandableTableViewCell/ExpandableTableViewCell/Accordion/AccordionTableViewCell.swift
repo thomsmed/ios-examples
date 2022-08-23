@@ -133,31 +133,29 @@ final class AccordionTableViewCell: UITableViewCell {
 
             self.expanded = !self.expanded
 
-            tableView.beginUpdates()
+            tableView.performBatchUpdates {
+                UIView.animate(
+                    withDuration: 0.3, // An educated guess about the duration of UITableView's own update animation duration.
+                    delay: 0,
+                    animations: {
+                        self.expandButton.transform = self.expanded
+                            ? .init(rotationAngle: .pi - 0.001) // Makes sure button is rotated in the right direction
+                            : .identity
+                        self.expandableContentHeightConstraint.isActive = !self.expanded
+                        self.contentView.layoutIfNeeded()
+                    }, completion: { completed in
+                        self.expanded = completed ? self.expanded : !self.expanded // Revert to previous state if animation was interrupted
+                        self.expandButton.transform = self.expanded
+                            ? .init(rotationAngle: .pi - 0.001) // Makes sure button is rotated in the right direction
+                            : .identity
+                        self.expandableContentHeightConstraint.isActive = !self.expanded
 
-            UIView.animate(
-                withDuration: 0.3, // An educated guess about the duration of UITableView's own update animation duration.
-                delay: 0,
-                animations: {
-                    self.expandButton.transform = self.expanded
-                        ? .init(rotationAngle: .pi - 0.001) // Makes sure button is rotated in the right direction
-                        : .identity
-                    self.expandableContentHeightConstraint.isActive = !self.expanded
-                    self.contentView.layoutIfNeeded()
-                }, completion: { completed in
-                    self.expanded = completed ? self.expanded : !self.expanded // Revert to previous state if animation was interrupted
-                    self.expandButton.transform = self.expanded
-                        ? .init(rotationAngle: .pi - 0.001) // Makes sure button is rotated in the right direction
-                        : .identity
-                    self.expandableContentHeightConstraint.isActive = !self.expanded
-
-                    if completed {
-                        self.delegate?.expandableTableViewCell(self, expanded: self.expanded)
+                        if completed {
+                            self.delegate?.expandableTableViewCell(self, expanded: self.expanded)
+                        }
                     }
-                }
-            )
-
-            tableView.endUpdates()
+                )
+            }
         }, for: .primaryActionTriggered)
     }
 }
