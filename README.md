@@ -18,6 +18,7 @@ A collection of iOS examples.
 - [Custom Container View Controller (improved)](ImprovedContainerViewController)
 - [Flow View Pattern (SwiftUI)](FlowViewPattern)
 - [Dynamic sized Table Header View and Table Footer View](DynamicTableHeaderView)
+- [Handle consecutive taps on a tab in a TabView (SwiftUI)](ConsecutiveTabTaps)
 
 These examples are created as a way to learn. Feel free to use them as you please.
 Feedback are also welcome.
