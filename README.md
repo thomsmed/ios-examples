@@ -16,3 +16,4 @@
 - [Custom Container View Controller (improved)](ImprovedContainerViewController)
 - [Flow View Pattern (SwiftUI)](FlowViewPattern)
 - [Dynamic sized Table Header View and Table Footer View](DynamicTableHeaderView)
+- [Handle consecutive taps on a tab in a TabView (SwiftUI)](ConsecutiveTabTaps)
