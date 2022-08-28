@@ -17,3 +17,4 @@
 - [Flow View Pattern (SwiftUI)](FlowViewPattern)
 - [Dynamic sized Table Header View and Table Footer View](DynamicTableHeaderView)
 - [Handle consecutive taps on a tab in a TabView (SwiftUI)](ConsecutiveTabTaps)
+- [Live mock data by monitoring file changes in simulator](LiveMockData)
