@@ -414,14 +414,27 @@ extension BottomSheetInteractiveDismissalTransition {
             transitionContext?.finishInteractiveTransition()
         }
 
-        heightAnimator?.continueAnimation(
-            withTimingParameters: nil,
-            durationFactor: 0
-        )
-        offsetAnimator?.continueAnimation(
-            withTimingParameters: nil,
-            durationFactor: 0
-        )
+        if progress < 0 {
+            heightAnimator?.addCompletion { _ in
+                self.offsetAnimator?.stopAnimation(false)
+                self.offsetAnimator?.finishAnimation(at: .start)
+            }
+
+            heightAnimator?.continueAnimation(
+                withTimingParameters: nil,
+                durationFactor: 0
+            )
+        } else {
+            offsetAnimator?.addCompletion { _ in
+                self.heightAnimator?.stopAnimation(false)
+                self.heightAnimator?.finishAnimation(at: .start)
+            }
+
+            offsetAnimator?.continueAnimation(
+                withTimingParameters: nil,
+                durationFactor: 0
+            )
+        }
 
         interactiveDismissal = false
     }
