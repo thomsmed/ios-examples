@@ -387,8 +387,8 @@ extension BottomSheetInteractiveDismissalTransition {
 
         let stretchProgress = stretchProgress(basedOn: translation)
 
-        heightAnimator?.fractionComplete = max(0.001, min(0.999, stretchProgress * -1))
-        offsetAnimator?.fractionComplete = max(0.001, min(0.999, interactiveDismissal ? progress : stretchProgress))
+        heightAnimator?.fractionComplete = stretchProgress * -1
+        offsetAnimator?.fractionComplete = interactiveDismissal ? progress : stretchProgress
 
         transitionContext?.updateInteractiveTransition(progress)
     }
@@ -398,8 +398,8 @@ extension BottomSheetInteractiveDismissalTransition {
 
         let stretchProgress = stretchProgress(basedOn: translation)
 
-        heightAnimator?.fractionComplete = max(0.001, min(0.999, stretchProgress * -1))
-        offsetAnimator?.fractionComplete = max(0.001, min(0.999, interactiveDismissal ? progress : stretchProgress))
+        heightAnimator?.fractionComplete = stretchProgress * -1
+        offsetAnimator?.fractionComplete = interactiveDismissal ? progress : stretchProgress
 
         transitionContext?.updateInteractiveTransition(progress)
 
