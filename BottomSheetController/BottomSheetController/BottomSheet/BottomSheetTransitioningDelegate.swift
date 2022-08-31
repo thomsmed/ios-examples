@@ -430,10 +430,17 @@ extension BottomSheetInteractiveDismissalTransition {
                 self.heightAnimator?.finishAnimation(at: .start)
             }
 
-            offsetAnimator?.continueAnimation(
-                withTimingParameters: nil,
-                durationFactor: 0
-            )
+            if interactiveDismissal && cancelDismiss {
+                offsetAnimator?.continueAnimation(
+                    withTimingParameters: UISpringTimingParameters(dampingRatio: 1),
+                    durationFactor:  1
+                )
+            } else {
+                offsetAnimator?.continueAnimation(
+                    withTimingParameters: nil,
+                    durationFactor:  0
+                )
+            }
         }
 
         interactiveDismissal = false
