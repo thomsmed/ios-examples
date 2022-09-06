@@ -499,6 +499,8 @@ extension BottomSheetInteractiveDismissalTransition: UIViewControllerInteractive
             return animateTransition(using: transitionContext)
         }
 
+        let fractionComplete = offsetAnimator?.fractionComplete ?? 0
+
         offsetAnimator?.stopAnimation(true)
 
         let offset = presentedView.frame.height
@@ -508,9 +510,9 @@ extension BottomSheetInteractiveDismissalTransition: UIViewControllerInteractive
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         }
 
-        offsetAnimator.fractionComplete = 0
+        offsetAnimator.fractionComplete = fractionComplete
 
-        transitionContext.updateInteractiveTransition(0)
+        transitionContext.updateInteractiveTransition(fractionComplete)
 
         self.offsetAnimator = offsetAnimator
         self.transitionContext = transitionContext
