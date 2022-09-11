@@ -27,7 +27,7 @@ class BottomSheetController: UIViewController {
     override var additionalSafeAreaInsets: UIEdgeInsets {
         get {
             .init(
-                top: super.additionalSafeAreaInsets.top + preferredSheetCornerRadius/2,
+                top: super.additionalSafeAreaInsets.top + preferredSheetCornerRadius,
                 left: super.additionalSafeAreaInsets.left,
                 bottom: super.additionalSafeAreaInsets.bottom,
                 right: super.additionalSafeAreaInsets.right
