@@ -19,3 +19,4 @@
 - [Handle consecutive taps on a tab in a TabView (SwiftUI)](ConsecutiveTabTaps)
 - [Live mock data by monitoring file changes in simulator](LiveMockData)
 - [Securely store objects and values in Keychain](KeychainStorage)
+- [Multiple app flavours using build Configurations](BuildConfigurations)
