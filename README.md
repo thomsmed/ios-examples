@@ -22,6 +22,7 @@ A collection of iOS examples.
 - [Live mock data by monitoring file changes in simulator](LiveMockData)
 - [Securely store objects and values in Keychain](KeychainStorage)
 - [Multiple app flavours using build Configurations](BuildConfigurations)
+- [Simple network monitoring](NetworkMonitoring)
 
 These examples are created as a way to learn. Feel free to use them as you please.
 Feedback are also welcome.
