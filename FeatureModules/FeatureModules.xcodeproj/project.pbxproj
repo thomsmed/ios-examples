@@ -12,6 +12,7 @@
 		ED8DDF37292A6AAA00088B1E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8DDF36292A6AAA00088B1E /* ViewController.swift */; };
 		ED8DDF3C292A6AAB00088B1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED8DDF3B292A6AAB00088B1E /* Assets.xcassets */; };
 		ED8DDF3F292A6AAB00088B1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED8DDF3D292A6AAB00088B1E /* LaunchScreen.storyboard */; };
+		ED8DDF47292A6E3500088B1E /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8DDF46292A6E3500088B1E /* TabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,8 @@
 		ED8DDF3B292A6AAB00088B1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED8DDF3E292A6AAB00088B1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED8DDF40292A6AAB00088B1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ED8DDF46292A6E3500088B1E /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		ED8DDF48292A6EAB00088B1E /* CoreKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = CoreKit; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +41,7 @@
 		ED8DDF26292A6AAA00088B1E = {
 			isa = PBXGroup;
 			children = (
+				ED8DDF48292A6EAB00088B1E /* CoreKit */,
 				ED8DDF31292A6AAA00088B1E /* FeatureModules */,
 				ED8DDF30292A6AAA00088B1E /* Products */,
 			);
@@ -57,6 +61,7 @@
 				ED8DDF32292A6AAA00088B1E /* AppDelegate.swift */,
 				ED8DDF34292A6AAA00088B1E /* SceneDelegate.swift */,
 				ED8DDF36292A6AAA00088B1E /* ViewController.swift */,
+				ED8DDF46292A6E3500088B1E /* TabBarController.swift */,
 				ED8DDF3B292A6AAB00088B1E /* Assets.xcassets */,
 				ED8DDF3D292A6AAB00088B1E /* LaunchScreen.storyboard */,
 				ED8DDF40292A6AAB00088B1E /* Info.plist */,
@@ -135,6 +140,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED8DDF37292A6AAA00088B1E /* ViewController.swift in Sources */,
+				ED8DDF47292A6E3500088B1E /* TabBarController.swift in Sources */,
 				ED8DDF33292A6AAA00088B1E /* AppDelegate.swift in Sources */,
 				ED8DDF35292A6AAA00088B1E /* SceneDelegate.swift in Sources */,
 			);
