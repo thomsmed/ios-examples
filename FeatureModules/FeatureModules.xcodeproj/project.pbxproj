@@ -7,24 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED06F0A7293D34A600C78448 /* FeatureThreeKit in Frameworks */ = {isa = PBXBuildFile; productRef = ED06F0A6293D34A600C78448 /* FeatureThreeKit */; };
+		ED06F0A9293D34A600C78448 /* FeatureTwoKit in Frameworks */ = {isa = PBXBuildFile; productRef = ED06F0A8293D34A600C78448 /* FeatureTwoKit */; };
 		ED8DDF33292A6AAA00088B1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8DDF32292A6AAA00088B1E /* AppDelegate.swift */; };
 		ED8DDF35292A6AAA00088B1E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8DDF34292A6AAA00088B1E /* SceneDelegate.swift */; };
-		ED8DDF37292A6AAA00088B1E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8DDF36292A6AAA00088B1E /* ViewController.swift */; };
 		ED8DDF3C292A6AAB00088B1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED8DDF3B292A6AAB00088B1E /* Assets.xcassets */; };
 		ED8DDF3F292A6AAB00088B1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED8DDF3D292A6AAB00088B1E /* LaunchScreen.storyboard */; };
 		ED8DDF47292A6E3500088B1E /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8DDF46292A6E3500088B1E /* TabBarController.swift */; };
+		ED8DDF4C292A740800088B1E /* CoreKit in Frameworks */ = {isa = PBXBuildFile; productRef = ED8DDF4B292A740800088B1E /* CoreKit */; };
+		ED8DDF4E292A740C00088B1E /* FeatureOneKit in Frameworks */ = {isa = PBXBuildFile; productRef = ED8DDF4D292A740C00088B1E /* FeatureOneKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		ED06F0A4293D2E9600C78448 /* FeatureTwoKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = FeatureTwoKit; sourceTree = "<group>"; };
+		ED06F0A5293D304D00C78448 /* FeatureThreeKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = FeatureThreeKit; sourceTree = "<group>"; };
+		ED06F0AA293E96EC00C78448 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		ED8DDF2F292A6AAA00088B1E /* FeatureModules.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeatureModules.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED8DDF32292A6AAA00088B1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED8DDF34292A6AAA00088B1E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		ED8DDF36292A6AAA00088B1E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		ED8DDF3B292A6AAB00088B1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED8DDF3E292A6AAB00088B1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED8DDF40292A6AAB00088B1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED8DDF46292A6E3500088B1E /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		ED8DDF48292A6EAB00088B1E /* CoreKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = CoreKit; sourceTree = "<group>"; };
+		ED8DDF49292A704000088B1E /* FeatureOneKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = FeatureOneKit; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +38,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED8DDF4C292A740800088B1E /* CoreKit in Frameworks */,
+				ED8DDF4E292A740C00088B1E /* FeatureOneKit in Frameworks */,
+				ED06F0A7293D34A600C78448 /* FeatureThreeKit in Frameworks */,
+				ED06F0A9293D34A600C78448 /* FeatureTwoKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,9 +51,14 @@
 		ED8DDF26292A6AAA00088B1E = {
 			isa = PBXGroup;
 			children = (
+				ED06F0AA293E96EC00C78448 /* README.md */,
+				ED06F0A5293D304D00C78448 /* FeatureThreeKit */,
+				ED06F0A4293D2E9600C78448 /* FeatureTwoKit */,
+				ED8DDF49292A704000088B1E /* FeatureOneKit */,
 				ED8DDF48292A6EAB00088B1E /* CoreKit */,
 				ED8DDF31292A6AAA00088B1E /* FeatureModules */,
 				ED8DDF30292A6AAA00088B1E /* Products */,
+				ED8DDF4A292A740800088B1E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,13 +75,19 @@
 			children = (
 				ED8DDF32292A6AAA00088B1E /* AppDelegate.swift */,
 				ED8DDF34292A6AAA00088B1E /* SceneDelegate.swift */,
-				ED8DDF36292A6AAA00088B1E /* ViewController.swift */,
 				ED8DDF46292A6E3500088B1E /* TabBarController.swift */,
 				ED8DDF3B292A6AAB00088B1E /* Assets.xcassets */,
 				ED8DDF3D292A6AAB00088B1E /* LaunchScreen.storyboard */,
 				ED8DDF40292A6AAB00088B1E /* Info.plist */,
 			);
 			path = FeatureModules;
+			sourceTree = "<group>";
+		};
+		ED8DDF4A292A740800088B1E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -85,6 +106,12 @@
 			dependencies = (
 			);
 			name = FeatureModules;
+			packageProductDependencies = (
+				ED8DDF4B292A740800088B1E /* CoreKit */,
+				ED8DDF4D292A740C00088B1E /* FeatureOneKit */,
+				ED06F0A6293D34A600C78448 /* FeatureThreeKit */,
+				ED06F0A8293D34A600C78448 /* FeatureTwoKit */,
+			);
 			productName = FeatureModules;
 			productReference = ED8DDF2F292A6AAA00088B1E /* FeatureModules.app */;
 			productType = "com.apple.product-type.application";
@@ -139,7 +166,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED8DDF37292A6AAA00088B1E /* ViewController.swift in Sources */,
 				ED8DDF47292A6E3500088B1E /* TabBarController.swift in Sources */,
 				ED8DDF33292A6AAA00088B1E /* AppDelegate.swift in Sources */,
 				ED8DDF35292A6AAA00088B1E /* SceneDelegate.swift in Sources */,
@@ -350,6 +376,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		ED06F0A6293D34A600C78448 /* FeatureThreeKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FeatureThreeKit;
+		};
+		ED06F0A8293D34A600C78448 /* FeatureTwoKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FeatureTwoKit;
+		};
+		ED8DDF4B292A740800088B1E /* CoreKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CoreKit;
+		};
+		ED8DDF4D292A740C00088B1E /* FeatureOneKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FeatureOneKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = ED8DDF27292A6AAA00088B1E /* Project object */;
 }

@@ -1,13 +1,13 @@
 //
-//  ViewController.swift
-//  FeatureModules
+//  FeatureOneViewController.swift
+//  
 //
 //  Created by Thomas Asheim Smedmann on 20/11/2022.
 //
 
 import UIKit
 
-final class ViewController: UIViewController {
+final class FeatureOneViewController: UIViewController {
 
     private let label: UILabel = {
         let label = UILabel()
@@ -15,6 +15,17 @@ final class ViewController: UIViewController {
         label.font = .systemFont(ofSize: 24, weight: .regular)
         return label
     }()
+
+    private weak var coordinator: FeatureOneCoordinator?
+
+    init(coordinator: FeatureOneCoordinator) {
+        self.coordinator = coordinator
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func loadView() {
         let view = UIView()
@@ -26,7 +37,7 @@ final class ViewController: UIViewController {
             label.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
 
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .white
 
         self.view = view
     }
@@ -34,6 +45,6 @@ final class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        label.text = "Hello World!"
+        label.text = "This is feature one!"
     }
 }
