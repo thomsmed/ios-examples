@@ -23,6 +23,7 @@ A collection of iOS examples.
 - [Securely store objects and values in Keychain](KeychainStorage)
 - [Multiple app flavours using build Configurations](BuildConfigurations)
 - [Simple network monitoring](NetworkMonitoring)
+- [Multi Module App (using Coordinators)](FeatureModules)
 
 These examples are created as a way to learn. Feel free to use them as you please.
 Feedback are also welcome.
