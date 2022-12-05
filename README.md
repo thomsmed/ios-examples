@@ -21,3 +21,4 @@
 - [Securely store objects and values in Keychain](KeychainStorage)
 - [Multiple app flavours using build Configurations](BuildConfigurations)
 - [Simple network monitoring](NetworkMonitoring)
+- [Multi Module App (using Coordinators)](FeatureModules)
