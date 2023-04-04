@@ -26,18 +26,18 @@ public protocol FeatureOneCoordinatorDelegate: AnyObject {
 public final class DefaultFeatureOneCoordinator {
     private let configuration: FeatureOneConfiguration
 
-    public var presenter: UINavigationController
+    public var navigationController: UINavigationController
     public var childCoordinators: [Coordinator] = []
 
     private weak var delegate: FeatureOneCoordinatorDelegate?
 
     public init(
         configuration: FeatureOneConfiguration,
-        presenter: UINavigationController,
+        navigationController: UINavigationController,
         delegate: FeatureOneCoordinatorDelegate
     ) {
         self.configuration = configuration
-        self.presenter = presenter
+        self.navigationController = navigationController
         self.delegate = delegate
     }
 }
@@ -47,7 +47,7 @@ extension DefaultFeatureOneCoordinator: FeatureOneCoordinator {
         let featureOneViewController = FeatureOneViewController(
             coordinator: self
         )
-        presenter.setViewControllers([featureOneViewController], animated: false)
+        navigationController.setViewControllers([featureOneViewController], animated: false)
     }
 
     func didComplete() {

@@ -28,18 +28,18 @@ public protocol FeatureTwoCoordinatorDelegate: AnyObject {
 public final class DefaultFeatureTwoCoordinator {
     private let configuration: FeatureTwoConfiguration
 
-    public var presenter: UINavigationController
+    public var navigationController: UINavigationController
     public var childCoordinators: [Coordinator] = []
 
     private weak var delegate: FeatureTwoCoordinatorDelegate?
 
     public init(
         configuration: FeatureTwoConfiguration,
-        presenter: UINavigationController,
+        navigationController: UINavigationController,
         delegate: FeatureTwoCoordinatorDelegate
     ) {
         self.configuration = configuration
-        self.presenter = presenter
+        self.navigationController = navigationController
         self.delegate = delegate
     }
 }
@@ -49,7 +49,7 @@ extension DefaultFeatureTwoCoordinator: FeatureTwoCoordinator {
         let featureTwoViewController = FeatureTwoViewController(
             coordinator: self
         )
-        presenter.setViewControllers([featureTwoViewController], animated: false)
+        navigationController.setViewControllers([featureTwoViewController], animated: false)
     }
 
     func didComplete() {
