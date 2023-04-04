@@ -1,0 +1,371 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		ED0FE93129DB68D900A8373F /* FormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0FE93029DB68D900A8373F /* FormView.swift */; };
+		ED0FE93329DB6D7800A8373F /* ShortFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0FE93229DB6D7800A8373F /* ShortFormViewController.swift */; };
+		ED0FE93529DB6DCC00A8373F /* LongFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0FE93429DB6DCC00A8373F /* LongFormViewController.swift */; };
+		EDCC354729DB3EC900FB2BE5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCC354629DB3EC900FB2BE5 /* AppDelegate.swift */; };
+		EDCC354929DB3EC900FB2BE5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCC354829DB3EC900FB2BE5 /* SceneDelegate.swift */; };
+		EDCC354B29DB3EC900FB2BE5 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCC354A29DB3EC900FB2BE5 /* RootViewController.swift */; };
+		EDCC355029DB3ECB00FB2BE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDCC354F29DB3ECB00FB2BE5 /* Assets.xcassets */; };
+		EDCC355329DB3ECB00FB2BE5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDCC355129DB3ECB00FB2BE5 /* LaunchScreen.storyboard */; };
+		EDCC355B29DB401300FB2BE5 /* KeyboardAvoidanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCC355A29DB401300FB2BE5 /* KeyboardAvoidanceViewController.swift */; };
+		EDCC355D29DB434200FB2BE5 /* MediumFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCC355C29DB434200FB2BE5 /* MediumFormViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		ED0FE93029DB68D900A8373F /* FormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormView.swift; sourceTree = "<group>"; };
+		ED0FE93229DB6D7800A8373F /* ShortFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortFormViewController.swift; sourceTree = "<group>"; };
+		ED0FE93429DB6DCC00A8373F /* LongFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongFormViewController.swift; sourceTree = "<group>"; };
+		ED8ACF7129DCB558000D2E2F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		EDCC354329DB3EC900FB2BE5 /* KeyboardAvoidance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeyboardAvoidance.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDCC354629DB3EC900FB2BE5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EDCC354829DB3EC900FB2BE5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		EDCC354A29DB3EC900FB2BE5 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		EDCC354F29DB3ECB00FB2BE5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EDCC355229DB3ECB00FB2BE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EDCC355429DB3ECB00FB2BE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EDCC355A29DB401300FB2BE5 /* KeyboardAvoidanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardAvoidanceViewController.swift; sourceTree = "<group>"; };
+		EDCC355C29DB434200FB2BE5 /* MediumFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumFormViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EDCC354029DB3EC900FB2BE5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EDCC353A29DB3EC900FB2BE5 = {
+			isa = PBXGroup;
+			children = (
+				ED8ACF7129DCB558000D2E2F /* README.md */,
+				EDCC354529DB3EC900FB2BE5 /* KeyboardAvoidance */,
+				EDCC354429DB3EC900FB2BE5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EDCC354429DB3EC900FB2BE5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EDCC354329DB3EC900FB2BE5 /* KeyboardAvoidance.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EDCC354529DB3EC900FB2BE5 /* KeyboardAvoidance */ = {
+			isa = PBXGroup;
+			children = (
+				EDCC354629DB3EC900FB2BE5 /* AppDelegate.swift */,
+				EDCC354829DB3EC900FB2BE5 /* SceneDelegate.swift */,
+				EDCC354A29DB3EC900FB2BE5 /* RootViewController.swift */,
+				EDCC355C29DB434200FB2BE5 /* MediumFormViewController.swift */,
+				ED0FE93429DB6DCC00A8373F /* LongFormViewController.swift */,
+				ED0FE93229DB6D7800A8373F /* ShortFormViewController.swift */,
+				ED0FE93029DB68D900A8373F /* FormView.swift */,
+				EDCC355A29DB401300FB2BE5 /* KeyboardAvoidanceViewController.swift */,
+				EDCC354F29DB3ECB00FB2BE5 /* Assets.xcassets */,
+				EDCC355129DB3ECB00FB2BE5 /* LaunchScreen.storyboard */,
+				EDCC355429DB3ECB00FB2BE5 /* Info.plist */,
+			);
+			path = KeyboardAvoidance;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EDCC354229DB3EC900FB2BE5 /* KeyboardAvoidance */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EDCC355729DB3ECB00FB2BE5 /* Build configuration list for PBXNativeTarget "KeyboardAvoidance" */;
+			buildPhases = (
+				EDCC353F29DB3EC900FB2BE5 /* Sources */,
+				EDCC354029DB3EC900FB2BE5 /* Frameworks */,
+				EDCC354129DB3EC900FB2BE5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KeyboardAvoidance;
+			productName = KeyboardAvoidance;
+			productReference = EDCC354329DB3EC900FB2BE5 /* KeyboardAvoidance.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EDCC353B29DB3EC900FB2BE5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					EDCC354229DB3EC900FB2BE5 = {
+						CreatedOnToolsVersion = 14.2;
+					};
+				};
+			};
+			buildConfigurationList = EDCC353E29DB3EC900FB2BE5 /* Build configuration list for PBXProject "KeyboardAvoidance" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EDCC353A29DB3EC900FB2BE5;
+			productRefGroup = EDCC354429DB3EC900FB2BE5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EDCC354229DB3EC900FB2BE5 /* KeyboardAvoidance */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EDCC354129DB3EC900FB2BE5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDCC355329DB3ECB00FB2BE5 /* LaunchScreen.storyboard in Resources */,
+				EDCC355029DB3ECB00FB2BE5 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EDCC353F29DB3EC900FB2BE5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED0FE93329DB6D7800A8373F /* ShortFormViewController.swift in Sources */,
+				ED0FE93129DB68D900A8373F /* FormView.swift in Sources */,
+				ED0FE93529DB6DCC00A8373F /* LongFormViewController.swift in Sources */,
+				EDCC354B29DB3EC900FB2BE5 /* RootViewController.swift in Sources */,
+				EDCC354729DB3EC900FB2BE5 /* AppDelegate.swift in Sources */,
+				EDCC355B29DB401300FB2BE5 /* KeyboardAvoidanceViewController.swift in Sources */,
+				EDCC355D29DB434200FB2BE5 /* MediumFormViewController.swift in Sources */,
+				EDCC354929DB3EC900FB2BE5 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		EDCC355129DB3ECB00FB2BE5 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EDCC355229DB3ECB00FB2BE5 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EDCC355529DB3ECB00FB2BE5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EDCC355629DB3ECB00FB2BE5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EDCC355829DB3ECB00FB2BE5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = KeyboardAvoidance/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ios.example.KeyboardAvoidance;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EDCC355929DB3ECB00FB2BE5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = KeyboardAvoidance/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ios.example.KeyboardAvoidance;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EDCC353E29DB3EC900FB2BE5 /* Build configuration list for PBXProject "KeyboardAvoidance" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDCC355529DB3ECB00FB2BE5 /* Debug */,
+				EDCC355629DB3ECB00FB2BE5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EDCC355729DB3ECB00FB2BE5 /* Build configuration list for PBXNativeTarget "KeyboardAvoidance" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDCC355829DB3ECB00FB2BE5 /* Debug */,
+				EDCC355929DB3ECB00FB2BE5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EDCC353B29DB3EC900FB2BE5 /* Project object */;
+}
