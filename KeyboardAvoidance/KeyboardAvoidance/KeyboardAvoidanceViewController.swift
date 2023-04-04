@@ -59,6 +59,7 @@ class KeyboardAvoidanceViewController: UIViewController {
     }
 
     /// Initiate a `KeyboardAvoidanceViewController` with the option to adjust the underlying `UIScrollView`'s content inset instead of the safe area when the keyboard appears/disappears.
+    ///
     /// - Parameter adjustContentInsetInsteadOfSafeArea: If the underlying `UIScrollView`'s content inset should be adjusted instead of the safe area when the keyboard appears/disappears.
     convenience init(adjustContentInsetInsteadOfSafeArea: Bool = false) {
         self.init()
@@ -124,8 +125,7 @@ class KeyboardAvoidanceViewController: UIViewController {
             greaterThanOrEqualTo: scrollView.safeAreaLayoutGuide.heightAnchor
         )
         // Set the UIScrollView's content height constraint priority a little bit lower than `.required`.
-        // That way we avoid any initial layout conflicts
-        // and/or any other `.required` height constraints on `contentView`.
+        // That way we avoid any initial layout conflicts and/or any other `.required` constraints on `contentView`.
         // We want the `contentView` to take up as much space as possible,
         // so we can easily place content all over the screen (represented by this UIViewController).
         heightConstraint.priority = .required - 1

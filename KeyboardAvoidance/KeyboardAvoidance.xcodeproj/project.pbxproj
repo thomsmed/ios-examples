@@ -23,6 +23,7 @@
 		ED0FE93029DB68D900A8373F /* FormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormView.swift; sourceTree = "<group>"; };
 		ED0FE93229DB6D7800A8373F /* ShortFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortFormViewController.swift; sourceTree = "<group>"; };
 		ED0FE93429DB6DCC00A8373F /* LongFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongFormViewController.swift; sourceTree = "<group>"; };
+		ED8ACF7129DCB558000D2E2F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		EDCC354329DB3EC900FB2BE5 /* KeyboardAvoidance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeyboardAvoidance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDCC354629DB3EC900FB2BE5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDCC354829DB3EC900FB2BE5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -48,6 +49,7 @@
 		EDCC353A29DB3EC900FB2BE5 = {
 			isa = PBXGroup;
 			children = (
+				ED8ACF7129DCB558000D2E2F /* README.md */,
 				EDCC354529DB3EC900FB2BE5 /* KeyboardAvoidance */,
 				EDCC354429DB3EC900FB2BE5 /* Products */,
 			);
@@ -295,7 +297,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 55ATZ58U6M;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = KeyboardAvoidance/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -322,7 +324,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 55ATZ58U6M;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = KeyboardAvoidance/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
