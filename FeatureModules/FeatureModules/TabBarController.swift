@@ -15,7 +15,7 @@ final class TabBarController: UITabBarController {
 
     private var activeCoordinators: [Coordinator] = []
 
-    private func coordinatorDidFinish(_ coordinator: Coordinator) {
+    private func removeChildCoordinator(_ coordinator: Coordinator) {
         activeCoordinators.removeAll(where: { $0 === coordinator })
     }
 
@@ -31,7 +31,7 @@ final class TabBarController: UITabBarController {
 
         return DefaultFeatureOneCoordinator(
             configuration: configuration,
-            presenter: navigationController,
+            navigationController: navigationController,
             delegate: self
         )
     }
@@ -48,7 +48,7 @@ final class TabBarController: UITabBarController {
 
         return DefaultFeatureTwoCoordinator(
             configuration: configuration,
-            presenter: navigationController,
+            navigationController: navigationController,
             delegate: self
         )
     }
@@ -56,12 +56,8 @@ final class TabBarController: UITabBarController {
     private func makeModalCoordinator() -> Coordinator {
         let configuration = FeatureThreeConfiguration()
 
-        let navigationController = UINavigationController()
-        navigationController.isModalInPresentation = true
-
         return DefaultFeatureThreeCoordinator(
             configuration: configuration,
-            presenter: navigationController,
             delegate: self
         )
     }
@@ -74,8 +70,8 @@ extension TabBarController {
 
         setViewControllers(
             [
-                tabOneCoordinator.presenter,
-                tabTwoCoordinator.presenter
+                tabOneCoordinator.navigationController,
+                tabTwoCoordinator.navigationController
             ],
             animated: false
         )
@@ -104,18 +100,20 @@ extension TabBarController: FeatureTwoCoordinatorDelegate {
     func featureTwoCoordinatorDidContinue(_ coordinator: Coordinator) {
         let modalCoordinator = makeModalCoordinator()
 
+        modalCoordinator.navigationController.isModalInPresentation = true
+
         activeCoordinators.append(modalCoordinator)
 
         modalCoordinator.start()
 
-        present(modalCoordinator.presenter, animated: true)
+        present(modalCoordinator.navigationController, animated: true)
     }
 }
 
 extension TabBarController: FeatureThreeCoordinatorDelegate {
     func featureThreeCoordinatorDidFinish(_ coordinator: Coordinator) {
-        coordinator.presenter.dismiss(animated: true)
-
-        coordinatorDidFinish(coordinator)
+        coordinator.navigationController.dismiss(animated: true) { [weak self] in
+            self?.removeChildCoordinator(coordinator)
+        }
     }
 }

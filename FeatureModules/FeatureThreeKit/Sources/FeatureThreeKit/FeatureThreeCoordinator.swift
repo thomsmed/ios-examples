@@ -26,19 +26,19 @@ public protocol FeatureThreeCoordinatorDelegate: AnyObject {
 public final class DefaultFeatureThreeCoordinator {
     private let configuration: FeatureThreeConfiguration
 
-    public var presenter: UINavigationController
+    public var navigationController: UINavigationController
     public var childCoordinators: [Coordinator] = []
 
     private weak var delegate: FeatureThreeCoordinatorDelegate?
 
     public init(
         configuration: FeatureThreeConfiguration,
-        presenter: UINavigationController,
         delegate: FeatureThreeCoordinatorDelegate
     ) {
         self.configuration = configuration
-        self.presenter = presenter
         self.delegate = delegate
+
+        navigationController = CustomNavigationController()
     }
 }
 
@@ -47,7 +47,7 @@ extension DefaultFeatureThreeCoordinator: FeatureThreeCoordinator {
         let featureThreeViewController = FeatureThreeViewController(
             coordinator: self
         )
-        presenter.setViewControllers([featureThreeViewController], animated: false)
+        navigationController.setViewControllers([featureThreeViewController], animated: false)
     }
 
     func didComplete() {
