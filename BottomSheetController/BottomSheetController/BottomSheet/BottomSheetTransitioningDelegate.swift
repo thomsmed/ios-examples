@@ -104,12 +104,18 @@ final class BottomSheetPresentationController: UIPresentationController {
     let sheetBackdropColor: UIColor
 
     private(set) lazy var tapGestureRecognizer: UITapGestureRecognizer = {
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(onTap))
-        gesture.cancelsTouchesInView = false
-        return gesture
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(onTap))
+        // Enable subviews to receive touch events as expected.
+        gestureRecognizer.cancelsTouchesInView = false
+        return gestureRecognizer
     }()
-    
-    private lazy var panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(onPan))
+
+    private lazy var panGestureRecognizer: UIPanGestureRecognizer = {
+        let gestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(onPan))
+        gestureRecognizer.delegate = self
+        return gestureRecognizer
+    }()
+
     var panToDismissEnabled: Bool = true
 
     init(
@@ -149,26 +155,38 @@ final class BottomSheetPresentationController: UIPresentationController {
         let progress = translation.y / presentedView.frame.height
 
         switch gestureRecognizer.state {
-        case .began:
-            bottomSheetInteractiveDismissalTransition.start(
-                moving: presentedView, interactiveDismissal: panToDismissEnabled
-            )
-        case .changed:
-            if panToDismissEnabled && progress > 0 && !presentedViewController.isBeingDismissed {
-                presentingViewController.dismiss(animated: true)
-            }
-            bottomSheetInteractiveDismissalTransition.move(
-                presentedView, using: translation.y
-            )
-        default:
-            let velocity = gestureRecognizer.velocity(in: presentedView)
-            bottomSheetInteractiveDismissalTransition.stop(
-                moving: presentedView, at: translation.y, with: velocity
-            )
+            case .began:
+                bottomSheetInteractiveDismissalTransition.start(
+                    moving: presentedView, interactiveDismissal: panToDismissEnabled
+                )
+            case .changed:
+                if panToDismissEnabled, progress > 0, !presentedViewController.isBeingDismissed {
+                    presentingViewController.dismiss(animated: true)
+                }
+                bottomSheetInteractiveDismissalTransition.move(
+                    presentedView, using: translation.y
+                )
+            default:
+                let velocity = gestureRecognizer.velocity(in: presentedView)
+                bottomSheetInteractiveDismissalTransition.stop(
+                    moving: presentedView, using: translation.y, and: velocity
+                )
         }
     }
+}
 
-    // MARK: UIPresentationController
+// MARK: BottomSheetPresentationController+UIGestureRecognizerDelegate
+
+extension BottomSheetPresentationController: UIGestureRecognizerDelegate {
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        // Ignore new gestures while there is an ongoing transition.
+        !bottomSheetInteractiveDismissalTransition.activeTransition
+    }
+}
+
+// MARK: BottomSheetPresentationController+UIPresentationController
+
+extension BottomSheetPresentationController {
 
     override func presentationTransitionWillBegin() {
         guard let presentedView = presentedView else {
@@ -182,6 +200,7 @@ final class BottomSheetPresentationController: UIPresentationController {
             .layerMinXMinYCorner,
             .layerMaxXMinYCorner
         ]
+        presentedView.clipsToBounds = true
 
         guard let containerView = containerView else {
             return
@@ -285,7 +304,10 @@ final class BottomSheetPresentationController: UIPresentationController {
         }
     }
 
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    override func viewWillTransition(
+        to size: CGSize,
+        with coordinator: UIViewControllerTransitionCoordinator
+    ) {
         panGestureRecognizer.isEnabled = false // This will cancel any ongoing pan gesture
         coordinator.animate(alongsideTransition: nil) { context in
             self.panGestureRecognizer.isEnabled = true
@@ -296,11 +318,14 @@ final class BottomSheetPresentationController: UIPresentationController {
 // MARK: BottomSheetInteractiveDismissalTransition
 
 final class BottomSheetInteractiveDismissalTransition: NSObject {
+    private enum State {
+        case started
+        case stopping
+        case stopped
+    }
 
     private let stretchOffset: CGFloat = 16
-    private let maxTransitionDuration: CGFloat = 0.25
-    private let minTransitionDuration: CGFloat = 0.15
-    private let animationCurve: UIView.AnimationCurve = .easeIn
+    private let transitionDuration: CGFloat = 0.25 // Not really used since we use `UISpringTimingParameters`.
 
     private weak var transitionContext: UIViewControllerContextTransitioning?
 
@@ -309,20 +334,44 @@ final class BottomSheetInteractiveDismissalTransition: NSObject {
 
     private var interactiveDismissal: Bool = false
 
+    // We'll track the different states of an ongoing dismiss transition.
+    // This prevent a new dismiss transition to start before the previous has finished.
+    private var state: State = .stopped
+
     var bottomConstraint: NSLayoutConstraint?
     var heightConstraint: NSLayoutConstraint?
 
-    private func createHeightAnimator(animating view: UIView, from height: CGFloat) -> UIViewPropertyAnimator {
-        let propertyAnimator = UIViewPropertyAnimator(
-            duration: minTransitionDuration,
-            curve: animationCurve
-        )
+    var activeTransition: Bool {
+        interactiveDismissal && transitionContext != nil
+    }
 
+    private func timingParameters(
+        basedOn initialVelocity: CGVector = .zero
+    ) -> UISpringTimingParameters {
+        // Tip on how to calculate initial velocity:
+        // https://developer.apple.com/documentation/uikit/uispringtimingparameters/1649909-initialvelocity
+        UISpringTimingParameters(dampingRatio: 1, frequencyResponse: transitionDuration)
+    }
+
+    private func propertyAnimator(
+        with initialVelocity: CGVector = .zero
+    ) -> UIViewPropertyAnimator {
+        UIViewPropertyAnimator(
+            duration: transitionDuration,
+            timingParameters: timingParameters(basedOn: initialVelocity)
+        )
+    }
+
+    private func createHeightAnimator(
+        animating view: UIView,
+        from height: CGFloat
+    ) -> UIViewPropertyAnimator {
         heightConstraint?.constant = height
         heightConstraint?.isActive = true
 
         let finalHeight = height + stretchOffset
 
+        let propertyAnimator = propertyAnimator()
         propertyAnimator.addAnimations {
             self.heightConstraint?.constant = finalHeight
             view.superview?.layoutIfNeeded()
@@ -336,12 +385,11 @@ final class BottomSheetInteractiveDismissalTransition: NSObject {
         return propertyAnimator
     }
 
-    private func createOffsetAnimator(animating view: UIView, to offset: CGFloat) -> UIViewPropertyAnimator {
-        let propertyAnimator = UIViewPropertyAnimator(
-            duration: maxTransitionDuration,
-            curve: animationCurve
-        )
-
+    private func createOffsetAnimator(
+        animating view: UIView,
+        to offset: CGFloat
+    ) -> UIViewPropertyAnimator {
+        let propertyAnimator = propertyAnimator()
         propertyAnimator.addAnimations {
             self.bottomConstraint?.constant = offset
             view.superview?.layoutIfNeeded()
@@ -364,6 +412,11 @@ final class BottomSheetInteractiveDismissalTransition: NSObject {
 extension BottomSheetInteractiveDismissalTransition {
 
     func start(moving presentedView: UIView, interactiveDismissal: Bool) {
+        guard state == .stopped else {
+            return
+        }
+        state = .started
+
         self.interactiveDismissal = interactiveDismissal
 
         heightAnimator?.stopAnimation(false)
@@ -383,6 +436,10 @@ extension BottomSheetInteractiveDismissalTransition {
     }
 
     func move(_ presentedView: UIView, using translation: CGFloat) {
+        guard state == .started else {
+            return
+        }
+
         let progress = translation / presentedView.frame.height
 
         let stretchProgress = stretchProgress(basedOn: translation)
@@ -390,10 +447,15 @@ extension BottomSheetInteractiveDismissalTransition {
         heightAnimator?.fractionComplete = stretchProgress * -1
         offsetAnimator?.fractionComplete = interactiveDismissal ? progress : stretchProgress
 
-        transitionContext?.updateInteractiveTransition(progress)
+        transitionContext?.updateInteractiveTransition(interactiveDismissal ? progress : 0)
     }
 
-    func stop(moving presentedView: UIView, at translation: CGFloat, with velocity: CGPoint) {
+    func stop(moving presentedView: UIView, using translation: CGFloat, and velocity: CGPoint) {
+        guard state == .started else {
+            return
+        }
+        state = .stopping
+
         let progress = translation / presentedView.frame.height
 
         let stretchProgress = stretchProgress(basedOn: translation)
@@ -401,7 +463,7 @@ extension BottomSheetInteractiveDismissalTransition {
         heightAnimator?.fractionComplete = stretchProgress * -1
         offsetAnimator?.fractionComplete = interactiveDismissal ? progress : stretchProgress
 
-        transitionContext?.updateInteractiveTransition(progress)
+        transitionContext?.updateInteractiveTransition(interactiveDismissal ? progress : 0)
 
         let cancelDismiss = !interactiveDismissal || velocity.y < 500 || (progress < 0.5 && velocity.y <= 0)
 
@@ -414,23 +476,62 @@ extension BottomSheetInteractiveDismissalTransition {
             transitionContext?.finishInteractiveTransition()
         }
 
+        interactiveDismissal = false
+
         if progress < 0 {
             heightAnimator?.addCompletion { _ in
                 self.offsetAnimator?.stopAnimation(false)
                 self.offsetAnimator?.finishAnimation(at: .start)
+
+                self.state = .stopped
             }
 
             heightAnimator?.startAnimation()
         } else {
-            offsetAnimator?.addCompletion { _ in
-                self.heightAnimator?.stopAnimation(false)
-                self.heightAnimator?.finishAnimation(at: .start)
+            guard
+                let offsetAnimator,
+                offsetAnimator.state == .active
+            else {
+                // The gesture stopped before `startInteractiveTransition(_:)` was called,
+                // so there is no active `offsetAnimator`.
+                heightAnimator?.stopAnimation(false)
+                heightAnimator?.finishAnimation(at: .start)
+
+                state = .stopped
+
+                return
             }
 
-            offsetAnimator?.startAnimation()
-        }
+            // There is an active `offsetAnimator`.
+            // Lets resume the animator and have it run until the end (or start, if reversed).
+            offsetAnimator.addCompletion { _ in
+                self.heightAnimator?.stopAnimation(false)
+                self.heightAnimator?.finishAnimation(at: .start)
 
-        interactiveDismissal = false
+                self.state = .stopped
+            }
+
+            // Tip on how to calculate initial velocity:
+            // https://developer.apple.com/documentation/uikit/uispringtimingparameters/1649909-initialvelocity
+            let presentedViewHeight = presentedView.frame.height
+            let fractionComplete = offsetAnimator.fractionComplete
+
+            let yDistance = cancelDismiss
+                ? fractionComplete * presentedViewHeight
+                : presentedViewHeight - fractionComplete * presentedViewHeight
+
+            let initialVelocity: CGVector = .init(
+                dx: 0,
+                dy: yDistance != 0
+                    ? velocity.y / yDistance
+                    : 0
+            )
+
+            offsetAnimator.continueAnimation(
+                withTimingParameters: timingParameters(basedOn: initialVelocity),
+                durationFactor: 1
+            )
+        }
     }
 }
 
@@ -438,24 +539,30 @@ extension BottomSheetInteractiveDismissalTransition {
 
 extension BottomSheetInteractiveDismissalTransition: UIViewControllerAnimatedTransitioning {
 
-    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        maxTransitionDuration
+    func transitionDuration(
+        using transitionContext: UIViewControllerContextTransitioning?
+    ) -> TimeInterval {
+        // Build a property animator with correct timing parameters to find correct transition duration.
+        propertyAnimator().duration
     }
 
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        assertionFailure("This method should in practice never be called")
+
         // This method is never called since we only care about interactive transitions,
         // and use UIKit's default transitions/animations for non-interactive transitions.
         guard let presentedView = transitionContext.view(forKey: .from) else {
             return
         }
 
-        offsetAnimator?.stopAnimation(true)
+        offsetAnimator?.stopAnimation(false)
+        offsetAnimator?.finishAnimation(at: .start)
 
         let offset = presentedView.frame.height
         let offsetAnimator = createOffsetAnimator(animating: presentedView, to: offset)
 
         offsetAnimator.addCompletion { position in
-            transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+            transitionContext.completeTransition(position == .end)
         }
 
         offsetAnimator.startAnimation()
@@ -467,10 +574,14 @@ extension BottomSheetInteractiveDismissalTransition: UIViewControllerAnimatedTra
         using transitionContext: UIViewControllerContextTransitioning
     ) -> UIViewImplicitlyAnimating {
         guard let offsetAnimator = offsetAnimator else {
-            fatalError("Somehow the offset animator was not set")
+            fatalError("Somehow the animator is not set")
         }
 
         return offsetAnimator
+    }
+
+    func animationEnded(_ transitionCompleted: Bool) {
+        transitionContext = nil
     }
 }
 
@@ -486,20 +597,28 @@ extension BottomSheetInteractiveDismissalTransition: UIViewControllerInteractive
             return animateTransition(using: transitionContext)
         }
 
-        let fractionComplete = offsetAnimator?.fractionComplete ?? 0
-
-        offsetAnimator?.stopAnimation(true)
+        offsetAnimator?.stopAnimation(false)
+        offsetAnimator?.finishAnimation(at: .start)
 
         let offset = presentedView.frame.height
         let offsetAnimator = createOffsetAnimator(animating: presentedView, to: offset)
 
         offsetAnimator.addCompletion { position in
-            transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+            transitionContext.completeTransition(position == .end)
         }
 
-        offsetAnimator.fractionComplete = fractionComplete
+        offsetAnimator.fractionComplete = 0
 
-        transitionContext.updateInteractiveTransition(fractionComplete)
+        transitionContext.updateInteractiveTransition(0)
+
+        if state != .started {
+            // The gesture driving the transition has already ended/canceled.
+            // Make sure both transition context and animation is canceled.
+            transitionContext.cancelInteractiveTransition()
+
+            offsetAnimator.stopAnimation(false)
+            offsetAnimator.finishAnimation(at: .start)
+        }
 
         self.offsetAnimator = offsetAnimator
         self.transitionContext = transitionContext
@@ -508,12 +627,19 @@ extension BottomSheetInteractiveDismissalTransition: UIViewControllerInteractive
     var wantsInteractiveStart: Bool {
         interactiveDismissal
     }
+}
 
-    var completionCurve: UIView.AnimationCurve {
-        animationCurve
-    }
+private extension UISpringTimingParameters {
+    // Utility initializer based on this awesome article by Christian Schnorr:
+    // https://medium.com/ios-os-x-development/demystifying-uikit-spring-animations-2bb868446773
+    convenience init(dampingRatio: CGFloat, frequencyResponse: CGFloat) {
+        precondition(dampingRatio >= 0)
+        precondition(frequencyResponse > 0)
 
-    var completionSpeed: CGFloat {
-        1.0
+        let mass: CGFloat = 1
+        let stiffness = pow(2 * .pi / frequencyResponse, 2) * mass
+        let damping = 4 * .pi * dampingRatio * mass / frequencyResponse
+
+        self.init(mass: mass, stiffness: stiffness, damping: damping, initialVelocity: .zero)
     }
 }

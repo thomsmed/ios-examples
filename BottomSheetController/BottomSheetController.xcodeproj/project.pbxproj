@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED82084B29DDEFD600F96F7F /* TableContentSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED82084A29DDEFD600F96F7F /* TableContentSheetViewController.swift */; };
 		EDA96F47282F9E5D0036E1EA /* ExpandingContentSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA96F46282F9E5D0036E1EA /* ExpandingContentSheetViewController.swift */; };
 		EDE8263C2822E837009DF63E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE8263B2822E837009DF63E /* AppDelegate.swift */; };
 		EDE8263E2822E837009DF63E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE8263D2822E837009DF63E /* SceneDelegate.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		ED82084A29DDEFD600F96F7F /* TableContentSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableContentSheetViewController.swift; sourceTree = "<group>"; };
 		EDA96F46282F9E5D0036E1EA /* ExpandingContentSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandingContentSheetViewController.swift; sourceTree = "<group>"; };
 		EDB18643282BE3EA008E211A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		EDE826382822E837009DF63E /* BottomSheetController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BottomSheetController.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,6 +74,7 @@
 				EDE826542822F228009DF63E /* SparseContentSheetViewController.swift */,
 				EDE826562823241F009DF63E /* DenseContentSheetViewController.swift */,
 				EDA96F46282F9E5D0036E1EA /* ExpandingContentSheetViewController.swift */,
+				ED82084A29DDEFD600F96F7F /* TableContentSheetViewController.swift */,
 				EDE826512822EB7A009DF63E /* BottomSheet */,
 				EDE826442822E839009DF63E /* Assets.xcassets */,
 				EDE826462822E839009DF63E /* LaunchScreen.storyboard */,
@@ -161,6 +164,7 @@
 			files = (
 				EDE826502822EA89009DF63E /* BottomSheetController.swift in Sources */,
 				EDE826552822F228009DF63E /* SparseContentSheetViewController.swift in Sources */,
+				ED82084B29DDEFD600F96F7F /* TableContentSheetViewController.swift in Sources */,
 				EDE826402822E837009DF63E /* ViewController.swift in Sources */,
 				EDE826532822EC51009DF63E /* BottomSheetTransitioningDelegate.swift in Sources */,
 				EDE8263C2822E837009DF63E /* AppDelegate.swift in Sources */,
