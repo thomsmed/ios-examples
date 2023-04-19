@@ -14,6 +14,8 @@
 		ED722AC529F00C3100004383 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED722AC329F00C3100004383 /* LaunchScreen.storyboard */; };
 		ED722ACD29F015FF00004383 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED722ACC29F015FF00004383 /* RootViewController.swift */; };
 		ED722ACF29F0164B00004383 /* AppBlockedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED722ACE29F0164B00004383 /* AppBlockedViewController.swift */; };
+		ED722AD229F0183A00004383 /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED722AD129F0183A00004383 /* SplashScreenViewController.swift */; };
+		ED722AD429F020C100004383 /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED722AD329F020C100004383 /* DeviceManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,8 @@
 		ED722ACC29F015FF00004383 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		ED722ACE29F0164B00004383 /* AppBlockedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBlockedViewController.swift; sourceTree = "<group>"; };
 		ED722AD029F0174B00004383 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		ED722AD129F0183A00004383 /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
+		ED722AD329F020C100004383 /* DeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +69,8 @@
 				ED722ACC29F015FF00004383 /* RootViewController.swift */,
 				ED722ABC29F00C2F00004383 /* MainViewController.swift */,
 				ED722ACE29F0164B00004383 /* AppBlockedViewController.swift */,
+				ED722AD129F0183A00004383 /* SplashScreenViewController.swift */,
+				ED722AD329F020C100004383 /* DeviceManager.swift */,
 				ED722AC129F00C3100004383 /* Assets.xcassets */,
 				ED722AC329F00C3100004383 /* LaunchScreen.storyboard */,
 				ED722AC629F00C3100004383 /* Info.plist */,
@@ -142,8 +148,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED722AD429F020C100004383 /* DeviceManager.swift in Sources */,
 				ED722ABD29F00C2F00004383 /* MainViewController.swift in Sources */,
 				ED722AB929F00C2F00004383 /* AppDelegate.swift in Sources */,
+				ED722AD229F0183A00004383 /* SplashScreenViewController.swift in Sources */,
 				ED722ACF29F0164B00004383 /* AppBlockedViewController.swift in Sources */,
 				ED722ACD29F015FF00004383 /* RootViewController.swift in Sources */,
 				ED722ABB29F00C2F00004383 /* SceneDelegate.swift in Sources */,
