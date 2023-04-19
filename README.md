@@ -25,6 +25,7 @@ A collection of iOS examples.
 - [Simple network monitoring](NetworkMonitoring)
 - [Multi Module App (using Coordinators)](FeatureModules)
 - [Keyboard Avoidance View Controller](KeyboardAvoidance)
+- [Extended Splash Screen on App startup](ExtendedSplashScreen)
 
 These examples are created as a way to learn. Feel free to use them as you please.
 Feedback are also welcome.
