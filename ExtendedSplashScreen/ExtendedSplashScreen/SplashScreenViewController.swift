@@ -7,6 +7,9 @@
 
 import UIKit
 
+/// A placeholder ViewController that typically show some animation and are close in appearance to the ViewController defined in LaunchScreen.storyboard.
+///
+/// Used as a placeholder while the app does some initial checks etc before allowing user interaction.
 final class SplashScreenViewController: UIViewController {
 
     private lazy var activityIndicator: UIActivityIndicatorView = {

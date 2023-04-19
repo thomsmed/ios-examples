@@ -42,6 +42,7 @@ final class RootViewController: UIViewController {
             to: viewController.view,
             duration: 0.25
         ) { _ in
+            // We add constraints after the `UIView.transition()` method has done its work.
             viewController.view.translatesAutoresizingMaskIntoConstraints = false
 
             NSLayoutConstraint.activate([
@@ -66,10 +67,10 @@ final class RootViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Show a splash screen while we do some initial app/device checks.
+        // Show a splash screen while we do some initial app/device check(s).
         setViewController(SplashScreenViewController())
 
-        // Run some initial app/device check.
+        // Run some initial app/device check(s).
         runDeviceCheck()
     }
 }
