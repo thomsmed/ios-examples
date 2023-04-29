@@ -16,7 +16,12 @@ final class BottomSheetPresentationController: UIPresentationController {
         return view
     }()
 
-    let bottomSheetInteractiveDismissalTransition = BottomSheetInteractiveDismissalTransition()
+    // How much the sheet can stretch beyond its original height/offset.
+    private static let sheetStretchOffset: CGFloat = 16
+
+    let bottomSheetInteractiveDismissalTransition = BottomSheetInteractiveDismissalTransition(
+        stretchOffset: sheetStretchOffset
+    )
 
     let sheetTopInset: CGFloat
     let sheetCornerRadius: CGFloat
@@ -25,7 +30,6 @@ final class BottomSheetPresentationController: UIPresentationController {
 
     private(set) lazy var tapGestureRecognizer: UITapGestureRecognizer = {
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(onTap))
-        gestureRecognizer.cancelsTouchesInView = false
         return gestureRecognizer
     }()
 
@@ -48,18 +52,15 @@ final class BottomSheetPresentationController: UIPresentationController {
         self.sheetCornerRadius = sheetCornerRadius
         self.sheetSizingFactor = sheetSizingFactor
         self.sheetBackdropColor = sheetBackdropColor
-        super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
+
+        super.init(
+            presentedViewController: presentedViewController,
+            presenting: presentingViewController
+        )
     }
 
     @objc private func onTap(_ gestureRecognizer: UITapGestureRecognizer) {
-        guard
-            let presentedView = presentedView,
-            let containerView = containerView,
-            !presentedView.frame.contains(gestureRecognizer.location(in: containerView))
-        else {
-            return
-        }
-
+        // Cancel any in flight animation before dismissing the sheet.
         bottomSheetInteractiveDismissalTransition.cancel()
 
         presentingViewController.dismiss(animated: true)
@@ -72,24 +73,27 @@ final class BottomSheetPresentationController: UIPresentationController {
 
         let translation = gestureRecognizer.translation(in: presentedView)
 
-        let progress = translation.y / presentedView.frame.height
-
         switch gestureRecognizer.state {
             case .began:
-                bottomSheetInteractiveDismissalTransition.start(
-                    moving: presentedView, interactiveDismissal: panToDismissEnabled
+                let startingTowardsDismissal = bottomSheetInteractiveDismissalTransition.checkIfPotentialDismissalAndStart(
+                    moving: presentedView, using: translation, asInteractiveDismissal: panToDismissEnabled
                 )
-            case .changed:
-                if panToDismissEnabled && progress > 0 && !presentedViewController.isBeingDismissed {
+
+                if startingTowardsDismissal, !presentedViewController.isBeingDismissed {
                     presentingViewController.dismiss(animated: true)
                 }
-                bottomSheetInteractiveDismissalTransition.move(
-                    presentedView, using: translation.y
+            case .changed:
+                let movingTowardsDismissal = bottomSheetInteractiveDismissalTransition.checkIfPotentialDismissalAndMove(
+                    presentedView, using: translation
                 )
+
+                if movingTowardsDismissal, !presentedViewController.isBeingDismissed {
+                    presentingViewController.dismiss(animated: true)
+                }
             default:
                 let velocity = gestureRecognizer.velocity(in: presentedView)
                 bottomSheetInteractiveDismissalTransition.stop(
-                    moving: presentedView, using: translation.y, and: velocity
+                    moving: presentedView, with: velocity
                 )
         }
     }
@@ -114,7 +118,7 @@ final class BottomSheetPresentationController: UIPresentationController {
             return
         }
 
-        containerView.addGestureRecognizer(tapGestureRecognizer)
+        backdropView.addGestureRecognizer(tapGestureRecognizer)
 
         containerView.addSubview(backdropView)
 
@@ -135,47 +139,66 @@ final class BottomSheetPresentationController: UIPresentationController {
             ),
         ])
 
+        // Define a layout guide we can constrain the presented view to.
+        // This layout guide will act as the outer boundaries for the presented view.
+        let bottomSheetLayoutGuide = UILayoutGuide()
+        containerView.addLayoutGuide(bottomSheetLayoutGuide)
+
         containerView.addSubview(presentedView)
 
         presentedView.translatesAutoresizingMaskIntoConstraints = false
 
+        let maximumHeightConstraint = presentedView.heightAnchor.constraint(
+            lessThanOrEqualTo: bottomSheetLayoutGuide.heightAnchor,
+            // We don't want the sheet to stretch beyond the top of our defined boundaries (`bottomSheetLayoutGuide`).
+            constant: -(sheetTopInset + Self.sheetStretchOffset)
+        )
+
+        // Prevents conflicts with the height constraint used by the animated transition.
+        maximumHeightConstraint.priority = .required - 1
+
         let preferredHeightConstraint = presentedView.heightAnchor.constraint(
-            equalTo: containerView.heightAnchor,
+            equalTo: bottomSheetLayoutGuide.heightAnchor,
             multiplier: sheetSizingFactor
         )
 
         preferredHeightConstraint.priority = .fittingSizeLevel
-
-        let topConstraint = presentedView.topAnchor.constraint(
-            greaterThanOrEqualTo: containerView.safeAreaLayoutGuide.topAnchor,
-            constant: sheetTopInset
-        )
-
-        // Prevents conflicts with the height constraint used by the animated transition
-        topConstraint.priority = .required - 1
 
         let heightConstraint = presentedView.heightAnchor.constraint(
             equalToConstant: 0
         )
 
         let bottomConstraint = presentedView.bottomAnchor.constraint(
-            equalTo: containerView.bottomAnchor
+            equalTo: bottomSheetLayoutGuide.bottomAnchor
         )
 
         NSLayoutConstraint.activate([
-            topConstraint,
-            presentedView.leadingAnchor.constraint(
+            bottomSheetLayoutGuide.topAnchor.constraint(
+                equalTo: containerView.safeAreaLayoutGuide.topAnchor
+            ),
+            bottomSheetLayoutGuide.bottomAnchor.constraint(
+                equalTo: containerView.bottomAnchor
+            ),
+            bottomSheetLayoutGuide.leadingAnchor.constraint(
                 equalTo: containerView.leadingAnchor
             ),
-            presentedView.trailingAnchor.constraint(
+            bottomSheetLayoutGuide.trailingAnchor.constraint(
                 equalTo: containerView.trailingAnchor
             ),
+
+            presentedView.leadingAnchor.constraint(
+                equalTo: bottomSheetLayoutGuide.leadingAnchor
+            ),
+            presentedView.trailingAnchor.constraint(
+                equalTo: bottomSheetLayoutGuide.trailingAnchor
+            ),
             bottomConstraint,
-            preferredHeightConstraint
+            maximumHeightConstraint,
+            preferredHeightConstraint,
         ])
 
-        bottomSheetInteractiveDismissalTransition.bottomConstraint = bottomConstraint
         bottomSheetInteractiveDismissalTransition.heightConstraint = heightConstraint
+        bottomSheetInteractiveDismissalTransition.bottomConstraint = bottomConstraint
 
         guard let transitionCoordinator = presentingViewController.transitionCoordinator else {
             return
