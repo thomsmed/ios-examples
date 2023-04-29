@@ -9,7 +9,7 @@ import UIKit
 
 final class BottomSheetInteractiveDismissalTransition: NSObject {
 
-    private let thresholdVelocity: CGFloat = 500
+    private let velocityThreshold: CGFloat = 500
     private let stretchOffset: CGFloat = 16
     private let frequencyResponse: CGFloat = 0.25 // How quickly the spring animation settles.
 
@@ -48,12 +48,11 @@ final class BottomSheetInteractiveDismissalTransition: NSObject {
 
     private func createHeightAnimator(
         animating view: UIView,
-        from height: CGFloat
+        from currentHeight: CGFloat,
+        to finalHeight: CGFloat
     ) -> UIViewPropertyAnimator {
-        heightConstraint?.constant = height
+        heightConstraint?.constant = currentHeight
         heightConstraint?.isActive = true
-
-        let finalHeight = height + stretchOffset
 
         let propertyAnimator = propertyAnimator()
         propertyAnimator.addAnimations {
@@ -63,7 +62,7 @@ final class BottomSheetInteractiveDismissalTransition: NSObject {
 
         propertyAnimator.addCompletion { position in
             self.heightConstraint?.isActive = position == .end ? true : false
-            self.heightConstraint?.constant = position == .end ? finalHeight : height
+            self.heightConstraint?.constant = position == .end ? finalHeight : currentHeight
         }
 
         return propertyAnimator
@@ -111,9 +110,10 @@ extension BottomSheetInteractiveDismissalTransition {
         cancel()
 
         presentedViewHeight = presentedView.frame.height
+        let stretchedHeight = presentedViewHeight + stretchOffset
 
         heightAnimator = createHeightAnimator(
-            animating: presentedView, from: presentedViewHeight
+            animating: presentedView, from: presentedViewHeight, to: stretchedHeight
         )
 
         if !interactiveDismissal {
@@ -131,8 +131,14 @@ extension BottomSheetInteractiveDismissalTransition {
 
         let stretchProgress = stretchProgress(basedOn: translation)
 
-        heightAnimator?.fractionComplete = stretchProgress * -1
-        offsetAnimator?.fractionComplete = interactiveDismissal ? progress : stretchProgress
+        heightAnimator?.fractionComplete = progress < 0
+            ? -stretchProgress
+            : 0
+        offsetAnimator?.fractionComplete = progress > 0
+            ? interactiveDismissal
+                ? progress
+                : stretchProgress
+            : 0
 
         transitionContext?.updateInteractiveTransition(progress)
     }
@@ -146,13 +152,19 @@ extension BottomSheetInteractiveDismissalTransition {
 
         let stretchProgress = stretchProgress(basedOn: translation)
 
-        heightAnimator?.fractionComplete = stretchProgress * -1
-        offsetAnimator?.fractionComplete = interactiveDismissal ? progress : stretchProgress
+        heightAnimator?.fractionComplete = progress < 0
+            ? -stretchProgress
+            : 0
+        offsetAnimator?.fractionComplete = progress > 0
+            ? interactiveDismissal
+                ? progress
+                : stretchProgress
+            : 0
 
         transitionContext?.updateInteractiveTransition(progress)
 
         let cancelDismiss = !interactiveDismissal ||
-                            velocity.y < thresholdVelocity ||
+                            velocity.y < velocityThreshold ||
                             (progress < 0.5 && velocity.y <= 0)
 
         heightAnimator?.isReversed = true
