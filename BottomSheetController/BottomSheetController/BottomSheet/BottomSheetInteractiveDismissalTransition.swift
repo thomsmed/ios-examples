@@ -18,6 +18,8 @@ final class BottomSheetInteractiveDismissalTransition: NSObject {
     private var heightAnimator: UIViewPropertyAnimator?
     private var offsetAnimator: UIViewPropertyAnimator?
 
+    private var presentedViewHeight: CGFloat = .zero
+
     private(set) var interactiveDismissal: Bool = false
 
     var bottomConstraint: NSLayoutConstraint?
@@ -108,8 +110,10 @@ extension BottomSheetInteractiveDismissalTransition {
 
         cancel()
 
+        presentedViewHeight = presentedView.frame.height
+
         heightAnimator = createHeightAnimator(
-            animating: presentedView, from: presentedView.frame.height
+            animating: presentedView, from: presentedViewHeight
         )
 
         if !interactiveDismissal {
@@ -123,7 +127,7 @@ extension BottomSheetInteractiveDismissalTransition {
         _ presentedView: UIView,
         using translation: CGFloat
     ) {
-        let progress = translation / presentedView.frame.height
+        let progress = translation / presentedViewHeight
 
         let stretchProgress = stretchProgress(basedOn: translation)
 
@@ -138,7 +142,7 @@ extension BottomSheetInteractiveDismissalTransition {
         using translation: CGFloat,
         and velocity: CGPoint
     ) {
-        let progress = translation / presentedView.frame.height
+        let progress = translation / presentedViewHeight
 
         let stretchProgress = stretchProgress(basedOn: translation)
 
@@ -211,7 +215,7 @@ extension BottomSheetInteractiveDismissalTransition: UIViewControllerAnimatedTra
 
         offsetAnimator?.stopAnimation(true)
 
-        let offset = presentedView.frame.height
+        let offset = presentedViewHeight
         let offsetAnimator = createOffsetAnimator(animating: presentedView, to: offset)
 
         offsetAnimator.addCompletion { position in
@@ -252,7 +256,7 @@ extension BottomSheetInteractiveDismissalTransition: UIViewControllerInteractive
 
         offsetAnimator?.stopAnimation(true)
 
-        let offset = presentedView.frame.height
+        let offset = presentedViewHeight
         let offsetAnimator = createOffsetAnimator(animating: presentedView, to: offset)
 
         offsetAnimator.addCompletion { position in

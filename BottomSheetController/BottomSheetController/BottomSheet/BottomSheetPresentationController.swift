@@ -103,6 +103,7 @@ final class BottomSheetPresentationController: UIPresentationController {
 
         presentedView.addGestureRecognizer(panGestureRecognizer)
 
+        presentedView.clipsToBounds = true
         presentedView.layer.cornerRadius = sheetCornerRadius
         presentedView.layer.maskedCorners = [
             .layerMinXMinYCorner,
