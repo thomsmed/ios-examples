@@ -24,3 +24,4 @@
 - [Multi Module App (using Coordinators)](FeatureModules)
 - [Keyboard Avoidance View Controller](KeyboardAvoidance)
 - [Extended Splash Screen on App startup](ExtendedSplashScreen)
+- [Interactive Animations with UIViewPropertyAnimator](InteractiveAnimations)
