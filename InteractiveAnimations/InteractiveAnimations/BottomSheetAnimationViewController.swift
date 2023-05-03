@@ -50,10 +50,11 @@ final class BottomSheetView: UIView {
 // MARK: BottomSheetAnimationViewController
 
 final class BottomSheetAnimationViewController: UIViewController {
-    private lazy var button: UIButton = {
+    private lazy var toggleSheetButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Open Bottom Sheet", for: .normal)
+        button.setTitle("Reset Sheet", for: .normal)
+        button.addTarget(self, action: #selector(onTap), for: .primaryActionTriggered)
         return button
     }()
 
@@ -75,6 +76,17 @@ final class BottomSheetAnimationViewController: UIViewController {
 
     override func loadView() {
         let view = UIView()
+
+        view.addSubview(toggleSheetButton)
+
+        NSLayoutConstraint.activate([
+            toggleSheetButton.centerXAnchor.constraint(
+                equalTo: view.centerXAnchor
+            ),
+            toggleSheetButton.centerYAnchor.constraint(
+                equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 32
+            )
+        ])
 
         view.addSubview(bottomSheetView)
 
@@ -114,6 +126,13 @@ final class BottomSheetAnimationViewController: UIViewController {
     }
 
     @objc
+    private func onTap(_ button: UIButton) {
+        // Reset sheet constraints.
+        animator.bottomConstraint?.constant = 0
+        animator.bottomToTopConstraint?.isActive = false
+    }
+
+    @objc
     private func onPan(_ panGestureRecognizer: UIPanGestureRecognizer) {
         guard let view = panGestureRecognizer.view else {
             return
@@ -131,7 +150,8 @@ final class BottomSheetAnimationViewController: UIViewController {
             case .changed:
                 animator.move(view, basedOn: translation)
             default: // .ended, .cancelled, @unknown
-                animator.stop(animating: view)
+                let velocity = panGestureRecognizer.velocity(in: view.superview)
+                animator.stop(animating: view, with: velocity)
         }
     }
 }
@@ -142,29 +162,55 @@ fileprivate final class Animator {
 
     private var maxStretch: CGFloat = .zero
 
+    // Capture the sheet's initial height.
     private var initialSheetHeight: CGFloat = .zero
+
+    // This tracks the how far the sheet has initially moved at the start of a gesture.
+    // The sheet can be in movement/mid-animation when a gesture happens.
     private var initialTranslation: CGPoint = .zero
 
     private var heightAnimator: UIViewPropertyAnimator?
     private var offsetAnimator: UIViewPropertyAnimator?
 
-    private func timingParameters() -> UITimingCurveProvider {
-        UISpringTimingParameters(
-            dampingRatio: 1,
-            initialVelocity: .zero
+    private func initialVelocity(
+        basedOn gestureVelocity: CGPoint,
+        startingAt currentValue: CGFloat,
+        endingAt finalValue: CGFloat
+    ) -> CGVector {
+        // Tip on how to calculate initial velocity:
+        // https://developer.apple.com/documentation/uikit/uispringtimingparameters/1649909-initialvelocity
+        let distance = finalValue - currentValue
+
+        return CGVector(
+            dx: distance != 0 ? gestureVelocity.y / distance : 0,
+            dy: distance != 0 ? gestureVelocity.y / distance : 0
         )
     }
 
-    private func propertyAnimator() -> UIViewPropertyAnimator {
+    private func timingParameters(
+        basedOn initialVelocity: CGVector
+    ) -> UITimingCurveProvider {
+        UISpringTimingParameters(
+            dampingRatio: 1,
+            initialVelocity: initialVelocity
+        )
+    }
+
+    private func propertyAnimator(
+        basedOn initialVelocity: CGVector = .zero
+    ) -> UIViewPropertyAnimator {
         UIViewPropertyAnimator(
             duration: 2.25,
-            timingParameters: timingParameters()
+            timingParameters: timingParameters(
+                basedOn: initialVelocity
+            )
         )
     }
 
     private func makeHeightAnimator(
         animating view: UIView,
-        to height: CGFloat
+        to height: CGFloat,
+        _ completion: @escaping (UIViewAnimatingPosition) -> Void
     ) -> UIViewPropertyAnimator {
         let propertyAnimator = propertyAnimator()
 
@@ -186,12 +232,15 @@ fileprivate final class Animator {
                     : originalHeight
         }
 
+        propertyAnimator.addCompletion(completion)
+
         return propertyAnimator
     }
 
     private func makeOffsetAnimator(
         animating view: UIView,
-        to offset: CGFloat
+        to offset: CGFloat,
+        _ completion: @escaping (UIViewAnimatingPosition) -> Void
     ) -> UIViewPropertyAnimator {
         let propertyAnimator = propertyAnimator()
 
@@ -212,6 +261,8 @@ fileprivate final class Animator {
                     : originalOffset
         }
 
+        propertyAnimator.addCompletion(completion)
+
         return propertyAnimator
     }
 }
@@ -221,11 +272,11 @@ extension Animator {
         if heightAnimator?.state == .active || offsetAnimator?.state == .active {
             // The sheet is currently in movement.
 
-            // Pause the height animator.
+            // Pause the height animator (if present).
             heightAnimator?.pauseAnimation()
             heightAnimator?.isReversed = false
 
-            // Pause the offset animator.
+            // Pause the offset animator (if present.
             offsetAnimator?.pauseAnimation()
             offsetAnimator?.isReversed = false
 
@@ -240,31 +291,15 @@ extension Animator {
         } else {
             // The sheet is currently at rest.
 
-            maxStretch = view.frame.height / 2
+            // Capture control values.
+            maxStretch = view.frame.height / 3
             initialSheetHeight = view.frame.height
             initialTranslation = .zero
-
-            // Create a new height animator.
-            let heightAnimator = makeHeightAnimator(
-                animating: view, to: initialSheetHeight + maxStretch
-            )
-
-            heightAnimator.pauseAnimation()
-
-            self.heightAnimator = heightAnimator
-
-            // Create a new offset animator.
-            let offsetAnimator = makeOffsetAnimator(
-                animating: view, to: initialSheetHeight
-            )
-
-            offsetAnimator.pauseAnimation()
-
-            self.offsetAnimator = offsetAnimator
         }
     }
 
     func move(_ view: UIView, basedOn translation: CGPoint) {
+        // Figure out how far the sheet has moved away from its original position.
         let totalTranslationY = initialTranslation.y + translation.y
 
         let heightFraction = min(
@@ -275,26 +310,86 @@ extension Animator {
             max(totalTranslationY, 0) / initialSheetHeight, 1
         )
 
-        heightAnimator?.fractionComplete = heightFraction
+        // Since we animate the same properties in both animators (size and position),
+        // we avoid conflicts by only running one at the time.
+        if heightFraction > 0 {
+            // The sheet wants to move above its original height.
+            // Make - or use an already running - height animator to drive this movement.
 
-        offsetAnimator?.fractionComplete = offsetFraction
+            // Cancel any running offset animator so it does not interfere with the height animator.
+            offsetAnimator?.stopAnimation(false)
+            offsetAnimator?.finishAnimation(at: .start)
+
+            let heightAnimator = self.heightAnimator ?? makeHeightAnimator(
+                animating: view, to: initialSheetHeight + maxStretch
+            ) { _ in
+                // Throw away the used animator, so we are ready to start fresh.
+                self.heightAnimator = nil
+            }
+
+            heightAnimator.fractionComplete = heightFraction
+
+            self.heightAnimator = heightAnimator
+        } else {
+            // The sheet wants to move below its original height.
+            // Make - or use an already running - offset animator to drive this movement.
+
+            // Cancel any running height animator so it does not interfere with the offset animator.
+            heightAnimator?.stopAnimation(false)
+            heightAnimator?.finishAnimation(at: .start)
+
+            let offsetAnimator = self.offsetAnimator ?? makeOffsetAnimator(
+                animating: view, to: initialSheetHeight
+            ) { position in
+                // Throw away the used animator, so we are ready to start fresh.
+                self.offsetAnimator = nil
+            }
+
+            offsetAnimator.fractionComplete = offsetFraction
+
+            self.offsetAnimator = offsetAnimator
+        }
     }
 
-    func stop(animating view: UIView) {
-        // TODO: Use velocity to adjust timing parameters
+    func stop(animating view: UIView, with velocity: CGPoint) {
+        if let heightAnimator {
+            let fractionComplete = heightAnimator.fractionComplete
 
-        offsetAnimator?.isReversed = offsetAnimator?.fractionComplete ?? 0 < 0.5
+            let initialHeightVelocity = initialVelocity(
+                basedOn: velocity,
+                startingAt: fractionComplete * maxStretch,
+                endingAt: maxStretch
+            )
 
-        offsetAnimator?.continueAnimation(
-            withTimingParameters: timingParameters(),
-            durationFactor: 1
-        )
+            // Always animate back to initial sheet height.
+            heightAnimator.isReversed = true
 
-        heightAnimator?.isReversed = true
+            heightAnimator.continueAnimation(
+                withTimingParameters: timingParameters(
+                    basedOn: initialHeightVelocity
+                ),
+                durationFactor: 1
+            )
+        } else if let offsetAnimator {
+            let fractionComplete = offsetAnimator.fractionComplete
 
-        heightAnimator?.continueAnimation(
-            withTimingParameters: timingParameters(),
-            durationFactor: 1
-        )
+            // Reverse the animation of the sheet is not half way off the screen.
+            let reverseAnimation = fractionComplete < 0.5
+
+            let initialOffsetVelocity = initialVelocity(
+                basedOn: velocity,
+                startingAt: reverseAnimation ? fractionComplete * initialSheetHeight : 0,
+                endingAt: reverseAnimation ? 0 : initialSheetHeight
+            )
+
+            offsetAnimator.isReversed = reverseAnimation
+
+            offsetAnimator.continueAnimation(
+                withTimingParameters: timingParameters(
+                    basedOn: initialOffsetVelocity
+                ),
+                durationFactor: 1
+            )
+        }
     }
 }
