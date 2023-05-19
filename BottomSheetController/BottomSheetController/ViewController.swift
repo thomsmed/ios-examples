@@ -132,9 +132,18 @@ final class ViewController: UIViewController {
         tableContentMediumButton.titleLabel?.font = .systemFont(ofSize: 20, weight: .regular)
         tableContentMediumButton.setTitle("Table content - medium", for: .normal)
 
+        let lifecycleDependentContentLargeButton = UIButton(type: .system, primaryAction: .init(handler: { _ in
+            let viewController = LifecycleDependentContentSheetViewController()
+            viewController.preferredSheetSizing = .large
+            self.present(viewController, animated: true)
+        }))
+        lifecycleDependentContentLargeButton.titleLabel?.font = .systemFont(ofSize: 20, weight: .regular)
+        lifecycleDependentContentLargeButton.setTitle("Lifecycle dependent content - large", for: .normal)
+
         let miscContentStackView = UIStackView(arrangedSubviews: [
             expandingContentFitButton,
-            tableContentMediumButton
+            tableContentMediumButton,
+            lifecycleDependentContentLargeButton
         ])
         miscContentStackView.axis = .vertical
         miscContentStackView.spacing = 8

@@ -11,6 +11,7 @@
 		ED0B4EC229FC6C1A00EC1A08 /* BottomSheetInteractiveDismissalTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0B4EC129FC6C1A00EC1A08 /* BottomSheetInteractiveDismissalTransition.swift */; };
 		ED82084B29DDEFD600F96F7F /* TableContentSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED82084A29DDEFD600F96F7F /* TableContentSheetViewController.swift */; };
 		EDA96F47282F9E5D0036E1EA /* ExpandingContentSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA96F46282F9E5D0036E1EA /* ExpandingContentSheetViewController.swift */; };
+		EDB436922A17AD6200B05912 /* LifecycleDependentContentSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB436912A17AD6200B05912 /* LifecycleDependentContentSheetViewController.swift */; };
 		EDE8263C2822E837009DF63E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE8263B2822E837009DF63E /* AppDelegate.swift */; };
 		EDE8263E2822E837009DF63E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE8263D2822E837009DF63E /* SceneDelegate.swift */; };
 		EDE826402822E837009DF63E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE8263F2822E837009DF63E /* ViewController.swift */; };
@@ -28,6 +29,7 @@
 		ED82084A29DDEFD600F96F7F /* TableContentSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableContentSheetViewController.swift; sourceTree = "<group>"; };
 		EDA96F46282F9E5D0036E1EA /* ExpandingContentSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandingContentSheetViewController.swift; sourceTree = "<group>"; };
 		EDB18643282BE3EA008E211A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		EDB436912A17AD6200B05912 /* LifecycleDependentContentSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifecycleDependentContentSheetViewController.swift; sourceTree = "<group>"; };
 		EDE826382822E837009DF63E /* BottomSheetController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BottomSheetController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDE8263B2822E837009DF63E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDE8263D2822E837009DF63E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 				EDE826562823241F009DF63E /* DenseContentSheetViewController.swift */,
 				EDA96F46282F9E5D0036E1EA /* ExpandingContentSheetViewController.swift */,
 				ED82084A29DDEFD600F96F7F /* TableContentSheetViewController.swift */,
+				EDB436912A17AD6200B05912 /* LifecycleDependentContentSheetViewController.swift */,
 				EDE826512822EB7A009DF63E /* BottomSheet */,
 				EDE826442822E839009DF63E /* Assets.xcassets */,
 				EDE826462822E839009DF63E /* LaunchScreen.storyboard */,
@@ -179,6 +182,7 @@
 				EDE826572823241F009DF63E /* DenseContentSheetViewController.swift in Sources */,
 				EDE8263E2822E837009DF63E /* SceneDelegate.swift in Sources */,
 				ED0B4EC029FC6B5D00EC1A08 /* BottomSheetPresentationController.swift in Sources */,
+				EDB436922A17AD6200B05912 /* LifecycleDependentContentSheetViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
