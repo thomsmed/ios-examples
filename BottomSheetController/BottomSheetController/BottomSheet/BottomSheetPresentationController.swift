@@ -60,6 +60,11 @@ final class BottomSheetPresentationController: UIPresentationController {
     }
 
     @objc private func onTap(_ gestureRecognizer: UITapGestureRecognizer) {
+        // Make sure there is no ongoing pan gesture.
+        guard panGestureRecognizer.state == .possible else {
+            return
+        }
+
         // Cancel any in flight animation before dismissing the sheet.
         bottomSheetInteractiveDismissalTransition.cancel()
 
@@ -212,13 +217,17 @@ final class BottomSheetPresentationController: UIPresentationController {
     override func presentationTransitionDidEnd(_ completed: Bool) {
         if !completed {
             backdropView.removeFromSuperview()
+            presentedView?.removeFromSuperview()
             presentedView?.removeGestureRecognizer(panGestureRecognizer)
             containerView?.removeGestureRecognizer(tapGestureRecognizer)
         }
     }
 
     override func dismissalTransitionWillBegin() {
-        guard let transitionCoordinator = presentingViewController.transitionCoordinator else {
+        guard
+            let transitionCoordinator = presentingViewController.transitionCoordinator,
+            transitionCoordinator.isAnimated
+        else {
             return
         }
 
@@ -230,6 +239,7 @@ final class BottomSheetPresentationController: UIPresentationController {
     override func dismissalTransitionDidEnd(_ completed: Bool) {
         if completed {
             backdropView.removeFromSuperview()
+            presentedView?.removeFromSuperview()
             presentedView?.removeGestureRecognizer(panGestureRecognizer)
             containerView?.removeGestureRecognizer(tapGestureRecognizer)
         }

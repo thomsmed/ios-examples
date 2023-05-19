@@ -9,7 +9,7 @@ import UIKit
 
 final class BottomSheetInteractiveDismissalTransition: NSObject {
 
-    private let stretchOffset: CGFloat
+    private let stretchHeight: CGFloat
 
     // Points per seconds. Just a number that felt "natural".
     // Used as threshold for triggering dismissal.
@@ -40,7 +40,7 @@ final class BottomSheetInteractiveDismissalTransition: NSObject {
     var bottomConstraint: NSLayoutConstraint?
 
     init(stretchOffset: CGFloat) {
-        self.stretchOffset = stretchOffset
+        self.stretchHeight = stretchOffset
     }
 
     private func initialVelocity(
@@ -70,7 +70,7 @@ final class BottomSheetInteractiveDismissalTransition: NSObject {
 
     private func timingParameters(
         with initialVelocity: CGVector = .zero
-    ) -> UISpringTimingParameters {
+    ) -> UITimingCurveProvider {
         UISpringTimingParameters(
             dampingRatio: 1,
             initialVelocity: initialVelocity
@@ -164,7 +164,7 @@ final class BottomSheetInteractiveDismissalTransition: NSObject {
         self.offsetAnimator = nil
 
         let heightAnimator = self.heightAnimator ?? makeHeightAnimator(
-            animating: view, to: initialSheetHeight + stretchOffset
+            animating: view, to: initialSheetHeight + stretchHeight
         ) { _ in
             // Throw away the used animator, so we are ready to start fresh.
             self.heightAnimator = nil
@@ -200,7 +200,7 @@ final class BottomSheetInteractiveDismissalTransition: NSObject {
         }
 
         let offsetAnimator = self.offsetAnimator ?? makeOffsetAnimator(
-            animating: view, to: stretchOffset
+            animating: view, to: stretchHeight
         ) { position in
             // Throw away the used animator, so we are ready to start fresh.
             self.offsetAnimator = nil
@@ -223,7 +223,8 @@ final class BottomSheetInteractiveDismissalTransition: NSObject {
             // Make (or use an already running) height animator to drive this movement.
 
             // Figure out the height animator's fraction complete.
-            let heightFraction = min(pow(abs(min(totalTranslationY, 0)), 0.5) / stretchOffset, 1)
+            // Using `pow()` to add a rubber band effect.
+            let heightFraction = min(pow(abs(min(totalTranslationY, 0)), 0.5) / stretchHeight, 1)
 
             updateHeightAnimator(
                 animating: view,
@@ -234,11 +235,12 @@ final class BottomSheetInteractiveDismissalTransition: NSObject {
             // Make (or use an already running) offset animator to drive this movement.
 
             // Figure out the offset animator's fraction complete.
+            // Using `pow()` to add a rubber band effect (when non-interactive dismissal).
             let offsetFraction: CGFloat
             if interactiveDismissal {
                 offsetFraction = min(max(totalTranslationY, 0) / initialSheetHeight, 1)
             } else {
-                offsetFraction = min(pow(max(totalTranslationY, 0), 0.5) / stretchOffset, 1)
+                offsetFraction = min(pow(max(totalTranslationY, 0), 0.5) / stretchHeight, 1)
             }
 
             updateOffsetAnimator(
@@ -280,7 +282,7 @@ extension BottomSheetInteractiveDismissalTransition {
             heightAnimator?.pauseAnimation()
             heightAnimator?.isReversed = false
 
-            // Pause the offset animator (if present.
+            // Pause the offset animator (if present).
             offsetAnimator?.pauseAnimation()
             offsetAnimator?.isReversed = false
 
@@ -291,11 +293,14 @@ extension BottomSheetInteractiveDismissalTransition {
             let heightFraction = heightAnimator?.fractionComplete ?? 0
             let offsetFraction = offsetAnimator?.fractionComplete ?? 0
 
+            let finalOffset = interactiveDismissal ? initialSheetHeight : stretchHeight
+
             initialTranslation = CGPoint(
                 x: 0,
-                y: offsetFraction * (interactiveDismissal ? initialSheetHeight : stretchOffset) - heightFraction * stretchOffset
+                y: offsetFraction * finalOffset - heightFraction * stretchHeight
             )
 
+            // How far the sheet has moved away from its original position.
             let totalTranslationY = initialTranslation.y + translation.y
 
             // Signal that the sheet is moving towards dismissal.
@@ -333,8 +338,8 @@ extension BottomSheetInteractiveDismissalTransition {
 
             let initialHeightVelocity = initialVelocity(
                 basedOn: velocity,
-                startingAt: fractionComplete * stretchOffset,
-                endingAt: stretchOffset
+                startingAt: fractionComplete * stretchHeight,
+                endingAt: stretchHeight
             )
 
             // Always animate back to initial sheet height.
@@ -418,7 +423,7 @@ extension BottomSheetInteractiveDismissalTransition: UIViewControllerAnimatedTra
             // Throw away the used animator, so we are ready to start fresh.
             self.offsetAnimator = nil
 
-            // Also removed reference to the transition context.
+            // Also remove reference to the transition context.
             self.transitionContext = nil
 
             transitionContext.completeTransition(position == .end)
@@ -494,7 +499,6 @@ extension BottomSheetInteractiveDismissalTransition: UIViewControllerInteractive
         offsetAnimator?.pauseAnimation()
 
         if !interactiveDismissal {
-            print("Stop called before move")
             // The gesture driving the transition has already ended or been canceled.
             // Make sure both transition context and animation is canceled.
             transitionContext.cancelInteractiveTransition()

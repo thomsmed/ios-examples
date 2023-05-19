@@ -55,6 +55,12 @@ extension LifecycleDependentContentSheetViewController {
 
         textLabel.text = "View will appear!"
 
+        guard transitionCoordinator?.isAnimated ?? false else {
+            self.textLabel.transform = .identity
+
+            return
+        }
+
         transitionCoordinator?.animate { _ in
             self.textLabel.transform = .identity
         }
@@ -70,6 +76,10 @@ extension LifecycleDependentContentSheetViewController {
         super.viewWillDisappear(animated)
 
         textLabel.text = "View will disappear!"
+
+        guard transitionCoordinator?.isAnimated ?? false else {
+            return
+        }
 
         transitionCoordinator?.animate { _ in
             self.textLabel.transform = .init(rotationAngle: .pi)
