@@ -115,19 +115,46 @@ final class ViewController: UIViewController {
         denseContentStackView.axis = .vertical
         denseContentStackView.spacing = 8
 
-        let expandingContentMediumButton = UIButton(type: .system, primaryAction: .init(handler: { _ in
+        let expandingContentFitButton = UIButton(type: .system, primaryAction: .init(handler: { _ in
             let viewController = ExpandingContentSheetViewController()
             viewController.preferredSheetSizing = .fit
             viewController.panToDismissEnabled = false
             self.present(viewController, animated: true)
         }))
-        expandingContentMediumButton.titleLabel?.font = .systemFont(ofSize: 20, weight: .regular)
-        expandingContentMediumButton.setTitle("Expanding content - fit", for: .normal)
+        expandingContentFitButton.titleLabel?.font = .systemFont(ofSize: 20, weight: .regular)
+        expandingContentFitButton.setTitle("Expanding content - fit", for: .normal)
 
-        let axis: NSLayoutConstraint.Axis = traitCollection.horizontalSizeClass == .compact ? .vertical : .horizontal
+        let tableContentMediumButton = UIButton(type: .system, primaryAction: .init(handler: { _ in
+            let viewController = TableContentSheetViewController()
+            viewController.preferredSheetSizing = .medium
+            self.present(viewController, animated: true)
+        }))
+        tableContentMediumButton.titleLabel?.font = .systemFont(ofSize: 20, weight: .regular)
+        tableContentMediumButton.setTitle("Table content - medium", for: .normal)
+
+        let lifecycleDependentContentLargeButton = UIButton(type: .system, primaryAction: .init(handler: { _ in
+            let viewController = LifecycleDependentContentSheetViewController()
+            viewController.preferredSheetSizing = .large
+            self.present(viewController, animated: true)
+        }))
+        lifecycleDependentContentLargeButton.titleLabel?.font = .systemFont(ofSize: 20, weight: .regular)
+        lifecycleDependentContentLargeButton.setTitle("Lifecycle dependent content - large", for: .normal)
+
+        let miscContentStackView = UIStackView(arrangedSubviews: [
+            expandingContentFitButton,
+            tableContentMediumButton,
+            lifecycleDependentContentLargeButton
+        ])
+        miscContentStackView.axis = .vertical
+        miscContentStackView.spacing = 8
+
+        let axis: NSLayoutConstraint.Axis = traitCollection.verticalSizeClass == .compact
+            ? .horizontal
+            : .vertical
+
         stackView.addArrangedSubview(sparseContentStackView)
         stackView.addArrangedSubview(denseContentStackView)
-        stackView.addArrangedSubview(expandingContentMediumButton)
+        stackView.addArrangedSubview(miscContentStackView)
         stackView.axis = axis
         stackView.spacing = 16
 
@@ -144,7 +171,12 @@ final class ViewController: UIViewController {
     }
 
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        let axis: NSLayoutConstraint.Axis = traitCollection.horizontalSizeClass == .compact ? .vertical : .horizontal
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        let axis: NSLayoutConstraint.Axis = traitCollection.verticalSizeClass == .compact
+            ? .horizontal
+            : .vertical
+
         stackView.axis = axis
     }
 }
