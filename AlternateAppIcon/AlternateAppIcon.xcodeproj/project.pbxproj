@@ -26,6 +26,7 @@
 		ED2DA7FF2A48921B002F426F /* MockApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockApplication.swift; sourceTree = "<group>"; };
 		ED2DA8012A48924B002F426F /* MockAppInfoProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAppInfoProvider.swift; sourceTree = "<group>"; };
 		ED2DA8032A489E89002F426F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		ED5CFA062A48A4B1001F22CF /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		ED7F902C2A48476D00E91445 /* AlternateAppIcon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlternateAppIcon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED7F902F2A48476D00E91445 /* AlternateAppIconApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlternateAppIconApp.swift; sourceTree = "<group>"; };
 		ED7F90312A48476D00E91445 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -51,6 +52,7 @@
 		ED7F90232A48476D00E91445 = {
 			isa = PBXGroup;
 			children = (
+				ED5CFA062A48A4B1001F22CF /* README.md */,
 				ED7F902E2A48476D00E91445 /* AlternateAppIcon */,
 				ED7F902D2A48476D00E91445 /* Products */,
 			);
