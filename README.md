@@ -27,6 +27,7 @@ A collection of iOS examples.
 - [Keyboard Avoidance View Controller](KeyboardAvoidance)
 - [Extended Splash Screen on App startup](ExtendedSplashScreen)
 - [Interactive Animations with UIViewPropertyAnimator](InteractiveAnimations)
+- [Dynamically alternate/change app icon (SwiftUI)](AlternateAppIcon)
 
 These examples are created as a way to learn. Feel free to use them as you please.
 Feedback are also welcome.
