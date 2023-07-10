@@ -8,27 +8,49 @@
 import SwiftUI
 
 struct ContentView: View {
+    private static let simpleHTML = """
+        <p>This is a paragraph</p>
+        <ul>
+            <li>List item one</li>
+            <li>List item two</li>
+        </ul>
+        """
+
+    private static let richHTML = """
+        <h1>This is a H1 header</h1>
+        <h2>This is a H2 header</h2>
+        <h3>This is a H3 header</h3>
+        <p>This is a paragraph</p>
+        <ul>
+            <li>List item one</li>
+            <li>List item two</li>
+        </ul>
+        <p>This is another paragraph</p>
+        <p>This is a paragraph with a <a href="https://developer.apple.com/">link to some other content</a></p>
+        <p style="color: blue; text-align: center;">And this is a <span style="color: red;">paragraph</span> with inline styling</p>
+        """
+
+    @State private var showRichHTML: Bool = false
+
     var body: some View {
         NavigationStack {
             ScrollView {
-                LazyVStack {
-                    HTML("""
-                    <h1>This is a H1 header</h1>
-                    <h2>This is a H2 header</h2>
-                    <h3>This is a H3 header</h3>
-                    <p>This is a paragraph</p>
-                    <ul>
-                        <li>List item one</li>
-                        <li>List item two</li>
-                    </ul>
-                    <p>This is another paragraph</p>
-                    <p>This is a paragraph with a <a href="https://developer.apple.com/">link to some other content</a></p>
-                    <p style="color: blue; text-align: center;">And this is a <span style="color: red;">paragraph</span> with inline styling</p>
-                    """)
+                VStack {
+                    Text("This is a normal SwiftUI Text View. Below is our custom HTML Text View")
                         .padding()
 
-                    Text("A normal SwiftUI Text View")
-                        .padding()
+                    Button("Render \(showRichHTML ? "simple" : "rich") HTML") {
+                        showRichHTML = !showRichHTML
+                    }
+                    .padding()
+
+                    if showRichHTML {
+                        HTML(Self.richHTML)
+                            .padding()
+                    } else {
+                        HTML(Self.simpleHTML)
+                            .padding()
+                    }
                 }
             }
             .navigationTitle("HTML in SwiftUI")

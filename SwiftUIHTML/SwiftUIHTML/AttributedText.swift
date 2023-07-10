@@ -36,7 +36,6 @@ struct AttributedText: UIViewRepresentable {
 
     func updateUIView(_ uiTextView: UITextView, context: Context) {
         uiTextView.attributedText = attributedString
-        print("intrinsicContentSize:", uiTextView.intrinsicContentSize)
     }
 }
 
