@@ -28,6 +28,7 @@ A collection of iOS examples.
 - [Extended Splash Screen on App startup](ExtendedSplashScreen)
 - [Interactive Animations with UIViewPropertyAnimator](InteractiveAnimations)
 - [Dynamically alternate/change app icon (SwiftUI)](AlternateAppIcon)
+- [Rendering HTML in SwiftUI](SwiftUIHTML)
 
 These examples are created as a way to learn. Feel free to use them as you please.
 Feedback are also welcome.
