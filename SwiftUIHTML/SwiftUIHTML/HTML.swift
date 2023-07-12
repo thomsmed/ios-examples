@@ -8,20 +8,16 @@
 import SwiftUI
 
 struct HTML: View {
-    private let bodyText: String
+    private let attributedString: NSAttributedString
 
     init(_ bodyText: String) {
-        self.bodyText = bodyText
-    }
-
-    var body: some View {
         // Match the HTML `lang` attribute to current localisation used by the app (aka Bundle.main).
         let bundle = Bundle.main
         let lang = bundle.preferredLocalizations.first
             ?? bundle.developmentLocalization
             ?? "en"
 
-        AttributedText((try? NSAttributedString(
+        attributedString = (try? NSAttributedString(
             data: """
             <!doctype html>
             <html lang="\(lang)">
@@ -61,7 +57,11 @@ struct HTML: View {
                 .characterEncoding: NSUTF8StringEncoding,
             ],
             documentAttributes: nil
-        )) ?? NSAttributedString(string: bodyText))
+        )) ?? NSAttributedString(string: bodyText)
+    }
+
+    var body: some View {
+        AttributedText(attributedString)
     }
 }
 

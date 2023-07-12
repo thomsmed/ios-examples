@@ -40,17 +40,11 @@ struct ContentView: View {
                         .padding()
 
                     Button("Render \(showRichHTML ? "simple" : "rich") HTML") {
-                        showRichHTML = !showRichHTML
+                        showRichHTML.toggle()
                     }
                     .padding()
 
-                    if showRichHTML {
-                        HTML(Self.richHTML)
-                            .padding()
-                    } else {
-                        HTML(Self.simpleHTML)
-                            .padding()
-                    }
+                    HTML(showRichHTML ? Self.richHTML : Self.simpleHTML)
                 }
             }
             .navigationTitle("HTML in SwiftUI")
