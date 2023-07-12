@@ -1,23 +1,22 @@
 //
-//  HTML.swift
+//  NSAttributedString+html.swift
 //  SwiftUIHTML
 //
-//  Created by Thomas Asheim Smedmann on 09/07/2023.
+//  Created by Thomas Asheim Smedmann on 12/07/2023.
 //
 
-import SwiftUI
+import UIKit
 
-struct HTML: View {
-    private let attributedString: NSAttributedString
-
-    init(_ bodyText: String) {
+/// Convenience extension to use with ``AttributedText`` if you don't want to make a dedicated SwiftUI View for HTML.
+extension NSAttributedString {
+    static func html(withBody body: String) -> NSAttributedString {
         // Match the HTML `lang` attribute to current localisation used by the app (aka Bundle.main).
         let bundle = Bundle.main
         let lang = bundle.preferredLocalizations.first
             ?? bundle.developmentLocalization
             ?? "en"
 
-        attributedString = (try? NSAttributedString(
+        return (try? NSAttributedString(
             data: """
             <!doctype html>
             <html lang="\(lang)">
@@ -48,7 +47,7 @@ struct HTML: View {
                 </style>
             </head>
             <body>
-                \(bodyText)
+                \(body)
             </body>
             </html>
             """.data(using: .utf8)!,
@@ -57,46 +56,6 @@ struct HTML: View {
                 .characterEncoding: NSUTF8StringEncoding,
             ],
             documentAttributes: nil
-        )) ?? NSAttributedString(string: bodyText)
-    }
-
-    var body: some View {
-        AttributedText(attributedString)
-    }
-}
-
-// MARK: Previews
-
-struct HTML_Previews: PreviewProvider {
-    private static let pureText = """
-        Some pure text
-        """
-
-    private static let simpleHTML = """
-        <p>This is a paragraph</p>
-        <ul>
-            <li>List item one</li>
-            <li>List item two</li>
-        </ul>
-        """
-
-    private static let richHTML = """
-        <h1>This is a H1 header</h1>
-        <h2>This is a H2 header</h2>
-        <h3>This is a H3 header</h3>
-        <p>This is a paragraph</p>
-        <ul>
-            <li>List item one</li>
-            <li>List item two</li>
-        </ul>
-        <p>This is another paragraph</p>
-        <p>This is a paragraph with a <a href="https://developer.apple.com/">link to some other content</a></p>
-        <p style="color: blue; text-align: center;">And this is a <span style="color: red;">paragraph</span> with inline styling</p>
-        """
-
-    static var previews: some View {
-        HTML(Self.pureText)
-        HTML(Self.simpleHTML)
-        HTML(Self.richHTML)
+        )) ?? NSAttributedString(string: body)
     }
 }
