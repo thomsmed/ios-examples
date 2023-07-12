@@ -14,6 +14,7 @@
 		EDBF88C12A5B39F300F52556 /* AttributedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBF88C02A5B39F300F52556 /* AttributedText.swift */; };
 		EDBF88C32A5B3F7200F52556 /* HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBF88C22A5B3F7200F52556 /* HTML.swift */; };
 		EDBF88C52A5B400A00F52556 /* UIColor+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBF88C42A5B400A00F52556 /* UIColor+hex.swift */; };
+		EDBF88CC2A5F29CD00F52556 /* NSAttributedString+html.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBF88CB2A5F29CD00F52556 /* NSAttributedString+html.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		EDBF88C22A5B3F7200F52556 /* HTML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTML.swift; sourceTree = "<group>"; };
 		EDBF88C42A5B400A00F52556 /* UIColor+hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+hex.swift"; sourceTree = "<group>"; };
 		EDBF88C62A5B495B00F52556 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		EDBF88CB2A5F29CD00F52556 /* NSAttributedString+html.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+html.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				EDBF88C02A5B39F300F52556 /* AttributedText.swift */,
 				EDBF88C22A5B3F7200F52556 /* HTML.swift */,
 				EDBF88C42A5B400A00F52556 /* UIColor+hex.swift */,
+				EDBF88CB2A5F29CD00F52556 /* NSAttributedString+html.swift */,
 				EDBF88B62A5B39BC00F52556 /* Assets.xcassets */,
 				EDBF88B82A5B39BC00F52556 /* Preview Content */,
 			);
@@ -150,6 +153,7 @@
 			files = (
 				EDBF88C12A5B39F300F52556 /* AttributedText.swift in Sources */,
 				EDBF88B52A5B39B900F52556 /* ContentView.swift in Sources */,
+				EDBF88CC2A5F29CD00F52556 /* NSAttributedString+html.swift in Sources */,
 				EDBF88C32A5B3F7200F52556 /* HTML.swift in Sources */,
 				EDBF88C52A5B400A00F52556 /* UIColor+hex.swift in Sources */,
 				EDBF88B32A5B39B900F52556 /* SwiftUIHTMLApp.swift in Sources */,
