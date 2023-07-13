@@ -1,15 +1,15 @@
 //
-//  NSAttributedString+html.swift
+//  NSAttributedString+themedHtml.swift
 //  SwiftUIHTML
 //
-//  Created by Thomas Asheim Smedmann on 12/07/2023.
+//  Created by Thomas Asheim Smedmann on 13/07/2023.
 //
 
 import UIKit
 
 /// Convenience extension to use with ``AttributedText``.
 extension NSAttributedString {
-    static func html(withBody body: String) -> NSAttributedString {
+    static func themedHtml(withBody body: String, theme: Theme = .default) -> NSAttributedString {
         // Match the HTML `lang` attribute to current localisation used by the app (aka Bundle.main).
         let bundle = Bundle.main
         let lang = bundle.preferredLocalizations.first
@@ -30,15 +30,15 @@ extension NSAttributedString {
 
                     body {
                         font: -apple-system-body;
-                        color: \(UIColor.secondaryLabel.hex);
+                        color: \(theme.textSecondary.hex);
                     }
 
                     h1, h2, h3, h4, h5, h6 {
-                        color: \(UIColor.label.hex);
+                        color: \(theme.textPrimary.hex);
                     }
 
                     a {
-                        color: \(UIColor.systemGreen.hex);
+                        color: \(theme.textInteractive.hex);
                     }
 
                     li:last-child {
@@ -59,3 +59,4 @@ extension NSAttributedString {
         )) ?? NSAttributedString(string: body)
     }
 }
+
