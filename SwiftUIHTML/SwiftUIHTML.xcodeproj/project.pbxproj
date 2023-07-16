@@ -7,24 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED124A882A605E040083D765 /* EnvironmentValues+theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED124A872A605E040083D765 /* EnvironmentValues+theme.swift */; };
+		ED124A8A2A605ED10083D765 /* NSAttributedString+themedHtml.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED124A892A605ED10083D765 /* NSAttributedString+themedHtml.swift */; };
 		EDBF88B32A5B39B900F52556 /* SwiftUIHTMLApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBF88B22A5B39B900F52556 /* SwiftUIHTMLApp.swift */; };
 		EDBF88B52A5B39B900F52556 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBF88B42A5B39B900F52556 /* ContentView.swift */; };
 		EDBF88B72A5B39BC00F52556 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDBF88B62A5B39BC00F52556 /* Assets.xcassets */; };
 		EDBF88BA2A5B39BC00F52556 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDBF88B92A5B39BC00F52556 /* Preview Assets.xcassets */; };
 		EDBF88C12A5B39F300F52556 /* AttributedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBF88C02A5B39F300F52556 /* AttributedText.swift */; };
-		EDBF88C32A5B3F7200F52556 /* HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBF88C22A5B3F7200F52556 /* HTML.swift */; };
 		EDBF88C52A5B400A00F52556 /* UIColor+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBF88C42A5B400A00F52556 /* UIColor+hex.swift */; };
 		EDBF88CC2A5F29CD00F52556 /* NSAttributedString+html.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBF88CB2A5F29CD00F52556 /* NSAttributedString+html.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		ED124A872A605E040083D765 /* EnvironmentValues+theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnvironmentValues+theme.swift"; sourceTree = "<group>"; };
+		ED124A892A605ED10083D765 /* NSAttributedString+themedHtml.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+themedHtml.swift"; sourceTree = "<group>"; };
 		EDBF88AF2A5B39B900F52556 /* SwiftUIHTML.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIHTML.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDBF88B22A5B39B900F52556 /* SwiftUIHTMLApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIHTMLApp.swift; sourceTree = "<group>"; };
 		EDBF88B42A5B39B900F52556 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		EDBF88B62A5B39BC00F52556 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EDBF88B92A5B39BC00F52556 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EDBF88C02A5B39F300F52556 /* AttributedText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributedText.swift; sourceTree = "<group>"; };
-		EDBF88C22A5B3F7200F52556 /* HTML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTML.swift; sourceTree = "<group>"; };
 		EDBF88C42A5B400A00F52556 /* UIColor+hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+hex.swift"; sourceTree = "<group>"; };
 		EDBF88C62A5B495B00F52556 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		EDBF88CB2A5F29CD00F52556 /* NSAttributedString+html.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+html.swift"; sourceTree = "<group>"; };
@@ -64,9 +66,10 @@
 				EDBF88B22A5B39B900F52556 /* SwiftUIHTMLApp.swift */,
 				EDBF88B42A5B39B900F52556 /* ContentView.swift */,
 				EDBF88C02A5B39F300F52556 /* AttributedText.swift */,
-				EDBF88C22A5B3F7200F52556 /* HTML.swift */,
 				EDBF88C42A5B400A00F52556 /* UIColor+hex.swift */,
 				EDBF88CB2A5F29CD00F52556 /* NSAttributedString+html.swift */,
+				ED124A892A605ED10083D765 /* NSAttributedString+themedHtml.swift */,
+				ED124A872A605E040083D765 /* EnvironmentValues+theme.swift */,
 				EDBF88B62A5B39BC00F52556 /* Assets.xcassets */,
 				EDBF88B82A5B39BC00F52556 /* Preview Content */,
 			);
@@ -151,10 +154,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED124A882A605E040083D765 /* EnvironmentValues+theme.swift in Sources */,
 				EDBF88C12A5B39F300F52556 /* AttributedText.swift in Sources */,
 				EDBF88B52A5B39B900F52556 /* ContentView.swift in Sources */,
 				EDBF88CC2A5F29CD00F52556 /* NSAttributedString+html.swift in Sources */,
-				EDBF88C32A5B3F7200F52556 /* HTML.swift in Sources */,
+				ED124A8A2A605ED10083D765 /* NSAttributedString+themedHtml.swift in Sources */,
 				EDBF88C52A5B400A00F52556 /* UIColor+hex.swift in Sources */,
 				EDBF88B32A5B39B900F52556 /* SwiftUIHTMLApp.swift in Sources */,
 			);

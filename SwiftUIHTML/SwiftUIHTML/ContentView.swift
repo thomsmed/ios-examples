@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
-    private static let simpleHTML = """
+    private static let simpleHTML: NSAttributedString = .html(withBody: """
         <p>This is a paragraph</p>
         <ul>
             <li>List item one</li>
             <li>List item two</li>
         </ul>
-        """
+        """)
 
-    private static let richHTML = """
+    private static let richHTML: NSAttributedString = .html(withBody: """
         <h1>This is a H1 header</h1>
         <h2>This is a H2 header</h2>
         <h3>This is a H3 header</h3>
@@ -28,7 +28,7 @@ struct ContentView: View {
         <p>This is another paragraph</p>
         <p>This is a paragraph with a <a href="https://developer.apple.com/">link to some other content</a></p>
         <p style="color: blue; text-align: center;">And this is a <span style="color: red;">paragraph</span> with inline styling</p>
-        """
+        """)
 
     @State private var showRichHTML: Bool = false
 
@@ -44,7 +44,7 @@ struct ContentView: View {
                     }
                     .padding()
 
-                    HTML(showRichHTML ? Self.richHTML : Self.simpleHTML)
+                    AttributedText(showRichHTML ? Self.richHTML : Self.simpleHTML)
                 }
             }
             .navigationTitle("HTML in SwiftUI")
