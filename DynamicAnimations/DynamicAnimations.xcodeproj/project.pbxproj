@@ -15,6 +15,7 @@
 		ED5F5E022A64C12C000C6012 /* BallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5F5E012A64C12C000C6012 /* BallView.swift */; };
 		ED5F5E082A64CE1F000C6012 /* SnapBehaviorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5F5E072A64CE1F000C6012 /* SnapBehaviorViewController.swift */; };
 		ED5F5E0A2A65C66A000C6012 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5F5E092A65C66A000C6012 /* TabBarController.swift */; };
+		ED5F5E0D2A65D6C7000C6012 /* CollisionBehaviorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5F5E0C2A65D6C7000C6012 /* CollisionBehaviorViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		ED5F5E072A64CE1F000C6012 /* SnapBehaviorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapBehaviorViewController.swift; sourceTree = "<group>"; };
 		ED5F5E092A65C66A000C6012 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		ED5F5E0B2A65D03D000C6012 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		ED5F5E0C2A65D6C7000C6012 /* CollisionBehaviorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionBehaviorViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 			children = (
 				ED5F5DFF2A64BECF000C6012 /* AttachmentBehaviorViewController.swift */,
 				ED5F5E072A64CE1F000C6012 /* SnapBehaviorViewController.swift */,
+				ED5F5E0C2A65D6C7000C6012 /* CollisionBehaviorViewController.swift */,
 			);
 			path = Behaviors;
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 				ED5F5E022A64C12C000C6012 /* BallView.swift in Sources */,
 				ED5F5E0A2A65C66A000C6012 /* TabBarController.swift in Sources */,
 				ED5F5DEE2A64898E000C6012 /* SceneDelegate.swift in Sources */,
+				ED5F5E0D2A65D6C7000C6012 /* CollisionBehaviorViewController.swift in Sources */,
 				ED5F5E082A64CE1F000C6012 /* SnapBehaviorViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
