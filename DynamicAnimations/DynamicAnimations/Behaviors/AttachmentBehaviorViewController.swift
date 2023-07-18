@@ -118,7 +118,15 @@ final class AttachmentBehaviorViewController: UIViewController {
 
         dynamicAnimator.removeAllBehaviors()
 
-        anchorPointView.center = attachmentBehavior.anchorPoint
+        let bounds = animatorReferenceView.bounds
+
+        let anchorPoint = CGPoint(
+            x: bounds.width / 2,
+            y: bounds.height / 2
+        )
+
+        anchorPointView.center = anchorPoint
+        attachmentBehavior.anchorPoint = anchorPoint
 
         dynamicAnimator.addBehavior(attachmentBehavior)
 

@@ -17,6 +17,7 @@
 		ED5F5E0A2A65C66A000C6012 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5F5E092A65C66A000C6012 /* TabBarController.swift */; };
 		ED5F5E0D2A65D6C7000C6012 /* CollisionBehaviorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5F5E0C2A65D6C7000C6012 /* CollisionBehaviorViewController.swift */; };
 		ED5F5E0F2A6600A7000C6012 /* FieldBehaviorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5F5E0E2A6600A7000C6012 /* FieldBehaviorViewController.swift */; };
+		ED5F5E112A66143B000C6012 /* PushBehaviorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5F5E102A66143B000C6012 /* PushBehaviorViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		ED5F5E0B2A65D03D000C6012 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		ED5F5E0C2A65D6C7000C6012 /* CollisionBehaviorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionBehaviorViewController.swift; sourceTree = "<group>"; };
 		ED5F5E0E2A6600A7000C6012 /* FieldBehaviorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldBehaviorViewController.swift; sourceTree = "<group>"; };
+		ED5F5E102A66143B000C6012 /* PushBehaviorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushBehaviorViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				ED5F5E072A64CE1F000C6012 /* SnapBehaviorViewController.swift */,
 				ED5F5E0C2A65D6C7000C6012 /* CollisionBehaviorViewController.swift */,
 				ED5F5E0E2A6600A7000C6012 /* FieldBehaviorViewController.swift */,
+				ED5F5E102A66143B000C6012 /* PushBehaviorViewController.swift */,
 			);
 			path = Behaviors;
 			sourceTree = "<group>";
@@ -190,6 +193,7 @@
 				ED5F5DEE2A64898E000C6012 /* SceneDelegate.swift in Sources */,
 				ED5F5E0F2A6600A7000C6012 /* FieldBehaviorViewController.swift in Sources */,
 				ED5F5E0D2A65D6C7000C6012 /* CollisionBehaviorViewController.swift in Sources */,
+				ED5F5E112A66143B000C6012 /* PushBehaviorViewController.swift in Sources */,
 				ED5F5E082A64CE1F000C6012 /* SnapBehaviorViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

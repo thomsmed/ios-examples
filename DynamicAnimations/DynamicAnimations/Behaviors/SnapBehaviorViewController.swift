@@ -111,6 +111,16 @@ final class SnapBehaviorViewController: UIViewController {
 
         dynamicAnimator.removeAllBehaviors()
 
+        let bounds = animatorReferenceView.bounds
+
+        let snapPoint = CGPoint(
+            x: bounds.width / 2,
+            y: bounds.height / 2
+        )
+
+        snapPointView.center = snapPoint
+        snapBehavior.snapPoint = snapPoint
+
         snapPointView.center = snapBehavior.snapPoint
 
         dynamicAnimator.addBehavior(snapBehavior)

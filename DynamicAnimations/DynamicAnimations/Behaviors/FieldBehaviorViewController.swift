@@ -97,7 +97,9 @@ final class FieldBehaviorViewController: UIViewController {
         collisionBehavior.items.forEach { collisionBehavior.removeItem($0) }
         collisionBehavior.removeAllBoundaries()
 
-        animatorReferenceView.subviews.forEach { $0 !== hintLabel ? $0.removeFromSuperview() : Void() }
+        animatorReferenceView.subviews.forEach {
+            $0 !== hintLabel ? $0.removeFromSuperview() : Void()
+        }
         animatorReferenceView.addSubview(radialFieldView)
 
         dynamicAnimator.addBehavior(radialGravityFieldBehavior)
