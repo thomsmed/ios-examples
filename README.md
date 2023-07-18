@@ -29,6 +29,7 @@ A collection of iOS examples.
 - [Interactive Animations with UIViewPropertyAnimator](InteractiveAnimations)
 - [Dynamically alternate/change app icon (SwiftUI)](AlternateAppIcon)
 - [Rendering HTML in SwiftUI](SwiftUIHTML)
+- [Dynamic Animations with UIDynamicAnimator](DynamicAnimations)
 
 These examples are created as a way to learn. Feel free to use them as you please.
 Feedback are also welcome.
