@@ -8,6 +8,18 @@
 import UIKit
 
 final class BallView: UIView {
+    override class var layerClass: AnyClass {
+        CAGradientLayer.self
+    }
+
+    var gradientColors: [UIColor] = [] {
+        didSet {
+            let gradientLayer = layer as! CAGradientLayer
+
+            gradientLayer.colors = gradientColors.map { $0.cgColor }
+        }
+    }
+
     init() {
         super.init(frame: .zero)
         configure()
@@ -20,10 +32,18 @@ final class BallView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        layer.cornerRadius = min(bounds.width, bounds.height) / 2
+        let gradientLayer = layer as! CAGradientLayer
+
+        gradientLayer.cornerRadius = min(bounds.width, bounds.height) / 2
     }
 
     private func configure() {
         clipsToBounds = true
+
+        let gradientLayer = layer as! CAGradientLayer
+
+        gradientLayer.type = .radial
+        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.5)
+        gradientLayer.endPoint = CGPoint(x: 1, y: 1)
     }
 }

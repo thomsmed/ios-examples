@@ -36,10 +36,18 @@ final class TabBarController: UITabBarController {
         )
         collisionBehaviorNavigationController.tabBarItem.title = "Collision"
 
+        let fieldBehaviorViewController = FieldBehaviorViewController()
+        fieldBehaviorViewController.title = "Field Behavior"
+        let fieldBehaviorNavigationController = UINavigationController(
+            rootViewController: fieldBehaviorViewController
+        )
+        fieldBehaviorNavigationController.tabBarItem.title = "Field"
+
         viewControllers = [
             attachmentBehaviorNavigationController,
             snapBehaviourNavigationController,
-            collisionBehaviorNavigationController
+            collisionBehaviorNavigationController,
+            fieldBehaviorNavigationController
         ]
     }
 }
