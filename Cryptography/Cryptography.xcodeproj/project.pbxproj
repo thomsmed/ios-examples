@@ -1,0 +1,453 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 60;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		ED0CD59E2A868A5B0087DB88 /* CryptographyClientApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0CD59D2A868A5B0087DB88 /* CryptographyClientApp.swift */; };
+		ED0CD5A02A868A5B0087DB88 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0CD59F2A868A5B0087DB88 /* ContentView.swift */; };
+		ED0CD5A22A868A5F0087DB88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED0CD5A12A868A5F0087DB88 /* Assets.xcassets */; };
+		ED0CD5A52A868A5F0087DB88 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED0CD5A42A868A5F0087DB88 /* Preview Assets.xcassets */; };
+		ED39F9EA2BB5A43000250D83 /* JOSESwift in Frameworks */ = {isa = PBXBuildFile; productRef = ED39F9E92BB5A43000250D83 /* JOSESwift */; };
+		EDE452EC2BA75E71007B8967 /* SymmetricKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE452EB2BA75E71007B8967 /* SymmetricKeyView.swift */; };
+		EDE452EF2BA8B5A9007B8967 /* Data+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE452EE2BA8B5A9007B8967 /* Data+hex.swift */; };
+		EDE452F22BA8C5C5007B8967 /* AsymmetricKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE452F12BA8C5C5007B8967 /* AsymmetricKeyView.swift */; };
+		EDE70BAA2A926EB300AC1D75 /* HashFunctionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE70BA92A926EB300AC1D75 /* HashFunctionsView.swift */; };
+		EDE70BAD2A92B00B00AC1D75 /* CertificatePinningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE70BAC2A92B00B00AC1D75 /* CertificatePinningView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		ED0CD59B2A868A5B0087DB88 /* CryptographyClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptographyClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED0CD59D2A868A5B0087DB88 /* CryptographyClientApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptographyClientApp.swift; sourceTree = "<group>"; };
+		ED0CD59F2A868A5B0087DB88 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		ED0CD5A12A868A5F0087DB88 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		ED0CD5A42A868A5F0087DB88 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		ED0CD5B42A86D1810087DB88 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		ED39F9E72BB4DA6300250D83 /* JOSESwift */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = JOSESwift; sourceTree = "<group>"; };
+		EDE452E92BA74A39007B8967 /* CryptographyServer */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = CryptographyServer; sourceTree = "<group>"; };
+		EDE452EB2BA75E71007B8967 /* SymmetricKeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymmetricKeyView.swift; sourceTree = "<group>"; };
+		EDE452EE2BA8B5A9007B8967 /* Data+hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+hex.swift"; sourceTree = "<group>"; };
+		EDE452F12BA8C5C5007B8967 /* AsymmetricKeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsymmetricKeyView.swift; sourceTree = "<group>"; };
+		EDE70BA92A926EB300AC1D75 /* HashFunctionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashFunctionsView.swift; sourceTree = "<group>"; };
+		EDE70BAC2A92B00B00AC1D75 /* CertificatePinningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificatePinningView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		ED0CD5982A868A5B0087DB88 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED39F9EA2BB5A43000250D83 /* JOSESwift in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		ED0CD5642A8688510087DB88 = {
+			isa = PBXGroup;
+			children = (
+				ED0CD5B42A86D1810087DB88 /* README.md */,
+				ED0CD59C2A868A5B0087DB88 /* CryptographyClient */,
+				EDE452E92BA74A39007B8967 /* CryptographyServer */,
+				ED39F9E72BB4DA6300250D83 /* JOSESwift */,
+				ED0CD56E2A8688520087DB88 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		ED0CD56E2A8688520087DB88 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ED0CD59B2A868A5B0087DB88 /* CryptographyClient.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		ED0CD59C2A868A5B0087DB88 /* CryptographyClient */ = {
+			isa = PBXGroup;
+			children = (
+				EDE452E72BA749B9007B8967 /* App */,
+				EDE452E82BA749C7007B8967 /* Features */,
+				EDE452ED2BA8B595007B8967 /* Common */,
+				ED0CD5A12A868A5F0087DB88 /* Assets.xcassets */,
+				ED0CD5A32A868A5F0087DB88 /* Preview Content */,
+			);
+			path = CryptographyClient;
+			sourceTree = "<group>";
+		};
+		ED0CD5A32A868A5F0087DB88 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				ED0CD5A42A868A5F0087DB88 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		EDE452E72BA749B9007B8967 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				ED0CD59D2A868A5B0087DB88 /* CryptographyClientApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		EDE452E82BA749C7007B8967 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				ED0CD59F2A868A5B0087DB88 /* ContentView.swift */,
+				EDE452EA2BA75E4A007B8967 /* SymmetricKey */,
+				EDE452F02BA8C5AE007B8967 /* AsymmetricKey */,
+				EDE70BA82A926E9600AC1D75 /* HashFunctions */,
+				EDE70BAB2A92AFEF00AC1D75 /* CertificatePinning */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		EDE452EA2BA75E4A007B8967 /* SymmetricKey */ = {
+			isa = PBXGroup;
+			children = (
+				EDE452EB2BA75E71007B8967 /* SymmetricKeyView.swift */,
+			);
+			path = SymmetricKey;
+			sourceTree = "<group>";
+		};
+		EDE452ED2BA8B595007B8967 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				EDE452EE2BA8B5A9007B8967 /* Data+hex.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		EDE452F02BA8C5AE007B8967 /* AsymmetricKey */ = {
+			isa = PBXGroup;
+			children = (
+				EDE452F12BA8C5C5007B8967 /* AsymmetricKeyView.swift */,
+			);
+			path = AsymmetricKey;
+			sourceTree = "<group>";
+		};
+		EDE70BA82A926E9600AC1D75 /* HashFunctions */ = {
+			isa = PBXGroup;
+			children = (
+				EDE70BA92A926EB300AC1D75 /* HashFunctionsView.swift */,
+			);
+			path = HashFunctions;
+			sourceTree = "<group>";
+		};
+		EDE70BAB2A92AFEF00AC1D75 /* CertificatePinning */ = {
+			isa = PBXGroup;
+			children = (
+				EDE70BAC2A92B00B00AC1D75 /* CertificatePinningView.swift */,
+			);
+			path = CertificatePinning;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		ED0CD59A2A868A5B0087DB88 /* CryptographyClient */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ED0CD5A62A868A5F0087DB88 /* Build configuration list for PBXNativeTarget "CryptographyClient" */;
+			buildPhases = (
+				ED0CD5972A868A5B0087DB88 /* Sources */,
+				ED0CD5982A868A5B0087DB88 /* Frameworks */,
+				ED0CD5992A868A5B0087DB88 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CryptographyClient;
+			packageProductDependencies = (
+				ED39F9E92BB5A43000250D83 /* JOSESwift */,
+			);
+			productName = CryptographyClient;
+			productReference = ED0CD59B2A868A5B0087DB88 /* CryptographyClient.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		ED0CD5652A8688510087DB88 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					ED0CD59A2A868A5B0087DB88 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = ED0CD5682A8688510087DB88 /* Build configuration list for PBXProject "Cryptography" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = ED0CD5642A8688510087DB88;
+			packageReferences = (
+				ED39F9E82BB5A43000250D83 /* XCLocalSwiftPackageReference "JOSESwift" */,
+			);
+			productRefGroup = ED0CD56E2A8688520087DB88 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				ED0CD59A2A868A5B0087DB88 /* CryptographyClient */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		ED0CD5992A868A5B0087DB88 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED0CD5A52A868A5F0087DB88 /* Preview Assets.xcassets in Resources */,
+				ED0CD5A22A868A5F0087DB88 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		ED0CD5972A868A5B0087DB88 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED0CD5A02A868A5B0087DB88 /* ContentView.swift in Sources */,
+				EDE452F22BA8C5C5007B8967 /* AsymmetricKeyView.swift in Sources */,
+				EDE452EC2BA75E71007B8967 /* SymmetricKeyView.swift in Sources */,
+				EDE70BAD2A92B00B00AC1D75 /* CertificatePinningView.swift in Sources */,
+				EDE452EF2BA8B5A9007B8967 /* Data+hex.swift in Sources */,
+				ED0CD59E2A868A5B0087DB88 /* CryptographyClientApp.swift in Sources */,
+				EDE70BAA2A926EB300AC1D75 /* HashFunctionsView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		ED0CD5792A8688560087DB88 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		ED0CD57A2A8688560087DB88 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		ED0CD5A72A868A5F0087DB88 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"CryptographyClient/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ios.example.CryptographyClient;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		ED0CD5A82A868A5F0087DB88 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"CryptographyClient/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ios.example.CryptographyClient;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		ED0CD5682A8688510087DB88 /* Build configuration list for PBXProject "Cryptography" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED0CD5792A8688560087DB88 /* Debug */,
+				ED0CD57A2A8688560087DB88 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ED0CD5A62A868A5F0087DB88 /* Build configuration list for PBXNativeTarget "CryptographyClient" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED0CD5A72A868A5F0087DB88 /* Debug */,
+				ED0CD5A82A868A5F0087DB88 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		ED39F9E82BB5A43000250D83 /* XCLocalSwiftPackageReference "JOSESwift" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = JOSESwift;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		ED39F9E92BB5A43000250D83 /* JOSESwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = JOSESwift;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = ED0CD5652A8688510087DB88 /* Project object */;
+}
