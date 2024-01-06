@@ -18,12 +18,13 @@ final class LifecycleDependentContentSheetViewController: BottomSheetController 
 
     override func loadView() {
         view = UIView()
-
-        var configuration: UIButton.Configuration = .borderless()
-        configuration.image = .init(systemName: "xmark")
-        let button = UIButton(configuration: configuration, primaryAction: .init(handler: { _ in
+        
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage(systemName: "xmark"), for: .normal)
+        button.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        button.addAction(.init(handler: { _ in
             self.dismiss(animated: true)
-        }))
+        }), for: .touchUpInside)
 
         view.addSubview(button)
         view.addSubview(textLabel)

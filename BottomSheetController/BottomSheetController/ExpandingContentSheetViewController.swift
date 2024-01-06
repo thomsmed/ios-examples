@@ -43,11 +43,12 @@ final class ExpandingContentSheetViewController: BottomSheetController {
         verticalStackView.axis = .vertical
         verticalStackView.spacing = 16
 
-        var configuration: UIButton.Configuration = .borderless()
-        configuration.image = .init(systemName: "xmark")
-        let closeButton = UIButton(configuration: configuration, primaryAction: .init(handler: { _ in
+        let closeButton = UIButton(type: .custom)
+        closeButton.setImage(UIImage(systemName: "xmark"), for: .normal)
+        closeButton.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        closeButton.addAction(.init(handler: { _ in
             self.dismiss(animated: true)
-        }))
+        }), for: .touchUpInside)
 
         view.addSubview(closeButton)
         view.addSubview(verticalStackView)
