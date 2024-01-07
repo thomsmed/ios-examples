@@ -147,14 +147,27 @@ final class ViewController: UIViewController {
         ])
         miscContentStackView.axis = .vertical
         miscContentStackView.spacing = 8
+        
+        let singleTextInputButton = UIButton(type: .system, primaryAction: .init(handler: { _ in
+            let viewController = TextInputSheetViewController()
+            viewController.preferredSheetSizing = .fit
+            self.present(viewController, animated: true)
+        }))
+        singleTextInputButton.titleLabel?.font = .systemFont(ofSize: 20, weight: .regular)
+        singleTextInputButton.setTitle("TextInput content - fit", for: .normal)
+        
+        let textInputContentStackView = UIStackView(arrangedSubviews: [
+            singleTextInputButton
+        ])
 
         let axis: NSLayoutConstraint.Axis = traitCollection.verticalSizeClass == .compact
             ? .horizontal
             : .vertical
-
+        
         stackView.addArrangedSubview(sparseContentStackView)
         stackView.addArrangedSubview(denseContentStackView)
         stackView.addArrangedSubview(miscContentStackView)
+        stackView.addArrangedSubview(textInputContentStackView)
         stackView.axis = axis
         stackView.spacing = 16
 
