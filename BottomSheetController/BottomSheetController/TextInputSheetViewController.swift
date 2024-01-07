@@ -34,10 +34,10 @@ final class TextInputSheetViewController: BottomSheetController {
         
         let input = UITextField()
         input.placeholder = "Type text.."
-        //input.backgroundColor = .systemGray5
         input.setContentCompressionResistancePriority(.required, for: .vertical)
         input.setContentHuggingPriority(.required, for: .vertical)
 
+        // mark safe area
         let bottomSafeArea = UIView()
         bottomSafeArea.backgroundColor = .yellow
         
@@ -51,7 +51,8 @@ final class TextInputSheetViewController: BottomSheetController {
         input.translatesAutoresizingMaskIntoConstraints = false
         bottomSafeArea.translatesAutoresizingMaskIntoConstraints = false
 
-        movingBottomConstraint = input.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -Self.defaultBottomPadding)
+        movingBottomConstraint = view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: input.bottomAnchor, constant: Self.defaultBottomPadding)
+        movingBottomConstraint?.priority = .defaultHigh
         
         NSLayoutConstraint.activate([
             button.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 4),
@@ -110,38 +111,31 @@ final class TextInputSheetViewController: BottomSheetController {
         // Convert the keyboard's frame from the screen's coordinate space to your view's coordinate space.
         let convertedKeyboardFrameEnd = fromCoordinateSpace.convert(keyboardFrameEnd, to: toCoordinateSpace)
         // Get the safe area insets when the keyboard is offscreen.
-        var bottomOffset = view.safeAreaInsets.bottom
-        
+        let bottomOffset = view.safeAreaInsets.bottom
         
         // Extract the duration of the keyboard animation
-       let durationKey = UIResponder.keyboardAnimationDurationUserInfoKey
-       let duration = notification.userInfo![durationKey] as! Double
-       
-       // Extract the final frame of the keyboard
-       let frameKey = UIResponder.keyboardFrameEndUserInfoKey
-       let keyboardFrameValue = notification.userInfo![frameKey] as! NSValue
-       
-       // Extract the curve of the iOS keyboard animation
-       let curveKey = UIResponder.keyboardAnimationCurveUserInfoKey
-       let curveValue = notification.userInfo![curveKey] as! Int
-       let curve = UIView.AnimationCurve(rawValue: curveValue)!
-
+        let durationKey = UIResponder.keyboardAnimationDurationUserInfoKey
+        let duration = (userInfo[durationKey] as? Double) ?? 0.24
+        
+        // Extract the curve of the iOS keyboard animation
+        let curveKey = UIResponder.keyboardAnimationCurveUserInfoKey
+        let curveValue = (userInfo[curveKey] as? Int) ?? UIView.AnimationCurve.easeOut.rawValue
+        let curve = UIView.AnimationCurve(rawValue: curveValue)!
+        
         let targetOffset = show ? convertedKeyboardFrameEnd.height - bottomOffset + Self.defaultBottomPadding : Self.defaultBottomPadding
-       // Create a property animator to manage the animation
-       let animator = UIViewPropertyAnimator(
-           duration: duration,
-           curve: curve
-       ) {
-           // Perform the necessary animation layout updates
-           self.movingBottomConstraint?.constant = -targetOffset
-           
-           // Required to trigger NSLayoutConstraint changes
-           // to animate
-           self.view?.layoutIfNeeded()
-       }
-       
-       // Start the animation
-       animator.startAnimation()
+        // Create a property animator to manage the animation
+        let animator = UIViewPropertyAnimator(
+            duration: duration,
+            curve: curve
+        ) {
+            // Perform the necessary animation layout updates
+            self.movingBottomConstraint?.constant = targetOffset
+            // Required to trigger NSLayoutConstraint changes to animate
+            self.view?.layoutIfNeeded()
+        }
+        
+        // Start the animation
+        animator.startAnimation()
     }
     
     private func findKeyWindow() -> UIWindow? {
