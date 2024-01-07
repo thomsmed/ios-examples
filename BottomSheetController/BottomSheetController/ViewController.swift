@@ -149,7 +149,7 @@ final class ViewController: UIViewController {
         miscContentStackView.spacing = 8
         
         let singleTextInputButton = UIButton(type: .system, primaryAction: .init(handler: { _ in
-            let viewController = TextInputSheetViewController()
+            let viewController = TextFieldSheetViewController()
             viewController.preferredSheetSizing = .fit
             self.present(viewController, animated: true)
         }))

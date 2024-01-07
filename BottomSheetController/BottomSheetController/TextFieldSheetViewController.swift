@@ -1,5 +1,5 @@
 //
-//  TextInputSheetViewController.swift
+//  TextFieldSheetViewController.swift
 //  BottomSheetController
 //
 //  Created by hyonsoo on 1/7/24.
@@ -9,7 +9,7 @@ import UIKit
 import Combine
 import SwiftUI
 
-final class TextInputSheetViewController: BottomSheetController {
+final class TextFieldSheetViewController: BottomSheetController {
 
     static let defaultBottomPadding: CGFloat = 30
     private var movingBottomConstraint: NSLayoutConstraint?
@@ -150,21 +150,21 @@ final class TextInputSheetViewController: BottomSheetController {
     }
 }
 
-#Preview {
-    UIViewControllerPreview {
-        TextInputSheetViewController()
-    }
-}
-
 fileprivate extension UIScene.ActivationState {
     var priority: Int {
         switch self {
-        case .foregroundActive: return 0
-        case .foregroundInactive: return 1
-        case .background: return 2
-        case .unattached: return 3
-        default:
-            return 100
+            case .foregroundActive: return 0
+            case .foregroundInactive: return 1
+            case .background: return 2
+            case .unattached: return 3
+            default:
+                return 100
         }
+    }
+}
+
+#Preview {
+    UIViewControllerPreview {
+        TextFieldSheetViewController()
     }
 }

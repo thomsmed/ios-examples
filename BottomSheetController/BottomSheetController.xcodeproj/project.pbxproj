@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		17D3CAA22B4A120D008263E1 /* TextInputSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D3CAA12B4A120D008263E1 /* TextInputSheetViewController.swift */; };
+		17D3CAA22B4A120D008263E1 /* TextFieldSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D3CAA12B4A120D008263E1 /* TextFieldSheetViewController.swift */; };
 		17D3CAA52B4A26E1008263E1 /* UIViewControllerPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D3CAA42B4A26E1008263E1 /* UIViewControllerPreview.swift */; };
 		ED0B4EC029FC6B5D00EC1A08 /* BottomSheetPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0B4EBF29FC6B5D00EC1A08 /* BottomSheetPresentationController.swift */; };
 		ED0B4EC229FC6C1A00EC1A08 /* BottomSheetInteractiveDismissalTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0B4EC129FC6C1A00EC1A08 /* BottomSheetInteractiveDismissalTransition.swift */; };
@@ -26,7 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		17D3CAA12B4A120D008263E1 /* TextInputSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputSheetViewController.swift; sourceTree = "<group>"; };
+		17D3CAA12B4A120D008263E1 /* TextFieldSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldSheetViewController.swift; sourceTree = "<group>"; };
 		17D3CAA42B4A26E1008263E1 /* UIViewControllerPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerPreview.swift; sourceTree = "<group>"; };
 		ED0B4EBF29FC6B5D00EC1A08 /* BottomSheetPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetPresentationController.swift; sourceTree = "<group>"; };
 		ED0B4EC129FC6C1A00EC1A08 /* BottomSheetInteractiveDismissalTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetInteractiveDismissalTransition.swift; sourceTree = "<group>"; };
@@ -95,7 +95,7 @@
 				EDA96F46282F9E5D0036E1EA /* ExpandingContentSheetViewController.swift */,
 				ED82084A29DDEFD600F96F7F /* TableContentSheetViewController.swift */,
 				EDB436912A17AD6200B05912 /* LifecycleDependentContentSheetViewController.swift */,
-				17D3CAA12B4A120D008263E1 /* TextInputSheetViewController.swift */,
+				17D3CAA12B4A120D008263E1 /* TextFieldSheetViewController.swift */,
 				EDE826512822EB7A009DF63E /* BottomSheet */,
 				EDE826442822E839009DF63E /* Assets.xcassets */,
 				EDE826462822E839009DF63E /* LaunchScreen.storyboard */,
@@ -190,7 +190,7 @@
 				ED82084B29DDEFD600F96F7F /* TableContentSheetViewController.swift in Sources */,
 				17D3CAA52B4A26E1008263E1 /* UIViewControllerPreview.swift in Sources */,
 				EDE826402822E837009DF63E /* ViewController.swift in Sources */,
-				17D3CAA22B4A120D008263E1 /* TextInputSheetViewController.swift in Sources */,
+				17D3CAA22B4A120D008263E1 /* TextFieldSheetViewController.swift in Sources */,
 				EDE826532822EC51009DF63E /* BottomSheetTransitioningDelegate.swift in Sources */,
 				ED0B4EC229FC6C1A00EC1A08 /* BottomSheetInteractiveDismissalTransition.swift in Sources */,
 				EDE8263C2822E837009DF63E /* AppDelegate.swift in Sources */,
