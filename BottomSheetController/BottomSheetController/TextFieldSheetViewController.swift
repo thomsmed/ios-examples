@@ -29,7 +29,6 @@ final class TextFieldSheetViewController: BottomSheetController {
         button.addAction(.init(handler: { _ in
             self.dismiss(animated: true)
         }), for: .touchUpInside)
-        button.backgroundColor = .systemGray5
         button.setContentHuggingPriority(.required, for: .vertical)
         
         let input = UITextField()
@@ -37,19 +36,13 @@ final class TextFieldSheetViewController: BottomSheetController {
         input.setContentCompressionResistancePriority(.required, for: .vertical)
         input.setContentHuggingPriority(.required, for: .vertical)
 
-        // mark safe area
-        let bottomSafeArea = UIView()
-        bottomSafeArea.backgroundColor = .yellow
-        
         view.addSubview(button)
         view.addSubview(label)
         view.addSubview(input)
-        view.addSubview(bottomSafeArea)
 
         button.translatesAutoresizingMaskIntoConstraints = false
         label.translatesAutoresizingMaskIntoConstraints = false
         input.translatesAutoresizingMaskIntoConstraints = false
-        bottomSafeArea.translatesAutoresizingMaskIntoConstraints = false
 
         movingBottomConstraint = view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: input.bottomAnchor, constant: Self.defaultBottomPadding)
         movingBottomConstraint?.priority = .defaultHigh
@@ -67,11 +60,6 @@ final class TextFieldSheetViewController: BottomSheetController {
             movingBottomConstraint!,
             input.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             input.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            
-            bottomSafeArea.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            bottomSafeArea.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            bottomSafeArea.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            bottomSafeArea.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
         ])
 
         view.backgroundColor = .systemBackground
