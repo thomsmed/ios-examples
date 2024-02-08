@@ -1,14 +1,17 @@
 //
 //  ContentView.swift
-//  HTTPClient
+//  WebSocketClient
 //
-//  Created by Thomas Asheim Smedmann on 27/08/2023.
+//  Created by Thomas Asheim Smedmann on 08/02/2024.
 //
 
 import SwiftUI
 
 struct ContentView: View {
-    @Environment(\.httpClient) private var httpClient: HTTPClient
+    @Environment(\.webSocketConnectionFactory) private var webSocketConnectionFactory: WebSocketConnectionFactory
+
+    @State private var webSocketConnectionTask: Task<Void, Never>? = nil
+    @State private var connection: WebSocketConnection<IncomingMessage, OutgoingMessage>? = nil
 
     @State private var items: [Item] = []
 
@@ -22,8 +25,6 @@ struct ContentView: View {
     @State private var newItemAlertPresented: Bool = false
     @State private var editItemAlertPresented: Bool = false
     @State private var deleteItemConfirmationPresented: Bool = false
-
-
 
     var body: some View {
         NavigationStack {
@@ -45,15 +46,6 @@ struct ContentView: View {
                         }
                     }
                 }
-
-                
-
-                HStack {
-                    Spacer()
-                    Button("Provoke Error", role: .destructive, action: provokeError)
-                    Spacer()
-                }
-                .padding()
             }
             .padding()
             .navigationTitle("Items")
@@ -98,27 +90,72 @@ struct ContentView: View {
             } message: {
                 Text("Delete \"\(currentEditingItemText)\"?")
             }
-            // Fetch Items on View appear
-            .task(fetchAllItems)
-            // Fetch Items on Pull to Refresh
-            .refreshable(action: fetchAllItems)
+            // Open WebSocket Connection and start receiving messages on View appear
+            .onAppear {
+                webSocketConnectionTask?.cancel()
+
+                webSocketConnectionTask = Task {
+                    await openAndConsumeWebSocketConnection()
+                }
+            }
+            // Refresh WebSocket Connection on Pull to Refresh
+            .refreshable {
+                webSocketConnectionTask?.cancel()
+
+                webSocketConnectionTask = Task {
+                    await openAndConsumeWebSocketConnection()
+                }
+            }
+            // Close WebSocket Connection on View disappear
+            .onDisappear {
+                webSocketConnectionTask?.cancel()
+            }
         }
     }
 }
 
-// Empty response body
-private struct EmptyResponse: Decodable {}
-
 extension ContentView {
-    @Sendable func fetchAllItems() async {
+    @MainActor func openAndConsumeWebSocketConnection() async {
+        let url = URL(string: "ws://127.0.0.1:8080/channel")!
+
+        // Close any existing WebSocketConnection
+        if let connection {
+            connection.close()
+        }
+
+        let connection: WebSocketConnection<IncomingMessage, OutgoingMessage> = webSocketConnectionFactory.open(url: url)
+
+        self.connection = connection
+
         do {
-            let url = URL(string: "http://localhost:8080/items")!
-            items = try await httpClient.get(
-                url: url,
-                responseType: .applicationJson
-            )
+            // Start consuming IncomingMessages
+            for try await message in connection.receive() {
+                switch message {
+                    case let .items(items):
+                        self.items = items
+
+                    case let .add(item):
+                        items.append(item)
+
+                    case let .update(item):
+                        guard let index = items.firstIndex(where: { $0.id == item.id }) else {
+                            return assertionFailure("Expected updated Item to exist")
+                        }
+
+                        items[index] = item
+
+                    case let .delete(item):
+                        guard let index = items.firstIndex(where: { $0.id == item.id }) else {
+                            return assertionFailure("Expected deleted Item to exist")
+                        }
+
+                        let _ = items.remove(at: index)
+                }
+            }
+
+            print("IncomingMessage stream ended")
         } catch {
-            print("Error fetching Items:", error)
+            print("Error receiving messages:", error)
         }
     }
 
@@ -126,20 +163,15 @@ extension ContentView {
         let itemId = currentEditingItemId
         let itemText = currentEditingItemText
 
+        guard let connection else {
+            return assertionFailure("Expected Connection to exist")
+        }
+
         Task {
             do {
-                let url = URL(string: "http://localhost:8080/items")!
                 let newItem = Item(id: itemId, text: itemText)
 
-                // POST New Item
-                let savedNewItem: Item = try await httpClient.post(
-                    url: url,
-                    requestBody: newItem,
-                    requestType: .applicationJson,
-                    responseType: .applicationJson
-                )
-
-                items.append(savedNewItem)
+                try await connection.send(.add(item: newItem))
             } catch {
                 print("Error saving new Item:", error)
             }
@@ -150,24 +182,15 @@ extension ContentView {
         let itemId = currentEditingItemId
         let itemText = currentEditingItemText
 
+        guard let connection else {
+            return assertionFailure("Expected Connection to exist")
+        }
+
         Task {
             do {
-                let url = URL(string: "http://localhost:8080/items/\(itemId)")!
                 let updatedItem = Item(id: itemId, text: itemText)
 
-                // PUT Updated Item
-                let savedUpdatedItem: Item = try await httpClient.put(
-                    url: url,
-                    requestBody: updatedItem,
-                    requestType: .applicationJson,
-                    responseType: .applicationJson
-                )
-
-                guard let index = items.firstIndex(where: { $0.id == savedUpdatedItem.id }) else {
-                    return assertionFailure("Expected updated Item to exist")
-                }
-
-                items[index] = savedUpdatedItem
+                try await connection.send(.update(item: updatedItem))
             } catch {
                 print("Error saving existing Item:", error)
             }
@@ -177,58 +200,15 @@ extension ContentView {
     func deleteItem() {
         let itemId = currentEditingItemId
 
+        guard let connection else {
+            return assertionFailure("Expected Connection to exist")
+        }
+
         Task {
             do {
-                let url = URL(string: "http://localhost:8080/items/\(itemId)")!
-
-                // DELETE Item
-                let _: Void = try await httpClient.delete(
-                    url: url
-                )
-
-                guard let index = items.firstIndex(where: { $0.id == itemId }) else {
-                    return assertionFailure("Expected deleted Item to exist")
-                }
-
-                let _ = items.remove(at: index)
+                try await connection.send(.delete(id: itemId))
             } catch {
                 print("Error deleting Item:", error)
-            }
-        }
-    }
-
-    func provokeError() {
-        Task {
-            do {
-                let url = URL(string: "http://localhost:8080/error")!
-
-                // GET Error (should fail)
-                let _: EmptyResponse = try await httpClient.get(
-                    url: url,
-                    responseType: .applicationJson,
-                    interceptors: [],
-                    errorBodyType: ErrorBody.self
-                )
-            } catch HTTPClientError<ErrorBody>.clientError(let errorResponse) {
-                guard let errorBody = errorResponse.errorBody else {
-                    return assertionFailure("Should never have ended up here")
-                }
-
-                errorAlertTitle = errorBody.title
-                errorAlertMessage = errorBody.message
-
-                errorAlertPresented.toggle()
-            } catch HTTPClientError<ErrorBody>.serverError(let errorResponse) {
-                guard let errorBody = errorResponse.errorBody else {
-                    return assertionFailure("Should never have ended up here")
-                }
-
-                errorAlertTitle = errorBody.title
-                errorAlertMessage = errorBody.message
-
-                errorAlertPresented.toggle()
-            } catch {
-                assertionFailure("Should never have ended up here")
             }
         }
     }
