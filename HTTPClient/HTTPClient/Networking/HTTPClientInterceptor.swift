@@ -24,9 +24,11 @@ public protocol HTTPClientInterceptor {
     /// Prepare the outgoing ``URLRequest``.
     /// The first interceptor passed to ``HTTPClient`` will be the first to have a chance at manipulating the outgoing requests.
     func prepare(_ request: inout URLRequest, with context: HTTPClientContext) async throws
+
     /// Handle any error that might occur while the outgoing ``URLRequest`` is in flight.
     /// The first interceptor passed to ``HTTPClient`` will be the first to have a chance at reacting to the error.
     func handle(_ request: URLRequest, error: Error) async
+
     /// Process the incoming ``HTTPURLResponse``.
     /// The first interceptor passed to ``HTTPClient`` will be the last to have a chance at manipulating the incoming response data.
     /// And vice versa, the last interceptor will be the first to have a chance processing the incoming response data.

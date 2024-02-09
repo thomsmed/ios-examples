@@ -14,6 +14,9 @@
 		ED4AE2E72A9BAD41009C289F /* DefaultHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4AE2E62A9BAD41009C289F /* DefaultHTTPClient.swift */; };
 		ED4AE2EB2A9BAF8B009C289F /* HTTPClientInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4AE2EA2A9BAF8B009C289F /* HTTPClientInterceptor.swift */; };
 		ED4AE2EE2AA3BEBD009C289F /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4AE2ED2AA3BEBD009C289F /* HTTPClient.swift */; };
+		ED78CC822B76D7E200381025 /* HTTPMimeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED78CC812B76D7E200381025 /* HTTPMimeType.swift */; };
+		ED78CC842B76D83800381025 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED78CC832B76D83800381025 /* HTTPMethod.swift */; };
+		ED78CC862B76D86F00381025 /* HTTPClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED78CC852B76D86F00381025 /* HTTPClientError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +30,9 @@
 		ED4AE2EC2A9BB938009C289F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		ED4AE2ED2AA3BEBD009C289F /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		ED78CC802B76A86A00381025 /* HTTPServer */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = HTTPServer; sourceTree = "<group>"; };
+		ED78CC812B76D7E200381025 /* HTTPMimeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMimeType.swift; sourceTree = "<group>"; };
+		ED78CC832B76D83800381025 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		ED78CC852B76D86F00381025 /* HTTPClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClientError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,8 +87,11 @@
 		ED4AE2E52A9BAD30009C289F /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				ED4AE2ED2AA3BEBD009C289F /* HTTPClient.swift */,
+				ED78CC832B76D83800381025 /* HTTPMethod.swift */,
+				ED78CC812B76D7E200381025 /* HTTPMimeType.swift */,
+				ED78CC852B76D86F00381025 /* HTTPClientError.swift */,
 				ED4AE2EA2A9BAF8B009C289F /* HTTPClientInterceptor.swift */,
+				ED4AE2ED2AA3BEBD009C289F /* HTTPClient.swift */,
 				ED4AE2E62A9BAD41009C289F /* DefaultHTTPClient.swift */,
 			);
 			path = Networking;
@@ -159,10 +168,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED4AE2DA2A9BACE2009C289F /* ContentView.swift in Sources */,
+				ED78CC862B76D86F00381025 /* HTTPClientError.swift in Sources */,
 				ED4AE2D82A9BACE2009C289F /* HTTPClientApp.swift in Sources */,
+				ED78CC842B76D83800381025 /* HTTPMethod.swift in Sources */,
 				ED4AE2EE2AA3BEBD009C289F /* HTTPClient.swift in Sources */,
 				ED4AE2E72A9BAD41009C289F /* DefaultHTTPClient.swift in Sources */,
 				ED4AE2EB2A9BAF8B009C289F /* HTTPClientInterceptor.swift in Sources */,
+				ED78CC822B76D7E200381025 /* HTTPMimeType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
