@@ -26,6 +26,7 @@
 		ED4AE2EA2A9BAF8B009C289F /* HTTPClientInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClientInterceptor.swift; sourceTree = "<group>"; };
 		ED4AE2EC2A9BB938009C289F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		ED4AE2ED2AA3BEBD009C289F /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		ED78CC802B76A86A00381025 /* HTTPServer */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = HTTPServer; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +45,7 @@
 			children = (
 				ED4AE2EC2A9BB938009C289F /* README.md */,
 				ED4AE2D62A9BACE2009C289F /* HTTPClient */,
+				ED78CC802B76A86A00381025 /* HTTPServer */,
 				ED4AE2D52A9BACE2009C289F /* Products */,
 			);
 			sourceTree = "<group>";
