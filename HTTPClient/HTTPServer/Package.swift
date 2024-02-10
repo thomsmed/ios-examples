@@ -12,14 +12,14 @@ let package = Package(
     ],
     targets: [
         .executableTarget(
-            name: "App",
+            name: "HTTPServer",
             dependencies: [
                 .product(name: "Vapor", package: "vapor"),
             ],
             swiftSettings: [.enableUpcomingFeature("StrictConcurrency")]
         ),
-        .testTarget(name: "AppTests", dependencies: [
-            .target(name: "App"),
+        .testTarget(name: "HTTPServerTests", dependencies: [
+            .target(name: "HTTPServer"),
             .product(name: "XCTVapor", package: "vapor"),
 
             // Workaround for https://github.com/apple/swift-package-manager/issues/6940

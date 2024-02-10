@@ -33,7 +33,7 @@
 		ED4AE2EA2A9BAF8B009C289F /* HTTPClientInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClientInterceptor.swift; sourceTree = "<group>"; };
 		ED4AE2EC2A9BB938009C289F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		ED4AE2ED2AA3BEBD009C289F /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
-		ED78CC802B76A86A00381025 /* HTTPServer */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = HTTPServer; sourceTree = "<group>"; };
+		ED6A44FE2B77D47300DDCDDC /* HTTPServer */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = HTTPServer; sourceTree = "<group>"; };
 		ED78CC812B76D7E200381025 /* HTTPMimeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMimeType.swift; sourceTree = "<group>"; };
 		ED78CC832B76D83800381025 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		ED78CC852B76D86F00381025 /* HTTPClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClientError.swift; sourceTree = "<group>"; };
@@ -73,7 +73,7 @@
 			children = (
 				ED4AE2EC2A9BB938009C289F /* README.md */,
 				ED4AE2D62A9BACE2009C289F /* HTTPClient */,
-				ED78CC802B76A86A00381025 /* HTTPServer */,
+				ED6A44FE2B77D47300DDCDDC /* HTTPServer */,
 				ED4AE2D52A9BACE2009C289F /* Products */,
 			);
 			sourceTree = "<group>";
