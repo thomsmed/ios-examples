@@ -17,13 +17,6 @@ let package = Package(
                 .product(name: "Vapor", package: "vapor"),
             ],
             swiftSettings: [.enableUpcomingFeature("StrictConcurrency")]
-        ),
-        .testTarget(name: "HTTPServerTests", dependencies: [
-            .target(name: "HTTPServer"),
-            .product(name: "XCTVapor", package: "vapor"),
-
-            // Workaround for https://github.com/apple/swift-package-manager/issues/6940
-            .product(name: "Vapor", package: "vapor"),
-        ])
+        )
     ]
 )
