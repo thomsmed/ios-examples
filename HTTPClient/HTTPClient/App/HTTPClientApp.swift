@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct HTTPClientEnvironmentKey: EnvironmentKey {
-    static var defaultValue: HTTPClient = DefaultHTTPClient()
+    static var defaultValue: HTTPClient = DefaultHTTPClient(
+        interceptors: [PrintHTTPClientInterceptor()]
+    )
 }
 
 extension EnvironmentValues {

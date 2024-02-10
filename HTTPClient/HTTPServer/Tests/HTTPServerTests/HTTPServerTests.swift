@@ -1,15 +1,14 @@
-@testable import App
+@testable import HTTPServer
 import XCTVapor
 
-final class AppTests: XCTestCase {
-    func testHelloWorld() async throws {
+final class HTTPServerTests: XCTestCase {
+    func testItems() async throws {
         let app = Application(.testing)
         defer { app.shutdown() }
         try await configure(app)
 
-        try app.test(.GET, "hello", afterResponse: { res in
+        try app.test(.GET, "items", afterResponse: { res in
             XCTAssertEqual(res.status, .ok)
-            XCTAssertEqual(res.body.string, "Hello, world!")
         })
     }
 }

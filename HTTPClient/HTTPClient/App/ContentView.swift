@@ -15,6 +15,10 @@ struct ContentView: View {
     @State private var currentEditingItemId: UUID = UUID()
     @State private var currentEditingItemText: String = ""
 
+    @State private var errorAlertTitle: String = ""
+    @State private var errorAlertMessage: String = ""
+
+    @State private var errorAlertPresented: Bool = false
     @State private var newItemAlertPresented: Bool = false
     @State private var editItemAlertPresented: Bool = false
     @State private var deleteItemConfirmationPresented: Bool = false
@@ -39,6 +43,13 @@ struct ContentView: View {
                         }
                     }
                 }
+
+                HStack {
+                    Spacer()
+                    Button("Provoke Error", role: .destructive, action: provokeError)
+                    Spacer()
+                }
+                .padding()
             }
             .padding()
             .navigationTitle("Items")
@@ -57,6 +68,12 @@ struct ContentView: View {
                 ToolbarItemGroup(placement: .bottomBar) {
                     Text("\(items.count) Items")
                 }
+            }
+            // Error Alert
+            .alert(errorAlertTitle, isPresented: $errorAlertPresented) {
+                Button("Ok", role: .cancel) { }
+            } message: {
+                Text(errorAlertMessage)
             }
             // New Item Alert
             .alert("New Item", isPresented: $newItemAlertPresented) {
@@ -84,6 +101,9 @@ struct ContentView: View {
         }
     }
 }
+
+// Empty response body
+private struct EmptyResponse: Decodable {}
 
 extension ContentView {
     @Sendable func fetchAllItems() async {
@@ -169,6 +189,42 @@ extension ContentView {
                 let _ = items.remove(at: index)
             } catch {
                 print("Error deleting Item:", error)
+            }
+        }
+    }
+
+    func provokeError() {
+        Task {
+            do {
+                let url = URL(string: "http://localhost:8080/error")!
+
+                // GET Error (should fail)
+                let _: EmptyResponse = try await httpClient.get(
+                    url: url,
+                    responseType: .applicationJson,
+                    interceptors: [],
+                    errorBodyType: ErrorBody.self
+                )
+            } catch HTTPClientError<ErrorBody>.clientError(let errorResponse) {
+                guard let errorBody = errorResponse.errorBody else {
+                    return assertionFailure("Should never have ended up here")
+                }
+
+                errorAlertTitle = errorBody.title
+                errorAlertMessage = errorBody.message
+
+                errorAlertPresented.toggle()
+            } catch HTTPClientError<ErrorBody>.serverError(let errorResponse) {
+                guard let errorBody = errorResponse.errorBody else {
+                    return assertionFailure("Should never have ended up here")
+                }
+
+                errorAlertTitle = errorBody.title
+                errorAlertMessage = errorBody.message
+
+                errorAlertPresented.toggle()
+            } catch {
+                assertionFailure("Should never have ended up here")
             }
         }
     }

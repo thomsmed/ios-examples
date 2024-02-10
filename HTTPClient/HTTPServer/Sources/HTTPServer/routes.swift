@@ -1,5 +1,32 @@
 import Vapor
 
+enum ItemError: Error {
+    struct ErrorResponse: Content {
+        let title: String
+        let message: String
+    }
+
+    case notAllowed
+}
+
+extension ItemError: AsyncResponseEncodable {
+    func encodeResponse(for request: Request) async throws -> Response {
+        var headers = HTTPHeaders()
+        headers.add(name: .contentType, value: "application/json")
+
+        switch self {
+            case .notAllowed:
+                let errorResponse = ErrorResponse(
+                    title: "Not allowed",
+                    message: "You are not allowed to do this!"
+                )
+                let response: Response = .init(status: .forbidden, headers: headers)
+                try response.content.encode(errorResponse)
+                return response
+        }
+    }
+}
+
 struct Item: Content {
     let id: UUID
     let text: String
@@ -78,5 +105,9 @@ func routes(_ app: Application) throws {
         let deletedItem = items.remove(at: index)
 
         return ItemResponseDTO(id: deletedItem.id, text: deletedItem.text)
+    }
+
+    app.get("error") { req async throws in
+        return ItemError.notAllowed
     }
 }

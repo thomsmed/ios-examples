@@ -9,7 +9,7 @@ import Foundation
 
 /// Enumeration representing possible HTTP MIME (Multipurpose Internet Mail Extensions) Types.
 public enum HTTPMimeType: String {
-    case textHtml = "text/html"
-    case applicationJson = "application/json"
-    case applicationJoseJson = "application/jose+json"
+    case textHtml = "text/html; charset=utf-8"
+    case applicationJson = "application/json; charset=utf-8"
+    case applicationJoseJson = "application/jose+json; charset=utf-8"
 }
