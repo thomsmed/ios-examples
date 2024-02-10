@@ -14,7 +14,13 @@ struct ItemResponseDTO: Content {
     let text: String
 }
 
-var items: [Item] = []
+var items: [Item] = [
+    Item(id: .init(), text: "Item 1"),
+    Item(id: .init(), text: "Item 2"),
+    Item(id: .init(), text: "Item 3"),
+    Item(id: .init(), text: "Item 4"),
+    Item(id: .init(), text: "Item 5"),
+]
 
 func routes(_ app: Application) throws {
     app.get("items") { req async throws in
@@ -45,7 +51,7 @@ func routes(_ app: Application) throws {
         }
 
         let updatedItem = Item(id: id, text: updatedItemDTO.text)
-        items.replaceSubrange(index..<index, with: [updatedItem])
+        items[index] = updatedItem
 
         return ItemResponseDTO(id: updatedItem.id, text: updatedItem.text)
     }

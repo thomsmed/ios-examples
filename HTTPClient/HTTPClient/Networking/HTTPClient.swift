@@ -82,7 +82,7 @@ extension HTTPClient {
         requestBody: RequestBody,
         requestType: HTTPMimeType
     ) async throws {
-        try await post(
+        try await put(
             url: url,
             requestBody: requestBody,
             requestType: requestType,
@@ -97,7 +97,7 @@ extension HTTPClient {
         requestType: HTTPMimeType,
         responseType: HTTPMimeType
     ) async throws -> ResponseBody {
-        try await post(
+        try await put(
             url: url,
             requestBody: requestBody,
             requestType: requestType,

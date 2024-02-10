@@ -10,13 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @Environment(\.httpClient) private var httpClient: HTTPClient
 
-    @State private var items: [Item] = [
-        Item(id: .init(), text: "Item 1"),
-        Item(id: .init(), text: "Item 2"),
-        Item(id: .init(), text: "Item 3"),
-        Item(id: .init(), text: "Item 4"),
-        Item(id: .init(), text: "Item 5"),
-    ]
+    @State private var items: [Item] = []
 
     @State private var currentEditingItemId: UUID = UUID()
     @State private var currentEditingItemText: String = ""
@@ -83,25 +77,100 @@ struct ContentView: View {
             } message: {
                 Text("Delete \"\(currentEditingItemText)\"?")
             }
+            // Fetch Items on View appear
+            .task(fetchAllItems)
+            // Fetch Items on Pull to Refresh
+            .refreshable(action: fetchAllItems)
         }
     }
 }
 
 extension ContentView {
-    func fetchAllItems() {
-        print("Fetching Items")
+    @Sendable func fetchAllItems() async {
+        do {
+            let url = URL(string: "http://localhost:8080/items")!
+            items = try await httpClient.get(
+                url: url,
+                responseType: .applicationJson
+            )
+        } catch {
+            print("Error fetching Items:", error)
+        }
     }
 
     func saveNewItem() {
-        print("Saving New Item \"\(currentEditingItemText)\" with id: \(currentEditingItemId)")
+        let itemId = currentEditingItemId
+        let itemText = currentEditingItemText
+
+        Task {
+            do {
+                let url = URL(string: "http://localhost:8080/items")!
+                let newItem = Item(id: itemId, text: itemText)
+
+                // POST New Item
+                let savedNewItem: Item = try await httpClient.post(
+                    url: url,
+                    requestBody: newItem,
+                    requestType: .applicationJson,
+                    responseType: .applicationJson
+                )
+
+                items.append(savedNewItem)
+            } catch {
+                print("Error saving new Item:", error)
+            }
+        }
     }
 
     func saveExistingItem() {
-        print("Saving Existing Item \"\(currentEditingItemText)\" with id: \(currentEditingItemId)")
+        let itemId = currentEditingItemId
+        let itemText = currentEditingItemText
+
+        Task {
+            do {
+                let url = URL(string: "http://localhost:8080/items/\(itemId)")!
+                let updatedItem = Item(id: itemId, text: itemText)
+
+                // PUT Updated Item
+                let savedUpdatedItem: Item = try await httpClient.put(
+                    url: url,
+                    requestBody: updatedItem,
+                    requestType: .applicationJson,
+                    responseType: .applicationJson
+                )
+
+                guard let index = items.firstIndex(where: { $0.id == savedUpdatedItem.id }) else {
+                    return assertionFailure("Expected updated Item to exist")
+                }
+
+                items[index] = savedUpdatedItem
+            } catch {
+                print("Error saving existing Item:", error)
+            }
+        }
     }
 
     func deleteItem() {
-        print("Deleting Item \"\(currentEditingItemText)\" with id: \(currentEditingItemId)")
+        let itemId = currentEditingItemId
+
+        Task {
+            do {
+                let url = URL(string: "http://localhost:8080/items/\(itemId)")!
+
+                // DELETE Item
+                let _: Void = try await httpClient.delete(
+                    url: url
+                )
+
+                guard let index = items.firstIndex(where: { $0.id == itemId }) else {
+                    return assertionFailure("Expected deleted Item to exist")
+                }
+
+                let _ = items.remove(at: index)
+            } catch {
+                print("Error deleting Item:", error)
+            }
+        }
     }
 }
 

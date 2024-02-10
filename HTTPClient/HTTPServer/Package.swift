@@ -15,7 +15,8 @@ let package = Package(
             name: "App",
             dependencies: [
                 .product(name: "Vapor", package: "vapor"),
-            ]
+            ],
+            swiftSettings: [.enableUpcomingFeature("StrictConcurrency")]
         ),
         .testTarget(name: "AppTests", dependencies: [
             .target(name: "App"),
