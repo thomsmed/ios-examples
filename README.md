@@ -30,6 +30,7 @@ A collection of iOS example code and applications.
 - [Dynamically alternate/change app icon (SwiftUI)](AlternateAppIcon)
 - [Rendering HTML in SwiftUI](SwiftUIHTML)
 - [Dynamic Animations with UIDynamicAnimator](DynamicAnimations)
+- [General purpose HTTPClient with support for interceptors](HTTPClient)
 
 Happy coding! :smile:
 
