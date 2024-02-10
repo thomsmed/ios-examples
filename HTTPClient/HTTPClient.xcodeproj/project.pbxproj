@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED10BCA92B77A4D500012CF4 /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED10BCA82B77A4D500012CF4 /* ItemView.swift */; };
+		ED10BCAC2B77A55D00012CF4 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED10BCAB2B77A55D00012CF4 /* Item.swift */; };
 		ED4AE2D82A9BACE2009C289F /* HTTPClientApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4AE2D72A9BACE2009C289F /* HTTPClientApp.swift */; };
 		ED4AE2DA2A9BACE2009C289F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4AE2D92A9BACE2009C289F /* ContentView.swift */; };
 		ED4AE2DC2A9BACE5009C289F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED4AE2DB2A9BACE5009C289F /* Assets.xcassets */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		ED10BCA82B77A4D500012CF4 /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
+		ED10BCAB2B77A55D00012CF4 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		ED4AE2D42A9BACE2009C289F /* HTTPClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HTTPClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED4AE2D72A9BACE2009C289F /* HTTPClientApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClientApp.swift; sourceTree = "<group>"; };
 		ED4AE2D92A9BACE2009C289F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -46,6 +50,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ED10BCAA2B77A55600012CF4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				ED10BCAB2B77A55D00012CF4 /* Item.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		ED10BCAD2B77A57900012CF4 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				ED4AE2D72A9BACE2009C289F /* HTTPClientApp.swift */,
+				ED4AE2D92A9BACE2009C289F /* ContentView.swift */,
+				ED10BCA82B77A4D500012CF4 /* ItemView.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		ED4AE2CB2A9BACE2009C289F = {
 			isa = PBXGroup;
 			children = (
@@ -67,8 +89,8 @@
 		ED4AE2D62A9BACE2009C289F /* HTTPClient */ = {
 			isa = PBXGroup;
 			children = (
-				ED4AE2D72A9BACE2009C289F /* HTTPClientApp.swift */,
-				ED4AE2D92A9BACE2009C289F /* ContentView.swift */,
+				ED10BCAD2B77A57900012CF4 /* App */,
+				ED10BCAA2B77A55600012CF4 /* Model */,
 				ED4AE2E52A9BAD30009C289F /* Networking */,
 				ED4AE2DB2A9BACE5009C289F /* Assets.xcassets */,
 				ED4AE2DD2A9BACE5009C289F /* Preview Content */,
@@ -167,10 +189,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED10BCAC2B77A55D00012CF4 /* Item.swift in Sources */,
 				ED4AE2DA2A9BACE2009C289F /* ContentView.swift in Sources */,
 				ED78CC862B76D86F00381025 /* HTTPClientError.swift in Sources */,
 				ED4AE2D82A9BACE2009C289F /* HTTPClientApp.swift in Sources */,
 				ED78CC842B76D83800381025 /* HTTPMethod.swift in Sources */,
+				ED10BCA92B77A4D500012CF4 /* ItemView.swift in Sources */,
 				ED4AE2EE2AA3BEBD009C289F /* HTTPClient.swift in Sources */,
 				ED4AE2E72A9BAD41009C289F /* DefaultHTTPClient.swift in Sources */,
 				ED4AE2EB2A9BAF8B009C289F /* HTTPClientInterceptor.swift in Sources */,
