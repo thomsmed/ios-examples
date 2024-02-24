@@ -1,0 +1,29 @@
+{
+  "configurations" : [
+    {
+      "id" : "147723FD-2DDD-4506-B613-535D208AFA3A",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:ResourceCache.xcodeproj",
+      "identifier" : "ED14E0722B89FC0500F9CEA4",
+      "name" : "ResourceCache"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:ResourceCache.xcodeproj",
+        "identifier" : "ED14E0822B89FC0700F9CEA4",
+        "name" : "ResourceCacheTests"
+      }
+    }
+  ],
+  "version" : 1
+}
