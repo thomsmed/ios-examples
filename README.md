@@ -31,6 +31,7 @@ A collection of iOS example code and applications.
 - [Rendering HTML in SwiftUI](SwiftUIHTML)
 - [Dynamic Animations with UIDynamicAnimator](DynamicAnimations)
 - [General purpose HTTPClient with support for interceptors](HTTPClient)
+- [Concurrent and thread safe resource cache with Swift Concurrency](ResourceCache)
 
 Happy coding! :smile:
 
