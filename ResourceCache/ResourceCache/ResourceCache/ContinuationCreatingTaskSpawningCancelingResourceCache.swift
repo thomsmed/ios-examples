@@ -7,9 +7,9 @@
 
 import Foundation
 
-/// A resource cache that spawns an unstructured Task to fetch a resource when the resource is first requested.
+/// A concurrent and thread safe resource cache that spawns an unstructured Task to fetch a resource when the resource is first requested.
 /// All Tasks requesting the resource will be suspended, and a Continuation will be created and stored for each Task.
-/// Continuations and Tasks will then be resumed once the initial Task has finished fetching the resource.
+/// Continuations and Tasks will then be resumed once the unstructured resource fetching Task has finished fetching the resource.
 /// If a resource requesting Task is canceled while suspended and waiting for the unstructured resource fetching Task,
 /// it will be resumed with a partially or unfinished result (empty resource in our case).
 /// If all resource requesting Tasks are canceled before the unstructured resource fetching Task has finished,

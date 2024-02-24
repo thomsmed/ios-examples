@@ -7,8 +7,8 @@
 
 import Foundation
 
-/// A resource cache that spawns an unstructured Task to fetch a resource when the resource is first requested.
-/// All subsequent Tasks requesting the resource will wait on the completion of the spawned unstructured resource fetching Task.
+/// A concurrent and thread safe resource cache that spawns an unstructured Task to fetch a resource when the resource is first requested.
+/// All Tasks requesting the resource will wait on the completion of the spawned unstructured resource fetching Task.
 final actor TaskSpawningResourceCache {
     private let urlSession: URLSession
 

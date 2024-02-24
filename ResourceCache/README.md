@@ -1,7 +1,11 @@
-# Building a Resource Cache with Swift Concurrency
+# Concurrent and thread safe resource cache with Swift Concurrency
 
-This project contains some example of possible ways to build a resource cache (caching of remotely fetched resources),
-and is heavily inspired by these WWDC videos (which I really recommend watching!):
+This project contains a simple app with some examples of possible ways to build a concurrent and thread safe resource cache (caching of remotely fetched resources).
+
+Profile the example app with the [Instruments](https://developer.apple.com/videos/play/wwdc2019/411/) tool using the Swift Concurrency profiling template,
+and see how the different resource cache implementations behave in terms of Task creation etc.
+
+The code is heavily inspired by these WWDC videos (which I really recommend watching!):
 
 - [Eliminate data races using Swift Concurrency](https://developer.apple.com/videos/play/wwdc2022/110351/).
 - [Swift concurrency: Behind the scenes](https://developer.apple.com/videos/play/wwdc2021/10254/).

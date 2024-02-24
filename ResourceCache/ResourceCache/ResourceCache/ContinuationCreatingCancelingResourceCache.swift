@@ -7,8 +7,8 @@
 
 import Foundation
 
-/// A resource cache that will make the first resource requesting Task fetch the resource asynchronously while being suspended.
-/// All subsequent Tasks requesting the resource will be suspended, and a Continuation will be created and stored for each Task.
+/// A concurrent and thread safe resource cache that will make the first resource requesting Task fetch the resource asynchronously while being suspended.
+/// All subsequent Tasks requesting the resource will also be suspended, and a Continuation will be created and stored for each Task.
 /// Continuations and Tasks will then be resumed once the initial Task has finished fetching the resource.
 /// If the initial resource requesting Task is canceled,
 /// all subsequent Continuations/Tasks will be resumed with a partially or unfinished result (empty resource in our case).

@@ -30,12 +30,12 @@ struct ContentView: View {
                                 Image(uiImage: uiImage)
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
-                                    .frame(maxHeight: 64)
+                                    .frame(height: 64)
                             } else {
                                 Image(systemName: "photo")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
-                                    .frame(maxHeight: 64)
+                                    .frame(height: 64)
                             }
                             Spacer()
                         }
