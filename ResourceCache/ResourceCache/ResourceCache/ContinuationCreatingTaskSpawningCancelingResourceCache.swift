@@ -109,12 +109,16 @@ final actor ContinuationCreatingTaskSpawningCancelingResourceCache {
                         // then it might be desirable to check for cancelation before and after each chunk of async work.
 
                         if Task.isCancelled {
+                            self.locker.cachedResourceState = .none
+
                             return
                         }
 
                         resource = await self.fetchResource()
 
                         if Task.isCancelled {
+                            self.locker.cachedResourceState = .none
+
                             return
                         }
 

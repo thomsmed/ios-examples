@@ -52,13 +52,26 @@ final actor TaskSpawningCancelingResourceCache {
                 return cachedResource
             }
 
-            let task: Task<Data?, Never>
-            if let existingTask = resourceFetchingTask {
-                task = existingTask
+            if let resourceFetchingTask {
+                waitingTasksCount.increment()
+
+                return await withTaskCancellationHandler {
+                    await resourceFetchingTask.value
+                } onCancel: {
+                    waitingTasksCount.decrement()
+
+                    if waitingTasksCount.value > 0 {
+                        return
+                    }
+
+                    // Cancel the resource fetching Task,
+                    // since there are no longer any other Tasks waiting for the result.
+                    resourceFetchingTask.cancel()
+                }
             } else {
                 waitingTasksCount.reset()
 
-                task = Task { [weak self] in
+                let task = Task<Data?, Never> { [weak self] in
                     guard let self else {
                         return nil
                     }
@@ -78,29 +91,29 @@ final actor TaskSpawningCancelingResourceCache {
 
                     return resource
                 }
-            }
 
-            resourceFetchingTask = task
+                resourceFetchingTask = task
 
-            waitingTasksCount.increment()
+                waitingTasksCount.increment()
 
-            return await withTaskCancellationHandler {
-                let resource = await task.value
+                return await withTaskCancellationHandler {
+                    let resource = await task.value
 
-                cachedResource = resource
-                resourceFetchingTask = nil
+                    cachedResource = resource
+                    resourceFetchingTask = nil
 
-                return resource
-            } onCancel: {
-                waitingTasksCount.decrement()
+                    return resource
+                } onCancel: {
+                    waitingTasksCount.decrement()
 
-                if waitingTasksCount.value > 0 {
-                    return
+                    if waitingTasksCount.value > 0 {
+                        return
+                    }
+
+                    // Cancel the resource fetching Task,
+                    // since there are no longer any other Tasks waiting for the result.
+                    task.cancel()
                 }
-
-                // Cancel the resource fetching Task,
-                // since there are no longer any other Tasks waiting for the result.
-                task.cancel()
             }
         }
     }
