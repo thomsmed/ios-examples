@@ -44,7 +44,11 @@ final actor TaskSpawningResourceCache {
                 return cachedResource
             }
 
-            let task = resourceFetchingTask ?? Task { [weak self] in
+            if let resourceFetchingTask {
+                return await resourceFetchingTask.value
+            }
+
+            let task = Task<Data?, Never> { [weak self] in
                 guard let self else {
                     return nil
                 }
