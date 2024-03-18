@@ -26,6 +26,18 @@ struct SymmetricKeyView: View {
                 }
             }
 
+            Section("Shared Symmetric Key w/Authenticity") {
+                HStack {
+                    TextField(
+                        "Write something to encrypt...",
+                        text: $viewModel.input
+                    )
+                    .onSubmit(viewModel.didSubmitWithAuthenticity)
+
+                    Button("Send", action: viewModel.didSubmitWithAuthenticity)
+                }
+            }
+
             Section("Sent") {
                 Text(viewModel.sent)
             }
@@ -105,6 +117,92 @@ extension SymmetricKeyView.Model {
 
                 let receivedSealedBox = try AES.GCM.SealedBox(combined: receivedCipherText)
                 let receivedPlainText = try AES.GCM.open(receivedSealedBox, using: symmetricKey)
+
+                self.received = String(data: receivedPlainText, encoding: .utf8)!
+            } catch {
+                print("Error:", error)
+            }
+        }
+    }
+
+    struct SharedSymmetricAuthenticityRequest: Encodable {
+        let header: Data
+        let nonce: Data
+        let cipherText: Data
+        let tag: Data
+    }
+
+    struct SharedSymmetricAuthenticityResponse: Decodable {
+        let header: Data
+        let nonce: Data
+        let cipherText: Data
+        let tag: Data
+    }
+
+    func didSubmitWithAuthenticity() {
+        Task { @MainActor in
+            do {
+                // A shared symmetric key can be generated like so:
+                // SymmetricKey(size: .bits256).withUnsafeBytes { buffer in
+                //     let rawBase64KeyData = Data(buffer).base64EncodedString()
+                //     print(rawBase64KeyData)
+                // }
+
+                let sharedSymmetricKeyData = Data(base64Encoded: "cE4AVV6G/9ft+jW8ofIosuiGhGA50/ZhHDtjTDfEdII=")!
+
+                let symmetricKey = SymmetricKey(data: sharedSymmetricKeyData)
+
+                let plainText = self.input.trimmingCharacters(in: .whitespacesAndNewlines)
+
+                self.input = ""
+
+                guard !plainText.isEmpty else {
+                    return
+                }
+
+                let header = "<client-header>".data(using: .utf8)!
+                let sealedBox = try AES.GCM.seal(
+                    plainText.data(using: .utf8)!,
+                    using: symmetricKey,
+                    authenticating: header
+                )
+
+                let requestPayload = SharedSymmetricAuthenticityRequest(
+                    header: header,
+                    nonce: Data(sealedBox.nonce),
+                    cipherText: sealedBox.ciphertext,
+                    tag: sealedBox.tag
+                )
+
+                let url = URL(string: "http://localhost:8080/symmetric/shared/authenticity")!
+
+                var request = URLRequest(url: url)
+                request.httpMethod = "POST"
+                request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+                request.httpBody = try JSONEncoder().encode(requestPayload)
+
+                self.sent = plainText
+
+                let (data, response) = try await URLSession.shared.data(for: request)
+
+                let httpURLResponse = response as! HTTPURLResponse
+
+                guard httpURLResponse.statusCode == 200 else {
+                    return assertionFailure("Unexpected HTTP status code: \(httpURLResponse.statusCode)")
+                }
+
+                let responsePayload = try JSONDecoder().decode(SharedSymmetricAuthenticityResponse.self, from: data)
+
+                let receivedSealedBox = try AES.GCM.SealedBox(
+                    nonce: AES.GCM.Nonce(data: responsePayload.nonce),
+                    ciphertext: responsePayload.cipherText,
+                    tag: responsePayload.tag
+                )
+                let receivedPlainText = try AES.GCM.open(
+                    receivedSealedBox,
+                    using: symmetricKey,
+                    authenticating: responsePayload.header
+                )
 
                 self.received = String(data: receivedPlainText, encoding: .utf8)!
             } catch {
