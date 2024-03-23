@@ -13,6 +13,11 @@
 		ED0CD5A52A868A5F0087DB88 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED0CD5A42A868A5F0087DB88 /* Preview Assets.xcassets */; };
 		EDE452EC2BA75E71007B8967 /* SymmetricKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE452EB2BA75E71007B8967 /* SymmetricKeyView.swift */; };
 		EDE452EF2BA8B5A9007B8967 /* Data+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE452EE2BA8B5A9007B8967 /* Data+hex.swift */; };
+		EDE452F22BA8C5C5007B8967 /* AsymmetricKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE452F12BA8C5C5007B8967 /* AsymmetricKeyView.swift */; };
+		EDE452F42BAF6E8F007B8967 /* JWK.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE452F32BAF6E8F007B8967 /* JWK.swift */; };
+		EDE452F62BAF7074007B8967 /* Data+base64URLEncoded.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE452F52BAF7074007B8967 /* Data+base64URLEncoded.swift */; };
+		EDE452F82BAF70FB007B8967 /* JWS.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE452F72BAF70FB007B8967 /* JWS.swift */; };
+		EDE452FA2BAF7275007B8967 /* JWE.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE452F92BAF7275007B8967 /* JWE.swift */; };
 		EDE70BAA2A926EB300AC1D75 /* HashFunctionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE70BA92A926EB300AC1D75 /* HashFunctionsView.swift */; };
 		EDE70BAD2A92B00B00AC1D75 /* CertificatePinningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE70BAC2A92B00B00AC1D75 /* CertificatePinningView.swift */; };
 /* End PBXBuildFile section */
@@ -27,6 +32,11 @@
 		EDE452E92BA74A39007B8967 /* CryptographyServer */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = CryptographyServer; sourceTree = "<group>"; };
 		EDE452EB2BA75E71007B8967 /* SymmetricKeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymmetricKeyView.swift; sourceTree = "<group>"; };
 		EDE452EE2BA8B5A9007B8967 /* Data+hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+hex.swift"; sourceTree = "<group>"; };
+		EDE452F12BA8C5C5007B8967 /* AsymmetricKeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsymmetricKeyView.swift; sourceTree = "<group>"; };
+		EDE452F32BAF6E8F007B8967 /* JWK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWK.swift; sourceTree = "<group>"; };
+		EDE452F52BAF7074007B8967 /* Data+base64URLEncoded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+base64URLEncoded.swift"; sourceTree = "<group>"; };
+		EDE452F72BAF70FB007B8967 /* JWS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWS.swift; sourceTree = "<group>"; };
+		EDE452F92BAF7275007B8967 /* JWE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWE.swift; sourceTree = "<group>"; };
 		EDE70BA92A926EB300AC1D75 /* HashFunctionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashFunctionsView.swift; sourceTree = "<group>"; };
 		EDE70BAC2A92B00B00AC1D75 /* CertificatePinningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificatePinningView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -93,6 +103,7 @@
 			children = (
 				ED0CD59F2A868A5B0087DB88 /* ContentView.swift */,
 				EDE452EA2BA75E4A007B8967 /* SymmetricKey */,
+				EDE452F02BA8C5AE007B8967 /* AsymmetricKey */,
 				EDE70BA82A926E9600AC1D75 /* HashFunctions */,
 				EDE70BAB2A92AFEF00AC1D75 /* CertificatePinning */,
 			);
@@ -111,8 +122,20 @@
 			isa = PBXGroup;
 			children = (
 				EDE452EE2BA8B5A9007B8967 /* Data+hex.swift */,
+				EDE452F52BAF7074007B8967 /* Data+base64URLEncoded.swift */,
+				EDE452F32BAF6E8F007B8967 /* JWK.swift */,
+				EDE452F72BAF70FB007B8967 /* JWS.swift */,
+				EDE452F92BAF7275007B8967 /* JWE.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		EDE452F02BA8C5AE007B8967 /* AsymmetricKey */ = {
+			isa = PBXGroup;
+			children = (
+				EDE452F12BA8C5C5007B8967 /* AsymmetricKeyView.swift */,
+			);
+			path = AsymmetricKey;
 			sourceTree = "<group>";
 		};
 		EDE70BA82A926E9600AC1D75 /* HashFunctions */ = {
@@ -201,11 +224,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDE452F82BAF70FB007B8967 /* JWS.swift in Sources */,
+				EDE452F42BAF6E8F007B8967 /* JWK.swift in Sources */,
 				ED0CD5A02A868A5B0087DB88 /* ContentView.swift in Sources */,
+				EDE452F22BA8C5C5007B8967 /* AsymmetricKeyView.swift in Sources */,
 				EDE452EC2BA75E71007B8967 /* SymmetricKeyView.swift in Sources */,
+				EDE452F62BAF7074007B8967 /* Data+base64URLEncoded.swift in Sources */,
 				EDE70BAD2A92B00B00AC1D75 /* CertificatePinningView.swift in Sources */,
 				EDE452EF2BA8B5A9007B8967 /* Data+hex.swift in Sources */,
 				ED0CD59E2A868A5B0087DB88 /* CryptographyClientApp.swift in Sources */,
+				EDE452FA2BAF7275007B8967 /* JWE.swift in Sources */,
 				EDE70BAA2A926EB300AC1D75 /* HashFunctionsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

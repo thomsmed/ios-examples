@@ -43,6 +43,8 @@ Note: The Terminal/Server app is listening on `localhost:8080` by default.
 
 ## Utils
 
+### Public key hash for TLS certificate pinning
+
 A simple bash snippet to generate the public key hash of the TLS certificate of a remote server.
 
 ```bash
@@ -58,4 +60,39 @@ openssl s_client -servername $SERVERNAME -connect $SERVERNAME:443 |
   openssl rsa -pubin -outform der | # Optionally "openssl ec -pubin -outform der" if the key used in the Certificate is an Elliptic Curve.
   openssl dgst -sha256 -binary |
   openssl enc -base64
+```
+
+### JWK parameters for CryptoKit key(s)
+
+The general idea is to inspect the raw representation of the key, like so:
+
+```swift
+extension P256.Signing.PrivateKey {
+    var jwkRepresentation: JWK {
+        let publicKeyRawRepresentation = publicKey.rawRepresentation
+        let x = publicKeyRawRepresentation.prefix(publicKeyRawRepresentation.count / 2)
+        let y = publicKeyRawRepresentation.suffix(publicKeyRawRepresentation.count / 2)
+        return JWK(
+            kty: "EC",
+            crv: "P-256",
+            x: x.base64URLEncodedString(),
+            y: y.base64URLEncodedString(),
+            d: rawRepresentation.base64URLEncodedString()
+        )
+    }
+}
+
+extension P256.Signing.PublicKey {
+    var jwkRepresentation: JWK {
+        let x = rawRepresentation.prefix(rawRepresentation.count / 2)
+        let y = rawRepresentation.suffix(rawRepresentation.count / 2)
+        return JWK(
+            kty: "EC",
+            crv: "P-256",
+            x: x.base64URLEncodedString(),
+            y: y.base64URLEncodedString(),
+            d: nil
+        )
+    }
+}
 ```

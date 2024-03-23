@@ -29,10 +29,8 @@ struct ContentView: View {
                             .navigationTitle(page.title)
 
                     case .asymmetricKeyCryptography:
-                        HStack {
-                            Text(page.title)
-                        }
-                        .navigationTitle(page.title)
+                        AsymmetricKeyView()
+                            .navigationTitle(page.title)
 
                     case .messageAuthenticationCodes:
                         HStack {

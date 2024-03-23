@@ -38,6 +38,38 @@ struct SymmetricKeyView: View {
                 }
             }
 
+            Section("Derived Symmetric Key") {
+                HStack {
+                    TextField(
+                        "Write something to encrypt...",
+                        text: $viewModel.input
+                    )
+                    .onSubmit {
+                        print("TODO: Derived Symmetric Key")
+                    }
+
+                    Button("Send") {
+                        print("TODO: Derived Symmetric Key")
+                    }
+                }
+            }
+
+            Section("Derived Symmetric Key w/Authenticity") {
+                HStack {
+                    TextField(
+                        "Write something to encrypt...",
+                        text: $viewModel.input
+                    )
+                    .onSubmit {
+                        print("TODO: Derived Symmetric Key w/Authenticity")
+                    }
+
+                    Button("Send") {
+                        print("TODO: Derived Symmetric Key w/Authenticity")
+                    }
+                }
+            }
+
             Section("Sent") {
                 Text(viewModel.sent)
             }
@@ -50,10 +82,6 @@ struct SymmetricKeyView: View {
 }
 
 extension SymmetricKeyView {
-
-}
-
-extension SymmetricKeyView {
     final class Model: ObservableObject {
         @Published var input: String = ""
 
@@ -63,11 +91,11 @@ extension SymmetricKeyView {
 }
 
 extension SymmetricKeyView.Model {
-    struct SharedSymmetricRequest: Encodable {
+    struct SharedSymmetricKeyRequest: Encodable {
         let message: Data
     }
 
-    struct SharedSymmetricResponse: Decodable {
+    struct SharedSymmetricKeyResponse: Decodable {
         let message: Data
     }
 
@@ -100,7 +128,7 @@ extension SymmetricKeyView.Model {
                 var request = URLRequest(url: url)
                 request.httpMethod = "POST"
                 request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-                request.httpBody = try JSONEncoder().encode(SharedSymmetricRequest(message: cipherText))
+                request.httpBody = try JSONEncoder().encode(SharedSymmetricKeyRequest(message: cipherText))
 
                 self.sent = plainText
 
@@ -112,7 +140,7 @@ extension SymmetricKeyView.Model {
                     return assertionFailure("Unexpected HTTP status code: \(httpURLResponse.statusCode)")
                 }
 
-                let decodedResponse = try JSONDecoder().decode(SharedSymmetricResponse.self, from: data)
+                let decodedResponse = try JSONDecoder().decode(SharedSymmetricKeyResponse.self, from: data)
                 let receivedCipherText = decodedResponse.message
 
                 let receivedSealedBox = try AES.GCM.SealedBox(combined: receivedCipherText)
@@ -125,14 +153,14 @@ extension SymmetricKeyView.Model {
         }
     }
 
-    struct SharedSymmetricAuthenticityRequest: Encodable {
+    struct SharedSymmetricKeyAuthenticityRequest: Encodable {
         let header: Data
         let nonce: Data
         let cipherText: Data
         let tag: Data
     }
 
-    struct SharedSymmetricAuthenticityResponse: Decodable {
+    struct SharedSymmetricKeyAuthenticityResponse: Decodable {
         let header: Data
         let nonce: Data
         let cipherText: Data
@@ -167,7 +195,7 @@ extension SymmetricKeyView.Model {
                     authenticating: header
                 )
 
-                let requestPayload = SharedSymmetricAuthenticityRequest(
+                let requestPayload = SharedSymmetricKeyAuthenticityRequest(
                     header: header,
                     nonce: Data(sealedBox.nonce),
                     cipherText: sealedBox.ciphertext,
@@ -191,7 +219,7 @@ extension SymmetricKeyView.Model {
                     return assertionFailure("Unexpected HTTP status code: \(httpURLResponse.statusCode)")
                 }
 
-                let responsePayload = try JSONDecoder().decode(SharedSymmetricAuthenticityResponse.self, from: data)
+                let responsePayload = try JSONDecoder().decode(SharedSymmetricKeyAuthenticityResponse.self, from: data)
 
                 let receivedSealedBox = try AES.GCM.SealedBox(
                     nonce: AES.GCM.Nonce(data: responsePayload.nonce),
