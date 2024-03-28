@@ -8,6 +8,7 @@
 import SwiftUI
 import Combine
 import CryptoKit
+import JOSESwift
 
 struct AsymmetricKeyView: View {
     @StateObject private var viewModel: Model = .init()
@@ -50,10 +51,6 @@ struct AsymmetricKeyView: View {
 }
 
 extension AsymmetricKeyView {
-
-}
-
-extension AsymmetricKeyView {
     final class Model: ObservableObject {
         @Published var input: String = ""
 
@@ -82,27 +79,59 @@ extension AsymmetricKeyView.Model {
 
                 let jwtPayload = JWTPayload(message: message)
 
-                // TODO: Make JWS
+                let signer = ES256Signer(signingKey: privateKey)
+                let header = JWT.Signing.Header(algorithm: signer.algorithm, jwk: privateKey.publicKey.jwkRepresentation)
+                let jws = try JWS(header: header, payload: jwtPayload, signer: signer)
 
                 let url = URL(string: "http://localhost:8080/asymmetric/signing")!
 
                 var request = URLRequest(url: url)
                 request.httpMethod = "POST"
                 request.setValue("application/jwt", forHTTPHeaderField: "Content-Type")
+                request.setValue("application/jwt", forHTTPHeaderField: "Accept")
+                request.httpBody = try jws.compactSerializedData
 
                 self.sent = message
 
-                let (data, response) = try await URLSession.shared.data(for: request)
+                let (serverJWSData, serverJWSResponse) = try await URLSession.shared.data(for: request)
 
-                let httpURLResponse = response as! HTTPURLResponse
+                let serverJWSHTTPURLResponse = serverJWSResponse as! HTTPURLResponse
 
-                guard httpURLResponse.statusCode == 200 else {
-                    return assertionFailure("Unexpected HTTP status code: \(httpURLResponse.statusCode)")
+                guard serverJWSHTTPURLResponse.statusCode == 200 else {
+                    return assertionFailure("Unexpected HTTP status code: \(serverJWSHTTPURLResponse.statusCode)")
                 }
 
-                // TODO: Get server JWK and verify received JWS
+                guard let serverJWS = JWS<JWTPayload>(compactSerializedData: serverJWSData) else {
+                    return assertionFailure("Expected Server JWS decoding to succeed")
+                }
 
-                self.received = String(data: data, encoding: .utf8)!
+                let serverJWKURL = URL(string: "http://localhost:8080/asymmetric/signing/jwk")!
+
+                var serverJWKRequest = URLRequest(url: serverJWKURL)
+                serverJWKRequest.httpMethod = "GET"
+                serverJWKRequest.setValue("application/json", forHTTPHeaderField: "Accept")
+
+                let (serverJWKData, serverJWKResponse) = try await URLSession.shared.data(for: serverJWKRequest)
+
+                let serverJWKHTTPURLResponse = serverJWKResponse as! HTTPURLResponse
+
+                guard serverJWKHTTPURLResponse.statusCode == 200 else {
+                    return assertionFailure("Unexpected HTTP status code: \(serverJWKHTTPURLResponse.statusCode)")
+                }
+
+                guard let serverJWK = JWK(serialized: serverJWKData) else {
+                    return assertionFailure("Expected Server JWK decoding to succeed")
+                }
+
+                guard let serverPublicKey = P256.Signing.PublicKey(jwkRepresentation: serverJWK) else {
+                    return assertionFailure("Expected Server PublicKey decoding to succeed")
+                }
+
+                guard let validatedServerJWS = try serverJWS.validated(using: ES256Validator(validationKey: serverPublicKey)) else {
+                    return assertionFailure("Expected Server JWS validation to succeed")
+                }
+
+                self.received = validatedServerJWS.payload.message
             } catch {
                 print("Error:", error)
             }

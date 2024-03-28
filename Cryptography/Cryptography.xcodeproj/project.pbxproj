@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,13 +11,10 @@
 		ED0CD5A02A868A5B0087DB88 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0CD59F2A868A5B0087DB88 /* ContentView.swift */; };
 		ED0CD5A22A868A5F0087DB88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED0CD5A12A868A5F0087DB88 /* Assets.xcassets */; };
 		ED0CD5A52A868A5F0087DB88 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED0CD5A42A868A5F0087DB88 /* Preview Assets.xcassets */; };
+		ED39F9EA2BB5A43000250D83 /* JOSESwift in Frameworks */ = {isa = PBXBuildFile; productRef = ED39F9E92BB5A43000250D83 /* JOSESwift */; };
 		EDE452EC2BA75E71007B8967 /* SymmetricKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE452EB2BA75E71007B8967 /* SymmetricKeyView.swift */; };
 		EDE452EF2BA8B5A9007B8967 /* Data+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE452EE2BA8B5A9007B8967 /* Data+hex.swift */; };
 		EDE452F22BA8C5C5007B8967 /* AsymmetricKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE452F12BA8C5C5007B8967 /* AsymmetricKeyView.swift */; };
-		EDE452F42BAF6E8F007B8967 /* JWK.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE452F32BAF6E8F007B8967 /* JWK.swift */; };
-		EDE452F62BAF7074007B8967 /* Data+base64URLEncoded.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE452F52BAF7074007B8967 /* Data+base64URLEncoded.swift */; };
-		EDE452F82BAF70FB007B8967 /* JWS.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE452F72BAF70FB007B8967 /* JWS.swift */; };
-		EDE452FA2BAF7275007B8967 /* JWE.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE452F92BAF7275007B8967 /* JWE.swift */; };
 		EDE70BAA2A926EB300AC1D75 /* HashFunctionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE70BA92A926EB300AC1D75 /* HashFunctionsView.swift */; };
 		EDE70BAD2A92B00B00AC1D75 /* CertificatePinningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE70BAC2A92B00B00AC1D75 /* CertificatePinningView.swift */; };
 /* End PBXBuildFile section */
@@ -29,14 +26,11 @@
 		ED0CD5A12A868A5F0087DB88 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED0CD5A42A868A5F0087DB88 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		ED0CD5B42A86D1810087DB88 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		ED39F9E72BB4DA6300250D83 /* JOSESwift */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = JOSESwift; sourceTree = "<group>"; };
 		EDE452E92BA74A39007B8967 /* CryptographyServer */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = CryptographyServer; sourceTree = "<group>"; };
 		EDE452EB2BA75E71007B8967 /* SymmetricKeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymmetricKeyView.swift; sourceTree = "<group>"; };
 		EDE452EE2BA8B5A9007B8967 /* Data+hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+hex.swift"; sourceTree = "<group>"; };
 		EDE452F12BA8C5C5007B8967 /* AsymmetricKeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsymmetricKeyView.swift; sourceTree = "<group>"; };
-		EDE452F32BAF6E8F007B8967 /* JWK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWK.swift; sourceTree = "<group>"; };
-		EDE452F52BAF7074007B8967 /* Data+base64URLEncoded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+base64URLEncoded.swift"; sourceTree = "<group>"; };
-		EDE452F72BAF70FB007B8967 /* JWS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWS.swift; sourceTree = "<group>"; };
-		EDE452F92BAF7275007B8967 /* JWE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWE.swift; sourceTree = "<group>"; };
 		EDE70BA92A926EB300AC1D75 /* HashFunctionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashFunctionsView.swift; sourceTree = "<group>"; };
 		EDE70BAC2A92B00B00AC1D75 /* CertificatePinningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificatePinningView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -46,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED39F9EA2BB5A43000250D83 /* JOSESwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,6 +53,7 @@
 				ED0CD5B42A86D1810087DB88 /* README.md */,
 				ED0CD59C2A868A5B0087DB88 /* CryptographyClient */,
 				EDE452E92BA74A39007B8967 /* CryptographyServer */,
+				ED39F9E72BB4DA6300250D83 /* JOSESwift */,
 				ED0CD56E2A8688520087DB88 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -122,10 +118,6 @@
 			isa = PBXGroup;
 			children = (
 				EDE452EE2BA8B5A9007B8967 /* Data+hex.swift */,
-				EDE452F52BAF7074007B8967 /* Data+base64URLEncoded.swift */,
-				EDE452F32BAF6E8F007B8967 /* JWK.swift */,
-				EDE452F72BAF70FB007B8967 /* JWS.swift */,
-				EDE452F92BAF7275007B8967 /* JWE.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -170,6 +162,9 @@
 			dependencies = (
 			);
 			name = CryptographyClient;
+			packageProductDependencies = (
+				ED39F9E92BB5A43000250D83 /* JOSESwift */,
+			);
 			productName = CryptographyClient;
 			productReference = ED0CD59B2A868A5B0087DB88 /* CryptographyClient.app */;
 			productType = "com.apple.product-type.application";
@@ -198,6 +193,9 @@
 				Base,
 			);
 			mainGroup = ED0CD5642A8688510087DB88;
+			packageReferences = (
+				ED39F9E82BB5A43000250D83 /* XCLocalSwiftPackageReference "JOSESwift" */,
+			);
 			productRefGroup = ED0CD56E2A8688520087DB88 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -224,16 +222,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDE452F82BAF70FB007B8967 /* JWS.swift in Sources */,
-				EDE452F42BAF6E8F007B8967 /* JWK.swift in Sources */,
 				ED0CD5A02A868A5B0087DB88 /* ContentView.swift in Sources */,
 				EDE452F22BA8C5C5007B8967 /* AsymmetricKeyView.swift in Sources */,
 				EDE452EC2BA75E71007B8967 /* SymmetricKeyView.swift in Sources */,
-				EDE452F62BAF7074007B8967 /* Data+base64URLEncoded.swift in Sources */,
 				EDE70BAD2A92B00B00AC1D75 /* CertificatePinningView.swift in Sources */,
 				EDE452EF2BA8B5A9007B8967 /* Data+hex.swift in Sources */,
 				ED0CD59E2A868A5B0087DB88 /* CryptographyClientApp.swift in Sources */,
-				EDE452FA2BAF7275007B8967 /* JWE.swift in Sources */,
 				EDE70BAA2A926EB300AC1D75 /* HashFunctionsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -440,6 +434,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		ED39F9E82BB5A43000250D83 /* XCLocalSwiftPackageReference "JOSESwift" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = JOSESwift;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		ED39F9E92BB5A43000250D83 /* JOSESwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = JOSESwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = ED0CD5652A8688510087DB88 /* Project object */;
 }

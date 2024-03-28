@@ -1,7 +1,5 @@
 import Vapor
-import JSONWebKey
-import JSONWebToken
-import JSONWebSignature
+import JOSESwift
 
 // MARK: Requests and Responses
 
@@ -27,22 +25,8 @@ struct SharedSymmetricKeyAuthenticityResponse: Content {
     let tag: Data
 }
 
-extension JWK: Content {}
-
 struct JWTPayload: Content {
     let message: String
-}
-
-extension JWTPayload: JWTRegisteredFieldsClaims {
-    var issuer: String? { nil }
-    var subject: String? { nil }
-    var audience: [String]? { nil }
-    var expirationTime: Date? { nil }
-    var notBeforeTime: Date? { nil }
-    var issuedAt: Date? { nil }
-    var jwtID: String? { nil }
-
-    func validateExtraClaims() throws {}
 }
 
 // MARK: Cryptographic Keys
@@ -119,25 +103,42 @@ func routes(_ app: Application) throws {
         )
     }
 
-    app.get("asymmetric", "signing", "jwk") { req async throws -> JWK in
-        privateSigningKey.publicKey.jwkRepresentation
+    app.get("asymmetric", "signing", "jwk") { req async throws -> String in
+        privateSigningKey.publicKey.jwkRepresentation.serializedString
     }
 
-    app.get("asymmetric", "encryption", "jwk") { req async throws -> JWK in
-        privateKeyAgreementKey.publicKey.jwkRepresentation
+    app.get("asymmetric", "encryption", "jwk") { req async throws -> String in
+        privateKeyAgreementKey.publicKey.jwkRepresentation.serializedString
     }
 
     app.post("asymmetric", "signing") { req async throws -> String in
-        let jwtString = req.body.string ?? ""
-        let verifiedJWT = try JWT<JWTPayload>.verify(jwtString: jwtString)
-        let verifiedPayload = verifiedJWT.payload
+        guard
+            let compactSerializedString = req.body.string,
+            let jws = JWS<JWTPayload>(compactSerializedString: compactSerializedString)
+        else {
+            return "TODO: Fix Me!"
+        }
 
-        let seenPayload = JWTPayload(message: "\(verifiedPayload.message) (seen)")
+        guard let jwk = jws.header.jwk else {
+            return "TODO: Fix Me!"
+        }
 
-        return try JWT.signed(
+        guard let publicKey = P256.Signing.PublicKey(jwkRepresentation: jwk) else {
+            return "TODO: Fix Me!"
+        }
+
+        guard let validatedJWS = try jws.validated(using: ES256Validator(validationKey: publicKey)) else {
+            return "TODO: Fix Me!"
+        }
+
+        let seenPayload = JWTPayload(message: "\(validatedJWS.payload.message) (seen)")
+        let signer = ES256Signer(signingKey: privateSigningKey)
+        let header = JWT.Signing.Header(algorithm: signer.algorithm, jwk: nil)
+
+        return try JWS(
+            header: header,
             payload: seenPayload,
-            protectedHeader: DefaultJWSHeaderImpl(algorithm: .ES256),
-            key: privateSigningKey.jwkRepresentation
-        ).jwtString
+            signer: signer
+        ).compactSerializedString
     }
 }

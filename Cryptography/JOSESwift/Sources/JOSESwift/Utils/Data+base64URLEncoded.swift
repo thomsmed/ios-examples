@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Data {
+internal extension Data {
     init?(base64URLEncoded input: String) {
         var base64 = input
         base64 = base64.replacingOccurrences(of: "-", with: "+")

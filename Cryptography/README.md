@@ -41,6 +41,10 @@ Select the `CryptographyServer` scheme to build and run the Terminal/Server app.
 
 Note: The Terminal/Server app is listening on `localhost:8080` by default.
 
+## Simple JOSE Implementation
+
+A simple JOSE library implementing a couple TODO: Bla bla.
+
 ## Utils
 
 ### Public key hash for TLS certificate pinning

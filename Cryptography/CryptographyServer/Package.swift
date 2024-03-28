@@ -9,14 +9,14 @@ let package = Package(
     dependencies: [
         // 💧 A server-side Swift web framework.
         .package(url: "https://github.com/vapor/vapor.git", from: "4.89.0"),
-        .package(url: "https://github.com/beatt83/jose-swift.git", from: "1.2.2"),
+        .package(path: "../JOSESwift")
     ],
     targets: [
         .executableTarget(
             name: "CryptographyServer",
             dependencies: [
                 .product(name: "Vapor", package: "vapor"),
-                .product(name: "jose-swift", package: "jose-swift")
+                .product(name: "JOSESwift", package: "JOSESwift"),
             ],
             swiftSettings: [.enableUpcomingFeature("StrictConcurrency")]
         )

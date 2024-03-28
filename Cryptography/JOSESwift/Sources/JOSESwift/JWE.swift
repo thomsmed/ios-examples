@@ -8,6 +8,6 @@
 import Foundation
 
 /// [JSON Web Encryption (JWE)](https://datatracker.ietf.org/doc/html/rfc7516).
-struct JWE {
+public struct JWE {
 
 }
