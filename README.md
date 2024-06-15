@@ -33,6 +33,7 @@ A collection of iOS example code and applications.
 - [General purpose HTTPClient with support for interceptors](HTTPClient)
 - [Concurrent and thread safe resource cache with Swift Concurrency](ResourceCache)
 - [Real-time with WebSockets and Swift Concurrency](WebSocketClient)
+- [Action emitting ViewModels and Coordinator Views](ActionableViewModel)
 
 Happy coding! :smile:
 
