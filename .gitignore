@@ -25,5 +25,8 @@
 ## Gcc Patch
 **/*.gcno
 
+## Build
+**/.build
+
 ## MacOS
 .DS_Store
