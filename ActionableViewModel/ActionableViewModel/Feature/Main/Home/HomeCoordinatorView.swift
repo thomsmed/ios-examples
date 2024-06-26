@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeCoordinatorView: View {
-    @State var viewModel: ViewModel
+    @StateObject var viewModel: ViewModel
 
     var body: some View {
         NavigationStack(path: $viewModel.pageStack) {
@@ -41,15 +41,14 @@ extension HomeCoordinatorView {
 // MARK: HomeCoordinatorView+ViewModel
 
 extension HomeCoordinatorView {
-    @Observable
     final class ViewModel: ActionableViewModel<ViewModel.Action> {
         enum Action {
             case didTapSettings
             case didTapAbout
         }
 
-        var tabBarVisibility: Visibility = .visible
-        var pageStack: [SubPage] = [] {
+        @Published var tabBarVisibility: Visibility = .visible
+        @Published var pageStack: [SubPage] = [] {
             didSet {
                 switch pageStack.last {
                     case .none:

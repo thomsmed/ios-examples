@@ -15,8 +15,7 @@ import Foundation
     var onAction: ((Action) -> Void)? { get set }
 }
 
-open class ActionableViewModel<Action: Sendable>: Actionable {
-    @ObservationIgnored
+open class ActionableViewModel<Action: Sendable>: Actionable, ObservableObject {
     var onAction: ((Action) -> Void)?
 
     init(onAction: ((Action) -> Void)?) {

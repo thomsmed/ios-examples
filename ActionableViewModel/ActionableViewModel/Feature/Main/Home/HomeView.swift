@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State var viewModel: ViewModel
+    @StateObject var viewModel: ViewModel
 
     var body: some View {
         ScrollView {
@@ -38,7 +38,6 @@ struct HomeView: View {
 // MARK: HomeView+ViewModel
 
 extension HomeView {
-    @Observable
     final class ViewModel: ActionableViewModel<ViewModel.Action> {
         enum Action {
             case didTapProfile
