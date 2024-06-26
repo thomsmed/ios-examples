@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainCoordinatorView: View {
-    @State var viewModel: ViewModel
+    @StateObject var viewModel: ViewModel
 
     var body: some View {
         TabView(selection: $viewModel.selectedTab) {
@@ -94,15 +94,14 @@ extension MainCoordinatorView {
 // MARK: MainCoordinatorView+ViewModel
 
 extension MainCoordinatorView {
-    @Observable
     final class ViewModel: ActionableViewModel<ViewModel.Action> {
         enum Action {
             case didTapAbout
         }
 
-        var selectedTab: Tab = .home
-        var presentedSheet: Sheet? = nil
-        var presentedPage: Page? = nil
+        @Published var selectedTab: Tab = .home
+        @Published var presentedSheet: Sheet? = nil
+        @Published var presentedPage: Page? = nil
 
         // MARK: ViewModel Factory Methods
 

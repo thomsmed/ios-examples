@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MoreCoordinatorView: View {
-    @State var viewModel: ViewModel
+    @StateObject var viewModel: ViewModel
 
     var body: some View {
         NavigationStack(path: $viewModel.pageStack) {
@@ -39,13 +39,12 @@ extension MoreCoordinatorView {
 // MARK: MoreCoordinatorView+ViewModel
 
 extension MoreCoordinatorView {
-    @Observable
     final class ViewModel: ActionableViewModel<ViewModel.Action> {
         enum Action {
             case didTapReEnroll
         }
 
-        var pageStack: [SubPage] = []
+        @Published var pageStack: [SubPage] = []
 
         // MARK: ViewModel Factory Methods
 

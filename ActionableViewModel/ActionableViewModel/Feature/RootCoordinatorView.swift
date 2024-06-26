@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RootCoordinatorView: View {
-    @State var viewModel: ViewModel
+    @StateObject var viewModel: ViewModel
 
     var body: some View {
         Group {
@@ -52,12 +52,11 @@ extension RootCoordinatorView {
 // MARK: RootCoordinatorView+ViewModel
 
 extension RootCoordinatorView {
-    @Observable
     final class ViewModel: ActionableViewModel<ViewModel.Action> {
         enum Action {}
 
-        var transitionEdge: Edge = .trailing
-        var selectedFlow: Flow = .onboarding
+        @Published var transitionEdge: Edge = .trailing
+        @Published var selectedFlow: Flow = .onboarding
 
         // MARK: ViewModel Factory Methods
 

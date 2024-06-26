@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct EnrollmentCoordinatorView: View {
-    @State var viewModel: ViewModel
+    @StateObject var viewModel: ViewModel
 
     var body: some View {
         NavigationStack {
@@ -33,13 +33,12 @@ struct EnrollmentCoordinatorView: View {
 // MARK: EnrollmentCoordinatorView+ViewModel
 
 extension EnrollmentCoordinatorView {
-    @Observable
     final class ViewModel: ActionableViewModel<ViewModel.Action> {
         enum Action {
             case didCompleteEnrollment
         }
 
-        var isLoading: Bool = false
+        @Published var isLoading: Bool = false
 
         // MARK: View Events
 
