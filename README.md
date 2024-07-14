@@ -34,6 +34,7 @@ A collection of iOS example code and applications.
 - [Concurrent and thread safe resource cache with Swift Concurrency](ResourceCache)
 - [Real-time with WebSockets and Swift Concurrency](WebSocketClient)
 - [Action emitting ViewModels and Coordinator Views](ActionableViewModel)
+- [Representing arbitrary data as an opaque Codable type](OpaqueValue)
 
 Happy coding! :smile:
 
