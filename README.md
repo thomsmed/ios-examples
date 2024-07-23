@@ -35,6 +35,7 @@ A collection of iOS example code and applications.
 - [Real-time with WebSockets and Swift Concurrency](WebSocketClient)
 - [Action emitting ViewModels and Coordinator Views](ActionableViewModel)
 - [Representing arbitrary data as an opaque Codable type](OpaqueValue)
+- [Driving SwiftUI navigation with a ViewModel hierarchy](ViewModelHierarchy)
 
 Happy coding! :smile:
 
