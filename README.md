@@ -44,6 +44,7 @@ A collection of iOS example code and applications.
 - [Concurrent and thread safe resource cache with Swift Concurrency](ResourceCache)
 - [Real-time with WebSockets and Swift Concurrency](WebSocketClient)
 - [Representing arbitrary data as an opaque Codable type](OpaqueValue)
+- [Error Responder Chain](ErrorResponder)
 
 Happy coding! :smile:
 
