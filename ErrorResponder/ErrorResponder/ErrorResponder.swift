@@ -27,7 +27,7 @@ public enum ErrorEvaluation: Sendable {
 }
 
 @MainActor public protocol ErrorResponder: AnyObject {
-    var parent: (any ErrorResponder)? { get set }
+    var parentResponder: (any ErrorResponder)? { get set }
 
     @discardableResult
     func respond(to error: any Error) async -> ErrorEvaluation
