@@ -27,8 +27,8 @@ extension RootCoordinatorView {
 
             super.init()
 
-            featureOneCoordinatorViewModel.parent = self
-            featureTwoCoordinatorViewModel.parent = self
+            featureOneCoordinatorViewModel.parentResponder = self
+            featureTwoCoordinatorViewModel.parentResponder = self
         }
 
         override func respond(to error: any Error) async -> ErrorEvaluation {

@@ -8,18 +8,18 @@
 import Foundation
 
 public class ErrorResponderViewModel: ErrorResponder {
-    public weak var parent: (any ErrorResponder)? = nil
+    public weak var parentResponder: (any ErrorResponder)? = nil
 
-    public init(parent: (any ErrorResponder)? = nil) {
-        self.parent = parent
+    public init(parentResponder: (any ErrorResponder)? = nil) {
+        self.parentResponder = parentResponder
     }
 
     public func respond(to error: any Error) async -> ErrorEvaluation {
-        guard let parent = parent else {
+        guard let parentResponder else {
             assertionFailure("Unhandled error in ErrorResponder chain")
             return .abort
         }
 
-        return await parent.respond(to: error)
+        return await parentResponder.respond(to: error)
     }
 }

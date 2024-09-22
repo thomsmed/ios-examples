@@ -2,9 +2,14 @@
 
 Heavily inspired by the concept of a [Responder Chain](https://developer.apple.com/documentation/uikit/touches_presses_and_gestures/using_responders_and_the_responder_chain_to_handle_events), this example project illustrate how that same concept can be applied to handling errors in an app.
 
-## The ErrorResponder protocol
+The `respondToError` SwiftUI Environment value is also greatly inspired by how SwiftUI's [OpenURLAction](https://developer.apple.com/documentation/swiftui/environmentvalues/openurl) works.
+
+## The ErrorResponder protocol and SwiftUI Environment value
 
 ```swift
+import Foundation
+import SwiftUI
+
 public enum ErrorEvaluation: Sendable {
     /// Necessary actions has been taken in response to the ``Error``.
     /// Proceed in whatever way that is natural.
@@ -23,21 +28,241 @@ public enum ErrorEvaluation: Sendable {
     case abort
 }
 
-public protocol ErrorResponder: AnyObject {
-    var parent: (any ErrorResponder)? { get set }
+@MainActor public protocol ErrorResponder: AnyObject {
+    var parentResponder: (any ErrorResponder)? { get set }
 
+    @discardableResult
     func respond(to error: any Error) async -> ErrorEvaluation
+}
+
+@MainActor public struct RespondToErrorAction {
+    let respondToError: (any Error) async -> ErrorEvaluation
+
+    @discardableResult
+    func callAsFunction(_ error: any Error) async -> ErrorEvaluation {
+        return await respondToError(error)
+    }
+}
+
+public struct RespondToErrorActionEnvironmentKey: EnvironmentKey {
+    public static let defaultValue: RespondToErrorAction = RespondToErrorAction { _ in
+        assertionFailure("Unhandled error")
+        return .proceed
+    }
+}
+
+public extension EnvironmentValues {
+    var respondToError: RespondToErrorAction {
+        get { self[RespondToErrorActionEnvironmentKey.self] }
+        set { self[RespondToErrorActionEnvironmentKey.self] = newValue }
+    }
+}
+
+public extension View {
+    func respondToError(_ respondToError: @escaping (any Error) async -> ErrorEvaluation) -> some View {
+        environment(\.respondToError, RespondToErrorAction(respondToError: respondToError))
+    }
 }
 ```
 
-However how you manage navigation in your application, "branching points" can implement this protocol to both handle Errors and pass them along further up the "chain". Wether you manager navigation purely in SwiftUI, UIKit or using a pattern like Coordinators.
+However how you manage navigation in your application, "branching points" can implement the ErrorResponder protocol (or use/set the `respondToError` SwiftUI Environment value) to both handle Errors and pass them along further up the "chain". Wether you manager navigation purely in SwiftUI, UIKit or using a pattern like Coordinators.
 
-This project includes an example using SwiftUI, but can easily be adopted in UIKit applications as well.
+This project includes an example using SwiftUI with ViewModels, but can easily be adopted in UIKit applications as well.
 
-One could imagine various ErrorResponder chains:
+One could easily imagine various ErrorResponder chains:
 
-- ErrorResponder chain in a pure SwiftUI app, where ViewModels form the chain.
-- ErrorResponder chain in a pure UIKit app, where ViewModels and Coordinators form the chain.
-- ErrorResponder chain in a pure UIKit app, where UIViewControllers form the chain.
-- ErrorResponder chain in a mixed UIKit and SwiftUI app, where ViewModels, Services, Coordinators and the AppDelegate form the chain.
-- ErrorResponder chain in a mixed UIKit and SwiftUI app, where the AppDelegate and UIViewControllers form the chain.
+- ErrorResponder chain in a pure SwiftUI app, where ViewModels form the chain. All adopting the ErrorResponder protocol.
+- ErrorResponder chain in a pure SwiftUI app, where Views form the chain. All using and/or setting the `respondToError` SwiftUI Environment value.
+- ErrorResponder chain in a pure UIKit app, where ViewModels and Coordinators form the chain. All adopting the ErrorResponder protocol.
+- ErrorResponder chain in a pure UIKit app, where UIViewControllers form the chain. All adopting the ErrorResponder protocol.
+- ErrorResponder chain in a mixed UIKit and SwiftUI app, where the chain is formed by Views and `UIViewControllers`. SwiftUI Views use and/or set the `respondToError` SwiftUI Environment value, while `UIHostingControllers` form a bridge between UIKit and SwiftUI by adopting the ErrorResponder protocol and setting the `respondToError` SwiftUI Environment value of their `rootView`.
+- ErrorResponder chain in a mixed UIKit and SwiftUI app, where ViewModels, Services, Coordinators and the AppDelegate form the chain. All adopting the ErrorResponder protocol.
+
+### Simple pure SwiftUI example
+
+```swift
+enum MyError: Error, CaseIterable {
+    case homePageError
+    case homeTabError
+    case rootError
+    case appError
+
+    static var random: MyError {
+        MyError.allCases[Int.random(in: 0..<Self.allCases.count)]
+    }
+}
+
+@main
+struct MyApp: App {
+    var body: some Scene {
+        WindowGroup {
+            RootView()
+                .respondToError { error in
+                    switch error {
+                        case MyError.appError:
+                            print("Error handled at App level")
+                            return .proceed
+                        default:
+                            assertionFailure("Unhandled error")
+                            return .proceed
+                    }
+                }
+        }
+    }
+}
+
+struct RootView: View {
+    @Environment(\.respondToError) private var respondToError
+
+    var body: some View {
+        TabView {
+            Tab {
+                HomeTabView()
+            }
+        }
+        .respondToError { error in
+            switch error {
+                case MyError.rootError:
+                    print("Error handled at Root level")
+                    return .proceed
+                default:
+                    return await respondToError(error)
+
+            }
+        }
+    }
+}
+
+struct HomeTabView: View {
+    @Environment(\.respondToError) private var respondToError
+
+    var body: some View {
+        NavigationStack {
+            HomePageView()
+        }
+        .respondToError { error in
+            switch error {
+                case MyError.homeTabError:
+                    print("Error handled at Home Tab level")
+                    return .proceed
+                default:
+                    return await respondToError(error)
+
+            }
+        }
+    }
+}
+
+struct HomePageView: View {
+    @Environment(\.respondToError) private var respondToError
+
+    var body: some View {
+        HomeScreenContentView()
+            .respondToError { error in
+                switch error {
+                    case MyError.homePageError:
+                        print("Error handled at Home Page level")
+                        return .proceed
+                    default:
+                        return await respondToError(error)
+
+                }
+            }
+    }
+}
+
+struct HomeScreenContentView: View {
+    @Environment(\.respondToError) private var respondToError
+
+    var body: some View {
+        VStack {
+            Text("Home")
+                .padding()
+
+            Button("Trigger error", action: didTapButton)
+                .padding()
+        }
+    }
+
+    private func didTapButton() {
+        Task {
+            do {
+                throw MyError.random
+            } catch {
+                print("Error triggered in Home Screen Content")
+
+                switch await respondToError(error) {
+                    case .retry:
+                        didTapButton()
+                    default:
+                        break
+                }
+            }
+        }
+    }
+}
+```
+
+### Bridging from SwiftUI to UIKit
+
+```swift
+final class RootNavigationController: UINavigationController, ErrorResponder {
+    public weak var parentResponder: (any ErrorResponder)? = nil
+
+    public init(parentResponder: (any ErrorResponder)? = nil) {
+        self.parentResponder = parentResponder
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    public func respond(to error: any Error) async -> ErrorEvaluation {
+        guard let parentResponder else {
+            assertionFailure("Unhandled error in ErrorResponder chain")
+            return .abort
+        }
+
+        return await parentResponder.respond(to: error)
+    }
+
+    // MARK: Push and present hosted SwiftUI Views
+
+    private func pushAPage() {
+        let view = ScrollView {
+            Text("Hello there!")
+        }.respondToError { [weak self] error in
+            if true {
+                print("Error handled at Root Navigation level")
+                return .proceed
+            } else {
+                return await self?.parentResponder?.respond(to: error) ?? .proceed
+            }
+        }
+
+        let hostingController = UIHostingController(rootView: view)
+
+        pushViewController(hostingController, animated: true)
+    }
+
+    private func presentAPage() {
+        let view = NavigationStack {
+            VStack {
+                Text("Hello there!")
+            }
+        }.respondToError { [weak self] error in
+            if true {
+                print("Error handled at Root Navigation level")
+                return .proceed
+            } else {
+                return await self?.parentResponder?.respond(to: error) ?? .proceed
+            }
+        }
+
+        let hostingController = UIHostingController(rootView: view)
+
+        present(hostingController, animated: true)
+    }
+}
+```

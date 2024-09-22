@@ -25,7 +25,7 @@ extension FeatureOneCoordinatorView {
 
             super.init()
 
-            pageOneViewModel.parent = self
+            pageOneViewModel.parentResponder = self
         }
 
         override func respond(to error: any Error) async -> ErrorEvaluation {
@@ -47,11 +47,11 @@ extension FeatureOneCoordinatorView {
                             }
 
                         case .common(let error):
-                            return await parent?.respond(to: error) ?? .abort
+                            return await parentResponder?.respond(to: error) ?? .abort
                     }
 
                 default:
-                    return await parent?.respond(to: error) ?? .abort
+                    return await parentResponder?.respond(to: error) ?? .abort
             }
         }
     }
