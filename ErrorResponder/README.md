@@ -65,7 +65,8 @@ public extension View {
 }
 ```
 
-However how you manage navigation in your application, "branching points" can implement the ErrorResponder protocol (or use/set the `respondToError` SwiftUI Environment value) to both handle Errors and pass them along further up the "chain". Wether you manager navigation purely in SwiftUI, UIKit or using a pattern like Coordinators.
+However how you manage navigation in your application, "branching points" can implement the ErrorResponder protocol (or use/set the `respondToError` SwiftUI Environment value) to both handle Errors and pass them along further up the "chain".
+Wether you manage navigation purely in SwiftUI, UIKit or using a pattern like Coordinators.
 
 This project includes an example using SwiftUI with ViewModels, but can easily be adopted in UIKit applications as well.
 
@@ -266,3 +267,52 @@ final class RootNavigationController: UINavigationController, ErrorResponder {
     }
 }
 ```
+
+## The ErrorResponderChain class
+
+As an alternative to (or in addition to) the ErrorResponderProtocol, one could imagine an `ErrorResponderChain` class to provide the same power.
+
+```swift
+/// Convenience type that by it self represent an Error Responder Chain.
+/// Could be used standalone to combine the error handling in any arbitrary components,
+/// but could also act as a bridge between the View layer (SwiftUI / UIKit with ViewModels) and any other part of the app.
+/// E.g services or anything that just want to connect to the Error Responder chain (permanently or temporarily).
+///
+/// Error Responders are added to the front of the chain, hence the last responder to register is the first to (potentially) handle new Errors.
+@MainActor public final class ErrorResponderChain: ErrorResponder {
+    private var errorResponders: [(uuid: UUID, respondTo: (any Error) async -> ErrorEvaluation?)] = []
+
+    public var parentResponder: (any ErrorResponder)? = nil
+
+    init(parentResponder: (any ErrorResponder)? = nil) {
+        self.parentResponder = parentResponder
+    }
+
+    public func connect(_ respondTo: @escaping (any Error) async -> ErrorEvaluation?) -> UUID {
+        let uuid = UUID()
+        errorResponders.insert((uuid: uuid, respondTo: respondTo), at: 0)
+        return uuid
+    }
+
+    public func disconnect(_ uuid: UUID) {
+        errorResponders.removeAll(where: { $0.uuid == uuid })
+    }
+
+    public func respond(to error: any Error) async -> ErrorEvaluation {
+        for errorResponder in errorResponders {
+            if let evaluation = await errorResponder.respondTo(error) {
+                return evaluation
+            }
+        }
+
+        guard let parentResponder else {
+            assertionFailure("Unhandled error")
+            return .proceed
+        }
+
+        return await parentResponder.respond(to: error)
+    }
+}
+```
+
+Check out [BackgroundService.swift](ErrorResponder/App/BackgroundService.swift) and its usages for an example.
