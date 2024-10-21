@@ -1,0 +1,24 @@
+{
+  "originHash" : "aa7d70c447e0116fdec500a0af94932b0592ef98ad58c80156a317e4312ad71c",
+  "pins" : [
+    {
+      "identity" : "grdb.swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/groue/GRDB.swift",
+      "state" : {
+        "revision" : "2cf6c756e1e5ef6901ebae16576a7e4e4b834622",
+        "version" : "6.29.3"
+      }
+    },
+    {
+      "identity" : "http-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/thomsmed/http-swift.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "f2a87625b20e28868f0cd5104e7903afe42d4fc1"
+      }
+    }
+  ],
+  "version" : 3
+}
