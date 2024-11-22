@@ -45,6 +45,7 @@ A collection of iOS example code and applications.
 - [Real-time with WebSockets and Swift Concurrency](WebSocketClient)
 - [Representing arbitrary data as an opaque Codable type](OpaqueValue)
 - [Error Responder Chain](ErrorResponder)
+- [Vertical Slice Architecture](VerticalSlices)
 
 Happy coding! :smile:
 
