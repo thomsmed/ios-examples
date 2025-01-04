@@ -12,7 +12,7 @@ import OSLog
 
 public extension Logger {
     static let featureToggles = Logger(
-        subsystem: "ios.example.VerticalSlices",
+        subsystem: Bundle.main.bundleIdentifier!,
         category: "FeatureToggles"
     )
 }
