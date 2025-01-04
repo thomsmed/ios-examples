@@ -1,5 +1,5 @@
 {
-  "originHash" : "aa7d70c447e0116fdec500a0af94932b0592ef98ad58c80156a317e4312ad71c",
+  "originHash" : "8c94345bce803de21f45b69879e8dde9becb1841a11e766e0dc81930cadd6574",
   "pins" : [
     {
       "identity" : "grdb.swift",
@@ -16,7 +16,7 @@
       "location" : "https://github.com/thomsmed/http-swift.git",
       "state" : {
         "branch" : "main",
-        "revision" : "f2a87625b20e28868f0cd5104e7903afe42d4fc1"
+        "revision" : "91522f8d81c6ddffb1da54058e3a4c9a826a0318"
       }
     }
   ],
