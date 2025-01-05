@@ -12,14 +12,30 @@ struct DeviceKey {
     let publicKey: SecKey
 }
 
-extension DeviceKey: ManagedCryptographicKey {
-    static let namespace: String = "app"
-    static let tag: String = "device-key"
+extension DeviceKey: UniqueManagedCryptographicKey {
+    static let identifier = ManagedCryptographicKeyIdentifier(namespace: "app", tag: "device-key")
     static let accessControl: ManagedCryptographicKeyAccessControl = .none
 
     init(_ keyPair: EC256KeyPair) {
         self.privateKey = keyPair.privateKey
         self.publicKey = keyPair.publicKey
+    }
+}
+
+struct SigningKey {
+    let identifier: ManagedCryptographicKeyIdentifier
+
+    let privateKey: SecKey
+    let publicKey: SecKey
+}
+
+extension SigningKey: ManagedCryptographicKey {
+    static let accessControl: ManagedCryptographicKeyAccessControl = .userPresence
+
+    init(_ keyPair: EC256KeyPair, identifier: ManagedCryptographicKeyIdentifier) {
+        self.privateKey = keyPair.privateKey
+        self.publicKey = keyPair.publicKey
+        self.identifier = identifier
     }
 }
 

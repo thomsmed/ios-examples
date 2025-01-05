@@ -19,6 +19,18 @@ public extension Logger {
 
 // MARK: ManagedCryptographicKey
 
+public struct ManagedCryptographicKeyIdentifier: Sendable, Codable {
+    public var namespace: String
+    public var tag: String
+
+    public init(namespace: String, tag: String) {
+        self.namespace = namespace
+        self.tag = tag
+    }
+
+    internal var combinedTag: Data { Data((namespace + "." + tag).utf8) }
+}
+
 public struct EC256KeyPair {
     public let privateKey: SecKey
     public let publicKey: SecKey
@@ -38,17 +50,19 @@ public enum ManagedCryptographicKeyAccessControl: Sendable {
     case userPresence
 }
 
-/// Protocol representing something that is a Cryptographic Key that should be managed by``CryptographicKeyStorage``.
-public protocol ManagedCryptographicKey {
-    static var namespace: String { get }
-    static var tag: String { get }
+/// Protocol representing something that is a (unique/one of a kind) Cryptographic Key that should be managed by``CryptographicKeyStorage``.
+public protocol UniqueManagedCryptographicKey {
+    static var identifier: ManagedCryptographicKeyIdentifier { get }
     static var accessControl: ManagedCryptographicKeyAccessControl { get }
 
     init(_ keyPair: EC256KeyPair)
 }
 
-internal extension ManagedCryptographicKey {
-    static var combinedTag: Data { Data((Self.namespace + "." + Self.tag).utf8) }
+/// Protocol representing something that is a Cryptographic Key that should be managed by``CryptographicKeyStorage``.
+public protocol ManagedCryptographicKey {
+    static var accessControl: ManagedCryptographicKeyAccessControl { get }
+
+    init(_ keyPair: EC256KeyPair, identifier: ManagedCryptographicKeyIdentifier)
 }
 
 // MARK: CryptographicKeyStorage
@@ -64,9 +78,12 @@ public enum CryptographicKeyStorageError: Error {
 
 /// Protocol representing I/O operations around managed Cryptographic Keys (typically by the Secure Enclave).
 public protocol CryptographicKeyStorage: Sendable {
-    func getOrCreate<Key: ManagedCryptographicKey>() throws(CryptographicKeyStorageError) -> Key
-    func get<Key: ManagedCryptographicKey>() throws(CryptographicKeyStorageError) -> Key?
-    func delete<Key: ManagedCryptographicKey>(_: Key.Type) throws(CryptographicKeyStorageError)
+    func getOrCreate<Key: UniqueManagedCryptographicKey>() throws(CryptographicKeyStorageError) -> Key
+    func get<Key: UniqueManagedCryptographicKey>() throws(CryptographicKeyStorageError) -> Key?
+    func delete<Key: UniqueManagedCryptographicKey>(_: Key.Type) throws(CryptographicKeyStorageError)
+    func getOrCreate<Key: ManagedCryptographicKey>(_ identifier: ManagedCryptographicKeyIdentifier) throws(CryptographicKeyStorageError) -> Key
+    func get<Key: ManagedCryptographicKey>(_ identifier: ManagedCryptographicKeyIdentifier) throws(CryptographicKeyStorageError) -> Key?
+    func delete(_ identifier: ManagedCryptographicKeyIdentifier) throws(CryptographicKeyStorageError)
 }
 
 // MARK: TestCryptographicKeyStorage
@@ -86,30 +103,56 @@ public final class TestCryptographicKeyStorage: @unchecked Sendable, Cryptograph
         return EC256KeyPair(privateKey: SecKeyCreateRandomKey(attributes as CFDictionary, nil)!)!
     }
 
-    public func getOrCreate<Key: ManagedCryptographicKey>() throws(CryptographicKeyStorageError) -> Key {
+    public func getOrCreate<Key: UniqueManagedCryptographicKey>() throws(CryptographicKeyStorageError) -> Key {
         Logger.cryptographicKeyStorage.warning("You are using \(String(describing: Self.self))")
 
-        if let existingKeyPair = storage[Key.combinedTag]{
+        if let existingKeyPair = storage[Key.identifier.combinedTag]{
             return Key(existingKeyPair)
         }
         let newKeyPair = makeInMemoryKey()
-        storage[Key.combinedTag] = newKeyPair
+        storage[Key.identifier.combinedTag] = newKeyPair
         return Key(newKeyPair)
     }
 
-    public func get<Key: ManagedCryptographicKey>() throws(CryptographicKeyStorageError) -> Key? {
+    public func get<Key: UniqueManagedCryptographicKey>() throws(CryptographicKeyStorageError) -> Key? {
         Logger.cryptographicKeyStorage.warning("You are using \(String(describing: Self.self))")
 
-        guard let keyPair = storage[Key.combinedTag] else {
+        guard let keyPair = storage[Key.identifier.combinedTag] else {
             return nil
         }
         return Key(keyPair)
     }
 
-    public func delete<Key: ManagedCryptographicKey>(_: Key.Type) throws(CryptographicKeyStorageError) {
+    public func delete<Key: UniqueManagedCryptographicKey>(_: Key.Type) throws(CryptographicKeyStorageError) {
         Logger.cryptographicKeyStorage.warning("You are using \(String(describing: Self.self))")
 
-        return storage[Key.combinedTag] = nil
+        return storage[Key.identifier.combinedTag] = nil
+    }
+
+    public func getOrCreate<Key: ManagedCryptographicKey>(_ identifier: ManagedCryptographicKeyIdentifier) throws(CryptographicKeyStorageError) -> Key {
+        Logger.cryptographicKeyStorage.warning("You are using \(String(describing: Self.self))")
+
+        if let existingKeyPair = storage[identifier.combinedTag]{
+            return Key(existingKeyPair, identifier: identifier)
+        }
+        let newKeyPair = makeInMemoryKey()
+        storage[identifier.combinedTag] = newKeyPair
+        return Key(newKeyPair, identifier: identifier)
+    }
+
+    public func get<Key: ManagedCryptographicKey>(_ identifier: ManagedCryptographicKeyIdentifier) throws(CryptographicKeyStorageError) -> Key? {
+        Logger.cryptographicKeyStorage.warning("You are using \(String(describing: Self.self))")
+
+        guard let keyPair = storage[identifier.combinedTag] else {
+            return nil
+        }
+        return Key(keyPair, identifier: identifier)
+    }
+
+    public func delete(_ identifier: ManagedCryptographicKeyIdentifier) throws(CryptographicKeyStorageError) {
+        Logger.cryptographicKeyStorage.warning("You are using \(String(describing: Self.self))")
+
+        return storage[identifier.combinedTag] = nil
     }
 }
 
@@ -262,28 +305,34 @@ public final class SecureCryptographicKeyStorage {
 }
 
 extension SecureCryptographicKeyStorage: CryptographicKeyStorage {
-    /// Generate a NIST P-256 elliptic curve key pair.
-    /// Protected by Secure Enclave and stored securely in the keychain.
-    /// - Returns: The private key of the newly generated key pair.
-    public func getOrCreate<Key: ManagedCryptographicKey>() throws(CryptographicKeyStorageError) -> Key {
-        Key(try getOrCreateKey(withTag: Key.combinedTag, andAccessControl: Key.accessControl))
+    public func getOrCreate<Key: UniqueManagedCryptographicKey>() throws(CryptographicKeyStorageError) -> Key {
+        Key(try getOrCreateKey(withTag: Key.identifier.combinedTag, andAccessControl: Key.accessControl))
     }
 
-
-    /// Get the private key of a NIST P-256 elliptic curve key pair.
-    /// - Parameter tag: The tag that identifies the key pair this private key is part of.
-    /// - Returns:The private key of the key pair identified with the given tag.
-    public func get<Key: ManagedCryptographicKey>() throws(CryptographicKeyStorageError) -> Key? {
-        guard let keyPair = try getKey(withTag: Key.combinedTag) else {
+    public func get<Key: UniqueManagedCryptographicKey>() throws(CryptographicKeyStorageError) -> Key? {
+        guard let keyPair = try getKey(withTag: Key.identifier.combinedTag) else {
             return nil
         }
         return Key(keyPair)
     }
 
-    /// Delete a previously generated NIST P-256 elliptic curve key pair.
-    /// - Parameter tag: The tag that identifies the key pair.
-    public func delete<Key: ManagedCryptographicKey>(_: Key.Type) throws(CryptographicKeyStorageError) {
-        try deleteKey(withTag: Key.combinedTag)
+    public func delete<Key: UniqueManagedCryptographicKey>(_: Key.Type) throws(CryptographicKeyStorageError) {
+        try deleteKey(withTag: Key.identifier.combinedTag)
+    }
+
+    public func getOrCreate<Key: ManagedCryptographicKey>(_ identifier: ManagedCryptographicKeyIdentifier) throws(CryptographicKeyStorageError) -> Key {
+        Key(try getOrCreateKey(withTag: identifier.combinedTag, andAccessControl: Key.accessControl), identifier: identifier)
+    }
+
+    public func get<Key: ManagedCryptographicKey>(_ identifier: ManagedCryptographicKeyIdentifier) throws(CryptographicKeyStorageError) -> Key? {
+        guard let keyPair = try getKey(withTag: identifier.combinedTag) else {
+            return nil
+        }
+        return Key(keyPair, identifier: identifier)
+    }
+
+    public func delete(_ identifier: ManagedCryptographicKeyIdentifier) throws(CryptographicKeyStorageError) {
+        try deleteKey(withTag: identifier.combinedTag)
     }
 }
 
@@ -302,7 +351,7 @@ public extension View {
 }
 
 /// A custom convenience property wrapper adhering to DynamicProperty.
-@MainActor @propertyWrapper public struct ProtectedCryptographicKey<Value: ManagedCryptographicKey>: DynamicProperty {
+@MainActor @propertyWrapper public struct ProtectedCryptographicKey<Value: UniqueManagedCryptographicKey>: DynamicProperty {
     @Environment(\.cryptographicKeyStorage) private var cryptographicKeyStorage
 
     public init() {}

@@ -60,6 +60,6 @@ The general idea:
 
 - [DefaultsStorage](VerticalSlices/Common/DefaultsStorage) - knows how to manage types adopting `DefaultsStorable` and `UniqueDefaultsStorable`.
 - [SecureStorage](VerticalSlices/Common/SecureStorage) - knows how to manage types adopting `SecurelyStorable` and `UniqueSecurelyStorable`.
-- [CryptographicKeyStorage](VerticalSlices/Common/CryptographicKeyStorage) - knows how to manage types adopting `ManagedCryptographicKey`.
+- [CryptographicKeyStorage](VerticalSlices/Common/CryptographicKeyStorage) - knows how to manage types adopting `ManagedCryptographicKey` and `UniqueManagedCryptographicKey`.
 - [HTTPClient](VerticalSlices/Common/EnvironmentValues+HTTPClient) - knows how to do HTTP requests based on instances of `Endpoint`. Check out [HTTPSwift](https://github.com/thomsmed/http-swift).
 - [DatabaseClient](VerticalSlices/Common/EnvironmentValues+DatabaseClient) - knows how to do (SQLite) database queries based on instances of `DatabaseEntity`. Check out [GRDB.swift](https://github.com/groue/GRDB.swift).
