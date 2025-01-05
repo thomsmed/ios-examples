@@ -13,9 +13,8 @@ struct Username: RawRepresentable {
     var rawValue: String
 }
 
-extension Username: DefaultsStorable {
-    static let namespace: String = "app"
-    static let key: String = "username"
+extension Username: UniqueDefaultsStorable {
+    static let identifier = DefaultsStorableIdentifier(namespace: "app", key: "username")
 }
 
 struct Password: RawRepresentable {
@@ -44,17 +43,19 @@ extension Login {
         let url = URL(string: "https://ios.example.authenticate")!
 
         return HTTP.Endpoint(
-            .post,
-            at: url,
-            requestBody: requestBody,
-            requestContentType: .json,
-            responseContentType: .json,
-            adaptor: { response in
+            url: url,
+            method: .post,
+            payload: (try? .json(from: requestBody)) ?? .empty(),
+            parser: HTTP.ResponseParser(mimeType: .json) { response in
+                guard HTTP.Status.successful.contains(response.statusCode) else {
+                    throw HTTP.UnexpectedResponse(response)
+                }
+
                 struct ResponseBody: Decodable {
                     let accessToken: String
                 }
 
-                let responseBody: ResponseBody = try response.decode(as: .json)
+                let responseBody = try response.parsed(as: ResponseBody.self, using: .json())
                 let accessToken = AccessToken(rawValue: responseBody.accessToken)
 
                 return Login(username: username, accessToken: accessToken)
@@ -130,7 +131,7 @@ struct HomeView: View {
 
                             let login = try await httpClient.call(Login.authenticate(
                                 withUsername: username, andPassword: password
-                            )).get()
+                            ))
 
                             defaultsStorage.set(login.username)
                             try secureStorage.set(login.accessToken)

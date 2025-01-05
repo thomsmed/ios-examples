@@ -13,7 +13,7 @@ import GRDB
 
 public extension Logger {
     static let database = Logger(
-        subsystem: "ios.example.VerticalSlices",
+        subsystem: Bundle.main.bundleIdentifier!,
         category: "Database"
     )
 }

@@ -13,7 +13,7 @@ import HTTP
 
 public extension Logger {
     static let networking = Logger(
-        subsystem: "ios.example.VerticalSlices",
+        subsystem: Bundle.main.bundleIdentifier!,
         category: "Networking"
     )
 }
