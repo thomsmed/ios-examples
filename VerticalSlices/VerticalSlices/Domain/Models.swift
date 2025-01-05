@@ -39,3 +39,12 @@ struct Secret: Codable {
 }
 
 extension Secret: SecurelyStorable {}
+
+struct Sticker: Codable {
+    var identifier: DefaultsStorableIdentifier?
+
+    let name: String
+    let icon: Data
+}
+
+extension Sticker: DefaultsStorable {}

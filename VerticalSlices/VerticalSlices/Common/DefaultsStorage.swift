@@ -19,34 +19,41 @@ public extension Logger {
 
 // MARK: DefaultsStorable
 
+public struct DefaultsStorableIdentifier: Sendable, Codable {
+    public var namespace: String
+    public var key: String
+
+    public init(namespace: String, key: String) {
+        self.namespace = namespace
+        self.key = key
+    }
+
+    internal var combinedKey: String { namespace + "." + key }
+}
+
 public protocol DefaultsStorageGetter {
-    func integer<Storable: DefaultsStorable>(for storable: Storable.Type) -> Int?
-    func double<Storable: DefaultsStorable>(for storable: Storable.Type) -> Double?
-    func string<Storable: DefaultsStorable>(for storable: Storable.Type) -> String?
-    func value<Storable: DefaultsStorable, Value: Codable>(for storable: Storable.Type) -> Value?
+    func integer<Storable: UniqueDefaultsStorable>(for storable: Storable.Type) -> Int?
+    func double<Storable: UniqueDefaultsStorable>(for storable: Storable.Type) -> Double?
+    func string<Storable: UniqueDefaultsStorable>(for storable: Storable.Type) -> String?
+    func value<Storable: UniqueDefaultsStorable, Value: Codable>(for storable: Storable.Type) -> Value?
 }
 
 public protocol DefaultsStorageSetter {
-    func set<Storable: DefaultsStorable>(_ integer: Int, for storable: Storable.Type)
-    func set<Storable: DefaultsStorable>(_ double: Double, for storable: Storable.Type)
-    func set<Storable: DefaultsStorable>(_ string: String, for storable: Storable.Type)
-    func set<Storable: DefaultsStorable, Value: Codable>(_ value: Value, for storable: Storable.Type)
+    func set<Storable: UniqueDefaultsStorable>(_ integer: Int, for storable: Storable.Type)
+    func set<Storable: UniqueDefaultsStorable>(_ double: Double, for storable: Storable.Type)
+    func set<Storable: UniqueDefaultsStorable>(_ string: String, for storable: Storable.Type)
+    func set<Storable: UniqueDefaultsStorable, Value: Codable>(_ value: Value, for storable: Storable.Type)
 }
 
-/// Protocol representing something that can be stored in ``DefaultsStorage``.
-public protocol DefaultsStorable {
-    static var namespace: String { get }
-    static var key: String { get }
+/// Protocol representing something (unique/one of a kind) that can be stored in ``DefaultsStorage``.
+public protocol UniqueDefaultsStorable {
+    static var identifier: DefaultsStorableIdentifier { get }
 
     static func load(using getter: some DefaultsStorageGetter) -> Self?
     func save(using setter: some DefaultsStorageSetter)
 }
 
-internal extension DefaultsStorable {
-    static var combinedKey: String { Self.namespace + "." + Self.key }
-}
-
-internal extension DefaultsStorable where Self: RawRepresentable<Int> {
+internal extension UniqueDefaultsStorable where Self: RawRepresentable<Int> {
     static func load(using getter: some DefaultsStorageGetter) -> Self? {
         guard let rawValue = getter.integer(for: Self.self) else {
             return nil
@@ -59,7 +66,7 @@ internal extension DefaultsStorable where Self: RawRepresentable<Int> {
     }
 }
 
-internal extension DefaultsStorable where Self: RawRepresentable<Double> {
+internal extension UniqueDefaultsStorable where Self: RawRepresentable<Double> {
     static func load(using getter: some DefaultsStorageGetter) -> Self? {
         guard let rawValue = getter.double(for: Self.self) else {
             return nil
@@ -72,7 +79,7 @@ internal extension DefaultsStorable where Self: RawRepresentable<Double> {
     }
 }
 
-internal extension DefaultsStorable where Self: RawRepresentable<String> {
+internal extension UniqueDefaultsStorable where Self: RawRepresentable<String> {
     static func load(using getter: some DefaultsStorageGetter) -> Self? {
         guard let rawValue = getter.string(for: Self.self) else {
             return nil
@@ -85,7 +92,7 @@ internal extension DefaultsStorable where Self: RawRepresentable<String> {
     }
 }
 
-internal extension DefaultsStorable where Self: Codable {
+internal extension UniqueDefaultsStorable where Self: Codable {
     static func load(using getter: some DefaultsStorageGetter) -> Self? {
         getter.value(for: Self.self)
     }
@@ -95,13 +102,26 @@ internal extension DefaultsStorable where Self: Codable {
     }
 }
 
+/// Protocol representing something that can be stored in ``DefaultsStorage``.
+public protocol DefaultsStorable: Codable {
+    var identifier: DefaultsStorableIdentifier? { get set }
+}
+
 // MARK: DefaultsStorage
+
+/// An enumeration describing errors that might occur while interacting with ``DefaultsStorage``.
+public enum DefaultsStorageError: Error {
+    case missingIdentifier
+}
 
 /// Protocol representing I/O operations around storing simple Defaults data (typically in the UserDefaults.standard).
 public protocol DefaultsStorage: Sendable {
-    func get<Value: DefaultsStorable>() -> Value?
-    func set<Value: DefaultsStorable>(_ value: Value)
-    func delete<Value: DefaultsStorable>(_: Value.Type)
+    func get<Value: UniqueDefaultsStorable>() -> Value?
+    func set<Value: UniqueDefaultsStorable>(_ value: Value)
+    func delete<Value: UniqueDefaultsStorable>(_: Value.Type)
+    func get<Value: DefaultsStorable>(_ identifier: DefaultsStorableIdentifier) -> Value?
+    func set<Value: DefaultsStorable>(_ value: Value) throws(DefaultsStorageError)
+    func delete(_ identifier: DefaultsStorableIdentifier)
 }
 
 // MARK: TestDefaultsStorage
@@ -111,56 +131,78 @@ public final class TestDefaultsStorage: @unchecked Sendable, DefaultsStorageGett
 
     public init() {}
 
-    public func integer<Storable: DefaultsStorable>(for storable: Storable.Type) -> Int? {
-        storage[Storable.combinedKey] as? Int
+    public func integer<Storable: UniqueDefaultsStorable>(for storable: Storable.Type) -> Int? {
+        storage[Storable.identifier.combinedKey] as? Int
     }
 
-    public func set<Storable: DefaultsStorable>(_ integer: Int, for storable: Storable.Type) {
-        storage[Storable.combinedKey] = integer
+    public func set<Storable: UniqueDefaultsStorable>(_ integer: Int, for storable: Storable.Type) {
+        storage[Storable.identifier.combinedKey] = integer
     }
 
-    public func double<Storable: DefaultsStorable>(for storable: Storable.Type) -> Double? {
-        storage[Storable.combinedKey] as? Double
+    public func double<Storable: UniqueDefaultsStorable>(for storable: Storable.Type) -> Double? {
+        storage[Storable.identifier.combinedKey] as? Double
     }
 
-    public func set<Storable: DefaultsStorable>(_ double: Double, for storable: Storable.Type) {
-        storage[Storable.combinedKey] = double
+    public func set<Storable: UniqueDefaultsStorable>(_ double: Double, for storable: Storable.Type) {
+        storage[Storable.identifier.combinedKey] = double
     }
 
-    public func string<Storable: DefaultsStorable>(for storable: Storable.Type) -> String? {
-        storage[Storable.combinedKey] as? String
+    public func string<Storable: UniqueDefaultsStorable>(for storable: Storable.Type) -> String? {
+        storage[Storable.identifier.combinedKey] as? String
     }
 
-    public func set<Storable: DefaultsStorable>(_ string: String, for storable: Storable.Type) {
-        storage[Storable.combinedKey] = string
+    public func set<Storable: UniqueDefaultsStorable>(_ string: String, for storable: Storable.Type) {
+        storage[Storable.identifier.combinedKey] = string
     }
 
-    public func value<Storable: DefaultsStorable, Value: Codable>(for storable: Storable.Type) -> Value? {
-        storage[Storable.combinedKey] as? Value
+    public func value<Storable: UniqueDefaultsStorable, Value: Codable>(for storable: Storable.Type) -> Value? {
+        storage[Storable.identifier.combinedKey] as? Value
     }
 
-    public func set<Storable: DefaultsStorable, Value: Codable>(_ value: Value, for storable: Storable.Type) {
-        storage[Storable.combinedKey] = value
+    public func set<Storable: UniqueDefaultsStorable, Value: Codable>(_ value: Value, for storable: Storable.Type) {
+        storage[Storable.identifier.combinedKey] = value
     }
 }
 
 extension TestDefaultsStorage: DefaultsStorage {
-    public func get<Value: DefaultsStorable>() -> Value? {
+    public func get<Value: UniqueDefaultsStorable>() -> Value? {
         Logger.defaultsStorage.warning("You are using \(String(describing: Self.self))")
 
         return Value.load(using: self)
     }
 
-    public func set<Value: DefaultsStorable>(_ value: Value) {
+    public func set<Value: UniqueDefaultsStorable>(_ value: Value) {
         Logger.defaultsStorage.warning("You are using \(String(describing: Self.self))")
 
         value.save(using: self)
     }
 
-    public func delete<Value: DefaultsStorable>(_: Value.Type) {
+    public func delete<Value: UniqueDefaultsStorable>(_: Value.Type) {
         Logger.defaultsStorage.warning("You are using \(String(describing: Self.self))")
 
-        storage[Value.combinedKey] = nil
+        storage[Value.identifier.combinedKey] = nil
+    }
+
+    public func get<Value: DefaultsStorable>(_ identifier: DefaultsStorableIdentifier) -> Value? {
+        Logger.defaultsStorage.warning("You are using \(String(describing: Self.self))")
+
+        return storage[identifier.combinedKey] as? Value
+    }
+
+    public func set<Value: DefaultsStorable>(_ value: Value) throws(DefaultsStorageError) {
+        Logger.defaultsStorage.warning("You are using \(String(describing: Self.self))")
+
+        guard let identifier = value.identifier else {
+            throw .missingIdentifier
+        }
+
+        storage[identifier.combinedKey] = value
+    }
+
+    public func delete(_ identifier: DefaultsStorableIdentifier) {
+        Logger.defaultsStorage.warning("You are using \(String(describing: Self.self))")
+
+        storage[identifier.combinedKey] = nil
     }
 }
 
@@ -172,57 +214,89 @@ public final class StandardUserDefaultsStorage: DefaultsStorageGetter, DefaultsS
     private let jsonEncoder = JSONEncoder()
     private let jsonDecoder = JSONDecoder()
 
-    public func integer<Storable: DefaultsStorable>(for storable: Storable.Type) -> Int? {
-        UserDefaults.standard.integer(forKey: Storable.combinedKey)
+    public func integer<Storable: UniqueDefaultsStorable>(for storable: Storable.Type) -> Int? {
+        UserDefaults.standard.integer(forKey: Storable.identifier.combinedKey)
     }
 
-    public func set<Storable: DefaultsStorable>(_ integer: Int, for storable: Storable.Type) {
-        UserDefaults.standard.set(integer, forKey: Storable.combinedKey)
+    public func set<Storable: UniqueDefaultsStorable>(_ integer: Int, for storable: Storable.Type) {
+        UserDefaults.standard.set(integer, forKey: Storable.identifier.combinedKey)
 
     }
 
-    public func double<Storable: DefaultsStorable>(for storable: Storable.Type) -> Double? {
-        UserDefaults.standard.double(forKey: Storable.combinedKey)
+    public func double<Storable: UniqueDefaultsStorable>(for storable: Storable.Type) -> Double? {
+        UserDefaults.standard.double(forKey: Storable.identifier.combinedKey)
     }
 
-    public func set<Storable: DefaultsStorable>(_ double: Double, for storable: Storable.Type) {
-        UserDefaults.standard.set(double, forKey: Storable.combinedKey)
+    public func set<Storable: UniqueDefaultsStorable>(_ double: Double, for storable: Storable.Type) {
+        UserDefaults.standard.set(double, forKey: Storable.identifier.combinedKey)
     }
 
-    public func string<Storable: DefaultsStorable>(for storable: Storable.Type) -> String? {
-        UserDefaults.standard.string(forKey: Storable.combinedKey)
+    public func string<Storable: UniqueDefaultsStorable>(for storable: Storable.Type) -> String? {
+        UserDefaults.standard.string(forKey: Storable.identifier.combinedKey)
     }
 
-    public func set<Storable: DefaultsStorable>(_ string: String, for storable: Storable.Type) {
-        UserDefaults.standard.set(string, forKey: Storable.combinedKey)
+    public func set<Storable: UniqueDefaultsStorable>(_ string: String, for storable: Storable.Type) {
+        UserDefaults.standard.set(string, forKey: Storable.identifier.combinedKey)
     }
 
-    public func value<Storable: DefaultsStorable, Value: Codable>(for storable: Storable.Type) -> Value? {
-        guard let data = UserDefaults.standard.data(forKey: Storable.combinedKey) else {
+    public func value<Storable: UniqueDefaultsStorable, Value: Codable>(for storable: Storable.Type) -> Value? {
+        guard let data = UserDefaults.standard.data(forKey: Storable.identifier.combinedKey) else {
             return nil
         }
         return try? jsonDecoder.decode(Value.self, from: data)
     }
 
-    public func set<Storable: DefaultsStorable, Value: Codable>(_ value: Value, for storable: Storable.Type) {
+    public func set<Storable: UniqueDefaultsStorable, Value: Codable>(_ value: Value, for storable: Storable.Type) {
         guard let data = try? jsonEncoder.encode(value) else {
             return
         }
-        UserDefaults.standard.set(data, forKey: Storable.combinedKey)
+        UserDefaults.standard.set(data, forKey: Storable.identifier.combinedKey)
     }
 }
 
 extension StandardUserDefaultsStorage: DefaultsStorage {
-    public func get<Value: DefaultsStorable>() -> Value? {
+    public func get<Value: UniqueDefaultsStorable>() -> Value? {
         Value.load(using: self)
     }
 
-    public func set<Value: DefaultsStorable>(_ value: Value) {
+    public func set<Value: UniqueDefaultsStorable>(_ value: Value) {
         value.save(using: self)
     }
 
-    public func delete<Value: DefaultsStorable>(_: Value.Type) {
-        UserDefaults.standard.removeObject(forKey: Value.combinedKey)
+    public func delete<Value: UniqueDefaultsStorable>(_: Value.Type) {
+        UserDefaults.standard.removeObject(forKey: Value.identifier.combinedKey)
+    }
+
+    public func get<Value: DefaultsStorable>(_ identifier: DefaultsStorableIdentifier) -> Value? {
+        guard let data = UserDefaults.standard.data(forKey: identifier.combinedKey) else {
+            return nil
+        }
+
+        guard var value = try? jsonDecoder.decode(Value.self, from: data) else {
+            return nil
+        }
+
+        value.identifier = identifier
+
+        return value
+    }
+
+    public func set<Value: DefaultsStorable>(_ value: Value) throws(DefaultsStorageError) {
+        guard let identifier = value.identifier else {
+            throw .missingIdentifier
+        }
+
+        var value = value
+        value.identifier = nil
+
+        guard let data = try? jsonEncoder.encode(value) else {
+            return
+        }
+        UserDefaults.standard.set(data, forKey: identifier.combinedKey)
+    }
+
+    public func delete(_ identifier: DefaultsStorableIdentifier) {
+        UserDefaults.standard.removeObject(forKey: identifier.combinedKey)
     }
 }
 
@@ -241,7 +315,7 @@ public extension View {
 }
 
 /// A custom convenience property wrapper adhering to DynamicProperty.
-@MainActor @propertyWrapper public struct DefaultsStored<Value: DefaultsStorable>: DynamicProperty {
+@MainActor @propertyWrapper public struct DefaultsStored<Value: UniqueDefaultsStorable>: DynamicProperty {
     @Environment(\.defaultsStorage) private var defaultsStorage
 
     public init() {}

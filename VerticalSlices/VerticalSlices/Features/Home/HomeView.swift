@@ -13,9 +13,8 @@ struct Username: RawRepresentable {
     var rawValue: String
 }
 
-extension Username: DefaultsStorable {
-    static let namespace: String = "app"
-    static let key: String = "username"
+extension Username: UniqueDefaultsStorable {
+    static let identifier = DefaultsStorableIdentifier(namespace: "app", key: "username")
 }
 
 struct Password: RawRepresentable {
