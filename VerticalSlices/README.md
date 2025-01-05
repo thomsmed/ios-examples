@@ -59,7 +59,7 @@ The general idea:
 ### App wide shared dependencies
 
 - [DefaultsStorage](VerticalSlices/Common/DefaultsStorage) - knows how to manage types adopting `DefaultsStorable`.
-- [SecureStorage](VerticalSlices/Common/SecureStorage) - knows how to manage types adopting `SecurelyStorable`.
+- [SecureStorage](VerticalSlices/Common/SecureStorage) - knows how to manage types adopting `SecurelyStorable` and `UniqueSecurelyStorable`.
 - [CryptographicKeyStorage](VerticalSlices/Common/CryptographicKeyStorage) - knows how to manage types adopting `ManagedCryptographicKey`.
 - [HTTPClient](VerticalSlices/Common/EnvironmentValues+HTTPClient) - knows how to do HTTP requests based on instances of `Endpoint`. Check out [HTTPSwift](https://github.com/thomsmed/http-swift).
 - [DatabaseClient](VerticalSlices/Common/EnvironmentValues+DatabaseClient) - knows how to do (SQLite) database queries based on instances of `DatabaseEntity`. Check out [GRDB.swift](https://github.com/groue/GRDB.swift).

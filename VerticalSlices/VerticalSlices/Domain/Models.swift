@@ -27,7 +27,15 @@ struct AccessToken: RawRepresentable {
     var rawValue: String
 }
 
-extension AccessToken: SecurelyStorable {
-    static let namespace: String = "app"
-    static let key: String = "access-token"
+extension AccessToken: UniqueSecurelyStorable {
+    static let identifier = SecurelyStorableIdentifier(namespace: "app", key: "access-token")
 }
+
+struct Secret: Codable {
+    var identifier: SecurelyStorableIdentifier?
+
+    let name: String
+    let data: Data
+}
+
+extension Secret: SecurelyStorable {}
