@@ -46,6 +46,7 @@ A collection of iOS example code and applications.
 - [Representing arbitrary data as an opaque Codable type](OpaqueValue)
 - [Error Responder Chain](ErrorResponder)
 - [Vertical Slice Architecture](VerticalSlices)
+- [Model and handle HTTP API Problems (RFC 7807)](HTTPAPIProblem)
 
 Happy coding! :smile:
 
