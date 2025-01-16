@@ -1,7 +1,7 @@
 # Vertical Slice Architecture (and Domain Driven Design)
 
 Highly inspired by several ideas over at https://www.objc.io/ (introduced to me by one of my colleagues, Audun. Thanks!),
-this example application aims to show how one could work more with Swift types directly instead of through layers of abstractions (e.g ViewModels, Services, Repositories etc).
+this example application aims to show how to work more with Swift types directly instead of through layers of abstractions (e.g ViewModels, Services, Repositories etc).
 
 The basic idea is that we only have a handful of actual dependencies (A "thing" to store stuff in the keychain, a "thing" to store stuff in a database, a "thing" to do networking etc),
 and have our types/domain models implement traits/protocols to be able to interact/work with these dependencies.
@@ -14,6 +14,8 @@ In other words; we try to write more idiomatic Swift:
 - Un-mutable over mutable.
 - Value types over reference types.
 - Composition (protocols and extension) over inheritance (subclassing).
+- Write business logic that prefers immutability and avoid side effects.
+  - Mutate models and trigger side effects (storing data, networking, etc) outside domain models and logic.
 
 ## Feature Slices
 

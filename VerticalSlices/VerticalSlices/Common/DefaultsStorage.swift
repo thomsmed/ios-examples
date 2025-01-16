@@ -109,10 +109,7 @@ public protocol DefaultsStorable: Codable {
 
 // MARK: DefaultsStorage
 
-/// An enumeration describing errors that might occur while interacting with ``DefaultsStorage``.
-public enum DefaultsStorageError: Error {
-    case missingIdentifier
-}
+public struct MissingDefaultsStorableIdentifier: Error {}
 
 /// Protocol representing I/O operations around storing simple Defaults data (typically in the UserDefaults.standard).
 public protocol DefaultsStorage: Sendable {
@@ -120,7 +117,7 @@ public protocol DefaultsStorage: Sendable {
     func set<Value: UniqueDefaultsStorable>(_ value: Value)
     func delete<Value: UniqueDefaultsStorable>(_: Value.Type)
     func get<Value: DefaultsStorable>(_ identifier: DefaultsStorableIdentifier) -> Value?
-    func set<Value: DefaultsStorable>(_ value: Value) throws(DefaultsStorageError)
+    func set<Value: DefaultsStorable>(_ value: Value) throws(MissingDefaultsStorableIdentifier)
     func delete(_ identifier: DefaultsStorableIdentifier)
 }
 
@@ -189,11 +186,11 @@ extension TestDefaultsStorage: DefaultsStorage {
         return storage[identifier.combinedKey] as? Value
     }
 
-    public func set<Value: DefaultsStorable>(_ value: Value) throws(DefaultsStorageError) {
+    public func set<Value: DefaultsStorable>(_ value: Value) throws(MissingDefaultsStorableIdentifier) {
         Logger.defaultsStorage.warning("You are using \(String(describing: Self.self))")
 
         guard let identifier = value.identifier else {
-            throw .missingIdentifier
+            throw MissingDefaultsStorableIdentifier()
         }
 
         storage[identifier.combinedKey] = value
@@ -281,9 +278,9 @@ extension StandardUserDefaultsStorage: DefaultsStorage {
         return value
     }
 
-    public func set<Value: DefaultsStorable>(_ value: Value) throws(DefaultsStorageError) {
+    public func set<Value: DefaultsStorable>(_ value: Value) throws(MissingDefaultsStorableIdentifier) {
         guard let identifier = value.identifier else {
-            throw .missingIdentifier
+            throw MissingDefaultsStorableIdentifier()
         }
 
         var value = value
@@ -292,6 +289,7 @@ extension StandardUserDefaultsStorage: DefaultsStorage {
         guard let data = try? jsonEncoder.encode(value) else {
             return
         }
+
         UserDefaults.standard.set(data, forKey: identifier.combinedKey)
     }
 

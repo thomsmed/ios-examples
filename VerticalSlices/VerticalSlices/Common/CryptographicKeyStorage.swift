@@ -52,8 +52,8 @@ public enum ManagedCryptographicKeyAccessControl: Sendable {
 
 /// Protocol representing something that is a (unique/one of a kind) Cryptographic Key that should be managed by``CryptographicKeyStorage``.
 public protocol UniqueManagedCryptographicKey {
-    static var identifier: ManagedCryptographicKeyIdentifier { get }
     static var accessControl: ManagedCryptographicKeyAccessControl { get }
+    static var identifier: ManagedCryptographicKeyIdentifier { get }
 
     init(_ keyPair: EC256KeyPair)
 }
@@ -61,6 +61,7 @@ public protocol UniqueManagedCryptographicKey {
 /// Protocol representing something that is a Cryptographic Key that should be managed by``CryptographicKeyStorage``.
 public protocol ManagedCryptographicKey {
     static var accessControl: ManagedCryptographicKeyAccessControl { get }
+    var identifier: ManagedCryptographicKeyIdentifier { get }
 
     init(_ keyPair: EC256KeyPair, identifier: ManagedCryptographicKeyIdentifier)
 }
