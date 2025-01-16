@@ -29,21 +29,64 @@ public struct SecurelyStorableIdentifier: Sendable, Codable {
     }
 }
 
+/// Protocol representing something (unique/one of a kind) that should be managed by ``SecureStorage``.
+public protocol UniqueSecurelyManaged {
+    static var identifier: SecurelyStorableIdentifier { get }
+
+    static func new() -> Self
+    static func from(data: Data) throws -> Self
+    func toData() throws -> Data
+}
+
+internal extension UniqueSecurelyManaged where Self: RawRepresentable<String> {
+    static func from(data: Data) throws -> Self {
+        guard
+            let rawValue = String(data: data, encoding: .utf8),
+            let value = Self(rawValue: rawValue)
+        else {
+            let context = DecodingError.Context(codingPath: [], debugDescription: "Data corrupted")
+            throw DecodingError.dataCorrupted(context)
+        }
+
+        return value
+    }
+
+    func toData() throws -> Data {
+        Data(rawValue.utf8)
+    }
+}
+
+internal extension UniqueSecurelyManaged where Self: Codable {
+    static func from(data: Data) throws -> Self {
+        let decoder = JSONDecoder()
+        return try decoder.decode(Self.self, from: data)
+    }
+
+    func toData() throws -> Data {
+        let encoder = JSONEncoder()
+        return try encoder.encode(self)
+    }
+}
+
 /// Protocol representing something (unique/one of a kind) that can be stored in ``SecureStorage``.
 public protocol UniqueSecurelyStorable {
     static var identifier: SecurelyStorableIdentifier { get }
 
-    static func from(data: Data) throws -> Self?
+    static func from(data: Data) throws -> Self
     func toData() throws -> Data
 }
 
 internal extension UniqueSecurelyStorable where Self: RawRepresentable<String> {
-    static func from(data: Data) throws -> Self? {
-        guard let rawValue = String(data: data, encoding: .utf8) else {
-            return nil
+    static func from(data: Data) throws -> Self {
+        guard
+            let rawValue = String(data: data, encoding: .utf8),
+            let value = Self(rawValue: rawValue)
+        else {
+            let context = DecodingError.Context(codingPath: [], debugDescription: "Data corrupted")
+            throw DecodingError.dataCorrupted(context)
         }
 
-        return Self(rawValue: rawValue)
+        return value
     }
 
     func toData() throws -> Data {
@@ -52,7 +95,7 @@ internal extension UniqueSecurelyStorable where Self: RawRepresentable<String> {
 }
 
 internal extension UniqueSecurelyStorable where Self: Codable {
-    static func from(data: Data) throws -> Self? {
+    static func from(data: Data) throws -> Self {
         let decoder = JSONDecoder()
         return try decoder.decode(Self.self, from: data)
     }
@@ -101,6 +144,7 @@ public enum SecureStorageError: Error {
 
 /// Protocol representing I/O operations around storing simple data securely (typically in the Keychain).
 public protocol SecureStorage: Sendable, AnyObject {
+    func getOrCreate<Value: UniqueSecurelyManaged>() throws(SecureStorageError) -> Value
     func get<Value: UniqueSecurelyStorable>() throws(SecureStorageError) -> Value?
     func set<Value: UniqueSecurelyStorable>(_ value: Value) throws(SecureStorageError)
     func delete<Value: UniqueSecurelyStorable>(_: Value.Type) throws(SecureStorageError)
@@ -115,6 +159,28 @@ public final class TestSecureStorage: @unchecked Sendable, SecureStorage {
     private var storage: [String: Data] = [:]
 
     public init() {}
+
+    public func getOrCreate<Value: UniqueSecurelyManaged>() throws(SecureStorageError) -> Value {
+        Logger.secureStorage.warning("You are using \(String(describing: Self.self))")
+
+        if let data = storage[Value.identifier.key + Value.identifier.namespace] {
+            do {
+                return try Value.from(data: data)
+            } catch {
+                throw .decodingError(error)
+            }
+        } else {
+            let value = Value.new()
+
+            do {
+                storage[Value.identifier.key + Value.identifier.namespace] = try value.toData()
+            } catch {
+                throw .encodingError(error)
+            }
+
+            return value
+        }
+    }
 
     public func get<Value: UniqueSecurelyStorable>() throws(SecureStorageError) -> Value? {
         Logger.secureStorage.warning("You are using \(String(describing: Self.self))")
@@ -323,6 +389,31 @@ public final class KeychainSecureStorage {
 }
 
 extension KeychainSecureStorage: SecureStorage {
+    public func getOrCreate<Value: UniqueSecurelyManaged>() throws(SecureStorageError) -> Value {
+        Logger.secureStorage.warning("You are using \(String(describing: Self.self))")
+
+        if let data = try data(for: Value.identifier.key, under: Value.identifier.namespace) {
+            do {
+                return try Value.from(data: data)
+            } catch {
+                throw .decodingError(error)
+            }
+        } else {
+            let value = Value.new()
+
+            let data: Data
+            do {
+                data = try value.toData()
+            } catch {
+                throw .encodingError(error)
+            }
+
+            try set(data, for: Value.identifier.key, under: Value.identifier.namespace)
+
+            return value
+        }
+    }
+
     public func get<Value: UniqueSecurelyStorable>() throws(SecureStorageError) -> Value? {
         guard let data = try data(for: Value.identifier.key, under: Value.identifier.namespace) else {
             return nil
