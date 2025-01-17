@@ -23,14 +23,14 @@ struct ErrorResponderApp: App {
 
                     errorResponderChainHandle = errorResponderChain.connect { error in
                         switch error {
-                            case BackgroundServiceError.nonCritical:
-                                return .proceed
+                        case BackgroundServiceError.nonCritical:
+                            return .proceed
 
-                            case BackgroundServiceError.critical:
-                                return .abort
+                        case BackgroundServiceError.critical:
+                            return .abort
 
-                            default:
-                                return nil
+                        default:
+                            return nil
                         }
                     }
 

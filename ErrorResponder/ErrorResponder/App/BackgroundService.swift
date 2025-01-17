@@ -9,7 +9,7 @@ import Foundation
 import OSLog
 
 extension Logger {
-    static let general = Logger(subsystem: "ios.example.ErrorResponder.BackgroundService", category: "General")
+    static let general = Logger(subsystem: "\(Bundle.main.bundleIdentifier!).BackgroundService", category: "General")
 }
 
 enum BackgroundServiceError: Error, CaseIterable {
@@ -47,11 +47,11 @@ final actor BackgroundService {
                     }
                 } catch {
                     switch await errorResponderChain?.respond(to: error) ?? .abort {
-                        case .proceed:
-                            Logger.general.info("Non critical error happened during work polling. Ignore, and proceed as normal.")
-                        default:
-                            Logger.general.info("Critical error happened during polling. Restarting work polling.")
-                            return restartPolling()
+                    case .proceed:
+                        Logger.general.info("Non critical error happened during work polling. Ignore, and proceed as normal.")
+                    default:
+                        Logger.general.info("Critical error happened during polling. Restarting work polling.")
+                        return restartPolling()
                     }
                 }
             }

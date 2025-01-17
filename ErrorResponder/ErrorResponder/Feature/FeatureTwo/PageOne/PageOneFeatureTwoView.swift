@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PageOneFeatureTwoView: View {
     @Bindable var viewModel: ViewModel
-    
+
     var body: some View {
         VStack {
             Spacer()
