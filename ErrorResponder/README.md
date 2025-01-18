@@ -188,6 +188,8 @@ struct HomeScreenContentView: View {
     private func didTapButton() {
         Task {
             do {
+                try await Task.sleep(for: .milliseconds(100)) // Simulate networking
+
                 throw MyError.random
             } catch {
                 print("Error triggered in Home Screen Content")

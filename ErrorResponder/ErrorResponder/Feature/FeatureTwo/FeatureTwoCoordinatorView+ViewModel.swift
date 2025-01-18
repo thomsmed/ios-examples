@@ -30,28 +30,28 @@ extension FeatureTwoCoordinatorView {
 
         override func respond(to error: any Error) async -> ErrorEvaluation {
             switch error {
-                case let featureTwoError as FeatureTwoError:
-                    switch featureTwoError {
-                        case .blocked:
-                            return await withCheckedContinuation { continuation in
-                                alertDetails = AlertDetails(
-                                    title: "You are blocked",
-                                    message: "You have been blocked from Feature Two until you re-launch Feature Two.",
-                                    actions: [
-                                        AlertDetails.Action(title: "Ok") { [weak self] in
-                                            continuation.resume(returning: .cancel)
-                                            self?.blocked = true
-                                        },
-                                    ]
-                                )
-                            }
-
-                        case .common(let error):
-                            return await parentResponder?.respond(to: error) ?? .abort
+            case let featureTwoError as FeatureTwoError:
+                switch featureTwoError {
+                case .blocked:
+                    return await withCheckedContinuation { continuation in
+                        alertDetails = AlertDetails(
+                            title: "You are blocked",
+                            message: "You have been blocked from Feature Two until you re-launch Feature Two.",
+                            actions: [
+                                AlertDetails.Action(title: "Ok") { [weak self] in
+                                    continuation.resume(returning: .cancel)
+                                    self?.blocked = true
+                                },
+                            ]
+                        )
                     }
 
-                default:
+                case .common(let error):
                     return await parentResponder?.respond(to: error) ?? .abort
+                }
+
+            default:
+                return await parentResponder?.respond(to: error) ?? .abort
             }
         }
     }
