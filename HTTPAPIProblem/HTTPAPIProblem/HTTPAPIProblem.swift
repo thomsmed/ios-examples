@@ -12,6 +12,9 @@ import Foundation
 /// Error thrown when decoding a`HTTPAPIProblem` if the decoded HTTP API Problem's type does not match the type of the associated `Extras`.
 public struct HTTPAPIProblemTypeMismatch: Error {}
 
+/// Error thrown when decoding a`HTTPAPIProblem` if the decoded HTTP API Problem's type is empty/not present. A `HTTPAPIProblem` must always have a type.
+public struct HTTPAPIProblemTypeMissing: Error {}
+
 public protocol HTTPAPIProblemExtras: Decodable, Sendable {
     static var associatedProblemType: String? { get }
 }
@@ -32,12 +35,48 @@ public struct HTTPAPIProblem<Extras: HTTPAPIProblemExtras>: Error {
         case detail
         case instance
     }
+
+    public init(type: String, title: String, status: Int, detail: String, instance: String, extras: Extras) throws {
+        if let associatedProblemType = Extras.associatedProblemType {
+            if associatedProblemType.isEmpty {
+                throw HTTPAPIProblemTypeMissing()
+            }
+
+            if type != associatedProblemType {
+                throw HTTPAPIProblemTypeMismatch()
+            }
+        }
+
+        self.type = type
+        self.title = title
+        self.status = status
+        self.detail = detail
+        self.instance = instance
+        self.extras = extras
+    }
+
+    public init(title: String, status: Int, detail: String, instance: String, extras: Extras) throws {
+        guard let type = Extras.associatedProblemType, !type.isEmpty else {
+            throw HTTPAPIProblemTypeMissing()
+        }
+
+        self.type = type
+        self.title = title
+        self.status = status
+        self.detail = detail
+        self.instance = instance
+        self.extras = extras
+    }
 }
 
 extension HTTPAPIProblem: Decodable where Extras: Decodable {
     public init(from decoder: any Decoder) throws {
         let keyedContainer = try decoder.container(keyedBy: CodingKeys.self)
         let type = try keyedContainer.decode(String.self, forKey: .type)
+
+        if type.isEmpty {
+            throw HTTPAPIProblemTypeMissing()
+        }
 
         if let associatedProblemType = Extras.associatedProblemType {
             guard type == associatedProblemType else {
@@ -62,6 +101,30 @@ public struct OpaqueProblemExtras: HTTPAPIProblemExtras {
 }
 
 public typealias OpaqueHTTPAPIProblem = HTTPAPIProblem<OpaqueProblemExtras>
+
+extension OpaqueHTTPAPIProblem {
+    public init(type: String, title: String, status: Int, detail: String, instance: String) throws {
+        if type.isEmpty {
+            throw HTTPAPIProblemTypeMissing()
+        }
+
+        self.type = type
+        self.title = title
+        self.status = status
+        self.detail = detail
+        self.instance = instance
+        self.extras = OpaqueProblemExtras()
+    }
+
+    public init(_ problem: HTTPAPIProblem<some HTTPAPIProblemExtras>) {
+        self.type = problem.type
+        self.title = problem.title
+        self.status = problem.status
+        self.detail = problem.detail
+        self.instance = problem.instance
+        self.extras = OpaqueProblemExtras()
+    }
+}
 
 // MARK: Concrete HTTP API Problems (defined by Type and Extras)
 
