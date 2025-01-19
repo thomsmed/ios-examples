@@ -10,12 +10,28 @@
 		931A54CD2D2DB5A4009E9353 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 931A54CC2D2DB5A4009E9353 /* README.md */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		930A97232D3C14810018563B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 931A54232D2D9DC0009E9353 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 931A542A2D2D9DC0009E9353;
+			remoteInfo = HTTPAPIProblem;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		930A971F2D3C14810018563B /* HTTPAPIProblemTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HTTPAPIProblemTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		931A542B2D2D9DC0009E9353 /* HTTPAPIProblem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HTTPAPIProblem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		931A54CC2D2DB5A4009E9353 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		930A97202D3C14810018563B /* HTTPAPIProblemTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = HTTPAPIProblemTests;
+			sourceTree = "<group>";
+		};
 		931A542D2D2D9DC0009E9353 /* HTTPAPIProblem */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = HTTPAPIProblem;
@@ -24,6 +40,13 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		930A971C2D3C14810018563B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		931A54282D2D9DC0009E9353 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -39,6 +62,7 @@
 			children = (
 				931A54CC2D2DB5A4009E9353 /* README.md */,
 				931A542D2D2D9DC0009E9353 /* HTTPAPIProblem */,
+				930A97202D3C14810018563B /* HTTPAPIProblemTests */,
 				931A542C2D2D9DC0009E9353 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -47,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				931A542B2D2D9DC0009E9353 /* HTTPAPIProblem.app */,
+				930A971F2D3C14810018563B /* HTTPAPIProblemTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -54,6 +79,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		930A971E2D3C14810018563B /* HTTPAPIProblemTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 930A97272D3C14810018563B /* Build configuration list for PBXNativeTarget "HTTPAPIProblemTests" */;
+			buildPhases = (
+				930A971B2D3C14810018563B /* Sources */,
+				930A971C2D3C14810018563B /* Frameworks */,
+				930A971D2D3C14810018563B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				930A97242D3C14810018563B /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				930A97202D3C14810018563B /* HTTPAPIProblemTests */,
+			);
+			name = HTTPAPIProblemTests;
+			packageProductDependencies = (
+			);
+			productName = HTTPAPIProblemTests;
+			productReference = 930A971F2D3C14810018563B /* HTTPAPIProblemTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		931A542A2D2D9DC0009E9353 /* HTTPAPIProblem */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 931A54392D2D9DC2009E9353 /* Build configuration list for PBXNativeTarget "HTTPAPIProblem" */;
@@ -86,6 +134,10 @@
 				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1620;
 				TargetAttributes = {
+					930A971E2D3C14810018563B = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 931A542A2D2D9DC0009E9353;
+					};
 					931A542A2D2D9DC0009E9353 = {
 						CreatedOnToolsVersion = 16.2;
 					};
@@ -106,11 +158,19 @@
 			projectRoot = "";
 			targets = (
 				931A542A2D2D9DC0009E9353 /* HTTPAPIProblem */,
+				930A971E2D3C14810018563B /* HTTPAPIProblemTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		930A971D2D3C14810018563B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		931A54292D2D9DC0009E9353 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -122,6 +182,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		930A971B2D3C14810018563B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		931A54272D2D9DC0009E9353 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -131,7 +198,49 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		930A97242D3C14810018563B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 931A542A2D2D9DC0009E9353 /* HTTPAPIProblem */;
+			targetProxy = 930A97232D3C14810018563B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		930A97252D3C14810018563B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ios.example.HTTPAPIProblemTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HTTPAPIProblem.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/HTTPAPIProblem";
+			};
+			name = Debug;
+		};
+		930A97262D3C14810018563B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ios.example.HTTPAPIProblemTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HTTPAPIProblem.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/HTTPAPIProblem";
+			};
+			name = Release;
+		};
 		931A54372D2D9DC2009E9353 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -310,6 +419,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		930A97272D3C14810018563B /* Build configuration list for PBXNativeTarget "HTTPAPIProblemTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				930A97252D3C14810018563B /* Debug */,
+				930A97262D3C14810018563B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		931A54262D2D9DC0009E9353 /* Build configuration list for PBXProject "HTTPAPIProblem" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
