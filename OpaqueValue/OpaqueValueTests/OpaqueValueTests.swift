@@ -19,12 +19,12 @@ struct OpaqueValueTests {
         let opaqueValue = try JSONDecoder().decode(OpaqueValue.self, from: jsonData)
 
         #expect(opaqueValue == OpaqueValue.object([
-            OpaqueValue.PropertyKey(stringValue: "object")!: .object([OpaqueValue.PropertyKey(stringValue: "string")!: .string("Hello World")]),
-            OpaqueValue.PropertyKey(stringValue: "array")!: .array([.string("Hello World")]),
-            OpaqueValue.PropertyKey(stringValue: "string")!: .string("Hello World"),
-            OpaqueValue.PropertyKey(stringValue: "number")!: .number(1337),
-            OpaqueValue.PropertyKey(stringValue: "boolean")!: .boolean(true),
-            OpaqueValue.PropertyKey(stringValue: "null")!: .null
+            OpaqueValue.PropertyKey(stringValue: "object"): .object([OpaqueValue.PropertyKey(stringValue: "string"): .string("Hello World")]),
+            OpaqueValue.PropertyKey(stringValue: "array"): .array([.string("Hello World")]),
+            OpaqueValue.PropertyKey(stringValue: "string"): .string("Hello World"),
+            OpaqueValue.PropertyKey(stringValue: "number"): .number(1337),
+            OpaqueValue.PropertyKey(stringValue: "boolean"): .boolean(true),
+            OpaqueValue.PropertyKey(stringValue: "null"): .null
         ]))
     }
 
@@ -46,9 +46,9 @@ struct OpaqueValueTests {
         let opaqueValue = try JSONDecoder().decode(OpaqueValue.self, from: jsonData)
 
         #expect(opaqueValue == OpaqueValue.array([
-            .object([OpaqueValue.PropertyKey(stringValue: "string")!: .string("Hello World")]),
-            .object([OpaqueValue.PropertyKey(stringValue: "number")!: .number(1337)]),
-            .object([OpaqueValue.PropertyKey(stringValue: "boolean")!: .boolean(true)]),
+            .object([OpaqueValue.PropertyKey(stringValue: "string"): .string("Hello World")]),
+            .object([OpaqueValue.PropertyKey(stringValue: "number"): .number(1337)]),
+            .object([OpaqueValue.PropertyKey(stringValue: "boolean"): .boolean(true)]),
         ]))
     }
 
@@ -60,7 +60,7 @@ struct OpaqueValueTests {
         let opaqueValue = try JSONDecoder().decode(OpaqueValue.self, from: jsonData)
 
         #expect(opaqueValue == OpaqueValue.array([
-            .array([.object([OpaqueValue.PropertyKey(stringValue: "string")!: .string("Hello World")])]),
+            .array([.object([OpaqueValue.PropertyKey(stringValue: "string"): .string("Hello World")])]),
             .array([.string("Hello"), .string("World")]),
             .array([.number(1337), .number(13.37)]),
             .array([.boolean(true), .boolean(false)]),
@@ -116,13 +116,23 @@ struct OpaqueValueTests {
         let opaqueValue = try JSONDecoder().decode(OpaqueValue.self, from: jsonData)
 
         #expect(opaqueValue == OpaqueValue.array([
-            .object([OpaqueValue.PropertyKey(stringValue: "string")!: .string("Hello World")]),
+            .object([OpaqueValue.PropertyKey(stringValue: "string"): .string("Hello World")]),
             .array([.string("Hello World")]),
             .string("Hello World"),
             .number(1337),
             .boolean(true),
             .null
         ]))
+    }
+
+    @Test func testOpaqueValueIsEmptyArray() async throws {
+        let jsonData = Data("""
+        []
+        """.utf8)
+
+        let opaqueValue = try JSONDecoder().decode(OpaqueValue.self, from: jsonData)
+
+        #expect(opaqueValue == OpaqueValue.array([]))
     }
 
     @Test func testOpaqueValueIsString() async throws {

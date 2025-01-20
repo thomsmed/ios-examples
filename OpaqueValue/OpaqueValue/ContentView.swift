@@ -10,17 +10,17 @@ import SwiftUI
 struct ContentView: View {
     @State private var opaqueValue: OpaqueValue = {
         let jsonData = Data("""
-                {
-                    "object": {
-                        "string": "Hello World"
-                    },
-                    "array": ["Hello", "World"],
-                    "string": "Hello World",
-                    "number": 1337,
-                    "boolean": true,
-                    "null": null
-                }
-                """.utf8)
+            {
+                "object": {
+                    "string": "Hello World"
+                },
+                "array": ["Hello", "World"],
+                "string": "Hello World",
+                "number": 1337,
+                "boolean": true,
+                "null": null
+            }
+            """.utf8)
 
         return try! JSONDecoder().decode(OpaqueValue.self, from: jsonData)
     }()
