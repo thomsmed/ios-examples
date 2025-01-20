@@ -1,28 +1,25 @@
 //
 //  OpaqueValue.swift
-//  OpaqueValue
+//  HTTPAPIProblem
 //
-//  Created by Thomas Asheim Smedmann on 14/07/2024.
+//  Created by Thomas Smedmann on 20/01/2025.
 //
 
 import Foundation
 
 // MARK: OpaqueValue
 
-/// An opaque Codable type that can represent arbitrary (Codable) data. E.g some arbitrary JSON.
-/// It consists of one or more primitive types and/or one or more nested opaque values.
-///
-/// This code is heavily inspired [Rob Napier](https://stackoverflow.com/users/97337/rob-napier)'s answer to this [StackOverflow post](https://stackoverflow.com/questions/65901928/swift-jsonencoder-encoding-class-containing-a-nested-raw-json-object-literal).
-enum OpaqueValue: Equatable {
-    struct PropertyKey: CodingKey, Hashable {
-        var stringValue: String
-        var intValue: Int?
+/// Stolen from [Representing arbitrary data (e.g JSON) as a custom and opaque Codable type](https://medium.com/@thomsmed/representing-arbitrary-data-e-g-json-as-a-custom-and-opaque-codable-type-dfaa07b22cd3).
+public enum OpaqueValue: Equatable, Sendable {
+    public struct PropertyKey: CodingKey, Hashable {
+        public var stringValue: String
+        public var intValue: Int?
 
-        init(stringValue: String) {
+        public init(stringValue: String) {
             self.stringValue = stringValue
         }
 
-        init(intValue: Int) {
+        public init(intValue: Int) {
             self.intValue = intValue
             self.stringValue = String(intValue)
         }
@@ -39,30 +36,30 @@ enum OpaqueValue: Equatable {
 // MARK: OpaqueValue+Encodable
 
 extension OpaqueValue: Encodable {
-    func encode(to encoder: any Encoder) throws {
+    public func encode(to encoder: any Encoder) throws {
         switch self {
-            case .object(let values):
-                var container = encoder.container(keyedBy: PropertyKey.self)
-                for (key, value) in values {
-                    try container.encode(value, forKey: key)
-                }
-            case .array(let values):
-                var container = encoder.unkeyedContainer()
-                for value in values {
-                    try container.encode(value)
-                }
-            case .string(let value):
-                var container = encoder.singleValueContainer()
+        case .object(let values):
+            var container = encoder.container(keyedBy: PropertyKey.self)
+            for (key, value) in values {
+                try container.encode(value, forKey: key)
+            }
+        case .array(let values):
+            var container = encoder.unkeyedContainer()
+            for value in values {
                 try container.encode(value)
-            case .number(let value):
-                var container = encoder.singleValueContainer()
-                try container.encode(value)
-            case .boolean(let value):
-                var container = encoder.singleValueContainer()
-                try container.encode(value)
-            case .null:
-                var container = encoder.singleValueContainer()
-                try container.encodeNil()
+            }
+        case .string(let value):
+            var container = encoder.singleValueContainer()
+            try container.encode(value)
+        case .number(let value):
+            var container = encoder.singleValueContainer()
+            try container.encode(value)
+        case .boolean(let value):
+            var container = encoder.singleValueContainer()
+            try container.encode(value)
+        case .null:
+            var container = encoder.singleValueContainer()
+            try container.encodeNil()
         }
     }
 }
@@ -70,7 +67,7 @@ extension OpaqueValue: Encodable {
 // MARK: OpaqueValue+Decodable
 
 extension OpaqueValue: Decodable {
-    init(from decoder: any Decoder) throws {
+    public init(from decoder: any Decoder) throws {
         if let container = try? decoder.container(keyedBy: PropertyKey.self) {
             var values: [PropertyKey: OpaqueValue] = [:]
             for key in container.allKeys {

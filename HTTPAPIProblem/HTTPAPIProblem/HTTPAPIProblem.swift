@@ -9,17 +9,17 @@ import Foundation
 
 // MARK: HTTP API Problem
 
-/// Error thrown when decoding a`HTTPAPIProblem` if the decoded HTTP API Problem's type does not match the type of the associated `Extras`.
+/// Error thrown when decoding a `HTTPAPIProblem` if the decoded HTTP API Problem's type does not match the type of the associated `Extras`.
 public struct HTTPAPIProblemTypeMismatch: Error {}
 
-/// Error thrown when decoding a`HTTPAPIProblem` if the decoded HTTP API Problem's type is empty/not present. A `HTTPAPIProblem` must always have a type.
+/// Error thrown when decoding a `HTTPAPIProblem` if the decoded HTTP API Problem's type is empty/not present. A `HTTPAPIProblem` must always have a type.
 public struct HTTPAPIProblemTypeMissing: Error {}
 
 public protocol HTTPAPIProblemExtras: Decodable, Sendable {
     static var associatedProblemType: String? { get }
 }
 
-/// [RFC 7807 - Problem Details for HTTP APIs](https://www.rfc-editor.org/rfc/rfc7807).
+/// [RFC 9457 - Problem Details for HTTP APIs](https://datatracker.ietf.org/doc/rfc9457/).
 public struct HTTPAPIProblem<Extras: HTTPAPIProblemExtras>: Error {
     public let type: String
     public let title: String
@@ -37,11 +37,11 @@ public struct HTTPAPIProblem<Extras: HTTPAPIProblemExtras>: Error {
     }
 
     public init(type: String, title: String, status: Int, detail: String, instance: String, extras: Extras) throws {
-        if let associatedProblemType = Extras.associatedProblemType {
-            if associatedProblemType.isEmpty {
-                throw HTTPAPIProblemTypeMissing()
-            }
+        if type.isEmpty {
+            throw HTTPAPIProblemTypeMissing()
+        }
 
+        if let associatedProblemType = Extras.associatedProblemType {
             if type != associatedProblemType {
                 throw HTTPAPIProblemTypeMismatch()
             }
@@ -79,7 +79,7 @@ extension HTTPAPIProblem: Decodable where Extras: Decodable {
         }
 
         if let associatedProblemType = Extras.associatedProblemType {
-            guard type == associatedProblemType else {
+            if type != associatedProblemType {
                 throw HTTPAPIProblemTypeMismatch()
             }
         }
@@ -94,7 +94,7 @@ extension HTTPAPIProblem: Decodable where Extras: Decodable {
     }
 }
 
-// MARK: Opaque/"untyped" HTTP API Problem
+// MARK: Opaque/"untyped" HTTP API Problem (Alternative 1: Ignoring/having empty Extras)
 
 public struct OpaqueProblemExtras: HTTPAPIProblemExtras {
     public static let associatedProblemType: String? = nil
@@ -126,6 +126,29 @@ extension OpaqueHTTPAPIProblem {
     }
 }
 
+// MARK: Opaque/"untyped" HTTP API Problem (Alternative 2: Using OpaqueValue as Extras)
+
+//extension OpaqueValue: HTTPAPIProblemExtras {
+//    public static let associatedProblemType: String? = nil
+//}
+//
+//public typealias OpaqueHTTPAPIProblem = HTTPAPIProblem<OpaqueValue>
+//
+//extension OpaqueHTTPAPIProblem {
+//    public init(type: String, title: String, status: Int, detail: String, instance: String, extras: OpaqueValue) throws {
+//        if type.isEmpty {
+//            throw HTTPAPIProblemTypeMissing()
+//        }
+//
+//        self.type = type
+//        self.title = title
+//        self.status = status
+//        self.detail = detail
+//        self.instance = instance
+//        self.extras = extras
+//    }
+//}
+
 // MARK: Concrete HTTP API Problems (defined by Type and Extras)
 
 public struct SomeExtras: HTTPAPIProblemExtras {
@@ -156,18 +179,14 @@ public enum CoreHTTPAPIProblem: Decodable, Error {
     case someProblem(SomeHTTPAPIProblem)
     case someOtherProblem(SomeOtherHTTPAPIProblem)
     case userActionRequired(UserActionRequiredHTTPAPIProblem)
-    case opaqueProblem(OpaqueHTTPAPIProblem)
 
     public init(from decoder: any Decoder) throws {
         if let someProblem = try? SomeHTTPAPIProblem(from: decoder) {
             self = .someProblem(someProblem)
         } else if let someOtherProblem = try? SomeOtherHTTPAPIProblem(from: decoder) {
             self = .someOtherProblem(someOtherProblem)
-        } else if let userActionRequired = try? UserActionRequiredHTTPAPIProblem(from: decoder) {
-            self = .userActionRequired(userActionRequired)
         } else {
-            // Fall back to an opaque/"untyped" HTTP API Problem
-            self = .opaqueProblem(try OpaqueHTTPAPIProblem(from: decoder))
+            self = .userActionRequired(try UserActionRequiredHTTPAPIProblem(from: decoder))
         }
     }
 }
