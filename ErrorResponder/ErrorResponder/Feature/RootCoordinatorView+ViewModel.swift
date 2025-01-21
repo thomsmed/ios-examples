@@ -17,7 +17,7 @@ extension RootCoordinatorView {
         private(set) var featureTwoCoordinatorViewModel: FeatureTwoCoordinatorView.ViewModel
 
         var showAlert: Bool = false
-        private(set) var alertDetails: AlertDetails? {
+        var alertDetails: AlertDetails? {
             didSet { showAlert = alertDetails != nil }
         }
 

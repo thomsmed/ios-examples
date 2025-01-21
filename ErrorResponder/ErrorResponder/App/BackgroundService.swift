@@ -22,7 +22,7 @@ enum BackgroundServiceError: Error, CaseIterable {
 }
 
 final actor BackgroundService {
-    private var errorResponderChain: ErrorResponderChain? = nil
+    private weak var errorResponderChain: ErrorResponderChain? = nil
     private var pollingTask: Task<Void, Never>? = nil
 
     private func restartPolling() {
@@ -69,7 +69,7 @@ final actor BackgroundService {
 }
 
 extension BackgroundService {
-    func start(andBindTo errorResponderChain: ErrorResponderChain) {
+    func start(andConnectTo errorResponderChain: ErrorResponderChain) {
         self.errorResponderChain = errorResponderChain
         restartPolling()
     }
