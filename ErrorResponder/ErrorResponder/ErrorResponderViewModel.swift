@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Convenience type for apps that are driven by a hierarchy of ViewModels.
 public class ErrorResponderViewModel: ErrorResponder {
     public weak var parentResponder: (any ErrorResponder)? = nil
 

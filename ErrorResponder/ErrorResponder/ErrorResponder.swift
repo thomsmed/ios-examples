@@ -9,24 +9,24 @@ import Foundation
 import SwiftUI
 
 public enum ErrorEvaluation: Sendable {
-    /// Necessary actions has been taken in response to the ``Error``.
+    /// The `Error` has been handled by all necessary or available means.
     /// Proceed in whatever way that is natural.
     case proceed
 
-    /// Necessary actions has been taken in response to the ``Error``.
+    /// The `Error` has been handled by all necessary or available means.
+    /// Retry whatever action caused the `Error` to occur.
+    case retry
+
+    /// The `Error` has been handled by all necessary or available means.
     /// Cancel any succeeding actions, and stay put.
     case cancel
 
-    /// Necessary actions has been taken in response to the ``Error``.
-    /// Retry whatever action caused the ``Error`` to occur.
-    case retry
-
-    /// Necessary actions has been taken in response to the ``Error``.
-    /// Abort whatever flow/process caused this ``Error``, as the ``Error`` was too severe to let the flow continue.
+    /// The `Error` has been handled by all necessary or available means.
+    /// Abort whatever flow/process the `Error` occurred in, as the `Error` was too severe.
     case abort
 }
 
-@MainActor public protocol ErrorResponder: AnyObject {
+@MainActor public protocol ErrorResponder: Sendable, AnyObject {
     var parentResponder: (any ErrorResponder)? { get set }
 
     @discardableResult
@@ -34,7 +34,7 @@ public enum ErrorEvaluation: Sendable {
 }
 
 @MainActor public struct RespondToErrorAction {
-    let respondToError: @Sendable (any Error) async -> ErrorEvaluation
+    let respondToError: @MainActor (any Error) async -> ErrorEvaluation
 
     @discardableResult
     func callAsFunction(_ error: any Error) async -> ErrorEvaluation {
@@ -43,8 +43,8 @@ public enum ErrorEvaluation: Sendable {
 }
 
 public struct RespondToErrorActionEnvironmentKey: EnvironmentKey {
-    public static let defaultValue: RespondToErrorAction = RespondToErrorAction { _ in
-        assertionFailure("Unhandled error")
+    public static let defaultValue: RespondToErrorAction = RespondToErrorAction { error in
+        assertionFailure("Unhandled error: \(error)")
         return .proceed
     }
 }
@@ -57,80 +57,116 @@ public extension EnvironmentValues {
 }
 
 public extension View {
-    func respondToError(_ respondToError: @escaping @Sendable (any Error) async -> ErrorEvaluation) -> some View {
+    func respondToError(_ respondToError: @MainActor @escaping (any Error) async -> ErrorEvaluation) -> some View {
         environment(\.respondToError, RespondToErrorAction(respondToError: respondToError))
     }
 }
 
-// MARK: Alternative with boolean for retry or not
+// MARK: Alternative 1: With escaping retry closure
 
-@MainActor public protocol RetryEvaluator: AnyObject {
-    var parentEvaluator: (any RetryEvaluator)? { get set }
+//@MainActor public protocol ErrorResponder: AnyObject {
+//    var parentResponder: (any ErrorResponder)? { get set }
+//
+//    func respond(to error: any Error, _ completion: @MainActor @escaping (ErrorEvaluation) -> Void)
+//}
+//
+//@MainActor public struct RespondToErrorAction {
+//    let respondToError: @MainActor (any Error, _ completion: @MainActor @escaping (ErrorEvaluation) -> Void) -> Void
+//
+//    func callAsFunction(_ error: any Error, _ completion: @MainActor @escaping (ErrorEvaluation) -> Void) -> Void {
+//        respondToError(error, completion)
+//    }
+//}
+//
+//public struct RespondToErrorActionEnvironmentKey: EnvironmentKey {
+//    public static let defaultValue: RespondToErrorAction = RespondToErrorAction { _, completion in
+//        assertionFailure("Unhandled error")
+//        completion(.proceed)
+//    }
+//}
+//
+//public extension EnvironmentValues {
+//    var respondToError: RespondToErrorAction {
+//        get { self[RespondToErrorActionEnvironmentKey.self] }
+//        set { self[RespondToErrorActionEnvironmentKey.self] = newValue }
+//    }
+//}
+//
+//public extension View {
+//    func respondToError(_ respondToError: @MainActor @escaping (any Error, @MainActor @escaping (ErrorEvaluation) -> Void) -> Void) -> some View {
+//        environment(\.respondToError, RespondToErrorAction(respondToError: respondToError))
+//    }
+//}
 
-    @discardableResult
-    func shouldRetry(_ error: any Error) async -> Bool
-}
+// MARK: Alternative 2: With boolean for retry or not
 
-@MainActor public struct ShouldRetryErrorAction {
-    let shouldRetryError: @Sendable (any Error) async -> Bool
+//@MainActor public protocol ErrorResponder: AnyObject {
+//    var parentResponder: (any ErrorResponder)? { get set }
+//
+//    @discardableResult
+//    func shouldRetry(after error: any Error) async -> Bool
+//}
+//
+//@MainActor public struct RespondToErrorAction {
+//    let shouldRetryAfterError: @MainActor (any Error) async -> Bool
+//
+//    @discardableResult
+//    func callAsFunction(_ error: any Error) async -> Bool {
+//        return await shouldRetryAfterError(error)
+//    }
+//}
+//
+//public struct RespondToErrorActionEnvironmentKey: EnvironmentKey {
+//    public static let defaultValue: RespondToErrorAction = RespondToErrorAction { _ in
+//        assertionFailure("Unhandled error")
+//        return false
+//    }
+//}
+//
+//public extension EnvironmentValues {
+//    var shouldRetryAfterError: RespondToErrorAction {
+//        get { self[RespondToErrorActionEnvironmentKey.self] }
+//        set { self[RespondToErrorActionEnvironmentKey.self] = newValue }
+//    }
+//}
+//
+//public extension View {
+//    func shouldRetryAfterError(_ shouldRetryAfterError: @MainActor @escaping (any Error) async -> Bool) -> some View {
+//        environment(\.shouldRetryAfterError, RespondToErrorAction(shouldRetryAfterError: shouldRetryAfterError))
+//    }
+//}
 
-    @discardableResult
-    func callAsFunction(_ error: any Error) async -> Bool {
-        return await shouldRetryError(error)
-    }
-}
+// MARK: Alternative 3: With escaping retry closure
 
-public struct ShouldRetryErrorActionEnvironmentKey: EnvironmentKey {
-    public static let defaultValue: ShouldRetryErrorAction = ShouldRetryErrorAction { _ in
-        assertionFailure("Unhandled error")
-        return false
-    }
-}
-
-public extension EnvironmentValues {
-    var shouldRetryError: ShouldRetryErrorAction {
-        get { self[ShouldRetryErrorActionEnvironmentKey.self] }
-        set { self[ShouldRetryErrorActionEnvironmentKey.self] = newValue }
-    }
-}
-
-public extension View {
-    func shouldRetryError(_ shouldRetryError: @escaping @Sendable (any Error) async -> Bool) -> some View {
-        environment(\.shouldRetryError, ShouldRetryErrorAction(shouldRetryError: shouldRetryError))
-    }
-}
-
-// MARK: Alternative with escaping retry closure
-
-@MainActor public protocol ErrorHandler: AnyObject {
-    var errorHandler: (any ErrorHandler)? { get set }
-
-    func handle(_ error: any Error, _ retry: @escaping () -> Void)
-}
-
-@MainActor public struct HandleErrorAction {
-    let handleError: @Sendable (any Error, _ retry: @escaping @Sendable () -> Void) -> Void
-
-    func callAsFunction(_ error: any Error, _ retry: @escaping @Sendable () -> Void) -> Void {
-        handleError(error, retry)
-    }
-}
-
-public struct HandleErrorActionEnvironmentKey: EnvironmentKey {
-    public static let defaultValue: HandleErrorAction = HandleErrorAction { _, _ in
-        assertionFailure("Unhandled error")
-    }
-}
-
-public extension EnvironmentValues {
-    var handleError: HandleErrorAction {
-        get { self[HandleErrorActionEnvironmentKey.self] }
-        set { self[HandleErrorActionEnvironmentKey.self] = newValue }
-    }
-}
-
-public extension View {
-    func handleError(_ handleError: @escaping @Sendable (any Error, @escaping @Sendable () -> Void) -> Void) -> some View {
-        environment(\.handleError, HandleErrorAction(handleError: handleError))
-    }
-}
+//@MainActor public protocol ErrorResponder: AnyObject {
+//    var parentResponder: (any ErrorResponder)? { get set }
+//
+//    func respond(to error: any Error, _ retry: @MainActor @escaping () -> Void)
+//}
+//
+//@MainActor public struct RespondToErrorAction {
+//    let respondToError: @MainActor (any Error, _ retry: @MainActor @escaping () -> Void) -> Void
+//
+//    func callAsFunction(_ error: any Error, _ retry: @MainActor @escaping () -> Void) -> Void {
+//        respondToError(error, retry)
+//    }
+//}
+//
+//public struct RespondToErrorActionEnvironmentKey: EnvironmentKey {
+//    public static let defaultValue: RespondToErrorAction = RespondToErrorAction { _, _ in
+//        assertionFailure("Unhandled error")
+//    }
+//}
+//
+//public extension EnvironmentValues {
+//    var respondToError: RespondToErrorAction {
+//        get { self[RespondToErrorActionEnvironmentKey.self] }
+//        set { self[RespondToErrorActionEnvironmentKey.self] = newValue }
+//    }
+//}
+//
+//public extension View {
+//    func respondToError(_ respondToError: @MainActor @escaping (any Error, @MainActor @escaping () -> Void) -> Void) -> some View {
+//        environment(\.respondToError, RespondToErrorAction(respondToError: respondToError))
+//    }
+//}

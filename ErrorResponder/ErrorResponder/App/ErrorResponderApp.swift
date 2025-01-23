@@ -35,7 +35,7 @@ struct ErrorResponderApp: App {
                     }
 
                     Task {
-                        await backgroundService.start(andBindTo: errorResponderChain)
+                        await backgroundService.start(andConnectTo: errorResponderChain)
                     }
                 }
                 .onDisappear {

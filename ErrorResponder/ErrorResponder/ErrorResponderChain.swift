@@ -8,8 +8,8 @@
 import Foundation
 
 /// Convenience type that by it self represent an Error Responder Chain.
-/// Could be used standalone to combine the error handling in any arbitrary components,
-/// but could also act as a bridge between the View layer (SwiftUI / UIKit with ViewModels) and any other part of the app.
+/// Could be used standalone to combine the error handling in any arbitrary components.
+/// But could also act as a bridge between the View layer (SwiftUI / UIKit with ViewModels) and any other part of the app.
 /// E.g services or anything that just want to connect to the Error Responder chain (permanently or temporarily).
 ///
 /// Error Responders are added to the front of the chain, hence the last responder to register is the first to (potentially) handle new Errors.
