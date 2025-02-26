@@ -7,6 +7,7 @@
 
 import Foundation
 import OSLog
+import AppDependencies
 
 // MARK: Logger extensions
 
@@ -337,23 +338,10 @@ extension SecureCryptographicKeyStorage: CryptographicKeyStorage {
     }
 }
 
-// MARK: Exposing CryptographicKeyStorage to SwiftUI
+// MARK: Convenience Property Wrapper
 
-import SwiftUI
-
-public extension EnvironmentValues {
-    @Entry var cryptographicKeyStorage: CryptographicKeyStorage = TestCryptographicKeyStorage()
-}
-
-public extension View {
-    func cryptographicKeyStorage(_ cryptographicKeyStorage: CryptographicKeyStorage) -> some View {
-        environment(\.cryptographicKeyStorage, cryptographicKeyStorage)
-    }
-}
-
-/// A custom convenience property wrapper adhering to DynamicProperty.
-@MainActor @propertyWrapper public struct ProtectedCryptographicKey<Value: UniqueManagedCryptographicKey>: DynamicProperty {
-    @Environment(\.cryptographicKeyStorage) private var cryptographicKeyStorage
+@propertyWrapper public struct ProtectedCryptographicKey<Value: UniqueManagedCryptographicKey> {
+    @AppDependency(\.cryptographicKeyStorage) private var cryptographicKeyStorage
 
     public init() {}
 

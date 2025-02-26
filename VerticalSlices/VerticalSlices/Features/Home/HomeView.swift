@@ -6,13 +6,14 @@
 //
 
 import SwiftUI
+import AppDependencies
 
 struct HomeView: View {
-    @Environment(\.defaultsStorage) private var defaultsStorage
-    @Environment(\.secureStorage) private var secureStorage
-    @Environment(\.cryptographicKeyStorage) private var cryptographicKeyStorage
-    @Environment(\.httpClient) private var httpClient
-    @Environment(\.databaseClient) private var databaseClient
+    @AppDependency(\.defaultsStorage) private var defaultsStorage
+    @AppDependency(\.secureStorage) private var secureStorage
+    @AppDependency(\.cryptographicKeyStorage) private var cryptographicKeyStorage
+    @AppDependency(\.httpClient) private var httpClient
+    @AppDependency(\.databaseClient) private var databaseClient
 
     @FeatureToggle(.secretFeature) private var secretFeatureEnabled: Bool
 

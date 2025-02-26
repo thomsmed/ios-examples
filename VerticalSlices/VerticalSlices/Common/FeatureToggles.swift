@@ -7,6 +7,7 @@
 
 import Foundation
 import OSLog
+import AppDependencies
 
 // MARK: Logger extensions
 
@@ -78,12 +79,10 @@ public final class FeatureToggles: Sendable, ObservableObject {
     }
 }
 
-// MARK: Exposing FeatureToggles to SwiftUI
+// MARK: Convenience Property Wrapper
 
-import SwiftUI
-
-@MainActor @propertyWrapper public struct FeatureToggle: DynamicProperty {
-    @EnvironmentObject private var featureToggles: FeatureToggles
+@propertyWrapper public struct FeatureToggle {
+    @AppDependency(\.featureToggles) private var featureToggles
 
     private let feature: Feature
 
@@ -93,11 +92,5 @@ import SwiftUI
 
     public var wrappedValue: Bool {
         featureToggles.hasEnabled(feature)
-    }
-}
-
-public extension View {
-    func featureToggles(_ featureToggles: FeatureToggles) -> some View {
-        environmentObject(featureToggles)
     }
 }

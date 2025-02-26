@@ -3,7 +3,9 @@
 Highly inspired by several ideas over at https://www.objc.io/ (introduced to me by one of my colleagues, Audun. Thanks!),
 this example application aims to show how to work more with Swift types directly instead of through layers of abstractions (e.g ViewModels, Services, Repositories etc).
 
-The basic idea is that we only have a handful of actual dependencies (A "thing" to store stuff in the keychain, a "thing" to store stuff in a database, a "thing" to do networking etc),
+The basic idea is that we only have a handful of actual dependencies (A "thing" that knows how to store stuff in the keychain,
+a "thing" that knows how to store stuff in a database,
+a "thing" that knows how to do network request etc),
 and have our types/domain models implement traits/protocols to be able to interact/work with these dependencies.
 We create types for almost everything, and leverage protocols like Swift's [RawRepresentable](https://developer.apple.com/documentation/swift/rawrepresentable).
 
@@ -15,17 +17,17 @@ In other words; we try to write more idiomatic Swift:
 - Value types over reference types.
 - Composition (protocols and extension) over inheritance (subclassing).
 - Write business logic that prefers immutability and avoid side effects.
-  - Mutate models and trigger side effects (storing data, networking, etc) outside domain models and logic.
+  - Try to only mutate and trigger side effects (storing data, networking, etc) outside domain models and logic.
 
 ## Feature Slices
 
-An architecture pattern that fits nicely with this way of writing code,
+An architecture pattern that fits nicely with this way of thinking/writing code,
 is [Vertical Slice Architecture](https://www.jimmybogard.com/vertical-slice-architecture/) (coined by Jimmy Bogard).
 Where we think in vertical slices with our domain models and business logic in the middle,
 and UI (SwiftUI/UIKit) and IO (Networking, Database, Keychain etc) at the top and bottom.
 
 In a SwiftUI app, Views act as the "glue" around our vertical slices.
-And the SwiftUI Environment is used to make dependencies available to Views.
+And dependencies are typically injected into our Views in some way (e.g using the SwiftUI Environment).
 User interaction (e.g user tapping a button) represent the entry point into a vertical slice (from the top).
 
 In a UIKit app, ViewControllers act as the "glue" around our vertical slices.
@@ -65,3 +67,16 @@ The general idea:
 - [CryptographicKeyStorage](VerticalSlices/Common/CryptographicKeyStorage) - knows how to manage types adopting `ManagedCryptographicKey` and `UniqueManagedCryptographicKey`.
 - [HTTPClient](VerticalSlices/Common/EnvironmentValues+HTTPClient) - knows how to do HTTP requests based on instances of `Endpoint`. Check out [HTTPSwift](https://github.com/thomsmed/http-swift).
 - [DatabaseClient](VerticalSlices/Common/EnvironmentValues+DatabaseClient) - knows how to do (SQLite) database queries based on instances of `DatabaseEntity`. Check out [GRDB.swift](https://github.com/groue/GRDB.swift).
+
+### Dependency Injection
+
+Dependency Injection (and the dependency inversion principle) is awesome,
+both for making code more maintainable and loosely coupled,
+but also to better facilitate for Unit and Integration tests.
+
+If you can get away with just using the SwiftUI Environment or a simple custom "Dependency Container",
+that's perfect! Otherwise, there are awesome libraries out there that can make your life easier.
+
+Check out [App Dependencies](https://github.com/thomsmed/app-dependencies-swift) for inspiration!
+
+> NOTE: Just remember to keep the number of app wide shared dependencies to a bare minimum!

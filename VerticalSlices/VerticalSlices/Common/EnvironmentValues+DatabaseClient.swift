@@ -87,15 +87,3 @@ extension GRDBDatabaseClient: DatabaseClient {
         try await dbQueue.write(updates)
     }
 }
-
-// MARK: Exposing DatabaseClient to SwiftUI
-
-public extension EnvironmentValues {
-    @Entry var databaseClient: DatabaseClient = TestDatabaseClient(named: "Test")
-}
-
-public extension View {
-    func databaseClient(_ databaseClient: DatabaseClient) -> some View {
-        environment(\.databaseClient, databaseClient)
-    }
-}
