@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		936443ED2CD7A15C00AB1975 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 936443EC2CD7A15C00AB1975 /* GRDB */; };
+		93EF162F2D6F598A00FBCC96 /* AppDependencies in Frameworks */ = {isa = PBXBuildFile; productRef = 93EF162E2D6F598A00FBCC96 /* AppDependencies */; };
 		EDF68F9B2CC6A71E00269094 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = EDF68F9A2CC6A71E00269094 /* README.md */; };
 		EDF68FB72CCC04C900269094 /* HTTP in Frameworks */ = {isa = PBXBuildFile; productRef = EDF68FB62CCC04C900269094 /* HTTP */; };
 /* End PBXBuildFile section */
@@ -31,6 +32,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EDF68FB72CCC04C900269094 /* HTTP in Frameworks */,
+				93EF162F2D6F598A00FBCC96 /* AppDependencies in Frameworks */,
 				936443ED2CD7A15C00AB1975 /* GRDB in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -77,6 +79,7 @@
 			packageProductDependencies = (
 				EDF68FB62CCC04C900269094 /* HTTP */,
 				936443EC2CD7A15C00AB1975 /* GRDB */,
+				93EF162E2D6F598A00FBCC96 /* AppDependencies */,
 			);
 			productName = VerticalSlices;
 			productReference = EDF68F862CC6A54300269094 /* VerticalSlices.app */;
@@ -109,6 +112,7 @@
 			packageReferences = (
 				EDF68FB52CCC04C900269094 /* XCRemoteSwiftPackageReference "http-swift" */,
 				936443EB2CD7A15C00AB1975 /* XCRemoteSwiftPackageReference "GRDB" */,
+				93EF162D2D6F598A00FBCC96 /* XCRemoteSwiftPackageReference "app-dependencies-swift" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = EDF68F872CC6A54300269094 /* Products */;
@@ -347,6 +351,14 @@
 				version = 6.29.3;
 			};
 		};
+		93EF162D2D6F598A00FBCC96 /* XCRemoteSwiftPackageReference "app-dependencies-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/thomsmed/app-dependencies-swift";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		EDF68FB52CCC04C900269094 /* XCRemoteSwiftPackageReference "http-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/thomsmed/http-swift.git";
@@ -362,6 +374,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 936443EB2CD7A15C00AB1975 /* XCRemoteSwiftPackageReference "GRDB" */;
 			productName = GRDB;
+		};
+		93EF162E2D6F598A00FBCC96 /* AppDependencies */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 93EF162D2D6F598A00FBCC96 /* XCRemoteSwiftPackageReference "app-dependencies-swift" */;
+			productName = AppDependencies;
 		};
 		EDF68FB62CCC04C900269094 /* HTTP */ = {
 			isa = XCSwiftPackageProductDependency;

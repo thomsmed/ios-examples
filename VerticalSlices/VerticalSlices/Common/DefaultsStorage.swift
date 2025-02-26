@@ -7,6 +7,7 @@
 
 import Foundation
 import OSLog
+import AppDependencies
 
 // MARK: Logger extensions
 
@@ -298,23 +299,10 @@ extension StandardUserDefaultsStorage: DefaultsStorage {
     }
 }
 
-// MARK: Exposing DefaultsStorage to SwiftUI
+// MARK: Convenience Property Wrapper
 
-import SwiftUI
-
-public extension EnvironmentValues {
-    @Entry var defaultsStorage: DefaultsStorage = TestDefaultsStorage()
-}
-
-public extension View {
-    func defaultsStorage(_ defaultsStorage: DefaultsStorage) -> some View {
-        environment(\.defaultsStorage, defaultsStorage)
-    }
-}
-
-/// A custom convenience property wrapper adhering to DynamicProperty.
-@MainActor @propertyWrapper public struct DefaultsStored<Value: UniqueDefaultsStorable>: DynamicProperty {
-    @Environment(\.defaultsStorage) private var defaultsStorage
+@propertyWrapper public struct DefaultsStored<Value: UniqueDefaultsStorable> {
+    @AppDependency(\.defaultsStorage) private var defaultsStorage
 
     public init() {}
 

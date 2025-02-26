@@ -1,6 +1,15 @@
 {
-  "originHash" : "8c94345bce803de21f45b69879e8dde9becb1841a11e766e0dc81930cadd6574",
+  "originHash" : "5932bb0476903b51eaf221fc30460d1c6fc9af617d534d9ad0f8e1d57f5b290d",
   "pins" : [
+    {
+      "identity" : "app-dependencies-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/thomsmed/app-dependencies-swift",
+      "state" : {
+        "branch" : "main",
+        "revision" : "fdb4bb184d97ab98cad7991ff53f44ce749b807c"
+      }
+    },
     {
       "identity" : "grdb.swift",
       "kind" : "remoteSourceControl",

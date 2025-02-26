@@ -7,6 +7,7 @@
 
 import Foundation
 import OSLog
+import AppDependencies
 
 // MARK: Logger extensions
 
@@ -473,23 +474,10 @@ extension KeychainSecureStorage: SecureStorage {
     }
 }
 
-// MARK: Exposing SecureStorage to SwiftUI
+// MARK: Convenience Property Wrapper
 
-import SwiftUI
-
-public extension EnvironmentValues {
-    @Entry var secureStorage: SecureStorage = TestSecureStorage()
-}
-
-public extension View {
-    func secureStorage(_ secureStorage: SecureStorage) -> some View {
-        environment(\.secureStorage, secureStorage)
-    }
-}
-
-/// A custom convenience property wrapper adhering to DynamicProperty.
-@MainActor @propertyWrapper public struct SecurelyStored<Value: UniqueSecurelyStorable>: DynamicProperty {
-    @Environment(\.secureStorage) private var secureStorage
+@propertyWrapper public struct SecurelyStored<Value: UniqueSecurelyStorable> {
+    @AppDependency(\.secureStorage) private var secureStorage
 
     public init() {}
 

@@ -32,15 +32,3 @@ public final class MockSession: HTTP.Session, @unchecked Sendable {
         return await dataAndResponseForRequest(request)
     }
 }
-
-// MARK: Exposing HTTP.Client to SwiftUI
-
-public extension EnvironmentValues {
-    @Entry var httpClient: HTTP.Client = HTTP.Client(session: MockSession())
-}
-
-public extension View {
-    func httpClient(_ httpClient: HTTP.Client) -> some View {
-        environment(\.httpClient, httpClient)
-    }
-}
