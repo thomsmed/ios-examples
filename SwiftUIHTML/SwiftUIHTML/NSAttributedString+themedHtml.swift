@@ -10,7 +10,7 @@ import UIKit
 /// Convenience extension to use with ``AttributedText``.
 extension NSAttributedString {
     static func themedHtml(withBody body: String, theme: Theme = .default) -> NSAttributedString {
-        // Match the HTML `lang` attribute to current localisation used by the app (aka Bundle.main).
+        // Match the HTML `lang` attribute to current localization used by the app (aka Bundle.main).
         let bundle = Bundle.main
         let lang = bundle.preferredLocalizations.first
             ?? bundle.developmentLocalization
