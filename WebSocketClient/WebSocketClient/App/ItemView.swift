@@ -36,4 +36,3 @@ struct ItemView: View {
         print("Delete tapped")
     }
 }
-

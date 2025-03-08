@@ -59,7 +59,7 @@ public final class WebSocketConnection<Incoming: Decodable & Sendable, Outgoing:
                 // webSocketTask.cancel(with: .unsupportedData, reason: nil)
                 // throw WebSocketConnectionError.decodingFailure
 
-                // Alternative 1: Try to parse the message data anyway
+                // Alternative 2: Try to parse the message data anyway
                 guard
                     let messageData = text.data(using: .utf8),
                     let message = try? decoder.decode(Incoming.self, from: messageData)
