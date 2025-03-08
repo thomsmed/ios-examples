@@ -115,7 +115,7 @@ struct ContentView: View {
 }
 
 extension ContentView {
-    @MainActor func openAndConsumeWebSocketConnection() async {
+    func openAndConsumeWebSocketConnection() async {
         let url = URL(string: "ws://127.0.0.1:8080/channel")!
 
         // Close any existing WebSocketConnection
@@ -123,7 +123,7 @@ extension ContentView {
             connection.close()
         }
 
-        let connection: WebSocketConnection<IncomingMessage, OutgoingMessage> = webSocketConnectionFactory.open(url: url)
+        let connection: WebSocketConnection<IncomingMessage, OutgoingMessage> = webSocketConnectionFactory.open(at: url)
 
         self.connection = connection
 

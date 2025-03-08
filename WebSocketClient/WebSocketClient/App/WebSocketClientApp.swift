@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct WebSocketConnectionFactoryEnvironmentKey: EnvironmentKey {
-    static var defaultValue: WebSocketConnectionFactory = DefaultWebSocketConnectionFactory()
+    static let defaultValue: WebSocketConnectionFactory = DefaultWebSocketConnectionFactory()
 }
 
 extension EnvironmentValues {

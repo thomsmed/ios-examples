@@ -8,8 +8,8 @@
 import Foundation
 
 /// A simple factory protocol for creating concrete instances of ``WebSocketConnection``.
-public protocol WebSocketConnectionFactory {
-    func open<Incoming: Decodable & Sendable, Outgoing: Encodable & Sendable>(url: URL) -> WebSocketConnection<Incoming, Outgoing>
+public protocol WebSocketConnectionFactory: Sendable {
+    func open<Incoming: Decodable & Sendable, Outgoing: Encodable & Sendable>(at url: URL) -> WebSocketConnection<Incoming, Outgoing>
 }
 
 /// A default implementation of ``WebSocketConnectionFactory``.
@@ -36,7 +36,7 @@ public final class DefaultWebSocketConnectionFactory: Sendable {
 }
 
 extension DefaultWebSocketConnectionFactory: WebSocketConnectionFactory {
-    public func open<Incoming: Decodable & Sendable, Outgoing: Encodable & Sendable>(url: URL) -> WebSocketConnection<Incoming, Outgoing> {
+    public func open<Incoming: Decodable & Sendable, Outgoing: Encodable & Sendable>(at url: URL) -> WebSocketConnection<Incoming, Outgoing> {
         let request = URLRequest(url: url)
         let webSocketTask = urlSession.webSocketTask(with: request)
 

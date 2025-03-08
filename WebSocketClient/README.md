@@ -1,11 +1,11 @@
 # Real-time with WebSockets and Swift Concurrency
 
-A simple Server/Client example of communication over WebSockets.
+A simple Server/Client example of communication over [WebSockets](https://datatracker.ietf.org/doc/html/rfc6455).
 
 ## WebSocket Client (iOS app)
 
-A simple SwiftUI iOS app communicating with a remove Web Server using WebSockets,
-using a generic WebSocketConnection produced by a WebSocketConnectionFactory.
+A simple SwiftUI iOS app communicating with a remote Web Server over WebSockets,
+using a generic `WebSocketConnection` produced by a `WebSocketConnectionFactory`.
 
 ## WebSocket Server (Terminal app)
 
