@@ -304,3 +304,95 @@ struct HTTPAPIProblemTests {
         }
     }
 }
+
+// MARK: Testing Opaque Problem with OpaqueValue as Extras
+
+extension OpaqueValue: @retroactive HTTPAPIProblemExtras {
+    public static let associatedProblemType: String? = nil
+}
+
+extension HTTPAPIProblemTests {
+    @Test func test_decode_opaqueHTTPAPIProblemOfOpaqueValue() async throws {
+        let problemJSONs = [
+            """
+            {
+                "type": "\("urn:some:problem")",
+                "title": "\("Title")",
+                "status": \(400),
+                "detail": "\("Detail")",
+                "instance": "\("https://some.domain/problem/instance")",
+            }
+            """,
+            """
+            {
+                "type": "\("https://some.domain/some/problem")",
+                "title": "\("Title")",
+                "status": \(400),
+                "detail": "\("Detail")",
+                "instance": "\("https://some.domain/problem/instance")",
+                "foo": "\("Foo")",
+            }
+            """,
+            """
+            {
+                "type": "\("https://some.domain/problem/with/extras-object")",
+                "title": "\("Title")",
+                "status": \(400),
+                "detail": "\("Detail")",
+                "instance": "\("https://some.domain/problem/instance")",
+                "extras": {
+                    "title": "Action required",
+                    "message": "Please visit the URL",
+                    "action": "VISIT_URL",
+                    "url": "https://some.domain/some/path"
+                }
+            }
+            """,
+        ]
+
+        let jsonDecoder = JSONDecoder()
+
+        let firstOpaqueProblem = try jsonDecoder.decode(
+            HTTPAPIProblem<OpaqueValue>.self, from: Data(problemJSONs[0].utf8)
+        )
+
+        #expect(firstOpaqueProblem.extras == .object([
+            .init(stringValue: "type"): .string("urn:some:problem"),
+            .init(stringValue: "title"): .string("Title"),
+            .init(stringValue: "status"): .number(400),
+            .init(stringValue: "detail"): .string("Detail"),
+            .init(stringValue: "instance"): .string("https://some.domain/problem/instance"),
+        ]))
+
+        let secondOpaqueProblem = try jsonDecoder.decode(
+            HTTPAPIProblem<OpaqueValue>.self, from: Data(problemJSONs[1].utf8)
+        )
+
+        #expect(secondOpaqueProblem.extras == .object([
+            .init(stringValue: "type"): .string("https://some.domain/some/problem"),
+            .init(stringValue: "title"): .string("Title"),
+            .init(stringValue: "status"): .number(400),
+            .init(stringValue: "detail"): .string("Detail"),
+            .init(stringValue: "instance"): .string("https://some.domain/problem/instance"),
+            .init(stringValue: "foo"): .string("Foo"),
+        ]))
+
+        let thirdOpaqueProblem = try jsonDecoder.decode(
+            HTTPAPIProblem<OpaqueValue>.self, from: Data(problemJSONs[2].utf8)
+        )
+
+        #expect(thirdOpaqueProblem.extras == .object([
+            .init(stringValue: "type"): .string("https://some.domain/problem/with/extras-object"),
+            .init(stringValue: "title"): .string("Title"),
+            .init(stringValue: "status"): .number(400),
+            .init(stringValue: "detail"): .string("Detail"),
+            .init(stringValue: "instance"): .string("https://some.domain/problem/instance"),
+            .init(stringValue: "extras"): .object([
+                .init(stringValue: "title"): .string("Action required"),
+                .init(stringValue: "message"): .string("Please visit the URL"),
+                .init(stringValue: "action"): .string("VISIT_URL"),
+                .init(stringValue: "url"): .string("https://some.domain/some/path"),
+            ]),
+        ]))
+    }
+}

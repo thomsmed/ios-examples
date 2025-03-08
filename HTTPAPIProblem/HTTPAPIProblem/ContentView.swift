@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// A simple HTTP Client with the notion of a `Response` and a `UnexpectedResponse` (when the HTTP status code in the response was unexpected).
 struct HTTPClient {
     struct Response: Sendable {
         let statusCode: Int
@@ -56,6 +57,7 @@ struct HTTPClient {
     }
 }
 
+/// A simple struct to represent an Alert.
 struct AlertDetails {
     struct Action {
         let title: String
@@ -108,8 +110,10 @@ struct ContentView: View {
             } catch let unexpectedResponse as HTTPClient.UnexpectedResponse {
                 if let coreProblem = try? unexpectedResponse.decode(as: CoreHTTPAPIProblem.self) {
                     handle(coreProblem)
+                } else if let unknownProblem = try? unexpectedResponse.decode(as: OpaqueHTTPAPIProblem.self) {
+                    handle(unknownProblem)
                 } else {
-                    handleUnexpectedSituation()
+                    handleUnexpectedResponseWithoutAProblem()
                 }
             } catch {
                 alertDetails = AlertDetails(
@@ -146,18 +150,19 @@ struct ContentView: View {
                     )
                 ]
             )
-
-        case .opaqueProblem(let opaqueProblem):
-            alertDetails = AlertDetails(
-                message: opaqueProblem.detail,
-                actions: []
-            )
         }
     }
 
-    private func handleUnexpectedSituation() {
+    private func handle(_ unknownProblem: OpaqueHTTPAPIProblem) {
         alertDetails = AlertDetails(
-            message: "Something unexpected happened",
+            message: unknownProblem.detail,
+            actions: []
+        )
+    }
+
+    private func handleUnexpectedResponseWithoutAProblem() {
+        alertDetails = AlertDetails(
+            message: "Something unexpected happened, but the server did not report it in the form of a Problem.",
             actions: []
         )
     }
