@@ -20,7 +20,7 @@ final class WaitingContinuationsLocker: @unchecked Sendable {
         lock.withLock { protectedWaitingContinuations.count }
     }
 
-    func set(_ waitingContinuation: CheckedContinuation<Data?, Never>, forId id: UUID) {
+    func set(_ waitingContinuation: CheckedContinuation<Data?, Never>, for id: UUID) {
         _ = lock.withLock { protectedWaitingContinuations.updateValue(waitingContinuation, forKey: id) }
     }
 
@@ -28,7 +28,7 @@ final class WaitingContinuationsLocker: @unchecked Sendable {
         lock.withLock { protectedWaitingContinuations.popFirst() }
     }
 
-    func remove(forId id: UUID) -> CheckedContinuation<Data?, Never>? {
+    func remove(for id: UUID) -> CheckedContinuation<Data?, Never>? {
         lock.withLock { protectedWaitingContinuations.removeValue(forKey: id) }
     }
 }

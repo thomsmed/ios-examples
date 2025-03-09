@@ -1,15 +1,16 @@
 //
-//  TaskSpawningResourceCache.swift
+//  ResourceCache.swift
 //  ResourceCache
 //
-//  Created by Thomas Asheim Smedmann on 24/02/2024.
+//  Created by Thomas Smedmann on 09/03/2025.
 //
 
 import Foundation
 
 /// A concurrent and thread safe resource cache that spawns an unstructured Task to fetch a resource when the resource is first requested.
 /// All Tasks requesting the resource will wait on the completion of the spawned unstructured resource fetching Task.
-final actor TaskSpawningResourceCache {
+/// Task cancelation is not handled.
+final actor ResourceCache {
     private let urlSession: URLSession
 
     private var cachedResource: Data?
@@ -48,20 +49,16 @@ final actor TaskSpawningResourceCache {
                 return await resourceFetchingTask.value
             }
 
-            let task = Task<Data?, Never> { [weak self] in
-                guard let self else {
-                    return nil
-                }
-
-                return await self.fetchResource()
-            }
+            let task: Task<Data?, Never> = .detached(
+                operation: fetchResource
+            )
 
             resourceFetchingTask = task
+            defer { resourceFetchingTask = nil }
 
             let resource = await task.value
 
             cachedResource = resource
-            resourceFetchingTask = nil
 
             return resource
         }
