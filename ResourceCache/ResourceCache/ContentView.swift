@@ -61,11 +61,8 @@ struct ContentView: View {
 
 extension ContentView {
     @MainActor final class ViewModel: ObservableObject {
-        private let resourceCache = TaskSpawningResourceCache()
-        // private let resourceCache = TaskSpawningCancelingResourceCache()
-        // private let resourceCache = ContinuationCreatingResourceCache()
-        // private let resourceCache = ContinuationCreatingCancelingResourceCache()
-        // private let resourceCache = ContinuationCreatingTaskSpawningCancelingResourceCache()
+        private let resourceCache = ResourceCache()
+        // private let resourceCache = CancelableResourceCache()
 
         var topTextRows: [(UUID, String)] = (0..<30).map { _ in (UUID(), "Some text before Image rows") }
         @Published var middleImageRows: [(UUID, UIImage?)] = (0..<10).map { _ in (UUID(), nil) }

@@ -17,6 +17,5 @@ This project also contain some example utility classes for safely managing prote
 - [AtomicCount](ResourceCache/Utils/AtomicCount.swift): A Thread safe counter value using [Swift Atomics](https://github.com/apple/swift-atomics).
 - [LockedCount](ResourceCache/Utils/LockedCount.swift): A Thread safe counter value using [NSLock](https://developer.apple.com/documentation/foundation/nslock).
 - [WaitingContinuationsLocker](ResourceCache/Utils/WaitingContinuationsLocker.swift): Thread safe storage for Continuations of a particular type (waiting to be resumed).
-
-Some Unit Tests are included to help show the differences between the different implementations of a resource cache,
-but due to the nature of concurrency they are most reliable when ran individually.
+- [PendingValue](ResourceCache/Utils/PendingValue.swift): A utility type for letting multiple caller Tasks wait for a future value, whom exact arrival is unknown and will be manually triggered some time in the future.
+- [PendingOperation](ResourceCache/Utils/PendingOperation.swift): A utility type for letting multiple caller Tasks wait for a future value produced by an asynchronous operation.
