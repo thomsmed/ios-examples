@@ -28,6 +28,7 @@ A collection of iOS example code and applications.
 - [Rendering HTML in SwiftUI](SwiftUIHTML)
 - [Action emitting ViewModels and Coordinator Views](ActionableViewModel)
 - [Driving SwiftUI navigation with a ViewModel hierarchy](ViewModelHierarchy)
+- ["Observable" abstractions around UserDefaults and the Keychain](SignalingStorage)
 
 ## Misc
 
