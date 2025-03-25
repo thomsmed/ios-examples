@@ -58,6 +58,77 @@ final class SignalingKeychain: Sendable {
         }
     }
 
+    @MainActor final class SynchronizedValue<Value: Codable>: ObservableObject, Sendable {
+        private let key: String
+        private let namespace: String
+        private let signalingKeychain: SignalingKeychain
+        private let notificationCenter: NotificationCenter
+
+        nonisolated(unsafe) private var observer: (any NSObjectProtocol)?
+
+        private var _value: Value?
+
+        init(
+            for key: String,
+            under namespace: String,
+            observing signalingKeychain: SignalingKeychain,
+            using notificationCenter: NotificationCenter
+        ) {
+            self.notificationCenter = notificationCenter
+            self.signalingKeychain = signalingKeychain
+            self.namespace = namespace
+            self.key = key
+
+            self.observer = notificationCenter.addObserver(
+                forName: SignalingKeychain.didChangeNotification,
+                object: signalingKeychain,
+                queue: .main
+            ) { [weak self] notification in
+                guard
+                    let self,
+                    let userInfo = notification.userInfo as? [String: String],
+                    userInfo[SignalingKeychain.userInfoNamespaceKey] == namespace
+                else {
+                    return
+                }
+
+                let changedKey = userInfo[SignalingKeychain.userInfoKeyKey]
+
+                if changedKey == nil || changedKey == key {
+                    let newValue: Value? = try? self.signalingKeychain.value(for: key, under: namespace)
+
+                    MainActor.assumeIsolated {
+                        self._value = newValue
+                        self.objectWillChange.send()
+                    }
+                }
+            }
+
+            self._value = try? signalingKeychain.value(for: key, under: namespace)
+        }
+
+        var value: Value? {
+            get {
+                _value
+            }
+            set {
+                _value = newValue
+
+                if let newValue {
+                    try? signalingKeychain.set(newValue, for: key, under: namespace)
+                } else {
+                    try? signalingKeychain.delete(for: key, under: namespace)
+                }
+            }
+        }
+
+        deinit {
+            if let observer {
+                notificationCenter.removeObserver(observer)
+            }
+        }
+    }
+
     private static let didChangeNotification = Notification.Name("\(String(describing: SignalingKeychain.self)).didChangeNotification")
     private static let userInfoKeyKey = "key"
     private static let userInfoNamespaceKey = "namespace"
@@ -130,6 +201,10 @@ final class SignalingKeychain: Sendable {
     func signal(for key: String, under namespace: String) -> Signal {
         Signal(for: key, under: namespace, observing: self, using: notificationCenter)
     }
+
+    @MainActor func synchronizedValue<Value: Codable>(for key: String, under namespace: String) -> SynchronizedValue<Value> {
+        SynchronizedValue(for: key, under: namespace, observing: self, using: notificationCenter)
+    }
 }
 
 // MARK: KeychainStorage+SignalingKeychain.Storage
@@ -182,5 +257,36 @@ import SwiftUI
                 try? keychain.delete(for: key, under: namespace)
             }
         })
+    }
+}
+
+// MARK: SynchronizedKeychained
+
+import SwiftUI
+
+@MainActor @propertyWrapper struct SynchronizedKeychained<Value: Codable>: DynamicProperty {
+    @StateObject private var synchronizedValue: SignalingKeychain.SynchronizedValue<Value>
+
+    init(
+        key: String,
+        namespace: String,
+        keychain: SignalingKeychain = .shared
+    ) {
+        self._synchronizedValue = StateObject(
+            wrappedValue: keychain.synchronizedValue(for: key, under: namespace)
+        )
+    }
+
+    var wrappedValue: Value? {
+        get {
+            synchronizedValue.value
+        }
+        nonmutating set {
+            synchronizedValue.value = newValue
+        }
+    }
+
+    var projectedValue: Binding<Value?> {
+        $synchronizedValue.value
     }
 }

@@ -27,6 +27,8 @@ struct SignalingDefaultsView: View {
 
     @SignalingDefaulted(key: "key", namespace: "namespace") private var defaultedString: String?
 
+    @SynchronizedDefaulted(key: "key", namespace: "namespace") private var synchronizedString: String?
+
     var body: some View {
         VStack {
             if let string: String = try? defaults.value(for: "key", under: "namespace") {
@@ -42,6 +44,8 @@ struct SignalingDefaultsView: View {
             }
 
             NestedView(defaultedString: $defaultedString)
+
+            NestedView(defaultedString: $synchronizedString)
 
             Button("Tap me!") {
                 Task.detached {

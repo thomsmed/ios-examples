@@ -9,44 +9,44 @@ import SwiftUI
 
 struct ObservableKeychainView: View {
     struct NestedView: View {
-        @Binding var keyChainedData: String?
+        @Binding var keychainedString: String?
 
         var body: some View {
             Button("Tap me!") {
                 Task.detached {
                     await MainActor.run {
                         let randomNumber = Int.random(in: 0..<100)
-                        keyChainedData = "\(randomNumber)"
+                        keychainedString = "\(randomNumber)"
                     }
                 }
             }
         }
     }
 
-    @ObservedObject private var keyChain: ObservableKeychain = .shared
+    @ObservedObject private var keychain: ObservableKeychain = .shared
 
-    @ObservedKeychained(key: "key", namespace: "namespace") private var keyChainedData: String?
+    @ObservedKeychained(key: "key", namespace: "namespace") private var keychainedString: String?
 
     var body: some View {
         VStack {
-            if let string: String = try? keyChain.value(for: "key", under: "namespace") {
+            if let string: String = try? keychain.value(for: "key", under: "namespace") {
                 Text("From KeyChain: \(string)")
             } else {
                 Text("From KeyChain: <nothing>")
             }
 
-            if let keyChainedData {
-                Text("From KeyChain: \(keyChainedData)")
+            if let keychainedString {
+                Text("From KeyChain: \(keychainedString)")
             } else {
                 Text("From KeyChain: <nothing>")
             }
 
-            NestedView(keyChainedData: $keyChainedData)
+            NestedView(keychainedString: $keychainedString)
 
             Button("Tap me!") {
                 Task.detached {
                     let randomNumber = Int.random(in: 0..<100)
-                    try? await keyChain.set("\(randomNumber)", for: "key", under: "namespace")
+                    try? await keychain.set("\(randomNumber)", for: "key", under: "namespace")
                 }
             }
 
@@ -54,7 +54,7 @@ struct ObservableKeychainView: View {
                 Task.detached {
                     await MainActor.run {
                         let randomNumber = Int.random(in: 0..<100)
-                        keyChainedData = "\(randomNumber)"
+                        keychainedString = "\(randomNumber)"
                     }
                 }
             }
