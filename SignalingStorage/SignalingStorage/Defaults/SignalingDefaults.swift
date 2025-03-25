@@ -56,6 +56,77 @@ final class SignalingDefaults: Sendable {
         }
     }
 
+    @MainActor final class SynchronizedValue<Value: Codable>: ObservableObject, Sendable {
+        private let key: String
+        private let namespace: String
+        private let signalingDefaults: SignalingDefaults
+        private let notificationCenter: NotificationCenter
+
+        nonisolated(unsafe) private var observer: (any NSObjectProtocol)?
+
+        private var _value: Value?
+
+        init(
+            for key: String,
+            under namespace: String,
+            observing signalingDefaults: SignalingDefaults,
+            using notificationCenter: NotificationCenter
+        ) {
+            self.notificationCenter = notificationCenter
+            self.signalingDefaults = signalingDefaults
+            self.namespace = namespace
+            self.key = key
+
+            self.observer = notificationCenter.addObserver(
+                forName: SignalingDefaults.didChangeNotification,
+                object: signalingDefaults,
+                queue: .main
+            ) { [weak self] notification in
+                guard
+                    let self,
+                    let userInfo = notification.userInfo as? [String: String],
+                    userInfo[SignalingDefaults.userInfoNamespaceKey] == namespace
+                else {
+                    return
+                }
+
+                let changedKey = userInfo[SignalingDefaults.userInfoKeyKey]
+
+                if changedKey == nil || changedKey == key {
+                    let newValue: Value? = try? self.signalingDefaults.value(for: key, under: namespace)
+
+                    MainActor.assumeIsolated {
+                        self._value = newValue
+                        self.objectWillChange.send()
+                    }
+                }
+            }
+
+            self._value = try? signalingDefaults.value(for: key, under: namespace)
+        }
+
+        var value: Value? {
+            get {
+                _value
+            }
+            set {
+                _value = newValue
+
+                if let newValue {
+                    try? signalingDefaults.set(newValue, for: key, under: namespace)
+                } else {
+                    try? signalingDefaults.delete(for: key, under: namespace)
+                }
+            }
+        }
+
+        deinit {
+            if let observer {
+                notificationCenter.removeObserver(observer)
+            }
+        }
+    }
+
     private static let didChangeNotification = Notification.Name("\(String(describing: SignalingDefaults.self)).didChangeNotification")
     private static let userInfoKeyKey = "key"
     private static let userInfoNamespaceKey = "namespace"
@@ -98,6 +169,10 @@ final class SignalingDefaults: Sendable {
 
     func signal(for key: String, under namespace: String) -> Signal {
         Signal(for: key, under: namespace, observing: self, using: notificationCenter)
+    }
+
+    @MainActor func synchronizedValue<Value: Codable>(for key: String, under namespace: String) -> SynchronizedValue<Value> {
+        SynchronizedValue(for: key, under: namespace, observing: self, using: notificationCenter)
     }
 }
 
@@ -151,5 +226,36 @@ import SwiftUI
                 try? defaults.delete(for: key, under: namespace)
             }
         })
+    }
+}
+
+// MARK: SynchronizedDefaulted
+
+import SwiftUI
+
+@MainActor @propertyWrapper struct SynchronizedDefaulted<Value: Codable>: DynamicProperty {
+    @StateObject private var synchronizedValue: SignalingDefaults.SynchronizedValue<Value>
+
+    init(
+        key: String,
+        namespace: String,
+        defaults: SignalingDefaults = .shared
+    ) {
+        self._synchronizedValue = StateObject(
+            wrappedValue: defaults.synchronizedValue(for: key, under: namespace)
+        )
+    }
+
+    var wrappedValue: Value? {
+        get {
+            synchronizedValue.value
+        }
+        nonmutating set {
+            synchronizedValue.value = newValue
+        }
+    }
+
+    var projectedValue: Binding<Value?> {
+        $synchronizedValue.value
     }
 }

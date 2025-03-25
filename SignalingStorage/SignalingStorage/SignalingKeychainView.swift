@@ -9,44 +9,48 @@ import SwiftUI
 
 struct SignalingKeychainView: View {
     struct NestedView: View {
-        @Binding var keyChainedData: String?
+        @Binding var keychainedString: String?
 
         var body: some View {
             Button("Tap me!") {
                 Task.detached {
                     await MainActor.run {
                         let randomNumber = Int.random(in: 0..<100)
-                        keyChainedData = "\(randomNumber)"
+                        keychainedString = "\(randomNumber)"
                     }
                 }
             }
         }
     }
 
-    private let keyChain: SignalingKeychain = .shared
+    private let keychain: SignalingKeychain = .shared
 
-    @SignalingKeychained(key: "key", namespace: "namespace") private var keyChainedData: String?
+    @SignalingKeychained(key: "key", namespace: "namespace") private var keychainedString: String?
+
+    @SynchronizedKeychained(key: "key", namespace: "namespace") private var synchronizedString: String?
 
     var body: some View {
         VStack {
-            if let string: String = try? keyChain.value(for: "key", under: "namespace") {
+            if let string: String = try? keychain.value(for: "key", under: "namespace") {
                 Text("From KeyChain: \(string)")
             } else {
                 Text("From KeyChain: <nothing>")
             }
 
-            if let keyChainedData {
-                Text("From KeyChain: \(keyChainedData)")
+            if let keychainedString {
+                Text("From KeyChain: \(keychainedString)")
             } else {
                 Text("From KeyChain: <nothing>")
             }
 
-            NestedView(keyChainedData: $keyChainedData)
+            NestedView(keychainedString: $keychainedString)
+
+            NestedView(keychainedString: $synchronizedString)
 
             Button("Tap me!") {
                 Task.detached {
                     let randomNumber = Int.random(in: 0..<100)
-                    try? keyChain.set("\(randomNumber)", for: "key", under: "namespace")
+                    try? keychain.set("\(randomNumber)", for: "key", under: "namespace")
                 }
             }
 
@@ -54,7 +58,7 @@ struct SignalingKeychainView: View {
                 Task.detached {
                     await MainActor.run {
                         let randomNumber = Int.random(in: 0..<100)
-                        keyChainedData = "\(randomNumber)"
+                        keychainedString = "\(randomNumber)"
                     }
                 }
             }
