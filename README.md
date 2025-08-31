@@ -30,6 +30,10 @@ A collection of iOS example code and applications.
 - [Driving SwiftUI navigation with a ViewModel hierarchy](ViewModelHierarchy)
 - ["Observable" abstractions around UserDefaults and the Keychain](SignalingStorage)
 
+## SpriteKit
+
+- [Touch gestures and SpriteKit](GesturesAndSpriteKit)
+
 ## Misc
 
 - [Shared authentication state](SharedAppAuthState)

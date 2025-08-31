@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "player_ship_frame1.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
