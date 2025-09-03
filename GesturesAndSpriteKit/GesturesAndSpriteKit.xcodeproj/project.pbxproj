@@ -13,7 +13,7 @@
 /* Begin PBXFileReference section */
 		93942D3F2E64934600F32018 /* GesturesAndSpriteKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GesturesAndSpriteKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93942D4D2E64938E00F32018 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		939E05452E68B5D800959D6F /* GesturesAndSpriteKit.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = GesturesAndSpriteKit.mp4; sourceTree = "<group>"; };
+		939E05622E68BD8100959D6F /* GesturesAndSpriteKit.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = GesturesAndSpriteKit.gif; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -41,7 +41,7 @@
 				93942D4D2E64938E00F32018 /* README.md */,
 				93942D412E64934600F32018 /* GesturesAndSpriteKit */,
 				93942D402E64934600F32018 /* Products */,
-				939E05452E68B5D800959D6F /* GesturesAndSpriteKit.mp4 */,
+				939E05622E68BD8100959D6F /* GesturesAndSpriteKit.gif */,
 			);
 			sourceTree = "<group>";
 		};

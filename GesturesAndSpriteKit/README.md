@@ -2,7 +2,7 @@
 
 DISCLAIMER: All assets has been generated with the help of ChatGPT.
 
-<video src="https://github.com/thomsmed/ios-examples/blob/main/GesturesAndSpriteKit/GesturesAndSpriteKit.mp4" width="640" height="296" controls></video>
+![Move, pan, zoom, scale and rotate you way around SKScene](GesturesAndSpriteKit.gif)
 
 A simple SpriteKit app showing how to detect and handle multiple touch gestures.
 
