@@ -2,6 +2,8 @@
 
 DISCLAIMER: All assets has been generated with the help of ChatGPT.
 
+<video src="https://github.com/user-attachments/assets/d0a27069-5c61-422e-9b01-ebd24fb7588f" width="640" height="296" controls></video>
+
 A simple SpriteKit app showing how to detect and handle multiple touch gestures.
 
 The app let you:
@@ -465,7 +467,6 @@ extension GameScene {
         }
     }
 }
-
 
 extension GameScene: UIGestureRecognizerDelegate {
 
