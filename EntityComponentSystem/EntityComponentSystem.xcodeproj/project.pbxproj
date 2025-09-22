@@ -7,25 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		93942D4E2E64938E00F32018 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 93942D4D2E64938E00F32018 /* README.md */; };
+		93DA13072E81287700DEADCF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 93DA13062E81287700DEADCF /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		93942D3F2E64934600F32018 /* GesturesAndSpriteKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GesturesAndSpriteKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		93942D4D2E64938E00F32018 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		939E05622E68BD8100959D6F /* GesturesAndSpriteKit.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = GesturesAndSpriteKit.gif; sourceTree = "<group>"; };
+		93DA12F62E81275D00DEADCF /* EntityComponentSystem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EntityComponentSystem.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		93DA13062E81287700DEADCF /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		93942D412E64934600F32018 /* GesturesAndSpriteKit */ = {
+		93DA12F82E81275D00DEADCF /* EntityComponentSystem */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = GesturesAndSpriteKit;
+			path = EntityComponentSystem;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		93942D3C2E64934600F32018 /* Frameworks */ = {
+		93DA12F32E81275D00DEADCF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -35,20 +34,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		93942D362E64934600F32018 = {
+		93DA12ED2E81275D00DEADCF = {
 			isa = PBXGroup;
 			children = (
-				93942D4D2E64938E00F32018 /* README.md */,
-				93942D412E64934600F32018 /* GesturesAndSpriteKit */,
-				93942D402E64934600F32018 /* Products */,
-				939E05622E68BD8100959D6F /* GesturesAndSpriteKit.gif */,
+				93DA13062E81287700DEADCF /* README.md */,
+				93DA12F82E81275D00DEADCF /* EntityComponentSystem */,
+				93DA12F72E81275D00DEADCF /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		93942D402E64934600F32018 /* Products */ = {
+		93DA12F72E81275D00DEADCF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				93942D3F2E64934600F32018 /* GesturesAndSpriteKit.app */,
+				93DA12F62E81275D00DEADCF /* EntityComponentSystem.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -56,75 +54,75 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		93942D3E2E64934600F32018 /* GesturesAndSpriteKit */ = {
+		93DA12F52E81275D00DEADCF /* EntityComponentSystem */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 93942D4A2E64934F00F32018 /* Build configuration list for PBXNativeTarget "GesturesAndSpriteKit" */;
+			buildConfigurationList = 93DA13012E81275F00DEADCF /* Build configuration list for PBXNativeTarget "EntityComponentSystem" */;
 			buildPhases = (
-				93942D3B2E64934600F32018 /* Sources */,
-				93942D3C2E64934600F32018 /* Frameworks */,
-				93942D3D2E64934600F32018 /* Resources */,
+				93DA12F22E81275D00DEADCF /* Sources */,
+				93DA12F32E81275D00DEADCF /* Frameworks */,
+				93DA12F42E81275D00DEADCF /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				93942D412E64934600F32018 /* GesturesAndSpriteKit */,
+				93DA12F82E81275D00DEADCF /* EntityComponentSystem */,
 			);
-			name = GesturesAndSpriteKit;
+			name = EntityComponentSystem;
 			packageProductDependencies = (
 			);
-			productName = GesturesAndSpriteKit;
-			productReference = 93942D3F2E64934600F32018 /* GesturesAndSpriteKit.app */;
+			productName = EntityComponentSystem;
+			productReference = 93DA12F62E81275D00DEADCF /* EntityComponentSystem.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		93942D372E64934600F32018 /* Project object */ = {
+		93DA12EE2E81275D00DEADCF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1640;
-				LastUpgradeCheck = 1640;
+				LastSwiftUpdateCheck = 2600;
+				LastUpgradeCheck = 2600;
 				TargetAttributes = {
-					93942D3E2E64934600F32018 = {
-						CreatedOnToolsVersion = 16.4;
+					93DA12F52E81275D00DEADCF = {
+						CreatedOnToolsVersion = 26.0;
 					};
 				};
 			};
-			buildConfigurationList = 93942D3A2E64934600F32018 /* Build configuration list for PBXProject "GesturesAndSpriteKit" */;
+			buildConfigurationList = 93DA12F12E81275D00DEADCF /* Build configuration list for PBXProject "EntityComponentSystem" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 93942D362E64934600F32018;
+			mainGroup = 93DA12ED2E81275D00DEADCF;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 93942D402E64934600F32018 /* Products */;
+			productRefGroup = 93DA12F72E81275D00DEADCF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				93942D3E2E64934600F32018 /* GesturesAndSpriteKit */,
+				93DA12F52E81275D00DEADCF /* EntityComponentSystem */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		93942D3D2E64934600F32018 /* Resources */ = {
+		93DA12F42E81275D00DEADCF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93942D4E2E64938E00F32018 /* README.md in Resources */,
+				93DA13072E81287700DEADCF /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		93942D3B2E64934600F32018 /* Sources */ = {
+		93DA12F22E81275D00DEADCF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -134,7 +132,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		93942D482E64934F00F32018 /* Debug */ = {
+		93DA12FF2E81275F00DEADCF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -186,7 +184,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -197,7 +195,7 @@
 			};
 			name = Debug;
 		};
-		93942D492E64934F00F32018 /* Release */ = {
+		93DA13002E81275F00DEADCF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -243,7 +241,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -253,14 +251,13 @@
 			};
 			name = Release;
 		};
-		93942D4B2E64934F00F32018 /* Debug */ = {
+		93DA13022E81275F00DEADCF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -268,28 +265,30 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ios.example.GesturesAndSpriteKit;
+				PRODUCT_BUNDLE_IDENTIFIER = ios.example.EntityComponentSystem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		93942D4C2E64934F00F32018 /* Release */ = {
+		93DA13032E81275F00DEADCF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -297,15 +296,18 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ios.example.GesturesAndSpriteKit;
+				PRODUCT_BUNDLE_IDENTIFIER = ios.example.EntityComponentSystem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -314,25 +316,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		93942D3A2E64934600F32018 /* Build configuration list for PBXProject "GesturesAndSpriteKit" */ = {
+		93DA12F12E81275D00DEADCF /* Build configuration list for PBXProject "EntityComponentSystem" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				93942D482E64934F00F32018 /* Debug */,
-				93942D492E64934F00F32018 /* Release */,
+				93DA12FF2E81275F00DEADCF /* Debug */,
+				93DA13002E81275F00DEADCF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		93942D4A2E64934F00F32018 /* Build configuration list for PBXNativeTarget "GesturesAndSpriteKit" */ = {
+		93DA13012E81275F00DEADCF /* Build configuration list for PBXNativeTarget "EntityComponentSystem" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				93942D4B2E64934F00F32018 /* Debug */,
-				93942D4C2E64934F00F32018 /* Release */,
+				93DA13022E81275F00DEADCF /* Debug */,
+				93DA13032E81275F00DEADCF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 93942D372E64934600F32018 /* Project object */;
+	rootObject = 93DA12EE2E81275D00DEADCF /* Project object */;
 }
