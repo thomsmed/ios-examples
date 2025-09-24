@@ -9,7 +9,7 @@ Sources of inspiration:
 - Sindre Sørhus's [Defaults](https://github.com/sindresorhus/Defaults).
 - Dmitriy Zharov's [SwiftSecurity](https://github.com/dm-zharov/swift-security).
 
-## Enteties
+## Entities
 
 Your domain models (with their associated domain logic).
 
