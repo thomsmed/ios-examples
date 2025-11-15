@@ -53,6 +53,7 @@ A collection of iOS example code and applications.
 - [Vertical Slice Architecture](VerticalSlices)
 - [Model and handle HTTP API Problems (RFC 7807)](HTTPAPIProblem)
 - [Entity Component System](EntityComponentSystem)
+- [HTTPS and (local) Development Servers](Localhost)
 
 Happy coding! :smile:
 
